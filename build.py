@@ -18,6 +18,8 @@ LANGS = ['pt', 'en', 'es', 'it', 'zh']            # ordem do menu
 HREFLANG = {'pt': 'pt', 'en': 'en', 'es': 'es', 'it': 'it', 'zh': 'zh-Hans'}
 CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 UPDATED = '2026-10-01'
+ROOT_DESC = ('Neapolitan pizza recipe and step-by-step protocol: dough calculator, 3-day schedule and oven guide. '
+             'Pizza napolitana · pizza napoletana · 那不勒斯披萨. By Jhonathan Sousa.')
 
 I18N = {l: json.loads((SRC / 'i18n' / f'{l}.json').read_text('utf-8')) for l in LANGS}
 esc = lambda s: html.escape(s, quote=True)
@@ -64,6 +66,8 @@ def head(l):
 <meta property="og:description" content="{esc(m["description"])}">
 <meta property="og:url" content="{url(l)}">
 <meta property="og:image" content="{img(f"og-{l}.png")}">
+<meta property="og:image:secure_url" content="{img(f"og-{l}.png")}">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{esc(m["imgAlt"])}">
 <meta name="twitter:card" content="summary_large_image">
@@ -124,14 +128,29 @@ def root_page():
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NapoliProtocol · Neapolitan Pizza Protocol · Pizza Napolitana · Pizza Napoletana</title>
-<meta name="description" content="Neapolitan pizza recipe and step-by-step protocol in Portuguese, English, Spanish, Italian and Chinese. By Jhonathan Sousa.">
+<meta name="description" content="{esc(ROOT_DESC)}">
 <link rel="canonical" href="{DOMAIN}/">
 {alts}
 <link rel="alternate" hreflang="x-default" href="{DOMAIN}/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="website"><meta property="og:site_name" content="NapoliProtocol">
-<meta property="og:title" content="NapoliProtocol · Neapolitan Pizza Protocol"><meta property="og:url" content="{DOMAIN}/">
-<meta property="og:image" content="{img("og-en.png")}"><meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Jhonathan Sousa">
+<meta name="theme-color" content="#C8341F">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NapoliProtocol">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="NapoliProtocol · Neapolitan Pizza Protocol">
+<meta property="og:description" content="{esc(ROOT_DESC)}">
+<meta property="og:url" content="{DOMAIN}/">
+<meta property="og:image" content="{img("og-root.png")}">
+<meta property="og:image:secure_url" content="{img("og-root.png")}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NapoliProtocol, by Jhonathan Sousa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NapoliProtocol · Neapolitan Pizza Protocol">
+<meta name="twitter:description" content="{esc(ROOT_DESC)}">
+<meta name="twitter:image" content="{img("og-root.png")}">
 <script>
 (function(){{
   var L={json.dumps(LANGS)}, pick=null;
@@ -204,7 +223,7 @@ p{{font-size:26px;color:#6B6158;margin:22px 0 0;line-height:1.35;max-width:600px
 .url{{position:absolute;right:48px;top:40px;font-size:20px;color:#6B6158;font-weight:600}}
 </style></head><body>
 <div class="stripe"></div><div class="url">napoliprotocol.com</div>
-<div class="txt"><div class="eb">{esc(o["eyebrow"])}</div><h1>{esc(o["title"])}</h1><p>{esc(o["sub"])}</p></div>
+<div class="txt"><div class="eb">{esc(o["eyebrow"])}</div><h1>{esc(o["title"]).replace(chr(10), "<br>")}</h1><p>{esc(o["sub"])}</p></div>
 {PIZZA.format(pos=pz)}
 <div class="by"><div class="mono">JS</div><div><b>{esc(o["by"])}</b><span>@jhonsousa1</span></div></div>
 </body></html>'''
@@ -219,6 +238,8 @@ def images():
             for name, w, h in [(f'og-{l}.png', 1200, 630), (f'recipe-{l}-16x9.png', 1200, 675),
                                (f'recipe-{l}-4x3.png', 1200, 900), (f'recipe-{l}-1x1.png', 1200, 1200)]:
                 jobs.append((name, w, h, card_html(o, w, h)))
+        jobs.append(('og-root.png', 1200, 630, card_html({'eyebrow': 'Pizza napoletana · PT · EN · ES · IT · 中文', 'title': 'Napoli\nProtocol',
+                     'sub': 'Recipe, schedule and oven in 14 steps, calibrated bake after bake.', 'by': 'by Jhonathan Sousa'}, 1200, 630)))
         icon = f'<!doctype html><html><body style="margin:0;width:180px;height:180px;background:#F7F2E8">{PIZZA.format(pos="left:10px;top:10px;width:160px;height:160px")}</body></html>'
         jobs.append(('apple-touch-icon.png', 180, 180, icon))
         for name, w, h, doc in jobs:
