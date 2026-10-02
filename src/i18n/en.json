@@ -109,7 +109,8 @@
     "foot.sig": "Protocol and page by",
     "foot.langs": "Languages",
     "foot.rights": "all rights reserved",
-    "nav.about": "About"
+    "nav.about": "About",
+    "nav.theme": "Toggle dark mode"
   },
   "rules": [
     "Don't raise the hydration yet.",

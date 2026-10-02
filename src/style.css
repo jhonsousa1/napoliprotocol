@@ -259,3 +259,11 @@ html{scroll-behavior:smooth}
 .about-card h3{font-size:22px}
 .about-card p{color:var(--ink);font-size:15px;line-height:1.65}
 @media (max-width:760px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.about-grid{grid-template-columns:1fr}}
+
+/* Botão de tema */
+.theme-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:99px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;padding:0}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent)}
+.theme-btn svg{width:17px;height:17px}
+.theme-btn .i-sun{display:none}
+:root[data-theme="dark"] .theme-btn .i-sun{display:block}
+:root[data-theme="dark"] .theme-btn .i-moon{display:none}

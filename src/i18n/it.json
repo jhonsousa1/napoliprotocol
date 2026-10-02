@@ -109,7 +109,8 @@
     "foot.sig": "Protocollo e pagina di",
     "foot.langs": "Lingue",
     "foot.rights": "tutti i diritti riservati",
-    "nav.about": "Chi siamo"
+    "nav.about": "Chi siamo",
+    "nav.theme": "Attiva/disattiva tema scuro"
   },
   "rules": [
     "Non aumentare ancora l'idratazione.",

@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>
+/* Tema: escuro das 19h às 7h; a escolha manual vale até a próxima virada (7h ou 19h). */
+(function(){
+  var d=document.documentElement, now=new Date(), h=now.getHours(), t=(h>=19||h<7)?'dark':'light';
+  try{var o=JSON.parse(localStorage.getItem('np-theme')); if(o&&o.until>now.getTime()) t=o.theme;}catch(e){}
+  d.setAttribute('data-theme',t);
+})();
+</script>
 {{HEAD}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +28,7 @@
       <a href="#receita">{{nav.recipe}}</a><a href="#cronograma">{{nav.schedule}}</a><a href="#passos">{{nav.steps}}</a><a href="#forno">{{nav.oven}}</a><a href="#regras">{{nav.rules}}</a><a href="#sobre">{{nav.about}}</a>
     </nav>
     <div class="prog" title="{{nav.progress}}"><span id="progTxt">0/14</span><div class="prog-bar"><i id="progBar"></i></div></div>
+    <button type="button" class="theme-btn" id="themeBtn" aria-label="{{nav.theme}}" title="{{nav.theme}}"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     {{LANG_MENU}}
   </div>
 </header>
@@ -359,6 +368,17 @@
 
   const pnl=document.querySelector('.panel'), ptg=document.getElementById('panelToggle');
   ptg.onclick=()=>{const o=pnl.classList.toggle('open'); ptg.setAttribute('aria-expanded',o); ptg.textContent=o?T.close:T.open};
+  // ---------- Tema ----------
+  const themeBtn=document.getElementById('themeBtn');
+  const syncTheme=()=>{const dk=document.documentElement.getAttribute('data-theme')==='dark'; themeBtn.setAttribute('aria-pressed',dk);
+    const m=document.querySelector('meta[name="theme-color"]'); if(m) m.content=dk?'#1A1614':'#C8341F'};
+  themeBtn.onclick=()=>{const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',t);
+    const n=new Date(), u=new Date(n); u.setMinutes(0,0,0); const h=n.getHours();
+    if(h<7) u.setHours(7); else if(h<19) u.setHours(19); else {u.setDate(u.getDate()+1); u.setHours(7);}
+    try{localStorage.setItem('np-theme',JSON.stringify({theme:t,until:u.getTime()}))}catch(_){}
+    syncTheme()};
+  syncTheme();
   document.addEventListener('click',e=>{const a=e.target.closest('[data-setlang]'); if(a) try{localStorage.setItem('np-lang',a.dataset.setlang)}catch(_){}});
   setInterval(renderSchedule, 60e3);
   renderSteps(); syncInputs(); applyChecks(); render();

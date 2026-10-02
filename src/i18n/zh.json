@@ -109,7 +109,8 @@
     "foot.sig": "流程与页面作者",
     "foot.langs": "语言",
     "foot.rights": "保留所有权利",
-    "nav.about": "关于"
+    "nav.about": "关于",
+    "nav.theme": "切换深色模式"
   },
   "rules": [
     "暂时不要提高含水率。",

@@ -2,11 +2,19 @@
 <html lang="it"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>
+/* Tema: escuro das 19h às 7h; a escolha manual vale até a próxima virada (7h ou 19h). */
+(function(){
+  var d=document.documentElement, now=new Date(), h=now.getHours(), t=(h>=19||h<7)?'dark':'light';
+  try{var o=JSON.parse(localStorage.getItem('np-theme')); if(o&&o.until>now.getTime()) t=o.theme;}catch(e){}
+  d.setAttribute('data-theme',t);
+})();
+</script>
 <title>Pizza Napoletana: ricetta e protocollo dell'impasto passo passo | NapoliProtocol</title>
 <meta name="description" content="Ricetta della pizza napoletana fatta in casa con prefermento, calcolatore dell'impasto, programma di 3 giorni e guida al forno in 14 passaggi. Di Jhonathan Sousa.">
 <meta name="author" content="Jhonathan Sousa">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#C8341F">
+<meta name="theme-color" content="#1A1614">
 <link rel="canonical" href="https://napoliprotocol.com/it/">
 <link rel="alternate" hreflang="pt" href="https://napoliprotocol.com/pt/">
 <link rel="alternate" hreflang="en" href="https://napoliprotocol.com/en/">
@@ -302,6 +310,14 @@ html{scroll-behavior:smooth}
 .about-card p{color:var(--ink);font-size:15px;line-height:1.65}
 @media (max-width:760px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.about-grid{grid-template-columns:1fr}}
 
+/* Botão de tema */
+.theme-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:99px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;padding:0}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent)}
+.theme-btn svg{width:17px;height:17px}
+.theme-btn .i-sun{display:none}
+:root[data-theme="dark"] .theme-btn .i-sun{display:block}
+:root[data-theme="dark"] .theme-btn .i-moon{display:none}
+
 </style>
 <script type="application/ld+json" id="ld-recipe">{"@context":"https://schema.org","@type":"Recipe","name":"Pizza napoletana fatta in casa con prefermento (protocollo di 3 giorni)","description":"Ricetta della pizza napoletana con farina Caputo Pizzeria 00, prefermento, idratazione al 64% e lunga lievitazione in frigo, con programma di 3 giorni e guida al forno.","inLanguage":"it","url":"https://napoliprotocol.com/it/","image":["https://napoliprotocol.com/img/recipe-it-1x1.png","https://napoliprotocol.com/img/recipe-it-4x3.png","https://napoliprotocol.com/img/recipe-it-16x9.png"],"author":{"@type":"Person","name":"Jhonathan Sousa","url":"https://www.instagram.com/jhonsousa1/","sameAs":["https://www.instagram.com/jhonsousa1/"]},"datePublished":"2026-10-01","prepTime":"PT3H","cookTime":"PT2M","totalTime":"PT52H","recipeYield":["5","5 pizze da 30–32 cm"],"recipeCategory":"Pizza","recipeCuisine":"Italiana (napoletana)","keywords":"pizza napoletana, ricetta pizza napoletana, impasto pizza napoletana, prefermento, poolish, pizza fatta in casa, Caputo Pizzeria","recipeIngredient":["800 g Farina Caputo Pizzeria 00","512 g Acqua filtrata","0,8 g Lievito di birra secco","23 g Sale","12 g Olio extravergine d'oliva","325 g di pelati schiacciati con sale","350 g di mozzarella","Foglie di basilico","Olio extravergine d'oliva q.b."],"recipeInstructions":[{"@type":"HowToStep","name":"Preparare il prefermento","text":"Mescola a secco 400 g di farina con 0,8 g di lievito. Aggiungi 400 g d'acqua e mescola fino a una pastella grossolana, senza farina secca. Copri. Lascia 1 h a temperatura ambiente. Metti in frigo (7 °C) per circa 20 h.","url":"https://napoliprotocol.com/it/#s1"},{"@type":"HowToStep","name":"Impasto iniziale","text":"Usa il prefermento appena tolto dal frigo, senza lasciarlo a lungo a temperatura ambiente. Aggiungi 400 g di farina e 69 g d'acqua. Mescola finché tutta la farina è idratata. Non serve che sia liscio. Copri e lascia riposare. Il tempo sviluppa il glutine al posto tuo.","url":"https://napoliprotocol.com/it/#s2"},{"@type":"HowToStep","name":"Aggiungere il sale","text":"Sciogli 23 g di sale in 25 g d'acqua. Aggiungi la soluzione poco alla volta, con pizzicotti e pieghe. Aspetta che ogni porzione venga assorbita prima della successiva.","url":"https://napoliprotocol.com/it/#s3"},{"@type":"HowToStep","name":"Bassinage","text":"Aggiungi i restanti 18 g d'acqua in piccole porzioni. Aggiungine altra solo quando l'impasto ha assorbito la precedente. Se l'impasto diventa appiccicoso, non aggiungere farina.","url":"https://napoliprotocol.com/it/#s4"},{"@type":"HowToStep","name":"Sviluppare il glutine","text":"Alterna riposi e serie di pieghe, senza impastare con forza. Fermati quando l'impasto è liscio, tondo, elastico e con la superficie in tensione.","url":"https://napoliprotocol.com/it/#s5"},{"@type":"HowToStep","name":"L'olio per ultimo","text":"Con l'impasto già strutturato, aggiungi 12 g d'olio poco alla volta. Incorporalo con pizzicotti e pieghe fino a completo assorbimento.","url":"https://napoliprotocol.com/it/#s6"},{"@type":"HowToStep","name":"Riposo e laminazione","text":"Riposo di 3–5 min. Laminazione: stendi delicatamente l'impasto a rettangolo sul banco e ripiegalo su sé stesso. Senza mattarello e senza strapparlo. Forma una palla. Riposo di 15 min. Fai pieghe leggere e lascia riposare circa 1 h.","url":"https://napoliprotocol.com/it/#s7"},{"@type":"HowToStep","name":"Staglio e pirlatura","text":"Dividi in 5 panetti da 270 g (impasto totale 1348 g). Pirla dando tensione alla superficie e chiudi bene la base. Contenitore coperto, in frigo per circa 24 h.","url":"https://napoliprotocol.com/it/#s8"},{"@type":"HowToStep","name":"Acclimatare i panetti","text":"Tirali fuori dal frigo circa 4 h prima di infornare (riferimento: ~26 °C). Punto giusto: è cresciuto, tante bollicine piccole e qualcuna più grande, lati alveolati, mantiene la forma, nessun cedimento, rilassato. In un contenitore da 1 L, il riferimento è che l'impasto arrivi a metà.","url":"https://napoliprotocol.com/it/#s9"},{"@type":"HowToStep","name":"Preparare pomodoro e mozzarella","text":"Schiaccia a mano 1 latta/e di pelati (niente frullatore, niente cottura). Sala con 4–5 g di sale per latta. Niente zucchero. Taglia 350 g di mozzarella a pezzetti e lasciala sgocciolare.","url":"https://napoliprotocol.com/it/#s10"},{"@type":"HowToStep","name":"Preriscaldare il BIG HORN","text":"Superiore a 450 °C, inferiore a 380 °C. Se hai un termometro a infrarossi, misura il centro della pietra e annotalo.","url":"https://napoliprotocol.com/it/#s11"},{"@type":"HowToStep","name":"Stendere l'impasto","text":"Un panetto alla volta. Passalo leggermente nella farina. Premi dal centro verso l'esterno con i polpastrelli, spingendo l'aria verso il bordo. Lascia 1–1,5 cm di bordo senza premere. Alla 1ª infornata, 2 cm hanno reso il cornicione troppo spesso. Completa a mano fino a ~30–32 cm. Senza mattarello.","url":"https://napoliprotocol.com/it/#s12"},{"@type":"HowToStep","name":"Condire e infornare","text":"65 g di pomodoro, 70 g di mozzarella distribuita, basilico e un filo d'olio. Lascia zone di pomodoro scoperte. Prima di infornare, fai un piccolo movimento laterale: la pizza deve scivolare tutta intera. Prosciutto crudo e rucola vanno messi dopo la cottura.","url":"https://napoliprotocol.com/it/#s13"},{"@type":"HowToStep","name":"Cuocere e girare","text":"A 25–30 s, controlla se ha abbastanza struttura per girarla di 180°. Poi piccole rotazioni fino a un colore uniforme. La prima pizza calibra il forno. Usa la diagnosi qui sotto. Aspetta che la pietra si riprenda prima della pizza successiva.","url":"https://napoliprotocol.com/it/#s14"}]}</script></head>
 <body>
@@ -312,6 +328,7 @@ html{scroll-behavior:smooth}
       <a href="#receita">Ricetta</a><a href="#cronograma">Programma</a><a href="#passos">Passo passo</a><a href="#forno">Forno</a><a href="#regras">Regole</a><a href="#sobre">Chi siamo</a>
     </nav>
     <div class="prog" title="Passaggi completati"><span id="progTxt">0/14</span><div class="prog-bar"><i id="progBar" style="width: 0%;"></i></div></div>
+    <button type="button" class="theme-btn" id="themeBtn" aria-label="Attiva/disattiva tema scuro" title="Attiva/disattiva tema scuro" aria-pressed="true"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>
     <details class="lang"><summary aria-label="Lingua"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" fill="none" stroke="currentColor" stroke-width="2"></path></svg>IT</summary><ul><li><a href="../pt/" hreflang="pt" lang="pt-BR" data-setlang="pt">Português<span>PT</span></a></li><li><a href="../en/" hreflang="en" lang="en" data-setlang="en">English<span>EN</span></a></li><li><a href="../es/" hreflang="es" lang="es" data-setlang="es">Español<span>ES</span></a></li><li><a href="../it/" hreflang="it" lang="it" data-setlang="it" aria-current="page">Italiano<span>IT</span></a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans" data-setlang="zh">中文<span>中文</span></a></li></ul></details>
   </div>
 </header>
@@ -726,6 +743,17 @@ html{scroll-behavior:smooth}
 
   const pnl=document.querySelector('.panel'), ptg=document.getElementById('panelToggle');
   ptg.onclick=()=>{const o=pnl.classList.toggle('open'); ptg.setAttribute('aria-expanded',o); ptg.textContent=o?T.close:T.open};
+  // ---------- Tema ----------
+  const themeBtn=document.getElementById('themeBtn');
+  const syncTheme=()=>{const dk=document.documentElement.getAttribute('data-theme')==='dark'; themeBtn.setAttribute('aria-pressed',dk);
+    const m=document.querySelector('meta[name="theme-color"]'); if(m) m.content=dk?'#1A1614':'#C8341F'};
+  themeBtn.onclick=()=>{const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',t);
+    const n=new Date(), u=new Date(n); u.setMinutes(0,0,0); const h=n.getHours();
+    if(h<7) u.setHours(7); else if(h<19) u.setHours(19); else {u.setDate(u.getDate()+1); u.setHours(7);}
+    try{localStorage.setItem('np-theme',JSON.stringify({theme:t,until:u.getTime()}))}catch(_){}
+    syncTheme()};
+  syncTheme();
   document.addEventListener('click',e=>{const a=e.target.closest('[data-setlang]'); if(a) try{localStorage.setItem('np-lang',a.dataset.setlang)}catch(_){}});
   setInterval(renderSchedule, 60e3);
   renderSteps(); syncInputs(); applyChecks(); render();

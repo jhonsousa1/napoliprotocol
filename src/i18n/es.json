@@ -109,7 +109,8 @@
     "foot.sig": "Protocolo y página por",
     "foot.langs": "Idiomas",
     "foot.rights": "todos los derechos reservados",
-    "nav.about": "Acerca de"
+    "nav.about": "Acerca de",
+    "nav.theme": "Cambiar modo oscuro"
   },
   "rules": [
     "No subas la hidratación todavía.",

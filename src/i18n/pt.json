@@ -109,7 +109,8 @@
     "foot.sig": "Protocolo e página por",
     "foot.langs": "Idiomas",
     "foot.rights": "todos os direitos reservados",
-    "nav.about": "Sobre"
+    "nav.about": "Sobre",
+    "nav.theme": "Alternar modo escuro"
   },
   "rules": [
     "Não aumente a hidratação ainda.",
