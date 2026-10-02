@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "htmlLang": "pt-BR", "ogLocale": "pt_BR", "label": "Português", "short": "PT",
+    "title": "Pizza Napolitana: receita e protocolo passo a passo | NapoliProtocol",
+    "description": "Receita de pizza napolitana em casa com pré-fermento, calculadora de massa, cronograma de 3 dias e guia de forno em 14 etapas. Por Jhonathan Sousa.",
+    "ogTitle": "Protocolo da Pizza Napolitana",
+    "imgAlt": "Protocolo da Pizza Napolitana, por Jhonathan Sousa",
+    "og": {"eyebrow": "Pizza napolitana em casa", "title": "Protocolo da Napolitana", "sub": "Receita, cronograma e forno em 14 etapas, calibrados fornada a fornada.", "by": "por Jhonathan Sousa"}
+  },
+  "html": {
+    "nav.label": "Seções", "nav.recipe": "Receita", "nav.schedule": "Cronograma", "nav.steps": "Passo a passo", "nav.oven": "Forno", "nav.rules": "Regras", "nav.progress": "Etapas concluídas", "nav.lang": "Idioma",
+    "hero.preferment": "Pré-fermento", "hero.h1": "Protocolo da Pizza Napolitana", "hero.by": "por", "hero.version": "versão 1.0 · outubro 2026",
+    "hero.lead": "Receita de pizza napolitana feita à mão em três dias, calibrada pela primeira fornada. Ajuste os parâmetros; quantidades, cronograma e instruções se recalculam. A massa manda mais que o relógio.",
+    "kpi.total": "Massa total", "kpi.hyd": "hidratação", "kpi.pizzas": "pizzas de ~30–32 cm", "kpi.top": "Forno superior", "kpi.preheat": "pré-aquecer 30–40 min", "kpi.bottom": "Forno inferior", "kpi.bottomSub": "principal ajuste desta fase",
+    "panel.title": "Parâmetros", "panel.open": "Ajustar", "panel.batch": "Tamanho da fornada", "panel.calcBy": "Calcular por", "panel.byFlour": "Por farinha", "panel.byPizza": "Por pizzas",
+    "panel.flour": "Farinha", "panel.pizzas": "Nº de pizzas", "panel.unit": "un", "panel.ballW": "Peso do panetto", "panel.ref": "Referência",
+    "panel.formula": "Fórmula (% do padeiro)", "panel.hyd": "Hidratação", "panel.oil": "Azeite", "panel.yeast": "Fermento seco", "panel.pf": "Farinha no pré-fermento",
+    "panel.env": "Ambiente e forno", "panel.fridge": "Geladeira", "panel.top": "Resistência superior", "panel.bottom": "Resistência inferior",
+    "panel.toppings": "Coberturas por pizza", "panel.sauce": "Molho", "panel.reset": "Restaurar v1.0", "panel.clear": "Limpar etapas",
+    "panel.note": "Valores padrão = versão 1.0 consolidada após a primeira fornada. Ficam salvos neste navegador.",
+    "recipe.h2": "Receita", "recipe.sub": "Quantidades totais e como elas se dividem entre pré-fermento e massa final.",
+    "recipe.ing": "Ingrediente", "recipe.total": "Total", "recipe.pf": "Pré-fermento", "recipe.pfShort": "Pré-f.", "recipe.final": "Massa final", "recipe.finalShort": "Final", "recipe.dough": "Massa",
+    "ing.flour": "Farinha Caputo Pizzeria 00", "ing.water": "Água filtrada", "ing.yeast": "Fermento biológico seco", "ing.salt": "Sal", "ing.oil": "Azeite extravirgem",
+    "recipe.waterEb": "Água da massa final", "recipe.waterH": "Divisão manual", "recipe.wInit": "Mistura inicial", "recipe.wSalt": "Para dissolver o sal",
+    "recipe.divEb": "Divisão", "recipe.main": "Principal", "recipe.alt": "Alternativa", "recipe.target": "Pizza alvo",
+    "recipe.topEb": "Coberturas", "recipe.forPre": "Para", "recipe.forPost": "pizzas", "recipe.cans": "lata(s)", "recipe.sauceTotal": "Molho total", "recipe.cheese": "Mozzarella escorrida",
+    "sched.h2": "Cronograma", "sched.sub": "Informe quando quer assar. O plano é calculado de trás para frente; trate os horários como referência.",
+    "sched.bake": "Assar em", "sched.pfh": "Pré-fermento na geladeira", "sched.panh": "Panetti na geladeira", "sched.outh": "Fora antes de assar",
+    "steps.h2": "Passo a passo", "steps.sub": "Marque cada etapa ao concluir. As etiquetas indicam a origem: receita base, adaptação para o processo caseiro ou lição da 1ª fornada.",
+    "oven.h2": "Forno BIG HORN", "oven.sub": "Cronômetro de bancada e diagnóstico pelo resultado. A primeira pizza de cada sessão calibra o forno.",
+    "oven.timer": "Cronômetro de assamento", "oven.reset": "Zerar", "oven.note": "Faixa laranja: 25–30 s, avalie se já dá para girar 180°. Faixa verde: 70–120 s, ponto esperado neste forno.",
+    "oven.diag": "Diagnóstico pelo resultado", "oven.diagHint": "Escolha o que observou na pizza.",
+    "rules.h2": "Regras da versão 1.0", "rules.sub": "O gargalo atual não é a massa. É a calibração térmica e a técnica de abertura e montagem.",
+    "foot.sig": "Protocolo e página por", "foot.langs": "Idiomas", "foot.rights": "todos os direitos reservados"
+  },
+  "rules": [
+    "Não aumente a hidratação ainda.", "Não troque a Caputo Pizzeria.",
+    "Não sove em excesso. Use descanso e dobras.", "Sal antes do azeite.",
+    "Bassinage para a água final.", "Azeite sempre por último.",
+    "Massa pegajosa na mistura não recebe farinha.", "Não reboleie os panetti antes de abrir.",
+    "Não use rolo.", "Não aperte o cornicione.",
+    "Retire o excesso de farinha da base.", "Pouco molho, pouco queijo.",
+    "Pizza montada não espera na pá.", "Teste se desliza antes de lançar.",
+    "Controle topo e pedra separadamente.", "A primeira pizza calibra a sessão.",
+    "Deixe a pedra recuperar entre pizzas.", "Observe a massa mais que o relógio.",
+    "Mude uma variável relevante por vez.", "Próxima sessão: menos calor embaixo, mesma receita."
+  ],
+  "glossary": [
+    ["Bassinage", "Reservar parte da água e incorporá-la aos poucos depois que o glúten começou a se formar."],
+    ["Panetto", "Cada bola individual de massa. Vira uma pizza. Plural: panetti."],
+    ["Cornicione", "A borda elevada e aerada. Preservada empurrando o gás do centro para fora."],
+    ["Laminação", "Estender a massa em retângulo sobre a bancada e dobrar. Sem rolo."],
+    ["Leopard spotting", "Pequenos pontos escuros distribuídos no cornicione. Diferente de áreas carbonizadas."],
+    ["Pré-fermento", "Farinha, mesma massa de água e todo o fermento. 100% de hidratação, próximo de um poolish."]
+  ],
+  "js": {
+    "locale": "pt-BR", "test": "teste", "panelSum": "{flour} g de farinha · {hyd}% água · {top}/{bottom} °C",
+    "open": "Ajustar", "close": "Fechar", "stepLabel": "ETAPA", "done": "Concluído",
+    "src": {"d": "Receita base", "a": "Adaptado", "l": "Lição 1ª fornada"},
+    "svg": {"noPin": "sem rolo · sem rasgar", "before": "antes", "ready": "pronto", "rim": "borda livre 1–1,5 cm", "top": "TOPO", "stone": "PEDRA"},
+    "rel": {"d": "{d} d {h} h", "h": "{h} h {m}", "m": "{m} min"},
+    "sched": {
+      "empty": "Informe data e hora para assar.", "next": "Próximo", "in": "em {rel}",
+      "past": "<b>Começo no passado.</b> Para assar nesse horário, o pré-fermento já deveria ter começado. Adie o forno ou reduza os tempos de geladeira.",
+      "over36": "<b>Panetti acima de 36 h.</b> Passa do máximo da receita base.",
+      "ev": [
+        ["Montar o pré-fermento", "Etapa 01. Mistura e 1 h em temperatura ambiente."],
+        ["Pré-fermento na geladeira", "{pfh} h a {fridge} °C."],
+        ["Mistura final", "Etapas 02–07. Cerca de 2 h 30 de trabalho intercalado com descansos."],
+        ["Dividir, bolear e refrigerar", "Etapa 08. {panh} h na geladeira."],
+        ["Retirar os panetti", "Etapa 09. Avalie o ponto; prepare molho e queijo nesse intervalo."],
+        ["Ligar o forno", "Etapa 11. {top} °C / {bottom} °C."],
+        ["Assar", "Etapas 12–14. A primeira pizza calibra."]
+      ]
+    },
+    "warn": {
+      "hyd": "Hidratação diferente de 64%. A versão 1.0 recomenda não mudar ainda.",
+      "per": "Panetti de {per} g ficam fora da faixa de 260–280 g. Veja a alternativa ou ajuste a farinha.",
+      "bottom": "Inferior acima de 390 °C queimou o fundo na 1ª fornada."
+    },
+    "timer": {
+      "idle": "Lance a pizza e inicie.", "start": "Iniciar", "pause": "Pausar", "resume": "Continuar",
+      "msg": ["Deixe a base firmar.", "Avalie: já dá para girar 180°?", "Gire conforme a cor. Observe o cornicione.", "Janela de ponto. Confira fundo e topo.", "Passou de 120 s. Se ainda pálida, falta energia."]
+    },
+    "diag": [
+      ["Fundo queima antes do topo", "Reduza a resistência inferior."],
+      ["Fundo muito claro", "Aumente a resistência inferior."],
+      ["Fundo bom, cornicione pálido", "Aumente a resistência superior."],
+      ["Topo queima antes do fundo", "Reduza a resistência superior."],
+      ["Tudo pálido", "Aumente energia ou tempo. Confira se a pedra recuperou e se o pré-aquecimento chegou a 30–40 min."],
+      ["Boa cor em ~80–100 s", "Mantenha a configuração e anote os valores."],
+      ["Pontos pretos com gosto amargo", "Provável farinha solta na base. Bata o excesso antes de lançar e limpe a pedra."]
+    ],
+    "lower": "inferior", "upper": "superior",
+    "diagCur": "Atual: {lbl} {cur} °C. Sugestão para a próxima pizza: {nv}. Passos pequenos; mude só esta variável.",
+    "apply": "Aplicar {v} °C", "applied": "Aplicado",
+    "steps": [
+      {"day": "Dia 1", "when": "noite", "items": [
+        {"id": "s1", "t": "Montar o pré-fermento", "time": "10 min + 1 h ambiente", "src": ["d","a"], "il": "pref", "li": [
+          "Misture a seco {pfFlour} g de farinha com {yeast} g de fermento.",
+          "Adicione {pfWater} g de água e mexa até formar uma pasta grosseira, sem farinha seca.",
+          "Tampe. Deixe 1 h em temperatura ambiente.",
+          "Leve à geladeira ({fridge} °C) por cerca de {pfh} h."],
+          "tip": "A receita original pede 12–16 h a 12 °C. Numa geladeira mais fria, o tempo maior compensa. Pronto quando tiver bolhas, estrutura interna e nenhum sinal de colapso."}
+      ]},
+      {"day": "Dia 2", "when": "mistura e divisão", "items": [
+        {"id": "s2", "t": "Mistura inicial", "time": "~10 min + descanso", "src": ["a"], "il": "mix", "li": [
+          "Use o pré-fermento direto da geladeira, sem longo aquecimento.",
+          "Junte {finFlour} g de farinha e {initWater} g de água.",
+          "Misture até hidratar toda a farinha. Não precisa ficar lisa.",
+          "Tampe e descanse. O tempo desenvolve o glúten por você."]},
+        {"id": "s3", "t": "Incorporar o sal", "time": "~10 min", "src": ["a"], "il": "salt", "li": [
+          "Dissolva {salt} g de sal em {saltWater} g de água.",
+          "Adicione a solução aos poucos, com movimentos de pinça e dobras.",
+          "Espere absorver cada porção antes da próxima."], "tip": "Sal sempre antes do azeite."},
+        {"id": "s4", "t": "Bassinage", "time": "~10 min", "src": ["d","a"], "il": "bass", "li": [
+          "Adicione os {bassWater} g de água restantes em pequenas porções.",
+          "Só coloque mais quando a massa tiver absorvido a anterior.",
+          "Se a massa ficar pegajosa, não acrescente farinha."]},
+        {"id": "s5", "t": "Desenvolver o glúten", "time": "ciclos de descanso + dobras", "src": ["a","l"], "il": "fold", "li": [
+          "Alterne descanso e séries de dobras, sem sova agressiva.",
+          "Pare quando a massa estiver lisa, arredondada, elástica e com tensão na superfície."],
+          "tip": "Na 1ª fornada, tempo e descanso fizeram a maior parte do trabalho. Não persiga lisura perfeita por sova contínua."},
+        {"id": "s6", "t": "Azeite por último", "time": "~10 min", "src": ["d"], "il": "oil", "li": [
+          "Com a massa já estruturada, adicione {oil} g de azeite aos poucos.",
+          "Incorpore com pinça e dobras até absorver por completo."],
+          "tip": "A massa fica escorregadia, brilhante e parece mais fraca. É normal. Não adicione farinha."},
+        {"id": "s7", "t": "Pós-azeite e laminação", "time": "~1 h 30", "src": ["d","a"], "il": "lam", "li": [
+          "Descanse 3–5 min.",
+          "Laminação: estenda a massa delicadamente em retângulo na bancada e dobre sobre si. Sem rolo e sem rasgar.",
+          "Forme uma bola. Descanse 15 min.",
+          "Faça dobras suaves e descanse cerca de 1 h."]},
+        {"id": "s8", "t": "Dividir e bolear", "time": "~15 min", "src": ["d"], "il": "balls", "li": [
+          "Divida em {n} panetti de {per} g (massa total {total} g).",
+          "Boleie com tensão na superfície e feche bem a base.",
+          "Recipiente tampado, geladeira por cerca de {panh} h."],
+          "tip": "Receita base: 24–36 h a 5 °C. A {fridge} °C a fermentação anda mais rápido; avalie pela aparência."}
+      ]},
+      {"day": "Dia 3", "when": "forno", "items": [
+        {"id": "s9", "t": "Temperar os panetti", "time": "~{outh} h fora", "src": ["d","l"], "il": "proof", "li": [
+          "Retire da geladeira cerca de {outh} h antes de assar (referência: ~26 °C).",
+          "Ponto: cresceu, muitas bolhas pequenas e algumas maiores, lateral aerada, mantém o formato, sem colapso, relaxado.",
+          "Em pote de 1 L, a referência é a massa chegar à metade."],
+          "tip": "warn|Não reboleie. Isso expulsa o gás da fermentação."},
+        {"id": "s10", "t": "Preparar molho e queijo", "time": "~15 min", "src": ["l"], "il": "sauce", "li": [
+          "Esmague com as mãos {cans} lata(s) de pelati (sem liquidificador, sem cozinhar).",
+          "Tempere com 4–5 g de sal por lata. Sem açúcar.",
+          "Corte {cheeseTotal} g de mozzarella em pedaços pequenos e deixe escorrer."]},
+        {"id": "s11", "t": "Pré-aquecer o BIG HORN", "time": "30–40 min", "src": ["l"], "il": "oven", "li": [
+          "Superior em {top} °C, inferior em {bottom} °C.",
+          "Se tiver termômetro infravermelho, meça o centro da pedra e anote."],
+          "tip": "warn|Na 1ª fornada (inferior ~390–410 °C) o fundo carbonizou antes do topo. Por isso a inferior baixou."},
+        {"id": "s12", "t": "Abrir a massa", "time": "~1 min por pizza", "src": ["l"], "il": "open", "li": [
+          "Um panetto por vez. Passe levemente na farinha.",
+          "Pressione do centro para fora com as pontas dos dedos, empurrando o gás para a borda.",
+          "Deixe 1–1,5 cm de borda sem pressionar. Na 1ª fornada, 2 cm deixou o cornicione grosso demais.",
+          "Complete com as mãos até ~30–32 cm. Sem rolo."],
+          "tip": "warn|Bata o excesso de farinha da base. Farinha solta na pedra queima e amarga."},
+        {"id": "s13", "t": "Montar e lançar", "time": "30–60 s na pá", "src": ["l"], "il": "build", "li": [
+          "{sauce} g de molho, {cheese} g de mozzarella espaçada, manjericão e um fio de azeite.",
+          "Deixe áreas de tomate visíveis.",
+          "Antes de lançar, faça um pequeno movimento horizontal: a pizza tem que deslizar inteira.",
+          "Presunto cru e rúcula entram depois do forno."]},
+        {"id": "s14", "t": "Assar e girar", "time": "70–120 s", "src": ["l"], "il": "bake", "li": [
+          "Aos 25–30 s, veja se já tem estrutura para girar 180°.",
+          "Depois, pequenos ajustes de rotação até a cor uniforme.",
+          "A primeira pizza calibra o forno. Use o diagnóstico abaixo.",
+          "Espere a pedra recuperar antes da próxima pizza."],
+          "tip": "Busque pontos escuros pequenos e distribuídos no cornicione, não áreas pretas."}
+      ]}
+    ],
+    "ld": {
+      "name": "Pizza napolitana caseira com pré-fermento (protocolo de 3 dias)",
+      "description": "Receita de pizza napolitana com farinha Caputo Pizzeria 00, pré-fermento, 64% de hidratação e fermentação longa na geladeira, com cronograma de 3 dias e guia de forno.",
+      "yield": "{n} pizzas de 30–32 cm", "category": "Pizza", "cuisine": "Italiana (napolitana)",
+      "keywords": "pizza napolitana, receita de pizza napolitana, massa de pizza napolitana, pré-fermento, poolish, pizza caseira, Caputo Pizzeria",
+      "toppings": ["{sauce} g de tomate pelati esmagado com sal", "{cheese} g de mozzarella", "Folhas de manjericão", "Azeite extravirgem a gosto"]
+    }
+  }
+}

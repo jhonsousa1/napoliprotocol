@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pizza Napolitana: receta y protocolo paso a paso de la masa | NapoliProtocol</title>
+<meta name="description" content="Receta de pizza napolitana casera con prefermento, calculadora de masa, cronograma de 3 días y guía de horno en 14 pasos. Por Jhonathan Sousa.">
+<meta name="author" content="Jhonathan Sousa">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#C8341F">
+<link rel="canonical" href="https://napoliprotocol.com/es/">
+<link rel="alternate" hreflang="pt" href="https://napoliprotocol.com/pt/">
+<link rel="alternate" hreflang="en" href="https://napoliprotocol.com/en/">
+<link rel="alternate" hreflang="es" href="https://napoliprotocol.com/es/">
+<link rel="alternate" hreflang="it" href="https://napoliprotocol.com/it/">
+<link rel="alternate" hreflang="zh-Hans" href="https://napoliprotocol.com/zh/">
+<link rel="alternate" hreflang="x-default" href="https://napoliprotocol.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NapoliProtocol">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="it_IT">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:title" content="Protocolo de la Pizza Napolitana">
+<meta property="og:description" content="Receta de pizza napolitana casera con prefermento, calculadora de masa, cronograma de 3 días y guía de horno en 14 pasos. Por Jhonathan Sousa.">
+<meta property="og:url" content="https://napoliprotocol.com/es/">
+<meta property="og:image" content="https://napoliprotocol.com/img/og-es.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Protocolo de la Pizza Napolitana, por Jhonathan Sousa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Protocolo de la Pizza Napolitana">
+<meta name="twitter:description" content="Receta de pizza napolitana casera con prefermento, calculadora de masa, cronograma de 3 días y guía de horno en 14 pasos. Por Jhonathan Sousa.">
+<meta name="twitter:image" content="https://napoliprotocol.com/img/og-es.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&amp;family=Figtree:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap">
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+/* Layout: caderno de bancada — painel de parâmetros fixo à esquerda, protocolo em etapas à direita */
+:root{
+  --bg:#F7F2E8; --surface:#FFFDF8; --surface-2:#EFE7D8; --ink:#2A2420; --muted:#6B6158; --line:#E6DCCB;
+  --accent:#C8341F; --accent-soft:#F8DFD7; --on-accent:#FFFFFF;
+  --basil:#2F6B3A; --basil-soft:#DFEBDC; --ember:#A8611B; --ember-soft:#F6E7D0;
+  --dough:#EAD5AC; --dough-2:#D6B983; --mozz:#FFFDF5; --illo:#EFE6D4; --steel:#94897C;
+  --cold:#3F77A3; --it-g:#2F8A45; --it-w:#FFFFFF; --it-r:#C8341F;
+  --f-display:"Young Serif", Georgia, "Times New Roman", serif;
+  --f-body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#1A1614; --surface:#231E1B; --surface-2:#2E2824; --ink:#F1ECE4; --muted:#B0A598; --line:#3D3530;
+  --accent:#EE6A4F; --accent-soft:#3D211A; --on-accent:#1A0C08;
+  --basil:#7DBE8B; --basil-soft:#1E2E22; --ember:#E9A55B; --ember-soft:#382A1C;
+  --dough:#CCB386; --dough-2:#A58A5B; --mozz:#EFEAE0; --illo:#2A2420; --steel:#8A8078;
+  --cold:#7FB0D6; --it-g:#4FA463; --it-w:#EFEAE0; --it-r:#EE6A4F; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#1A1614; --surface:#231E1B; --surface-2:#2E2824; --ink:#F1ECE4; --muted:#B0A598; --line:#3D3530;
+  --accent:#EE6A4F; --accent-soft:#3D211A; --on-accent:#1A0C08;
+  --basil:#7DBE8B; --basil-soft:#1E2E22; --ember:#E9A55B; --ember-soft:#382A1C;
+  --dough:#CCB386; --dough-2:#A58A5B; --mozz:#EFEAE0; --illo:#2A2420; --steel:#8A8078;
+  --cold:#7FB0D6; --it-g:#4FA463; --it-w:#EFEAE0; --it-r:#EE6A4F; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.55}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.15}
+p{margin:0}
+a{color:inherit}
+.mono,.v,td.n,.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:20px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.eyebrow{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* Top bar */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:20px;height:56px}
+.brand{font-family:var(--f-display);font-size:18px;white-space:nowrap}
+.brand{display:flex;align-items:center;gap:8px}
+.brand .ver{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);padding:1px 6px;border:1px solid var(--line);border-radius:99px}
+.flag{display:inline-flex;width:18px;height:12px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+.flag i{flex:1}.flag i:nth-child(1){background:var(--it-g)}.flag i:nth-child(2){background:var(--it-w)}.flag i:nth-child(3){background:var(--it-r)}
+.topbar::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,var(--it-g) 0 33.33%,var(--it-w) 33.33% 66.66%,var(--it-r) 66.66%)}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.nav::-webkit-scrollbar{display:none}
+.nav a{text-decoration:none;font-size:13.5px;font-weight:500;color:var(--muted);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.nav a:hover{color:var(--ink);background:var(--surface-2)}
+.prog{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.prog-bar{width:72px;height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.prog-bar i{display:block;height:100%;width:0;background:var(--basil);transition:width .3s}
+@media (max-width:640px){.topbar .wrap{gap:12px}.brand{font-size:16px}.brand .ver{display:none}.prog{gap:6px;font-size:12px}.prog-bar{width:32px}
+  .nav{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent);padding-right:18px}}
+
+/* Hero */
+.hero{padding-block:44px 28px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(34px,5vw,54px);margin-top:10px}
+.hero p.lead{margin-top:14px;color:var(--muted);max-width:58ch;font-size:16.5px}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.next{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:16px;padding:8px 14px;border-radius:12px;background:var(--basil-soft);color:var(--ink);font-size:14px;text-decoration:none}
+.next::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--basil)}
+.next .em{color:var(--muted)}
+.kpi{background:var(--surface);padding:14px 16px;min-width:0}
+.kpi .k{font-size:12px;color:var(--muted)}
+.kpi .val{font-family:var(--f-mono);font-size:22px;font-weight:600;margin-top:2px}
+.kpi .sub{font-size:12px;color:var(--muted)}
+@media (max-width:860px){.hero{grid-template-columns:1fr;gap:24px;padding-block:28px 16px}}
+
+/* Main grid */
+.layout{display:grid;grid-template-columns:316px minmax(0,1fr);gap:40px;padding-block:8px 80px}
+@media (max-width:960px){.layout{grid-template-columns:1fr}}
+.panel{position:sticky;top:calc(env(safe-area-inset-top,0px) + 72px);align-self:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:18px;max-height:calc(100vh - 92px);overflow:auto}
+@media (max-width:960px){.panel{position:static;max-height:none}}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.panel-body{display:flex;flex-direction:column;gap:18px}
+.panel-toggle,.panel-sum{display:none}
+@media (max-width:960px){.panel{gap:10px}.panel-toggle{display:inline-block}.panel-sum{display:block;font-size:13px;color:var(--muted)}
+  .panel:not(.open) .panel-body{display:none}.panel.open .panel-sum{display:none}.panel.open .panel-body{margin-top:8px}}
+.panel h2{font-size:20px}
+.fieldset{display:flex;flex-direction:column;gap:10px}
+.fieldset > .eyebrow{padding-bottom:6px;border-bottom:1px solid var(--line)}
+.field{display:grid;grid-template-columns:1fr 104px;align-items:center;gap:10px}
+.field label{font-size:13.5px;color:var(--ink)}
+.field label small{display:block;color:var(--muted);font-size:11.5px}
+.inp{display:flex;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.inp:focus-within{border-color:var(--accent)}
+.inp input{width:100%;min-width:0;border:0;background:transparent;color:var(--ink);font-family:var(--f-mono);font-size:14px;padding:7px 8px;text-align:right}
+.inp input:focus{outline:none}
+.inp span{font-size:12px;color:var(--muted);padding-right:8px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:3px;gap:3px}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 13px var(--f-body);padding:7px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgb(0 0 0 / .08)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 13.5px var(--f-body);padding:8px 14px;border-radius:8px;cursor:pointer}
+.btn:hover{background:var(--surface-2)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.small{padding:5px 10px;font-size:12.5px}
+.panel-foot{display:flex;gap:8px;flex-wrap:wrap}
+.note{font-size:12.5px;color:var(--muted)}
+
+/* Sections */
+.content{display:flex;flex-direction:column;gap:56px;min-width:0}
+section{scroll-margin-top:80px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.sec-head h2{font-size:30px}
+.sec-head p{color:var(--muted);max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+
+/* Tables */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface-2)}
+td.n,th.n{text-align:right}
+tr:last-child td{border-bottom:0}
+tr.total td{font-weight:700;background:var(--surface-2)}
+.short{display:none}
+@media (max-width:820px){th,td{padding:10px 10px}th:first-child,td:first-child{white-space:normal}.full{display:none}.short{display:inline}}
+@media (max-width:560px){table{font-size:13px}th,td{padding:9px 8px}th:first-child,td:first-child{padding-left:12px}th:last-child,td:last-child{padding-right:12px}
+  th:nth-child(2),td:nth-child(2){display:none}.hide-sm{display:none}}
+.split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+.mini{padding:16px;display:flex;flex-direction:column;gap:8px}
+.mini h3{font-size:18px}
+.mini ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.mini li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-block:3px}
+.mini li:last-child{border-bottom:0}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:8px;background:var(--ember-soft);color:var(--ink);font-size:13.5px;margin-top:14px}
+.alert b{color:var(--ember)}
+
+/* Timeline */
+.sched-ctl{display:flex;flex-wrap:wrap;gap:16px;align-items:end;padding:16px;border-bottom:1px solid var(--line)}
+.sched-ctl .field{grid-template-columns:auto 1fr;min-width:0}
+.sched-ctl input[type=datetime-local]{font-family:var(--f-mono);font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px;max-width:100%}
+.tl{list-style:none;margin:0;padding:8px 16px 16px;display:flex;flex-direction:column}
+.tl li{display:grid;grid-template-columns:150px 22px minmax(0,1fr);gap:12px;align-items:start;padding-block:10px;position:relative}
+.tl .when{font-family:var(--f-mono);font-size:13px;color:var(--muted);text-align:right;padding-top:1px}
+.tl .when b{display:block;color:var(--ink);font-size:14.5px}
+.tl .dot{width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--steel);margin-top:4px;position:relative;z-index:1}
+.tl li::before{content:"";position:absolute;left:calc(150px + 12px + 6px);top:0;bottom:0;width:2px;background:var(--line)}
+.tl li:first-child::before{top:16px}.tl li:last-child::before{bottom:calc(100% - 16px)}
+.tl .dot.cold{border-color:var(--cold)}.tl .dot.hot{border-color:var(--accent)}.tl .dot.work{border-color:var(--basil)}
+.tl .what b{font-weight:600}.tl .what p{color:var(--muted);font-size:13.5px}
+@media (max-width:560px){.tl li{grid-template-columns:96px 18px minmax(0,1fr);gap:10px}.tl li::before{left:calc(96px + 10px + 5px)}.tl .when{font-size:11.5px}.tl .when b{font-size:13px}}
+
+/* Steps */
+.day{display:flex;align-items:center;gap:12px;margin:26px 0 12px}
+.day:first-child{margin-top:0}
+.day h3{font-size:21px}
+.day .pill{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--surface-2);color:var(--muted)}
+.day::after{content:"";flex:1;height:1px;background:var(--line)}
+.steps{display:flex;flex-direction:column;gap:14px}
+.step{display:grid;grid-template-columns:220px minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:opacity .2s}
+.step.done{opacity:.62}
+.step .illo{background:var(--illo);display:flex;align-items:center;justify-content:center;padding:10px;border-right:1px solid var(--line)}
+.step .illo svg{width:100%;height:auto;max-width:220px}
+.step .body{padding:18px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.step-top{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.step-num{font-family:var(--f-mono);font-size:12px;color:var(--accent);font-weight:600}
+.step h4{font-family:var(--f-display);font-weight:400;font-size:21px;margin:2px 0 0;line-height:1.2}
+.step .meta{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.tag.src-d{background:var(--surface-2)}
+.tag.src-a{background:var(--basil-soft);color:var(--basil);border-color:transparent}
+.tag.src-l{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.tag.time{background:transparent}
+.step ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.step .v{font-weight:700;font-size:1.06em;color:var(--ink);background:color-mix(in srgb,var(--dough) 45%,var(--surface));padding:1px 6px;border-radius:5px;white-space:nowrap}
+.tip{font-size:13.5px;padding:10px 12px;border-left:3px solid var(--ember);background:var(--ember-soft);border-radius:0 6px 6px 0}
+.tip.warn{border-left-color:var(--accent);background:var(--accent-soft)}
+.check{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--bg);color:var(--muted);font:600 13.5px var(--f-body);padding:9px 14px;min-height:40px;border-radius:99px;cursor:pointer;white-space:nowrap}
+.check .box{width:16px;height:16px;border-radius:4px;border:2px solid var(--steel);display:inline-flex;align-items:center;justify-content:center}
+.check[aria-pressed="true"]{color:var(--basil);border-color:var(--basil);background:var(--basil-soft)}
+.check[aria-pressed="true"] .box{background:var(--basil);border-color:var(--basil)}
+.check[aria-pressed="true"] .box::after{content:"";width:6px;height:3px;border:2px solid var(--surface);border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+@media (max-width:680px){.step{grid-template-columns:1fr}.step .illo{border-right:0;border-bottom:1px solid var(--line);padding:6px}.step .illo svg{max-width:200px}}
+
+/* Oven */
+.oven-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px}
+@media (max-width:860px){.oven-grid{grid-template-columns:1fr}}
+.timer{padding:20px;display:flex;flex-direction:column;gap:14px}
+.clock{font-family:var(--f-mono);font-size:56px;font-weight:600;line-height:1;letter-spacing:-.02em}
+.clock small{font-size:18px;color:var(--muted);font-weight:400}
+.track{position:relative;height:30px;background:var(--surface-2);border-radius:6px;overflow:hidden}
+.track .z{position:absolute;top:0;bottom:0}
+.track .z.turn{background:color-mix(in srgb,var(--ember) 35%,transparent)}
+.track .z.ok{background:color-mix(in srgb,var(--basil) 30%,transparent)}
+.track .head{position:absolute;top:0;bottom:0;width:3px;background:var(--ink);left:0}
+.scale{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.status{font-weight:600;min-height:1.5em}
+.timer-btns{display:flex;gap:8px;flex-wrap:wrap}
+.diag{padding:20px;display:flex;flex-direction:column;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);font:500 13px var(--f-body);padding:7px 11px;border-radius:99px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.diag-out{padding:14px;border-radius:8px;background:var(--surface-2);font-size:14px;display:flex;flex-direction:column;gap:10px}
+.diag-out b{font-family:var(--f-display);font-weight:400;font-size:18px}
+
+/* Rules */
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;counter-reset:r;list-style:none;margin:0;padding:0}
+.rules li{counter-increment:r;display:grid;grid-template-columns:34px minmax(0,1fr);gap:8px;padding-block:10px;border-bottom:1px solid var(--line);font-size:14.5px}
+.rules li::before{content:counter(r,decimal-leading-zero);font-family:var(--f-mono);font-size:12px;color:var(--accent);padding-top:3px}
+@media (max-width:700px){.rules{grid-template-columns:1fr}}
+.glossary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px}
+.glossary div{padding:16px}
+.glossary dt{font-family:var(--f-display);font-size:18px}
+.glossary dd{margin:4px 0 0;color:var(--muted);font-size:14px}
+@media (max-width:760px){.glossary{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding-block:36px 40px;color:var(--muted);font-size:12.5px;text-align:center;background:var(--surface)}
+.foot{display:flex;flex-direction:column;align-items:center;gap:8px}
+.foot .sig{font-family:var(--f-display);font-size:19px;color:var(--ink)}
+.foot .sig b{font-weight:400;color:var(--accent)}
+.ig{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:600;font-size:14px;color:var(--ink);padding:7px 14px;border:1px solid var(--line);border-radius:99px;background:var(--bg)}
+.ig:hover{border-color:var(--accent);color:var(--accent)}
+.foot .copy{margin-top:6px}
+.mono-js{flex:none;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-family:var(--f-display);font-size:16px;line-height:1}
+.byline{display:flex;align-items:center;gap:12px;margin-top:16px}
+.byline>span:last-child{display:flex;flex-direction:column;font-size:15px;line-height:1.3}
+.byline a{font-weight:700;text-decoration:none;color:var(--ink);border-bottom:2px solid var(--accent-soft)}
+.byline a:hover{color:var(--accent);border-color:var(--accent)}
+.byline small{font-size:12.5px;color:var(--muted)}
+
+/* Illustration paints */
+.p-bg{fill:var(--illo)}.p-d{fill:var(--dough)}.p-d2{fill:var(--dough-2)}.p-m{fill:var(--mozz)}.p-r{fill:var(--accent)}.p-g{fill:var(--basil)}.p-e{fill:var(--ember)}.p-s{fill:var(--steel)}.p-sf{fill:var(--surface)}.p-i{fill:var(--ink)}
+.l-i{stroke:var(--ink);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.l-s{stroke:var(--steel);fill:none;stroke-width:2;stroke-linecap:round}
+.l-r{stroke:var(--accent);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.l-e{stroke:var(--ember);fill:none;stroke-width:3;stroke-linecap:round}
+.l-w{stroke:var(--cold);fill:none;stroke-width:2.5;stroke-linecap:round}
+.p-w{fill:var(--cold)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+
+/* Idiomas */
+.lang{position:relative;flex:none}
+.lang summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--ink);padding:5px 10px;border:1px solid var(--line);border-radius:99px;background:var(--surface)}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary svg{width:14px;height:14px}
+.lang ul{position:absolute;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgb(0 0 0 / .12);min-width:150px;z-index:30}
+.lang li a{display:flex;justify-content:space-between;gap:12px;padding:7px 10px;border-radius:6px;text-decoration:none;font-size:14px}
+.lang li a:hover{background:var(--surface-2)}
+.lang li a[aria-current]{color:var(--accent);font-weight:700}
+.lang li a span{color:var(--muted);font-size:12px;font-family:var(--f-mono)}
+.foot-langs{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin-top:6px}
+.foot-langs a{color:var(--muted);text-decoration:none}
+.foot-langs a:hover,.foot-langs a[aria-current]{color:var(--accent)}
+@media (max-width:640px){.prog{display:none}}
+/* Chinês: fontes latinas não têm glifos CJK */
+:lang(zh){--f-display:"Young Serif","Songti SC","Noto Serif SC","STSong",serif;--f-body:"Figtree","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif}
+:lang(zh) .eyebrow,:lang(zh) th{letter-spacing:.04em}
+
+</style>
+<script type="application/ld+json" id="ld-recipe">{"@context":"https://schema.org","@type":"Recipe","name":"Pizza napolitana casera con prefermento (protocolo de 3 días)","description":"Receta de pizza napolitana con harina Caputo Pizzeria 00, prefermento, 64% de hidratación y fermentación larga en frío, con cronograma de 3 días y guía de horno.","inLanguage":"es","url":"https://napoliprotocol.com/es/","image":["https://napoliprotocol.com/img/recipe-es-1x1.png","https://napoliprotocol.com/img/recipe-es-4x3.png","https://napoliprotocol.com/img/recipe-es-16x9.png"],"author":{"@type":"Person","name":"Jhonathan Sousa","url":"https://www.instagram.com/jhonsousa1/","sameAs":["https://www.instagram.com/jhonsousa1/"]},"datePublished":"2026-10-01","prepTime":"PT3H","cookTime":"PT2M","totalTime":"PT52H","recipeYield":["5","5 pizzas de 30–32 cm"],"recipeCategory":"Pizza","recipeCuisine":"Italiana (napolitana)","keywords":"pizza napolitana, receta pizza napolitana, masa de pizza napolitana, prefermento, poolish, pizza casera, Caputo Pizzeria","recipeIngredient":["800 g Harina Caputo Pizzeria 00","512 g Agua filtrada","0,8 g Levadura seca de panadería","23 g Sal","12 g Aceite de oliva virgen extra","325 g de tomate pelado triturado con sal","350 g de mozzarella","Hojas de albahaca","Aceite de oliva virgen extra al gusto"],"recipeInstructions":[{"@type":"HowToStep","name":"Preparar el prefermento","text":"Mezcla en seco 400 g de harina con 0,8 g de levadura. Añade 400 g de agua y remueve hasta formar una pasta grumosa, sin harina seca. Tapa. Deja 1 h a temperatura ambiente. Lleva a la nevera (7 °C) durante unas 20 h.","url":"https://napoliprotocol.com/es/#s1"},{"@type":"HowToStep","name":"Mezcla inicial","text":"Usa el prefermento directo de la nevera, sin atemperarlo mucho. Añade 400 g de harina y 69 g de agua. Mezcla hasta hidratar toda la harina. No hace falta que quede lisa. Tapa y deja reposar. El tiempo desarrolla el gluten por ti.","url":"https://napoliprotocol.com/es/#s2"},{"@type":"HowToStep","name":"Incorporar la sal","text":"Disuelve 23 g de sal en 25 g de agua. Añade la solución poco a poco, con pellizcos y pliegues. Espera a que se absorba cada porción antes de la siguiente.","url":"https://napoliprotocol.com/es/#s3"},{"@type":"HowToStep","name":"Bassinage","text":"Añade los 18 g de agua restantes en pequeñas porciones. Solo añade más cuando la masa haya absorbido la anterior. Si la masa queda pegajosa, no añadas harina.","url":"https://napoliprotocol.com/es/#s4"},{"@type":"HowToStep","name":"Desarrollar el gluten","text":"Alterna reposos y series de pliegues, sin amasado agresivo. Para cuando la masa esté lisa, redondeada, elástica y con tensión en la superficie.","url":"https://napoliprotocol.com/es/#s5"},{"@type":"HowToStep","name":"El aceite al final","text":"Con la masa ya estructurada, añade 12 g de aceite poco a poco. Incorpóralo con pellizcos y pliegues hasta que se absorba por completo.","url":"https://napoliprotocol.com/es/#s6"},{"@type":"HowToStep","name":"Reposo y laminado","text":"Reposa 3–5 min. Laminado: estira la masa con cuidado en rectángulo sobre la mesa y pliégala sobre sí misma. Sin rodillo y sin romperla. Forma una bola. Reposa 15 min. Haz pliegues suaves y deja reposar cerca de 1 h.","url":"https://napoliprotocol.com/es/#s7"},{"@type":"HowToStep","name":"Dividir y bolear","text":"Divide en 5 bollos de 270 g (masa total 1348 g). Bolea con tensión en la superficie y cierra bien la base. Recipiente tapado, en la nevera durante unas 24 h.","url":"https://napoliprotocol.com/es/#s8"},{"@type":"HowToStep","name":"Atemperar los bollos","text":"Sácalos de la nevera unas 4 h antes de hornear (referencia: ~26 °C). Punto: ha crecido, muchas burbujas pequeñas y algunas mayores, laterales aireados, mantiene la forma, sin colapso, relajado. En un recipiente de 1 L, la referencia es que la masa llegue a la mitad.","url":"https://napoliprotocol.com/es/#s9"},{"@type":"HowToStep","name":"Preparar salsa y queso","text":"Aplasta a mano 1 lata(s) de tomate pelado (sin batidora, sin cocinar). Sazona con 4–5 g de sal por lata. Sin azúcar. Corta 350 g de mozzarella en trozos pequeños y déjala escurrir.","url":"https://napoliprotocol.com/es/#s10"},{"@type":"HowToStep","name":"Precalentar el BIG HORN","text":"Superior a 450 °C, inferior a 380 °C. Si tienes termómetro infrarrojo, mide el centro de la piedra y anótalo.","url":"https://napoliprotocol.com/es/#s11"},{"@type":"HowToStep","name":"Estirar la masa","text":"Un bollo cada vez. Pásalo ligeramente por harina. Presiona del centro hacia fuera con las yemas de los dedos, empujando el gas hacia el borde. Deja 1–1,5 cm de borde sin presionar. En la 1.ª horneada, 2 cm dejaron el cornicione demasiado grueso. Termina con las manos hasta ~30–32 cm. Sin rodillo.","url":"https://napoliprotocol.com/es/#s12"},{"@type":"HowToStep","name":"Montar y meter al horno","text":"65 g de salsa, 70 g de mozzarella repartida, albahaca y un hilo de aceite. Deja zonas de tomate a la vista. Antes de meterla, haz un pequeño movimiento lateral: la pizza tiene que deslizarse entera. El jamón crudo y la rúcula van después del horno.","url":"https://napoliprotocol.com/es/#s13"},{"@type":"HowToStep","name":"Hornear y girar","text":"A los 25–30 s, mira si ya tiene estructura para girar 180°. Después, pequeños giros hasta que el color sea uniforme. La primera pizza calibra el horno. Usa el diagnóstico de abajo. Espera a que la piedra se recupere antes de la siguiente pizza.","url":"https://napoliprotocol.com/es/#s14"}]}</script></head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="./" style="text-decoration:none"><span class="flag" aria-hidden="true"><i></i><i></i><i></i></span>NapoliProtocol <span class="ver">v1.0</span></a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#receita">Receta</a><a href="#cronograma">Cronograma</a><a href="#passos">Paso a paso</a><a href="#forno">Horno</a><a href="#regras">Reglas</a>
+    </nav>
+    <div class="prog" title="Pasos completados"><span id="progTxt">0/14</span><div class="prog-bar"><i id="progBar" style="width: 0%;"></i></div></div>
+    <details class="lang"><summary aria-label="Idioma"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" fill="none" stroke="currentColor" stroke-width="2"></path></svg>ES</summary><ul><li><a href="../pt/" hreflang="pt" lang="pt-BR" data-setlang="pt">Português<span>PT</span></a></li><li><a href="../en/" hreflang="en" lang="en" data-setlang="en">English<span>EN</span></a></li><li><a href="../es/" hreflang="es" lang="es" data-setlang="es" aria-current="page">Español<span>ES</span></a></li><li><a href="../it/" hreflang="it" lang="it" data-setlang="it">Italiano<span>IT</span></a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans" data-setlang="zh">中文<span>中文</span></a></li></ul></details>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Caputo Pizzeria 00 · Prefermento<span class="hide-sm"> · BIG HORN</span></div>
+      <h1>Protocolo de la Pizza Napolitana</h1>
+      <div class="byline"><span class="mono-js" aria-hidden="true">JS</span><span><span>por <a href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author">Jhonathan Sousa</a></span><small>versión 1.0 · octubre 2026</small></span></div>
+      <p class="lead">Receta de masa de pizza napolitana hecha a mano en tres días, calibrada con la primera horneada. Ajusta los parámetros; cantidades, cronograma e instrucciones se recalculan. La masa manda más que el reloj.</p>
+      <a class="next" id="nextEv" href="#cronograma" hidden=""></a>
+    </div>
+    <div class="kpis" aria-live="polite">
+      <div class="kpi"><div class="k">Masa total</div><div class="val"><span data-k="total">1348</span> g</div><div class="sub">hidratación <span data-k="hydPct">64</span>%</div></div>
+      <div class="kpi"><div class="k">Panetti</div><div class="val"><span data-k="n">5</span> × <span data-k="per">270</span> g</div><div class="sub">pizzas de ~30–32 cm</div></div>
+      <div class="kpi"><div class="k">Horno superior</div><div class="val"><span data-k="top">450</span> °C</div><div class="sub">precalentar 30–40 min</div></div>
+      <div class="kpi"><div class="k">Horno inferior</div><div class="val"><span data-k="bottom">380</span> °C</div><div class="sub">principal ajuste en esta fase</div></div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="panel" aria-label="Parámetros">
+      <div class="panel-head"><h2>Parámetros</h2><button type="button" class="btn small panel-toggle" id="panelToggle" aria-expanded="false" aria-controls="panelBody">Ajustar</button></div>
+      <p class="panel-sum" id="panelSum">800 g de harina · 64% agua · 450/380 °C</p>
+      <div class="panel-body" id="panelBody">
+      <div class="fieldset">
+        <div class="eyebrow">Tamaño de la tanda</div>
+        <div class="seg" role="group" aria-label="Calcular por">
+          <button type="button" id="modeFlour" aria-pressed="true">Por harina</button>
+          <button type="button" id="modePizza" aria-pressed="false">Por pizzas</button>
+        </div>
+        <div class="field" id="rowFlour"><label for="p-flour">Harina</label><div class="inp"><input id="p-flour" type="number" min="200" step="50" inputmode="decimal"><span>g</span></div></div>
+        <div class="field" id="rowPizzas" hidden=""><label for="p-pizzas">N.º de pizzas</label><div class="inp"><input id="p-pizzas" type="number" min="1" max="20" step="1" inputmode="numeric"><span>ud</span></div></div>
+        <div class="field"><label for="p-w">Peso del bollo<small>Referencia: 260–280 g</small></label><div class="inp"><input id="p-w" type="number" min="180" max="320" step="5"><span>g</span></div></div>
+      </div>
+      <div class="fieldset">
+        <div class="eyebrow">Fórmula (% panadero)</div>
+        <div class="field"><label for="p-hyd">Hidratación</label><div class="inp"><input id="p-hyd" type="number" min="55" max="75" step="0.5"><span>%</span></div></div>
+        <div class="field"><label for="p-salt">Sal<small>Referencia: 3%</small></label><div class="inp"><input id="p-salt" type="number" min="2" max="3.2" step="0.01"><span>%</span></div></div>
+        <div class="field"><label for="p-oil">Aceite de oliva</label><div class="inp"><input id="p-oil" type="number" min="0" max="4" step="0.1"><span>%</span></div></div>
+        <div class="field"><label for="p-yeast">Levadura seca</label><div class="inp"><input id="p-yeast" type="number" min="0.02" max="1" step="0.01"><span>%</span></div></div>
+        <div class="field"><label for="p-pf">Harina en el prefermento</label><div class="inp"><input id="p-pf" type="number" min="20" max="60" step="5"><span>%</span></div></div>
+      </div>
+      <div class="fieldset">
+        <div class="eyebrow">Nevera y horno</div>
+        <div class="field"><label for="p-fridge">Nevera</label><div class="inp"><input id="p-fridge" type="number" min="2" max="12" step="0.5"><span>°C</span></div></div>
+        <div class="field"><label for="p-top">Resistencia superior</label><div class="inp"><input id="p-top" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
+        <div class="field"><label for="p-bottom">Resistencia inferior</label><div class="inp"><input id="p-bottom" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
+      </div>
+      <div class="fieldset">
+        <div class="eyebrow">Ingredientes por pizza</div>
+        <div class="field"><label for="p-sauce">Salsa</label><div class="inp"><input id="p-sauce" type="number" min="40" max="100" step="5"><span>g</span></div></div>
+        <div class="field"><label for="p-cheese">Mozzarella</label><div class="inp"><input id="p-cheese" type="number" min="40" max="120" step="5"><span>g</span></div></div>
+      </div>
+      <div class="panel-foot">
+        <button class="btn small" type="button" id="resetParams">Restaurar v1.0</button>
+        <button class="btn small" type="button" id="resetChecks">Borrar pasos</button>
+      </div>
+      <p class="note">Valores por defecto = versión 1.0, consolidada tras la primera horneada. Se guardan en este navegador.</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="receita">
+        <div class="sec-head"><h2>Receta</h2><p>Cantidades totales y cómo se reparten entre prefermento y masa final.</p></div>
+        <div class="card tbl-wrap">
+          <table>
+            <thead><tr><th>Ingrediente</th><th class="n">%</th><th class="n">Total</th><th class="n"><span class="full">Prefermento</span><span class="short">Pref.</span></th><th class="n"><span class="full">Masa final</span><span class="short">Final</span></th></tr></thead>
+            <tbody>
+              <tr><td>Harina Caputo Pizzeria 00</td><td class="n">100</td><td class="n"><span data-k="flour">800</span> g</td><td class="n"><span data-k="pfFlour">400</span> g</td><td class="n"><span data-k="finFlour">400</span> g</td></tr>
+              <tr><td>Agua filtrada</td><td class="n" data-k="hydPct">64</td><td class="n"><span data-k="water">512</span> g</td><td class="n"><span data-k="pfWater">400</span> g</td><td class="n"><span data-k="finWater">112</span> g</td></tr>
+              <tr><td>Levadura seca de panadería</td><td class="n" data-k="yeastPct">0,1</td><td class="n"><span data-k="yeast">0,8</span> g</td><td class="n"><span data-k="yeast">0,8</span> g</td><td class="n">—</td></tr>
+              <tr><td>Sal</td><td class="n" data-k="saltPct">2,88</td><td class="n"><span data-k="salt">23</span> g</td><td class="n">—</td><td class="n"><span data-k="salt">23</span> g</td></tr>
+              <tr><td>Aceite de oliva virgen extra</td><td class="n" data-k="oilPct">1,5</td><td class="n"><span data-k="oil">12</span> g</td><td class="n">—</td><td class="n"><span data-k="oil">12</span> g</td></tr>
+              <tr class="total"><td>Masa</td><td class="n"></td><td class="n"><span data-k="total">1348</span> g</td><td class="n"><span data-k="pfTotal">801</span> g</td><td class="n">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="split">
+          <div class="card mini"><div class="eyebrow">Agua de la masa final</div><h3>Reparto a mano</h3>
+            <ul><li><span>Mezcla inicial</span><b class="num"><span data-k="initWater">69</span> g</b></li><li><span>Para disolver la sal</span><b class="num"><span data-k="saltWater">25</span> g</b></li><li><span>Bassinage</span><b class="num"><span data-k="bassWater">18</span> g</b></li></ul></div>
+          <div class="card mini"><div class="eyebrow">División</div><h3>Panetti</h3>
+            <ul><li><span>Principal</span><b class="num"><span data-k="n">5</span> × <span data-k="per">270</span> g</b></li><li id="altRow"><span>Alternativa</span><b class="num" data-k="alt">4 × 270 g + prueba 268 g</b></li><li><span>Pizza objetivo</span><b class="num">30–32 cm</b></li></ul></div>
+          <div class="card mini"><div class="eyebrow">Ingredientes</div><h3>Para <span data-k="n">5</span> pizzas</h3>
+            <ul><li><span>Mutti Pelati 400 g</span><b class="num"><span data-k="cans">1</span> lata(s)</b></li><li><span>Salsa total</span><b class="num"><span data-k="sauceTotal">325</span> g</b></li><li><span>Mozzarella escurrida</span><b class="num"><span data-k="cheeseTotal">350</span> g</b></li></ul></div>
+        </div>
+        <div class="alert" id="warnBox" hidden=""></div>
+      </section>
+
+      <section id="cronograma">
+        <div class="sec-head"><h2>Cronograma</h2><p>Indica cuándo quieres hornear. El plan se calcula hacia atrás; toma los horarios como referencia.</p></div>
+        <div class="card">
+          <div class="sched-ctl">
+            <div class="field"><label for="p-bake">Hornear el</label><input id="p-bake" type="datetime-local"></div>
+            <div class="field"><label for="p-pfh">Prefermento en nevera</label><div class="inp"><input id="p-pfh" type="number" min="8" max="30" step="1"><span>h</span></div></div>
+            <div class="field"><label for="p-panh">Bollos en nevera</label><div class="inp"><input id="p-panh" type="number" min="12" max="48" step="1"><span>h</span></div></div>
+            <div class="field"><label for="p-outh">Fuera antes de hornear</label><div class="inp"><input id="p-outh" type="number" min="1" max="8" step="0.5"><span>h</span></div></div>
+          </div>
+          <ol class="tl" id="timeline"></ol>
+        </div>
+        <div class="alert" id="schedWarn" hidden=""></div>
+      </section>
+
+      <section id="passos">
+        <div class="sec-head"><h2>Paso a paso</h2><p>Marca cada paso al terminarlo. Las etiquetas indican el origen: receta base, adaptación al proceso casero o lección de la 1.ª horneada.</p></div>
+        <div id="stepsRoot"><div class="day"><h3>Día 1</h3><span class="pill">noche</span></div><div class="steps"><article class="step" id="s1"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><rect x="70" y="22" width="100" height="16" rx="4" class="p-s"></rect><path d="M74 38h92v96a12 12 0 0 1-12 12H86a12 12 0 0 1-12-12z" class="p-sf"></path><path d="M74 70c15-8 30 6 46-2s31-6 46 2v64a12 12 0 0 1-12 12H86a12 12 0 0 1-12-12z" class="p-d"></path><circle cx="90" cy="92" r="4" class="p-sf" opacity=".75"></circle><circle cx="108" cy="82" r="3" class="p-sf" opacity=".75"></circle><circle cx="132" cy="96" r="5" class="p-sf" opacity=".75"></circle><circle cx="150" cy="84" r="3" class="p-sf" opacity=".75"></circle><circle cx="98" cy="118" r="6" class="p-sf" opacity=".75"></circle><circle cx="126" cy="124" r="3" class="p-sf" opacity=".75"></circle><circle cx="148" cy="114" r="4" class="p-sf" opacity=".75"></circle><circle cx="112" cy="104" r="2" class="p-sf" opacity=".75"></circle><circle cx="140" cy="136" r="3" class="p-sf" opacity=".75"></circle><circle cx="88" cy="136" r="3" class="p-sf" opacity=".75"></circle><path d="M74 38h92v96a12 12 0 0 1-12 12H86a12 12 0 0 1-12-12z" class="l-i"></path><text x="120" y="60" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" class="p-i">1:1</text></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 01</div><h4>Preparar el prefermento</h4></div>
+          <button type="button" class="check" data-step="s1" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="10 min + 1 h ambiente">10 min + 1 h ambiente</span><span class="tag src-d">Receta base</span><span class="tag src-a">Adaptado</span></div>
+          <ul><li>Mezcla en seco <span class="v" data-k="pfFlour">400</span> g de harina con <span class="v" data-k="yeast">0,8</span> g de levadura.</li><li>Añade <span class="v" data-k="pfWater">400</span> g de agua y remueve hasta formar una pasta grumosa, sin harina seca.</li><li>Tapa. Deja 1 h a temperatura ambiente.</li><li>Lleva a la nevera (<span class="v" data-k="fridge">7</span> °C) durante unas <span class="v" data-k="pfh">20</span> h.</li></ul><div class="tip " data-tpl="La receta original pide 12–16 h a 12 °C. En una nevera más fría, el tiempo más largo compensa. Lista cuando tenga burbujas, estructura interna y ninguna señal de colapso.">La receta original pide 12–16 h a 12 °C. En una nevera más fría, el tiempo más largo compensa. Lista cuando tenga burbujas, estructura interna y ninguna señal de colapso.</div></div></article></div><div class="day"><h3>Día 2</h3><span class="pill">mezcla y división</span></div><div class="steps"><article class="step" id="s2"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><ellipse cx="120" cy="64" rx="84" ry="16" class="p-s" opacity=".5"></ellipse><path d="M36 64h168c0 46-38 76-84 76S36 110 36 64z" class="p-sf"></path><path d="M62 70c10-16 34-20 58-18s44 4 56 18c-6 18-30 30-58 30s-50-12-56-30z" class="p-d"></path><path d="M80 68c8-6 18-6 26-2M126 62c10-2 20 2 26 8" class="l-i" opacity=".35"></path><circle cx="96" cy="56" r="2" class="p-m"></circle><circle cx="150" cy="52" r="1.6" class="p-m"></circle><circle cx="118" cy="48" r="1.4" class="p-m"></circle><path d="M36 64h168c0 46-38 76-84 76S36 110 36 64z" class="l-i"></path><path d="M168 18c-4 16-8 28-18 38" class="l-i"></path><path d="M164 14l14-4" class="l-i"></path></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 02</div><h4>Mezcla inicial</h4></div>
+          <button type="button" class="check" data-step="s2" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="~10 min + reposo">~10 min + reposo</span><span class="tag src-a">Adaptado</span></div>
+          <ul><li>Usa el prefermento directo de la nevera, sin atemperarlo mucho.</li><li>Añade <span class="v" data-k="finFlour">400</span> g de harina y <span class="v" data-k="initWater">69</span> g de agua.</li><li>Mezcla hasta hidratar toda la harina. No hace falta que quede lisa.</li><li>Tapa y deja reposar. El tiempo desarrolla el gluten por ti.</li></ul></div></article><article class="step" id="s3"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><path d="M30 108c18-20 54-26 90-24s70 8 90 24c-10 22-48 34-90 34s-78-12-90-34z" class="p-d"></path><path d="M30 108c18-20 54-26 90-24s70 8 90 24c-10 22-48 34-90 34s-78-12-90-34z" class="l-i"></path><path d="M128 20h44l-5 54h-34z" class="p-sf"></path><path d="M131 44h38l-2 30h-34z" class="p-w" opacity=".35"></path><path d="M128 20h44l-5 54h-34z" class="l-i"></path><rect x="138" y="58" width="3" height="3" class="p-m" transform="rotate(20 139 59)"></rect><rect x="150" y="52" width="3" height="3" class="p-m"></rect><rect x="156" y="64" width="3" height="3" class="p-m" transform="rotate(40 157 65)"></rect><path d="M148 78c-2 6-6 10-12 12" class="l-w" stroke-dasharray="2 5"></path><text x="66" y="54" font-family="JetBrains Mono, monospace" font-size="18" class="p-i">NaCl</text></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 03</div><h4>Incorporar la sal</h4></div>
+          <button type="button" class="check" data-step="s3" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="~10 min">~10 min</span><span class="tag src-a">Adaptado</span></div>
+          <ul><li>Disuelve <span class="v" data-k="salt">23</span> g de sal en <span class="v" data-k="saltWater">25</span> g de agua.</li><li>Añade la solución poco a poco, con pellizcos y pliegues.</li><li>Espera a que se absorba cada porción antes de la siguiente.</li></ul><div class="tip " data-tpl="La sal siempre antes que el aceite.">La sal siempre antes que el aceite.</div></div></article><article class="step" id="s4"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><path d="M30 112c18-22 54-28 90-26s70 8 90 26c-10 22-48 32-90 32s-78-10-90-32z" class="p-d"></path><path d="M60 110c20-6 40 4 60 0s40-6 60 0" class="l-i" opacity=".3"></path><path d="M30 112c18-22 54-28 90-26s70 8 90 26c-10 22-48 32-90 32s-78-10-90-32z" class="l-i"></path><path d="M120 22c8 12 12 20 12 26a12 12 0 0 1-24 0c0-6 4-14 12-26z" class="p-w"></path><path d="M90 52c5 8 8 13 8 17a8 8 0 0 1-16 0c0-4 3-9 8-17z" class="p-w" opacity=".7"></path><path d="M152 56c4 6 6 10 6 13a6 6 0 0 1-12 0c0-3 2-7 6-13z" class="p-w" opacity=".5"></path></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 04</div><h4>Bassinage</h4></div>
+          <button type="button" class="check" data-step="s4" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="~10 min">~10 min</span><span class="tag src-d">Receta base</span><span class="tag src-a">Adaptado</span></div>
+          <ul><li>Añade los <span class="v" data-k="bassWater">18</span> g de agua restantes en pequeñas porciones.</li><li>Solo añade más cuando la masa haya absorbido la anterior.</li><li>Si la masa queda pegajosa, no añadas harina.</li></ul></div></article><article class="step" id="s5"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><path d="M36 116c14-24 48-34 84-34s70 10 84 34c-14 18-46 28-84 28s-70-10-84-28z" class="p-d"></path><path d="M36 116c14-24 48-34 84-34s70 10 84 34c-14 18-46 28-84 28s-70-10-84-28z" class="l-i"></path><path d="M66 100c0-44 36-70 70-60 22 7 30 30 22 48" class="l-r"></path><path d="M150 82l8 8 10-8" class="l-r"></path><path d="M88 32c-2-8 2-14 10-16M180 50c8 2 12 8 10 16" class="l-s" stroke-dasharray="3 5"></path></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 05</div><h4>Desarrollar el gluten</h4></div>
+          <button type="button" class="check" data-step="s5" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="ciclos de reposo + pliegues">ciclos de reposo + pliegues</span><span class="tag src-a">Adaptado</span><span class="tag src-l">Lección 1.ª horneada</span></div>
+          <ul><li>Alterna reposos y series de pliegues, sin amasado agresivo.</li><li>Para cuando la masa esté lisa, redondeada, elástica y con tensión en la superficie.</li></ul><div class="tip " data-tpl="En la 1.ª horneada, el tiempo y el reposo hicieron la mayor parte del trabajo. No persigas una masa perfectamente lisa amasando sin parar.">En la 1.ª horneada, el tiempo y el reposo hicieron la mayor parte del trabajo. No persigas una masa perfectamente lisa amasando sin parar.</div></div></article><article class="step" id="s6"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><path d="M30 114c18-22 54-30 90-28s70 8 90 28c-10 20-48 30-90 30s-78-10-90-30z" class="p-d"></path><path d="M70 108c20-10 60-12 92-4" class="p-e" opacity=".0"></path><ellipse cx="118" cy="110" rx="44" ry="10" class="p-e" opacity=".35"></ellipse><path d="M84 106c12-4 28-4 40-2" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"></path><path d="M30 114c18-22 54-30 90-28s70 8 90 28c-10 20-48 30-90 30s-78-10-90-30z" class="l-i"></path><path d="M150 18l26 20-12 14-26-20z" class="p-g"></path><path d="M138 32c-6 8-12 14-18 24" class="l-e"></path><path d="M120 62c4 7 6 11 6 14a6 6 0 0 1-12 0c0-3 2-7 6-14z" class="p-e"></path></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 06</div><h4>El aceite al final</h4></div>
+          <button type="button" class="check" data-step="s6" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="~10 min">~10 min</span><span class="tag src-d">Receta base</span></div>
+          <ul><li>Con la masa ya estructurada, añade <span class="v" data-k="oil">12</span> g de aceite poco a poco.</li><li>Incorpóralo con pellizcos y pliegues hasta que se absorba por completo.</li></ul><div class="tip " data-tpl="La masa queda resbaladiza, brillante y parece más débil. Es normal. No añadas harina.">La masa queda resbaladiza, brillante y parece más débil. Es normal. No añadas harina.</div></div></article><article class="step" id="s7"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><rect x="34" y="60" width="172" height="70" rx="14" class="p-d"></rect><rect x="34" y="60" width="172" height="70" rx="14" class="l-i"></rect><path d="M34 95h172" class="l-s" stroke-dasharray="4 6"></path><path d="M78 40c-16 6-22 18-18 32" class="l-r"></path><path d="M54 66l6 8 8-6" class="l-r"></path><path d="M162 40c16 6 22 18 18 32" class="l-r"></path><path d="M186 66l-6 8-8-6" class="l-r"></path><text x="120" y="152" text-anchor="middle" font-family="Figtree, sans-serif" font-size="11" class="p-i" opacity=".7">sin rodillo · sin romper</text></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 07</div><h4>Reposo y laminado</h4></div>
+          <button type="button" class="check" data-step="s7" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="~1 h 30">~1 h 30</span><span class="tag src-d">Receta base</span><span class="tag src-a">Adaptado</span></div>
+          <ul><li>Reposa 3–5 min.</li><li>Laminado: estira la masa con cuidado en rectángulo sobre la mesa y pliégala sobre sí misma. Sin rodillo y sin romperla.</li><li>Forma una bola. Reposa 15 min.</li><li>Haz pliegues suaves y deja reposar cerca de 1 h.</li></ul></div></article><article class="step" id="s8"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><rect x="22" y="44" width="196" height="92" rx="12" class="p-sf"></rect><rect x="22" y="44" width="196" height="92" rx="12" class="l-i"></rect><circle cx="60" cy="80" r="24" class="p-d"></circle><path d="M46 72a16 16 0 0 1 18-10" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"></path><circle cx="60" cy="80" r="24" class="l-i" stroke-width="2"></circle><circle cx="120" cy="80" r="24" class="p-d"></circle><path d="M106 72a16 16 0 0 1 18-10" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"></path><circle cx="120" cy="80" r="24" class="l-i" stroke-width="2"></circle><circle cx="180" cy="80" r="24" class="p-d"></circle><path d="M166 72a16 16 0 0 1 18-10" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"></path><circle cx="180" cy="80" r="24" class="l-i" stroke-width="2"></circle><circle cx="90" cy="112" r="24" class="p-d"></circle><path d="M76 104a16 16 0 0 1 18-10" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"></path><circle cx="90" cy="112" r="24" class="l-i" stroke-width="2"></circle><circle cx="150" cy="112" r="24" class="p-d"></circle><path d="M136 104a16 16 0 0 1 18-10" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"></path><circle cx="150" cy="112" r="24" class="l-i" stroke-width="2"></circle><path d="M22 44l10-14h176l10 14" class="l-s"></path></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 08</div><h4>Dividir y bolear</h4></div>
+          <button type="button" class="check" data-step="s8" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="~15 min">~15 min</span><span class="tag src-d">Receta base</span></div>
+          <ul><li>Divide en <span class="v" data-k="n">5</span> bollos de <span class="v" data-k="per">270</span> g (masa total <span class="v" data-k="total">1348</span> g).</li><li>Bolea con tensión en la superficie y cierra bien la base.</li><li>Recipiente tapado, en la nevera durante unas <span class="v" data-k="panh">24</span> h.</li></ul><div class="tip " data-tpl="Receta base: 24–36 h a 5 °C. A ${fridge} °C la fermentación va más rápido; juzga por el aspecto.">Receta base: 24–36 h a 5 °C. A 7 °C la fermentación va más rápido; juzga por el aspecto.</div></div></article></div><div class="day"><h3>Día 3</h3><span class="pill">horno</span></div><div class="steps"><article class="step" id="s9"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><path d="M26 124h188" class="l-i"></path><path d="M40 124c0-40 20-58 40-58s40 18 40 58z" class="p-d"></path><path d="M120 124c0-46 24-66 48-66s48 20 48 66z" class="p-d"></path><circle cx="62" cy="104" r="4" class="p-sf" opacity=".75"></circle><circle cx="78" cy="94" r="3" class="p-sf" opacity=".75"></circle><circle cx="94" cy="110" r="5" class="p-sf" opacity=".75"></circle><circle cx="70" cy="116" r="2" class="p-sf" opacity=".75"></circle><circle cx="146" cy="96" r="5" class="p-sf" opacity=".75"></circle><circle cx="164" cy="84" r="3" class="p-sf" opacity=".75"></circle><circle cx="184" cy="102" r="6" class="p-sf" opacity=".75"></circle><circle cx="198" cy="114" r="3" class="p-sf" opacity=".75"></circle><circle cx="160" cy="112" r="3" class="p-sf" opacity=".75"></circle><circle cx="176" cy="76" r="2" class="p-sf" opacity=".75"></circle><path d="M40 124c0-40 20-58 40-58s40 18 40 58M120 124c0-46 24-66 48-66s48 20 48 66" class="l-i"></path><path d="M168 30v18M160 40l8 8 8-8" class="l-r" stroke-width="2.5"></path><text x="80" y="146" text-anchor="middle" font-family="Figtree, sans-serif" font-size="10" class="p-i" opacity=".7">antes</text><text x="168" y="146" text-anchor="middle" font-family="Figtree, sans-serif" font-size="10" class="p-i" opacity=".7">lista</text></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 09</div><h4>Atemperar los bollos</h4></div>
+          <button type="button" class="check" data-step="s9" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="~${outh} h fuera">~4 h fuera</span><span class="tag src-d">Receta base</span><span class="tag src-l">Lección 1.ª horneada</span></div>
+          <ul><li>Sácalos de la nevera unas <span class="v" data-k="outh">4</span> h antes de hornear (referencia: ~26 °C).</li><li>Punto: ha crecido, muchas burbujas pequeñas y algunas mayores, laterales aireados, mantiene la forma, sin colapso, relajado.</li><li>En un recipiente de 1 L, la referencia es que la masa llegue a la mitad.</li></ul><div class="tip warn" data-tpl="No vuelvas a bolear. Eso expulsa el gas de la fermentación.">No vuelvas a bolear. Eso expulsa el gas de la fermentación.</div></div></article><article class="step" id="s10"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><path d="M24 80h104c0 32-22 54-52 54S24 112 24 80z" class="p-sf"></path><ellipse cx="76" cy="82" rx="50" ry="10" class="p-r"></ellipse><circle cx="62" cy="80" r="5" class="p-r" style="filter:brightness(.8)"></circle><circle cx="90" cy="84" r="4" class="p-r" style="filter:brightness(.8)"></circle><path d="M24 80h104c0 32-22 54-52 54S24 112 24 80z" class="l-i"></path><path d="M140 112c0-14 14-22 32-22s34 8 34 22-16 22-34 22-32-8-32-22z" class="p-s" opacity=".35"></path><rect x="148" y="98" width="16" height="12" rx="4" class="p-m" stroke="var(--ink)" stroke-width="1.5"></rect><rect x="168" y="92" width="16" height="12" rx="4" class="p-m" stroke="var(--ink)" stroke-width="1.5"></rect><rect x="186" y="102" width="16" height="12" rx="4" class="p-m" stroke="var(--ink)" stroke-width="1.5"></rect><rect x="160" y="110" width="16" height="12" rx="4" class="p-m" stroke="var(--ink)" stroke-width="1.5"></rect><rect x="178" y="114" width="16" height="12" rx="4" class="p-m" stroke="var(--ink)" stroke-width="1.5"></rect><path d="M160 40c8-14 26-14 32-2-10 2-22 4-32 2z" class="p-g"></path><path d="M188 52c10-8 22-2 24 8-10 0-18-2-24-8z" class="p-g"></path></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 10</div><h4>Preparar salsa y queso</h4></div>
+          <button type="button" class="check" data-step="s10" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="~15 min">~15 min</span><span class="tag src-l">Lección 1.ª horneada</span></div>
+          <ul><li>Aplasta a mano <span class="v" data-k="cans">1</span> lata(s) de tomate pelado (sin batidora, sin cocinar).</li><li>Sazona con 4–5 g de sal por lata. Sin azúcar.</li><li>Corta <span class="v" data-k="cheeseTotal">350</span> g de mozzarella en trozos pequeños y déjala escurrir.</li></ul></div></article><article class="step" id="s11"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><rect x="24" y="22" width="192" height="118" rx="14" class="p-s" opacity=".55"></rect><rect x="24" y="22" width="192" height="118" rx="14" class="l-i"></rect><path d="M48 46h144" class="l-r" stroke-width="5"></path><path d="M60 58c4-4 8 4 12 0s8 4 12 0M108 58c4-4 8 4 12 0s8 4 12 0M156 58c4-4 8 4 12 0s8 4 12 0" class="l-r" stroke-width="2"></path><rect x="44" y="96" width="152" height="12" rx="3" class="p-d2"></rect><path d="M48 120h144" class="l-e" stroke-width="5"></path><path d="M80 112l0-2M120 112v-2M160 112v-2" class="l-e" stroke-width="2"></path><text x="200" y="50" font-family="JetBrains Mono, monospace" font-size="10" class="p-i" text-anchor="end">TECHO</text><text x="200" y="134" font-family="JetBrains Mono, monospace" font-size="10" class="p-i" text-anchor="end">PIEDRA</text></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 11</div><h4>Precalentar el BIG HORN</h4></div>
+          <button type="button" class="check" data-step="s11" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="30–40 min">30–40 min</span><span class="tag src-l">Lección 1.ª horneada</span></div>
+          <ul><li>Superior a <span class="v" data-k="top">450</span> °C, inferior a <span class="v" data-k="bottom">380</span> °C.</li><li>Si tienes termómetro infrarrojo, mide el centro de la piedra y anótalo.</li></ul><div class="tip warn" data-tpl="En la 1.ª horneada (inferior ~390–410 °C) la base se carbonizó antes que el techo. Por eso se bajó la inferior.">En la 1.ª horneada (inferior ~390–410 °C) la base se carbonizó antes que el techo. Por eso se bajó la inferior.</div></div></article><article class="step" id="s12"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><circle cx="120" cy="82" r="64" class="p-d"></circle><circle cx="120" cy="82" r="64" class="l-i"></circle><circle cx="120" cy="82" r="52" class="l-r" stroke-dasharray="5 6" stroke-width="2"></circle><circle cx="104" cy="70" r="6" class="p-d2"></circle><circle cx="132" cy="66" r="6" class="p-d2"></circle><circle cx="118" cy="88" r="6" class="p-d2"></circle><circle cx="96" cy="96" r="6" class="p-d2"></circle><circle cx="140" cy="94" r="6" class="p-d2"></circle><circle cx="122" cy="108" r="6" class="p-d2"></circle><path d="M120 82l38-22M120 82l-40 26" class="l-s" stroke-dasharray="2 4"></path><text x="120" y="156" text-anchor="middle" font-family="Figtree, sans-serif" font-size="11" class="p-i" opacity=".75">borde libre 1–1,5 cm</text></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 12</div><h4>Estirar la masa</h4></div>
+          <button type="button" class="check" data-step="s12" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="~1 min por pizza">~1 min por pizza</span><span class="tag src-l">Lección 1.ª horneada</span></div>
+          <ul><li>Un bollo cada vez. Pásalo ligeramente por harina.</li><li>Presiona del centro hacia fuera con las yemas de los dedos, empujando el gas hacia el borde.</li><li>Deja 1–1,5 cm de borde sin presionar. En la 1.ª horneada, 2 cm dejaron el cornicione demasiado grueso.</li><li>Termina con las manos hasta ~30–32 cm. Sin rodillo.</li></ul><div class="tip warn" data-tpl="Sacude el exceso de harina de la base. La harina suelta en la piedra se quema y amarga.">Sacude el exceso de harina de la base. La harina suelta en la piedra se quema y amarga.</div></div></article><article class="step" id="s13"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><path d="M18 124h150l40 0a8 8 0 0 0 0-16h-40" class="p-s" opacity=".5"></path><ellipse cx="96" cy="96" rx="78" ry="30" class="p-s" opacity=".45"></ellipse><ellipse cx="96" cy="88" rx="68" ry="24" class="p-d"></ellipse><ellipse cx="96" cy="88" rx="58" ry="19" class="p-r"></ellipse><ellipse cx="74" cy="84" rx="8" ry="5" class="p-m"></ellipse><ellipse cx="104" cy="80" rx="8" ry="5" class="p-m"></ellipse><ellipse cx="124" cy="92" rx="8" ry="5" class="p-m"></ellipse><ellipse cx="86" cy="96" rx="8" ry="5" class="p-m"></ellipse><ellipse cx="110" cy="96" rx="8" ry="5" class="p-m"></ellipse><path d="M92 76c4-6 12-6 14 0-6 2-10 2-14 0zM130 84c4-5 10-4 12 1-5 1-9 1-12-1z" class="p-g"></path><ellipse cx="96" cy="88" rx="68" ry="24" class="l-i"></ellipse><path d="M180 70h40M196 58l14 12-14 12" class="l-r"></path></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 13</div><h4>Montar y meter al horno</h4></div>
+          <button type="button" class="check" data-step="s13" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="30–60 s en la pala">30–60 s en la pala</span><span class="tag src-l">Lección 1.ª horneada</span></div>
+          <ul><li><span class="v" data-k="sauce">65</span> g de salsa, <span class="v" data-k="cheese">70</span> g de mozzarella repartida, albahaca y un hilo de aceite.</li><li>Deja zonas de tomate a la vista.</li><li>Antes de meterla, haz un pequeño movimiento lateral: la pizza tiene que deslizarse entera.</li><li>El jamón crudo y la rúcula van después del horno.</li></ul></div></article><article class="step" id="s14"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><circle cx="104" cy="82" r="60" class="p-d"></circle><circle cx="104" cy="82" r="47" class="p-r"></circle><circle cx="90" cy="70" r="7" class="p-m"></circle><circle cx="120" cy="74" r="7" class="p-m"></circle><circle cx="106" cy="96" r="7" class="p-m"></circle><circle cx="82" cy="94" r="7" class="p-m"></circle><circle cx="128" cy="98" r="7" class="p-m"></circle><circle cx="52" cy="64" r="2" class="p-i" opacity=".75"></circle><circle cx="60" cy="46" r="3" class="p-i" opacity=".75"></circle><circle cx="78" cy="30" r="4" class="p-i" opacity=".75"></circle><circle cx="132" cy="28" r="2" class="p-i" opacity=".75"></circle><circle cx="152" cy="48" r="3" class="p-i" opacity=".75"></circle><circle cx="162" cy="74" r="4" class="p-i" opacity=".75"></circle><circle cx="156" cy="104" r="2" class="p-i" opacity=".75"></circle><circle cx="138" cy="128" r="3" class="p-i" opacity=".75"></circle><circle cx="96" cy="140" r="4" class="p-i" opacity=".75"></circle><circle cx="66" cy="124" r="2" class="p-i" opacity=".75"></circle><circle cx="48" cy="98" r="3" class="p-i" opacity=".75"></circle><circle cx="104" cy="82" r="60" class="l-i"></circle><path d="M184 50a50 50 0 0 1 0 64" class="l-r"></path><path d="M178 112l6 4 6-6" class="l-r"></path><text x="214" y="86" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" class="p-i">180°</text></svg></div><div class="body">
+          <div class="step-top"><div><div class="step-num">PASO 14</div><h4>Hornear y girar</h4></div>
+          <button type="button" class="check" data-step="s14" aria-pressed="false"><span class="box"></span>Hecho</button></div>
+          <div class="meta"><span class="tag time" data-tpl="70–120 s">70–120 s</span><span class="tag src-l">Lección 1.ª horneada</span></div>
+          <ul><li>A los 25–30 s, mira si ya tiene estructura para girar 180°.</li><li>Después, pequeños giros hasta que el color sea uniforme.</li><li>La primera pizza calibra el horno. Usa el diagnóstico de abajo.</li><li>Espera a que la piedra se recupere antes de la siguiente pizza.</li></ul><div class="tip " data-tpl="Busca puntos oscuros pequeños y repartidos en el cornicione, no zonas negras.">Busca puntos oscuros pequeños y repartidos en el cornicione, no zonas negras.</div></div></article></div></div>
+      </section>
+
+      <section id="forno">
+        <div class="sec-head"><h2>Horno BIG HORN</h2><p>Cronómetro de mesa y diagnóstico por el resultado. La primera pizza de cada sesión calibra el horno.</p></div>
+        <div class="oven-grid">
+          <div class="card timer">
+            <div class="eyebrow">Cronómetro de horneado</div>
+            <div class="clock" id="clock">0<small> s</small></div>
+            <div>
+              <div class="track" aria-hidden="true"><div class="z turn" style="left:16.67%;width:3.33%"></div><div class="z ok" style="left:46.67%;width:33.33%"></div><div class="head" id="head"></div></div>
+              <div class="scale"><span>0</span><span>30</span><span>60</span><span>90</span><span>120</span><span>150 s</span></div>
+            </div>
+            <div class="status" id="tStatus" aria-live="polite">Mete la pizza y empieza.</div>
+            <div class="timer-btns"><button class="btn primary" type="button" id="tStart">Iniciar</button><button class="btn" type="button" id="tReset">Reiniciar</button></div>
+            <p class="note">Franja naranja: 25–30 s, comprueba si ya se puede girar 180°. Franja verde: 70–120 s, punto esperado en este horno.</p>
+          </div>
+          <div class="card diag">
+            <div class="eyebrow">Diagnóstico por el resultado</div>
+            <div class="chips" id="chips"><button type="button" class="chip" data-i="0" aria-pressed="false">La base se quema antes que el techo</button><button type="button" class="chip" data-i="1" aria-pressed="false">Base muy pálida</button><button type="button" class="chip" data-i="2" aria-pressed="false">Base bien, cornicione pálido</button><button type="button" class="chip" data-i="3" aria-pressed="false">El techo se quema antes que la base</button><button type="button" class="chip" data-i="4" aria-pressed="false">Todo pálido</button><button type="button" class="chip" data-i="5" aria-pressed="false">Buen color a ~80–100 s</button><button type="button" class="chip" data-i="6" aria-pressed="false">Puntos negros con sabor amargo</button></div>
+            <div class="diag-out" id="diagOut"><span class="note">Elige lo que observaste en la pizza.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="regras">
+        <div class="sec-head"><h2>Reglas de la versión 1.0</h2><p>El cuello de botella ahora no es la masa. Es la calibración térmica y la técnica de estirado y montaje.</p></div>
+        <ol class="rules"><li>No subas la hidratación todavía.</li><li>No cambies la Caputo Pizzeria.</li><li>No amases en exceso. Usa reposo y pliegues.</li><li>Sal antes que aceite.</li><li>Bassinage para el agua final.</li><li>El aceite siempre al final.</li><li>Masa pegajosa en la mezcla no lleva más harina.</li><li>No vuelvas a bolear los bollos antes de estirar.</li><li>No uses rodillo.</li><li>No aplastes el cornicione.</li><li>Quita el exceso de harina de la base.</li><li>Poca salsa, poco queso.</li><li>La pizza montada no espera en la pala.</li><li>Comprueba que se desliza antes de meterla.</li><li>Controla techo y piedra por separado.</li><li>La primera pizza calibra la sesión.</li><li>Deja que la piedra se recupere entre pizzas.</li><li>Observa la masa más que el reloj.</li><li>Cambia una variable relevante a la vez.</li><li>Próxima sesión: menos calor abajo, misma receta.</li></ol>
+        <dl class="glossary"><div class="card"><dt>Bassinage</dt><dd>Reservar parte del agua e incorporarla poco a poco cuando el gluten ya empezó a formarse.</dd></div><div class="card"><dt>Panetto</dt><dd>Cada bollo individual de masa. Se convierte en una pizza. Plural: panetti.</dd></div><div class="card"><dt>Cornicione</dt><dd>El borde alto y aireado. Se conserva empujando el gas del centro hacia fuera.</dd></div><div class="card"><dt>Laminado</dt><dd>Estirar la masa en rectángulo sobre la mesa y plegarla. Sin rodillo.</dd></div><div class="card"><dt>Leopard spotting</dt><dd>Pequeños puntos oscuros repartidos por el cornicione. Distinto de zonas carbonizadas.</dd></div><div class="card"><dt>Prefermento</dt><dd>Harina, el mismo peso de agua y toda la levadura. 100% de hidratación, parecido a un poolish.</dd></div></dl>
+      </section>
+    </main>
+  </div>
+</div>
+<footer><div class="wrap foot">
+  <span class="mono-js" aria-hidden="true">JS</span>
+  <p class="sig">Protocolo y página por <b>Jhonathan Sousa</b></p>
+  <a class="ig" href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"></rect><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"></circle></svg>@jhonsousa1</a>
+  <nav class="foot-langs" aria-label="Idiomas"><a href="../pt/" hreflang="pt" lang="pt-BR" data-setlang="pt">Português</a><a href="../en/" hreflang="en" lang="en" data-setlang="en">English</a><a href="../es/" hreflang="es" lang="es" data-setlang="es" aria-current="page">Español</a><a href="../it/" hreflang="it" lang="it" data-setlang="it">Italiano</a><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans" data-setlang="zh">中文</a></nav>
+  <p class="copy">© 2026 Jhonathan Sousa · todos los derechos reservados</p>
+</div></footer>
+
+<script>
+(function(){
+  const T = {"locale": "es-ES", "test": "prueba", "panelSum": "{flour} g de harina · {hyd}% agua · {top}/{bottom} °C", "open": "Ajustar", "close": "Cerrar", "stepLabel": "PASO", "done": "Hecho", "src": {"d": "Receta base", "a": "Adaptado", "l": "Lección 1.ª horneada"}, "svg": {"noPin": "sin rodillo · sin romper", "before": "antes", "ready": "lista", "rim": "borde libre 1–1,5 cm", "top": "TECHO", "stone": "PIEDRA"}, "rel": {"d": "{d} d {h} h", "h": "{h} h {m}", "m": "{m} min"}, "sched": {"empty": "Indica fecha y hora para hornear.", "next": "Siguiente", "in": "en {rel}", "past": "<b>Inicio en el pasado.<\/b> Para hornear a esa hora, el prefermento ya debería haber empezado. Retrasa el horneado o reduce los tiempos de nevera.", "over36": "<b>Bollos más de 36 h.<\/b> Supera el máximo de la receta base.", "ev": [["Preparar el prefermento", "Paso 01. Mezcla y 1 h a temperatura ambiente."], ["Prefermento a la nevera", "{pfh} h a {fridge} °C."], ["Mezcla final", "Pasos 02–07. Unas 2 h 30 de trabajo intercalado con reposos."], ["Dividir, bolear y refrigerar", "Paso 08. {panh} h en la nevera."], ["Sacar los bollos", "Paso 09. Evalúa el punto; prepara salsa y queso mientras tanto."], ["Encender el horno", "Paso 11. {top} °C / {bottom} °C."], ["Hornear", "Pasos 12–14. La primera pizza calibra."]]}, "warn": {"hyd": "Hidratación distinta del 64%. La versión 1.0 recomienda no cambiarla todavía.", "per": "Bollos de {per} g quedan fuera del rango de 260–280 g. Mira la alternativa o ajusta la harina.", "bottom": "Una resistencia inferior por encima de 390 °C quemó la base en la 1.ª horneada."}, "timer": {"idle": "Mete la pizza y empieza.", "start": "Iniciar", "pause": "Pausar", "resume": "Continuar", "msg": ["Deja que la base se asiente.", "Comprueba: ¿ya se puede girar 180°?", "Gira según el color. Observa el cornicione.", "Ventana de punto. Revisa base y techo.", "Más de 120 s. Si sigue pálida, falta calor."]}, "diag": [["La base se quema antes que el techo", "Baja la resistencia inferior."], ["Base muy pálida", "Sube la resistencia inferior."], ["Base bien, cornicione pálido", "Sube la resistencia superior."], ["El techo se quema antes que la base", "Baja la resistencia superior."], ["Todo pálido", "Más calor o más tiempo. Comprueba que la piedra se recuperó y que el precalentamiento llegó a 30–40 min."], ["Buen color a ~80–100 s", "Mantén la configuración y anota los valores."], ["Puntos negros con sabor amargo", "Probablemente harina suelta en la base. Sacude el exceso antes de meterla y limpia la piedra."]], "lower": "inferior", "upper": "superior", "diagCur": "Actual: {lbl} {cur} °C. Sugerencia para la próxima pizza: {nv}. Pasos pequeños; cambia solo esta variable.", "apply": "Aplicar {v} °C", "applied": "Aplicado", "steps": [{"day": "Día 1", "when": "noche", "items": [{"id": "s1", "t": "Preparar el prefermento", "time": "10 min + 1 h ambiente", "src": ["d", "a"], "il": "pref", "li": ["Mezcla en seco {pfFlour} g de harina con {yeast} g de levadura.", "Añade {pfWater} g de agua y remueve hasta formar una pasta grumosa, sin harina seca.", "Tapa. Deja 1 h a temperatura ambiente.", "Lleva a la nevera ({fridge} °C) durante unas {pfh} h."], "tip": "La receta original pide 12–16 h a 12 °C. En una nevera más fría, el tiempo más largo compensa. Lista cuando tenga burbujas, estructura interna y ninguna señal de colapso."}]}, {"day": "Día 2", "when": "mezcla y división", "items": [{"id": "s2", "t": "Mezcla inicial", "time": "~10 min + reposo", "src": ["a"], "il": "mix", "li": ["Usa el prefermento directo de la nevera, sin atemperarlo mucho.", "Añade {finFlour} g de harina y {initWater} g de agua.", "Mezcla hasta hidratar toda la harina. No hace falta que quede lisa.", "Tapa y deja reposar. El tiempo desarrolla el gluten por ti."]}, {"id": "s3", "t": "Incorporar la sal", "time": "~10 min", "src": ["a"], "il": "salt", "li": ["Disuelve {salt} g de sal en {saltWater} g de agua.", "Añade la solución poco a poco, con pellizcos y pliegues.", "Espera a que se absorba cada porción antes de la siguiente."], "tip": "La sal siempre antes que el aceite."}, {"id": "s4", "t": "Bassinage", "time": "~10 min", "src": ["d", "a"], "il": "bass", "li": ["Añade los {bassWater} g de agua restantes en pequeñas porciones.", "Solo añade más cuando la masa haya absorbido la anterior.", "Si la masa queda pegajosa, no añadas harina."]}, {"id": "s5", "t": "Desarrollar el gluten", "time": "ciclos de reposo + pliegues", "src": ["a", "l"], "il": "fold", "li": ["Alterna reposos y series de pliegues, sin amasado agresivo.", "Para cuando la masa esté lisa, redondeada, elástica y con tensión en la superficie."], "tip": "En la 1.ª horneada, el tiempo y el reposo hicieron la mayor parte del trabajo. No persigas una masa perfectamente lisa amasando sin parar."}, {"id": "s6", "t": "El aceite al final", "time": "~10 min", "src": ["d"], "il": "oil", "li": ["Con la masa ya estructurada, añade {oil} g de aceite poco a poco.", "Incorpóralo con pellizcos y pliegues hasta que se absorba por completo."], "tip": "La masa queda resbaladiza, brillante y parece más débil. Es normal. No añadas harina."}, {"id": "s7", "t": "Reposo y laminado", "time": "~1 h 30", "src": ["d", "a"], "il": "lam", "li": ["Reposa 3–5 min.", "Laminado: estira la masa con cuidado en rectángulo sobre la mesa y pliégala sobre sí misma. Sin rodillo y sin romperla.", "Forma una bola. Reposa 15 min.", "Haz pliegues suaves y deja reposar cerca de 1 h."]}, {"id": "s8", "t": "Dividir y bolear", "time": "~15 min", "src": ["d"], "il": "balls", "li": ["Divide en {n} bollos de {per} g (masa total {total} g).", "Bolea con tensión en la superficie y cierra bien la base.", "Recipiente tapado, en la nevera durante unas {panh} h."], "tip": "Receta base: 24–36 h a 5 °C. A {fridge} °C la fermentación va más rápido; juzga por el aspecto."}]}, {"day": "Día 3", "when": "horno", "items": [{"id": "s9", "t": "Atemperar los bollos", "time": "~{outh} h fuera", "src": ["d", "l"], "il": "proof", "li": ["Sácalos de la nevera unas {outh} h antes de hornear (referencia: ~26 °C).", "Punto: ha crecido, muchas burbujas pequeñas y algunas mayores, laterales aireados, mantiene la forma, sin colapso, relajado.", "En un recipiente de 1 L, la referencia es que la masa llegue a la mitad."], "tip": "warn|No vuelvas a bolear. Eso expulsa el gas de la fermentación."}, {"id": "s10", "t": "Preparar salsa y queso", "time": "~15 min", "src": ["l"], "il": "sauce", "li": ["Aplasta a mano {cans} lata(s) de tomate pelado (sin batidora, sin cocinar).", "Sazona con 4–5 g de sal por lata. Sin azúcar.", "Corta {cheeseTotal} g de mozzarella en trozos pequeños y déjala escurrir."]}, {"id": "s11", "t": "Precalentar el BIG HORN", "time": "30–40 min", "src": ["l"], "il": "oven", "li": ["Superior a {top} °C, inferior a {bottom} °C.", "Si tienes termómetro infrarrojo, mide el centro de la piedra y anótalo."], "tip": "warn|En la 1.ª horneada (inferior ~390–410 °C) la base se carbonizó antes que el techo. Por eso se bajó la inferior."}, {"id": "s12", "t": "Estirar la masa", "time": "~1 min por pizza", "src": ["l"], "il": "open", "li": ["Un bollo cada vez. Pásalo ligeramente por harina.", "Presiona del centro hacia fuera con las yemas de los dedos, empujando el gas hacia el borde.", "Deja 1–1,5 cm de borde sin presionar. En la 1.ª horneada, 2 cm dejaron el cornicione demasiado grueso.", "Termina con las manos hasta ~30–32 cm. Sin rodillo."], "tip": "warn|Sacude el exceso de harina de la base. La harina suelta en la piedra se quema y amarga."}, {"id": "s13", "t": "Montar y meter al horno", "time": "30–60 s en la pala", "src": ["l"], "il": "build", "li": ["{sauce} g de salsa, {cheese} g de mozzarella repartida, albahaca y un hilo de aceite.", "Deja zonas de tomate a la vista.", "Antes de meterla, haz un pequeño movimiento lateral: la pizza tiene que deslizarse entera.", "El jamón crudo y la rúcula van después del horno."]}, {"id": "s14", "t": "Hornear y girar", "time": "70–120 s", "src": ["l"], "il": "bake", "li": ["A los 25–30 s, mira si ya tiene estructura para girar 180°.", "Después, pequeños giros hasta que el color sea uniforme.", "La primera pizza calibra el horno. Usa el diagnóstico de abajo.", "Espera a que la piedra se recupere antes de la siguiente pizza."], "tip": "Busca puntos oscuros pequeños y repartidos en el cornicione, no zonas negras."}]}], "ld": {"name": "Pizza napolitana casera con prefermento (protocolo de 3 días)", "description": "Receta de pizza napolitana con harina Caputo Pizzeria 00, prefermento, 64% de hidratación y fermentación larga en frío, con cronograma de 3 días y guía de horno.", "yield": "{n} pizzas de 30–32 cm", "category": "Pizza", "cuisine": "Italiana (napolitana)", "keywords": "pizza napolitana, receta pizza napolitana, masa de pizza napolitana, prefermento, poolish, pizza casera, Caputo Pizzeria", "toppings": ["{sauce} g de tomate pelado triturado con sal", "{cheese} g de mozzarella", "Hojas de albahaca", "Aceite de oliva virgen extra al gusto"], "url": "https://napoliprotocol.com/es/", "inLanguage": "es", "images": ["https://napoliprotocol.com/img/recipe-es-1x1.png", "https://napoliprotocol.com/img/recipe-es-4x3.png", "https://napoliprotocol.com/img/recipe-es-16x9.png"]}};
+  const DEF = {mode:'flour', flour:800, pizzas:5, w:270, hyd:64, salt:2.88, oil:1.5, yeast:0.1, pf:50, fridge:7, top:450, bottom:380, sauce:65, cheese:70, pfh:20, panh:24, outh:4, bake:''};
+  const LS = 'napolitana-v1';
+  const store = {get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+  let P = Object.assign({}, DEF, store.get(LS+':p')||{});
+  let done = store.get(LS+':done') || {};
+  const fill = (s,o) => s.replace(/\{(\w+)\}/g,(m,k)=> k in o ? o[k] : m);
+
+  const nf0 = new Intl.NumberFormat(T.locale,{maximumFractionDigits:0});
+  const nf1 = new Intl.NumberFormat(T.locale,{minimumFractionDigits:1,maximumFractionDigits:1});
+  const nf2 = new Intl.NumberFormat(T.locale,{maximumFractionDigits:2});
+  const g = v => v < 10 ? nf1.format(v) : nf0.format(Math.round(v));
+  const pct = v => nf2.format(v);
+
+  function nextDefaultBake(){
+    const d = new Date(); const t = new Date(d);
+    t.setHours(19,30,0,0); t.setDate(t.getDate()+1);
+    while(t.getDay()!==6 || (t-d) < 60*3600e3) t.setDate(t.getDate()+1);
+    return toLocalInput(t);
+  }
+  function toLocalInput(t){const z=n=>String(n).padStart(2,'0');return `${t.getFullYear()}-${z(t.getMonth()+1)}-${z(t.getDate())}T${z(t.getHours())}:${z(t.getMinutes())}`}
+  if(!P.bake) P.bake = nextDefaultBake();
+
+  function calc(){
+    const ratio = 1 + P.hyd/100 + P.salt/100 + P.oil/100 + P.yeast/100;
+    const flour = P.mode==='pizza' ? (P.pizzas*P.w)/ratio : P.flour;
+    const water = flour*P.hyd/100, salt = Math.round(flour*P.salt/100), oil = Math.round(flour*P.oil/100), yeast = flour*P.yeast/100;
+    const total = flour+water+salt+oil+yeast;
+    const pfFlour = flour*P.pf/100, pfWater = pfFlour;
+    const finFlour = flour-pfFlour, finWater = Math.max(0, water-pfWater);
+    const saltWater = Math.min(Math.round(salt*1.1), finWater);
+    const initWater = Math.round(finWater*0.62);
+    const bassWater = Math.max(0, Math.round(finWater) - initWater - saltWater);
+    const n = Math.max(1, Math.round(total/P.w)), per = total/n;
+    const nF = Math.floor(total/P.w), rem = total - nF*P.w;
+    const alt = (nF>=1 && nF!==n && rem>30) ? `${nF} × ${P.w} g + ${T.test} ${g(rem)} g` : (n>1 && Math.abs(per-P.w)>8 ? `${n+ (per>P.w?1:-1)} × ${g(total/(n+(per>P.w?1:-1)))} g` : '—');
+    const sauceTotal = n*P.sauce, cheeseTotal = n*P.cheese, cans = Math.max(1, Math.ceil(sauceTotal/400));
+    return {flour, water, salt, oil, yeast, total, pfFlour, pfWater, pfTotal:pfFlour+pfWater+yeast, finFlour, finWater, saltWater, initWater, bassWater, n, per, alt, sauceTotal, cheeseTotal, cans,
+      canSalt: cans*4+'–'+cans*5, top:P.top, bottom:P.bottom, fridge:P.fridge, pfh:P.pfh, panh:P.panh, outh:P.outh, sauce:P.sauce, cheese:P.cheese,
+      hydPct:pct(P.hyd), saltPct:pct(P.salt), oilPct:pct(P.oil), yeastPct:pct(P.yeast), w:P.w, pizzaFlour:P.mode==='pizza'};
+  }
+
+  const fmt = (k,v) => {
+    if(typeof v === 'string') return v;
+    if(['top','bottom','n','cans','pfh','panh','sauce','cheese','w'].includes(k)) return nf0.format(v);
+    if(['fridge','outh'].includes(k)) return nf2.format(v);
+    return g(v);
+  };
+
+  // ---------- Illustrations ----------
+  const S = (inner) => `<svg viewBox="0 0 240 160" role="img" aria-hidden="true">${inner}</svg>`;
+  const bubbles = (pts) => pts.map(([x,y,r])=>`<circle cx="${x}" cy="${y}" r="${r}" class="p-sf" opacity=".75"/>`).join('');
+  const IL = {
+    pref: S(`<rect x="70" y="22" width="100" height="16" rx="4" class="p-s"/><path d="M74 38h92v96a12 12 0 0 1-12 12H86a12 12 0 0 1-12-12z" class="p-sf"/><path d="M74 70c15-8 30 6 46-2s31-6 46 2v64a12 12 0 0 1-12 12H86a12 12 0 0 1-12-12z" class="p-d"/>${bubbles([[90,92,4],[108,82,3],[132,96,5],[150,84,3],[98,118,6],[126,124,3],[148,114,4],[112,104,2],[140,136,3],[88,136,3]])}<path d="M74 38h92v96a12 12 0 0 1-12 12H86a12 12 0 0 1-12-12z" class="l-i"/><text x="120" y="60" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" class="p-i">1:1</text>`),
+    mix: S(`<ellipse cx="120" cy="64" rx="84" ry="16" class="p-s" opacity=".5"/><path d="M36 64h168c0 46-38 76-84 76S36 110 36 64z" class="p-sf"/><path d="M62 70c10-16 34-20 58-18s44 4 56 18c-6 18-30 30-58 30s-50-12-56-30z" class="p-d"/><path d="M80 68c8-6 18-6 26-2M126 62c10-2 20 2 26 8" class="l-i" opacity=".35"/><circle cx="96" cy="56" r="2" class="p-m"/><circle cx="150" cy="52" r="1.6" class="p-m"/><circle cx="118" cy="48" r="1.4" class="p-m"/><path d="M36 64h168c0 46-38 76-84 76S36 110 36 64z" class="l-i"/><path d="M168 18c-4 16-8 28-18 38" class="l-i"/><path d="M164 14l14-4" class="l-i"/>`),
+    salt: S(`<path d="M30 108c18-20 54-26 90-24s70 8 90 24c-10 22-48 34-90 34s-78-12-90-34z" class="p-d"/><path d="M30 108c18-20 54-26 90-24s70 8 90 24c-10 22-48 34-90 34s-78-12-90-34z" class="l-i"/><path d="M128 20h44l-5 54h-34z" class="p-sf"/><path d="M131 44h38l-2 30h-34z" class="p-w" opacity=".35"/><path d="M128 20h44l-5 54h-34z" class="l-i"/><rect x="138" y="58" width="3" height="3" class="p-m" transform="rotate(20 139 59)"/><rect x="150" y="52" width="3" height="3" class="p-m"/><rect x="156" y="64" width="3" height="3" class="p-m" transform="rotate(40 157 65)"/><path d="M148 78c-2 6-6 10-12 12" class="l-w" stroke-dasharray="2 5"/><text x="66" y="54" font-family="JetBrains Mono, monospace" font-size="18" class="p-i">NaCl</text>`),
+    bass: S(`<path d="M30 112c18-22 54-28 90-26s70 8 90 26c-10 22-48 32-90 32s-78-10-90-32z" class="p-d"/><path d="M60 110c20-6 40 4 60 0s40-6 60 0" class="l-i" opacity=".3"/><path d="M30 112c18-22 54-28 90-26s70 8 90 26c-10 22-48 32-90 32s-78-10-90-32z" class="l-i"/><path d="M120 22c8 12 12 20 12 26a12 12 0 0 1-24 0c0-6 4-14 12-26z" class="p-w"/><path d="M90 52c5 8 8 13 8 17a8 8 0 0 1-16 0c0-4 3-9 8-17z" class="p-w" opacity=".7"/><path d="M152 56c4 6 6 10 6 13a6 6 0 0 1-12 0c0-3 2-7 6-13z" class="p-w" opacity=".5"/>`),
+    fold: S(`<path d="M36 116c14-24 48-34 84-34s70 10 84 34c-14 18-46 28-84 28s-70-10-84-28z" class="p-d"/><path d="M36 116c14-24 48-34 84-34s70 10 84 34c-14 18-46 28-84 28s-70-10-84-28z" class="l-i"/><path d="M66 100c0-44 36-70 70-60 22 7 30 30 22 48" class="l-r"/><path d="M150 82l8 8 10-8" class="l-r"/><path d="M88 32c-2-8 2-14 10-16M180 50c8 2 12 8 10 16" class="l-s" stroke-dasharray="3 5"/>`),
+    oil: S(`<path d="M30 114c18-22 54-30 90-28s70 8 90 28c-10 20-48 30-90 30s-78-10-90-30z" class="p-d"/><path d="M70 108c20-10 60-12 92-4" class="p-e" opacity=".0"/><ellipse cx="118" cy="110" rx="44" ry="10" class="p-e" opacity=".35"/><path d="M84 106c12-4 28-4 40-2" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/><path d="M30 114c18-22 54-30 90-28s70 8 90 28c-10 20-48 30-90 30s-78-10-90-30z" class="l-i"/><path d="M150 18l26 20-12 14-26-20z" class="p-g"/><path d="M138 32c-6 8-12 14-18 24" class="l-e"/><path d="M120 62c4 7 6 11 6 14a6 6 0 0 1-12 0c0-3 2-7 6-14z" class="p-e"/>`),
+    lam: S(`<rect x="34" y="60" width="172" height="70" rx="14" class="p-d"/><rect x="34" y="60" width="172" height="70" rx="14" class="l-i"/><path d="M34 95h172" class="l-s" stroke-dasharray="4 6"/><path d="M78 40c-16 6-22 18-18 32" class="l-r"/><path d="M54 66l6 8 8-6" class="l-r"/><path d="M162 40c16 6 22 18 18 32" class="l-r"/><path d="M186 66l-6 8-8-6" class="l-r"/><text x="120" y="152" text-anchor="middle" font-family="Figtree, sans-serif" font-size="11" class="p-i" opacity=".7">${T.svg.noPin}</text>`),
+    balls: S(`<rect x="22" y="44" width="196" height="92" rx="12" class="p-sf"/><rect x="22" y="44" width="196" height="92" rx="12" class="l-i"/>${[[60,80],[120,80],[180,80],[90,112],[150,112]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="24" class="p-d"/><path d="M${x-14} ${y-8}a16 16 0 0 1 18-10" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"/><circle cx="${x}" cy="${y}" r="24" class="l-i" stroke-width="2"/>`).join('')}<path d="M22 44l10-14h176l10 14" class="l-s"/>`),
+    proof: S(`<path d="M26 124h188" class="l-i"/><path d="M40 124c0-40 20-58 40-58s40 18 40 58z" class="p-d"/><path d="M120 124c0-46 24-66 48-66s48 20 48 66z" class="p-d"/>${bubbles([[62,104,4],[78,94,3],[94,110,5],[70,116,2],[146,96,5],[164,84,3],[184,102,6],[198,114,3],[160,112,3],[176,76,2]])}<path d="M40 124c0-40 20-58 40-58s40 18 40 58M120 124c0-46 24-66 48-66s48 20 48 66" class="l-i"/><path d="M168 30v18M160 40l8 8 8-8" class="l-r" stroke-width="2.5"/><text x="80" y="146" text-anchor="middle" font-family="Figtree, sans-serif" font-size="10" class="p-i" opacity=".7">${T.svg.before}</text><text x="168" y="146" text-anchor="middle" font-family="Figtree, sans-serif" font-size="10" class="p-i" opacity=".7">${T.svg.ready}</text>`),
+    sauce: S(`<path d="M24 80h104c0 32-22 54-52 54S24 112 24 80z" class="p-sf"/><ellipse cx="76" cy="82" rx="50" ry="10" class="p-r"/><circle cx="62" cy="80" r="5" class="p-r" style="filter:brightness(.8)"/><circle cx="90" cy="84" r="4" class="p-r" style="filter:brightness(.8)"/><path d="M24 80h104c0 32-22 54-52 54S24 112 24 80z" class="l-i"/><path d="M140 112c0-14 14-22 32-22s34 8 34 22-16 22-34 22-32-8-32-22z" class="p-s" opacity=".35"/>${[[156,104],[176,98],[194,108],[168,116],[186,120]].map(([x,y])=>`<rect x="${x-8}" y="${y-6}" width="16" height="12" rx="4" class="p-m" stroke="var(--ink)" stroke-width="1.5"/>`).join('')}<path d="M160 40c8-14 26-14 32-2-10 2-22 4-32 2z" class="p-g"/><path d="M188 52c10-8 22-2 24 8-10 0-18-2-24-8z" class="p-g"/>`),
+    oven: S(`<rect x="24" y="22" width="192" height="118" rx="14" class="p-s" opacity=".55"/><rect x="24" y="22" width="192" height="118" rx="14" class="l-i"/><path d="M48 46h144" class="l-r" stroke-width="5"/><path d="M60 58c4-4 8 4 12 0s8 4 12 0M108 58c4-4 8 4 12 0s8 4 12 0M156 58c4-4 8 4 12 0s8 4 12 0" class="l-r" stroke-width="2"/><rect x="44" y="96" width="152" height="12" rx="3" class="p-d2"/><path d="M48 120h144" class="l-e" stroke-width="5"/><path d="M80 112l0-2M120 112v-2M160 112v-2" class="l-e" stroke-width="2"/><text x="200" y="50" font-family="JetBrains Mono, monospace" font-size="10" class="p-i" text-anchor="end">${T.svg.top}</text><text x="200" y="134" font-family="JetBrains Mono, monospace" font-size="10" class="p-i" text-anchor="end">${T.svg.stone}</text>`),
+    open: S(`<circle cx="120" cy="82" r="64" class="p-d"/><circle cx="120" cy="82" r="64" class="l-i"/><circle cx="120" cy="82" r="52" class="l-r" stroke-dasharray="5 6" stroke-width="2"/>${[[104,70],[132,66],[118,88],[96,96],[140,94],[122,108]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="6" class="p-d2"/>`).join('')}<path d="M120 82l38-22M120 82l-40 26" class="l-s" stroke-dasharray="2 4"/><text x="120" y="156" text-anchor="middle" font-family="Figtree, sans-serif" font-size="11" class="p-i" opacity=".75">${T.svg.rim}</text>`),
+    build: S(`<path d="M18 124h150l40 0a8 8 0 0 0 0-16h-40" class="p-s" opacity=".5"/><ellipse cx="96" cy="96" rx="78" ry="30" class="p-s" opacity=".45"/><ellipse cx="96" cy="88" rx="68" ry="24" class="p-d"/><ellipse cx="96" cy="88" rx="58" ry="19" class="p-r"/>${[[74,84],[104,80],[124,92],[86,96],[110,96]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="8" ry="5" class="p-m"/>`).join('')}<path d="M92 76c4-6 12-6 14 0-6 2-10 2-14 0zM130 84c4-5 10-4 12 1-5 1-9 1-12-1z" class="p-g"/><ellipse cx="96" cy="88" rx="68" ry="24" class="l-i"/><path d="M180 70h40M196 58l14 12-14 12" class="l-r"/>`),
+    bake: S(`<circle cx="104" cy="82" r="60" class="p-d"/><circle cx="104" cy="82" r="47" class="p-r"/>${[[90,70],[120,74],[106,96],[82,94],[128,98]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="7" class="p-m"/>`).join('')}${[[52,64],[60,46],[78,30],[132,28],[152,48],[162,74],[156,104],[138,128],[96,140],[66,124],[48,98]].map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="${2+(i%3)}" class="p-i" opacity=".75"/>`).join('')}<circle cx="104" cy="82" r="60" class="l-i"/><path d="M184 50a50 50 0 0 1 0 64" class="l-r"/><path d="M178 112l6 4 6-6" class="l-r"/><text x="214" y="86" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" class="p-i">180°</text>`)
+  };
+
+  const q = k => `<span class="v" data-k="${k}"></span>`;
+  const SRC = {d:'src-d', a:'src-a', l:'src-l'};
+
+  function renderSteps(){
+    let i=0, h='';
+    T.steps.forEach(d=>{
+      h += `<div class="day"><h3>${d.day}</h3><span class="pill">${d.when}</span></div><div class="steps">`;
+      d.items.forEach(s=>{
+        i++;
+        const tags = s.src.map(x=>`<span class="tag ${SRC[x]}">${T.src[x]}</span>`).join('');
+        let tip='';
+        if(s.tip){const w=s.tip.startsWith('warn|'), tx=(w?s.tip.slice(5):s.tip).replace(/\{(\w+)\}/g,'${$1}');tip=`<div class="tip ${w?'warn':''}">${tx}</div>`}
+        h += `<article class="step" id="${s.id}"><div class="illo">${IL[s.il]}</div><div class="body">
+          <div class="step-top"><div><div class="step-num">${T.stepLabel} ${String(i).padStart(2,'0')}</div><h4>${s.t}</h4></div>
+          <button type="button" class="check" data-step="${s.id}" aria-pressed="false"><span class="box"></span>${T.done}</button></div>
+          <div class="meta"><span class="tag time">${s.time.replace(/\{(\w+)\}/g,'${$1}')}</span>${tags}</div>
+          <ul>${s.li.map(x=>`<li>${x.replace(/\{(\w+)\}/g,(m,k)=>q(k))}</li>`).join('')}</ul>${tip}</div></article>`;
+      });
+      h += `</div>`;
+    });
+    document.getElementById('stepsRoot').innerHTML = h;
+  }
+
+  // ---------- Schedule ----------
+  const dfmt = new Intl.DateTimeFormat(T.locale,{weekday:'short',day:'2-digit',month:'2-digit'});
+  const tfmt = new Intl.DateTimeFormat(T.locale,{hour:'2-digit',minute:'2-digit'});
+  function renderSchedule(){
+    const B = new Date(P.bake); const box = document.getElementById('timeline'); const warn = document.getElementById('schedWarn');
+    const nx = document.getElementById('nextEv'); nx.hidden = true;
+    if(isNaN(B)){box.innerHTML=`<li><span></span><span></span><div class="what">${T.sched.empty}</div></li>`;return}
+    const H = 3600e3, mixDur = 2.5*H;
+    const out = new Date(B - P.outh*H), divide = new Date(out - P.panh*H), mix = new Date(divide - mixDur);
+    const pfFridge = new Date(mix - P.pfh*H), pfStart = new Date(pfFridge - 1*H), pre = new Date(B - 40*60e3);
+    const v = {pfh:nf2.format(P.pfh), fridge:nf2.format(P.fridge), panh:nf0.format(P.panh), top:nf0.format(P.top), bottom:nf0.format(P.bottom)};
+    const when = [pfStart,pfFridge,mix,divide,out,pre,B], cls = ['work','cold','work','cold','work','hot','hot'];
+    const ev = T.sched.ev.map(([t,p],i)=>[when[i],cls[i],t,fill(p,v)]);
+    box.innerHTML = ev.map(([d,c,t,p])=>`<li><div class="when"><b>${tfmt.format(d)}</b>${dfmt.format(d)}</div><span class="dot ${c}"></span><div class="what"><b>${t}</b><p>${p}</p></div></li>`).join('');
+    const now = new Date(), up = ev.find(([d])=>d > now);
+    if(up){const m=Math.round((up[0]-now)/60e3), dd=Math.floor(m/1440), hh=Math.floor(m%1440/60), mm=m%60;
+      const rel = fill(dd ? T.rel.d : hh ? T.rel.h : T.rel.m, {d:dd, h:hh, m: hh ? String(mm).padStart(2,'0') : mm});
+      nx.innerHTML = `${T.sched.next}: <b>${up[2]}</b><span class="em">${dfmt.format(up[0])}, ${tfmt.format(up[0])} · ${fill(T.sched.in,{rel})}</span>`; nx.hidden = false;}
+    const msgs=[];
+    if(pfStart < new Date()) msgs.push(T.sched.past);
+    if(P.panh>36) msgs.push(T.sched.over36);
+    warn.innerHTML = msgs.join('<br>'); warn.hidden = !msgs.length;
+  }
+
+  // ---------- Render ----------
+  function render(){
+    const R = calc();
+    document.querySelectorAll('[data-k]').forEach(el=>{const k=el.dataset.k; if(k in R) el.textContent = fmt(k,R[k])});
+    document.querySelectorAll('.tip,.tag.time').forEach(el=>{ if(el.dataset.tpl===undefined) el.dataset.tpl = el.innerHTML; el.innerHTML = el.dataset.tpl.replace(/\$\{(\w+)\}/g,(_,k)=>fmt(k,R[k])); });
+    document.getElementById('altRow').hidden = R.alt==='—';
+    const w=[];
+    if(P.hyd!==64) w.push(T.warn.hyd);
+    if(R.per<255||R.per>285) w.push(fill(T.warn.per,{per:g(R.per)}));
+    if(P.bottom>390) w.push(T.warn.bottom);
+    const wb=document.getElementById('warnBox'); wb.innerHTML = w.map(x=>'<span>'+x+'</span>').join('<br>'); wb.hidden=!w.length;
+    document.getElementById('panelSum').textContent = fill(T.panelSum,{flour:nf0.format(Math.round(R.flour)), hyd:R.hydPct, top:nf0.format(P.top), bottom:nf0.format(P.bottom)});
+    renderSchedule(); updateProgress();
+  }
+
+  // ---------- Inputs ----------
+  const map = {flour:'p-flour',pizzas:'p-pizzas',w:'p-w',hyd:'p-hyd',salt:'p-salt',oil:'p-oil',yeast:'p-yeast',pf:'p-pf',fridge:'p-fridge',top:'p-top',bottom:'p-bottom',sauce:'p-sauce',cheese:'p-cheese',pfh:'p-pfh',panh:'p-panh',outh:'p-outh',bake:'p-bake'};
+  function syncInputs(){ for(const k in map){document.getElementById(map[k]).value = P[k]} setMode(P.mode,false) }
+  for(const k in map){
+    document.getElementById(map[k]).addEventListener('input', e=>{
+      if(k==='bake'){P.bake=e.target.value}else{const v=parseFloat(e.target.value); if(isNaN(v)||v<=0) return; P[k]=v}
+      store.set(LS+':p',P); render();
+    });
+  }
+  function setMode(m, save=true){
+    P.mode=m;
+    document.getElementById('modeFlour').setAttribute('aria-pressed', m==='flour');
+    document.getElementById('modePizza').setAttribute('aria-pressed', m==='pizza');
+    document.getElementById('rowFlour').hidden = m!=='flour';
+    document.getElementById('rowPizzas').hidden = m!=='pizza';
+    if(save){store.set(LS+':p',P); render()}
+  }
+  document.getElementById('modeFlour').onclick=()=>{ if(P.mode==='pizza'){P.flour=Math.round(calc().flour/10)*10; document.getElementById('p-flour').value=P.flour} setMode('flour') };
+  document.getElementById('modePizza').onclick=()=>{ if(P.mode==='flour'){P.pizzas=calc().n; document.getElementById('p-pizzas').value=P.pizzas} setMode('pizza') };
+  document.getElementById('resetParams').onclick=()=>{const b=P.bake; P=Object.assign({},DEF,{bake:b}); store.set(LS+':p',P); syncInputs(); render()};
+  document.getElementById('resetChecks').onclick=()=>{done={}; store.set(LS+':done',done); applyChecks()};
+
+  // ---------- Checks ----------
+  function applyChecks(){
+    document.querySelectorAll('.check').forEach(b=>{const on=!!done[b.dataset.step]; b.setAttribute('aria-pressed',on); b.closest('.step').classList.toggle('done',on)});
+    updateProgress();
+  }
+  function updateProgress(){
+    const tot=document.querySelectorAll('.check').length, n=Object.values(done).filter(Boolean).length;
+    document.getElementById('progTxt').textContent=`${n}/${tot}`; document.getElementById('progBar').style.width=(tot?n/tot*100:0)+'%';
+  }
+  document.addEventListener('click',e=>{const b=e.target.closest('.check'); if(!b) return; done[b.dataset.step]=!done[b.dataset.step]; store.set(LS+':done',done); applyChecks()});
+
+  // ---------- Timer ----------
+  let t0=0, run=false, raf=0, lock=null;
+  const clock=document.getElementById('clock'), head=document.getElementById('head'), st=document.getElementById('tStatus'), bS=document.getElementById('tStart');
+  st.textContent=T.timer.idle; bS.textContent=T.timer.start;
+  function tick(){
+    const s=(performance.now()-t0)/1000;
+    clock.innerHTML=`${Math.floor(s)}<small> s</small>`;
+    head.style.left=Math.min(100,s/150*100)+'%';
+    const M=T.timer.msg;
+    st.textContent = s<25?M[0] : s<=30?M[1] : s<70?M[2] : s<=120?M[3] : M[4];
+    if(run) raf=requestAnimationFrame(tick);
+  }
+  bS.onclick=async()=>{
+    if(!run){t0=performance.now()-(t0&&!run&&bS.dataset.paused?parseFloat(bS.dataset.paused)*1000:0); run=true; bS.textContent=T.timer.pause; delete bS.dataset.paused; tick();
+      try{lock=await navigator.wakeLock?.request('screen')}catch(e){}}
+    else{run=false; cancelAnimationFrame(raf); bS.dataset.paused=(performance.now()-t0)/1000; bS.textContent=T.timer.resume}
+  };
+  document.getElementById('tReset').onclick=()=>{run=false;cancelAnimationFrame(raf);t0=0;delete bS.dataset.paused;bS.textContent=T.timer.start;clock.innerHTML='0<small> s</small>';head.style.left='0';st.textContent=T.timer.idle;try{lock&&lock.release()}catch(e){}};
+
+  // ---------- Diagnosis ----------
+  const DK = [{key:'bottom', d:-10},{key:'bottom', d:+10},{key:'top', d:+10},{key:'top', d:-10},{},{},{}];
+  const DIAG = T.diag.map(([s,fix],i)=>Object.assign({s,fix},DK[i]));
+  const chips=document.getElementById('chips'), out=document.getElementById('diagOut');
+  chips.innerHTML=DIAG.map((d,i)=>`<button type="button" class="chip" data-i="${i}" aria-pressed="false">${d.s}</button>`).join('');
+  chips.addEventListener('click',e=>{
+    const c=e.target.closest('.chip'); if(!c) return; const d=DIAG[c.dataset.i];
+    chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
+    let h=`<b>${d.fix}</b>`;
+    if(d.key){const cur=P[d.key], nv=cur+d.d, lbl=d.key==='bottom'?T.lower:T.upper;
+      h+=`<span>${fill(T.diagCur,{lbl, cur:nf0.format(cur), nv:`<span class="mono">${nf0.format(nv)} °C</span>`})}</span><div><button type="button" class="btn small primary" id="applyDiag">${fill(T.apply,{v:nf0.format(nv)})}</button></div>`;}
+    out.innerHTML=h;
+    const a=document.getElementById('applyDiag'); if(a) a.onclick=()=>{P[d.key]+=d.d; store.set(LS+':p',P); syncInputs(); render(); a.textContent=T.applied; a.disabled=true};
+  });
+
+  const pnl=document.querySelector('.panel'), ptg=document.getElementById('panelToggle');
+  ptg.onclick=()=>{const o=pnl.classList.toggle('open'); ptg.setAttribute('aria-expanded',o); ptg.textContent=o?T.close:T.open};
+  document.addEventListener('click',e=>{const a=e.target.closest('[data-setlang]'); if(a) try{localStorage.setItem('np-lang',a.dataset.setlang)}catch(_){}});
+  setInterval(renderSchedule, 60e3);
+  renderSteps(); syncInputs(); applyChecks(); render();
+
+  // ---------- Dados estruturados (gerados no build; não roda se já existir) ----------
+  if(!document.getElementById('ld-recipe')){
+    const R = calc(), L = T.ld, txt = el => el.textContent.replace(/\s+/g,' ').trim();
+    const ing = [...document.querySelectorAll('#receita tbody tr:not(.total)')].map(tr=>`${txt(tr.cells[2])} ${txt(tr.cells[0])}`)
+      .concat(L.toppings.map(x=>fill(x,{sauce:nf0.format(R.sauceTotal), cheese:nf0.format(R.cheeseTotal)})));
+    const steps = [...document.querySelectorAll('.step')].map(a=>({'@type':'HowToStep', name:txt(a.querySelector('h4')), text:[...a.querySelectorAll('li')].map(txt).join(' '), url:L.url+'#'+a.id}));
+    const data = {'@context':'https://schema.org','@type':'Recipe', name:L.name, description:L.description, inLanguage:L.inLanguage, url:L.url,
+      image:L.images, author:{'@type':'Person', name:'Jhonathan Sousa', url:'https://www.instagram.com/jhonsousa1/', sameAs:['https://www.instagram.com/jhonsousa1/']},
+      datePublished:'2026-10-01', prepTime:'PT3H', cookTime:'PT2M', totalTime:'PT52H', recipeYield:[String(R.n), fill(L.yield,{n:R.n})],
+      recipeCategory:L.category, recipeCuisine:L.cuisine, keywords:L.keywords, recipeIngredient:ing, recipeInstructions:steps};
+    const s = document.createElement('script'); s.type='application/ld+json'; s.id='ld-recipe'; s.textContent = JSON.stringify(data);
+    document.head.appendChild(s);
+  }
+})();
+</script>
+
+
+</body></html>

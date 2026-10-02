@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="{{HTML_LANG}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+{{HEAD}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+{{CSS}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="./" style="text-decoration:none"><span class="flag" aria-hidden="true"><i></i><i></i><i></i></span>NapoliProtocol <span class="ver">v1.0</span></a>
+    <nav class="nav" aria-label="{{nav.label}}">
+      <a href="#receita">{{nav.recipe}}</a><a href="#cronograma">{{nav.schedule}}</a><a href="#passos">{{nav.steps}}</a><a href="#forno">{{nav.oven}}</a><a href="#regras">{{nav.rules}}</a>
+    </nav>
+    <div class="prog" title="{{nav.progress}}"><span id="progTxt">0/14</span><div class="prog-bar"><i id="progBar"></i></div></div>
+    {{LANG_MENU}}
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Caputo Pizzeria 00 · {{hero.preferment}}<span class="hide-sm"> · BIG HORN</span></div>
+      <h1>{{hero.h1}}</h1>
+      <div class="byline"><span class="mono-js" aria-hidden="true">JS</span><span><span>{{hero.by}} <a href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author">Jhonathan Sousa</a></span><small>{{hero.version}}</small></span></div>
+      <p class="lead">{{hero.lead}}</p>
+      <a class="next" id="nextEv" href="#cronograma" hidden></a>
+    </div>
+    <div class="kpis" aria-live="polite">
+      <div class="kpi"><div class="k">{{kpi.total}}</div><div class="val"><span data-k="total"></span> g</div><div class="sub">{{kpi.hyd}} <span data-k="hydPct"></span>%</div></div>
+      <div class="kpi"><div class="k">Panetti</div><div class="val"><span data-k="n"></span> × <span data-k="per"></span> g</div><div class="sub">{{kpi.pizzas}}</div></div>
+      <div class="kpi"><div class="k">{{kpi.top}}</div><div class="val"><span data-k="top"></span> °C</div><div class="sub">{{kpi.preheat}}</div></div>
+      <div class="kpi"><div class="k">{{kpi.bottom}}</div><div class="val"><span data-k="bottom"></span> °C</div><div class="sub">{{kpi.bottomSub}}</div></div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="panel" aria-label="{{panel.title}}">
+      <div class="panel-head"><h2>{{panel.title}}</h2><button type="button" class="btn small panel-toggle" id="panelToggle" aria-expanded="false" aria-controls="panelBody">{{panel.open}}</button></div>
+      <p class="panel-sum" id="panelSum"></p>
+      <div class="panel-body" id="panelBody">
+      <div class="fieldset">
+        <div class="eyebrow">{{panel.batch}}</div>
+        <div class="seg" role="group" aria-label="{{panel.calcBy}}">
+          <button type="button" id="modeFlour" aria-pressed="true">{{panel.byFlour}}</button>
+          <button type="button" id="modePizza" aria-pressed="false">{{panel.byPizza}}</button>
+        </div>
+        <div class="field" id="rowFlour"><label for="p-flour">{{panel.flour}}</label><div class="inp"><input id="p-flour" type="number" min="200" step="50" inputmode="decimal"><span>g</span></div></div>
+        <div class="field" id="rowPizzas" hidden><label for="p-pizzas">{{panel.pizzas}}</label><div class="inp"><input id="p-pizzas" type="number" min="1" max="20" step="1" inputmode="numeric"><span>{{panel.unit}}</span></div></div>
+        <div class="field"><label for="p-w">{{panel.ballW}}<small>{{panel.ref}}: 260–280 g</small></label><div class="inp"><input id="p-w" type="number" min="180" max="320" step="5"><span>g</span></div></div>
+      </div>
+      <div class="fieldset">
+        <div class="eyebrow">{{panel.formula}}</div>
+        <div class="field"><label for="p-hyd">{{panel.hyd}}</label><div class="inp"><input id="p-hyd" type="number" min="55" max="75" step="0.5"><span>%</span></div></div>
+        <div class="field"><label for="p-salt">{{ing.salt}}<small>{{panel.ref}}: 3%</small></label><div class="inp"><input id="p-salt" type="number" min="2" max="3.2" step="0.01"><span>%</span></div></div>
+        <div class="field"><label for="p-oil">{{panel.oil}}</label><div class="inp"><input id="p-oil" type="number" min="0" max="4" step="0.1"><span>%</span></div></div>
+        <div class="field"><label for="p-yeast">{{panel.yeast}}</label><div class="inp"><input id="p-yeast" type="number" min="0.02" max="1" step="0.01"><span>%</span></div></div>
+        <div class="field"><label for="p-pf">{{panel.pf}}</label><div class="inp"><input id="p-pf" type="number" min="20" max="60" step="5"><span>%</span></div></div>
+      </div>
+      <div class="fieldset">
+        <div class="eyebrow">{{panel.env}}</div>
+        <div class="field"><label for="p-fridge">{{panel.fridge}}</label><div class="inp"><input id="p-fridge" type="number" min="2" max="12" step="0.5"><span>°C</span></div></div>
+        <div class="field"><label for="p-top">{{panel.top}}</label><div class="inp"><input id="p-top" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
+        <div class="field"><label for="p-bottom">{{panel.bottom}}</label><div class="inp"><input id="p-bottom" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
+      </div>
+      <div class="fieldset">
+        <div class="eyebrow">{{panel.toppings}}</div>
+        <div class="field"><label for="p-sauce">{{panel.sauce}}</label><div class="inp"><input id="p-sauce" type="number" min="40" max="100" step="5"><span>g</span></div></div>
+        <div class="field"><label for="p-cheese">Mozzarella</label><div class="inp"><input id="p-cheese" type="number" min="40" max="120" step="5"><span>g</span></div></div>
+      </div>
+      <div class="panel-foot">
+        <button class="btn small" type="button" id="resetParams">{{panel.reset}}</button>
+        <button class="btn small" type="button" id="resetChecks">{{panel.clear}}</button>
+      </div>
+      <p class="note">{{panel.note}}</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="receita">
+        <div class="sec-head"><h2>{{recipe.h2}}</h2><p>{{recipe.sub}}</p></div>
+        <div class="card tbl-wrap">
+          <table>
+            <thead><tr><th>{{recipe.ing}}</th><th class="n">%</th><th class="n">{{recipe.total}}</th><th class="n"><span class="full">{{recipe.pf}}</span><span class="short">{{recipe.pfShort}}</span></th><th class="n"><span class="full">{{recipe.final}}</span><span class="short">{{recipe.finalShort}}</span></th></tr></thead>
+            <tbody>
+              <tr><td>{{ing.flour}}</td><td class="n">100</td><td class="n"><span data-k="flour"></span> g</td><td class="n"><span data-k="pfFlour"></span> g</td><td class="n"><span data-k="finFlour"></span> g</td></tr>
+              <tr><td>{{ing.water}}</td><td class="n" data-k="hydPct"></td><td class="n"><span data-k="water"></span> g</td><td class="n"><span data-k="pfWater"></span> g</td><td class="n"><span data-k="finWater"></span> g</td></tr>
+              <tr><td>{{ing.yeast}}</td><td class="n" data-k="yeastPct"></td><td class="n"><span data-k="yeast"></span> g</td><td class="n"><span data-k="yeast"></span> g</td><td class="n">—</td></tr>
+              <tr><td>{{ing.salt}}</td><td class="n" data-k="saltPct"></td><td class="n"><span data-k="salt"></span> g</td><td class="n">—</td><td class="n"><span data-k="salt"></span> g</td></tr>
+              <tr><td>{{ing.oil}}</td><td class="n" data-k="oilPct"></td><td class="n"><span data-k="oil"></span> g</td><td class="n">—</td><td class="n"><span data-k="oil"></span> g</td></tr>
+              <tr class="total"><td>{{recipe.dough}}</td><td class="n"></td><td class="n"><span data-k="total"></span> g</td><td class="n"><span data-k="pfTotal"></span> g</td><td class="n">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="split">
+          <div class="card mini"><div class="eyebrow">{{recipe.waterEb}}</div><h3>{{recipe.waterH}}</h3>
+            <ul><li><span>{{recipe.wInit}}</span><b class="num"><span data-k="initWater"></span> g</b></li><li><span>{{recipe.wSalt}}</span><b class="num"><span data-k="saltWater"></span> g</b></li><li><span>Bassinage</span><b class="num"><span data-k="bassWater"></span> g</b></li></ul></div>
+          <div class="card mini"><div class="eyebrow">{{recipe.divEb}}</div><h3>Panetti</h3>
+            <ul><li><span>{{recipe.main}}</span><b class="num"><span data-k="n"></span> × <span data-k="per"></span> g</b></li><li id="altRow"><span>{{recipe.alt}}</span><b class="num" data-k="alt"></b></li><li><span>{{recipe.target}}</span><b class="num">30–32 cm</b></li></ul></div>
+          <div class="card mini"><div class="eyebrow">{{recipe.topEb}}</div><h3>{{recipe.forPre}} <span data-k="n"></span> {{recipe.forPost}}</h3>
+            <ul><li><span>Mutti Pelati 400 g</span><b class="num"><span data-k="cans"></span> {{recipe.cans}}</b></li><li><span>{{recipe.sauceTotal}}</span><b class="num"><span data-k="sauceTotal"></span> g</b></li><li><span>{{recipe.cheese}}</span><b class="num"><span data-k="cheeseTotal"></span> g</b></li></ul></div>
+        </div>
+        <div class="alert" id="warnBox" hidden></div>
+      </section>
+
+      <section id="cronograma">
+        <div class="sec-head"><h2>{{sched.h2}}</h2><p>{{sched.sub}}</p></div>
+        <div class="card">
+          <div class="sched-ctl">
+            <div class="field"><label for="p-bake">{{sched.bake}}</label><input id="p-bake" type="datetime-local"></div>
+            <div class="field"><label for="p-pfh">{{sched.pfh}}</label><div class="inp"><input id="p-pfh" type="number" min="8" max="30" step="1"><span>h</span></div></div>
+            <div class="field"><label for="p-panh">{{sched.panh}}</label><div class="inp"><input id="p-panh" type="number" min="12" max="48" step="1"><span>h</span></div></div>
+            <div class="field"><label for="p-outh">{{sched.outh}}</label><div class="inp"><input id="p-outh" type="number" min="1" max="8" step="0.5"><span>h</span></div></div>
+          </div>
+          <ol class="tl" id="timeline"></ol>
+        </div>
+        <div class="alert" id="schedWarn" hidden></div>
+      </section>
+
+      <section id="passos">
+        <div class="sec-head"><h2>{{steps.h2}}</h2><p>{{steps.sub}}</p></div>
+        <div id="stepsRoot"></div>
+      </section>
+
+      <section id="forno">
+        <div class="sec-head"><h2>{{oven.h2}}</h2><p>{{oven.sub}}</p></div>
+        <div class="oven-grid">
+          <div class="card timer">
+            <div class="eyebrow">{{oven.timer}}</div>
+            <div class="clock" id="clock">0<small> s</small></div>
+            <div>
+              <div class="track" aria-hidden="true"><div class="z turn" style="left:16.67%;width:3.33%"></div><div class="z ok" style="left:46.67%;width:33.33%"></div><div class="head" id="head"></div></div>
+              <div class="scale"><span>0</span><span>30</span><span>60</span><span>90</span><span>120</span><span>150 s</span></div>
+            </div>
+            <div class="status" id="tStatus" aria-live="polite"></div>
+            <div class="timer-btns"><button class="btn primary" type="button" id="tStart"></button><button class="btn" type="button" id="tReset">{{oven.reset}}</button></div>
+            <p class="note">{{oven.note}}</p>
+          </div>
+          <div class="card diag">
+            <div class="eyebrow">{{oven.diag}}</div>
+            <div class="chips" id="chips"></div>
+            <div class="diag-out" id="diagOut"><span class="note">{{oven.diagHint}}</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="regras">
+        <div class="sec-head"><h2>{{rules.h2}}</h2><p>{{rules.sub}}</p></div>
+        <ol class="rules">{{RULES}}</ol>
+        <dl class="glossary">{{GLOSSARY}}</dl>
+      </section>
+    </main>
+  </div>
+</div>
+<footer><div class="wrap foot">
+  <span class="mono-js" aria-hidden="true">JS</span>
+  <p class="sig">{{foot.sig}} <b>Jhonathan Sousa</b></p>
+  <a class="ig" href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg>@jhonsousa1</a>
+  <nav class="foot-langs" aria-label="{{foot.langs}}">{{FOOT_LANGS}}</nav>
+  <p class="copy">© 2026 Jhonathan Sousa · {{foot.rights}}</p>
+</div></footer>
+
+<script>
+(function(){
+  const T = {{T_JSON}};
+  const DEF = {mode:'flour', flour:800, pizzas:5, w:270, hyd:64, salt:2.88, oil:1.5, yeast:0.1, pf:50, fridge:7, top:450, bottom:380, sauce:65, cheese:70, pfh:20, panh:24, outh:4, bake:''};
+  const LS = 'napolitana-v1';
+  const store = {get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+  let P = Object.assign({}, DEF, store.get(LS+':p')||{});
+  let done = store.get(LS+':done') || {};
+  const fill = (s,o) => s.replace(/\{(\w+)\}/g,(m,k)=> k in o ? o[k] : m);
+
+  const nf0 = new Intl.NumberFormat(T.locale,{maximumFractionDigits:0});
+  const nf1 = new Intl.NumberFormat(T.locale,{minimumFractionDigits:1,maximumFractionDigits:1});
+  const nf2 = new Intl.NumberFormat(T.locale,{maximumFractionDigits:2});
+  const g = v => v < 10 ? nf1.format(v) : nf0.format(Math.round(v));
+  const pct = v => nf2.format(v);
+
+  function nextDefaultBake(){
+    const d = new Date(); const t = new Date(d);
+    t.setHours(19,30,0,0); t.setDate(t.getDate()+1);
+    while(t.getDay()!==6 || (t-d) < 60*3600e3) t.setDate(t.getDate()+1);
+    return toLocalInput(t);
+  }
+  function toLocalInput(t){const z=n=>String(n).padStart(2,'0');return `${t.getFullYear()}-${z(t.getMonth()+1)}-${z(t.getDate())}T${z(t.getHours())}:${z(t.getMinutes())}`}
+  if(!P.bake) P.bake = nextDefaultBake();
+
+  function calc(){
+    const ratio = 1 + P.hyd/100 + P.salt/100 + P.oil/100 + P.yeast/100;
+    const flour = P.mode==='pizza' ? (P.pizzas*P.w)/ratio : P.flour;
+    const water = flour*P.hyd/100, salt = Math.round(flour*P.salt/100), oil = Math.round(flour*P.oil/100), yeast = flour*P.yeast/100;
+    const total = flour+water+salt+oil+yeast;
+    const pfFlour = flour*P.pf/100, pfWater = pfFlour;
+    const finFlour = flour-pfFlour, finWater = Math.max(0, water-pfWater);
+    const saltWater = Math.min(Math.round(salt*1.1), finWater);
+    const initWater = Math.round(finWater*0.62);
+    const bassWater = Math.max(0, Math.round(finWater) - initWater - saltWater);
+    const n = Math.max(1, Math.round(total/P.w)), per = total/n;
+    const nF = Math.floor(total/P.w), rem = total - nF*P.w;
+    const alt = (nF>=1 && nF!==n && rem>30) ? `${nF} × ${P.w} g + ${T.test} ${g(rem)} g` : (n>1 && Math.abs(per-P.w)>8 ? `${n+ (per>P.w?1:-1)} × ${g(total/(n+(per>P.w?1:-1)))} g` : '—');
+    const sauceTotal = n*P.sauce, cheeseTotal = n*P.cheese, cans = Math.max(1, Math.ceil(sauceTotal/400));
+    return {flour, water, salt, oil, yeast, total, pfFlour, pfWater, pfTotal:pfFlour+pfWater+yeast, finFlour, finWater, saltWater, initWater, bassWater, n, per, alt, sauceTotal, cheeseTotal, cans,
+      canSalt: cans*4+'–'+cans*5, top:P.top, bottom:P.bottom, fridge:P.fridge, pfh:P.pfh, panh:P.panh, outh:P.outh, sauce:P.sauce, cheese:P.cheese,
+      hydPct:pct(P.hyd), saltPct:pct(P.salt), oilPct:pct(P.oil), yeastPct:pct(P.yeast), w:P.w, pizzaFlour:P.mode==='pizza'};
+  }
+
+  const fmt = (k,v) => {
+    if(typeof v === 'string') return v;
+    if(['top','bottom','n','cans','pfh','panh','sauce','cheese','w'].includes(k)) return nf0.format(v);
+    if(['fridge','outh'].includes(k)) return nf2.format(v);
+    return g(v);
+  };
+
+{{IL}}
+  const q = k => `<span class="v" data-k="${k}"></span>`;
+  const SRC = {d:'src-d', a:'src-a', l:'src-l'};
+
+  function renderSteps(){
+    let i=0, h='';
+    T.steps.forEach(d=>{
+      h += `<div class="day"><h3>${d.day}</h3><span class="pill">${d.when}</span></div><div class="steps">`;
+      d.items.forEach(s=>{
+        i++;
+        const tags = s.src.map(x=>`<span class="tag ${SRC[x]}">${T.src[x]}</span>`).join('');
+        let tip='';
+        if(s.tip){const w=s.tip.startsWith('warn|'), tx=(w?s.tip.slice(5):s.tip).replace(/\{(\w+)\}/g,'${$1}');tip=`<div class="tip ${w?'warn':''}">${tx}</div>`}
+        h += `<article class="step" id="${s.id}"><div class="illo">${IL[s.il]}</div><div class="body">
+          <div class="step-top"><div><div class="step-num">${T.stepLabel} ${String(i).padStart(2,'0')}</div><h4>${s.t}</h4></div>
+          <button type="button" class="check" data-step="${s.id}" aria-pressed="false"><span class="box"></span>${T.done}</button></div>
+          <div class="meta"><span class="tag time">${s.time.replace(/\{(\w+)\}/g,'${$1}')}</span>${tags}</div>
+          <ul>${s.li.map(x=>`<li>${x.replace(/\{(\w+)\}/g,(m,k)=>q(k))}</li>`).join('')}</ul>${tip}</div></article>`;
+      });
+      h += `</div>`;
+    });
+    document.getElementById('stepsRoot').innerHTML = h;
+  }
+
+  // ---------- Schedule ----------
+  const dfmt = new Intl.DateTimeFormat(T.locale,{weekday:'short',day:'2-digit',month:'2-digit'});
+  const tfmt = new Intl.DateTimeFormat(T.locale,{hour:'2-digit',minute:'2-digit'});
+  function renderSchedule(){
+    const B = new Date(P.bake); const box = document.getElementById('timeline'); const warn = document.getElementById('schedWarn');
+    const nx = document.getElementById('nextEv'); nx.hidden = true;
+    if(isNaN(B)){box.innerHTML=`<li><span></span><span></span><div class="what">${T.sched.empty}</div></li>`;return}
+    const H = 3600e3, mixDur = 2.5*H;
+    const out = new Date(B - P.outh*H), divide = new Date(out - P.panh*H), mix = new Date(divide - mixDur);
+    const pfFridge = new Date(mix - P.pfh*H), pfStart = new Date(pfFridge - 1*H), pre = new Date(B - 40*60e3);
+    const v = {pfh:nf2.format(P.pfh), fridge:nf2.format(P.fridge), panh:nf0.format(P.panh), top:nf0.format(P.top), bottom:nf0.format(P.bottom)};
+    const when = [pfStart,pfFridge,mix,divide,out,pre,B], cls = ['work','cold','work','cold','work','hot','hot'];
+    const ev = T.sched.ev.map(([t,p],i)=>[when[i],cls[i],t,fill(p,v)]);
+    box.innerHTML = ev.map(([d,c,t,p])=>`<li><div class="when"><b>${tfmt.format(d)}</b>${dfmt.format(d)}</div><span class="dot ${c}"></span><div class="what"><b>${t}</b><p>${p}</p></div></li>`).join('');
+    const now = new Date(), up = ev.find(([d])=>d > now);
+    if(up){const m=Math.round((up[0]-now)/60e3), dd=Math.floor(m/1440), hh=Math.floor(m%1440/60), mm=m%60;
+      const rel = fill(dd ? T.rel.d : hh ? T.rel.h : T.rel.m, {d:dd, h:hh, m: hh ? String(mm).padStart(2,'0') : mm});
+      nx.innerHTML = `${T.sched.next}: <b>${up[2]}</b><span class="em">${dfmt.format(up[0])}, ${tfmt.format(up[0])} · ${fill(T.sched.in,{rel})}</span>`; nx.hidden = false;}
+    const msgs=[];
+    if(pfStart < new Date()) msgs.push(T.sched.past);
+    if(P.panh>36) msgs.push(T.sched.over36);
+    warn.innerHTML = msgs.join('<br>'); warn.hidden = !msgs.length;
+  }
+
+  // ---------- Render ----------
+  function render(){
+    const R = calc();
+    document.querySelectorAll('[data-k]').forEach(el=>{const k=el.dataset.k; if(k in R) el.textContent = fmt(k,R[k])});
+    document.querySelectorAll('.tip,.tag.time').forEach(el=>{ if(el.dataset.tpl===undefined) el.dataset.tpl = el.innerHTML; el.innerHTML = el.dataset.tpl.replace(/\$\{(\w+)\}/g,(_,k)=>fmt(k,R[k])); });
+    document.getElementById('altRow').hidden = R.alt==='—';
+    const w=[];
+    if(P.hyd!==64) w.push(T.warn.hyd);
+    if(R.per<255||R.per>285) w.push(fill(T.warn.per,{per:g(R.per)}));
+    if(P.bottom>390) w.push(T.warn.bottom);
+    const wb=document.getElementById('warnBox'); wb.innerHTML = w.map(x=>'<span>'+x+'</span>').join('<br>'); wb.hidden=!w.length;
+    document.getElementById('panelSum').textContent = fill(T.panelSum,{flour:nf0.format(Math.round(R.flour)), hyd:R.hydPct, top:nf0.format(P.top), bottom:nf0.format(P.bottom)});
+    renderSchedule(); updateProgress();
+  }
+
+  // ---------- Inputs ----------
+  const map = {flour:'p-flour',pizzas:'p-pizzas',w:'p-w',hyd:'p-hyd',salt:'p-salt',oil:'p-oil',yeast:'p-yeast',pf:'p-pf',fridge:'p-fridge',top:'p-top',bottom:'p-bottom',sauce:'p-sauce',cheese:'p-cheese',pfh:'p-pfh',panh:'p-panh',outh:'p-outh',bake:'p-bake'};
+  function syncInputs(){ for(const k in map){document.getElementById(map[k]).value = P[k]} setMode(P.mode,false) }
+  for(const k in map){
+    document.getElementById(map[k]).addEventListener('input', e=>{
+      if(k==='bake'){P.bake=e.target.value}else{const v=parseFloat(e.target.value); if(isNaN(v)||v<=0) return; P[k]=v}
+      store.set(LS+':p',P); render();
+    });
+  }
+  function setMode(m, save=true){
+    P.mode=m;
+    document.getElementById('modeFlour').setAttribute('aria-pressed', m==='flour');
+    document.getElementById('modePizza').setAttribute('aria-pressed', m==='pizza');
+    document.getElementById('rowFlour').hidden = m!=='flour';
+    document.getElementById('rowPizzas').hidden = m!=='pizza';
+    if(save){store.set(LS+':p',P); render()}
+  }
+  document.getElementById('modeFlour').onclick=()=>{ if(P.mode==='pizza'){P.flour=Math.round(calc().flour/10)*10; document.getElementById('p-flour').value=P.flour} setMode('flour') };
+  document.getElementById('modePizza').onclick=()=>{ if(P.mode==='flour'){P.pizzas=calc().n; document.getElementById('p-pizzas').value=P.pizzas} setMode('pizza') };
+  document.getElementById('resetParams').onclick=()=>{const b=P.bake; P=Object.assign({},DEF,{bake:b}); store.set(LS+':p',P); syncInputs(); render()};
+  document.getElementById('resetChecks').onclick=()=>{done={}; store.set(LS+':done',done); applyChecks()};
+
+  // ---------- Checks ----------
+  function applyChecks(){
+    document.querySelectorAll('.check').forEach(b=>{const on=!!done[b.dataset.step]; b.setAttribute('aria-pressed',on); b.closest('.step').classList.toggle('done',on)});
+    updateProgress();
+  }
+  function updateProgress(){
+    const tot=document.querySelectorAll('.check').length, n=Object.values(done).filter(Boolean).length;
+    document.getElementById('progTxt').textContent=`${n}/${tot}`; document.getElementById('progBar').style.width=(tot?n/tot*100:0)+'%';
+  }
+  document.addEventListener('click',e=>{const b=e.target.closest('.check'); if(!b) return; done[b.dataset.step]=!done[b.dataset.step]; store.set(LS+':done',done); applyChecks()});
+
+  // ---------- Timer ----------
+  let t0=0, run=false, raf=0, lock=null;
+  const clock=document.getElementById('clock'), head=document.getElementById('head'), st=document.getElementById('tStatus'), bS=document.getElementById('tStart');
+  st.textContent=T.timer.idle; bS.textContent=T.timer.start;
+  function tick(){
+    const s=(performance.now()-t0)/1000;
+    clock.innerHTML=`${Math.floor(s)}<small> s</small>`;
+    head.style.left=Math.min(100,s/150*100)+'%';
+    const M=T.timer.msg;
+    st.textContent = s<25?M[0] : s<=30?M[1] : s<70?M[2] : s<=120?M[3] : M[4];
+    if(run) raf=requestAnimationFrame(tick);
+  }
+  bS.onclick=async()=>{
+    if(!run){t0=performance.now()-(t0&&!run&&bS.dataset.paused?parseFloat(bS.dataset.paused)*1000:0); run=true; bS.textContent=T.timer.pause; delete bS.dataset.paused; tick();
+      try{lock=await navigator.wakeLock?.request('screen')}catch(e){}}
+    else{run=false; cancelAnimationFrame(raf); bS.dataset.paused=(performance.now()-t0)/1000; bS.textContent=T.timer.resume}
+  };
+  document.getElementById('tReset').onclick=()=>{run=false;cancelAnimationFrame(raf);t0=0;delete bS.dataset.paused;bS.textContent=T.timer.start;clock.innerHTML='0<small> s</small>';head.style.left='0';st.textContent=T.timer.idle;try{lock&&lock.release()}catch(e){}};
+
+  // ---------- Diagnosis ----------
+  const DK = [{key:'bottom', d:-10},{key:'bottom', d:+10},{key:'top', d:+10},{key:'top', d:-10},{},{},{}];
+  const DIAG = T.diag.map(([s,fix],i)=>Object.assign({s,fix},DK[i]));
+  const chips=document.getElementById('chips'), out=document.getElementById('diagOut');
+  chips.innerHTML=DIAG.map((d,i)=>`<button type="button" class="chip" data-i="${i}" aria-pressed="false">${d.s}</button>`).join('');
+  chips.addEventListener('click',e=>{
+    const c=e.target.closest('.chip'); if(!c) return; const d=DIAG[c.dataset.i];
+    chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
+    let h=`<b>${d.fix}</b>`;
+    if(d.key){const cur=P[d.key], nv=cur+d.d, lbl=d.key==='bottom'?T.lower:T.upper;
+      h+=`<span>${fill(T.diagCur,{lbl, cur:nf0.format(cur), nv:`<span class="mono">${nf0.format(nv)} °C</span>`})}</span><div><button type="button" class="btn small primary" id="applyDiag">${fill(T.apply,{v:nf0.format(nv)})}</button></div>`;}
+    out.innerHTML=h;
+    const a=document.getElementById('applyDiag'); if(a) a.onclick=()=>{P[d.key]+=d.d; store.set(LS+':p',P); syncInputs(); render(); a.textContent=T.applied; a.disabled=true};
+  });
+
+  const pnl=document.querySelector('.panel'), ptg=document.getElementById('panelToggle');
+  ptg.onclick=()=>{const o=pnl.classList.toggle('open'); ptg.setAttribute('aria-expanded',o); ptg.textContent=o?T.close:T.open};
+  document.addEventListener('click',e=>{const a=e.target.closest('[data-setlang]'); if(a) try{localStorage.setItem('np-lang',a.dataset.setlang)}catch(_){}});
+  setInterval(renderSchedule, 60e3);
+  renderSteps(); syncInputs(); applyChecks(); render();
+
+  // ---------- Dados estruturados (gerados no build; não roda se já existir) ----------
+  if(!document.getElementById('ld-recipe')){
+    const R = calc(), L = T.ld, txt = el => el.textContent.replace(/\s+/g,' ').trim();
+    const ing = [...document.querySelectorAll('#receita tbody tr:not(.total)')].map(tr=>`${txt(tr.cells[2])} ${txt(tr.cells[0])}`)
+      .concat(L.toppings.map(x=>fill(x,{sauce:nf0.format(R.sauceTotal), cheese:nf0.format(R.cheeseTotal)})));
+    const steps = [...document.querySelectorAll('.step')].map(a=>({'@type':'HowToStep', name:txt(a.querySelector('h4')), text:[...a.querySelectorAll('li')].map(txt).join(' '), url:L.url+'#'+a.id}));
+    const data = {'@context':'https://schema.org','@type':'Recipe', name:L.name, description:L.description, inLanguage:L.inLanguage, url:L.url,
+      image:L.images, author:{'@type':'Person', name:'Jhonathan Sousa', url:'https://www.instagram.com/jhonsousa1/', sameAs:['https://www.instagram.com/jhonsousa1/']},
+      datePublished:'2026-10-01', prepTime:'PT3H', cookTime:'PT2M', totalTime:'PT52H', recipeYield:[String(R.n), fill(L.yield,{n:R.n})],
+      recipeCategory:L.category, recipeCuisine:L.cuisine, keywords:L.keywords, recipeIngredient:ing, recipeInstructions:steps};
+    const s = document.createElement('script'); s.type='application/ld+json'; s.id='ld-recipe'; s.textContent = JSON.stringify(data);
+    document.head.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>

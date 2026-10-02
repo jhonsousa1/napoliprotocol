@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "htmlLang": "it", "ogLocale": "it_IT", "label": "Italiano", "short": "IT",
+    "title": "Pizza Napoletana: ricetta e protocollo dell'impasto passo passo | NapoliProtocol",
+    "description": "Ricetta della pizza napoletana fatta in casa con prefermento, calcolatore dell'impasto, programma di 3 giorni e guida al forno in 14 passaggi. Di Jhonathan Sousa.",
+    "ogTitle": "Protocollo della Pizza Napoletana",
+    "imgAlt": "Protocollo della Pizza Napoletana, di Jhonathan Sousa",
+    "og": {"eyebrow": "Pizza napoletana in casa", "title": "Protocollo della Napoletana", "sub": "Ricetta, programma e forno in 14 passaggi, calibrati infornata dopo infornata.", "by": "di Jhonathan Sousa"}
+  },
+  "html": {
+    "nav.label": "Sezioni", "nav.recipe": "Ricetta", "nav.schedule": "Programma", "nav.steps": "Passo passo", "nav.oven": "Forno", "nav.rules": "Regole", "nav.progress": "Passaggi completati", "nav.lang": "Lingua",
+    "hero.preferment": "Prefermento", "hero.h1": "Protocollo della Pizza Napoletana", "hero.by": "di", "hero.version": "versione 1.0 · ottobre 2026",
+    "hero.lead": "Ricetta dell'impasto per pizza napoletana fatto a mano in tre giorni, calibrata sulla prima infornata. Regola i parametri; dosi, programma e istruzioni si ricalcolano. Comanda l'impasto, non l'orologio.",
+    "kpi.total": "Impasto totale", "kpi.hyd": "idratazione", "kpi.pizzas": "pizze da ~30–32 cm", "kpi.top": "Cielo del forno", "kpi.preheat": "preriscaldare 30–40 min", "kpi.bottom": "Platea del forno", "kpi.bottomSub": "regolazione principale in questa fase",
+    "panel.title": "Parametri", "panel.open": "Regola", "panel.batch": "Dimensione dell'infornata", "panel.calcBy": "Calcola per", "panel.byFlour": "Per farina", "panel.byPizza": "Per pizze",
+    "panel.flour": "Farina", "panel.pizzas": "N. di pizze", "panel.unit": "pz", "panel.ballW": "Peso del panetto", "panel.ref": "Riferimento",
+    "panel.formula": "Formula (% del panettiere)", "panel.hyd": "Idratazione", "panel.oil": "Olio d'oliva", "panel.yeast": "Lievito secco", "panel.pf": "Farina nel prefermento",
+    "panel.env": "Frigo e forno", "panel.fridge": "Frigorifero", "panel.top": "Resistenza superiore", "panel.bottom": "Resistenza inferiore",
+    "panel.toppings": "Condimento per pizza", "panel.sauce": "Pomodoro", "panel.reset": "Ripristina v1.0", "panel.clear": "Azzera passaggi",
+    "panel.note": "Valori predefiniti = versione 1.0, consolidata dopo la prima infornata. Restano salvati in questo browser.",
+    "recipe.h2": "Ricetta", "recipe.sub": "Dosi totali e come si dividono tra prefermento e impasto finale.",
+    "recipe.ing": "Ingrediente", "recipe.total": "Totale", "recipe.pf": "Prefermento", "recipe.pfShort": "Pref.", "recipe.final": "Impasto finale", "recipe.finalShort": "Finale", "recipe.dough": "Impasto",
+    "ing.flour": "Farina Caputo Pizzeria 00", "ing.water": "Acqua filtrata", "ing.yeast": "Lievito di birra secco", "ing.salt": "Sale", "ing.oil": "Olio extravergine d'oliva",
+    "recipe.waterEb": "Acqua dell'impasto finale", "recipe.waterH": "Divisione a mano", "recipe.wInit": "Impasto iniziale", "recipe.wSalt": "Per sciogliere il sale",
+    "recipe.divEb": "Staglio", "recipe.main": "Principale", "recipe.alt": "Alternativa", "recipe.target": "Pizza obiettivo",
+    "recipe.topEb": "Condimento", "recipe.forPre": "Per", "recipe.forPost": "pizze", "recipe.cans": "latta/e", "recipe.sauceTotal": "Pomodoro totale", "recipe.cheese": "Mozzarella sgocciolata",
+    "sched.h2": "Programma", "sched.sub": "Indica quando vuoi infornare. Il piano si calcola a ritroso; considera gli orari come riferimento.",
+    "sched.bake": "Infornare il", "sched.pfh": "Prefermento in frigo", "sched.panh": "Panetti in frigo", "sched.outh": "Fuori prima di infornare",
+    "steps.h2": "Passo passo", "steps.sub": "Spunta ogni passaggio quando l'hai concluso. Le etichette indicano l'origine: ricetta base, adattamento per la cucina di casa o lezione della 1ª infornata.",
+    "oven.h2": "Forno BIG HORN", "oven.sub": "Timer da banco e diagnosi dal risultato. La prima pizza di ogni sessione calibra il forno.",
+    "oven.timer": "Timer di cottura", "oven.reset": "Azzera", "oven.note": "Fascia arancione: 25–30 s, valuta se si può già girare di 180°. Fascia verde: 70–120 s, cottura prevista in questo forno.",
+    "oven.diag": "Diagnosi dal risultato", "oven.diagHint": "Scegli cosa hai notato sulla pizza.",
+    "rules.h2": "Regole della versione 1.0", "rules.sub": "Il collo di bottiglia ora non è l'impasto. È la calibrazione del calore e la tecnica di stesura e farcitura.",
+    "foot.sig": "Protocollo e pagina di", "foot.langs": "Lingue", "foot.rights": "tutti i diritti riservati"
+  },
+  "rules": [
+    "Non aumentare ancora l'idratazione.", "Non cambiare la Caputo Pizzeria.",
+    "Non impastare troppo. Usa riposi e pieghe.", "Il sale prima dell'olio.",
+    "Bassinage per l'ultima acqua.", "L'olio sempre per ultimo.",
+    "Se l'impasto è appiccicoso, niente farina in più.", "Non riformare i panetti prima di stenderli.",
+    "Non usare il mattarello.", "Non schiacciare il cornicione.",
+    "Togli la farina in eccesso dalla base.", "Poco pomodoro, poca mozzarella.",
+    "La pizza condita non aspetta sulla pala.", "Prova che scivoli prima di infornare.",
+    "Controlla cielo e platea separatamente.", "La prima pizza calibra la sessione.",
+    "Lascia recuperare la pietra tra una pizza e l'altra.", "Guarda l'impasto più dell'orologio.",
+    "Cambia una sola variabile rilevante alla volta.", "Prossima sessione: meno calore sotto, stessa ricetta."
+  ],
+  "glossary": [
+    ["Bassinage", "Tenere da parte una parte dell'acqua e incorporarla poco a poco quando il glutine ha iniziato a formarsi."],
+    ["Panetto", "Ogni singola pallina di impasto. Diventa una pizza. Plurale: panetti."],
+    ["Cornicione", "Il bordo alto e alveolato. Si preserva spingendo l'aria dal centro verso l'esterno."],
+    ["Laminazione", "Stendere l'impasto a rettangolo sul banco e ripiegarlo. Senza mattarello."],
+    ["Leopardatura", "Piccole macchie scure distribuite sul cornicione. Diverse dalle zone bruciate."],
+    ["Prefermento", "Farina, lo stesso peso d'acqua e tutto il lievito. Idratazione al 100%, simile a un poolish."]
+  ],
+  "js": {
+    "locale": "it-IT", "test": "prova", "panelSum": "{flour} g di farina · {hyd}% acqua · {top}/{bottom} °C",
+    "open": "Regola", "close": "Chiudi", "stepLabel": "PASSAGGIO", "done": "Fatto",
+    "src": {"d": "Ricetta base", "a": "Adattato", "l": "Lezione 1ª infornata"},
+    "svg": {"noPin": "niente mattarello · non strappare", "before": "prima", "ready": "pronto", "rim": "bordo libero 1–1,5 cm", "top": "CIELO", "stone": "PIETRA"},
+    "rel": {"d": "{d} g {h} h", "h": "{h} h {m}", "m": "{m} min"},
+    "sched": {
+      "empty": "Indica data e ora per infornare.", "next": "Prossimo", "in": "tra {rel}",
+      "past": "<b>Inizio nel passato.</b> Per infornare a quell'ora il prefermento doveva già essere avviato. Sposta la cottura o riduci i tempi in frigo.",
+      "over36": "<b>Panetti oltre 36 h.</b> Supera il massimo della ricetta base.",
+      "ev": [
+        ["Preparare il prefermento", "Passaggio 01. Impasto e 1 h a temperatura ambiente."],
+        ["Prefermento in frigo", "{pfh} h a {fridge} °C."],
+        ["Impasto finale", "Passaggi 02–07. Circa 2 h 30 di lavoro alternato a riposi."],
+        ["Staglio, pirlatura e frigo", "Passaggio 08. {panh} h in frigo."],
+        ["Tirare fuori i panetti", "Passaggio 09. Valuta la lievitazione; intanto prepara pomodoro e mozzarella."],
+        ["Accendere il forno", "Passaggio 11. {top} °C / {bottom} °C."],
+        ["Infornare", "Passaggi 12–14. La prima pizza calibra."]
+      ]
+    },
+    "warn": {
+      "hyd": "Idratazione diversa dal 64%. La versione 1.0 consiglia di non cambiarla ancora.",
+      "per": "Panetti da {per} g sono fuori dall'intervallo 260–280 g. Vedi l'alternativa o regola la farina.",
+      "bottom": "Una resistenza inferiore sopra i 390 °C ha bruciato la base alla 1ª infornata."
+    },
+    "timer": {
+      "idle": "Inforna la pizza e avvia.", "start": "Avvia", "pause": "Pausa", "resume": "Riprendi",
+      "msg": ["Lascia fissare la base.", "Verifica: si può già girare di 180°?", "Gira in base al colore. Osserva il cornicione.", "Finestra di cottura. Controlla base e superficie.", "Oltre 120 s. Se è ancora pallida, manca calore."]
+    },
+    "diag": [
+      ["La base brucia prima della superficie", "Abbassa la resistenza inferiore."],
+      ["Base troppo chiara", "Alza la resistenza inferiore."],
+      ["Base giusta, cornicione pallido", "Alza la resistenza superiore."],
+      ["La superficie brucia prima della base", "Abbassa la resistenza superiore."],
+      ["Tutto pallido", "Più calore o più tempo. Verifica che la pietra si sia ripresa e che il preriscaldamento sia arrivato a 30–40 min."],
+      ["Bel colore a ~80–100 s", "Mantieni le impostazioni e annota i valori."],
+      ["Puntini neri dal sapore amaro", "Probabile farina libera sulla base. Scuoti l'eccesso prima di infornare e pulisci la pietra."]
+    ],
+    "lower": "inferiore", "upper": "superiore",
+    "diagCur": "Attuale: {lbl} {cur} °C. Suggerimento per la prossima pizza: {nv}. Piccoli passi; cambia solo questa variabile.",
+    "apply": "Applica {v} °C", "applied": "Applicato",
+    "steps": [
+      {"day": "Giorno 1", "when": "sera", "items": [
+        {"id": "s1", "t": "Preparare il prefermento", "time": "10 min + 1 h a temperatura ambiente", "src": ["d","a"], "il": "pref", "li": [
+          "Mescola a secco {pfFlour} g di farina con {yeast} g di lievito.",
+          "Aggiungi {pfWater} g d'acqua e mescola fino a una pastella grossolana, senza farina secca.",
+          "Copri. Lascia 1 h a temperatura ambiente.",
+          "Metti in frigo ({fridge} °C) per circa {pfh} h."],
+          "tip": "La ricetta originale prevede 12–16 h a 12 °C. In un frigo più freddo, il tempo più lungo compensa. È pronto quando ha bolle, struttura interna e nessun segno di cedimento."}
+      ]},
+      {"day": "Giorno 2", "when": "impasto e staglio", "items": [
+        {"id": "s2", "t": "Impasto iniziale", "time": "~10 min + riposo", "src": ["a"], "il": "mix", "li": [
+          "Usa il prefermento appena tolto dal frigo, senza lasciarlo a lungo a temperatura ambiente.",
+          "Aggiungi {finFlour} g di farina e {initWater} g d'acqua.",
+          "Mescola finché tutta la farina è idratata. Non serve che sia liscio.",
+          "Copri e lascia riposare. Il tempo sviluppa il glutine al posto tuo."]},
+        {"id": "s3", "t": "Aggiungere il sale", "time": "~10 min", "src": ["a"], "il": "salt", "li": [
+          "Sciogli {salt} g di sale in {saltWater} g d'acqua.",
+          "Aggiungi la soluzione poco alla volta, con pizzicotti e pieghe.",
+          "Aspetta che ogni porzione venga assorbita prima della successiva."], "tip": "Il sale sempre prima dell'olio."},
+        {"id": "s4", "t": "Bassinage", "time": "~10 min", "src": ["d","a"], "il": "bass", "li": [
+          "Aggiungi i restanti {bassWater} g d'acqua in piccole porzioni.",
+          "Aggiungine altra solo quando l'impasto ha assorbito la precedente.",
+          "Se l'impasto diventa appiccicoso, non aggiungere farina."]},
+        {"id": "s5", "t": "Sviluppare il glutine", "time": "cicli di riposo + pieghe", "src": ["a","l"], "il": "fold", "li": [
+          "Alterna riposi e serie di pieghe, senza impastare con forza.",
+          "Fermati quando l'impasto è liscio, tondo, elastico e con la superficie in tensione."],
+          "tip": "Alla 1ª infornata, tempo e riposo hanno fatto quasi tutto il lavoro. Non inseguire un impasto perfettamente liscio impastando senza sosta."},
+        {"id": "s6", "t": "L'olio per ultimo", "time": "~10 min", "src": ["d"], "il": "oil", "li": [
+          "Con l'impasto già strutturato, aggiungi {oil} g d'olio poco alla volta.",
+          "Incorporalo con pizzicotti e pieghe fino a completo assorbimento."],
+          "tip": "L'impasto diventa scivoloso, lucido e sembra più debole. È normale. Non aggiungere farina."},
+        {"id": "s7", "t": "Riposo e laminazione", "time": "~1 h 30", "src": ["d","a"], "il": "lam", "li": [
+          "Riposo di 3–5 min.",
+          "Laminazione: stendi delicatamente l'impasto a rettangolo sul banco e ripiegalo su sé stesso. Senza mattarello e senza strapparlo.",
+          "Forma una palla. Riposo di 15 min.",
+          "Fai pieghe leggere e lascia riposare circa 1 h."]},
+        {"id": "s8", "t": "Staglio e pirlatura", "time": "~15 min", "src": ["d"], "il": "balls", "li": [
+          "Dividi in {n} panetti da {per} g (impasto totale {total} g).",
+          "Pirla dando tensione alla superficie e chiudi bene la base.",
+          "Contenitore coperto, in frigo per circa {panh} h."],
+          "tip": "Ricetta base: 24–36 h a 5 °C. A {fridge} °C la fermentazione è più rapida; valuta dall'aspetto."}
+      ]},
+      {"day": "Giorno 3", "when": "forno", "items": [
+        {"id": "s9", "t": "Acclimatare i panetti", "time": "~{outh} h fuori", "src": ["d","l"], "il": "proof", "li": [
+          "Tirali fuori dal frigo circa {outh} h prima di infornare (riferimento: ~26 °C).",
+          "Punto giusto: è cresciuto, tante bollicine piccole e qualcuna più grande, lati alveolati, mantiene la forma, nessun cedimento, rilassato.",
+          "In un contenitore da 1 L, il riferimento è che l'impasto arrivi a metà."],
+          "tip": "warn|Non ripirlare. Si perde il gas della fermentazione."},
+        {"id": "s10", "t": "Preparare pomodoro e mozzarella", "time": "~15 min", "src": ["l"], "il": "sauce", "li": [
+          "Schiaccia a mano {cans} latta/e di pelati (niente frullatore, niente cottura).",
+          "Sala con 4–5 g di sale per latta. Niente zucchero.",
+          "Taglia {cheeseTotal} g di mozzarella a pezzetti e lasciala sgocciolare."]},
+        {"id": "s11", "t": "Preriscaldare il BIG HORN", "time": "30–40 min", "src": ["l"], "il": "oven", "li": [
+          "Superiore a {top} °C, inferiore a {bottom} °C.",
+          "Se hai un termometro a infrarossi, misura il centro della pietra e annotalo."],
+          "tip": "warn|Alla 1ª infornata (inferiore ~390–410 °C) la base si è bruciata prima della superficie. Per questo la resistenza inferiore è stata abbassata."},
+        {"id": "s12", "t": "Stendere l'impasto", "time": "~1 min per pizza", "src": ["l"], "il": "open", "li": [
+          "Un panetto alla volta. Passalo leggermente nella farina.",
+          "Premi dal centro verso l'esterno con i polpastrelli, spingendo l'aria verso il bordo.",
+          "Lascia 1–1,5 cm di bordo senza premere. Alla 1ª infornata, 2 cm hanno reso il cornicione troppo spesso.",
+          "Completa a mano fino a ~30–32 cm. Senza mattarello."],
+          "tip": "warn|Scuoti la farina in eccesso dalla base. La farina libera sulla pietra brucia e diventa amara."},
+        {"id": "s13", "t": "Condire e infornare", "time": "30–60 s sulla pala", "src": ["l"], "il": "build", "li": [
+          "{sauce} g di pomodoro, {cheese} g di mozzarella distribuita, basilico e un filo d'olio.",
+          "Lascia zone di pomodoro scoperte.",
+          "Prima di infornare, fai un piccolo movimento laterale: la pizza deve scivolare tutta intera.",
+          "Prosciutto crudo e rucola vanno messi dopo la cottura."]},
+        {"id": "s14", "t": "Cuocere e girare", "time": "70–120 s", "src": ["l"], "il": "bake", "li": [
+          "A 25–30 s, controlla se ha abbastanza struttura per girarla di 180°.",
+          "Poi piccole rotazioni fino a un colore uniforme.",
+          "La prima pizza calibra il forno. Usa la diagnosi qui sotto.",
+          "Aspetta che la pietra si riprenda prima della pizza successiva."],
+          "tip": "Cerca puntini scuri piccoli e distribuiti sul cornicione, non zone nere."}
+      ]}
+    ],
+    "ld": {
+      "name": "Pizza napoletana fatta in casa con prefermento (protocollo di 3 giorni)",
+      "description": "Ricetta della pizza napoletana con farina Caputo Pizzeria 00, prefermento, idratazione al 64% e lunga lievitazione in frigo, con programma di 3 giorni e guida al forno.",
+      "yield": "{n} pizze da 30–32 cm", "category": "Pizza", "cuisine": "Italiana (napoletana)",
+      "keywords": "pizza napoletana, ricetta pizza napoletana, impasto pizza napoletana, prefermento, poolish, pizza fatta in casa, Caputo Pizzeria",
+      "toppings": ["{sauce} g di pelati schiacciati con sale", "{cheese} g di mozzarella", "Foglie di basilico", "Olio extravergine d'oliva q.b."]
+    }
+  }
+}

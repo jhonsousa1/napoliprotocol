@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NapoliProtocol · Neapolitan Pizza Protocol · Pizza Napolitana · Pizza Napoletana</title>
+<meta name="description" content="Neapolitan pizza recipe and step-by-step protocol in Portuguese, English, Spanish, Italian and Chinese. By Jhonathan Sousa.">
+<link rel="canonical" href="https://napoliprotocol.com/">
+<link rel="alternate" hreflang="pt" href="https://napoliprotocol.com/pt/">
+<link rel="alternate" hreflang="en" href="https://napoliprotocol.com/en/">
+<link rel="alternate" hreflang="es" href="https://napoliprotocol.com/es/">
+<link rel="alternate" hreflang="it" href="https://napoliprotocol.com/it/">
+<link rel="alternate" hreflang="zh-Hans" href="https://napoliprotocol.com/zh/">
+<link rel="alternate" hreflang="x-default" href="https://napoliprotocol.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website"><meta property="og:site_name" content="NapoliProtocol">
+<meta property="og:title" content="NapoliProtocol · Neapolitan Pizza Protocol"><meta property="og:url" content="https://napoliprotocol.com/">
+<meta property="og:image" content="https://napoliprotocol.com/img/og-en.png"><meta name="twitter:card" content="summary_large_image">
+<script>
+(function(){
+  var L=["pt", "en", "es", "it", "zh"], pick=null;
+  try{pick=localStorage.getItem('np-lang')}catch(e){}
+  if(L.indexOf(pick)<0){
+    var nav=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en']);
+    for(var i=0;i<nav.length&&!pick;i++){var c=String(nav[i]).toLowerCase().slice(0,2); if(L.indexOf(c)>=0) pick=c;}
+  }
+  location.replace('/'+(pick||'en')+'/');
+})();
+</script>
+<style>
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#F7F2E8;color:#2A2420;display:grid;place-items:center;min-height:100vh;padding:24px;box-sizing:border-box}
+main{max-width:520px;width:100%} h1{font-family:Georgia,serif;font-weight:400;font-size:32px;margin:0 0 20px}
+.stripe{height:4px;background:linear-gradient(90deg,#2F8A45 0 33.3%,#fff 33.3% 66.6%,#C8341F 66.6%);margin-bottom:24px;border-radius:2px}
+a{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;margin-bottom:8px;border:1px solid #E6DCCB;border-radius:10px;background:#FFFDF8;color:inherit;text-decoration:none}
+a:hover{border-color:#C8341F} a span{color:#6B6158}
+</style>
+</head>
+<body><main><div class="stripe"></div><h1>NapoliProtocol</h1><nav><a href="/pt/" hreflang="pt" lang="pt-BR" data-setlang="pt"><b>Protocolo da Pizza Napolitana</b><span>Português</span></a><a href="/en/" hreflang="en" lang="en" data-setlang="en"><b>Neapolitan Pizza Protocol</b><span>English</span></a><a href="/es/" hreflang="es" lang="es" data-setlang="es"><b>Protocolo de la Pizza Napolitana</b><span>Español</span></a><a href="/it/" hreflang="it" lang="it" data-setlang="it"><b>Protocollo della Pizza Napoletana</b><span>Italiano</span></a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans" data-setlang="zh"><b>那不勒斯披萨制作流程</b><span>中文</span></a></nav></main></body>
+</html>
