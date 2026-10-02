@@ -1,76 +1,225 @@
 {
   "meta": {
-    "htmlLang": "en", "ogLocale": "en_US", "label": "English", "short": "EN",
+    "htmlLang": "en",
+    "ogLocale": "en_US",
+    "label": "English",
+    "short": "EN",
     "title": "Neapolitan Pizza Recipe & Step-by-Step Dough Protocol | NapoliProtocol",
     "description": "Homemade Neapolitan pizza recipe with a preferment, dough calculator, 3-day schedule and oven guide in 14 steps. By Jhonathan Sousa.",
     "ogTitle": "Neapolitan Pizza Protocol",
     "imgAlt": "Neapolitan Pizza Protocol, by Jhonathan Sousa",
-    "og": {"eyebrow": "Neapolitan pizza at home", "title": "Neapolitan Pizza Protocol", "sub": "Recipe, schedule and oven in 14 steps, calibrated bake after bake.", "by": "by Jhonathan Sousa"}
+    "og": {
+      "eyebrow": "Neapolitan pizza at home",
+      "title": "Neapolitan Pizza Protocol",
+      "sub": "Recipe, schedule and oven in 14 steps, calibrated bake after bake.",
+      "by": "by Jhonathan Sousa"
+    }
   },
   "html": {
-    "nav.label": "Sections", "nav.recipe": "Recipe", "nav.schedule": "Schedule", "nav.steps": "Step by step", "nav.oven": "Oven", "nav.rules": "Rules", "nav.progress": "Steps completed", "nav.lang": "Language",
-    "hero.preferment": "Preferment", "hero.h1": "Neapolitan Pizza Protocol", "hero.by": "by", "hero.version": "version 1.0 · October 2026",
+    "nav.label": "Sections",
+    "nav.recipe": "Recipe",
+    "nav.schedule": "Schedule",
+    "nav.steps": "Step by step",
+    "nav.oven": "Oven",
+    "nav.rules": "Rules",
+    "nav.progress": "Steps completed",
+    "nav.lang": "Language",
+    "hero.preferment": "Preferment",
+    "hero.h1": "Neapolitan Pizza Protocol",
+    "hero.by": "by",
+    "hero.version": "version 1.0 · October 2026",
     "hero.lead": "A hand-made Neapolitan pizza dough recipe over three days, calibrated by the first bake. Adjust the parameters; quantities, schedule and instructions recalculate. The dough matters more than the clock.",
-    "kpi.total": "Total dough", "kpi.hyd": "hydration", "kpi.pizzas": "~30–32 cm (12\") pizzas", "kpi.top": "Top element", "kpi.preheat": "preheat 30–40 min", "kpi.bottom": "Bottom element", "kpi.bottomSub": "main adjustment at this stage",
-    "panel.title": "Parameters", "panel.open": "Adjust", "panel.batch": "Batch size", "panel.calcBy": "Calculate by", "panel.byFlour": "By flour", "panel.byPizza": "By pizzas",
-    "panel.flour": "Flour", "panel.pizzas": "No. of pizzas", "panel.unit": "pcs", "panel.ballW": "Dough ball weight", "panel.ref": "Reference",
-    "panel.formula": "Formula (baker's %)", "panel.hyd": "Hydration", "panel.oil": "Olive oil", "panel.yeast": "Dry yeast", "panel.pf": "Flour in preferment",
-    "panel.env": "Fridge and oven", "panel.fridge": "Fridge", "panel.top": "Top element", "panel.bottom": "Bottom element",
-    "panel.toppings": "Toppings per pizza", "panel.sauce": "Sauce", "panel.reset": "Restore v1.0", "panel.clear": "Clear steps",
+    "kpi.total": "Total dough",
+    "kpi.hyd": "hydration",
+    "kpi.pizzas": "~30–32 cm (12\") pizzas",
+    "kpi.top": "Top element",
+    "kpi.preheat": "preheat 30–40 min",
+    "kpi.bottom": "Bottom element",
+    "kpi.bottomSub": "main adjustment at this stage",
+    "panel.title": "Parameters",
+    "panel.open": "Adjust",
+    "panel.batch": "Batch size",
+    "panel.calcBy": "Calculate by",
+    "panel.byFlour": "By flour",
+    "panel.byPizza": "By pizzas",
+    "panel.flour": "Flour",
+    "panel.pizzas": "No. of pizzas",
+    "panel.unit": "pcs",
+    "panel.ballW": "Dough ball weight",
+    "panel.ref": "Reference",
+    "panel.formula": "Formula (baker's %)",
+    "panel.hyd": "Hydration",
+    "panel.oil": "Olive oil",
+    "panel.yeast": "Dry yeast",
+    "panel.pf": "Flour in preferment",
+    "panel.env": "Fridge and oven",
+    "panel.fridge": "Fridge",
+    "panel.top": "Top element",
+    "panel.bottom": "Bottom element",
+    "panel.toppings": "Toppings per pizza",
+    "panel.sauce": "Sauce",
+    "panel.reset": "Restore v1.0",
+    "panel.clear": "Clear steps",
     "panel.note": "Defaults = version 1.0, consolidated after the first bake. Your values are saved in this browser.",
-    "recipe.h2": "Recipe", "recipe.sub": "Total quantities and how they split between preferment and final dough.",
-    "recipe.ing": "Ingredient", "recipe.total": "Total", "recipe.pf": "Preferment", "recipe.pfShort": "Pref.", "recipe.final": "Final dough", "recipe.finalShort": "Final", "recipe.dough": "Dough",
-    "ing.flour": "Caputo Pizzeria 00 flour", "ing.water": "Filtered water", "ing.yeast": "Active dry yeast", "ing.salt": "Salt", "ing.oil": "Extra virgin olive oil",
-    "recipe.waterEb": "Final dough water", "recipe.waterH": "Hand-mixing split", "recipe.wInit": "Initial mix", "recipe.wSalt": "To dissolve the salt",
-    "recipe.divEb": "Division", "recipe.main": "Main", "recipe.alt": "Alternative", "recipe.target": "Target pizza",
-    "recipe.topEb": "Toppings", "recipe.forPre": "For", "recipe.forPost": "pizzas", "recipe.cans": "can(s)", "recipe.sauceTotal": "Total sauce", "recipe.cheese": "Drained mozzarella",
-    "sched.h2": "Schedule", "sched.sub": "Tell it when you want to bake. The plan is worked out backwards; treat the times as a guide.",
-    "sched.bake": "Bake at", "sched.pfh": "Preferment in fridge", "sched.panh": "Dough balls in fridge", "sched.outh": "Out before baking",
-    "steps.h2": "Step by step", "steps.sub": "Tick each step when done. Tags show the source: base recipe, adaptation for home baking, or a lesson from the first bake.",
-    "oven.h2": "BIG HORN oven", "oven.sub": "Bench timer and diagnosis by result. The first pizza of each session calibrates the oven.",
-    "oven.timer": "Bake timer", "oven.reset": "Reset", "oven.note": "Orange band: 25–30 s, check whether it can be turned 180°. Green band: 70–120 s, the expected window for this oven.",
-    "oven.diag": "Diagnosis by result", "oven.diagHint": "Pick what you saw on the pizza.",
-    "rules.h2": "Version 1.0 rules", "rules.sub": "The bottleneck right now isn't the dough. It's heat calibration and the technique for stretching and topping.",
-    "foot.sig": "Protocol and page by", "foot.langs": "Languages", "foot.rights": "all rights reserved"
+    "recipe.h2": "Recipe",
+    "recipe.sub": "Total quantities and how they split between preferment and final dough.",
+    "recipe.ing": "Ingredient",
+    "recipe.total": "Total",
+    "recipe.pf": "Preferment",
+    "recipe.pfShort": "Pref.",
+    "recipe.final": "Final dough",
+    "recipe.finalShort": "Final",
+    "recipe.dough": "Dough",
+    "ing.flour": "Caputo Pizzeria 00 flour",
+    "ing.water": "Filtered water",
+    "ing.yeast": "Active dry yeast",
+    "ing.salt": "Salt",
+    "ing.oil": "Extra virgin olive oil",
+    "recipe.waterEb": "Final dough water",
+    "recipe.waterH": "Hand-mixing split",
+    "recipe.wInit": "Initial mix",
+    "recipe.wSalt": "To dissolve the salt",
+    "recipe.divEb": "Division",
+    "recipe.main": "Main",
+    "recipe.alt": "Alternative",
+    "recipe.target": "Target pizza",
+    "recipe.topEb": "Toppings",
+    "recipe.forPre": "For",
+    "recipe.forPost": "pizzas",
+    "recipe.cans": "can(s)",
+    "recipe.sauceTotal": "Total sauce",
+    "recipe.cheese": "Drained mozzarella",
+    "sched.h2": "Schedule",
+    "sched.sub": "Tell it when you want to bake. The plan is worked out backwards; treat the times as a guide.",
+    "sched.bake": "Bake at",
+    "sched.pfh": "Preferment in fridge",
+    "sched.panh": "Dough balls in fridge",
+    "sched.outh": "Out before baking",
+    "steps.h2": "Step by step",
+    "steps.sub": "Tick each step when done. Tags show the source: base recipe, adaptation for home baking, or a lesson from the first bake.",
+    "oven.h2": "BIG HORN oven",
+    "oven.sub": "Bench timer and diagnosis by result. The first pizza of each session calibrates the oven.",
+    "oven.timer": "Bake timer",
+    "oven.reset": "Reset",
+    "oven.note": "Orange band: 25–30 s, check whether it can be turned 180°. Green band: 70–120 s, the expected window for this oven.",
+    "oven.diag": "Diagnosis by result",
+    "oven.diagHint": "Pick what you saw on the pizza.",
+    "rules.h2": "Version 1.0 rules",
+    "rules.sub": "The bottleneck right now isn't the dough. It's heat calibration and the technique for stretching and topping.",
+    "foot.sig": "Protocol and page by",
+    "foot.langs": "Languages",
+    "foot.rights": "all rights reserved",
+    "nav.about": "About"
   },
   "rules": [
-    "Don't raise the hydration yet.", "Don't swap out the Caputo Pizzeria flour.",
-    "Don't over-knead. Use rest and folds.", "Salt before oil.",
-    "Use bassinage for the last of the water.", "Oil always goes in last.",
-    "Sticky dough during mixing gets no extra flour.", "Don't re-ball the dough before stretching.",
-    "Don't use a rolling pin.", "Don't press the cornicione.",
-    "Knock excess flour off the base.", "Light on sauce, light on cheese.",
-    "A topped pizza doesn't wait on the peel.", "Check that it slides before launching.",
-    "Control top and stone separately.", "The first pizza calibrates the session.",
-    "Let the stone recover between pizzas.", "Watch the dough more than the clock.",
-    "Change one relevant variable at a time.", "Next session: less heat underneath, same recipe."
+    "Don't raise the hydration yet.",
+    "Don't swap out the Caputo Pizzeria flour.",
+    "Don't over-knead. Use rest and folds.",
+    "Salt before oil.",
+    "Use bassinage for the last of the water.",
+    "Oil always goes in last.",
+    "Sticky dough during mixing gets no extra flour.",
+    "Don't re-ball the dough before stretching.",
+    "Don't use a rolling pin.",
+    "Don't press the cornicione.",
+    "Knock excess flour off the base.",
+    "Light on sauce, light on cheese.",
+    "A topped pizza doesn't wait on the peel.",
+    "Check that it slides before launching.",
+    "Control top and stone separately.",
+    "The first pizza calibrates the session.",
+    "Let the stone recover between pizzas.",
+    "Watch the dough more than the clock.",
+    "Change one relevant variable at a time.",
+    "Next session: less heat underneath, same recipe."
   ],
   "glossary": [
-    ["Bassinage", "Holding back part of the water and working it in gradually once the gluten has started to form."],
-    ["Panetto", "Each individual dough ball. It becomes one pizza. Plural: panetti."],
-    ["Cornicione", "The raised, airy rim. Preserved by pushing the gas from the centre outwards."],
-    ["Lamination", "Stretching the dough into a rectangle on the bench and folding it. No rolling pin."],
-    ["Leopard spotting", "Small dark spots spread across the cornicione. Not the same as charred patches."],
-    ["Preferment", "Flour, the same weight of water and all the yeast. 100% hydration, close to a poolish."]
+    [
+      "Bassinage",
+      "Holding back part of the water and working it in gradually once the gluten has started to form."
+    ],
+    [
+      "Panetto",
+      "Each individual dough ball. It becomes one pizza. Plural: panetti."
+    ],
+    [
+      "Cornicione",
+      "The raised, airy rim. Preserved by pushing the gas from the centre outwards."
+    ],
+    [
+      "Lamination",
+      "Stretching the dough into a rectangle on the bench and folding it. No rolling pin."
+    ],
+    [
+      "Leopard spotting",
+      "Small dark spots spread across the cornicione. Not the same as charred patches."
+    ],
+    [
+      "Preferment",
+      "Flour, the same weight of water and all the yeast. 100% hydration, close to a poolish."
+    ]
   ],
   "js": {
-    "locale": "en-US", "test": "test", "panelSum": "{flour} g flour · {hyd}% water · {top}/{bottom} °C",
-    "open": "Adjust", "close": "Close", "stepLabel": "STEP", "done": "Done",
-    "src": {"d": "Base recipe", "a": "Adapted", "l": "1st bake lesson"},
-    "svg": {"noPin": "no rolling pin · no tearing", "before": "before", "ready": "ready", "rim": "free rim 1–1.5 cm", "top": "TOP", "stone": "STONE"},
-    "rel": {"d": "{d} d {h} h", "h": "{h} h {m}", "m": "{m} min"},
+    "locale": "en-US",
+    "test": "test",
+    "panelSum": "{flour} g flour · {hyd}% water · {top}/{bottom} °C",
+    "open": "Adjust",
+    "close": "Close",
+    "stepLabel": "STEP",
+    "done": "Done",
+    "src": {
+      "d": "Base recipe",
+      "a": "Adapted",
+      "l": "1st bake lesson"
+    },
+    "svg": {
+      "noPin": "no rolling pin · no tearing",
+      "before": "before",
+      "ready": "ready",
+      "rim": "free rim 1–1.5 cm",
+      "top": "TOP",
+      "stone": "STONE"
+    },
+    "rel": {
+      "d": "{d} d {h} h",
+      "h": "{h} h {m}",
+      "m": "{m} min"
+    },
     "sched": {
-      "empty": "Enter a date and time to bake.", "next": "Next", "in": "in {rel}",
+      "empty": "Enter a date and time to bake.",
+      "next": "Next",
+      "in": "in {rel}",
       "past": "<b>Start is in the past.</b> To bake at that time, the preferment should already have been started. Push the bake back or shorten the fridge times.",
       "over36": "<b>Dough balls over 36 h.</b> That's beyond the base recipe's maximum.",
       "ev": [
-        ["Make the preferment", "Step 01. Mix and leave 1 h at room temperature."],
-        ["Preferment into the fridge", "{pfh} h at {fridge} °C."],
-        ["Final mix", "Steps 02–07. About 2 h 30 of work broken up by rests."],
-        ["Divide, ball and refrigerate", "Step 08. {panh} h in the fridge."],
-        ["Take out the dough balls", "Step 09. Check the proof; make the sauce and cheese meanwhile."],
-        ["Turn on the oven", "Step 11. {top} °C / {bottom} °C."],
-        ["Bake", "Steps 12–14. The first pizza calibrates."]
+        [
+          "Make the preferment",
+          "Step 01. Mix and leave 1 h at room temperature."
+        ],
+        [
+          "Preferment into the fridge",
+          "{pfh} h at {fridge} °C."
+        ],
+        [
+          "Final mix",
+          "Steps 02–07. About 2 h 30 of work broken up by rests."
+        ],
+        [
+          "Divide, ball and refrigerate",
+          "Step 08. {panh} h in the fridge."
+        ],
+        [
+          "Take out the dough balls",
+          "Step 09. Check the proof; make the sauce and cheese meanwhile."
+        ],
+        [
+          "Turn on the oven",
+          "Step 11. {top} °C / {bottom} °C."
+        ],
+        [
+          "Bake",
+          "Steps 12–14. The first pizza calibrates."
+        ]
       ]
     },
     "warn": {
@@ -79,102 +228,335 @@
       "bottom": "A bottom element above 390 °C burned the base on the first bake."
     },
     "timer": {
-      "idle": "Launch the pizza and start.", "start": "Start", "pause": "Pause", "resume": "Resume",
-      "msg": ["Let the base set.", "Check: can you turn it 180° yet?", "Turn according to colour. Watch the cornicione.", "Done window. Check base and top.", "Past 120 s. If it's still pale, it needs more heat."]
+      "idle": "Launch the pizza and start.",
+      "start": "Start",
+      "pause": "Pause",
+      "resume": "Resume",
+      "msg": [
+        "Let the base set.",
+        "Check: can you turn it 180° yet?",
+        "Turn according to colour. Watch the cornicione.",
+        "Done window. Check base and top.",
+        "Past 120 s. If it's still pale, it needs more heat."
+      ]
     },
     "diag": [
-      ["Base burns before the top", "Lower the bottom element."],
-      ["Base too pale", "Raise the bottom element."],
-      ["Good base, pale cornicione", "Raise the top element."],
-      ["Top burns before the base", "Lower the top element."],
-      ["Everything pale", "Add heat or time. Check that the stone has recovered and that the preheat reached 30–40 min."],
-      ["Good colour at ~80–100 s", "Keep the settings and write the values down."],
-      ["Black spots with a bitter taste", "Probably loose flour on the base. Knock off the excess before launching and clean the stone."]
+      [
+        "Base burns before the top",
+        "Lower the bottom element."
+      ],
+      [
+        "Base too pale",
+        "Raise the bottom element."
+      ],
+      [
+        "Good base, pale cornicione",
+        "Raise the top element."
+      ],
+      [
+        "Top burns before the base",
+        "Lower the top element."
+      ],
+      [
+        "Everything pale",
+        "Add heat or time. Check that the stone has recovered and that the preheat reached 30–40 min."
+      ],
+      [
+        "Good colour at ~80–100 s",
+        "Keep the settings and write the values down."
+      ],
+      [
+        "Black spots with a bitter taste",
+        "Probably loose flour on the base. Knock off the excess before launching and clean the stone."
+      ]
     ],
-    "lower": "bottom", "upper": "top",
+    "lower": "bottom",
+    "upper": "top",
     "diagCur": "Current: {lbl} {cur} °C. Suggestion for the next pizza: {nv}. Small steps; change only this variable.",
-    "apply": "Apply {v} °C", "applied": "Applied",
+    "apply": "Apply {v} °C",
+    "applied": "Applied",
     "steps": [
-      {"day": "Day 1", "when": "evening", "items": [
-        {"id": "s1", "t": "Make the preferment", "time": "10 min + 1 h at room temp", "src": ["d","a"], "il": "pref", "li": [
-          "Dry-mix {pfFlour} g of flour with {yeast} g of yeast.",
-          "Add {pfWater} g of water and stir into a rough paste with no dry flour left.",
-          "Cover. Leave 1 h at room temperature.",
-          "Refrigerate ({fridge} °C) for about {pfh} h."],
-          "tip": "The original recipe calls for 12–16 h at 12 °C. In a colder fridge, the longer time makes up for it. Ready when it's bubbly, has internal structure and shows no sign of collapse."}
-      ]},
-      {"day": "Day 2", "when": "mixing and dividing", "items": [
-        {"id": "s2", "t": "Initial mix", "time": "~10 min + rest", "src": ["a"], "il": "mix", "li": [
-          "Use the preferment straight from the fridge, without a long warm-up.",
-          "Add {finFlour} g of flour and {initWater} g of water.",
-          "Mix until all the flour is hydrated. It doesn't need to be smooth.",
-          "Cover and rest. Time develops the gluten for you."]},
-        {"id": "s3", "t": "Add the salt", "time": "~10 min", "src": ["a"], "il": "salt", "li": [
-          "Dissolve {salt} g of salt in {saltWater} g of water.",
-          "Add the solution little by little, using pincer movements and folds.",
-          "Wait for each portion to be absorbed before the next."], "tip": "Salt always goes in before the oil."},
-        {"id": "s4", "t": "Bassinage", "time": "~10 min", "src": ["d","a"], "il": "bass", "li": [
-          "Add the remaining {bassWater} g of water in small portions.",
-          "Only add more once the dough has absorbed the previous one.",
-          "If the dough gets sticky, don't add flour."]},
-        {"id": "s5", "t": "Develop the gluten", "time": "cycles of rest + folds", "src": ["a","l"], "il": "fold", "li": [
-          "Alternate rests and sets of folds, without aggressive kneading.",
-          "Stop when the dough is smooth, rounded, elastic and has surface tension."],
-          "tip": "On the first bake, time and rest did most of the work. Don't chase a perfectly smooth dough with non-stop kneading."},
-        {"id": "s6", "t": "Oil last", "time": "~10 min", "src": ["d"], "il": "oil", "li": [
-          "With the dough already structured, add {oil} g of olive oil a little at a time.",
-          "Work it in with pincers and folds until fully absorbed."],
-          "tip": "The dough turns slippery and shiny and seems weaker. That's normal. Don't add flour."},
-        {"id": "s7", "t": "Post-oil rest and lamination", "time": "~1 h 30", "src": ["d","a"], "il": "lam", "li": [
-          "Rest 3–5 min.",
-          "Lamination: gently stretch the dough into a rectangle on the bench and fold it over itself. No rolling pin, no tearing.",
-          "Shape into a ball. Rest 15 min.",
-          "Do gentle folds and rest for about 1 h."]},
-        {"id": "s8", "t": "Divide and ball", "time": "~15 min", "src": ["d"], "il": "balls", "li": [
-          "Divide into {n} dough balls of {per} g (total dough {total} g).",
-          "Ball with surface tension and seal the base well.",
-          "Covered container, in the fridge for about {panh} h."],
-          "tip": "Base recipe: 24–36 h at 5 °C. At {fridge} °C fermentation moves faster; judge by appearance."}
-      ]},
-      {"day": "Day 3", "when": "oven", "items": [
-        {"id": "s9", "t": "Temper the dough balls", "time": "~{outh} h out", "src": ["d","l"], "il": "proof", "li": [
-          "Take them out of the fridge about {outh} h before baking (reference: ~26 °C).",
-          "Ready when: risen, lots of small bubbles and a few bigger ones, airy sides, holds its shape, no collapse, relaxed.",
-          "In a 1 L tub, the reference is the dough reaching halfway."],
-          "tip": "warn|Don't re-ball. It knocks out the fermentation gas."},
-        {"id": "s10", "t": "Prepare sauce and cheese", "time": "~15 min", "src": ["l"], "il": "sauce", "li": [
-          "Crush {cans} can(s) of peeled tomatoes by hand (no blender, no cooking).",
-          "Season with 4–5 g of salt per can. No sugar.",
-          "Cut {cheeseTotal} g of mozzarella into small pieces and let it drain."]},
-        {"id": "s11", "t": "Preheat the BIG HORN", "time": "30–40 min", "src": ["l"], "il": "oven", "li": [
-          "Top element at {top} °C, bottom element at {bottom} °C.",
-          "If you have an infrared thermometer, measure the centre of the stone and note it down."],
-          "tip": "warn|On the first bake (bottom ~390–410 °C) the base charred before the top was done. That's why the bottom was lowered."},
-        {"id": "s12", "t": "Stretch the dough", "time": "~1 min per pizza", "src": ["l"], "il": "open", "li": [
-          "One dough ball at a time. Dip it lightly in flour.",
-          "Press from the centre outwards with your fingertips, pushing the gas towards the rim.",
-          "Leave a 1–1.5 cm rim unpressed. On the first bake, 2 cm made the cornicione too thick.",
-          "Finish by hand to ~30–32 cm. No rolling pin."],
-          "tip": "warn|Knock the excess flour off the base. Loose flour on the stone burns and turns bitter."},
-        {"id": "s13", "t": "Top and launch", "time": "30–60 s on the peel", "src": ["l"], "il": "build", "li": [
-          "{sauce} g of sauce, {cheese} g of mozzarella spaced out, basil and a drizzle of olive oil.",
-          "Leave patches of tomato showing.",
-          "Before launching, give it a small sideways shake: the whole pizza must slide.",
-          "Prosciutto and rocket go on after the oven."]},
-        {"id": "s14", "t": "Bake and turn", "time": "70–120 s", "src": ["l"], "il": "bake", "li": [
-          "At 25–30 s, check whether it has enough structure to turn 180°.",
-          "Then make small turns until the colour is even.",
-          "The first pizza calibrates the oven. Use the diagnosis below.",
-          "Let the stone recover before the next pizza."],
-          "tip": "Look for small dark spots spread across the cornicione, not black patches."}
-      ]}
+      {
+        "day": "Day 1",
+        "when": "evening",
+        "items": [
+          {
+            "id": "s1",
+            "t": "Make the preferment",
+            "time": "10 min + 1 h at room temp",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "pref",
+            "li": [
+              "Dry-mix {pfFlour} g of flour with {yeast} g of yeast.",
+              "Add {pfWater} g of water and stir into a rough paste with no dry flour left.",
+              "Cover. Leave 1 h at room temperature.",
+              "Refrigerate ({fridge} °C) for about {pfh} h."
+            ],
+            "tip": "The original recipe calls for 12–16 h at 12 °C. In a colder fridge, the longer time makes up for it. Ready when it's bubbly, has internal structure and shows no sign of collapse."
+          }
+        ]
+      },
+      {
+        "day": "Day 2",
+        "when": "mixing and dividing",
+        "items": [
+          {
+            "id": "s2",
+            "t": "Initial mix",
+            "time": "~10 min + rest",
+            "src": [
+              "a"
+            ],
+            "il": "mix",
+            "li": [
+              "Use the preferment straight from the fridge, without a long warm-up.",
+              "Add {finFlour} g of flour and {initWater} g of water.",
+              "Mix until all the flour is hydrated. It doesn't need to be smooth.",
+              "Cover and rest. Time develops the gluten for you."
+            ]
+          },
+          {
+            "id": "s3",
+            "t": "Add the salt",
+            "time": "~10 min",
+            "src": [
+              "a"
+            ],
+            "il": "salt",
+            "li": [
+              "Dissolve {salt} g of salt in {saltWater} g of water.",
+              "Add the solution little by little, using pincer movements and folds.",
+              "Wait for each portion to be absorbed before the next."
+            ],
+            "tip": "Salt always goes in before the oil."
+          },
+          {
+            "id": "s4",
+            "t": "Bassinage",
+            "time": "~10 min",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "bass",
+            "li": [
+              "Add the remaining {bassWater} g of water in small portions.",
+              "Only add more once the dough has absorbed the previous one.",
+              "If the dough gets sticky, don't add flour."
+            ]
+          },
+          {
+            "id": "s5",
+            "t": "Develop the gluten",
+            "time": "cycles of rest + folds",
+            "src": [
+              "a",
+              "l"
+            ],
+            "il": "fold",
+            "li": [
+              "Alternate rests and sets of folds, without aggressive kneading.",
+              "Stop when the dough is smooth, rounded, elastic and has surface tension."
+            ],
+            "tip": "On the first bake, time and rest did most of the work. Don't chase a perfectly smooth dough with non-stop kneading."
+          },
+          {
+            "id": "s6",
+            "t": "Oil last",
+            "time": "~10 min",
+            "src": [
+              "d"
+            ],
+            "il": "oil",
+            "li": [
+              "With the dough already structured, add {oil} g of olive oil a little at a time.",
+              "Work it in with pincers and folds until fully absorbed."
+            ],
+            "tip": "The dough turns slippery and shiny and seems weaker. That's normal. Don't add flour."
+          },
+          {
+            "id": "s7",
+            "t": "Post-oil rest and lamination",
+            "time": "~1 h 30",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "lam",
+            "li": [
+              "Rest 3–5 min.",
+              "Lamination: gently stretch the dough into a rectangle on the bench and fold it over itself. No rolling pin, no tearing.",
+              "Shape into a ball. Rest 15 min.",
+              "Do gentle folds and rest for about 1 h."
+            ]
+          },
+          {
+            "id": "s8",
+            "t": "Divide and ball",
+            "time": "~15 min",
+            "src": [
+              "d"
+            ],
+            "il": "balls",
+            "li": [
+              "Divide into {n} dough balls of {per} g (total dough {total} g).",
+              "Ball with surface tension and seal the base well.",
+              "Covered container, in the fridge for about {panh} h."
+            ],
+            "tip": "Base recipe: 24–36 h at 5 °C. At {fridge} °C fermentation moves faster; judge by appearance."
+          }
+        ]
+      },
+      {
+        "day": "Day 3",
+        "when": "oven",
+        "items": [
+          {
+            "id": "s9",
+            "t": "Temper the dough balls",
+            "time": "~{outh} h out",
+            "src": [
+              "d",
+              "l"
+            ],
+            "il": "proof",
+            "li": [
+              "Take them out of the fridge about {outh} h before baking (reference: ~26 °C).",
+              "Ready when: risen, lots of small bubbles and a few bigger ones, airy sides, holds its shape, no collapse, relaxed.",
+              "In a 1 L tub, the reference is the dough reaching halfway."
+            ],
+            "tip": "warn|Don't re-ball. It knocks out the fermentation gas."
+          },
+          {
+            "id": "s10",
+            "t": "Prepare sauce and cheese",
+            "time": "~15 min",
+            "src": [
+              "l"
+            ],
+            "il": "sauce",
+            "li": [
+              "Crush {cans} can(s) of peeled tomatoes by hand (no blender, no cooking).",
+              "Season with 4–5 g of salt per can. No sugar.",
+              "Cut {cheeseTotal} g of mozzarella into small pieces and let it drain."
+            ]
+          },
+          {
+            "id": "s11",
+            "t": "Preheat the BIG HORN",
+            "time": "30–40 min",
+            "src": [
+              "l"
+            ],
+            "il": "oven",
+            "li": [
+              "Top element at {top} °C, bottom element at {bottom} °C.",
+              "If you have an infrared thermometer, measure the centre of the stone and note it down."
+            ],
+            "tip": "warn|On the first bake (bottom ~390–410 °C) the base charred before the top was done. That's why the bottom was lowered."
+          },
+          {
+            "id": "s12",
+            "t": "Stretch the dough",
+            "time": "~1 min per pizza",
+            "src": [
+              "l"
+            ],
+            "il": "open",
+            "li": [
+              "One dough ball at a time. Dip it lightly in flour.",
+              "Press from the centre outwards with your fingertips, pushing the gas towards the rim.",
+              "Leave a 1–1.5 cm rim unpressed. On the first bake, 2 cm made the cornicione too thick.",
+              "Finish by hand to ~30–32 cm. No rolling pin."
+            ],
+            "tip": "warn|Knock the excess flour off the base. Loose flour on the stone burns and turns bitter."
+          },
+          {
+            "id": "s13",
+            "t": "Top and launch",
+            "time": "30–60 s on the peel",
+            "src": [
+              "l"
+            ],
+            "il": "build",
+            "li": [
+              "{sauce} g of sauce, {cheese} g of mozzarella spaced out, basil and a drizzle of olive oil.",
+              "Leave patches of tomato showing.",
+              "Before launching, give it a small sideways shake: the whole pizza must slide.",
+              "Prosciutto and rocket go on after the oven."
+            ]
+          },
+          {
+            "id": "s14",
+            "t": "Bake and turn",
+            "time": "70–120 s",
+            "src": [
+              "l"
+            ],
+            "il": "bake",
+            "li": [
+              "At 25–30 s, check whether it has enough structure to turn 180°.",
+              "Then make small turns until the colour is even.",
+              "The first pizza calibrates the oven. Use the diagnosis below.",
+              "Let the stone recover before the next pizza."
+            ],
+            "tip": "Look for small dark spots spread across the cornicione, not black patches."
+          }
+        ]
+      }
     ],
     "ld": {
       "name": "Homemade Neapolitan pizza with preferment (3-day protocol)",
       "description": "Neapolitan pizza recipe with Caputo Pizzeria 00 flour, a preferment, 64% hydration and long cold fermentation, with a 3-day schedule and oven guide.",
-      "yield": "{n} pizzas, 30–32 cm", "category": "Pizza", "cuisine": "Italian (Neapolitan)",
+      "yield": "{n} pizzas, 30–32 cm",
+      "category": "Pizza",
+      "cuisine": "Italian (Neapolitan)",
       "keywords": "neapolitan pizza, neapolitan pizza recipe, neapolitan pizza dough, pizza napoletana, preferment, poolish, homemade pizza, Caputo Pizzeria",
-      "toppings": ["{sauce} g crushed peeled tomatoes with salt", "{cheese} g mozzarella", "Fresh basil leaves", "Extra virgin olive oil to taste"]
+      "toppings": [
+        "{sauce} g crushed peeled tomatoes with salt",
+        "{cheese} g mozzarella",
+        "Fresh basil leaves",
+        "Extra virgin olive oil to taste"
+      ]
     }
+  },
+  "about": {
+    "h2": "About NapoliProtocol",
+    "sub": "What this site is, and where the pizza it teaches comes from.",
+    "siteEb": "The project",
+    "siteH": "An open bench notebook",
+    "site": [
+      "NapoliProtocol is the record of a real process: the pursuit of a true Neapolitan pizza made at home, without a wood-fired oven. Every number in the recipe, every step and every rule came from bakes that were tested, logged and corrected.",
+      "Instead of a fixed recipe, the page works as a tool. You enter the flour or number of pizzas, your fridge temperature and when you want to bake, and it recalculates quantities, schedule and instructions. The tags on each step show what comes from the base recipe, what was adapted and what was learned the hard way.",
+      "Created by Jhonathan Sousa. It's an independent project with no sponsorship: the brands mentioned (flour, tomatoes, oven) are simply the ones used in testing."
+    ],
+    "pizzaEb": "Neapolitan pizza",
+    "pizzaH": "A heritage of Naples",
+    "pizza": [
+      "Neapolitan pizza was born on the streets of Naples between the 18th and 19th centuries as cheap, popular food ready in minutes. Tradition says that in 1889 the pizzaiolo Raffaele Esposito honoured Queen Margherita with a pizza in the colours of Italy: tomato, mozzarella and basil. The Margherita was born.",
+      "What defines Neapolitan pizza is the dough: just wheat flour, water, salt and yeast, stretched by hand with no rolling pin. Baked for 60 to 90 seconds in a very hot oven, around 430–480 °C, it stays soft and elastic in the centre, with a tall, airy cornicione marked by small dark spots.",
+      "In 2010 the European Union registered it as a Traditional Speciality Guaranteed (TSG), and in 2017 UNESCO inscribed the art of the Neapolitan pizzaiuolo as Intangible Cultural Heritage of Humanity. At home, ovens rarely reach those temperatures, and closing that gap is exactly what this protocol is about."
+    ],
+    "facts": [
+      [
+        "1889",
+        "the Margherita is born"
+      ],
+      [
+        "430–480 °C",
+        "traditional oven"
+      ],
+      [
+        "2010",
+        "EU Traditional Speciality"
+      ],
+      [
+        "2017",
+        "the pizzaiuolo's art at UNESCO"
+      ]
+    ]
   }
 }

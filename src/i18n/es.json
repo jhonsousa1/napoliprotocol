@@ -1,76 +1,225 @@
 {
   "meta": {
-    "htmlLang": "es", "ogLocale": "es_ES", "label": "Español", "short": "ES",
+    "htmlLang": "es",
+    "ogLocale": "es_ES",
+    "label": "Español",
+    "short": "ES",
     "title": "Pizza Napolitana: receta y protocolo paso a paso de la masa | NapoliProtocol",
     "description": "Receta de pizza napolitana casera con prefermento, calculadora de masa, cronograma de 3 días y guía de horno en 14 pasos. Por Jhonathan Sousa.",
     "ogTitle": "Protocolo de la Pizza Napolitana",
     "imgAlt": "Protocolo de la Pizza Napolitana, por Jhonathan Sousa",
-    "og": {"eyebrow": "Pizza napolitana en casa", "title": "Protocolo de la Napolitana", "sub": "Receta, cronograma y horno en 14 pasos, calibrados horneada tras horneada.", "by": "por Jhonathan Sousa"}
+    "og": {
+      "eyebrow": "Pizza napolitana en casa",
+      "title": "Protocolo de la Napolitana",
+      "sub": "Receta, cronograma y horno en 14 pasos, calibrados horneada tras horneada.",
+      "by": "por Jhonathan Sousa"
+    }
   },
   "html": {
-    "nav.label": "Secciones", "nav.recipe": "Receta", "nav.schedule": "Cronograma", "nav.steps": "Paso a paso", "nav.oven": "Horno", "nav.rules": "Reglas", "nav.progress": "Pasos completados", "nav.lang": "Idioma",
-    "hero.preferment": "Prefermento", "hero.h1": "Protocolo de la Pizza Napolitana", "hero.by": "por", "hero.version": "versión 1.0 · octubre 2026",
+    "nav.label": "Secciones",
+    "nav.recipe": "Receta",
+    "nav.schedule": "Cronograma",
+    "nav.steps": "Paso a paso",
+    "nav.oven": "Horno",
+    "nav.rules": "Reglas",
+    "nav.progress": "Pasos completados",
+    "nav.lang": "Idioma",
+    "hero.preferment": "Prefermento",
+    "hero.h1": "Protocolo de la Pizza Napolitana",
+    "hero.by": "por",
+    "hero.version": "versión 1.0 · octubre 2026",
     "hero.lead": "Receta de masa de pizza napolitana hecha a mano en tres días, calibrada con la primera horneada. Ajusta los parámetros; cantidades, cronograma e instrucciones se recalculan. La masa manda más que el reloj.",
-    "kpi.total": "Masa total", "kpi.hyd": "hidratación", "kpi.pizzas": "pizzas de ~30–32 cm", "kpi.top": "Horno superior", "kpi.preheat": "precalentar 30–40 min", "kpi.bottom": "Horno inferior", "kpi.bottomSub": "principal ajuste en esta fase",
-    "panel.title": "Parámetros", "panel.open": "Ajustar", "panel.batch": "Tamaño de la tanda", "panel.calcBy": "Calcular por", "panel.byFlour": "Por harina", "panel.byPizza": "Por pizzas",
-    "panel.flour": "Harina", "panel.pizzas": "N.º de pizzas", "panel.unit": "ud", "panel.ballW": "Peso del bollo", "panel.ref": "Referencia",
-    "panel.formula": "Fórmula (% panadero)", "panel.hyd": "Hidratación", "panel.oil": "Aceite de oliva", "panel.yeast": "Levadura seca", "panel.pf": "Harina en el prefermento",
-    "panel.env": "Nevera y horno", "panel.fridge": "Nevera", "panel.top": "Resistencia superior", "panel.bottom": "Resistencia inferior",
-    "panel.toppings": "Ingredientes por pizza", "panel.sauce": "Salsa", "panel.reset": "Restaurar v1.0", "panel.clear": "Borrar pasos",
+    "kpi.total": "Masa total",
+    "kpi.hyd": "hidratación",
+    "kpi.pizzas": "pizzas de ~30–32 cm",
+    "kpi.top": "Horno superior",
+    "kpi.preheat": "precalentar 30–40 min",
+    "kpi.bottom": "Horno inferior",
+    "kpi.bottomSub": "principal ajuste en esta fase",
+    "panel.title": "Parámetros",
+    "panel.open": "Ajustar",
+    "panel.batch": "Tamaño de la tanda",
+    "panel.calcBy": "Calcular por",
+    "panel.byFlour": "Por harina",
+    "panel.byPizza": "Por pizzas",
+    "panel.flour": "Harina",
+    "panel.pizzas": "N.º de pizzas",
+    "panel.unit": "ud",
+    "panel.ballW": "Peso del bollo",
+    "panel.ref": "Referencia",
+    "panel.formula": "Fórmula (% panadero)",
+    "panel.hyd": "Hidratación",
+    "panel.oil": "Aceite de oliva",
+    "panel.yeast": "Levadura seca",
+    "panel.pf": "Harina en el prefermento",
+    "panel.env": "Nevera y horno",
+    "panel.fridge": "Nevera",
+    "panel.top": "Resistencia superior",
+    "panel.bottom": "Resistencia inferior",
+    "panel.toppings": "Ingredientes por pizza",
+    "panel.sauce": "Salsa",
+    "panel.reset": "Restaurar v1.0",
+    "panel.clear": "Borrar pasos",
     "panel.note": "Valores por defecto = versión 1.0, consolidada tras la primera horneada. Se guardan en este navegador.",
-    "recipe.h2": "Receta", "recipe.sub": "Cantidades totales y cómo se reparten entre prefermento y masa final.",
-    "recipe.ing": "Ingrediente", "recipe.total": "Total", "recipe.pf": "Prefermento", "recipe.pfShort": "Pref.", "recipe.final": "Masa final", "recipe.finalShort": "Final", "recipe.dough": "Masa",
-    "ing.flour": "Harina Caputo Pizzeria 00", "ing.water": "Agua filtrada", "ing.yeast": "Levadura seca de panadería", "ing.salt": "Sal", "ing.oil": "Aceite de oliva virgen extra",
-    "recipe.waterEb": "Agua de la masa final", "recipe.waterH": "Reparto a mano", "recipe.wInit": "Mezcla inicial", "recipe.wSalt": "Para disolver la sal",
-    "recipe.divEb": "División", "recipe.main": "Principal", "recipe.alt": "Alternativa", "recipe.target": "Pizza objetivo",
-    "recipe.topEb": "Ingredientes", "recipe.forPre": "Para", "recipe.forPost": "pizzas", "recipe.cans": "lata(s)", "recipe.sauceTotal": "Salsa total", "recipe.cheese": "Mozzarella escurrida",
-    "sched.h2": "Cronograma", "sched.sub": "Indica cuándo quieres hornear. El plan se calcula hacia atrás; toma los horarios como referencia.",
-    "sched.bake": "Hornear el", "sched.pfh": "Prefermento en nevera", "sched.panh": "Bollos en nevera", "sched.outh": "Fuera antes de hornear",
-    "steps.h2": "Paso a paso", "steps.sub": "Marca cada paso al terminarlo. Las etiquetas indican el origen: receta base, adaptación al proceso casero o lección de la 1.ª horneada.",
-    "oven.h2": "Horno BIG HORN", "oven.sub": "Cronómetro de mesa y diagnóstico por el resultado. La primera pizza de cada sesión calibra el horno.",
-    "oven.timer": "Cronómetro de horneado", "oven.reset": "Reiniciar", "oven.note": "Franja naranja: 25–30 s, comprueba si ya se puede girar 180°. Franja verde: 70–120 s, punto esperado en este horno.",
-    "oven.diag": "Diagnóstico por el resultado", "oven.diagHint": "Elige lo que observaste en la pizza.",
-    "rules.h2": "Reglas de la versión 1.0", "rules.sub": "El cuello de botella ahora no es la masa. Es la calibración térmica y la técnica de estirado y montaje.",
-    "foot.sig": "Protocolo y página por", "foot.langs": "Idiomas", "foot.rights": "todos los derechos reservados"
+    "recipe.h2": "Receta",
+    "recipe.sub": "Cantidades totales y cómo se reparten entre prefermento y masa final.",
+    "recipe.ing": "Ingrediente",
+    "recipe.total": "Total",
+    "recipe.pf": "Prefermento",
+    "recipe.pfShort": "Pref.",
+    "recipe.final": "Masa final",
+    "recipe.finalShort": "Final",
+    "recipe.dough": "Masa",
+    "ing.flour": "Harina Caputo Pizzeria 00",
+    "ing.water": "Agua filtrada",
+    "ing.yeast": "Levadura seca de panadería",
+    "ing.salt": "Sal",
+    "ing.oil": "Aceite de oliva virgen extra",
+    "recipe.waterEb": "Agua de la masa final",
+    "recipe.waterH": "Reparto a mano",
+    "recipe.wInit": "Mezcla inicial",
+    "recipe.wSalt": "Para disolver la sal",
+    "recipe.divEb": "División",
+    "recipe.main": "Principal",
+    "recipe.alt": "Alternativa",
+    "recipe.target": "Pizza objetivo",
+    "recipe.topEb": "Ingredientes",
+    "recipe.forPre": "Para",
+    "recipe.forPost": "pizzas",
+    "recipe.cans": "lata(s)",
+    "recipe.sauceTotal": "Salsa total",
+    "recipe.cheese": "Mozzarella escurrida",
+    "sched.h2": "Cronograma",
+    "sched.sub": "Indica cuándo quieres hornear. El plan se calcula hacia atrás; toma los horarios como referencia.",
+    "sched.bake": "Hornear el",
+    "sched.pfh": "Prefermento en nevera",
+    "sched.panh": "Bollos en nevera",
+    "sched.outh": "Fuera antes de hornear",
+    "steps.h2": "Paso a paso",
+    "steps.sub": "Marca cada paso al terminarlo. Las etiquetas indican el origen: receta base, adaptación al proceso casero o lección de la 1.ª horneada.",
+    "oven.h2": "Horno BIG HORN",
+    "oven.sub": "Cronómetro de mesa y diagnóstico por el resultado. La primera pizza de cada sesión calibra el horno.",
+    "oven.timer": "Cronómetro de horneado",
+    "oven.reset": "Reiniciar",
+    "oven.note": "Franja naranja: 25–30 s, comprueba si ya se puede girar 180°. Franja verde: 70–120 s, punto esperado en este horno.",
+    "oven.diag": "Diagnóstico por el resultado",
+    "oven.diagHint": "Elige lo que observaste en la pizza.",
+    "rules.h2": "Reglas de la versión 1.0",
+    "rules.sub": "El cuello de botella ahora no es la masa. Es la calibración térmica y la técnica de estirado y montaje.",
+    "foot.sig": "Protocolo y página por",
+    "foot.langs": "Idiomas",
+    "foot.rights": "todos los derechos reservados",
+    "nav.about": "Acerca de"
   },
   "rules": [
-    "No subas la hidratación todavía.", "No cambies la Caputo Pizzeria.",
-    "No amases en exceso. Usa reposo y pliegues.", "Sal antes que aceite.",
-    "Bassinage para el agua final.", "El aceite siempre al final.",
-    "Masa pegajosa en la mezcla no lleva más harina.", "No vuelvas a bolear los bollos antes de estirar.",
-    "No uses rodillo.", "No aplastes el cornicione.",
-    "Quita el exceso de harina de la base.", "Poca salsa, poco queso.",
-    "La pizza montada no espera en la pala.", "Comprueba que se desliza antes de meterla.",
-    "Controla techo y piedra por separado.", "La primera pizza calibra la sesión.",
-    "Deja que la piedra se recupere entre pizzas.", "Observa la masa más que el reloj.",
-    "Cambia una variable relevante a la vez.", "Próxima sesión: menos calor abajo, misma receta."
+    "No subas la hidratación todavía.",
+    "No cambies la Caputo Pizzeria.",
+    "No amases en exceso. Usa reposo y pliegues.",
+    "Sal antes que aceite.",
+    "Bassinage para el agua final.",
+    "El aceite siempre al final.",
+    "Masa pegajosa en la mezcla no lleva más harina.",
+    "No vuelvas a bolear los bollos antes de estirar.",
+    "No uses rodillo.",
+    "No aplastes el cornicione.",
+    "Quita el exceso de harina de la base.",
+    "Poca salsa, poco queso.",
+    "La pizza montada no espera en la pala.",
+    "Comprueba que se desliza antes de meterla.",
+    "Controla techo y piedra por separado.",
+    "La primera pizza calibra la sesión.",
+    "Deja que la piedra se recupere entre pizzas.",
+    "Observa la masa más que el reloj.",
+    "Cambia una variable relevante a la vez.",
+    "Próxima sesión: menos calor abajo, misma receta."
   ],
   "glossary": [
-    ["Bassinage", "Reservar parte del agua e incorporarla poco a poco cuando el gluten ya empezó a formarse."],
-    ["Panetto", "Cada bollo individual de masa. Se convierte en una pizza. Plural: panetti."],
-    ["Cornicione", "El borde alto y aireado. Se conserva empujando el gas del centro hacia fuera."],
-    ["Laminado", "Estirar la masa en rectángulo sobre la mesa y plegarla. Sin rodillo."],
-    ["Leopard spotting", "Pequeños puntos oscuros repartidos por el cornicione. Distinto de zonas carbonizadas."],
-    ["Prefermento", "Harina, el mismo peso de agua y toda la levadura. 100% de hidratación, parecido a un poolish."]
+    [
+      "Bassinage",
+      "Reservar parte del agua e incorporarla poco a poco cuando el gluten ya empezó a formarse."
+    ],
+    [
+      "Panetto",
+      "Cada bollo individual de masa. Se convierte en una pizza. Plural: panetti."
+    ],
+    [
+      "Cornicione",
+      "El borde alto y aireado. Se conserva empujando el gas del centro hacia fuera."
+    ],
+    [
+      "Laminado",
+      "Estirar la masa en rectángulo sobre la mesa y plegarla. Sin rodillo."
+    ],
+    [
+      "Leopard spotting",
+      "Pequeños puntos oscuros repartidos por el cornicione. Distinto de zonas carbonizadas."
+    ],
+    [
+      "Prefermento",
+      "Harina, el mismo peso de agua y toda la levadura. 100% de hidratación, parecido a un poolish."
+    ]
   ],
   "js": {
-    "locale": "es-ES", "test": "prueba", "panelSum": "{flour} g de harina · {hyd}% agua · {top}/{bottom} °C",
-    "open": "Ajustar", "close": "Cerrar", "stepLabel": "PASO", "done": "Hecho",
-    "src": {"d": "Receta base", "a": "Adaptado", "l": "Lección 1.ª horneada"},
-    "svg": {"noPin": "sin rodillo · sin romper", "before": "antes", "ready": "lista", "rim": "borde libre 1–1,5 cm", "top": "TECHO", "stone": "PIEDRA"},
-    "rel": {"d": "{d} d {h} h", "h": "{h} h {m}", "m": "{m} min"},
+    "locale": "es-ES",
+    "test": "prueba",
+    "panelSum": "{flour} g de harina · {hyd}% agua · {top}/{bottom} °C",
+    "open": "Ajustar",
+    "close": "Cerrar",
+    "stepLabel": "PASO",
+    "done": "Hecho",
+    "src": {
+      "d": "Receta base",
+      "a": "Adaptado",
+      "l": "Lección 1.ª horneada"
+    },
+    "svg": {
+      "noPin": "sin rodillo · sin romper",
+      "before": "antes",
+      "ready": "lista",
+      "rim": "borde libre 1–1,5 cm",
+      "top": "TECHO",
+      "stone": "PIEDRA"
+    },
+    "rel": {
+      "d": "{d} d {h} h",
+      "h": "{h} h {m}",
+      "m": "{m} min"
+    },
     "sched": {
-      "empty": "Indica fecha y hora para hornear.", "next": "Siguiente", "in": "en {rel}",
+      "empty": "Indica fecha y hora para hornear.",
+      "next": "Siguiente",
+      "in": "en {rel}",
       "past": "<b>Inicio en el pasado.</b> Para hornear a esa hora, el prefermento ya debería haber empezado. Retrasa el horneado o reduce los tiempos de nevera.",
       "over36": "<b>Bollos más de 36 h.</b> Supera el máximo de la receta base.",
       "ev": [
-        ["Preparar el prefermento", "Paso 01. Mezcla y 1 h a temperatura ambiente."],
-        ["Prefermento a la nevera", "{pfh} h a {fridge} °C."],
-        ["Mezcla final", "Pasos 02–07. Unas 2 h 30 de trabajo intercalado con reposos."],
-        ["Dividir, bolear y refrigerar", "Paso 08. {panh} h en la nevera."],
-        ["Sacar los bollos", "Paso 09. Evalúa el punto; prepara salsa y queso mientras tanto."],
-        ["Encender el horno", "Paso 11. {top} °C / {bottom} °C."],
-        ["Hornear", "Pasos 12–14. La primera pizza calibra."]
+        [
+          "Preparar el prefermento",
+          "Paso 01. Mezcla y 1 h a temperatura ambiente."
+        ],
+        [
+          "Prefermento a la nevera",
+          "{pfh} h a {fridge} °C."
+        ],
+        [
+          "Mezcla final",
+          "Pasos 02–07. Unas 2 h 30 de trabajo intercalado con reposos."
+        ],
+        [
+          "Dividir, bolear y refrigerar",
+          "Paso 08. {panh} h en la nevera."
+        ],
+        [
+          "Sacar los bollos",
+          "Paso 09. Evalúa el punto; prepara salsa y queso mientras tanto."
+        ],
+        [
+          "Encender el horno",
+          "Paso 11. {top} °C / {bottom} °C."
+        ],
+        [
+          "Hornear",
+          "Pasos 12–14. La primera pizza calibra."
+        ]
       ]
     },
     "warn": {
@@ -79,102 +228,335 @@
       "bottom": "Una resistencia inferior por encima de 390 °C quemó la base en la 1.ª horneada."
     },
     "timer": {
-      "idle": "Mete la pizza y empieza.", "start": "Iniciar", "pause": "Pausar", "resume": "Continuar",
-      "msg": ["Deja que la base se asiente.", "Comprueba: ¿ya se puede girar 180°?", "Gira según el color. Observa el cornicione.", "Ventana de punto. Revisa base y techo.", "Más de 120 s. Si sigue pálida, falta calor."]
+      "idle": "Mete la pizza y empieza.",
+      "start": "Iniciar",
+      "pause": "Pausar",
+      "resume": "Continuar",
+      "msg": [
+        "Deja que la base se asiente.",
+        "Comprueba: ¿ya se puede girar 180°?",
+        "Gira según el color. Observa el cornicione.",
+        "Ventana de punto. Revisa base y techo.",
+        "Más de 120 s. Si sigue pálida, falta calor."
+      ]
     },
     "diag": [
-      ["La base se quema antes que el techo", "Baja la resistencia inferior."],
-      ["Base muy pálida", "Sube la resistencia inferior."],
-      ["Base bien, cornicione pálido", "Sube la resistencia superior."],
-      ["El techo se quema antes que la base", "Baja la resistencia superior."],
-      ["Todo pálido", "Más calor o más tiempo. Comprueba que la piedra se recuperó y que el precalentamiento llegó a 30–40 min."],
-      ["Buen color a ~80–100 s", "Mantén la configuración y anota los valores."],
-      ["Puntos negros con sabor amargo", "Probablemente harina suelta en la base. Sacude el exceso antes de meterla y limpia la piedra."]
+      [
+        "La base se quema antes que el techo",
+        "Baja la resistencia inferior."
+      ],
+      [
+        "Base muy pálida",
+        "Sube la resistencia inferior."
+      ],
+      [
+        "Base bien, cornicione pálido",
+        "Sube la resistencia superior."
+      ],
+      [
+        "El techo se quema antes que la base",
+        "Baja la resistencia superior."
+      ],
+      [
+        "Todo pálido",
+        "Más calor o más tiempo. Comprueba que la piedra se recuperó y que el precalentamiento llegó a 30–40 min."
+      ],
+      [
+        "Buen color a ~80–100 s",
+        "Mantén la configuración y anota los valores."
+      ],
+      [
+        "Puntos negros con sabor amargo",
+        "Probablemente harina suelta en la base. Sacude el exceso antes de meterla y limpia la piedra."
+      ]
     ],
-    "lower": "inferior", "upper": "superior",
+    "lower": "inferior",
+    "upper": "superior",
     "diagCur": "Actual: {lbl} {cur} °C. Sugerencia para la próxima pizza: {nv}. Pasos pequeños; cambia solo esta variable.",
-    "apply": "Aplicar {v} °C", "applied": "Aplicado",
+    "apply": "Aplicar {v} °C",
+    "applied": "Aplicado",
     "steps": [
-      {"day": "Día 1", "when": "noche", "items": [
-        {"id": "s1", "t": "Preparar el prefermento", "time": "10 min + 1 h ambiente", "src": ["d","a"], "il": "pref", "li": [
-          "Mezcla en seco {pfFlour} g de harina con {yeast} g de levadura.",
-          "Añade {pfWater} g de agua y remueve hasta formar una pasta grumosa, sin harina seca.",
-          "Tapa. Deja 1 h a temperatura ambiente.",
-          "Lleva a la nevera ({fridge} °C) durante unas {pfh} h."],
-          "tip": "La receta original pide 12–16 h a 12 °C. En una nevera más fría, el tiempo más largo compensa. Lista cuando tenga burbujas, estructura interna y ninguna señal de colapso."}
-      ]},
-      {"day": "Día 2", "when": "mezcla y división", "items": [
-        {"id": "s2", "t": "Mezcla inicial", "time": "~10 min + reposo", "src": ["a"], "il": "mix", "li": [
-          "Usa el prefermento directo de la nevera, sin atemperarlo mucho.",
-          "Añade {finFlour} g de harina y {initWater} g de agua.",
-          "Mezcla hasta hidratar toda la harina. No hace falta que quede lisa.",
-          "Tapa y deja reposar. El tiempo desarrolla el gluten por ti."]},
-        {"id": "s3", "t": "Incorporar la sal", "time": "~10 min", "src": ["a"], "il": "salt", "li": [
-          "Disuelve {salt} g de sal en {saltWater} g de agua.",
-          "Añade la solución poco a poco, con pellizcos y pliegues.",
-          "Espera a que se absorba cada porción antes de la siguiente."], "tip": "La sal siempre antes que el aceite."},
-        {"id": "s4", "t": "Bassinage", "time": "~10 min", "src": ["d","a"], "il": "bass", "li": [
-          "Añade los {bassWater} g de agua restantes en pequeñas porciones.",
-          "Solo añade más cuando la masa haya absorbido la anterior.",
-          "Si la masa queda pegajosa, no añadas harina."]},
-        {"id": "s5", "t": "Desarrollar el gluten", "time": "ciclos de reposo + pliegues", "src": ["a","l"], "il": "fold", "li": [
-          "Alterna reposos y series de pliegues, sin amasado agresivo.",
-          "Para cuando la masa esté lisa, redondeada, elástica y con tensión en la superficie."],
-          "tip": "En la 1.ª horneada, el tiempo y el reposo hicieron la mayor parte del trabajo. No persigas una masa perfectamente lisa amasando sin parar."},
-        {"id": "s6", "t": "El aceite al final", "time": "~10 min", "src": ["d"], "il": "oil", "li": [
-          "Con la masa ya estructurada, añade {oil} g de aceite poco a poco.",
-          "Incorpóralo con pellizcos y pliegues hasta que se absorba por completo."],
-          "tip": "La masa queda resbaladiza, brillante y parece más débil. Es normal. No añadas harina."},
-        {"id": "s7", "t": "Reposo y laminado", "time": "~1 h 30", "src": ["d","a"], "il": "lam", "li": [
-          "Reposa 3–5 min.",
-          "Laminado: estira la masa con cuidado en rectángulo sobre la mesa y pliégala sobre sí misma. Sin rodillo y sin romperla.",
-          "Forma una bola. Reposa 15 min.",
-          "Haz pliegues suaves y deja reposar cerca de 1 h."]},
-        {"id": "s8", "t": "Dividir y bolear", "time": "~15 min", "src": ["d"], "il": "balls", "li": [
-          "Divide en {n} bollos de {per} g (masa total {total} g).",
-          "Bolea con tensión en la superficie y cierra bien la base.",
-          "Recipiente tapado, en la nevera durante unas {panh} h."],
-          "tip": "Receta base: 24–36 h a 5 °C. A {fridge} °C la fermentación va más rápido; juzga por el aspecto."}
-      ]},
-      {"day": "Día 3", "when": "horno", "items": [
-        {"id": "s9", "t": "Atemperar los bollos", "time": "~{outh} h fuera", "src": ["d","l"], "il": "proof", "li": [
-          "Sácalos de la nevera unas {outh} h antes de hornear (referencia: ~26 °C).",
-          "Punto: ha crecido, muchas burbujas pequeñas y algunas mayores, laterales aireados, mantiene la forma, sin colapso, relajado.",
-          "En un recipiente de 1 L, la referencia es que la masa llegue a la mitad."],
-          "tip": "warn|No vuelvas a bolear. Eso expulsa el gas de la fermentación."},
-        {"id": "s10", "t": "Preparar salsa y queso", "time": "~15 min", "src": ["l"], "il": "sauce", "li": [
-          "Aplasta a mano {cans} lata(s) de tomate pelado (sin batidora, sin cocinar).",
-          "Sazona con 4–5 g de sal por lata. Sin azúcar.",
-          "Corta {cheeseTotal} g de mozzarella en trozos pequeños y déjala escurrir."]},
-        {"id": "s11", "t": "Precalentar el BIG HORN", "time": "30–40 min", "src": ["l"], "il": "oven", "li": [
-          "Superior a {top} °C, inferior a {bottom} °C.",
-          "Si tienes termómetro infrarrojo, mide el centro de la piedra y anótalo."],
-          "tip": "warn|En la 1.ª horneada (inferior ~390–410 °C) la base se carbonizó antes que el techo. Por eso se bajó la inferior."},
-        {"id": "s12", "t": "Estirar la masa", "time": "~1 min por pizza", "src": ["l"], "il": "open", "li": [
-          "Un bollo cada vez. Pásalo ligeramente por harina.",
-          "Presiona del centro hacia fuera con las yemas de los dedos, empujando el gas hacia el borde.",
-          "Deja 1–1,5 cm de borde sin presionar. En la 1.ª horneada, 2 cm dejaron el cornicione demasiado grueso.",
-          "Termina con las manos hasta ~30–32 cm. Sin rodillo."],
-          "tip": "warn|Sacude el exceso de harina de la base. La harina suelta en la piedra se quema y amarga."},
-        {"id": "s13", "t": "Montar y meter al horno", "time": "30–60 s en la pala", "src": ["l"], "il": "build", "li": [
-          "{sauce} g de salsa, {cheese} g de mozzarella repartida, albahaca y un hilo de aceite.",
-          "Deja zonas de tomate a la vista.",
-          "Antes de meterla, haz un pequeño movimiento lateral: la pizza tiene que deslizarse entera.",
-          "El jamón crudo y la rúcula van después del horno."]},
-        {"id": "s14", "t": "Hornear y girar", "time": "70–120 s", "src": ["l"], "il": "bake", "li": [
-          "A los 25–30 s, mira si ya tiene estructura para girar 180°.",
-          "Después, pequeños giros hasta que el color sea uniforme.",
-          "La primera pizza calibra el horno. Usa el diagnóstico de abajo.",
-          "Espera a que la piedra se recupere antes de la siguiente pizza."],
-          "tip": "Busca puntos oscuros pequeños y repartidos en el cornicione, no zonas negras."}
-      ]}
+      {
+        "day": "Día 1",
+        "when": "noche",
+        "items": [
+          {
+            "id": "s1",
+            "t": "Preparar el prefermento",
+            "time": "10 min + 1 h ambiente",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "pref",
+            "li": [
+              "Mezcla en seco {pfFlour} g de harina con {yeast} g de levadura.",
+              "Añade {pfWater} g de agua y remueve hasta formar una pasta grumosa, sin harina seca.",
+              "Tapa. Deja 1 h a temperatura ambiente.",
+              "Lleva a la nevera ({fridge} °C) durante unas {pfh} h."
+            ],
+            "tip": "La receta original pide 12–16 h a 12 °C. En una nevera más fría, el tiempo más largo compensa. Lista cuando tenga burbujas, estructura interna y ninguna señal de colapso."
+          }
+        ]
+      },
+      {
+        "day": "Día 2",
+        "when": "mezcla y división",
+        "items": [
+          {
+            "id": "s2",
+            "t": "Mezcla inicial",
+            "time": "~10 min + reposo",
+            "src": [
+              "a"
+            ],
+            "il": "mix",
+            "li": [
+              "Usa el prefermento directo de la nevera, sin atemperarlo mucho.",
+              "Añade {finFlour} g de harina y {initWater} g de agua.",
+              "Mezcla hasta hidratar toda la harina. No hace falta que quede lisa.",
+              "Tapa y deja reposar. El tiempo desarrolla el gluten por ti."
+            ]
+          },
+          {
+            "id": "s3",
+            "t": "Incorporar la sal",
+            "time": "~10 min",
+            "src": [
+              "a"
+            ],
+            "il": "salt",
+            "li": [
+              "Disuelve {salt} g de sal en {saltWater} g de agua.",
+              "Añade la solución poco a poco, con pellizcos y pliegues.",
+              "Espera a que se absorba cada porción antes de la siguiente."
+            ],
+            "tip": "La sal siempre antes que el aceite."
+          },
+          {
+            "id": "s4",
+            "t": "Bassinage",
+            "time": "~10 min",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "bass",
+            "li": [
+              "Añade los {bassWater} g de agua restantes en pequeñas porciones.",
+              "Solo añade más cuando la masa haya absorbido la anterior.",
+              "Si la masa queda pegajosa, no añadas harina."
+            ]
+          },
+          {
+            "id": "s5",
+            "t": "Desarrollar el gluten",
+            "time": "ciclos de reposo + pliegues",
+            "src": [
+              "a",
+              "l"
+            ],
+            "il": "fold",
+            "li": [
+              "Alterna reposos y series de pliegues, sin amasado agresivo.",
+              "Para cuando la masa esté lisa, redondeada, elástica y con tensión en la superficie."
+            ],
+            "tip": "En la 1.ª horneada, el tiempo y el reposo hicieron la mayor parte del trabajo. No persigas una masa perfectamente lisa amasando sin parar."
+          },
+          {
+            "id": "s6",
+            "t": "El aceite al final",
+            "time": "~10 min",
+            "src": [
+              "d"
+            ],
+            "il": "oil",
+            "li": [
+              "Con la masa ya estructurada, añade {oil} g de aceite poco a poco.",
+              "Incorpóralo con pellizcos y pliegues hasta que se absorba por completo."
+            ],
+            "tip": "La masa queda resbaladiza, brillante y parece más débil. Es normal. No añadas harina."
+          },
+          {
+            "id": "s7",
+            "t": "Reposo y laminado",
+            "time": "~1 h 30",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "lam",
+            "li": [
+              "Reposa 3–5 min.",
+              "Laminado: estira la masa con cuidado en rectángulo sobre la mesa y pliégala sobre sí misma. Sin rodillo y sin romperla.",
+              "Forma una bola. Reposa 15 min.",
+              "Haz pliegues suaves y deja reposar cerca de 1 h."
+            ]
+          },
+          {
+            "id": "s8",
+            "t": "Dividir y bolear",
+            "time": "~15 min",
+            "src": [
+              "d"
+            ],
+            "il": "balls",
+            "li": [
+              "Divide en {n} bollos de {per} g (masa total {total} g).",
+              "Bolea con tensión en la superficie y cierra bien la base.",
+              "Recipiente tapado, en la nevera durante unas {panh} h."
+            ],
+            "tip": "Receta base: 24–36 h a 5 °C. A {fridge} °C la fermentación va más rápido; juzga por el aspecto."
+          }
+        ]
+      },
+      {
+        "day": "Día 3",
+        "when": "horno",
+        "items": [
+          {
+            "id": "s9",
+            "t": "Atemperar los bollos",
+            "time": "~{outh} h fuera",
+            "src": [
+              "d",
+              "l"
+            ],
+            "il": "proof",
+            "li": [
+              "Sácalos de la nevera unas {outh} h antes de hornear (referencia: ~26 °C).",
+              "Punto: ha crecido, muchas burbujas pequeñas y algunas mayores, laterales aireados, mantiene la forma, sin colapso, relajado.",
+              "En un recipiente de 1 L, la referencia es que la masa llegue a la mitad."
+            ],
+            "tip": "warn|No vuelvas a bolear. Eso expulsa el gas de la fermentación."
+          },
+          {
+            "id": "s10",
+            "t": "Preparar salsa y queso",
+            "time": "~15 min",
+            "src": [
+              "l"
+            ],
+            "il": "sauce",
+            "li": [
+              "Aplasta a mano {cans} lata(s) de tomate pelado (sin batidora, sin cocinar).",
+              "Sazona con 4–5 g de sal por lata. Sin azúcar.",
+              "Corta {cheeseTotal} g de mozzarella en trozos pequeños y déjala escurrir."
+            ]
+          },
+          {
+            "id": "s11",
+            "t": "Precalentar el BIG HORN",
+            "time": "30–40 min",
+            "src": [
+              "l"
+            ],
+            "il": "oven",
+            "li": [
+              "Superior a {top} °C, inferior a {bottom} °C.",
+              "Si tienes termómetro infrarrojo, mide el centro de la piedra y anótalo."
+            ],
+            "tip": "warn|En la 1.ª horneada (inferior ~390–410 °C) la base se carbonizó antes que el techo. Por eso se bajó la inferior."
+          },
+          {
+            "id": "s12",
+            "t": "Estirar la masa",
+            "time": "~1 min por pizza",
+            "src": [
+              "l"
+            ],
+            "il": "open",
+            "li": [
+              "Un bollo cada vez. Pásalo ligeramente por harina.",
+              "Presiona del centro hacia fuera con las yemas de los dedos, empujando el gas hacia el borde.",
+              "Deja 1–1,5 cm de borde sin presionar. En la 1.ª horneada, 2 cm dejaron el cornicione demasiado grueso.",
+              "Termina con las manos hasta ~30–32 cm. Sin rodillo."
+            ],
+            "tip": "warn|Sacude el exceso de harina de la base. La harina suelta en la piedra se quema y amarga."
+          },
+          {
+            "id": "s13",
+            "t": "Montar y meter al horno",
+            "time": "30–60 s en la pala",
+            "src": [
+              "l"
+            ],
+            "il": "build",
+            "li": [
+              "{sauce} g de salsa, {cheese} g de mozzarella repartida, albahaca y un hilo de aceite.",
+              "Deja zonas de tomate a la vista.",
+              "Antes de meterla, haz un pequeño movimiento lateral: la pizza tiene que deslizarse entera.",
+              "El jamón crudo y la rúcula van después del horno."
+            ]
+          },
+          {
+            "id": "s14",
+            "t": "Hornear y girar",
+            "time": "70–120 s",
+            "src": [
+              "l"
+            ],
+            "il": "bake",
+            "li": [
+              "A los 25–30 s, mira si ya tiene estructura para girar 180°.",
+              "Después, pequeños giros hasta que el color sea uniforme.",
+              "La primera pizza calibra el horno. Usa el diagnóstico de abajo.",
+              "Espera a que la piedra se recupere antes de la siguiente pizza."
+            ],
+            "tip": "Busca puntos oscuros pequeños y repartidos en el cornicione, no zonas negras."
+          }
+        ]
+      }
     ],
     "ld": {
       "name": "Pizza napolitana casera con prefermento (protocolo de 3 días)",
       "description": "Receta de pizza napolitana con harina Caputo Pizzeria 00, prefermento, 64% de hidratación y fermentación larga en frío, con cronograma de 3 días y guía de horno.",
-      "yield": "{n} pizzas de 30–32 cm", "category": "Pizza", "cuisine": "Italiana (napolitana)",
+      "yield": "{n} pizzas de 30–32 cm",
+      "category": "Pizza",
+      "cuisine": "Italiana (napolitana)",
       "keywords": "pizza napolitana, receta pizza napolitana, masa de pizza napolitana, prefermento, poolish, pizza casera, Caputo Pizzeria",
-      "toppings": ["{sauce} g de tomate pelado triturado con sal", "{cheese} g de mozzarella", "Hojas de albahaca", "Aceite de oliva virgen extra al gusto"]
+      "toppings": [
+        "{sauce} g de tomate pelado triturado con sal",
+        "{cheese} g de mozzarella",
+        "Hojas de albahaca",
+        "Aceite de oliva virgen extra al gusto"
+      ]
     }
+  },
+  "about": {
+    "h2": "Acerca de NapoliProtocol",
+    "sub": "Qué es este sitio y de dónde viene la pizza que enseña a hacer.",
+    "siteEb": "El proyecto",
+    "siteH": "Un cuaderno de trabajo abierto",
+    "site": [
+      "NapoliProtocol es el registro de un proceso real: la búsqueda de una auténtica pizza napolitana hecha en casa, sin horno de leña. Cada número de la receta, cada paso y cada regla salió de horneadas probadas, anotadas y corregidas.",
+      "En lugar de una receta fija, la página funciona como una herramienta. Indicas la harina o el número de pizzas, la temperatura de la nevera y la hora en que quieres hornear, y recalcula cantidades, cronograma e instrucciones. Las etiquetas de cada paso muestran qué viene de la receta base, qué se adaptó y qué se aprendió a base de errores.",
+      "Creado por Jhonathan Sousa. Es un proyecto independiente, sin patrocinio: las marcas citadas (harina, tomate, horno) son simplemente las usadas en las pruebas."
+    ],
+    "pizzaEb": "La pizza napolitana",
+    "pizzaH": "Patrimonio de Nápoles",
+    "pizza": [
+      "La pizza napolitana nació en las calles de Nápoles, entre los siglos XVIII y XIX, como comida popular, barata y lista en pocos minutos. Cuenta la tradición que en 1889 el pizzero Raffaele Esposito homenajeó a la reina Margarita con una pizza con los colores de Italia: tomate, mozzarella y albahaca. Así nació la Margherita.",
+      "Lo que define a la napolitana es la masa: solo harina de trigo, agua, sal y levadura, estirada a mano y sin rodillo. Horneada entre 60 y 90 segundos en un horno muy caliente, de unos 430–480 °C, queda suave y elástica en el centro, con el cornicione alto, aireado y salpicado de pequeñas manchas oscuras.",
+      "En 2010 la Unión Europea la registró como Especialidad Tradicional Garantizada (ETG), y en 2017 la UNESCO declaró el arte del pizzero napolitano Patrimonio Cultural Inmaterial de la Humanidad. En casa, el horno rara vez alcanza esas temperaturas, y acortar esa distancia es justamente lo que busca este protocolo."
+    ],
+    "facts": [
+      [
+        "1889",
+        "nace la Margherita"
+      ],
+      [
+        "430–480 °C",
+        "horno tradicional"
+      ],
+      [
+        "2010",
+        "ETG en la Unión Europea"
+      ],
+      [
+        "2017",
+        "el arte del pizzero en la UNESCO"
+      ]
+    ]
   }
 }

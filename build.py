@@ -88,12 +88,16 @@ def page(l):
         'RULES': ''.join(f'<li>{esc(r)}</li>' for r in d['rules']),
         'GLOSSARY': ''.join(f'<div class="card"><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in d['glossary']),
         'T_JSON': json.dumps(js, ensure_ascii=False).replace('</', '<\\/'),
+        'ABOUT_SITE': ''.join(f'<p>{esc(x)}</p>' for x in d['about']['site']),
+        'ABOUT_PIZZA': ''.join(f'<p>{esc(x)}</p>' for x in d['about']['pizza']),
+        'ABOUT_FACTS': ''.join(f'<div class="fact"><b>{esc(v)}</b><span>{esc(t)}</span></div>' for v, t in d['about']['facts']),
     }
     missing = []
     def sub(m):
         k = m.group(1)
         if k in rep: return rep[k]
         if k in d['html']: return esc(d['html'][k])
+        if k.startswith('about.') and k[6:] in d['about']: return esc(d['about'][k[6:]])
         missing.append(k); return m.group(0)
     out = re.sub(r'\{\{([\w.]+)\}\}', sub, tpl)
     assert not missing, f'{l}: chaves ausentes {missing}'

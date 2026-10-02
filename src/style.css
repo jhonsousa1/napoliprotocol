@@ -248,3 +248,14 @@ html{scroll-behavior:smooth}
 /* Chinês: fontes latinas não têm glifos CJK */
 :lang(zh){--f-display:"Young Serif","Songti SC","Noto Serif SC","STSong",serif;--f-body:"Figtree","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif}
 :lang(zh) .eyebrow,:lang(zh) th{letter-spacing:.04em}
+
+/* Sobre */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.fact{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.fact b{font-family:var(--f-display);font-weight:400;font-size:24px;color:var(--accent);line-height:1.2}
+.fact span{font-size:13px;color:var(--muted)}
+.about-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.about-card{padding:22px;display:flex;flex-direction:column;gap:12px}
+.about-card h3{font-size:22px}
+.about-card p{color:var(--ink);font-size:15px;line-height:1.65}
+@media (max-width:760px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.about-grid{grid-template-columns:1fr}}

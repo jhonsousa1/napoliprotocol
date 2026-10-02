@@ -17,7 +17,7 @@
   <div class="wrap">
     <a class="brand" href="./" style="text-decoration:none"><span class="flag" aria-hidden="true"><i></i><i></i><i></i></span>NapoliProtocol <span class="ver">v1.0</span></a>
     <nav class="nav" aria-label="{{nav.label}}">
-      <a href="#receita">{{nav.recipe}}</a><a href="#cronograma">{{nav.schedule}}</a><a href="#passos">{{nav.steps}}</a><a href="#forno">{{nav.oven}}</a><a href="#regras">{{nav.rules}}</a>
+      <a href="#receita">{{nav.recipe}}</a><a href="#cronograma">{{nav.schedule}}</a><a href="#passos">{{nav.steps}}</a><a href="#forno">{{nav.oven}}</a><a href="#regras">{{nav.rules}}</a><a href="#sobre">{{nav.about}}</a>
     </nav>
     <div class="prog" title="{{nav.progress}}"><span id="progTxt">0/14</span><div class="prog-bar"><i id="progBar"></i></div></div>
     {{LANG_MENU}}
@@ -155,6 +155,15 @@
         <div class="sec-head"><h2>{{rules.h2}}</h2><p>{{rules.sub}}</p></div>
         <ol class="rules">{{RULES}}</ol>
         <dl class="glossary">{{GLOSSARY}}</dl>
+      </section>
+
+      <section id="sobre">
+        <div class="sec-head"><h2>{{about.h2}}</h2><p>{{about.sub}}</p></div>
+        <div class="facts">{{ABOUT_FACTS}}</div>
+        <div class="about-grid">
+          <article class="card about-card"><div class="eyebrow">{{about.siteEb}}</div><h3>{{about.siteH}}</h3>{{ABOUT_SITE}}</article>
+          <article class="card about-card"><div class="eyebrow">{{about.pizzaEb}}</div><h3>{{about.pizzaH}}</h3>{{ABOUT_PIZZA}}</article>
+        </div>
       </section>
     </main>
   </div>
