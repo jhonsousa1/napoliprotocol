@@ -128,7 +128,7 @@ def page(l, c):
     globe = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" fill="none" stroke="currentColor" stroke-width="2"/></svg>'
     menu = (f'<details class="lang"><summary aria-label="{esc(d["html"]["nav.lang"])}">{globe}{d["meta"]["short"]}</summary>'
             f'<ul>{"".join(lang_links(l, c, "menu"))}</ul></details>')
-    f = c['features']; hide = lambda on: '' if on else ' hidden'
+    f = c['features']
     zones, scale, clock0 = timer_markup(c['timer'])
     rep = {
         'HTML_LANG': d['meta']['htmlLang'], 'LANG': l, 'HEAD': head(l, c, d), 'LANG_MENU': menu,
@@ -136,8 +136,7 @@ def page(l, c):
         'RECIPE_TABS': recipe_links(l, c, 'tabs'), 'FOOT_RECIPES': recipe_links(l, c, 'foot'),
         'NSTEPS': str(sum(len(day['items']) for day in js['steps'])),
         'REF_W': esc(c['ref']['w']), 'REF_SALT': esc(c['ref']['salt']), 'TARGET': esc(c['targetSize']),
-        'HIDE_SUGAR': hide(f['sugar']), 'HIDE_PF': hide(f['preferment']), 'HIDE_WSPLIT': hide(f['waterSplit']),
-        'TABLE_CLASS': '' if f['preferment'] else 'no-pf', 'SPLIT_CLASS': '' if f['waterSplit'] else ' two',
+        'SPLIT_CLASS': '' if f['waterSplit'] else ' two',
         'TIMER_ZONES': zones, 'TIMER_SCALE': scale, 'CLOCK0': clock0,
         'CSS': (SRC / 'style.css').read_text('utf-8'), 'IL': (SRC / 'illustrations.js').read_text('utf-8'),
         'RULES': ''.join(f'<li>{esc(r)}</li>' for r in d['rules']),
@@ -147,6 +146,11 @@ def page(l, c):
         'ABOUT_PIZZA': ''.join(f'<p>{esc(x)}</p>' for x in d['about']['pizza']),
         'ABOUT_FACTS': ''.join(f'<div class="fact"><b>{esc(v)}</b><span>{esc(t)}</span></div>' for v, t in d['about']['facts']),
     }
+    # blocos condicionais {{#pf}}…{{/pf}}: só entram no HTML se a receita usa o recurso
+    on = {'pf': f['preferment'], 'sugar': f['sugar'], 'wsplit': f['waterSplit']}
+    block = re.compile(r'\{\{#(\w+)\}\}((?:(?!\{\{#).)*?)\{\{/\1\}\}', re.S)
+    while block.search(tpl):
+        tpl = block.sub(lambda m: m.group(2) if on[m.group(1)] else '', tpl)
     missing = []
     def sub(m):
         k = m.group(1)
@@ -321,13 +325,14 @@ def images(only=None):
 
 # Termos que só existem na napolitana: se aparecerem em outra receita, algum texto vazou do arquivo errado.
 LEAKS = ['Caputo Pizzeria 00', 'pré-fermento', 'preferment', 'prefermento', 'panetti', '1ª fornada', 'first bake',
-         '1.ª horneada', '1ª infornata', '第一炉', 'Bassinage']
+         '1.ª horneada', '1ª infornata', '第一炉', 'bassinage', '面种']
 
 
 def leak_check(c, l, html_text):
     if c['id'] == 'napolitana': return
     body = re.sub(r'<script.*?</script>', '', html_text, flags=re.S)   # o JS embute textos comuns (menus etc.)
-    found = [w for w in LEAKS if w.lower() in body.lower()]
+    bound = lambda w: (r'(?<!\w)' + re.escape(w) + r'(?!\w)') if w.isascii() or not re.search(r'[\u4e00-\u9fff]', w) else re.escape(w)
+    found = [w for w in LEAKS if re.search(bound(w), body, re.I)]   # palavra inteira ("panettiere" ≠ "panetti"); chinês sem fronteira
     assert not found, f'{c["id"]}/{l}: textos da napolitana vazaram: {found}'
 
 

@@ -72,8 +72,8 @@
         <div class="field"><label for="p-salt">{{ing.salt}}<small>{{panel.ref}}: {{REF_SALT}}</small></label><div class="inp"><input id="p-salt" type="number" min="2" max="3.2" step="0.01"><span>%</span></div></div>
         <div class="field"><label for="p-oil">{{panel.oil}}</label><div class="inp"><input id="p-oil" type="number" min="0" max="4" step="0.1"><span>%</span></div></div>
         <div class="field"><label for="p-yeast">{{panel.yeast}}</label><div class="inp"><input id="p-yeast" type="number" min="0.02" max="1" step="0.01"><span>%</span></div></div>
-        <div class="field" id="rowSugar"{{HIDE_SUGAR}}><label for="p-sugar">{{panel.sugar}}</label><div class="inp"><input id="p-sugar" type="number" min="0" max="5" step="0.1"><span>%</span></div></div>
-        <div class="field" id="rowPf"{{HIDE_PF}}><label for="p-pf">{{panel.pf}}</label><div class="inp"><input id="p-pf" type="number" min="20" max="60" step="5"><span>%</span></div></div>
+        {{#sugar}}<div class="field" id="rowSugar"><label for="p-sugar">{{panel.sugar}}</label><div class="inp"><input id="p-sugar" type="number" min="0" max="5" step="0.1"><span>%</span></div></div>{{/sugar}}
+        {{#pf}}<div class="field" id="rowPf"><label for="p-pf">{{panel.pf}}</label><div class="inp"><input id="p-pf" type="number" min="20" max="60" step="5"><span>%</span></div></div>{{/pf}}
       </div>
       <div class="fieldset">
         <div class="eyebrow">{{panel.env}}</div>
@@ -98,22 +98,22 @@
       <section id="receita">
         <div class="sec-head"><h2>{{recipe.h2}}</h2><p>{{recipe.sub}}</p></div>
         <div class="card tbl-wrap">
-          <table class="{{TABLE_CLASS}}">
-            <thead><tr><th>{{recipe.ing}}</th><th class="n">%</th><th class="n">{{recipe.total}}</th><th class="n"><span class="full">{{recipe.pf}}</span><span class="short">{{recipe.pfShort}}</span></th><th class="n"><span class="full">{{recipe.final}}</span><span class="short">{{recipe.finalShort}}</span></th></tr></thead>
+          <table>
+            <thead><tr><th>{{recipe.ing}}</th><th class="n">%</th><th class="n">{{recipe.total}}</th>{{#pf}}<th class="n"><span class="full">{{recipe.pf}}</span><span class="short">{{recipe.pfShort}}</span></th><th class="n"><span class="full">{{recipe.final}}</span><span class="short">{{recipe.finalShort}}</span></th>{{/pf}}</tr></thead>
             <tbody>
-              <tr><td>{{ing.flour}}</td><td class="n">100</td><td class="n"><span data-k="flour"></span> g</td><td class="n"><span data-k="pfFlour"></span> g</td><td class="n"><span data-k="finFlour"></span> g</td></tr>
-              <tr><td>{{ing.water}}</td><td class="n" data-k="hydPct"></td><td class="n"><span data-k="water"></span> g</td><td class="n"><span data-k="pfWater"></span> g</td><td class="n"><span data-k="finWater"></span> g</td></tr>
-              <tr><td>{{ing.yeast}}</td><td class="n" data-k="yeastPct"></td><td class="n"><span data-k="yeast"></span> g</td><td class="n"><span data-k="yeast"></span> g</td><td class="n">—</td></tr>
-              <tr{{HIDE_SUGAR}}><td>{{ing.sugar}}</td><td class="n" data-k="sugarPct"></td><td class="n"><span data-k="sugar"></span> g</td><td class="n">—</td><td class="n"><span data-k="sugar"></span> g</td></tr>
-              <tr><td>{{ing.salt}}</td><td class="n" data-k="saltPct"></td><td class="n"><span data-k="salt"></span> g</td><td class="n">—</td><td class="n"><span data-k="salt"></span> g</td></tr>
-              <tr><td>{{ing.oil}}</td><td class="n" data-k="oilPct"></td><td class="n"><span data-k="oil"></span> g</td><td class="n">—</td><td class="n"><span data-k="oil"></span> g</td></tr>
-              <tr class="total"><td>{{recipe.dough}}</td><td class="n"></td><td class="n"><span data-k="total"></span> g</td><td class="n"><span data-k="pfTotal"></span> g</td><td class="n">—</td></tr>
+              <tr><td>{{ing.flour}}</td><td class="n">100</td><td class="n"><span data-k="flour"></span> g</td>{{#pf}}<td class="n"><span data-k="pfFlour"></span> g</td><td class="n"><span data-k="finFlour"></span> g</td>{{/pf}}</tr>
+              <tr><td>{{ing.water}}</td><td class="n" data-k="hydPct"></td><td class="n"><span data-k="water"></span> g</td>{{#pf}}<td class="n"><span data-k="pfWater"></span> g</td><td class="n"><span data-k="finWater"></span> g</td>{{/pf}}</tr>
+              <tr><td>{{ing.yeast}}</td><td class="n" data-k="yeastPct"></td><td class="n"><span data-k="yeast"></span> g</td>{{#pf}}<td class="n"><span data-k="yeast"></span> g</td><td class="n">—</td>{{/pf}}</tr>
+              {{#sugar}}<tr><td>{{ing.sugar}}</td><td class="n" data-k="sugarPct"></td><td class="n"><span data-k="sugar"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="sugar"></span> g</td>{{/pf}}</tr>{{/sugar}}
+              <tr><td>{{ing.salt}}</td><td class="n" data-k="saltPct"></td><td class="n"><span data-k="salt"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="salt"></span> g</td>{{/pf}}</tr>
+              <tr><td>{{ing.oil}}</td><td class="n" data-k="oilPct"></td><td class="n"><span data-k="oil"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="oil"></span> g</td>{{/pf}}</tr>
+              <tr class="total"><td>{{recipe.dough}}</td><td class="n"></td><td class="n"><span data-k="total"></span> g</td>{{#pf}}<td class="n"><span data-k="pfTotal"></span> g</td><td class="n">—</td>{{/pf}}</tr>
             </tbody>
           </table>
         </div>
         <div class="split{{SPLIT_CLASS}}">
-          <div class="card mini"{{HIDE_WSPLIT}}><div class="eyebrow">{{recipe.waterEb}}</div><h3>{{recipe.waterH}}</h3>
-            <ul><li><span>{{recipe.wInit}}</span><b class="num"><span data-k="initWater"></span> g</b></li><li><span>Bassinage</span><b class="num"><span data-k="bassWater"></span> g</b></li></ul></div>
+          {{#wsplit}}<div class="card mini"><div class="eyebrow">{{recipe.waterEb}}</div><h3>{{recipe.waterH}}</h3>
+            <ul><li><span>{{recipe.wInit}}</span><b class="num"><span data-k="initWater"></span> g</b></li><li><span>Bassinage</span><b class="num"><span data-k="bassWater"></span> g</b></li></ul></div>{{/wsplit}}
           <div class="card mini"><div class="eyebrow">{{recipe.divEb}}</div><h3>{{recipe.balls}}</h3>
             <ul><li><span>{{recipe.main}}</span><b class="num"><span data-k="n"></span> × <span data-k="per"></span> g</b></li><li id="altRow"><span>{{recipe.alt}}</span><b class="num" data-k="alt"></b></li><li><span>{{recipe.target}}</span><b class="num">{{TARGET}}</b></li></ul></div>
           <div class="card mini"><div class="eyebrow">{{recipe.topEb}}</div><h3>{{recipe.forPre}} <span data-k="n"></span> {{recipe.forPost}}</h3>
@@ -127,7 +127,7 @@
         <div class="card">
           <div class="sched-ctl">
             <div class="field"><label for="p-bake">{{sched.bake}}</label><input id="p-bake" type="datetime-local"></div>
-            <div class="field"{{HIDE_PF}}><label for="p-pfh">{{sched.pfh}}</label><div class="inp"><input id="p-pfh" type="number" min="8" max="30" step="1"><span>h</span></div></div>
+            {{#pf}}<div class="field"><label for="p-pfh">{{sched.pfh}}</label><div class="inp"><input id="p-pfh" type="number" min="8" max="30" step="1"><span>h</span></div></div>{{/pf}}
             <div class="field"><label for="p-panh">{{sched.panh}}</label><div class="inp"><input id="p-panh" type="number" min="12" max="72" step="1"><span>h</span></div></div>
             <div class="field"><label for="p-outh">{{sched.outh}}</label><div class="inp"><input id="p-outh" type="number" min="1" max="8" step="0.5"><span>h</span></div></div>
           </div>
@@ -225,7 +225,8 @@
     const initWater = Math.round(finWater) - bassWater;   // inclui a água em que o sal é dissolvido
     const n = Math.max(1, Math.round(total/P.w)), per = total/n;
     const nF = Math.floor(total/P.w), rem = total - nF*P.w;
-    const alt = (nF>=1 && nF!==n && rem>30) ? `${nF} × ${P.w} g + ${T.test} ${g(rem)} g` : (n>1 && Math.abs(per-P.w)>8 ? `${n+ (per>P.w?1:-1)} × ${g(total/(n+(per>P.w?1:-1)))} g` : '—');
+    const alt = (nF>=1 && nF!==n && rem>30 && rem<P.w*0.6) ?   // bolinha de teste só quando sobra pouca massa
+       `${nF} × ${P.w} g + ${T.test} ${g(rem)} g` : (n>1 && Math.abs(per-P.w)>8 ? `${n+ (per>P.w?1:-1)} × ${g(total/(n+(per>P.w?1:-1)))} g` : '—');
     const sauceTotal = n*P.sauce, cheeseTotal = n*P.cheese, cans = Math.max(1, Math.ceil(sauceTotal/400));
     return {flour, water, salt, oil, yeast, sugar, total, pfFlour, pfWater, pfTotal:pfFlour+pfWater+yeast, finFlour, finWater, saltWater, initWater, bassWater, n, per, alt, sauceTotal, cheeseTotal, cans,
       canSalt: cans*4+'–'+cans*5, top:P.top, bottom:P.bottom, fridge:P.fridge, pfh:P.pfh, panh:P.panh, outh:P.outh, sauce:P.sauce, cheese:P.cheese,
@@ -301,6 +302,7 @@
 
   // ---------- Inputs ----------
   const map = {flour:'p-flour',pizzas:'p-pizzas',w:'p-w',hyd:'p-hyd',salt:'p-salt',oil:'p-oil',yeast:'p-yeast',sugar:'p-sugar',pf:'p-pf',fridge:'p-fridge',top:'p-top',bottom:'p-bottom',sauce:'p-sauce',cheese:'p-cheese',pfh:'p-pfh',panh:'p-panh',outh:'p-outh',bake:'p-bake'};
+  for(const k in map) if(!document.getElementById(map[k])) delete map[k];   // campos que a receita não usa
   function syncInputs(){ for(const k in map){document.getElementById(map[k]).value = P[k]} setMode(P.mode,false) }
   for(const k in map){
     document.getElementById(map[k]).addEventListener('input', e=>{

@@ -1,0 +1,406 @@
+{
+  "meta": {
+    "title": "Pizza New York: receta casera y protocolo paso a paso de la masa | NapoliProtocol",
+    "description": "Receta de pizza estilo New York en casa: masa a mano con 48 h de nevera, calculadora, cronograma y guía de horno en 12 pasos. Versión 0.1, en prueba. Por Jhonathan Sousa.",
+    "ogTitle": "Protocolo de la Pizza New York",
+    "imgAlt": "Protocolo de la Pizza New York, por Jhonathan Sousa",
+    "og": {
+      "eyebrow": "Pizza New York en casa",
+      "title": "Protocolo de la\nNew York",
+      "sub": "Receta, cronograma y horno en 12 pasos. Versión 0.1, en prueba.",
+      "by": "por Jhonathan Sousa"
+    }
+  },
+  "html": {
+    "name": "New York",
+    "hero.eyebrow": "Harina de fuerza · 48 h de nevera · BIG HORN",
+    "hero.h1": "Protocolo de la Pizza New York",
+    "hero.version": "versión 0.1 · en prueba · octubre 2026",
+    "hero.lead": "Receta de pizza estilo New York hecha a mano en casa: masa firme con aceite de oliva y un toque de azúcar, 48 horas en la nevera y un horno más suave. Consolidada a partir de recetas clásicas y todavía sin probar en el BIG HORN; los valores se revisarán tras la primera prueba.",
+    "kpi.balls": "Bollos",
+    "kpi.pizzas": "pizzas de ~32 cm",
+    "kpi.preheat": "precalentar 30–40 min",
+    "kpi.bottomSub": "piedra a ~290–320 °C",
+    "panel.note": "Valores por defecto = versión 0.1, consolidada de recetas clásicas y todavía sin probar. Se guardan en este navegador.",
+    "panel.reset": "Restaurar v0.1",
+    "recipe.sub": "Cantidades totales de la masa. Masa directa: todos los ingredientes van en la misma mezcla.",
+    "recipe.balls": "Bollos",
+    "ing.flour": "Harina de fuerza (Caputo Manitoba Oro)",
+    "steps.sub": "Marca cada paso al terminarlo. Las etiquetas indican el origen: técnica clásica de New York o adaptación al amasado a mano y al BIG HORN.",
+    "oven.sub": "Cronómetro de mesa y diagnóstico por el resultado. La New York se hornea más despacio: de 5 a 7 minutos, girando cada minuto.",
+    "oven.note": "Franja naranja: 1–1,5 min, momento del primer giro. Franja verde: 5–7 min, punto esperado.",
+    "rules.h2": "Reglas de la versión 0.1",
+    "rules.sub": "Punto de partida, todavía sin horneadas. Tras la primera prueba, estas reglas se convierten en lecciones.",
+    "sched.panh": "Bollos en nevera"
+  },
+  "rules": [
+    "Usa harina de fuerza, con 13% de proteína o más.",
+    "Agua fría: la masa pasará 2 días en la nevera.",
+    "Amasa de verdad: la New York necesita un gluten fuerte.",
+    "El aceite entra cuando la masa ya se formó.",
+    "Poca levadura: la nevera hace el trabajo.",
+    "Saca la masa de la nevera 2 h antes.",
+    "Masa fría no se estira: espera.",
+    "Sin rodillo: estira con las manos y los nudillos.",
+    "Salsa cruda, lisa y espesa.",
+    "Mozzarella baja en humedad, rallada.",
+    "Queso casi hasta el borde.",
+    "Horno más suave que para la napolitana.",
+    "Gira la pizza cada minuto.",
+    "Termina con parmesano, orégano y guindilla.",
+    "La porción tiene que doblarse sin romperse.",
+    "Cambia una variable a la vez."
+  ],
+  "glossary": [
+    [
+      "Harina de fuerza",
+      "Harina con 13–15% de proteína (como la Caputo Manitoba Oro). Forma más gluten y da la mordida de la New York."
+    ],
+    [
+      "Fermentación en frío",
+      "Dejar los bollos de 1 a 3 días en la nevera. La levadura trabaja despacio y la masa gana sabor y elasticidad."
+    ],
+    [
+      "Prueba de la ventana",
+      "Estirar un trozo de masa hasta formar una membrana fina sin que se rompa. Señal de que el gluten está listo."
+    ],
+    [
+      "Mozzarella baja en humedad",
+      "La mozzarella firme, en bloque, que se ralla. Se funde sin soltar agua, a diferencia de la fresca."
+    ],
+    [
+      "El doblado",
+      "Doblar la porción a lo largo para comerla de pie, al estilo neoyorquino."
+    ],
+    [
+      "Sémola",
+      "Harina gruesa de trigo duro que se espolvorea en la pala. Funciona como rodamiento para que la pizza deslice."
+    ]
+  ],
+  "about": {
+    "h2": "Acerca de la Pizza New York",
+    "sub": "De dónde viene esta receta y qué define a la pizza de Nueva York.",
+    "siteEb": "Esta receta",
+    "siteH": "Versión 0.1, todavía en prueba",
+    "site": [
+      "Esta es la primera versión de la New York en NapoliProtocol. Consolida recetas clásicas de pizza estilo New York para hacer en casa y adapta el resultado al proceso de este sitio: masa hecha a mano, nevera a unos 7 °C y horno eléctrico BIG HORN.",
+      "La fórmula queda en el medio de lo que usan esas referencias: harina de fuerza, 63% de hidratación, 2% de sal, 2,5% de aceite de oliva, 1,5% de azúcar y poca levadura, porque esta nevera es más cálida que los 3–4 °C de las recetas estadounidenses.",
+      "Todavía no hubo horneada. Tras la primera prueba, los números se recalibran, las lecciones entran en el paso a paso y la receta pasa a la versión 1.0, como ocurrió con la napolitana."
+    ],
+    "pizzaEb": "La pizza New York",
+    "pizzaH": "La porción que se dobla",
+    "pizza": [
+      "La pizza de Nueva York nació con los inmigrantes del sur de Italia. Lombardi's, de Gennaro Lombardi, se considera la primera pizzería con licencia de la ciudad, en 1905, con horno de carbón.",
+      "Con los hornos de piso a gas, después de la Segunda Guerra Mundial, la pizza se volvió comida de mostrador: discos grandes, de unos 45 cm, vendidos por porciones. La masa lleva harina de fuerza, un poco de aceite y a veces azúcar, y se hornea varios minutos a unos 260–340 °C.",
+      "El resultado es fino, crujiente por debajo y flexible por arriba. Lleva salsa de tomate condimentada y mozzarella baja en humedad casi hasta el borde, y se come doblando la porción por la mitad. En casa el tamaño lo limita la piedra; la lógica de la masa es la misma."
+    ],
+    "facts": [
+      [
+        "1905",
+        "Lombardi's, Nueva York"
+      ],
+      [
+        "~45 cm",
+        "tamaño clásico"
+      ],
+      [
+        "260–340 °C",
+        "horno de piso"
+      ],
+      [
+        "5–7 min",
+        "de horno en casa"
+      ]
+    ]
+  },
+  "js": {
+    "src": {
+      "d": "Clásico NY",
+      "a": "Adaptado",
+      "l": "Lección"
+    },
+    "sched": {
+      "ev": [
+        [
+          "Mezclar y amasar",
+          "Pasos 01–04. Unas 2 h, con 1 h de reposo a temperatura ambiente."
+        ],
+        [
+          "Bolear y refrigerar",
+          "Paso 05. {panh} h a {fridge} °C."
+        ],
+        [
+          "Sacar los bollos",
+          "Paso 06. Prepara salsa y queso mientras tanto."
+        ],
+        [
+          "Encender el horno",
+          "Paso 08. {top} °C / {bottom} °C."
+        ],
+        [
+          "Hornear",
+          "Pasos 09–12. 5–7 min por pizza."
+        ]
+      ],
+      "past": "<b>Inicio en el pasado.</b> Para hornear a esa hora, la masa ya debería estar hecha. Retrasa el horneado o reduce el tiempo de nevera.",
+      "over36": "<b>Más de 72 h en la nevera.</b> La masa tiende a volverse ácida y débil."
+    },
+    "warn": {
+      "hyd": "Hidratación distinta del 63%. En la versión 0.1, empieza con los valores por defecto.",
+      "per": "Bollos de {per} g quedan fuera del rango de 280–320 g para la piedra del BIG HORN. Mira la alternativa o ajusta la harina.",
+      "bottom": "Una resistencia inferior por encima de 330 °C tiende a quemar la base antes de que el queso se dore."
+    },
+    "timer": {
+      "msg": [
+        "Deja que la base se asiente.",
+        "Primer giro: rota 90–180°.",
+        "Gira cada ~1 min. Observa el borde y el queso.",
+        "Ventana de punto. Revisa la base y el queso dorado.",
+        "Más de 7 min. Si sigue pálida, falta calor."
+      ]
+    },
+    "diag": [
+      [
+        "La base se quema antes de que el queso se dore",
+        "Baja la resistencia inferior.",
+        "bottom",
+        -10
+      ],
+      [
+        "Base pálida y blanda",
+        "Sube la resistencia inferior.",
+        "bottom",
+        10
+      ],
+      [
+        "Queso blanco, sin manchas doradas",
+        "Sube la resistencia superior.",
+        "top",
+        10
+      ],
+      [
+        "El queso se quema o suelta mucho aceite",
+        "Baja la resistencia superior.",
+        "top",
+        -10
+      ],
+      [
+        "Borde duro y seco",
+        "Hornea más rápido, con algo más de calor, o sube el aceite al 3%."
+      ],
+      [
+        "La porción se rompe al doblarla",
+        "Se horneó de más o quedó demasiado fina. Sácala antes o estírala un poco menos."
+      ],
+      [
+        "Centro mojado",
+        "Menos salsa, mozzarella baja en humedad y piedra bien caliente antes de meterla."
+      ]
+    ],
+    "steps": [
+      {
+        "day": "Día 1",
+        "when": "mezcla y amasado",
+        "items": [
+          {
+            "id": "s1",
+            "t": "Mezclar la masa",
+            "time": "~10 min + 20 min de reposo",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "mix",
+            "li": [
+              "Mezcla en seco {flour} g de harina, {yeast} g de levadura y {sugar} g de azúcar.",
+              "Disuelve {salt} g de sal en {water} g de agua fría (10–15 °C).",
+              "Vierte el agua sobre la harina y mezcla hasta que no quede harina seca.",
+              "Tapa y deja reposar 20 min. La harina se hidrata y el amasado se acorta."
+            ],
+            "tip": "El agua fría frena la fermentación: a la masa todavía le quedan 2 días de nevera."
+          },
+          {
+            "id": "s2",
+            "t": "Incorporar el aceite",
+            "time": "~5 min",
+            "src": [
+              "a"
+            ],
+            "il": "oil",
+            "li": [
+              "Añade {oil} g de aceite de oliva poco a poco.",
+              "Incorpóralo con pellizcos y pliegues hasta que la masa lo absorba y deje de resbalar."
+            ]
+          },
+          {
+            "id": "s3",
+            "t": "Amasar",
+            "time": "~15 min",
+            "src": [
+              "d"
+            ],
+            "il": "fold",
+            "li": [
+              "Amasa 8–10 min en la mesa, sin harina extra: empuja con la base de la mano, pliega y gira un cuarto de vuelta.",
+              "Reposa 10 min y amasa 2–3 min más, hasta que la masa quede lisa y elástica.",
+              "Prueba de la ventana: estira un trozo hasta formar una membrana fina. Si se rompe enseguida, amasa un poco más."
+            ],
+            "tip": "La New York necesita más gluten que la napolitana. Eso hace que la porción se doble y tenga mordida."
+          },
+          {
+            "id": "s4",
+            "t": "Primer reposo",
+            "time": "~1 h",
+            "src": [
+              "d"
+            ],
+            "il": "proof",
+            "li": [
+              "Forma una bola, ponla en un bol ligeramente aceitado y tápala.",
+              "Deja 1 h a temperatura ambiente. Debe crecer poco."
+            ]
+          },
+          {
+            "id": "s5",
+            "t": "Dividir, bolear y refrigerar",
+            "time": "~15 min",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "balls",
+            "li": [
+              "Divide en {n} bollos de {per} g (masa total {total} g).",
+              "Bolea con tensión en la superficie y cierra bien la base.",
+              "Recipientes individuales ligeramente aceitados, tapados, en la nevera durante unas {panh} h."
+            ],
+            "tip": "A {fridge} °C la fermentación va más rápido que a los 3–4 °C de las recetas estadounidenses; por eso la levadura es baja. Si tu nevera es más fría, sube al 0,3%."
+          }
+        ]
+      },
+      {
+        "day": "Día 3",
+        "when": "horno",
+        "items": [
+          {
+            "id": "s6",
+            "t": "Atemperar los bollos",
+            "time": "~{outh} h fuera",
+            "src": [
+              "d"
+            ],
+            "il": "proof",
+            "li": [
+              "Sácalos de la nevera unas {outh} h antes de hornear, todavía en el recipiente tapado.",
+              "Punto: relajada, algo hinchada, con burbujas en los laterales y suave al tacto."
+            ],
+            "tip": "warn|La masa fría no se estira: encoge y se rompe. Respeta el tiempo fuera."
+          },
+          {
+            "id": "s7",
+            "t": "Preparar salsa y queso",
+            "time": "~15 min",
+            "src": [
+              "d"
+            ],
+            "il": "sauce",
+            "li": [
+              "Tritura brevemente o pasa por el pasapurés {cans} lata(s) de tomate pelado: salsa lisa y espesa, sin cocinar.",
+              "Sazona con 4–5 g de sal por lata y 1 cucharadita de orégano seco. Opcional: una pizca de azúcar y 1 diente de ajo rallado.",
+              "Ralla grueso {cheeseTotal} g de mozzarella baja en humedad (la firme, en bloque).",
+              "Reserva parmesano rallado, orégano y guindilla para terminar."
+            ],
+            "tip": "La mozzarella fresca suelta demasiada agua para los minutos de horno de la New York."
+          },
+          {
+            "id": "s8",
+            "t": "Precalentar el BIG HORN",
+            "time": "30–40 min",
+            "src": [
+              "a"
+            ],
+            "il": "oven",
+            "li": [
+              "Superior a {top} °C, inferior a {bottom} °C.",
+              "Si tienes termómetro infrarrojo, mide el centro de la piedra: el objetivo es ~290–320 °C."
+            ],
+            "tip": "warn|Valores iniciales, todavía sin probar en este horno. Usa el diagnóstico de abajo para calibrar."
+          },
+          {
+            "id": "s9",
+            "t": "Estirar la masa",
+            "time": "~2 min por pizza",
+            "src": [
+              "d"
+            ],
+            "il": "open",
+            "li": [
+              "Enharina bien el bollo por los dos lados.",
+              "Presiona el centro con las yemas de los dedos, dejando cerca de 1 cm de borde.",
+              "Levanta la masa y estírala sobre los nudillos, girando, hasta ~30–32 cm.",
+              "El disco queda fino y uniforme, con el centro casi translúcido."
+            ],
+            "tip": "Sin rodillo. Si la masa encoge, déjala reposar 5–10 min y sigue."
+          },
+          {
+            "id": "s10",
+            "t": "Montar y meter al horno",
+            "time": "~1 min en la pala",
+            "src": [
+              "d"
+            ],
+            "il": "build",
+            "li": [
+              "Espolvorea la pala con sémola y coloca el disco.",
+              "Extiende {sauce} g de salsa en capa fina, hasta ~1 cm del borde.",
+              "Cubre con {cheese} g de mozzarella rallada, casi hasta el borde.",
+              "Haz un movimiento corto hacia los lados: la pizza tiene que deslizarse entera."
+            ]
+          },
+          {
+            "id": "s11",
+            "t": "Hornear y girar",
+            "time": "5–7 min",
+            "src": [
+              "a"
+            ],
+            "il": "bake",
+            "li": [
+              "Gira 90–180° cada ~1 min para que se hornee pareja.",
+              "Punto: queso fundido con manchas doradas y borde dorado.",
+              "Levanta el borde con la pala: la base debe estar firme y moteada, no pálida."
+            ],
+            "tip": "La New York se hornea más despacio y más fría que la napolitana: crujiente por debajo, flexible por arriba."
+          },
+          {
+            "id": "s12",
+            "t": "Terminar y cortar",
+            "time": "~2 min",
+            "src": [
+              "d"
+            ],
+            "il": "balls",
+            "li": [
+              "Deja 1–2 min sobre una rejilla para que la base no se ablande.",
+              "Termina con parmesano, orégano y guindilla.",
+              "Corta en 6 a 8 porciones. Para comer, dobla la porción por la mitad."
+            ]
+          }
+        ]
+      }
+    ],
+    "ld": {
+      "name": "Pizza estilo New York casera (masa con 48 h de nevera)",
+      "description": "Receta de pizza estilo New York con harina de fuerza, 63% de hidratación, aceite de oliva y azúcar, fermentación de 48 horas en la nevera, salsa cruda y mozzarella baja en humedad.",
+      "yield": "{n} pizzas de ~32 cm",
+      "category": "Pizza",
+      "cuisine": "Estadounidense (Nueva York)",
+      "keywords": "pizza new york, pizza estilo new york, receta pizza new york, masa de pizza new york, pizza neoyorquina, pizza casera",
+      "toppings": [
+        "{sauce} g de salsa de tomate cruda condimentada",
+        "{cheese} g de mozzarella baja en humedad rallada",
+        "Parmesano rallado, orégano seco y guindilla al gusto"
+      ]
+    }
+  }
+}

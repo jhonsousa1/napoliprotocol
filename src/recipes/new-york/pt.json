@@ -1,0 +1,406 @@
+{
+  "meta": {
+    "title": "Pizza New York: receita caseira e protocolo passo a passo da massa | NapoliProtocol",
+    "description": "Receita de pizza estilo New York em casa: massa à mão com 48 h de geladeira, calculadora, cronograma e guia de forno em 12 etapas. Versão 0.1, em teste. Por Jhonathan Sousa.",
+    "ogTitle": "Protocolo da Pizza New York",
+    "imgAlt": "Protocolo da Pizza New York, por Jhonathan Sousa",
+    "og": {
+      "eyebrow": "Pizza New York em casa",
+      "title": "Protocolo da\nNew York",
+      "sub": "Receita, cronograma e forno em 12 etapas. Versão 0.1, em teste.",
+      "by": "por Jhonathan Sousa"
+    }
+  },
+  "html": {
+    "name": "New York",
+    "hero.eyebrow": "Farinha forte · 48 h de geladeira · BIG HORN",
+    "hero.h1": "Protocolo da Pizza New York",
+    "hero.version": "versão 0.1 · em teste · outubro 2026",
+    "hero.lead": "Receita de pizza estilo New York feita à mão em casa: massa firme com azeite e um toque de açúcar, 48 horas na geladeira e forno mais brando. Consolidada a partir de receitas clássicas e ainda não testada no BIG HORN; os valores serão revistos após a primeira fornada.",
+    "kpi.balls": "Bolas",
+    "kpi.pizzas": "pizzas de ~32 cm",
+    "kpi.preheat": "pré-aquecer 30–40 min",
+    "kpi.bottomSub": "pedra a ~290–320 °C",
+    "panel.note": "Valores padrão = versão 0.1, consolidada de receitas clássicas e ainda não testada. Ficam salvos neste navegador.",
+    "panel.reset": "Restaurar v0.1",
+    "recipe.sub": "Quantidades totais da massa. Massa direta: todos os ingredientes entram na mesma mistura.",
+    "recipe.balls": "Bolas",
+    "ing.flour": "Farinha forte (Caputo Manitoba Oro)",
+    "steps.sub": "Marque cada etapa ao concluir. As etiquetas indicam a origem: técnica clássica de New York ou adaptação para o processo à mão e o BIG HORN.",
+    "oven.sub": "Cronômetro de bancada e diagnóstico pelo resultado. A New York assa mais devagar: 5 a 7 minutos, girando a cada minuto.",
+    "oven.note": "Faixa laranja: 1–1,5 min, hora da primeira volta. Faixa verde: 5–7 min, ponto esperado.",
+    "rules.h2": "Regras da versão 0.1",
+    "rules.sub": "Ponto de partida, ainda sem fornada. Depois do primeiro teste, estas regras viram lições.",
+    "sched.panh": "Bolas na geladeira"
+  },
+  "rules": [
+    "Use farinha forte, com 13% de proteína ou mais.",
+    "Água fria: a massa vai passar 2 dias na geladeira.",
+    "Sove de verdade: a New York precisa de glúten forte.",
+    "Azeite entra depois que a massa se formou.",
+    "Pouco fermento: a geladeira faz o trabalho.",
+    "Tire a massa da geladeira 2 h antes.",
+    "Massa gelada não abre: espere.",
+    "Sem rolo: abra com as mãos e os nós dos dedos.",
+    "Molho cru, liso e espesso.",
+    "Muçarela de baixa umidade, ralada.",
+    "Queijo quase até a borda.",
+    "Forno mais brando que o da napolitana.",
+    "Gire a pizza a cada minuto.",
+    "Finalize com parmesão, orégano e pimenta.",
+    "A fatia tem que dobrar sem quebrar.",
+    "Mude uma variável por vez."
+  ],
+  "glossary": [
+    [
+      "Farinha forte",
+      "Farinha com 13–15% de proteína (como a Caputo Manitoba Oro). Forma mais glúten e dá a mordida da New York."
+    ],
+    [
+      "Fermentação a frio",
+      "Deixar as bolas 1 a 3 dias na geladeira. O fermento trabalha devagar e a massa ganha sabor e elasticidade."
+    ],
+    [
+      "Teste da janela",
+      "Esticar um pedaço de massa até virar uma membrana fina sem rasgar. Sinal de que o glúten está pronto."
+    ],
+    [
+      "Muçarela de baixa umidade",
+      "A muçarela firme, de bloco, que se rala. Derrete sem soltar água, ao contrário da fresca."
+    ],
+    [
+      "Fold",
+      "Dobrar a fatia ao meio no sentido do comprimento para comer em pé, do jeito nova-iorquino."
+    ],
+    [
+      "Sêmola",
+      "Farinha grossa de grão duro usada na pá. Funciona como rolamento para a pizza deslizar."
+    ]
+  ],
+  "about": {
+    "h2": "Sobre a Pizza New York",
+    "sub": "De onde vem esta receita e o que define a pizza de Nova York.",
+    "siteEb": "Esta receita",
+    "siteH": "Versão 0.1, ainda em teste",
+    "site": [
+      "Esta é a primeira versão da New York no NapoliProtocol. Ela consolida receitas clássicas de pizza estilo New York para fazer em casa e adapta o resultado ao processo deste site: massa feita à mão, geladeira a cerca de 7 °C e forno elétrico BIG HORN.",
+      "A fórmula fica no meio do que essas referências usam: farinha forte, 63% de hidratação, 2% de sal, 2,5% de azeite, 1,5% de açúcar e pouco fermento, porque a geladeira daqui é mais quente que os 3–4 °C das receitas americanas.",
+      "Ainda não houve fornada. Depois do primeiro teste, os números são recalibrados, as lições entram no passo a passo e a receita vira versão 1.0, como aconteceu com a napolitana."
+    ],
+    "pizzaEb": "A pizza New York",
+    "pizzaH": "A fatia que se dobra",
+    "pizza": [
+      "A pizza de Nova York nasceu com os imigrantes do sul da Itália. A Lombardi's, de Gennaro Lombardi, é tida como a primeira pizzaria licenciada da cidade, em 1905, assando em forno a carvão.",
+      "Com os fornos a gás de lastro, depois da Segunda Guerra, a pizza virou comida de balcão: discos grandes, de cerca de 45 cm, vendidos em fatias. A massa leva farinha forte, um pouco de azeite e às vezes açúcar, e assa por vários minutos a cerca de 260–340 °C.",
+      "O resultado é fino, crocante por baixo e flexível por cima. Vem com molho de tomate temperado e muçarela de baixa umidade quase até a borda, e se come dobrando a fatia ao meio. Em casa, o tamanho fica limitado pela pedra; a lógica da massa é a mesma."
+    ],
+    "facts": [
+      [
+        "1905",
+        "Lombardi's, em Nova York"
+      ],
+      [
+        "~45 cm",
+        "tamanho clássico"
+      ],
+      [
+        "260–340 °C",
+        "forno de lastro"
+      ],
+      [
+        "5–7 min",
+        "de forno em casa"
+      ]
+    ]
+  },
+  "js": {
+    "src": {
+      "d": "Clássico NY",
+      "a": "Adaptado",
+      "l": "Lição"
+    },
+    "sched": {
+      "ev": [
+        [
+          "Misturar e sovar",
+          "Etapas 01–04. Cerca de 2 h, com 1 h de descanso em temperatura ambiente."
+        ],
+        [
+          "Bolear e refrigerar",
+          "Etapa 05. {panh} h a {fridge} °C."
+        ],
+        [
+          "Retirar as bolas",
+          "Etapa 06. Prepare molho e queijo nesse intervalo."
+        ],
+        [
+          "Ligar o forno",
+          "Etapa 08. {top} °C / {bottom} °C."
+        ],
+        [
+          "Assar",
+          "Etapas 09–12. 5–7 min por pizza."
+        ]
+      ],
+      "past": "<b>Começo no passado.</b> Para assar nesse horário, a massa já deveria ter sido feita. Adie o forno ou reduza o tempo de geladeira.",
+      "over36": "<b>Mais de 72 h na geladeira.</b> A massa tende a ficar ácida e fraca."
+    },
+    "warn": {
+      "hyd": "Hidratação diferente de 63%. Na versão 0.1, comece pelos valores padrão.",
+      "per": "Bolas de {per} g ficam fora da faixa de 280–320 g para a pedra do BIG HORN. Veja a alternativa ou ajuste a farinha.",
+      "bottom": "Inferior acima de 330 °C tende a queimar o fundo antes de o queijo dourar."
+    },
+    "timer": {
+      "msg": [
+        "Deixe a base firmar.",
+        "Primeira volta: gire 90–180°.",
+        "Gire a cada ~1 min. Observe a borda e o queijo.",
+        "Janela de ponto. Confira o fundo e o queijo dourado.",
+        "Passou de 7 min. Se ainda está pálida, falta calor."
+      ]
+    },
+    "diag": [
+      [
+        "Fundo queima antes do queijo dourar",
+        "Reduza a resistência inferior.",
+        "bottom",
+        -10
+      ],
+      [
+        "Fundo pálido e mole",
+        "Aumente a resistência inferior.",
+        "bottom",
+        10
+      ],
+      [
+        "Queijo branco, sem manchas douradas",
+        "Aumente a resistência superior.",
+        "top",
+        10
+      ],
+      [
+        "Queijo queima ou solta muito óleo",
+        "Reduza a resistência superior.",
+        "top",
+        -10
+      ],
+      [
+        "Borda dura e seca",
+        "Asse mais rápido, com um pouco mais de calor, ou suba o azeite para 3%."
+      ],
+      [
+        "A fatia quebra ao dobrar",
+        "Assou demais ou ficou fina demais. Tire antes ou abra um pouco menos."
+      ],
+      [
+        "Centro molhado",
+        "Menos molho, muçarela de baixa umidade e pedra bem quente antes de lançar."
+      ]
+    ],
+    "steps": [
+      {
+        "day": "Dia 1",
+        "when": "mistura e sova",
+        "items": [
+          {
+            "id": "s1",
+            "t": "Misturar a massa",
+            "time": "~10 min + 20 min de descanso",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "mix",
+            "li": [
+              "Misture a seco {flour} g de farinha, {yeast} g de fermento e {sugar} g de açúcar.",
+              "Dissolva {salt} g de sal em {water} g de água fria (10–15 °C).",
+              "Junte a água à farinha e misture até não sobrar farinha seca.",
+              "Tampe e descanse 20 min. A farinha hidrata e a sova fica mais curta."
+            ],
+            "tip": "Água fria segura a fermentação: a massa ainda vai passar 2 dias na geladeira."
+          },
+          {
+            "id": "s2",
+            "t": "Incorporar o azeite",
+            "time": "~5 min",
+            "src": [
+              "a"
+            ],
+            "il": "oil",
+            "li": [
+              "Adicione {oil} g de azeite aos poucos.",
+              "Incorpore com pinça e dobras até a massa absorver tudo e parar de escorregar."
+            ]
+          },
+          {
+            "id": "s3",
+            "t": "Sovar",
+            "time": "~15 min",
+            "src": [
+              "d"
+            ],
+            "il": "fold",
+            "li": [
+              "Sove 8–10 min na bancada, sem farinha extra: empurre com a base da mão, dobre e gire um quarto de volta.",
+              "Descanse 10 min e sove mais 2–3 min, até a massa ficar lisa e elástica.",
+              "Teste da janela: estique um pedaço até formar uma membrana fina. Se rasgar logo, sove mais um pouco."
+            ],
+            "tip": "A New York precisa de mais glúten que a napolitana. É ele que deixa a fatia dobrável e com mordida."
+          },
+          {
+            "id": "s4",
+            "t": "Primeiro descanso",
+            "time": "~1 h",
+            "src": [
+              "d"
+            ],
+            "il": "proof",
+            "li": [
+              "Forme uma bola, coloque numa tigela levemente untada e tampe.",
+              "Deixe 1 h em temperatura ambiente. Ela deve crescer pouco."
+            ]
+          },
+          {
+            "id": "s5",
+            "t": "Dividir, bolear e refrigerar",
+            "time": "~15 min",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "balls",
+            "li": [
+              "Divida em {n} bolas de {per} g (massa total {total} g).",
+              "Boleie com tensão na superfície e feche bem a base.",
+              "Potes individuais levemente untados, tampados, na geladeira por cerca de {panh} h."
+            ],
+            "tip": "A {fridge} °C a fermentação anda mais rápido que nos 3–4 °C das receitas americanas; por isso o fermento é baixo. Se sua geladeira for mais fria, suba para 0,3%."
+          }
+        ]
+      },
+      {
+        "day": "Dia 3",
+        "when": "forno",
+        "items": [
+          {
+            "id": "s6",
+            "t": "Temperar as bolas",
+            "time": "~{outh} h fora",
+            "src": [
+              "d"
+            ],
+            "il": "proof",
+            "li": [
+              "Retire da geladeira cerca de {outh} h antes de assar, ainda no pote tampado.",
+              "Ponto: relaxada, um pouco inchada, com bolhas na lateral e macia ao toque."
+            ],
+            "tip": "warn|Massa gelada não abre: encolhe e rasga. Respeite o tempo fora."
+          },
+          {
+            "id": "s7",
+            "t": "Preparar molho e queijo",
+            "time": "~15 min",
+            "src": [
+              "d"
+            ],
+            "il": "sauce",
+            "li": [
+              "Bata rapidamente ou passe na peneira {cans} lata(s) de tomate pelado: molho liso e espesso, sem cozinhar.",
+              "Tempere com 4–5 g de sal por lata e 1 colher de chá de orégano seco. Opcional: uma pitada de açúcar e 1 dente de alho ralado.",
+              "Rale grosso {cheeseTotal} g de muçarela de baixa umidade (a firme, de bloco).",
+              "Separe parmesão ralado, orégano e pimenta calabresa para finalizar."
+            ],
+            "tip": "Muçarela fresca solta água demais para os minutos de forno da New York."
+          },
+          {
+            "id": "s8",
+            "t": "Pré-aquecer o BIG HORN",
+            "time": "30–40 min",
+            "src": [
+              "a"
+            ],
+            "il": "oven",
+            "li": [
+              "Superior em {top} °C, inferior em {bottom} °C.",
+              "Se tiver termômetro infravermelho, meça o centro da pedra: o alvo é ~290–320 °C."
+            ],
+            "tip": "warn|Valores iniciais, ainda não testados neste forno. Use o diagnóstico abaixo para calibrar."
+          },
+          {
+            "id": "s9",
+            "t": "Abrir a massa",
+            "time": "~2 min por pizza",
+            "src": [
+              "d"
+            ],
+            "il": "open",
+            "li": [
+              "Enfarinhe bem a bola dos dois lados.",
+              "Pressione o centro com as pontas dos dedos, deixando cerca de 1 cm de borda.",
+              "Levante a massa e estique sobre os nós dos dedos, girando, até ~30–32 cm.",
+              "O disco fica fino e uniforme, com o centro quase translúcido."
+            ],
+            "tip": "Sem rolo. Se a massa encolher, descanse 5–10 min e continue."
+          },
+          {
+            "id": "s10",
+            "t": "Montar e lançar",
+            "time": "~1 min na pá",
+            "src": [
+              "d"
+            ],
+            "il": "build",
+            "li": [
+              "Polvilhe a pá com sêmola e coloque o disco.",
+              "Espalhe {sauce} g de molho em camada fina, até ~1 cm da borda.",
+              "Cubra com {cheese} g de muçarela ralada, quase até a borda.",
+              "Faça um movimento curto para os lados: a pizza tem que deslizar inteira."
+            ]
+          },
+          {
+            "id": "s11",
+            "t": "Assar e girar",
+            "time": "5–7 min",
+            "src": [
+              "a"
+            ],
+            "il": "bake",
+            "li": [
+              "Gire 90–180° a cada ~1 min para assar por igual.",
+              "Ponto: queijo derretido com manchas douradas e borda dourada.",
+              "Levante a borda com a pá: o fundo deve estar firme e pintado, não pálido."
+            ],
+            "tip": "A New York assa mais devagar e mais fria que a napolitana: crocante por baixo, flexível por cima."
+          },
+          {
+            "id": "s12",
+            "t": "Finalizar e fatiar",
+            "time": "~2 min",
+            "src": [
+              "d"
+            ],
+            "il": "balls",
+            "li": [
+              "Deixe 1–2 min numa grade para o fundo não amolecer.",
+              "Finalize com parmesão, orégano e pimenta calabresa.",
+              "Corte em 6 a 8 fatias. Para comer, dobre a fatia ao meio."
+            ]
+          }
+        ]
+      }
+    ],
+    "ld": {
+      "name": "Pizza estilo New York caseira (massa com 48 h de geladeira)",
+      "description": "Receita de pizza estilo New York com farinha forte, 63% de hidratação, azeite e açúcar, fermentação de 48 horas na geladeira, molho cru e muçarela de baixa umidade.",
+      "yield": "{n} pizzas de ~32 cm",
+      "category": "Pizza",
+      "cuisine": "Americana (Nova York)",
+      "keywords": "pizza new york, pizza estilo new york, receita pizza new york, massa de pizza new york, pizza nova-iorquina, pizza caseira",
+      "toppings": [
+        "{sauce} g de molho de tomate cru temperado",
+        "{cheese} g de muçarela de baixa umidade ralada",
+        "Parmesão ralado, orégano seco e pimenta calabresa a gosto"
+      ]
+    }
+  }
+}

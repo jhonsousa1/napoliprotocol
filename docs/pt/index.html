@@ -347,7 +347,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
 <div class="wrap">
   <div class="hero">
     <div>
-      <nav class="recipes" aria-label="Receitas"><a href="/pt/" aria-current="page">Napolitana</a></nav>
+      <nav class="recipes" aria-label="Receitas"><a href="/pt/" aria-current="page">Napolitana</a><a href="/pt/new-york/">New York <em>v0.1</em></a></nav>
       <div class="eyebrow">Caputo Pizzeria 00 · Pré-fermento · BIG HORN</div>
       <h1>Protocolo da Pizza Napolitana</h1>
       <div class="byline"><span class="mono-js" aria-hidden="true">JS</span><span><span>por <a href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author">Jhonathan Sousa</a></span><small>versão 1.0 · outubro 2026</small></span></div>
@@ -383,7 +383,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
         <div class="field"><label for="p-salt">Sal<small>Referência: 3%</small></label><div class="inp"><input id="p-salt" type="number" min="2" max="3.2" step="0.01"><span>%</span></div></div>
         <div class="field"><label for="p-oil">Azeite</label><div class="inp"><input id="p-oil" type="number" min="0" max="4" step="0.1"><span>%</span></div></div>
         <div class="field"><label for="p-yeast">Fermento seco</label><div class="inp"><input id="p-yeast" type="number" min="0.02" max="1" step="0.01"><span>%</span></div></div>
-        <div class="field" id="rowSugar" hidden=""><label for="p-sugar">Açúcar</label><div class="inp"><input id="p-sugar" type="number" min="0" max="5" step="0.1"><span>%</span></div></div>
+        
         <div class="field" id="rowPf"><label for="p-pf">Farinha no pré-fermento</label><div class="inp"><input id="p-pf" type="number" min="20" max="60" step="5"><span>%</span></div></div>
       </div>
       <div class="fieldset">
@@ -409,13 +409,13 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
       <section id="receita">
         <div class="sec-head"><h2>Receita</h2><p>Quantidades totais e como elas se dividem entre pré-fermento e massa final.</p></div>
         <div class="card tbl-wrap">
-          <table class="">
+          <table>
             <thead><tr><th>Ingrediente</th><th class="n">%</th><th class="n">Total</th><th class="n"><span class="full">Pré-fermento</span><span class="short">Pré-f.</span></th><th class="n"><span class="full">Massa final</span><span class="short">Final</span></th></tr></thead>
             <tbody>
               <tr><td>Farinha Caputo Pizzeria 00</td><td class="n">100</td><td class="n"><span data-k="flour">800</span> g</td><td class="n"><span data-k="pfFlour">400</span> g</td><td class="n"><span data-k="finFlour">400</span> g</td></tr>
               <tr><td>Água filtrada</td><td class="n" data-k="hydPct">64</td><td class="n"><span data-k="water">512</span> g</td><td class="n"><span data-k="pfWater">400</span> g</td><td class="n"><span data-k="finWater">112</span> g</td></tr>
               <tr><td>Fermento biológico seco</td><td class="n" data-k="yeastPct">0,1</td><td class="n"><span data-k="yeast">0,8</span> g</td><td class="n"><span data-k="yeast">0,8</span> g</td><td class="n">—</td></tr>
-              <tr hidden=""><td>Açúcar</td><td class="n" data-k="sugarPct">0</td><td class="n"><span data-k="sugar">0,0</span> g</td><td class="n">—</td><td class="n"><span data-k="sugar">0,0</span> g</td></tr>
+              
               <tr><td>Sal</td><td class="n" data-k="saltPct">2,88</td><td class="n"><span data-k="salt">23</span> g</td><td class="n">—</td><td class="n"><span data-k="salt">23</span> g</td></tr>
               <tr><td>Azeite extravirgem</td><td class="n" data-k="oilPct">1,5</td><td class="n"><span data-k="oil">12</span> g</td><td class="n">—</td><td class="n"><span data-k="oil">12</span> g</td></tr>
               <tr class="total"><td>Massa</td><td class="n"></td><td class="n"><span data-k="total">1.348</span> g</td><td class="n"><span data-k="pfTotal">801</span> g</td><td class="n">—</td></tr>
@@ -426,7 +426,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
           <div class="card mini"><div class="eyebrow">Água da massa final</div><h3>Divisão manual</h3>
             <ul><li><span>Mistura inicial, com o sal</span><b class="num"><span data-k="initWater">94</span> g</b></li><li><span>Bassinage</span><b class="num"><span data-k="bassWater">18</span> g</b></li></ul></div>
           <div class="card mini"><div class="eyebrow">Divisão</div><h3>Panetti</h3>
-            <ul><li><span>Principal</span><b class="num"><span data-k="n">5</span> × <span data-k="per">270</span> g</b></li><li id="altRow"><span>Alternativa</span><b class="num" data-k="alt">4 × 270 g + teste 268 g</b></li><li><span>Pizza alvo</span><b class="num">30–32 cm</b></li></ul></div>
+            <ul><li><span>Principal</span><b class="num"><span data-k="n">5</span> × <span data-k="per">270</span> g</b></li><li id="altRow" hidden=""><span>Alternativa</span><b class="num" data-k="alt">—</b></li><li><span>Pizza alvo</span><b class="num">30–32 cm</b></li></ul></div>
           <div class="card mini"><div class="eyebrow">Coberturas</div><h3>Para <span data-k="n">5</span> pizzas</h3>
             <ul><li><span>Mutti Pelati 400 g</span><b class="num"><span data-k="cans">1</span> lata(s)</b></li><li><span>Molho total</span><b class="num"><span data-k="sauceTotal">325</span> g</b></li><li><span>Mozzarella escorrida</span><b class="num"><span data-k="cheeseTotal">350</span> g</b></li></ul></div>
         </div>
@@ -547,7 +547,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
   <span class="mono-js" aria-hidden="true">JS</span>
   <p class="sig">Protocolo e página por <b>Jhonathan Sousa</b></p>
   <a class="ig" href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"></rect><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"></circle></svg>@jhonsousa1</a>
-  <nav class="foot-langs" aria-label="Receitas"><a href="/pt/" aria-current="page">Napolitana</a></nav>
+  <nav class="foot-langs" aria-label="Receitas"><a href="/pt/" aria-current="page">Napolitana</a><a href="/pt/new-york/">New York</a></nav>
   <nav class="foot-langs" aria-label="Idiomas"><a href="/pt/" hreflang="pt" lang="pt-BR" data-setlang="pt" aria-current="page">Português</a><a href="/en/" hreflang="en" lang="en" data-setlang="en">English</a><a href="/es/" hreflang="es" lang="es" data-setlang="es">Español</a><a href="/it/" hreflang="it" lang="it" data-setlang="it">Italiano</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans" data-setlang="zh">中文</a></nav>
   <p class="copy">© 2026 Jhonathan Sousa · todos os direitos reservados</p>
 </div></footer>
@@ -588,7 +588,8 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
     const initWater = Math.round(finWater) - bassWater;   // inclui a água em que o sal é dissolvido
     const n = Math.max(1, Math.round(total/P.w)), per = total/n;
     const nF = Math.floor(total/P.w), rem = total - nF*P.w;
-    const alt = (nF>=1 && nF!==n && rem>30) ? `${nF} × ${P.w} g + ${T.test} ${g(rem)} g` : (n>1 && Math.abs(per-P.w)>8 ? `${n+ (per>P.w?1:-1)} × ${g(total/(n+(per>P.w?1:-1)))} g` : '—');
+    const alt = (nF>=1 && nF!==n && rem>30 && rem<P.w*0.6) ?   // bolinha de teste só quando sobra pouca massa
+       `${nF} × ${P.w} g + ${T.test} ${g(rem)} g` : (n>1 && Math.abs(per-P.w)>8 ? `${n+ (per>P.w?1:-1)} × ${g(total/(n+(per>P.w?1:-1)))} g` : '—');
     const sauceTotal = n*P.sauce, cheeseTotal = n*P.cheese, cans = Math.max(1, Math.ceil(sauceTotal/400));
     return {flour, water, salt, oil, yeast, sugar, total, pfFlour, pfWater, pfTotal:pfFlour+pfWater+yeast, finFlour, finWater, saltWater, initWater, bassWater, n, per, alt, sauceTotal, cheeseTotal, cans,
       canSalt: cans*4+'–'+cans*5, top:P.top, bottom:P.bottom, fridge:P.fridge, pfh:P.pfh, panh:P.panh, outh:P.outh, sauce:P.sauce, cheese:P.cheese,
@@ -683,6 +684,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
 
   // ---------- Inputs ----------
   const map = {flour:'p-flour',pizzas:'p-pizzas',w:'p-w',hyd:'p-hyd',salt:'p-salt',oil:'p-oil',yeast:'p-yeast',sugar:'p-sugar',pf:'p-pf',fridge:'p-fridge',top:'p-top',bottom:'p-bottom',sauce:'p-sauce',cheese:'p-cheese',pfh:'p-pfh',panh:'p-panh',outh:'p-outh',bake:'p-bake'};
+  for(const k in map) if(!document.getElementById(map[k])) delete map[k];   // campos que a receita não usa
   function syncInputs(){ for(const k in map){document.getElementById(map[k]).value = P[k]} setMode(P.mode,false) }
   for(const k in map){
     document.getElementById(map[k]).addEventListener('input', e=>{

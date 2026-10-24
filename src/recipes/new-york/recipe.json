@@ -1,0 +1,23 @@
+{
+  "id": "new-york",
+  "slug": "new-york",
+  "order": 2,
+  "version": "0.1",
+  "updated": "2026-10-24",
+  "ls": "newyork-v1",
+  "features": {"preferment": false, "sugar": true, "waterSplit": false},
+  "def": {"mode": "flour", "flour": 530, "pizzas": 3, "w": 300, "hyd": 63, "salt": 2, "oil": 2.5, "yeast": 0.2, "sugar": 1.5, "pf": 0,
+          "fridge": 7, "top": 350, "bottom": 300, "sauce": 90, "cheese": 120, "pfh": 0, "panh": 48, "outh": 2, "bake": ""},
+  "ref": {"w": "280–320 g", "salt": "2%"},
+  "targetSize": "~32 cm",
+  "warn": {"hyd": 63, "perMin": 280, "perMax": 320, "bottomMax": 330, "panhMax": 72},
+  "sched": [
+    {"off": ["outh", "panh", 2], "cls": "work"},
+    {"off": ["outh", "panh"], "cls": "cold"},
+    {"off": ["outh"], "cls": "work"},
+    {"off": [0.75], "cls": "hot"},
+    {"off": [], "cls": "hot"}
+  ],
+  "timer": {"max": 480, "turn": [60, 90], "ok": [300, 420], "marks": [60, 90, 300, 420], "ticks": [0, 120, 240, 360, 480]},
+  "ld": {"prepTime": "PT1H30M", "cookTime": "PT7M", "totalTime": "PT52H", "datePublished": "2026-10-24"}
+}

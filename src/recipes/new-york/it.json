@@ -1,0 +1,406 @@
+{
+  "meta": {
+    "title": "Pizza New York: ricetta fatta in casa e protocollo dell'impasto passo passo | NapoliProtocol",
+    "description": "Pizza stile New York fatta in casa: impasto a mano con 48 h di frigo, calcolatore, programma e guida al forno in 12 passaggi. Versione 0.1, in prova. Di Jhonathan Sousa.",
+    "ogTitle": "Protocollo della Pizza New York",
+    "imgAlt": "Protocollo della Pizza New York, di Jhonathan Sousa",
+    "og": {
+      "eyebrow": "Pizza New York in casa",
+      "title": "Protocollo della\nNew York",
+      "sub": "Ricetta, programma e forno in 12 passaggi. Versione 0.1, in prova.",
+      "by": "di Jhonathan Sousa"
+    }
+  },
+  "html": {
+    "name": "New York",
+    "hero.eyebrow": "Farina forte · 48 h di frigo · BIG HORN",
+    "hero.h1": "Protocollo della Pizza New York",
+    "hero.version": "versione 0.1 · in prova · ottobre 2026",
+    "hero.lead": "Ricetta della pizza stile New York fatta a mano in casa: impasto sodo con olio d'oliva e un tocco di zucchero, 48 ore in frigo e un forno più dolce. Consolidata da ricette classiche e non ancora provata nel BIG HORN; i valori saranno rivisti dopo la prima prova.",
+    "kpi.balls": "Palline",
+    "kpi.pizzas": "pizze da ~32 cm",
+    "kpi.preheat": "preriscaldare 30–40 min",
+    "kpi.bottomSub": "pietra a ~290–320 °C",
+    "panel.note": "Valori predefiniti = versione 0.1, consolidata da ricette classiche e non ancora provata. Restano salvati in questo browser.",
+    "panel.reset": "Ripristina v0.1",
+    "recipe.sub": "Dosi totali dell'impasto. Impasto diretto: tutti gli ingredienti entrano nello stesso impasto.",
+    "recipe.balls": "Palline",
+    "ing.flour": "Farina forte (Caputo Manitoba Oro)",
+    "steps.sub": "Spunta ogni passaggio quando l'hai concluso. Le etichette indicano l'origine: tecnica classica di New York o adattamento all'impasto a mano e al BIG HORN.",
+    "oven.sub": "Timer da banco e diagnosi dal risultato. La New York cuoce più lentamente: da 5 a 7 minuti, girandola ogni minuto.",
+    "oven.note": "Fascia arancione: 1–1,5 min, momento della prima rotazione. Fascia verde: 5–7 min, cottura prevista.",
+    "rules.h2": "Regole della versione 0.1",
+    "rules.sub": "Un punto di partenza, ancora senza infornate. Dopo la prima prova, queste regole diventano lezioni.",
+    "sched.panh": "Palline in frigo"
+  },
+  "rules": [
+    "Usa farina forte, con almeno il 13% di proteine.",
+    "Acqua fredda: l'impasto passerà 2 giorni in frigo.",
+    "Impasta davvero: la New York vuole un glutine forte.",
+    "L'olio entra quando l'impasto si è formato.",
+    "Poco lievito: il frigo fa il lavoro.",
+    "Togli l'impasto dal frigo 2 h prima.",
+    "L'impasto freddo non si stende: aspetta.",
+    "Niente mattarello: stendi con mani e nocche.",
+    "Salsa cruda, liscia e densa.",
+    "Mozzarella a bassa umidità, grattugiata.",
+    "Formaggio quasi fino al bordo.",
+    "Forno più dolce che per la napoletana.",
+    "Gira la pizza ogni minuto.",
+    "Finisci con parmigiano, origano e peperoncino.",
+    "Il trancio deve piegarsi senza rompersi.",
+    "Cambia una variabile alla volta."
+  ],
+  "glossary": [
+    [
+      "Farina forte",
+      "Farina con il 13–15% di proteine (come la Caputo Manitoba Oro). Forma più glutine e dà la masticabilità della New York."
+    ],
+    [
+      "Fermentazione a freddo",
+      "Lasciare le palline da 1 a 3 giorni in frigo. Il lievito lavora piano e l'impasto guadagna sapore ed elasticità."
+    ],
+    [
+      "Prova del velo",
+      "Stendere un pezzo d'impasto fino a una membrana sottile senza che si strappi. Segno che il glutine è pronto."
+    ],
+    [
+      "Mozzarella a bassa umidità",
+      "La mozzarella soda, in panetto, che si grattugia. Fonde senza rilasciare acqua, a differenza di quella fresca."
+    ],
+    [
+      "La piega",
+      "Piegare il trancio per il lungo per mangiarlo in piedi, alla newyorkese."
+    ],
+    [
+      "Semola",
+      "Farina di grano duro a grana grossa spolverata sulla pala. Fa da cuscinetto perché la pizza scivoli."
+    ]
+  ],
+  "about": {
+    "h2": "Cos'è la Pizza New York",
+    "sub": "Da dove viene questa ricetta e cosa definisce la pizza di New York.",
+    "siteEb": "Questa ricetta",
+    "siteH": "Versione 0.1, ancora in prova",
+    "site": [
+      "Questa è la prima versione della New York su NapoliProtocol. Consolida ricette classiche di pizza stile New York da fare in casa e adatta il risultato al processo di questo sito: impasto a mano, frigo a circa 7 °C e forno elettrico BIG HORN.",
+      "La formula sta a metà di quello che usano queste fonti: farina forte, idratazione al 63%, 2% di sale, 2,5% di olio d'oliva, 1,5% di zucchero e poco lievito, perché questo frigo è più caldo dei 3–4 °C delle ricette americane.",
+      "Non c'è ancora stata un'infornata. Dopo la prima prova i numeri vengono ricalibrati, le lezioni entrano nel passo passo e la ricetta diventa la versione 1.0, come è successo con la napoletana."
+    ],
+    "pizzaEb": "La pizza New York",
+    "pizzaH": "Il trancio che si piega",
+    "pizza": [
+      "La pizza di New York è nata con gli immigrati del Sud Italia. Lombardi's, di Gennaro Lombardi, è considerata la prima pizzeria con licenza della città, nel 1905, con forno a carbone.",
+      "Con i forni a platea a gas, dopo la Seconda guerra mondiale, la pizza è diventata cibo da banco: dischi grandi, di circa 45 cm, venduti al trancio. L'impasto usa farina forte, un po' d'olio e a volte zucchero, e cuoce per diversi minuti a circa 260–340 °C.",
+      "Il risultato è sottile, croccante sotto e flessibile sopra. Ha salsa di pomodoro condita e mozzarella a bassa umidità quasi fino al bordo, e si mangia piegando il trancio a metà. In casa la misura è limitata dalla pietra; la logica dell'impasto resta la stessa."
+    ],
+    "facts": [
+      [
+        "1905",
+        "Lombardi's, New York"
+      ],
+      [
+        "~45 cm",
+        "misura classica"
+      ],
+      [
+        "260–340 °C",
+        "forno a platea"
+      ],
+      [
+        "5–7 min",
+        "di cottura in casa"
+      ]
+    ]
+  },
+  "js": {
+    "src": {
+      "d": "Classico NY",
+      "a": "Adattato",
+      "l": "Lezione"
+    },
+    "sched": {
+      "ev": [
+        [
+          "Impastare",
+          "Passaggi 01–04. Circa 2 h, con 1 h di riposo a temperatura ambiente."
+        ],
+        [
+          "Pirlatura e frigo",
+          "Passaggio 05. {panh} h a {fridge} °C."
+        ],
+        [
+          "Tirare fuori le palline",
+          "Passaggio 06. Intanto prepara salsa e mozzarella."
+        ],
+        [
+          "Accendere il forno",
+          "Passaggio 08. {top} °C / {bottom} °C."
+        ],
+        [
+          "Infornare",
+          "Passaggi 09–12. 5–7 min per pizza."
+        ]
+      ],
+      "past": "<b>Inizio nel passato.</b> Per infornare a quell'ora l'impasto doveva già essere pronto. Sposta la cottura o riduci il tempo in frigo.",
+      "over36": "<b>Oltre 72 h in frigo.</b> L'impasto tende a diventare acido e debole."
+    },
+    "warn": {
+      "hyd": "Idratazione diversa dal 63%. Nella versione 0.1, parti dai valori predefiniti.",
+      "per": "Palline da {per} g sono fuori dall'intervallo 280–320 g per la pietra del BIG HORN. Vedi l'alternativa o regola la farina.",
+      "bottom": "Una resistenza inferiore sopra i 330 °C tende a bruciare la base prima che il formaggio si colori."
+    },
+    "timer": {
+      "msg": [
+        "Lascia fissare la base.",
+        "Prima rotazione: gira di 90–180°.",
+        "Gira ogni ~1 min. Osserva il bordo e il formaggio.",
+        "Finestra di cottura. Controlla la base e il formaggio dorato.",
+        "Oltre 7 min. Se è ancora pallida, manca calore."
+      ]
+    },
+    "diag": [
+      [
+        "La base brucia prima che il formaggio si colori",
+        "Abbassa la resistenza inferiore.",
+        "bottom",
+        -10
+      ],
+      [
+        "Base pallida e molle",
+        "Alza la resistenza inferiore.",
+        "bottom",
+        10
+      ],
+      [
+        "Formaggio bianco, senza macchie dorate",
+        "Alza la resistenza superiore.",
+        "top",
+        10
+      ],
+      [
+        "Il formaggio brucia o rilascia molto olio",
+        "Abbassa la resistenza superiore.",
+        "top",
+        -10
+      ],
+      [
+        "Bordo duro e secco",
+        "Cuoci più in fretta, con un po' più di calore, o porta l'olio al 3%."
+      ],
+      [
+        "Il trancio si rompe quando lo pieghi",
+        "Troppo cotta o troppo sottile. Sfornala prima o stendila un po' meno."
+      ],
+      [
+        "Centro bagnato",
+        "Meno salsa, mozzarella a bassa umidità e pietra ben calda prima di infornare."
+      ]
+    ],
+    "steps": [
+      {
+        "day": "Giorno 1",
+        "when": "impasto",
+        "items": [
+          {
+            "id": "s1",
+            "t": "Impastare",
+            "time": "~10 min + 20 min di riposo",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "mix",
+            "li": [
+              "Mescola a secco {flour} g di farina, {yeast} g di lievito e {sugar} g di zucchero.",
+              "Sciogli {salt} g di sale in {water} g d'acqua fredda (10–15 °C).",
+              "Versa l'acqua sulla farina e mescola finché non resta farina secca.",
+              "Copri e lascia riposare 20 min. La farina si idrata e l'impasto si accorcia."
+            ],
+            "tip": "L'acqua fredda frena la fermentazione: l'impasto ha ancora davanti 2 giorni di frigo."
+          },
+          {
+            "id": "s2",
+            "t": "Aggiungere l'olio",
+            "time": "~5 min",
+            "src": [
+              "a"
+            ],
+            "il": "oil",
+            "li": [
+              "Aggiungi {oil} g di olio d'oliva poco alla volta.",
+              "Incorporalo con pizzicotti e pieghe finché l'impasto lo assorbe tutto e smette di scivolare."
+            ]
+          },
+          {
+            "id": "s3",
+            "t": "Lavorare l'impasto",
+            "time": "~15 min",
+            "src": [
+              "d"
+            ],
+            "il": "fold",
+            "li": [
+              "Impasta 8–10 min sul banco, senza farina in più: spingi con il palmo, piega e gira di un quarto.",
+              "Riposo di 10 min e altri 2–3 min di lavoro, finché l'impasto è liscio ed elastico.",
+              "Prova del velo: stendi un pezzo fino a una membrana sottile. Se si strappa subito, impasta ancora un po'."
+            ],
+            "tip": "La New York vuole più glutine della napoletana. È questo che rende il trancio pieghevole e masticabile."
+          },
+          {
+            "id": "s4",
+            "t": "Primo riposo",
+            "time": "~1 h",
+            "src": [
+              "d"
+            ],
+            "il": "proof",
+            "li": [
+              "Forma una palla, mettila in una ciotola leggermente unta e copri.",
+              "Lascia 1 h a temperatura ambiente. Deve crescere poco."
+            ]
+          },
+          {
+            "id": "s5",
+            "t": "Staglio, pirlatura e frigo",
+            "time": "~15 min",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "balls",
+            "li": [
+              "Dividi in {n} palline da {per} g (impasto totale {total} g).",
+              "Pirla dando tensione alla superficie e chiudi bene la base.",
+              "Contenitori singoli leggermente unti, coperti, in frigo per circa {panh} h."
+            ],
+            "tip": "A {fridge} °C la fermentazione è più rapida che ai 3–4 °C delle ricette americane; per questo il lievito è basso. Se il tuo frigo è più freddo, sali allo 0,3%."
+          }
+        ]
+      },
+      {
+        "day": "Giorno 3",
+        "when": "forno",
+        "items": [
+          {
+            "id": "s6",
+            "t": "Acclimatare le palline",
+            "time": "~{outh} h fuori",
+            "src": [
+              "d"
+            ],
+            "il": "proof",
+            "li": [
+              "Tirale fuori dal frigo circa {outh} h prima di infornare, ancora nel contenitore coperto.",
+              "Punto giusto: rilassata, un po' gonfia, con bolle sui lati e morbida al tatto."
+            ],
+            "tip": "warn|L'impasto freddo non si stende: si ritira e si strappa. Rispetta il tempo fuori."
+          },
+          {
+            "id": "s7",
+            "t": "Preparare salsa e formaggio",
+            "time": "~15 min",
+            "src": [
+              "d"
+            ],
+            "il": "sauce",
+            "li": [
+              "Frulla brevemente o passa al passaverdure {cans} latta/e di pelati: salsa liscia e densa, senza cottura.",
+              "Condisci con 4–5 g di sale per latta e 1 cucchiaino di origano secco. Facoltativo: un pizzico di zucchero e 1 spicchio d'aglio grattugiato.",
+              "Grattugia grossa {cheeseTotal} g di mozzarella a bassa umidità (quella soda, in panetto).",
+              "Tieni da parte parmigiano grattugiato, origano e peperoncino per finire."
+            ],
+            "tip": "La mozzarella fresca rilascia troppa acqua per i minuti di cottura della New York."
+          },
+          {
+            "id": "s8",
+            "t": "Preriscaldare il BIG HORN",
+            "time": "30–40 min",
+            "src": [
+              "a"
+            ],
+            "il": "oven",
+            "li": [
+              "Superiore a {top} °C, inferiore a {bottom} °C.",
+              "Se hai un termometro a infrarossi, misura il centro della pietra: l'obiettivo è ~290–320 °C."
+            ],
+            "tip": "warn|Valori iniziali, non ancora provati in questo forno. Usa la diagnosi qui sotto per calibrare."
+          },
+          {
+            "id": "s9",
+            "t": "Stendere l'impasto",
+            "time": "~2 min per pizza",
+            "src": [
+              "d"
+            ],
+            "il": "open",
+            "li": [
+              "Infarina bene la pallina da entrambi i lati.",
+              "Premi il centro con i polpastrelli, lasciando circa 1 cm di bordo.",
+              "Solleva l'impasto e stendilo sulle nocche, girandolo, fino a ~30–32 cm.",
+              "Il disco resta sottile e uniforme, con il centro quasi trasparente."
+            ],
+            "tip": "Niente mattarello. Se l'impasto si ritira, lascialo riposare 5–10 min e continua."
+          },
+          {
+            "id": "s10",
+            "t": "Condire e infornare",
+            "time": "~1 min sulla pala",
+            "src": [
+              "d"
+            ],
+            "il": "build",
+            "li": [
+              "Spolvera la pala con semola e appoggia il disco.",
+              "Stendi {sauce} g di salsa in uno strato sottile, fino a ~1 cm dal bordo.",
+              "Copri con {cheese} g di mozzarella grattugiata, quasi fino al bordo.",
+              "Fai un breve movimento laterale: la pizza deve scivolare tutta intera."
+            ]
+          },
+          {
+            "id": "s11",
+            "t": "Cuocere e girare",
+            "time": "5–7 min",
+            "src": [
+              "a"
+            ],
+            "il": "bake",
+            "li": [
+              "Gira di 90–180° ogni ~1 min per una cottura uniforme.",
+              "Punto giusto: formaggio fuso con macchie dorate e bordo dorato.",
+              "Solleva il bordo con la pala: la base deve essere soda e maculata, non pallida."
+            ],
+            "tip": "La New York cuoce più piano e a temperatura più bassa della napoletana: croccante sotto, flessibile sopra."
+          },
+          {
+            "id": "s12",
+            "t": "Finire e tagliare",
+            "time": "~2 min",
+            "src": [
+              "d"
+            ],
+            "il": "balls",
+            "li": [
+              "Lascia 1–2 min su una griglia perché la base non si ammorbidisca.",
+              "Finisci con parmigiano, origano e peperoncino.",
+              "Taglia in 6–8 tranci. Per mangiarlo, piega il trancio a metà."
+            ]
+          }
+        ]
+      }
+    ],
+    "ld": {
+      "name": "Pizza stile New York fatta in casa (impasto con 48 ore di frigo)",
+      "description": "Ricetta della pizza stile New York con farina forte, idratazione al 63%, olio d'oliva e zucchero, 48 ore di fermentazione in frigo, salsa cruda e mozzarella a bassa umidità.",
+      "yield": "{n} pizze da ~32 cm",
+      "category": "Pizza",
+      "cuisine": "Americana (New York)",
+      "keywords": "pizza new york, pizza stile new york, ricetta pizza new york, impasto pizza new york, pizza newyorkese, pizza fatta in casa",
+      "toppings": [
+        "{sauce} g di salsa di pomodoro cruda condita",
+        "{cheese} g di mozzarella a bassa umidità grattugiata",
+        "Parmigiano grattugiato, origano secco e peperoncino q.b."
+      ]
+    }
+  }
+}

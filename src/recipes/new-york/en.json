@@ -1,0 +1,406 @@
+{
+  "meta": {
+    "title": "New York-Style Pizza Recipe & Step-by-Step Dough Protocol | NapoliProtocol",
+    "description": "Homemade New York-style pizza: hand-mixed dough with a 48-hour cold ferment, dough calculator, schedule and oven guide in 12 steps. Version 0.1, in testing. By Jhonathan Sousa.",
+    "ogTitle": "New York Pizza Protocol",
+    "imgAlt": "New York Pizza Protocol, by Jhonathan Sousa",
+    "og": {
+      "eyebrow": "New York pizza at home",
+      "title": "New York\nPizza Protocol",
+      "sub": "Recipe, schedule and oven in 12 steps. Version 0.1, in testing.",
+      "by": "by Jhonathan Sousa"
+    }
+  },
+  "html": {
+    "name": "New York",
+    "hero.eyebrow": "Strong flour · 48 h cold ferment · BIG HORN",
+    "hero.h1": "New York-Style Pizza Protocol",
+    "hero.version": "version 0.1 · in testing · October 2026",
+    "hero.lead": "A hand-made New York-style pizza recipe for home: a firm dough with olive oil and a touch of sugar, 48 hours in the fridge and a gentler oven. Consolidated from classic recipes and not yet tested in the BIG HORN; the numbers will be revised after the first test bake.",
+    "kpi.balls": "Dough balls",
+    "kpi.pizzas": "~32 cm (12–13\") pizzas",
+    "kpi.preheat": "preheat 30–40 min",
+    "kpi.bottomSub": "stone at ~290–320 °C",
+    "panel.note": "Defaults = version 0.1, consolidated from classic recipes and not yet tested. Your values are saved in this browser.",
+    "panel.reset": "Restore v0.1",
+    "recipe.sub": "Total dough quantities. Straight dough: every ingredient goes into the same mix.",
+    "recipe.balls": "Dough balls",
+    "ing.flour": "Strong flour (Caputo Manitoba Oro)",
+    "steps.sub": "Tick each step when done. Tags show the source: classic New York technique, or an adaptation for hand mixing and the BIG HORN.",
+    "oven.sub": "Bench timer and diagnosis by result. New York pizza bakes slower: 5 to 7 minutes, turning every minute.",
+    "oven.note": "Orange band: 1–1.5 min, time for the first turn. Green band: 5–7 min, the expected window.",
+    "rules.h2": "Version 0.1 rules",
+    "rules.sub": "A starting point with no bakes yet. After the first test, these rules become lessons.",
+    "sched.panh": "Dough balls in fridge"
+  },
+  "rules": [
+    "Use strong flour, 13% protein or more.",
+    "Cold water: the dough will spend 2 days in the fridge.",
+    "Knead properly: New York dough needs strong gluten.",
+    "Oil goes in once the dough has come together.",
+    "Little yeast: the fridge does the work.",
+    "Take the dough out 2 h before baking.",
+    "Cold dough won't stretch: wait.",
+    "No rolling pin: stretch with hands and knuckles.",
+    "Raw, smooth, thick sauce.",
+    "Low-moisture mozzarella, shredded.",
+    "Cheese almost to the edge.",
+    "A gentler oven than for Neapolitan.",
+    "Turn the pizza every minute.",
+    "Finish with Parmesan, oregano and chili flakes.",
+    "The slice must fold without cracking.",
+    "Change one variable at a time."
+  ],
+  "glossary": [
+    [
+      "Strong flour",
+      "Flour with 13–15% protein (like Caputo Manitoba Oro). It builds more gluten and gives New York pizza its chew."
+    ],
+    [
+      "Cold ferment",
+      "Leaving the dough balls 1 to 3 days in the fridge. The yeast works slowly and the dough gains flavour and stretch."
+    ],
+    [
+      "Windowpane test",
+      "Stretching a piece of dough into a thin membrane without tearing. A sign the gluten is ready."
+    ],
+    [
+      "Low-moisture mozzarella",
+      "The firm block mozzarella you shred. It melts without releasing water, unlike fresh mozzarella."
+    ],
+    [
+      "The fold",
+      "Folding the slice lengthwise to eat it on the go, the New York way."
+    ],
+    [
+      "Semolina",
+      "Coarse durum wheat flour dusted on the peel. It acts like ball bearings so the pizza slides."
+    ]
+  ],
+  "about": {
+    "h2": "About New York Pizza",
+    "sub": "Where this recipe comes from and what defines New York pizza.",
+    "siteEb": "This recipe",
+    "siteH": "Version 0.1, still in testing",
+    "site": [
+      "This is the first version of New York pizza on NapoliProtocol. It consolidates classic home recipes for New York-style pizza and adapts the result to this site's process: hand-mixed dough, a fridge at about 7 °C and a BIG HORN electric oven.",
+      "The formula sits in the middle of what those references use: strong flour, 63% hydration, 2% salt, 2.5% olive oil, 1.5% sugar and little yeast, because this fridge is warmer than the 3–4 °C most American recipes assume.",
+      "There hasn't been a bake yet. After the first test, the numbers get recalibrated, the lessons go into the steps and the recipe becomes version 1.0, as happened with the Neapolitan."
+    ],
+    "pizzaEb": "New York pizza",
+    "pizzaH": "The slice that folds",
+    "pizza": [
+      "New York pizza was born with immigrants from southern Italy. Lombardi's, opened by Gennaro Lombardi, is considered the city's first licensed pizzeria, in 1905, baking in a coal-fired oven.",
+      "With gas deck ovens after the Second World War, pizza became counter food: large pies of about 18 inches (45 cm) sold by the slice. The dough uses strong flour, a little oil and sometimes sugar, and bakes for several minutes at around 260–340 °C.",
+      "The result is thin, crisp underneath and pliable on top. It comes with seasoned tomato sauce and low-moisture mozzarella almost to the edge, and you eat it by folding the slice in half. At home the size is limited by the stone; the logic of the dough stays the same."
+    ],
+    "facts": [
+      [
+        "1905",
+        "Lombardi's, New York"
+      ],
+      [
+        "~18\"",
+        "classic size (45 cm)"
+      ],
+      [
+        "260–340 °C",
+        "deck oven"
+      ],
+      [
+        "5–7 min",
+        "bake at home"
+      ]
+    ]
+  },
+  "js": {
+    "src": {
+      "d": "Classic NY",
+      "a": "Adapted",
+      "l": "Lesson"
+    },
+    "sched": {
+      "ev": [
+        [
+          "Mix and knead",
+          "Steps 01–04. About 2 h, including a 1 h rest at room temperature."
+        ],
+        [
+          "Ball and refrigerate",
+          "Step 05. {panh} h at {fridge} °C."
+        ],
+        [
+          "Take out the dough balls",
+          "Step 06. Make the sauce and cheese meanwhile."
+        ],
+        [
+          "Turn on the oven",
+          "Step 08. {top} °C / {bottom} °C."
+        ],
+        [
+          "Bake",
+          "Steps 09–12. 5–7 min per pizza."
+        ]
+      ],
+      "past": "<b>Start is in the past.</b> To bake at that time, the dough should already have been made. Push the bake back or shorten the fridge time.",
+      "over36": "<b>More than 72 h in the fridge.</b> The dough tends to turn sour and weak."
+    },
+    "warn": {
+      "hyd": "Hydration differs from 63%. For version 0.1, start with the defaults.",
+      "per": "Dough balls of {per} g are outside the 280–320 g range for the BIG HORN stone. See the alternative or adjust the flour.",
+      "bottom": "A bottom element above 330 °C tends to burn the base before the cheese browns."
+    },
+    "timer": {
+      "msg": [
+        "Let the base set.",
+        "First turn: rotate 90–180°.",
+        "Turn every ~1 min. Watch the rim and the cheese.",
+        "Done window. Check the base and the browned cheese.",
+        "Past 7 min. If it's still pale, it needs more heat."
+      ]
+    },
+    "diag": [
+      [
+        "Base burns before the cheese browns",
+        "Lower the bottom element.",
+        "bottom",
+        -10
+      ],
+      [
+        "Base pale and soft",
+        "Raise the bottom element.",
+        "bottom",
+        10
+      ],
+      [
+        "Cheese white, no browned spots",
+        "Raise the top element.",
+        "top",
+        10
+      ],
+      [
+        "Cheese burns or gets very oily",
+        "Lower the top element.",
+        "top",
+        -10
+      ],
+      [
+        "Rim hard and dry",
+        "Bake faster with a little more heat, or raise the oil to 3%."
+      ],
+      [
+        "Slice cracks when folded",
+        "Overbaked or stretched too thin. Pull it earlier or stretch a little less."
+      ],
+      [
+        "Wet centre",
+        "Less sauce, low-moisture mozzarella and a well-heated stone before launching."
+      ]
+    ],
+    "steps": [
+      {
+        "day": "Day 1",
+        "when": "mixing and kneading",
+        "items": [
+          {
+            "id": "s1",
+            "t": "Mix the dough",
+            "time": "~10 min + 20 min rest",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "mix",
+            "li": [
+              "Dry-mix {flour} g of flour, {yeast} g of yeast and {sugar} g of sugar.",
+              "Dissolve {salt} g of salt in {water} g of cold water (10–15 °C).",
+              "Pour the water into the flour and mix until no dry flour is left.",
+              "Cover and rest 20 min. The flour hydrates and the kneading gets shorter."
+            ],
+            "tip": "Cold water holds the fermentation back: the dough still has 2 days in the fridge ahead."
+          },
+          {
+            "id": "s2",
+            "t": "Work in the oil",
+            "time": "~5 min",
+            "src": [
+              "a"
+            ],
+            "il": "oil",
+            "li": [
+              "Add {oil} g of olive oil a little at a time.",
+              "Work it in with pincers and folds until the dough absorbs it all and stops slipping."
+            ]
+          },
+          {
+            "id": "s3",
+            "t": "Knead",
+            "time": "~15 min",
+            "src": [
+              "d"
+            ],
+            "il": "fold",
+            "li": [
+              "Knead 8–10 min on the bench with no extra flour: push with the heel of your hand, fold and give a quarter turn.",
+              "Rest 10 min and knead 2–3 min more, until the dough is smooth and elastic.",
+              "Windowpane test: stretch a piece into a thin membrane. If it tears right away, knead a little more."
+            ],
+            "tip": "New York dough needs more gluten than Neapolitan. That's what makes the slice foldable and chewy."
+          },
+          {
+            "id": "s4",
+            "t": "First rest",
+            "time": "~1 h",
+            "src": [
+              "d"
+            ],
+            "il": "proof",
+            "li": [
+              "Shape into a ball, place it in a lightly oiled bowl and cover.",
+              "Leave 1 h at room temperature. It should rise only a little."
+            ]
+          },
+          {
+            "id": "s5",
+            "t": "Divide, ball and refrigerate",
+            "time": "~15 min",
+            "src": [
+              "d",
+              "a"
+            ],
+            "il": "balls",
+            "li": [
+              "Divide into {n} dough balls of {per} g (total dough {total} g).",
+              "Ball with surface tension and seal the base well.",
+              "Individual lightly oiled tubs, covered, in the fridge for about {panh} h."
+            ],
+            "tip": "At {fridge} °C fermentation moves faster than at the 3–4 °C of American recipes, which is why the yeast is low. If your fridge is colder, go up to 0.3%."
+          }
+        ]
+      },
+      {
+        "day": "Day 3",
+        "when": "oven",
+        "items": [
+          {
+            "id": "s6",
+            "t": "Temper the dough balls",
+            "time": "~{outh} h out",
+            "src": [
+              "d"
+            ],
+            "il": "proof",
+            "li": [
+              "Take them out of the fridge about {outh} h before baking, still in the covered tub.",
+              "Ready when: relaxed, slightly puffy, bubbles on the sides and soft to the touch."
+            ],
+            "tip": "warn|Cold dough won't stretch: it shrinks and tears. Give it the full time out."
+          },
+          {
+            "id": "s7",
+            "t": "Prepare sauce and cheese",
+            "time": "~15 min",
+            "src": [
+              "d"
+            ],
+            "il": "sauce",
+            "li": [
+              "Briefly blend or pass through a food mill {cans} can(s) of peeled tomatoes: a smooth, thick, uncooked sauce.",
+              "Season with 4–5 g of salt per can and 1 teaspoon of dried oregano. Optional: a pinch of sugar and 1 grated garlic clove.",
+              "Coarsely shred {cheeseTotal} g of low-moisture mozzarella (the firm block kind).",
+              "Set aside grated Parmesan, oregano and chili flakes for finishing."
+            ],
+            "tip": "Fresh mozzarella releases too much water for the longer New York bake."
+          },
+          {
+            "id": "s8",
+            "t": "Preheat the BIG HORN",
+            "time": "30–40 min",
+            "src": [
+              "a"
+            ],
+            "il": "oven",
+            "li": [
+              "Top element at {top} °C, bottom element at {bottom} °C.",
+              "If you have an infrared thermometer, measure the centre of the stone: the target is ~290–320 °C."
+            ],
+            "tip": "warn|Starting values, not yet tested in this oven. Use the diagnosis below to calibrate."
+          },
+          {
+            "id": "s9",
+            "t": "Stretch the dough",
+            "time": "~2 min per pizza",
+            "src": [
+              "d"
+            ],
+            "il": "open",
+            "li": [
+              "Flour the dough ball well on both sides.",
+              "Press the centre with your fingertips, leaving about a 1 cm rim.",
+              "Lift the dough and stretch it over your knuckles, rotating, to ~30–32 cm.",
+              "The disc ends up thin and even, with an almost translucent centre."
+            ],
+            "tip": "No rolling pin. If the dough springs back, rest it 5–10 min and continue."
+          },
+          {
+            "id": "s10",
+            "t": "Top and launch",
+            "time": "~1 min on the peel",
+            "src": [
+              "d"
+            ],
+            "il": "build",
+            "li": [
+              "Dust the peel with semolina and lay the disc on it.",
+              "Spread {sauce} g of sauce in a thin layer, up to ~1 cm from the edge.",
+              "Cover with {cheese} g of shredded mozzarella, almost to the edge.",
+              "Give it a short sideways shake: the whole pizza must slide."
+            ]
+          },
+          {
+            "id": "s11",
+            "t": "Bake and turn",
+            "time": "5–7 min",
+            "src": [
+              "a"
+            ],
+            "il": "bake",
+            "li": [
+              "Turn 90–180° every ~1 min for an even bake.",
+              "Done when: cheese melted with browned spots and a golden rim.",
+              "Lift the edge with the peel: the base should be firm and spotted, not pale."
+            ],
+            "tip": "New York pizza bakes slower and cooler than Neapolitan: crisp underneath, pliable on top."
+          },
+          {
+            "id": "s12",
+            "t": "Finish and slice",
+            "time": "~2 min",
+            "src": [
+              "d"
+            ],
+            "il": "balls",
+            "li": [
+              "Rest 1–2 min on a wire rack so the base doesn't go soft.",
+              "Finish with Parmesan, oregano and chili flakes.",
+              "Cut into 6 to 8 slices. To eat, fold the slice in half."
+            ]
+          }
+        ]
+      }
+    ],
+    "ld": {
+      "name": "Homemade New York-style pizza (48-hour cold-fermented dough)",
+      "description": "New York-style pizza recipe with strong flour, 63% hydration, olive oil and sugar, a 48-hour cold ferment, uncooked sauce and low-moisture mozzarella.",
+      "yield": "{n} pizzas, ~32 cm",
+      "category": "Pizza",
+      "cuisine": "American (New York)",
+      "keywords": "new york style pizza, new york pizza recipe, ny style pizza dough, new york pizza dough, homemade pizza, cold ferment pizza dough",
+      "toppings": [
+        "{sauce} g seasoned uncooked tomato sauce",
+        "{cheese} g shredded low-moisture mozzarella",
+        "Grated Parmesan, dried oregano and chili flakes to taste"
+      ]
+    }
+  }
+}
