@@ -267,3 +267,14 @@ html{scroll-behavior:smooth}
 .theme-btn .i-sun{display:none}
 :root[data-theme="dark"] .theme-btn .i-sun{display:block}
 :root[data-theme="dark"] .theme-btn .i-moon{display:none}
+
+/* Receitas */
+.recipes{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.recipes a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;font-weight:600;padding:6px 12px;border-radius:99px;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
+.recipes a:hover{color:var(--ink);border-color:var(--accent)}
+.recipes a[aria-current]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.recipes a em{font-style:normal;font-family:var(--f-mono);font-size:10.5px;padding:1px 6px;border-radius:99px;background:var(--ember-soft);color:var(--ember)}
+.recipes a[aria-current] em{background:color-mix(in srgb,var(--bg) 20%,transparent);color:var(--bg)}
+table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
+.split.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.split.two{grid-template-columns:1fr}}

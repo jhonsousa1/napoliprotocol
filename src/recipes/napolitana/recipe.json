@@ -1,0 +1,129 @@
+{
+  "id": "napolitana",
+  "slug": "",
+  "order": 1,
+  "version": "1.0",
+  "ls": "napolitana-v1",
+  "features": {
+    "preferment": true,
+    "sugar": false,
+    "waterSplit": true
+  },
+  "def": {
+    "mode": "flour",
+    "flour": 800,
+    "pizzas": 5,
+    "w": 270,
+    "hyd": 64,
+    "salt": 2.88,
+    "oil": 1.5,
+    "yeast": 0.1,
+    "sugar": 0,
+    "pf": 50,
+    "fridge": 7,
+    "top": 450,
+    "bottom": 380,
+    "sauce": 65,
+    "cheese": 70,
+    "pfh": 20,
+    "panh": 24,
+    "outh": 4,
+    "bake": ""
+  },
+  "ref": {
+    "w": "260–280 g",
+    "salt": "3%"
+  },
+  "targetSize": "30–32 cm",
+  "warn": {
+    "hyd": 64,
+    "perMin": 255,
+    "perMax": 285,
+    "bottomMax": 390,
+    "panhMax": 36
+  },
+  "sched": [
+    {
+      "off": [
+        "outh",
+        "panh",
+        2.5,
+        "pfh",
+        1
+      ],
+      "cls": "work"
+    },
+    {
+      "off": [
+        "outh",
+        "panh",
+        2.5,
+        "pfh"
+      ],
+      "cls": "cold"
+    },
+    {
+      "off": [
+        "outh",
+        "panh",
+        2.5
+      ],
+      "cls": "work"
+    },
+    {
+      "off": [
+        "outh",
+        "panh"
+      ],
+      "cls": "cold"
+    },
+    {
+      "off": [
+        "outh"
+      ],
+      "cls": "work"
+    },
+    {
+      "off": [
+        0.6667
+      ],
+      "cls": "hot"
+    },
+    {
+      "off": [],
+      "cls": "hot"
+    }
+  ],
+  "timer": {
+    "max": 150,
+    "turn": [
+      25,
+      30
+    ],
+    "ok": [
+      70,
+      120
+    ],
+    "marks": [
+      25,
+      30,
+      70,
+      120
+    ],
+    "ticks": [
+      0,
+      30,
+      60,
+      90,
+      120,
+      150
+    ]
+  },
+  "ld": {
+    "prepTime": "PT3H",
+    "cookTime": "PT2M",
+    "totalTime": "PT52H",
+    "datePublished": "2026-10-01"
+  },
+  "updated": "2026-10-24"
+}
