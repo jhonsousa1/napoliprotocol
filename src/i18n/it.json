@@ -5,13 +5,13 @@
     "label": "Italiano",
     "short": "IT",
     "title": "Pizza Napoletana: ricetta e protocollo dell'impasto passo passo | NapoliProtocol",
-    "description": "Ricetta della pizza napoletana fatta in casa con prefermento, calcolatore dell'impasto, programma di 3 giorni e guida al forno in 14 passaggi. Di Jhonathan Sousa.",
+    "description": "Ricetta della pizza napoletana fatta in casa con prefermento, calcolatore dell'impasto, programma di 3 giorni e guida al forno in 13 passaggi. Di Jhonathan Sousa.",
     "ogTitle": "Protocollo della Pizza Napoletana",
     "imgAlt": "Protocollo della Pizza Napoletana, di Jhonathan Sousa",
     "og": {
       "eyebrow": "Pizza napoletana in casa",
       "title": "Protocollo della Napoletana",
-      "sub": "Ricetta, programma e forno in 14 passaggi, calibrati infornata dopo infornata.",
+      "sub": "Ricetta, programma e forno in 13 passaggi, calibrati infornata dopo infornata.",
       "by": "di Jhonathan Sousa"
     }
   },
@@ -77,8 +77,7 @@
     "ing.oil": "Olio extravergine d'oliva",
     "recipe.waterEb": "Acqua dell'impasto finale",
     "recipe.waterH": "Divisione a mano",
-    "recipe.wInit": "Impasto iniziale",
-    "recipe.wSalt": "Per sciogliere il sale",
+    "recipe.wInit": "Impasto iniziale, con il sale",
     "recipe.divEb": "Staglio",
     "recipe.main": "Principale",
     "recipe.alt": "Alternativa",
@@ -203,23 +202,23 @@
         ],
         [
           "Impasto finale",
-          "Passaggi 02–07. Circa 2 h 30 di lavoro alternato a riposi."
+          "Passaggi 02–06. Circa 2 h 30 di lavoro alternato a riposi."
         ],
         [
           "Staglio, pirlatura e frigo",
-          "Passaggio 08. {panh} h in frigo."
+          "Passaggio 07. {panh} h in frigo."
         ],
         [
           "Tirare fuori i panetti",
-          "Passaggio 09. Valuta la lievitazione; intanto prepara pomodoro e mozzarella."
+          "Passaggio 08. Valuta la lievitazione; intanto prepara pomodoro e mozzarella."
         ],
         [
           "Accendere il forno",
-          "Passaggio 11. {top} °C / {bottom} °C."
+          "Passaggio 10. {top} °C / {bottom} °C."
         ],
         [
           "Infornare",
-          "Passaggi 12–14. La prima pizza calibra."
+          "Passaggi 11–13. La prima pizza calibra."
         ]
       ]
     },
@@ -314,25 +313,12 @@
             "il": "mix",
             "li": [
               "Usa il prefermento appena tolto dal frigo, senza lasciarlo a lungo a temperatura ambiente.",
-              "Aggiungi {finFlour} g di farina e {initWater} g d'acqua.",
+              "Sciogli {salt} g di sale in {initWater} g d'acqua.",
+              "Aggiungi al prefermento {finFlour} g di farina e l'acqua salata.",
               "Mescola finché tutta la farina è idratata. Non serve che sia liscio.",
               "Copri e lascia riposare. Il tempo sviluppa il glutine al posto tuo."
-            ]
-          },
-          {
-            "id": "s3",
-            "t": "Aggiungere il sale",
-            "time": "~10 min",
-            "src": [
-              "a"
             ],
-            "il": "salt",
-            "li": [
-              "Sciogli {salt} g di sale in {saltWater} g d'acqua.",
-              "Aggiungi la soluzione poco alla volta, con pizzicotti e pieghe.",
-              "Aspetta che ogni porzione venga assorbita prima della successiva."
-            ],
-            "tip": "Il sale sempre prima dell'olio."
+            "tip": "Il sale entra insieme alla seconda parte della farina, sempre prima dell'olio."
           },
           {
             "id": "s4",

@@ -5,13 +5,13 @@
     "label": "English",
     "short": "EN",
     "title": "Neapolitan Pizza Recipe & Step-by-Step Dough Protocol | NapoliProtocol",
-    "description": "Homemade Neapolitan pizza recipe with a preferment, dough calculator, 3-day schedule and oven guide in 14 steps. By Jhonathan Sousa.",
+    "description": "Homemade Neapolitan pizza recipe with a preferment, dough calculator, 3-day schedule and oven guide in 13 steps. By Jhonathan Sousa.",
     "ogTitle": "Neapolitan Pizza Protocol",
     "imgAlt": "Neapolitan Pizza Protocol, by Jhonathan Sousa",
     "og": {
       "eyebrow": "Neapolitan pizza at home",
       "title": "Neapolitan Pizza Protocol",
-      "sub": "Recipe, schedule and oven in 14 steps, calibrated bake after bake.",
+      "sub": "Recipe, schedule and oven in 13 steps, calibrated bake after bake.",
       "by": "by Jhonathan Sousa"
     }
   },
@@ -77,8 +77,7 @@
     "ing.oil": "Extra virgin olive oil",
     "recipe.waterEb": "Final dough water",
     "recipe.waterH": "Hand-mixing split",
-    "recipe.wInit": "Initial mix",
-    "recipe.wSalt": "To dissolve the salt",
+    "recipe.wInit": "Initial mix, with the salt",
     "recipe.divEb": "Division",
     "recipe.main": "Main",
     "recipe.alt": "Alternative",
@@ -203,23 +202,23 @@
         ],
         [
           "Final mix",
-          "Steps 02–07. About 2 h 30 of work broken up by rests."
+          "Steps 02–06. About 2 h 30 of work broken up by rests."
         ],
         [
           "Divide, ball and refrigerate",
-          "Step 08. {panh} h in the fridge."
+          "Step 07. {panh} h in the fridge."
         ],
         [
           "Take out the dough balls",
-          "Step 09. Check the proof; make the sauce and cheese meanwhile."
+          "Step 08. Check the proof; make the sauce and cheese meanwhile."
         ],
         [
           "Turn on the oven",
-          "Step 11. {top} °C / {bottom} °C."
+          "Step 10. {top} °C / {bottom} °C."
         ],
         [
           "Bake",
-          "Steps 12–14. The first pizza calibrates."
+          "Steps 11–13. The first pizza calibrates."
         ]
       ]
     },
@@ -314,25 +313,12 @@
             "il": "mix",
             "li": [
               "Use the preferment straight from the fridge, without a long warm-up.",
-              "Add {finFlour} g of flour and {initWater} g of water.",
+              "Dissolve {salt} g of salt in {initWater} g of water.",
+              "Add {finFlour} g of flour and the salted water to the preferment.",
               "Mix until all the flour is hydrated. It doesn't need to be smooth.",
               "Cover and rest. Time develops the gluten for you."
-            ]
-          },
-          {
-            "id": "s3",
-            "t": "Add the salt",
-            "time": "~10 min",
-            "src": [
-              "a"
             ],
-            "il": "salt",
-            "li": [
-              "Dissolve {salt} g of salt in {saltWater} g of water.",
-              "Add the solution little by little, using pincer movements and folds.",
-              "Wait for each portion to be absorbed before the next."
-            ],
-            "tip": "Salt always goes in before the oil."
+            "tip": "The salt goes in with the second part of the flour, always before the oil."
           },
           {
             "id": "s4",

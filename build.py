@@ -240,7 +240,7 @@ def images():
                                (f'recipe-{l}-4x3.png', 1200, 900), (f'recipe-{l}-1x1.png', 1200, 1200)]:
                 jobs.append((name, w, h, card_html(o, w, h)))
         jobs.append(('og-root.png', 1200, 630, card_html({'eyebrow': 'Pizza napoletana · PT · EN · ES · IT · 中文', 'title': 'Napoli\nProtocol',
-                     'sub': 'Recipe, schedule and oven in 14 steps, calibrated bake after bake.', 'by': 'by Jhonathan Sousa'}, 1200, 630)))
+                     'sub': 'Recipe, schedule and oven in 13 steps, calibrated bake after bake.', 'by': 'by Jhonathan Sousa'}, 1200, 630)))
         icon = f'<!doctype html><html><body style="margin:0;width:180px;height:180px;background:#F7F2E8">{PIZZA.format(pos="left:10px;top:10px;width:160px;height:160px")}</body></html>'
         jobs.append(('apple-touch-icon.png', 180, 180, icon))
         for name, w, h, doc in jobs:

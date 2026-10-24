@@ -5,13 +5,13 @@
     "label": "Português",
     "short": "PT",
     "title": "Pizza Napolitana: receita e protocolo passo a passo | NapoliProtocol",
-    "description": "Receita de pizza napolitana em casa com pré-fermento, calculadora de massa, cronograma de 3 dias e guia de forno em 14 etapas. Por Jhonathan Sousa.",
+    "description": "Receita de pizza napolitana em casa com pré-fermento, calculadora de massa, cronograma de 3 dias e guia de forno em 13 etapas. Por Jhonathan Sousa.",
     "ogTitle": "Protocolo da Pizza Napolitana",
     "imgAlt": "Protocolo da Pizza Napolitana, por Jhonathan Sousa",
     "og": {
       "eyebrow": "Pizza napolitana em casa",
       "title": "Protocolo da Napolitana",
-      "sub": "Receita, cronograma e forno em 14 etapas, calibrados fornada a fornada.",
+      "sub": "Receita, cronograma e forno em 13 etapas, calibrados fornada a fornada.",
       "by": "por Jhonathan Sousa"
     }
   },
@@ -77,8 +77,7 @@
     "ing.oil": "Azeite extravirgem",
     "recipe.waterEb": "Água da massa final",
     "recipe.waterH": "Divisão manual",
-    "recipe.wInit": "Mistura inicial",
-    "recipe.wSalt": "Para dissolver o sal",
+    "recipe.wInit": "Mistura inicial, com o sal",
     "recipe.divEb": "Divisão",
     "recipe.main": "Principal",
     "recipe.alt": "Alternativa",
@@ -203,23 +202,23 @@
         ],
         [
           "Mistura final",
-          "Etapas 02–07. Cerca de 2 h 30 de trabalho intercalado com descansos."
+          "Etapas 02–06. Cerca de 2 h 30 de trabalho intercalado com descansos."
         ],
         [
           "Dividir, bolear e refrigerar",
-          "Etapa 08. {panh} h na geladeira."
+          "Etapa 07. {panh} h na geladeira."
         ],
         [
           "Retirar os panetti",
-          "Etapa 09. Avalie o ponto; prepare molho e queijo nesse intervalo."
+          "Etapa 08. Avalie o ponto; prepare molho e queijo nesse intervalo."
         ],
         [
           "Ligar o forno",
-          "Etapa 11. {top} °C / {bottom} °C."
+          "Etapa 10. {top} °C / {bottom} °C."
         ],
         [
           "Assar",
-          "Etapas 12–14. A primeira pizza calibra."
+          "Etapas 11–13. A primeira pizza calibra."
         ]
       ]
     },
@@ -314,25 +313,12 @@
             "il": "mix",
             "li": [
               "Use o pré-fermento direto da geladeira, sem longo aquecimento.",
-              "Junte {finFlour} g de farinha e {initWater} g de água.",
+              "Dissolva {salt} g de sal em {initWater} g de água.",
+              "Junte ao pré-fermento {finFlour} g de farinha e a água com sal.",
               "Misture até hidratar toda a farinha. Não precisa ficar lisa.",
               "Tampe e descanse. O tempo desenvolve o glúten por você."
-            ]
-          },
-          {
-            "id": "s3",
-            "t": "Incorporar o sal",
-            "time": "~10 min",
-            "src": [
-              "a"
             ],
-            "il": "salt",
-            "li": [
-              "Dissolva {salt} g de sal em {saltWater} g de água.",
-              "Adicione a solução aos poucos, com movimentos de pinça e dobras.",
-              "Espere absorver cada porção antes da próxima."
-            ],
-            "tip": "Sal sempre antes do azeite."
+            "tip": "O sal entra junto com a segunda parte da farinha, sempre antes do azeite."
           },
           {
             "id": "s4",

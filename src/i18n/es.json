@@ -5,13 +5,13 @@
     "label": "Español",
     "short": "ES",
     "title": "Pizza Napolitana: receta y protocolo paso a paso de la masa | NapoliProtocol",
-    "description": "Receta de pizza napolitana casera con prefermento, calculadora de masa, cronograma de 3 días y guía de horno en 14 pasos. Por Jhonathan Sousa.",
+    "description": "Receta de pizza napolitana casera con prefermento, calculadora de masa, cronograma de 3 días y guía de horno en 13 pasos. Por Jhonathan Sousa.",
     "ogTitle": "Protocolo de la Pizza Napolitana",
     "imgAlt": "Protocolo de la Pizza Napolitana, por Jhonathan Sousa",
     "og": {
       "eyebrow": "Pizza napolitana en casa",
       "title": "Protocolo de la Napolitana",
-      "sub": "Receta, cronograma y horno en 14 pasos, calibrados horneada tras horneada.",
+      "sub": "Receta, cronograma y horno en 13 pasos, calibrados horneada tras horneada.",
       "by": "por Jhonathan Sousa"
     }
   },
@@ -77,8 +77,7 @@
     "ing.oil": "Aceite de oliva virgen extra",
     "recipe.waterEb": "Agua de la masa final",
     "recipe.waterH": "Reparto a mano",
-    "recipe.wInit": "Mezcla inicial",
-    "recipe.wSalt": "Para disolver la sal",
+    "recipe.wInit": "Mezcla inicial, con la sal",
     "recipe.divEb": "División",
     "recipe.main": "Principal",
     "recipe.alt": "Alternativa",
@@ -203,23 +202,23 @@
         ],
         [
           "Mezcla final",
-          "Pasos 02–07. Unas 2 h 30 de trabajo intercalado con reposos."
+          "Pasos 02–06. Unas 2 h 30 de trabajo intercalado con reposos."
         ],
         [
           "Dividir, bolear y refrigerar",
-          "Paso 08. {panh} h en la nevera."
+          "Paso 07. {panh} h en la nevera."
         ],
         [
           "Sacar los bollos",
-          "Paso 09. Evalúa el punto; prepara salsa y queso mientras tanto."
+          "Paso 08. Evalúa el punto; prepara salsa y queso mientras tanto."
         ],
         [
           "Encender el horno",
-          "Paso 11. {top} °C / {bottom} °C."
+          "Paso 10. {top} °C / {bottom} °C."
         ],
         [
           "Hornear",
-          "Pasos 12–14. La primera pizza calibra."
+          "Pasos 11–13. La primera pizza calibra."
         ]
       ]
     },
@@ -314,25 +313,12 @@
             "il": "mix",
             "li": [
               "Usa el prefermento directo de la nevera, sin atemperarlo mucho.",
-              "Añade {finFlour} g de harina y {initWater} g de agua.",
+              "Disuelve {salt} g de sal en {initWater} g de agua.",
+              "Añade al prefermento {finFlour} g de harina y el agua con sal.",
               "Mezcla hasta hidratar toda la harina. No hace falta que quede lisa.",
               "Tapa y deja reposar. El tiempo desarrolla el gluten por ti."
-            ]
-          },
-          {
-            "id": "s3",
-            "t": "Incorporar la sal",
-            "time": "~10 min",
-            "src": [
-              "a"
             ],
-            "il": "salt",
-            "li": [
-              "Disuelve {salt} g de sal en {saltWater} g de agua.",
-              "Añade la solución poco a poco, con pellizcos y pliegues.",
-              "Espera a que se absorba cada porción antes de la siguiente."
-            ],
-            "tip": "La sal siempre antes que el aceite."
+            "tip": "La sal entra junto con la segunda parte de la harina, siempre antes que el aceite."
           },
           {
             "id": "s4",
