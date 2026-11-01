@@ -138,8 +138,9 @@ def page(l, c):
         'REF_W': esc(c['ref']['w']), 'REF_SALT': esc(c['ref']['salt']), 'TARGET': esc(c['targetSize']),
         'SPLIT_CLASS': '' if f['waterSplit'] else ' two',
         'TIMER_ZONES': zones, 'TIMER_SCALE': scale, 'CLOCK0': clock0,
-        'CSS': (SRC / 'style.css').read_text('utf-8'), 'IL': (SRC / 'illustrations.js').read_text('utf-8'),
+        'CSS': (SRC / 'style.css').read_text('utf-8') + (SRC / 'style-3d.css').read_text('utf-8'), 'IL': (SRC / 'illustrations.js').read_text('utf-8'),
         'PLAYER_JS': (SRC / 'player.js').read_text('utf-8').replace('</', '<\\/'), 'PLAYER_STAGE': (SRC / 'player-stage.svg').read_text('utf-8'),
+        'WORLD_JS': (SRC / 'world3d.js').read_text('utf-8').replace('</', '<\\/'),
         'RULES': ''.join(f'<li>{esc(r)}</li>' for r in d['rules']),
         'GLOSSARY': ''.join(f'<div class="card"><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in d['glossary']),
         'T_JSON': json.dumps(js, ensure_ascii=False).replace('</', '<\\/'),
@@ -165,7 +166,7 @@ def page(l, c):
 
 
 def prerender(p):
-    r = chrome(['--dump-dom', p.as_uri()])
+    r = chrome(['--dump-dom', p.as_uri() + '?prerender=1'])   # o 3D não roda no pré-render
     dom = r.stdout
     assert 'id="ld-recipe"' in dom and 'class="step"' in dom, f'pré-render falhou: {p}\n{r.stderr[-500:]}'
     # estado que depende do relógio do build: deixa o JS do visitante preencher

@@ -14,7 +14,7 @@
 {{HEAD}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 :root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
 {{CSS}}
@@ -42,7 +42,13 @@
       <div class="byline"><span class="mono-js" aria-hidden="true">JS</span><span><span>{{hero.by}} <a href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author">Jhonathan Sousa</a></span><small>{{hero.version}}</small></span></div>
       <p class="lead">{{hero.lead}}</p>
       <a class="next" id="nextEv" href="#cronograma" hidden></a>
+      <div class="qcard" role="group" aria-label="{{panel.pizzas}}">
+        <span class="qlbl">{{panel.pizzas}}</span>
+        <button type="button" id="qMinus" aria-label="−">−</button><output id="qN">5</output><button type="button" id="qPlus" aria-label="+">+</button>
+        <span class="qsum" id="qSum"></span>
+      </div>
     </div>
+    <div class="hero3d" id="hero3d" aria-hidden="true"></div>
     <div class="kpis" aria-live="polite">
       <div class="kpi"><div class="k">{{kpi.total}}</div><div class="val"><span data-k="total"></span> g</div><div class="sub">{{kpi.hyd}} <span data-k="hydPct"></span>%</div></div>
       <div class="kpi"><div class="k">{{kpi.balls}}</div><div class="val"><span data-k="n"></span> × <span data-k="per"></span> g</div><div class="sub">{{kpi.pizzas}}</div></div>
@@ -166,7 +172,15 @@
 
       <section id="passos">
         <div class="sec-head"><h2>{{steps.h2}}</h2><p>{{steps.sub}}</p></div>
-        <div id="stepsRoot"></div>
+        <div class="steps3d">
+          <div class="stage3d-wrap"><div class="stage3d" id="stage3d">
+            <div class="st3-ctrl"><span class="st3-lbl" id="st3Label"></span><span class="sp"></span>
+              <button type="button" class="st3-btn" id="st3Replay" aria-label="{{player.repeat}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button type="button" class="st3-btn wide" id="st3Play" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>{{player.film}}</button>
+            </div>
+          </div></div>
+          <div id="stepsRoot"></div>
+        </div>
       </section>
 
       <section id="forno">
@@ -413,7 +427,11 @@
   syncTheme();
   document.addEventListener('click',e=>{const a=e.target.closest('[data-setlang]'); if(a) try{localStorage.setItem('np-lang',a.dataset.setlang)}catch(_){}});
   setInterval(renderSchedule, 60e3);
-  window.NP={T,C,calc,fmt,onRender:[]};   // ponte para o player animado (src/player.js)
+  window.NP={T,C,calc,fmt,onRender:[]};
+  const qN=document.getElementById('qN'), qSum=document.getElementById('qSum');
+  const setPz=n=>{const c=calc(); P.mode='pizza'; P.pizzas=Math.max(1,Math.min(20,n)); store.set(LS+':p',P); syncInputs(); render()};
+  document.getElementById('qMinus').onclick=()=>setPz(calc().n-1); document.getElementById('qPlus').onclick=()=>setPz(calc().n+1);
+  NP.onRender.push(()=>{const c=calc(); qN.textContent=c.n; qSum.textContent=`${fmt('flour',c.flour)} g · ${fmt('per',c.per)} g`;});   // ponte para o player animado (src/player.js)
   renderSteps(); syncInputs(); applyChecks(); render();
 
   // ---------- Dados estruturados (gerados no build; não roda se já existir) ----------
@@ -434,6 +452,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script>
 {{PLAYER_JS}}
+</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+<script type="module">
+{{WORLD_JS}}
 </script>
 </body>
 </html>
