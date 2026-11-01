@@ -20,11 +20,12 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 SRC, OUT = ROOT / 'src', ROOT / 'docs'
 DOMAIN = 'https://napoliprotocol.com'
-LANGS = ['pt', 'en', 'es', 'it', 'zh']            # ordem do menu
-HREFLANG = {'pt': 'pt', 'en': 'en', 'es': 'es', 'it': 'it', 'zh': 'zh-Hans'}
+LANGS = ['pt', 'en']                              # ordem do menu
+HREFLANG = {'pt': 'pt', 'en': 'en'}
+RETIRED = {'es': 'en', 'it': 'en', 'zh': 'en'}   # idiomas removidos: endereços antigos redirecionam
 CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-ROOT_DESC = ('Neapolitan pizza recipe and step-by-step protocol: dough calculator, 3-day schedule and oven guide. '
-             'Pizza napolitana · pizza napoletana · 那不勒斯披萨. By Jhonathan Sousa.')
+ROOT_DESC = ('Neapolitan and New York pizza recipes with an animated 3D step-by-step protocol, dough calculator, schedule and oven guide. '
+             'Receita de pizza napolitana passo a passo. By Jhonathan Sousa.')
 
 I18N = {l: json.loads((SRC / 'i18n' / f'{l}.json').read_text('utf-8')) for l in LANGS}
 RECIPES = sorted((json.loads(p.read_text('utf-8')) for p in (SRC / 'recipes').glob('*/recipe.json')), key=lambda c: c['order'])
@@ -243,6 +244,14 @@ def not_found():
 '''
 
 
+def retired_page(dest):
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NapoliProtocol</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="{DOMAIN}{dest}">
+<meta http-equiv="refresh" content="0; url={dest}"><script>location.replace('{dest}'+location.hash)</script></head>
+<body style="font-family:system-ui,sans-serif;background:#F3F2EE;color:#1C1714;display:grid;place-items:center;min-height:100vh"><a href="{dest}" style="color:#D63A1C;font-weight:700">NapoliProtocol</a></body></html>
+'''
+
+
 def sitemap():
     rows = []
     for c in RECIPES:
@@ -314,7 +323,7 @@ def images(only=None):
                                    (f'recipe-{p}{l}-4x3.png', 1200, 900), (f'recipe-{p}{l}-1x1.png', 1200, 1200)]:
                     jobs.append((name, w, h, card_html(o, w, h, pz)))
         if not only:
-            jobs.append(('og-root.png', 1200, 630, card_html({'eyebrow': 'Pizza napoletana · PT · EN · ES · IT · 中文', 'title': 'Napoli\nProtocol',
+            jobs.append(('og-root.png', 1200, 630, card_html({'eyebrow': 'Pizza napoletana · PT · EN', 'title': 'Napoli\nProtocol',
                          'sub': 'Recipe, schedule and oven in 13 steps, calibrated bake after bake.', 'by': 'by Jhonathan Sousa'}, 1200, 630, PIZZAS['napolitana'])))
             icon = f'<!doctype html><html><body style="margin:0;width:180px;height:180px;background:#F7F2E8">{PIZZAS["napolitana"].format(pos="left:10px;top:10px;width:160px;height:160px")}</body></html>'
             jobs.append(('apple-touch-icon.png', 180, 180, icon))
@@ -352,6 +361,11 @@ def main():
             leak_check(c, l, final)
             f.write_text(final, 'utf-8')
             print('  page', f.relative_to(ROOT))
+    for old, new in RETIRED.items():   # /es/, /it/, /zh/ (e /new-york/) → equivalente em inglês
+        for c in RECIPES:
+            d = OUT / old / c['slug'] if c['slug'] else OUT / old
+            d.mkdir(parents=True, exist_ok=True)
+            (d / 'index.html').write_text(retired_page(path(new, c)), 'utf-8')
     (OUT / 'index.html').write_text(root_page(), 'utf-8')
     (OUT / '404.html').write_text(not_found(), 'utf-8')
     (OUT / 'sitemap.xml').write_text(sitemap(), 'utf-8')

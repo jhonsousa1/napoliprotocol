@@ -299,6 +299,22 @@ function shots(w, Q, L, fmt, ny) {
     const tN = w.tag(`${Q.n} × ${g(Q.per)} g`, new THREE.Vector3(-.6, 1.8, -.6)); tagIn(tl, tN, at2 + 1.2);
     const tC = w.tag(`❄ ${fmt(Q.panh)} h`, new THREE.Vector3(-3.4, 1.6, -.6), 'cold'); tagIn(tl, tC, at2 + 2);
   };
+  S.sauce = (tl) => {   // lata de pelati despejando na tigela + mozzarella escorrendo
+    const bowl = w.obj('bowl', makeBowl), can = w.obj('can', makeCan);
+    const red = w.obj('sauceFill', () => { const m = new THREE.Mesh(displace(new THREE.CylinderGeometry(1.08, 1.08, .06, 64, 1), .01, 8), phys({ color: C.sauce, roughness: .45, clearcoat: .4 })); return m; });
+    if (!w.objs.cubes) { w.objs.cubes = new THREE.Group(); w.scene.add(w.objs.cubes); const cm = phys({ color: C.cheese, roughness: .5, clearcoat: .2 });
+      for (let i = 0; i < 14; i++) { const c = new THREE.Mesh(new RoundedBoxGeometry(.32, .26, .3, 2, .07), cm); c.position.set(2.2 + (i % 4) * .38 - .55, .13 + Math.floor(i / 8) * .26, .9 + Math.floor(i / 4) % 2 * .38); c.rotation.y = rnd(); c.castShadow = true; w.objs.cubes.add(c); } }
+    w.show('bowl', 'can', 'sauceFill', 'cubes'); bowl.position.set(-.6, 0, 0); red.position.set(-.6, .2, 0); red.scale.set(.6, 1, .6); red.visible = false;
+    can.position.set(1.2, 0, -.2); can.rotation.set(0, 0, 0);
+    w.camTo(tl, [.2, 5.2, 6.6], [.2, .5, .2]);
+    const t1 = w.tag(`${g(Q.cans)} ${L.cans}`, new THREE.Vector3(-.6, 2.4, 0)), t2 = w.tag(`${g(Q.cheeseTotal)} g ${ny ? L.cheeseNY : L.cheeseN}`, new THREE.Vector3(2.2, 1.4, 1.1));
+    tagIn(tl, t1, .3);
+    tl.to(can.position, { x: .5, y: 1.9, z: 0, duration: .8, ease: 'power2.inOut' }, .3).to(can.rotation, { z: 2.1, duration: .8, ease: 'power2.inOut' }, .5)
+      .add(() => { red.visible = true; }, 1.1).to(red.scale, { x: 1, z: 1, duration: 1.2, ease: 'power2.out' }, 1.1).to(red.position, { y: .62, duration: 1.2 }, 1.1)
+      .to(can.position, { x: 1.2, y: 0, z: -.2, duration: .7, ease: 'power2.inOut' }, 2.5).to(can.rotation, { z: 0, duration: .7 }, 2.5);
+    w.objs.cubes.children.forEach((c, i) => { tl.from(c.position, { y: 2.6, duration: .45, ease: 'bounce.out' }, 2.8 + i * .05); });
+    tagIn(tl, t2, 3.2);
+  };
   S.build = (tl, key) => {
     const pz = w.obj(ny ? 'pizzaNY' : 'pizza', () => makePizza(ny)), U = pz.userData; const peel = w.obj('peel', makePeel, [0, -.02, 0]);
     w.show(ny ? 'pizzaNY' : 'pizza', 'peel'); pz.position.set(0, .03, 0); pz.rotation.set(0, 0, 0); peel.position.set(0, .02, 0);
@@ -350,7 +366,7 @@ function shots(w, Q, L, fmt, ny) {
   return S;
 }
 const ALIAS = { pref: ['pref'], mix: ['mix', 'mix'], bass: ['mix', 'bass'], fold: ['mix', 'fold'], oil: ['mix', 'oil'], lam: ['balls', 'lam'], balls: ['balls', 'balls'], temper: ['balls', 'temper'],
-  sauce: ['build', 'build'], oven: ['bake', 'oven'], open: ['build', 'open'], build: ['build', 'build'], bake: ['bake', 'bake'], slice: ['bake', 'slice'] };
+  sauce: ['sauce', 'sauce'], oven: ['bake', 'oven'], open: ['build', 'open'], build: ['build', 'build'], bake: ['bake', 'bake'], slice: ['bake', 'slice'] };
 
 /* ---------- herói: pizza pronta girando ---------- */
 function hero(el, ny) {
@@ -383,7 +399,8 @@ function main() {
   };
   let autoplay = false;
   const next = () => { const i = steps.findIndex(s => s.id === cur); if (i < steps.length - 1) { setTimeout(() => steps[i + 1].scrollIntoView({ behavior: 'smooth', block: 'center' }), 900); } else autoplay = false; };
-  const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) play(e.target.id); }); }, { rootMargin: '-45% 0px -45% 0px' });
+  const narrow = matchMedia('(max-width:960px)').matches;   // no celular o palco cobre o topo: a faixa de leitura fica mais abaixo
+  const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) play(e.target.id); }); }, { rootMargin: narrow ? '-62% 0px -30% 0px' : '-45% 0px -45% 0px' });
   steps.forEach(s => io.observe(s));
   if (btn) btn.onclick = () => { autoplay = !autoplay; btn.setAttribute('aria-pressed', autoplay); if (autoplay) { const first = cur ? document.getElementById(cur) : steps[0]; play(first.id, true); first.scrollIntoView({ behavior: 'smooth', block: 'center' }); } };
   document.getElementById('st3Replay')?.addEventListener('click', () => cur && play(cur, true));
