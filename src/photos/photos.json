@@ -1,0 +1,122 @@
+{
+  "oro": {
+    "w": 1400,
+    "h": 1050,
+    "author": "Sarah Stierch",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:L%27Oro_di_Napoli_-_January_2025_-_Sarah_Stierch_17.jpg",
+    "cap": {
+      "pt": "Pizza napolitana saída do forno a lenha",
+      "en": "Neapolitan pizza fresh from a wood-fired oven"
+    }
+  },
+  "brandi": {
+    "w": 1400,
+    "h": 1188,
+    "author": "Wikimedia Commons",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Pizza_Napoli_Brandi.jpeg",
+    "cap": {
+      "pt": "Placa da pizzaria Brandi, em Nápoles: “aqui nasceu a pizza Margherita, 1889”",
+      "en": "Plaque at Pizzeria Brandi, Naples: “the Margherita pizza was born here, 1889”"
+    }
+  },
+  "napoli": {
+    "w": 1400,
+    "h": 934,
+    "author": "Glen MacLarty",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Pizza_in_Naples.jpg",
+    "cap": {
+      "pt": "Pizzaiolo e forno a lenha em Nápoles",
+      "en": "A pizzaiolo and wood-fired oven in Naples"
+    }
+  },
+  "leopard": {
+    "w": 1400,
+    "h": 1050,
+    "author": "CDibisceglia",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Pizza_Napoletana_Contemporanea.jpg",
+    "cap": {
+      "pt": "O ponto: cornicione alto e aerado, com pequenas manchas escuras (leopard spotting)",
+      "en": "The target: a tall, airy cornicione with small dark spots (leopard spotting)"
+    }
+  },
+  "peel": {
+    "w": 1400,
+    "h": 1091,
+    "author": "Stevemconst61",
+    "license": "Public domain",
+    "license_url": "https://en.wikipedia.org/wiki/Public_domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Neapolitan_pizza.jpg",
+    "cap": {
+      "pt": "Montada na pá, pronta para lançar: pouco molho, mozzarella espaçada, manjericão",
+      "en": "Topped on the peel, ready to launch: light sauce, spaced mozzarella, basil"
+    }
+  },
+  "dough": {
+    "w": 787,
+    "h": 1400,
+    "author": "terri_bateman",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Pizza_night-_dough_is_ready_(33502053445).jpg",
+    "cap": {
+      "pt": "Massa aberta à mão, fina no centro, pronta para montar",
+      "en": "Dough stretched by hand, thin in the centre, ready to top"
+    }
+  },
+  "pelati": {
+    "w": 1400,
+    "h": 1050,
+    "author": "Jengod",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:28_oz_cans_of_San_Marzano_tomatoes,_three_ways.jpg",
+    "cap": {
+      "pt": "Tomates pelados San Marzano em lata",
+      "en": "Canned San Marzano peeled tomatoes"
+    }
+  },
+  "nyslice": {
+    "w": 1400,
+    "h": 1050,
+    "author": "Sarah Stierch",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Acre_Pizza_-_July_2024_-_Sarah_Stierch_03.jpg",
+    "cap": {
+      "pt": "Fatias grandes no estilo New York",
+      "en": "Big New York-style slices"
+    }
+  },
+  "nyfold": {
+    "w": 1050,
+    "h": 1400,
+    "author": "Wil540 art",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:New_York_Style_Pizza_New_Park.jpg",
+    "cap": {
+      "pt": "A fatia dobrada ao meio, do jeito nova-iorquino",
+      "en": "The slice folded in half, the New York way"
+    }
+  },
+  "lombardi": {
+    "w": 1400,
+    "h": 945,
+    "author": "Beyond My Ken",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Lombardi%27s_Pizza.jpg",
+    "cap": {
+      "pt": "Lombardi's, em Nova York: considerada a primeira pizzaria licenciada da cidade (1905)",
+      "en": "Lombardi's in New York, considered the city's first licensed pizzeria (1905)"
+    }
+  }
+}

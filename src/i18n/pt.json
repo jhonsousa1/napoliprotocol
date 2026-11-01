@@ -96,7 +96,9 @@
     "player.repeat": "Repetir a animação",
     "player.mode": "Modo",
     "player.film": "Assistir tudo",
-    "player.bench": "Na bancada"
+    "player.bench": "Na bancada",
+    "photo": "Foto",
+    "foot.photos": "Fotos reais: Wikimedia Commons, com autor e licença em cada legenda."
   },
   "js": {
     "locale": "pt-BR",

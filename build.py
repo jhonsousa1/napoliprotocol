@@ -14,7 +14,7 @@ Cada página é pré-renderizada no Chrome headless para que passos, quantidades
 JSON-LD da receita já estejam no HTML que o Google lê.
 URLs: /<lang>/ para a receita principal (slug vazio) e /<lang>/<slug>/ para as demais.
 """
-import html, json, re, subprocess, sys, tempfile
+import html, json, re, shutil, subprocess, sys, tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -32,6 +32,17 @@ RECIPES = sorted((json.loads(p.read_text('utf-8')) for p in (SRC / 'recipes').gl
 RTEXT = {c['id']: {l: json.loads((SRC / 'recipes' / c['id'] / f'{l}.json').read_text('utf-8')) for l in LANGS} for c in RECIPES}
 
 esc = lambda s: html.escape(s, quote=True)
+PHOTOS = json.loads((SRC / 'photos' / 'photos.json').read_text('utf-8'))   # fotos reais (Wikimedia Commons) com crédito
+
+
+def figure(key, l, cls, eager=False):
+    p = PHOTOS[key]; label = I18N[l]['html']['photo']
+    credit = f'{label}: <a href="{p["source"]}" target="_blank" rel="noopener">{esc(p["author"])}</a>'
+    if p['license_url']: credit += f', <a href="{p["license_url"]}" target="_blank" rel="noopener license">{esc(p["license"])}</a>'
+    else: credit += f', {esc(p["license"])}'
+    return (f'<figure class="{cls}"><img src="/img/photos/{key}-800.jpg" srcset="/img/photos/{key}-800.jpg 800w, /img/photos/{key}-1400.jpg 1400w" '
+            f'sizes="(max-width: 960px) 100vw, 640px" width="{p["w"]}" height="{p["h"]}" alt="{esc(p["cap"][l])}" loading="{"eager" if eager else "lazy"}" decoding="async">'
+            f'<figcaption>{esc(p["cap"][l])} <small>{credit}</small></figcaption></figure>')
 img = lambda name: f'{DOMAIN}/img/{name}'
 path = lambda l, c: f'/{l}/' + (f'{c["slug"]}/' if c['slug'] else '')
 url = lambda l, c: DOMAIN + path(l, c)
@@ -122,6 +133,7 @@ def page(l, c):
     d = merge(I18N[l], RTEXT[c['id']][l])
     tpl = (SRC / 'template.html').read_text('utf-8')
     js = dict(d['js'])
+    js['photos'] = {sid: figure(k, l, 'ref') for sid, k in c.get('photos', {}).get('steps', {}).items()}
     js['cfg'] = {k: c[k] for k in ('id', 'targetSize', 'scenes', 'def', 'ls', 'features', 'warn', 'sched', 'timer', 'ld')}
     js['ld'] = dict(js['ld'], url=url(l, c), inLanguage=HREFLANG[l],
                     images=[img(f'recipe-{prefix(c)}{l}-{r}.png') for r in ('1x1', '4x3', '16x9')])
@@ -147,6 +159,7 @@ def page(l, c):
         'T_JSON': json.dumps(js, ensure_ascii=False).replace('</', '<\\/'),
         'ABOUT_SITE': ''.join(f'<p>{esc(x)}</p>' for x in d['about']['site']),
         'ABOUT_PIZZA': ''.join(f'<p>{esc(x)}</p>' for x in d['about']['pizza']),
+        'ABOUT_PHOTOS': ''.join(figure(k, l, 'aph') for k in c.get('photos', {}).get('about', [])),
         'ABOUT_FACTS': ''.join(f'<div class="fact"><b>{esc(v)}</b><span>{esc(t)}</span></div>' for v, t in d['about']['facts']),
     }
     # blocos condicionais {{#pf}}…{{/pf}}: só entram no HTML se a receita usa o recurso
@@ -351,6 +364,8 @@ def leak_check(c, l, html_text):
 def main():
     OUT.mkdir(exist_ok=True)
     if '--images' in sys.argv: images()
+    (OUT / 'img' / 'photos').mkdir(parents=True, exist_ok=True)
+    for f in (SRC / 'photos').glob('*.jpg'): shutil.copy2(f, OUT / 'img' / 'photos' / f.name)
     for c in RECIPES:
         for l in LANGS:
             d = OUT / l / c['slug'] if c['slug'] else OUT / l

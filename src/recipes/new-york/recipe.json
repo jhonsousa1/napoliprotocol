@@ -119,5 +119,14 @@
     "s10": "build",
     "s11": "bake",
     "s12": "slice"
+  },
+  "photos": {
+    "steps": {
+      "s12": "nyfold"
+    },
+    "about": [
+      "lombardi",
+      "nyslice"
+    ]
   }
 }

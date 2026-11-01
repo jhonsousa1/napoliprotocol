@@ -96,7 +96,9 @@
     "player.repeat": "Replay the animation",
     "player.mode": "Mode",
     "player.film": "Watch all",
-    "player.bench": "At the bench"
+    "player.bench": "At the bench",
+    "photo": "Photo",
+    "foot.photos": "Real photos: Wikimedia Commons, with author and licence in each caption."
   },
   "js": {
     "locale": "en-US",

@@ -355,7 +355,7 @@ function shots(w, Q, L, fmt, ny) {
       return;
     }
     upd(); pz.position.set(0, .55, 4); pz.rotation.set(0, 0, 0); pz.scale.setScalar(.82);
-    const timer = w.tag(`<b>0</b> s`, new THREE.Vector3(1.9, 2.3, -1), 'timer'); tagIn(tl, timer, .3);
+    const timer = w.tag(`<b>0</b> s`, new THREE.Vector3(1.9, 2.3, -1), 'tmr'); tagIn(tl, timer, .3);
     tl.to(pz.position, { z: -2.1, duration: 1.1, ease: 'power2.out' }, .4);
     const T = ny ? 390 : 95, k = { s: 0 }, D = 3.4;
     tl.to(k, { s: T, duration: D, ease: 'none', onUpdate: () => { const s = Math.round(k.s); timer.innerHTML = ny ? `<b>${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}</b> min` : `<b>${s}</b> s`; } }, 1.5);

@@ -140,5 +140,18 @@
     "s12": "open",
     "s13": "build",
     "s14": "bake"
+  },
+  "photos": {
+    "steps": {
+      "s10": "pelati",
+      "s12": "dough",
+      "s13": "peel",
+      "s14": "leopard"
+    },
+    "about": [
+      "oro",
+      "napoli",
+      "brandi"
+    ]
   }
 }
