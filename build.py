@@ -171,7 +171,7 @@ def prerender(p):
     # estado que depende do relógio do build: deixa o JS do visitante preencher
     dom = re.sub(r'(<html[^>]*?) data-theme="\w+"', r'\1', dom, count=1)
     dom = re.sub(r'<ol class="tl" id="timeline">.*?</ol>', '<ol class="tl" id="timeline"></ol>', dom, flags=re.S)
-    dom = re.sub(r'<g id="scn">.*?</g></svg>', '<g id="scn"></g></svg>', dom, count=1, flags=re.S)   # cena animada: o JS do visitante desenha
+    dom = re.sub(r'<g id="scn">.*?</svg>', '<g id="scn"></g></svg>', dom, count=1, flags=re.S)   # cena animada: o JS do visitante desenha
     dom = re.sub(r'<a class="next" id="nextEv" href="#cronograma">.*?</a>', '<a class="next" id="nextEv" href="#cronograma" hidden=""></a>', dom, flags=re.S)
     dom = re.sub(r'<div class="alert" id="schedWarn">.*?</div>', '<div class="alert" id="schedWarn" hidden=""></div>', dom, flags=re.S)
     return dom if dom.lstrip().lower().startswith('<!doctype') else '<!doctype html>\n' + dom
