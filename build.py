@@ -121,7 +121,7 @@ def page(l, c):
     d = merge(I18N[l], RTEXT[c['id']][l])
     tpl = (SRC / 'template.html').read_text('utf-8')
     js = dict(d['js'])
-    js['cfg'] = {k: c[k] for k in ('def', 'ls', 'features', 'warn', 'sched', 'timer', 'ld')}
+    js['cfg'] = {k: c[k] for k in ('id', 'targetSize', 'scenes', 'def', 'ls', 'features', 'warn', 'sched', 'timer', 'ld')}
     js['ld'] = dict(js['ld'], url=url(l, c), inLanguage=HREFLANG[l],
                     images=[img(f'recipe-{prefix(c)}{l}-{r}.png') for r in ('1x1', '4x3', '16x9')])
     assert len(js['sched']['ev']) == len(c['sched']), f'{c["id"]}/{l}: cronograma'
@@ -139,6 +139,7 @@ def page(l, c):
         'SPLIT_CLASS': '' if f['waterSplit'] else ' two',
         'TIMER_ZONES': zones, 'TIMER_SCALE': scale, 'CLOCK0': clock0,
         'CSS': (SRC / 'style.css').read_text('utf-8'), 'IL': (SRC / 'illustrations.js').read_text('utf-8'),
+        'PLAYER_JS': (SRC / 'player.js').read_text('utf-8').replace('</', '<\\/'), 'PLAYER_STAGE': (SRC / 'player-stage.svg').read_text('utf-8'),
         'RULES': ''.join(f'<li>{esc(r)}</li>' for r in d['rules']),
         'GLOSSARY': ''.join(f'<div class="card"><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in d['glossary']),
         'T_JSON': json.dumps(js, ensure_ascii=False).replace('</', '<\\/'),
@@ -170,6 +171,7 @@ def prerender(p):
     # estado que depende do relógio do build: deixa o JS do visitante preencher
     dom = re.sub(r'(<html[^>]*?) data-theme="\w+"', r'\1', dom, count=1)
     dom = re.sub(r'<ol class="tl" id="timeline">.*?</ol>', '<ol class="tl" id="timeline"></ol>', dom, flags=re.S)
+    dom = re.sub(r'<g id="scn">.*?</g></svg>', '<g id="scn"></g></svg>', dom, count=1, flags=re.S)   # cena animada: o JS do visitante desenha
     dom = re.sub(r'<a class="next" id="nextEv" href="#cronograma">.*?</a>', '<a class="next" id="nextEv" href="#cronograma" hidden=""></a>', dom, flags=re.S)
     dom = re.sub(r'<div class="alert" id="schedWarn">.*?</div>', '<div class="alert" id="schedWarn" hidden=""></div>', dom, flags=re.S)
     return dom if dom.lstrip().lower().startswith('<!doctype') else '<!doctype html>\n' + dom

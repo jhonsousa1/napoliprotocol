@@ -87,7 +87,16 @@
     "nav.theme": "Attiva/disattiva tema scuro",
     "nav.recipes": "Ricette",
     "panel.sugar": "Zucchero",
-    "ing.sugar": "Zucchero"
+    "ing.sugar": "Zucchero",
+    "nav.watch": "Guarda",
+    "player.h2": "Guardalo passo passo",
+    "player.sub": "Ogni passaggio animato con le dosi di questa infornata. Cambia i parametri e l’animazione si aggiorna.",
+    "player.prev": "Passaggio precedente",
+    "player.next": "Passaggio successivo",
+    "player.repeat": "Ripeti l’animazione",
+    "player.mode": "Modalità",
+    "player.film": "Guarda tutto",
+    "player.bench": "Al banco"
   },
   "js": {
     "locale": "it-IT",
@@ -125,6 +134,32 @@
     "upper": "superiore",
     "diagCur": "Attuale: {lbl} {cur} °C. Suggerimento per la prossima pizza: {nv}. Piccoli passi; cambia solo questa variabile.",
     "apply": "Applica {v} °C",
-    "applied": "Applicato"
+    "applied": "Applicato",
+    "player": {
+      "step": "Passaggio",
+      "play": "Riproduci",
+      "pause": "Pausa",
+      "lbl": {
+        "flour": "farina",
+        "water": "acqua",
+        "yeast": "lievito",
+        "salt": "sale",
+        "oil": "olio",
+        "sauce": "pomodoro",
+        "cheese": "formaggio",
+        "cans": "latta/e · sale",
+        "cheeseN": "mozzarella",
+        "cheeseNY": "mozzarella grattugiata",
+        "foldN": "stira · piega · riposa",
+        "foldNY": "8–10 min di impasto",
+        "lam": "niente mattarello · non strappare",
+        "rimN": "bordo libero 1–1,5 cm",
+        "rimNY": "sulle nocche",
+        "top": "superiore",
+        "bottom": "inferiore",
+        "window": "prova del velo",
+        "foldSlice": "piegalo a metà"
+      }
+    }
   }
 }

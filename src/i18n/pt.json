@@ -87,7 +87,16 @@
     "nav.theme": "Alternar modo escuro",
     "nav.recipes": "Receitas",
     "panel.sugar": "Açúcar",
-    "ing.sugar": "Açúcar"
+    "ing.sugar": "Açúcar",
+    "nav.watch": "Assista",
+    "player.h2": "Assista ao passo a passo",
+    "player.sub": "Cada etapa animada com as quantidades desta fornada. Mude os parâmetros e a animação acompanha.",
+    "player.prev": "Etapa anterior",
+    "player.next": "Próxima etapa",
+    "player.repeat": "Repetir a animação",
+    "player.mode": "Modo",
+    "player.film": "Assistir tudo",
+    "player.bench": "Na bancada"
   },
   "js": {
     "locale": "pt-BR",
@@ -125,6 +134,32 @@
     "upper": "superior",
     "diagCur": "Atual: {lbl} {cur} °C. Sugestão para a próxima pizza: {nv}. Passos pequenos; mude só esta variável.",
     "apply": "Aplicar {v} °C",
-    "applied": "Aplicado"
+    "applied": "Aplicado",
+    "player": {
+      "step": "Etapa",
+      "play": "Play",
+      "pause": "Pausar",
+      "lbl": {
+        "flour": "farinha",
+        "water": "água",
+        "yeast": "fermento",
+        "salt": "sal",
+        "oil": "azeite",
+        "sauce": "molho",
+        "cheese": "queijo",
+        "cans": "lata(s) · sal",
+        "cheeseN": "mozzarella",
+        "cheeseNY": "muçarela ralada",
+        "foldN": "estique · dobre · descanse",
+        "foldNY": "8–10 min de sova",
+        "lam": "sem rolo · sem rasgar",
+        "rimN": "borda livre 1–1,5 cm",
+        "rimNY": "nos nós dos dedos",
+        "top": "superior",
+        "bottom": "inferior",
+        "window": "teste da janela",
+        "foldSlice": "dobre ao meio"
+      }
+    }
   }
 }

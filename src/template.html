@@ -25,7 +25,7 @@
   <div class="wrap">
     <a class="brand" href="/{{LANG}}/" style="text-decoration:none"><span class="flag" aria-hidden="true"><i></i><i></i><i></i></span>NapoliProtocol <span class="ver">v1.0</span></a>
     <nav class="nav" aria-label="{{nav.label}}">
-      <a href="#receita">{{nav.recipe}}</a><a href="#cronograma">{{nav.schedule}}</a><a href="#passos">{{nav.steps}}</a><a href="#forno">{{nav.oven}}</a><a href="#regras">{{nav.rules}}</a><a href="#sobre">{{nav.about}}</a>
+      <a href="#receita">{{nav.recipe}}</a><a href="#cronograma">{{nav.schedule}}</a><a href="#assistir">{{nav.watch}}</a><a href="#passos">{{nav.steps}}</a><a href="#forno">{{nav.oven}}</a><a href="#regras">{{nav.rules}}</a><a href="#sobre">{{nav.about}}</a>
     </nav>
     <div class="prog" title="{{nav.progress}}"><span id="progTxt">0/{{NSTEPS}}</span><div class="prog-bar"><i id="progBar"></i></div></div>
     <button type="button" class="theme-btn" id="themeBtn" aria-label="{{nav.theme}}" title="{{nav.theme}}"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
@@ -134,6 +134,34 @@
           <ol class="tl" id="timeline"></ol>
         </div>
         <div class="alert" id="schedWarn" hidden></div>
+      </section>
+
+      <section id="assistir" class="np-player">
+        <div class="sec-head"><h2>{{player.h2}}</h2><p>{{player.sub}}</p></div>
+        <div class="screen">
+          <div class="stagebox">
+            {{PLAYER_STAGE}}
+            <span class="badge" id="plBadge"></span>
+            <span class="waitchip" id="plWait"></span>
+          </div>
+          <div class="chapters" id="plChap" aria-label="{{nav.steps}}"></div>
+          <div class="cap" aria-live="polite">
+            <h3 id="plT"><small id="plDay"></small><span id="plTt"></span></h3>
+            <ul id="plLi"></ul>
+            <p class="tip" id="plTip" hidden></p>
+          </div>
+          <div class="ctrl">
+            <button type="button" class="cbtn" id="plPrev" aria-label="{{player.prev}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="cbtn main" id="plPP" aria-label="Play"><svg viewBox="0 0 24 24" id="plPPIco" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button>
+            <button type="button" class="cbtn" id="plNext" aria-label="{{player.next}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="cbtn" id="plRep" aria-label="{{player.repeat}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <span class="sp"></span>
+            <div class="mode" role="group" aria-label="{{player.mode}}">
+              <button type="button" id="plFilm" aria-pressed="true">{{player.film}}</button>
+              <button type="button" id="plBench" aria-pressed="false">{{player.bench}}</button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="passos">
@@ -298,6 +326,7 @@
     const wb=document.getElementById('warnBox'); wb.innerHTML = w.map(x=>'<span>'+x+'</span>').join('<br>'); wb.hidden=!w.length;
     document.getElementById('panelSum').textContent = fill(T.panelSum,{flour:nf0.format(Math.round(R.flour)), hyd:R.hydPct, top:nf0.format(P.top), bottom:nf0.format(P.bottom)});
     renderSchedule(); updateProgress();
+    if(window.NP) NP.onRender.forEach(f=>f());
   }
 
   // ---------- Inputs ----------
@@ -384,6 +413,7 @@
   syncTheme();
   document.addEventListener('click',e=>{const a=e.target.closest('[data-setlang]'); if(a) try{localStorage.setItem('np-lang',a.dataset.setlang)}catch(_){}});
   setInterval(renderSchedule, 60e3);
+  window.NP={T,C,calc,fmt,onRender:[]};   // ponte para o player animado (src/player.js)
   renderSteps(); syncInputs(); applyChecks(); render();
 
   // ---------- Dados estruturados (gerados no build; não roda se já existir) ----------
@@ -400,6 +430,10 @@
     document.head.appendChild(s);
   }
 })();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+{{PLAYER_JS}}
 </script>
 </body>
 </html>

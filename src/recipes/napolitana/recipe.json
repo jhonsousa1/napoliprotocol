@@ -125,5 +125,20 @@
     "totalTime": "PT52H",
     "datePublished": "2026-10-01"
   },
-  "updated": "2026-10-24"
+  "updated": "2026-10-24",
+  "scenes": {
+    "s1": "pref",
+    "s2": "mix",
+    "s4": "bass",
+    "s5": "fold",
+    "s6": "oil",
+    "s7": "lam",
+    "s8": "balls",
+    "s9": "temper",
+    "s10": "sauce",
+    "s11": "oven",
+    "s12": "open",
+    "s13": "build",
+    "s14": "bake"
+  }
 }

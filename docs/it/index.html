@@ -329,6 +329,38 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
 .split.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (max-width:760px){.split.two{grid-template-columns:1fr}}
 
+/* Player animado (cenas do Codex/GPT): tokens próprios do palco, nos dois temas */
+.np-player{--card:#FFFFFF;--ink:#1C1714;--muted:#655C55;--line:#E2DED8;--tomato:#D63A1C;--gold:#B5850B;--cold:#2F6FC4;--bg:#F3F4F1;
+  --stage:#FFF7EE;--stage2:#F6E9D8;--bench:#E7D3B6;--dough:#EED7AE;--dough2:#D9B57C;--crust:#C98B45;--water:#6FA8E8;--oil:#E2B33C;--salt:#FFFFFF;--sauce:#C42D17;--cheese:#FFF6E2;--leaf:#2E7A45;--steel:#9AA2AA;--char:#3A2418}
+:root[data-theme="dark"] .np-player{--card:#1E1A18;--ink:#F3EEE9;--muted:#B0A69E;--line:#37302B;--tomato:#EB4E2C;--gold:#D3A63A;--cold:#5A93DE;--bg:#141110;
+  --stage:#231D19;--stage2:#2C2420;--bench:#5A4532;--dough:#E3C996;--dough2:#C9A266;--crust:#B97A38;--salt:#F4F4F4;--sauce:#D2391F;--cheese:#FFF3DA;--leaf:#3C9A5A;--steel:#7C858E;--char:#1A100A}
+.np-player .screen{background:var(--card);color:var(--ink);border-radius:24px;overflow:hidden;border:1px solid var(--line)}
+.np-player .stagebox{position:relative;aspect-ratio:16/9;max-width:100%;background:radial-gradient(90% 80% at 50% 30%,var(--stage),var(--stage2))}
+.np-player #stg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.np-player .badge{position:absolute;left:14px;top:12px;font-family:var(--f-mono);font-size:12px;background:var(--card);color:var(--ink);padding:6px 11px;border-radius:99px;box-shadow:0 4px 14px -6px rgb(0 0 0 / .3)}
+.np-player .waitchip{position:absolute;right:14px;top:12px;font-family:var(--f-mono);font-size:12px;background:var(--cold);color:#fff;padding:6px 11px;border-radius:99px;max-width:55%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.np-player .cap{padding:20px 24px 8px;display:grid;gap:10px;min-height:150px}
+.np-player .cap h3{font-family:var(--f-display);font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.1}
+.np-player .cap h3 small{font-family:var(--f-mono);font-size:12.5px;color:var(--tomato);display:block;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.np-player .cap ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:17px}
+.np-player .cap .q{font-family:var(--f-mono);font-weight:600;background:color-mix(in srgb,var(--gold) 22%,transparent);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.np-player .cap .tip{font-size:15px;color:var(--muted);border-left:3px solid var(--gold);padding-left:12px}
+.np-player .chapters{display:flex;gap:4px;padding:14px 24px 6px}
+.np-player .chapters button{flex:1;height:8px;border:0;border-radius:99px;background:var(--line);cursor:pointer;padding:0;position:relative;overflow:hidden}
+.np-player .chapters button.d1{background:color-mix(in srgb,var(--cold) 25%,var(--line))}
+.np-player .chapters button.d2{background:color-mix(in srgb,var(--tomato) 22%,var(--line))}
+.np-player .chapters button i{position:absolute;inset:0;width:0;background:var(--ink);border-radius:99px}
+.np-player .ctrl{display:flex;align-items:center;gap:10px;padding:10px 20px 20px;flex-wrap:wrap}
+.np-player .cbtn{width:52px;height:52px;border-radius:50%;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.np-player .cbtn svg{width:22px;height:22px}
+.np-player .cbtn.main{width:64px;height:64px;background:var(--tomato);border-color:var(--tomato);color:#fff}
+.np-player .cbtn.main svg{width:28px;height:28px}
+.np-player .ctrl .sp{flex:1}
+.np-player .mode{display:inline-flex;border:2px solid var(--line);border-radius:99px;padding:3px;gap:3px}
+.np-player .mode button{border:0;background:transparent;color:var(--muted);font:700 14px var(--f-body);padding:8px 14px;border-radius:99px;cursor:pointer;min-height:40px}
+.np-player .mode button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+@media (max-width:560px){.np-player .cap{padding:16px 16px 6px}.np-player .chapters{padding:12px 16px 4px}.np-player .ctrl{padding:10px 12px 16px}.np-player .cap ul{font-size:16px}}
+
 </style>
 <script type="application/ld+json" id="ld-recipe">{"@context":"https://schema.org","@type":"Recipe","name":"Pizza napoletana fatta in casa con prefermento (protocollo di 3 giorni)","description":"Ricetta della pizza napoletana con farina Caputo Pizzeria 00, prefermento, idratazione al 64% e lunga lievitazione in frigo, con programma di 3 giorni e guida al forno.","inLanguage":"it","url":"https://napoliprotocol.com/it/","image":["https://napoliprotocol.com/img/recipe-it-1x1.png","https://napoliprotocol.com/img/recipe-it-4x3.png","https://napoliprotocol.com/img/recipe-it-16x9.png"],"author":{"@type":"Person","name":"Jhonathan Sousa","url":"https://www.instagram.com/jhonsousa1/","sameAs":["https://www.instagram.com/jhonsousa1/"]},"datePublished":"2026-10-01","prepTime":"PT3H","cookTime":"PT2M","totalTime":"PT52H","recipeYield":["5","5 pizze da 30–32 cm"],"recipeCategory":"Pizza","recipeCuisine":"Italiana (napoletana)","keywords":"pizza napoletana, ricetta pizza napoletana, impasto pizza napoletana, prefermento, poolish, pizza fatta in casa, Caputo Pizzeria","recipeIngredient":["800 g Farina Caputo Pizzeria 00","512 g Acqua filtrata","0,8 g Lievito di birra secco","23 g Sale","12 g Olio extravergine d'oliva","325 g di pelati schiacciati con sale","350 g di mozzarella","Foglie di basilico","Olio extravergine d'oliva q.b."],"recipeInstructions":[{"@type":"HowToStep","name":"Preparare il prefermento","text":"Mescola a secco 400 g di farina con 0,8 g di lievito. Aggiungi 400 g d'acqua e mescola fino a una pastella grossolana, senza farina secca. Copri. Lascia 1 h a temperatura ambiente. Metti in frigo (7 °C) per circa 20 h.","url":"https://napoliprotocol.com/it/#s1"},{"@type":"HowToStep","name":"Impasto iniziale","text":"Usa il prefermento appena tolto dal frigo, senza lasciarlo a lungo a temperatura ambiente. Sciogli 23 g di sale in 94 g d'acqua. Aggiungi al prefermento 400 g di farina e l'acqua salata. Mescola finché tutta la farina è idratata. Non serve che sia liscio. Copri e lascia riposare. Il tempo sviluppa il glutine al posto tuo.","url":"https://napoliprotocol.com/it/#s2"},{"@type":"HowToStep","name":"Bassinage","text":"Aggiungi i restanti 18 g d'acqua in piccole porzioni. Aggiungine altra solo quando l'impasto ha assorbito la precedente. Se l'impasto diventa appiccicoso, non aggiungere farina.","url":"https://napoliprotocol.com/it/#s4"},{"@type":"HowToStep","name":"Sviluppare il glutine","text":"Alterna riposi e serie di pieghe, senza impastare con forza. Fermati quando l'impasto è liscio, tondo, elastico e con la superficie in tensione.","url":"https://napoliprotocol.com/it/#s5"},{"@type":"HowToStep","name":"L'olio per ultimo","text":"Con l'impasto già strutturato, aggiungi 12 g d'olio poco alla volta. Incorporalo con pizzicotti e pieghe fino a completo assorbimento.","url":"https://napoliprotocol.com/it/#s6"},{"@type":"HowToStep","name":"Riposo e laminazione","text":"Riposo di 3–5 min. Laminazione: stendi delicatamente l'impasto a rettangolo sul banco e ripiegalo su sé stesso. Senza mattarello e senza strapparlo. Forma una palla. Riposo di 15 min. Fai pieghe leggere e lascia riposare circa 1 h.","url":"https://napoliprotocol.com/it/#s7"},{"@type":"HowToStep","name":"Staglio e pirlatura","text":"Dividi in 5 panetti da 270 g (impasto totale 1348 g). Pirla dando tensione alla superficie e chiudi bene la base. Contenitore coperto, in frigo per circa 24 h.","url":"https://napoliprotocol.com/it/#s8"},{"@type":"HowToStep","name":"Acclimatare i panetti","text":"Tirali fuori dal frigo circa 4 h prima di infornare (riferimento: ~26 °C). Punto giusto: è cresciuto, tante bollicine piccole e qualcuna più grande, lati alveolati, mantiene la forma, nessun cedimento, rilassato. In un contenitore da 1 L, il riferimento è che l'impasto arrivi a metà.","url":"https://napoliprotocol.com/it/#s9"},{"@type":"HowToStep","name":"Preparare pomodoro e mozzarella","text":"Schiaccia a mano 1 latta/e di pelati (niente frullatore, niente cottura). Sala con 4–5 g di sale per latta. Niente zucchero. Taglia 350 g di mozzarella a pezzetti e lasciala sgocciolare.","url":"https://napoliprotocol.com/it/#s10"},{"@type":"HowToStep","name":"Preriscaldare il BIG HORN","text":"Superiore a 450 °C, inferiore a 380 °C. Se hai un termometro a infrarossi, misura il centro della pietra e annotalo.","url":"https://napoliprotocol.com/it/#s11"},{"@type":"HowToStep","name":"Stendere l'impasto","text":"Un panetto alla volta. Passalo leggermente nella farina. Premi dal centro verso l'esterno con i polpastrelli, spingendo l'aria verso il bordo. Lascia 1–1,5 cm di bordo senza premere. Alla 1ª infornata, 2 cm hanno reso il cornicione troppo spesso. Completa a mano fino a ~30–32 cm. Senza mattarello.","url":"https://napoliprotocol.com/it/#s12"},{"@type":"HowToStep","name":"Condire e infornare","text":"65 g di pomodoro, 70 g di mozzarella distribuita, basilico e un filo d'olio. Lascia zone di pomodoro scoperte. Prima di infornare, fai un piccolo movimento laterale: la pizza deve scivolare tutta intera. Prosciutto crudo e rucola vanno messi dopo la cottura.","url":"https://napoliprotocol.com/it/#s13"},{"@type":"HowToStep","name":"Cuocere e girare","text":"A 25–30 s, controlla se ha abbastanza struttura per girarla di 180°. Poi piccole rotazioni fino a un colore uniforme. La prima pizza calibra il forno. Usa la diagnosi qui sotto. Aspetta che la pietra si riprenda prima della pizza successiva.","url":"https://napoliprotocol.com/it/#s14"}]}</script></head>
 <body>
@@ -336,7 +368,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
   <div class="wrap">
     <a class="brand" href="/it/" style="text-decoration:none"><span class="flag" aria-hidden="true"><i></i><i></i><i></i></span>NapoliProtocol <span class="ver">v1.0</span></a>
     <nav class="nav" aria-label="Sezioni">
-      <a href="#receita">Ricetta</a><a href="#cronograma">Programma</a><a href="#passos">Passo passo</a><a href="#forno">Forno</a><a href="#regras">Regole</a><a href="#sobre">Chi siamo</a>
+      <a href="#receita">Ricetta</a><a href="#cronograma">Programma</a><a href="#assistir">Guarda</a><a href="#passos">Passo passo</a><a href="#forno">Forno</a><a href="#regras">Regole</a><a href="#sobre">Chi siamo</a>
     </nav>
     <div class="prog" title="Passaggi completati"><span id="progTxt">0/13</span><div class="prog-bar"><i id="progBar" style="width: 0%;"></i></div></div>
     <button type="button" class="theme-btn" id="themeBtn" aria-label="Attiva/disattiva tema scuro" title="Attiva/disattiva tema scuro" aria-pressed="false"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>
@@ -447,6 +479,63 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
         <div class="alert" id="schedWarn" hidden=""></div>
       </section>
 
+      <section id="assistir" class="np-player">
+        <div class="sec-head"><h2>Guardalo passo passo</h2><p>Ogni passaggio animato con le dosi di questa infornata. Cambia i parametri e l’animazione si aggiorna.</p></div>
+        <div class="screen">
+          <div class="stagebox">
+            <svg id="stg" viewBox="0 0 800 450" role="img" aria-labelledby="plT">
+          <defs>
+            <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-opacity=".18"></feDropShadow></filter>
+            <radialGradient id="glow"><stop offset="0" stop-color="#FFB25C" stop-opacity=".9"></stop><stop offset="1" stop-color="#FF5A1F" stop-opacity="0"></stop></radialGradient>
+
+            <radialGradient id="doughLit" cx="30%" cy="20%" r="80%"><stop stop-color="#fff6dd"></stop><stop offset=".42" stop-color="var(--dough)"></stop><stop offset=".82" stop-color="var(--dough2)"></stop><stop offset="1" stop-color="#997044"></stop></radialGradient>
+            <radialGradient id="crustLit" cx="32%" cy="22%" r="80%"><stop stop-color="#ffe5a3"></stop><stop offset=".5" stop-color="#dea04d"></stop><stop offset=".85" stop-color="#a55523"></stop><stop offset="1" stop-color="#6f331c"></stop></radialGradient>
+            <linearGradient id="ceramic" x1="0" y1="0" x2="1" y2=".6"><stop stop-color="#234c4e"></stop><stop offset=".23" stop-color="#78a4a0"></stop><stop offset=".44" stop-color="#497b79"></stop><stop offset="1" stop-color="#173d40"></stop></linearGradient>
+            <radialGradient id="inside" cx="45%" cy="80%"><stop stop-color="#a2b7ab"></stop><stop offset="1" stop-color="#173d40"></stop></radialGradient>
+            <linearGradient id="metal"><stop stop-color="#424b50"></stop><stop offset=".18" stop-color="#b7c0c0"></stop><stop offset=".35" stop-color="#e4e6df"></stop><stop offset=".5" stop-color="#969e9e"></stop><stop offset=".8" stop-color="#515c60"></stop><stop offset="1" stop-color="#293338"></stop></linearGradient>
+            <linearGradient id="glass"><stop stop-color="#b9dfe0" stop-opacity=".5"></stop><stop offset=".2" stop-color="#fff" stop-opacity=".7"></stop><stop offset=".34" stop-color="#e5f3e9" stop-opacity=".1"></stop><stop offset=".8" stop-color="#b3d8d5" stop-opacity=".25"></stop><stop offset="1" stop-color="#fff" stop-opacity=".65"></stop></linearGradient>
+            <radialGradient id="tomatoLit" cx="32%" cy="25%"><stop stop-color="#f56b39"></stop><stop offset=".6" stop-color="var(--sauce)"></stop><stop offset="1" stop-color="#802417"></stop></radialGradient>
+            <radialGradient id="cheeseLit" cx="25%" cy="20%"><stop stop-color="#fffdf0"></stop><stop offset=".7" stop-color="var(--cheese)"></stop><stop offset="1" stop-color="#dcb66c"></stop></radialGradient>
+            <linearGradient id="oilLit"><stop stop-color="#fff0a3"></stop><stop offset=".3" stop-color="var(--oil)"></stop><stop offset="1" stop-color="#9d6c10"></stop></linearGradient>
+            <radialGradient id="leafLit" cx="25%" cy="20%"><stop stop-color="#8cb85a"></stop><stop offset=".6" stop-color="var(--leaf)"></stop><stop offset="1" stop-color="#174c32"></stop></radialGradient>
+            <linearGradient id="woodLit" x2="0" y2="1"><stop stop-color="var(--bench)"></stop><stop offset="1" stop-color="var(--dough2)"></stop></linearGradient>
+            <radialGradient id="studioLight" cx="23%" cy="0" r="90%"><stop stop-color="#fff4d9" stop-opacity=".5"></stop><stop offset="1" stop-color="#39271d" stop-opacity=".15"></stop></radialGradient>
+            <radialGradient id="contact"><stop stop-color="#241b15" stop-opacity=".38"></stop><stop offset="1" stop-color="#241b15" stop-opacity="0"></stop></radialGradient>
+            <pattern id="grainWood" width="190" height="35" patternUnits="userSpaceOnUse"><path d="M-20 7 Q40 -2 100 9 T220 7 M-20 12 Q55 3 115 14 T220 12 M0 30 Q80 17 190 30" fill="none" stroke="#7c4c2b" stroke-opacity=".13" stroke-width="1"></path></pattern>
+          </defs>
+          <rect width="800" height="450" fill="url(#studioLight)"></rect>
+          <path d="M0 310 Q400 293 800 310 V450 H0Z" fill="url(#woodLit)"></path>
+          <path d="M0 310 Q400 293 800 310 V450 H0Z" fill="url(#grainWood)"></path>
+          <path d="M0 352H800 M0 409H800" stroke="#754c31" stroke-opacity=".13"></path>
+          <ellipse cx="400" cy="349" rx="295" ry="65" fill="url(#contact)"></ellipse>
+          <path d="M30 333 L132 321 L167 450 H22Z" fill="var(--card)" opacity=".35"></path>
+          <path d="M47 335L72 450 M57 333L82 450" stroke="var(--tomato)" stroke-opacity=".25" stroke-width="3"></path>
+          <g id="scn"><g aria-hidden="true"><ellipse cx="361.55216111801565" cy="318.0209807069041" rx="1.41638819091022" ry="0.7777168464148416" fill="#fff1d5" opacity="0.2111225342657417"></ellipse><ellipse cx="205.81421750131994" cy="346.21263235621154" rx="2.7151069742161784" ry="1.185874866740778" fill="#fff1d5" opacity="0.22016862917225807"></ellipse><ellipse cx="608.8696404546499" cy="347.45270817680284" rx="2.2886159653775393" ry="1.1392653237795458" fill="#fff1d5" opacity="0.3303265435062349"></ellipse><ellipse cx="307.91436932515353" cy="326.60349282156676" rx="2.748976820660755" ry="1.187832690216601" fill="#fff1d5" opacity="0.3289495444158092"></ellipse><ellipse cx="557.2206596378237" cy="353.7707738284953" rx="2.4962454112246633" ry="1.0766944504575804" fill="#fff1d5" opacity="0.3671242952812463"></ellipse><ellipse cx="570.936125558801" cy="321.6998204290867" rx="2.772673724079505" ry="0.579520947439596" fill="#fff1d5" opacity="0.2963751205941662"></ellipse><ellipse cx="208.21646632626653" cy="378.1480435892008" rx="1.594526690337807" ry="0.7731858431128784" fill="#fff1d5" opacity="0.3782372998818755"></ellipse><ellipse cx="253.9943172922358" cy="358.87904973048717" rx="2.7277708453591916" ry="0.8454566971398889" fill="#fff1d5" opacity="0.2347027972014621"></ellipse><ellipse cx="544.0346429031342" cy="338.91993955755606" rx="2.1324175737798217" ry="1.0986098991939799" fill="#fff1d5" opacity="0.2767067954968661"></ellipse><ellipse cx="210.44517061207443" cy="358.34825328178704" rx="1.1291450925637037" ry="0.9309929078910499" fill="#fff1d5" opacity="0.22250869258772582"></ellipse><ellipse cx="597.5232095643878" cy="369.78622604487464" rx="2.316261038836092" ry="0.6670512409647926" fill="#fff1d5" opacity="0.2215217007882893"></ellipse><ellipse cx="344.5210188208148" cy="380.5430559804663" rx="2.461212396202609" ry="1.0355441279709339" fill="#fff1d5" opacity="0.35438406849745663"></ellipse><ellipse cx="215.86948570795357" cy="318.7616054308601" rx="2.7620096189901235" ry="0.9392178875626995" fill="#fff1d5" opacity="0.24899919197894632"></ellipse><ellipse cx="480.1125366287306" cy="325.728362146765" rx="0.8527610069606453" ry="1.0518738617654888" fill="#fff1d5" opacity="0.21300087419804184"></ellipse><ellipse cx="442.1134947799146" cy="320.2073992243968" rx="0.6258158427663147" ry="0.8929641355527564" fill="#fff1d5" opacity="0.36636468179523946"></ellipse><ellipse cx="464.71851584967226" cy="333.2025066772476" rx="1.9335810580756516" ry="0.986831836309284" fill="#fff1d5" opacity="0.22009666316676885"></ellipse><ellipse cx="400.3677289839834" cy="324.7941678450443" rx="2.0604252848774194" ry="0.7280282221967355" fill="#fff1d5" opacity="0.3817084463592619"></ellipse><ellipse cx="578.7121083820239" cy="349.6412072237581" rx="2.534487072052434" ry="0.8859410603065043" fill="#fff1d5" opacity="0.33986276905518026"></ellipse><ellipse cx="433.5933715105057" cy="348.77832576585934" rx="2.675863440614194" ry="0.6631756894057617" fill="#fff1d5" opacity="0.29932036487385627"></ellipse><ellipse cx="537.9826185060665" cy="331.7055849758908" rx="0.880416028900072" ry="0.9485900467261672" fill="#fff1d5" opacity="0.24687197139952333"></ellipse><ellipse cx="228.42760519124568" cy="369.64963678317145" rx="2.7748998219147327" ry="0.7689979600952939" fill="#fff1d5" opacity="0.3040722056943923"></ellipse><ellipse cx="342.9533327789977" cy="381.70453725010157" rx="1.681557050580159" ry="1.0310347888153046" fill="#fff1d5" opacity="0.19480297529604285"></ellipse><ellipse cx="561.1074177362025" cy="342.14592730393633" rx="1.3742023610509932" ry="0.8513929824111983" fill="#fff1d5" opacity="0.20177861113101242"></ellipse><ellipse cx="485.1985320588574" cy="364.4708857135847" rx="1.6874296938534825" ry="0.5097080481238663" fill="#fff1d5" opacity="0.38555887300986796"></ellipse><ellipse cx="333.2423449587077" cy="371.9614336662926" rx="2.0984623953700066" ry="0.7030008910456672" fill="#fff1d5" opacity="0.31307340207509693"></ellipse><ellipse cx="450.63673643860966" cy="381.30798969604075" rx="1.770976281212643" ry="0.8862202318850905" fill="#fff1d5" opacity="0.30468534923624246"></ellipse><ellipse cx="367.30187464505434" cy="318.3209026339464" rx="1.534575194027275" ry="1.16633247861173" fill="#fff1d5" opacity="0.2850370422936976"></ellipse><ellipse cx="561.8123901216313" cy="336.5139046674594" rx="1.2915696370881051" ry="0.7766666058450937" fill="#fff1d5" opacity="0.3520217354828492"></ellipse><ellipse cx="440.45276497490704" cy="338.0778923300095" rx="1.043703175149858" ry="0.546761863795109" fill="#fff1d5" opacity="0.38635407098568975"></ellipse><ellipse cx="537.3445995198563" cy="360.21868158504367" rx="1.8848610340151937" ry="0.5101798073854298" fill="#fff1d5" opacity="0.3400141127919778"></ellipse><ellipse cx="463.0573126487434" cy="359.24767400091514" rx="2.138228649366647" ry="0.8697070867521688" fill="#fff1d5" opacity="0.19691603094339372"></ellipse><ellipse cx="320.4691941058263" cy="373.70204343739897" rx="2.781104090949521" ry="0.8838345925323665" fill="#fff1d5" opacity="0.3498345057712868"></ellipse><ellipse cx="595.9756371285766" cy="352.02771312603727" rx="2.225720113143325" ry="1.0379434559727088" fill="#fff1d5" opacity="0.21026588841341434"></ellipse><ellipse cx="456.9792857998982" cy="348.6184409391135" rx="1.9994888034183531" ry="0.9517734691966324" fill="#fff1d5" opacity="0.21113380465190856"></ellipse><ellipse cx="320.0533286482096" cy="364.51691151363775" rx="1.1905908028595151" ry="0.9058343145763501" fill="#fff1d5" opacity="0.3458541595004499"></ellipse><ellipse cx="432.0296589238569" cy="333.2693799538538" rx="0.9416058226954191" ry="1.1845273377373813" fill="#fff1d5" opacity="0.37865839584264904"></ellipse><ellipse cx="263.0703388992697" cy="337.6436201487668" rx="2.413620408065617" ry="0.8910724877612666" fill="#fff1d5" opacity="0.3364949267078191"></ellipse><ellipse cx="361.46172900218517" cy="357.85392884910107" rx="1.349934538686648" ry="0.788704478694126" fill="#fff1d5" opacity="0.30183157519903037"></ellipse><ellipse cx="485.22777454927564" cy="357.3768856837414" rx="1.207440529856831" ry="0.5850530168740079" fill="#fff1d5" opacity="0.22342164795845745"></ellipse><ellipse cx="362.7784649422392" cy="320.1224546106532" rx="2.144709458714351" ry="1.1462641962803901" fill="#fff1d5" opacity="0.23549066197592763"></ellipse><ellipse cx="545.2062849979848" cy="365.2504715868272" rx="2.1599516578018667" ry="0.6439938793191686" fill="#fff1d5" opacity="0.235698129190132"></ellipse><ellipse cx="419.9025753745809" cy="365.68090217001736" rx="1.0421678118873388" ry="0.7852281449828297" fill="#fff1d5" opacity="0.22502932518254964"></ellipse><ellipse cx="246.19301702827215" cy="374.6998980897479" rx="2.714944126363844" ry="1.0381362372776493" fill="#fff1d5" opacity="0.30118925036862493"></ellipse><ellipse cx="550.6364161847159" cy="328.96832202281803" rx="0.9265172462444753" ry="1.1486628353595734" fill="#fff1d5" opacity="0.3909719778085128"></ellipse><ellipse cx="196.29364025779068" cy="377.8240731996484" rx="2.567437699250877" ry="0.5495393519522622" fill="#fff1d5" opacity="0.29158900351263584"></ellipse><ellipse cx="262.5584825174883" cy="366.283866841346" rx="0.6344859233591705" ry="0.7548410338815301" fill="#fff1d5" opacity="0.380253188139759"></ellipse><ellipse cx="361.6717285476625" cy="375.0600401661359" rx="2.2979341176338495" ry="0.5338876438094303" fill="#fff1d5" opacity="0.2728901200741529"></ellipse><ellipse cx="608.1890047853813" cy="382.79611840937287" rx="1.1525282525923104" ry="0.7574077404104174" fill="#fff1d5" opacity="0.2379399011330679"></ellipse><ellipse cx="544.8398137744516" cy="340.02694491902366" rx="1.6023941356688738" ry="1.1420984730357304" fill="#fff1d5" opacity="0.31391003376804294"></ellipse><ellipse cx="439.8860744619742" cy="345.85237183235586" rx="0.9601579446811229" ry="0.8888881456572562" fill="#fff1d5" opacity="0.3075678565679118"></ellipse><ellipse cx="416.01470962166786" cy="351.5785301174037" rx="1.2808052542619408" ry="0.52710905817803" fill="#fff1d5" opacity="0.3278121436946094"></ellipse><ellipse cx="305.343881691806" cy="376.7433946011588" rx="0.8159660018514842" ry="0.9227304397150874" fill="#fff1d5" opacity="0.38441593444440514"></ellipse></g><g><circle cx="317.1328182052821" cy="300" r="2.686808291263878" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="319.8572559119202" cy="300" r="2.332098237518221" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="338.5677739465609" cy="300" r="1.8366190370172262" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="332.92109682923183" cy="300" r="2.462242955993861" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="316.0235000960529" cy="300" r="3.8872478133067485" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="326.91847750218585" cy="300" r="2.9962253657169637" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="327.99750631209463" cy="300" r="2.1653345227241516" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="310.48978111473843" cy="300" r="2.705447837617248" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="305.4089316818863" cy="300" r="1.881933263875544" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="337.625763642136" cy="300" r="3.1581197456456715" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="321.6180568980053" cy="300" r="3.492019319906831" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="339.2760400264524" cy="300" r="2.2736893820576367" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="313.56535378843546" cy="300" r="2.1005476607009768" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="307.78426102595404" cy="300" r="1.985326409805566" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="310.41557024698704" cy="300" r="2.3774164743721484" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="312.4641897226684" cy="300" r="1.526128680165857" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="322.8989892359823" cy="300" r="2.5417361186817287" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="343.8203397975303" cy="300" r="3.46371161872521" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="330.7705161580816" cy="300" r="3.714475758001208" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="308.96566580748186" cy="300" r="2.6699477578513324" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="313.0826395191252" cy="300" r="1.7928568264469504" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="309.8219988238998" cy="300" r="2.702858368773013" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="336.91557542886585" cy="300" r="2.4447843328118326" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="331.83149891672656" cy="300" r="3.17101852139458" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="320.4520471114665" cy="300" r="4.13215389791876" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="332.28434909367934" cy="300" r="3.7223212749697265" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="306.4501662226394" cy="300" r="3.7230442900210616" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="347.104243428912" cy="300" r="1.7235560777597128" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="337.8807733952999" cy="300" r="1.7196020988747476" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="311.1539252405055" cy="300" r="1.6499908288009464" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="309.3803610606119" cy="300" r="3.0858470641076563" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="312.953109301161" cy="300" r="1.8600064299069343" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="341.852342216298" cy="300" r="4.182673448510467" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="308.2655751914717" cy="300" r="2.9638170310296115" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="333.6529444390908" cy="300" r="2.8809947218745946" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="351.43604703014717" cy="300" r="1.782418547105044" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="345.94839906319976" cy="300" r="1.803275696001947" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="346.7656779405661" cy="300" r="4.108142399508505" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="322.65236107166857" cy="300" r="1.9136181265115737" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="327.7325357380323" cy="300" r="1.6965508102439344" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle></g><g><circle cx="337.4829815234989" cy="280" r="3.0090845040511343" fill="var(--gold)" opacity="0.8" style="opacity: 0;"></circle><circle cx="322.5692636682652" cy="280" r="2.6369207639945667" fill="var(--gold)" opacity="0.8" style="opacity: 0;"></circle><circle cx="337.57758285384625" cy="280" r="1.774006482493132" fill="var(--gold)" opacity="0.8" style="opacity: 0;"></circle><circle cx="320.51449463004246" cy="280" r="1.3724713741103187" fill="var(--gold)" opacity="0.8" style="opacity: 0;"></circle><circle cx="315.8533388748765" cy="280" r="1.1975373866502195" fill="var(--gold)" opacity="0.8" style="opacity: 0;"></circle><circle cx="343.0608099955134" cy="280" r="1.7759152229642494" fill="var(--gold)" opacity="0.8" style="opacity: 0;"></circle><circle cx="318.317818720825" cy="280" r="2.357060040347278" fill="var(--gold)" opacity="0.8" style="opacity: 0;"></circle><circle cx="329.4200256583281" cy="280" r="1.061501739663072" fill="var(--gold)" opacity="0.8" style="opacity: 0;"></circle><circle cx="341.1279345396906" cy="280" r="3.09705133116804" fill="var(--gold)" opacity="0.8" style="opacity: 0;"></circle><circle cx="329.4679317972623" cy="280" r="2.4903615760384126" fill="var(--gold)" opacity="0.8" style="opacity: 0;"></circle></g><g class="quantity" transform="translate(500,150)" opacity="0" style="opacity: 1;"><rect x="-77.19999999999999" y="-19" width="154.39999999999998" height="38" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="1" filter="url(#sh)"></rect><rect x="-68.19999999999999" y="-7" width="3" height="14" rx="2" fill="var(--gold)"></rect><text x="4" y="6" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="17" fill="var(--ink)">400 g farina</text></g><g class="quantity" transform="translate(500,200)" opacity="0" style="opacity: 1;"><rect x="-82.3" y="-19" width="164.6" height="38" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="1" filter="url(#sh)"></rect><rect x="-73.3" y="-7" width="3" height="14" rx="2" fill="var(--gold)"></rect><text x="4" y="6" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="17" fill="var(--ink)">0,8 g lievito</text></g><g class="quantity" transform="translate(500,250)" opacity="0" style="opacity: 1;"><rect x="-72.1" y="-19" width="144.2" height="38" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="1" filter="url(#sh)"></rect><rect x="-63.099999999999994" y="-7" width="3" height="14" rx="2" fill="var(--gold)"></rect><text x="4" y="6" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="17" fill="var(--ink)">400 g acqua</text></g><path d="M420,60 Q321,85 345,260" fill="none" stroke="var(--water)" stroke-width="10" stroke-linecap="round" opacity="0.85" style="stroke-dasharray: 235.599; stroke-dashoffset: 0; opacity: 0;"></path><line x1="330" y1="120" x2="330" y2="260" stroke="var(--steel)" stroke-width="8" stroke-linecap="round" opacity="0" style="opacity: 0;"></line><g transform="translate(650,320)" opacity="0" style="opacity: 1;"><rect x="-70" y="-230" width="140" height="240" rx="16" fill="var(--card)" stroke="var(--cold)" stroke-width="3" filter="url(#sh)"></rect><line x1="-70" y1="-150" x2="70" y2="-150" stroke="var(--cold)" stroke-width="3"></line><rect x="46" y="-210" width="8" height="40" rx="4" fill="var(--cold)"></rect><rect x="46" y="-130" width="8" height="60" rx="4" fill="var(--cold)"></rect><text x="-50" y="-170" font-size="18" fill="var(--cold)" font-family="JetBrains Mono">❄</text><text x="-20" y="-170" font-size="18" fill="var(--cold)" font-family="JetBrains Mono">❄</text><text x="10" y="-170" font-size="18" fill="var(--cold)" font-family="JetBrains Mono">❄</text></g><g transform="matrix(0.55,0,0,0.55,650,320)" data-svg-origin="0 0" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"><rect x="-70" y="-170" width="140" height="170" rx="22" fill="url(#glass)" stroke="var(--steel)" stroke-width="3" opacity="0.95" filter="url(#sh)"></rect><rect x="-64" y="-100" width="128" height="94" rx="16" fill="url(#doughLit)"></rect><path d="M-52,-145V-24" stroke="#fff" stroke-width="5" opacity="0.42" stroke-linecap="round"></path><ellipse cy="-169" rx="62" ry="9" fill="none" stroke="#d7e5dd" stroke-width="4"></ellipse></g><circle cx="320.3856229502708" cy="231.32404837058857" r="4.341745258308947" fill="#fff" opacity="0" data-svg-origin="320.38562965393066 235.66579055786133" transform="matrix(0.55,0,0,0.55,464.17353,106.04961)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><circle cx="374.12853128742427" cy="238.57399858068675" r="6.6790916251484305" fill="#fff" opacity="0" data-svg-origin="374.12855434417725 245.25309562683105" transform="matrix(0.55,0,0,0.55,488.35785,110.36389)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><circle cx="303.35380110889673" cy="234.6987918089144" r="3.8239131872542202" fill="#fff" opacity="0" data-svg-origin="303.35378980636597 238.52270412445068" transform="matrix(0.55,0,0,0.55,456.50921,107.33522)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><circle cx="285.56708390358835" cy="266.97070884518325" r="5.094392729690298" fill="#fff" opacity="0" data-svg-origin="285.5670795440674 272.0650978088379" transform="matrix(0.55,0,0,0.55,448.50519,122.42929)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><circle cx="284.7745521645993" cy="272.5242884666659" r="2.30633756890893" fill="#fff" opacity="0" data-svg-origin="284.77456879615784 274.8306317329407" transform="matrix(0.55,0,0,0.55,448.14856,123.67378)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><circle cx="334.44456001278013" cy="257.43103506509215" r="2.544512114720419" fill="#fff" opacity="0" data-svg-origin="334.444536447525 259.97554445266724" transform="matrix(0.55,0,0,0.55,470.50004,116.989)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><circle cx="284.16189739480615" cy="232.93394349282607" r="5.4095794963650405" fill="#fff" opacity="0" data-svg-origin="284.1618986129761 238.34352684020996" transform="matrix(0.55,0,0,0.55,447.87285,107.25459)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><circle cx="309.83053766656667" cy="279.65811958536506" r="6.330622841371223" fill="#fff" opacity="0" data-svg-origin="309.8305311203003 285.9887294769287" transform="matrix(0.55,0,0,0.55,459.42374,128.69493)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><circle cx="303.3074659947306" cy="271.7208381113596" r="5.986070952378213" fill="#fff" opacity="0" data-svg-origin="303.3074517250061 277.70688343048096" transform="matrix(0.55,0,0,0.55,456.48835,124.9681)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><circle cx="298.6469441978261" cy="244.19884187635034" r="5.907763069728389" fill="#fff" opacity="0" data-svg-origin="298.6469292640686 250.1066026687622" transform="matrix(0.55,0,0,0.55,454.39112,112.54797)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><circle cx="290.0795902311802" cy="256.7681762459688" r="3.036921984050423" fill="#fff" opacity="0" data-svg-origin="290.0795855522156 259.8051061630249" transform="matrix(0.55,0,0,0.55,450.53581,116.9123)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><circle cx="354.916827888228" cy="258.27372499741614" r="5.390472274040803" fill="#fff" opacity="0" data-svg-origin="354.9168395996094 263.6641845703125" transform="matrix(0.55,0,0,0.55,479.71258,118.64888)" style="opacity: 0.85; translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></circle><g transform="translate(150,160)" opacity="0" style="opacity: 1;"><circle r="34" fill="var(--card)" stroke="var(--ink)" stroke-width="3" filter="url(#sh)"></circle><line x1="0" y1="0" x2="0" y2="-22" stroke="var(--tomato)" stroke-width="4" stroke-linecap="round" data-svg-origin="0 0" transform="matrix(1,0,0,1,0,0)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></line><circle r="4" fill="var(--ink)"></circle><text y="62" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" fill="var(--ink)">20 h</text></g></g>
+        </svg>
+
+            <span class="badge" id="plBadge">Passaggio 01 / 13</span>
+            <span class="waitchip" id="plWait">⏱ 10 min + 1 h a temperatura ambiente</span>
+          </div>
+          <div class="chapters" id="plChap" aria-label="Passo passo"><button type="button" class="d0" aria-label="Passaggio 1: Preparare il prefermento"><i style="width: 100%;"></i></button><button type="button" class="d1" aria-label="Passaggio 2: Impasto iniziale"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="Passaggio 3: Bassinage"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="Passaggio 4: Sviluppare il glutine"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="Passaggio 5: L'olio per ultimo"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="Passaggio 6: Riposo e laminazione"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="Passaggio 7: Staglio e pirlatura"><i style="width: 0px;"></i></button><button type="button" class="d2" aria-label="Passaggio 8: Acclimatare i panetti"><i style="width: 0px;"></i></button><button type="button" class="d2" aria-label="Passaggio 9: Preparare pomodoro e mozzarella"><i style="width: 0px;"></i></button><button type="button" class="d2" aria-label="Passaggio 10: Preriscaldare il BIG HORN"><i style="width: 0px;"></i></button><button type="button" class="d2" aria-label="Passaggio 11: Stendere l'impasto"><i style="width: 0px;"></i></button><button type="button" class="d2" aria-label="Passaggio 12: Condire e infornare"><i style="width: 0px;"></i></button><button type="button" class="d2" aria-label="Passaggio 13: Cuocere e girare"><i style="width: 0px;"></i></button></div>
+          <div class="cap" aria-live="polite">
+            <h3 id="plT"><small id="plDay">Giorno 1 · sera</small><span id="plTt">Preparare il prefermento</span></h3>
+            <ul id="plLi"><li>Mescola a secco <span class="q">400</span> g di farina con <span class="q">0,8</span> g di lievito.</li><li>Aggiungi <span class="q">400</span> g d'acqua e mescola fino a una pastella grossolana, senza farina secca.</li><li>Copri. Lascia 1 h a temperatura ambiente.</li><li>Metti in frigo (<span class="q">7</span> °C) per circa <span class="q">20</span> h.</li></ul>
+            <p class="tip" id="plTip" data-tpl="">La ricetta originale prevede 12–16 h a 12 °C. In un frigo più freddo, il tempo più lungo compensa. È pronto quando ha bolle, struttura interna e nessun segno di cedimento.</p>
+          </div>
+          <div class="ctrl">
+            <button type="button" class="cbtn" id="plPrev" aria-label="Passaggio precedente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+            <button type="button" class="cbtn main" id="plPP" aria-label="Riproduci"><svg viewBox="0 0 24 24" id="plPPIco" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"></path></svg></button>
+            <button type="button" class="cbtn" id="plNext" aria-label="Passaggio successivo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+            <button type="button" class="cbtn" id="plRep" aria-label="Ripeti l’animazione"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+            <span class="sp"></span>
+            <div class="mode" role="group" aria-label="Modalità">
+              <button type="button" id="plFilm" aria-pressed="true">Guarda tutto</button>
+              <button type="button" id="plBench" aria-pressed="false">Al banco</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="passos">
         <div class="sec-head"><h2>Passo passo</h2><p>Spunta ogni passaggio quando l'hai concluso. Le etichette indicano l'origine: ricetta base, adattamento per la cucina di casa o lezione della 1ª infornata.</p></div>
         <div id="stepsRoot"><div class="day"><h3>Giorno 1</h3><span class="pill">sera</span></div><div class="steps"><article class="step" id="s1"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><rect x="70" y="22" width="100" height="16" rx="4" class="p-s"></rect><path d="M74 38h92v96a12 12 0 0 1-12 12H86a12 12 0 0 1-12-12z" class="p-sf"></path><path d="M74 70c15-8 30 6 46-2s31-6 46 2v64a12 12 0 0 1-12 12H86a12 12 0 0 1-12-12z" class="p-d"></path><circle cx="90" cy="92" r="4" class="p-sf" opacity=".75"></circle><circle cx="108" cy="82" r="3" class="p-sf" opacity=".75"></circle><circle cx="132" cy="96" r="5" class="p-sf" opacity=".75"></circle><circle cx="150" cy="84" r="3" class="p-sf" opacity=".75"></circle><circle cx="98" cy="118" r="6" class="p-sf" opacity=".75"></circle><circle cx="126" cy="124" r="3" class="p-sf" opacity=".75"></circle><circle cx="148" cy="114" r="4" class="p-sf" opacity=".75"></circle><circle cx="112" cy="104" r="2" class="p-sf" opacity=".75"></circle><circle cx="140" cy="136" r="3" class="p-sf" opacity=".75"></circle><circle cx="88" cy="136" r="3" class="p-sf" opacity=".75"></circle><path d="M74 38h92v96a12 12 0 0 1-12 12H86a12 12 0 0 1-12-12z" class="l-i"></path><text x="120" y="60" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" class="p-i">1:1</text></svg></div><div class="body">
@@ -554,7 +643,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
 
 <script>
 (function(){
-  const T = {"locale": "it-IT", "test": "prova", "panelSum": "{flour} g di farina · {hyd}% acqua · {top}/{bottom} °C", "open": "Regola", "close": "Chiudi", "stepLabel": "PASSAGGIO", "done": "Fatto", "svg": {"noPin": "niente mattarello · non strappare", "before": "prima", "ready": "pronto", "rim": "bordo libero 1–1,5 cm", "top": "CIELO", "stone": "PIETRA"}, "rel": {"d": "{d} g {h} h", "h": "{h} h {m}", "m": "{m} min"}, "sched": {"empty": "Indica data e ora per infornare.", "next": "Prossimo", "in": "tra {rel}", "ev": [["Preparare il prefermento", "Passaggio 01. Impasto e 1 h a temperatura ambiente."], ["Prefermento in frigo", "{pfh} h a {fridge} °C."], ["Impasto finale", "Passaggi 02–06. Circa 2 h 30 di lavoro alternato a riposi."], ["Staglio, pirlatura e frigo", "Passaggio 07. {panh} h in frigo."], ["Tirare fuori i panetti", "Passaggio 08. Valuta la lievitazione; intanto prepara pomodoro e mozzarella."], ["Accendere il forno", "Passaggio 10. {top} °C / {bottom} °C."], ["Infornare", "Passaggi 11–13. La prima pizza calibra."]], "past": "<b>Inizio nel passato.<\/b> Per infornare a quell'ora il prefermento doveva già essere avviato. Sposta la cottura o riduci i tempi in frigo.", "over36": "<b>Panetti oltre 36 h.<\/b> Supera il massimo della ricetta base."}, "timer": {"idle": "Inforna la pizza e avvia.", "start": "Avvia", "pause": "Pausa", "resume": "Riprendi", "msg": ["Lascia fissare la base.", "Verifica: si può già girare di 180°?", "Gira in base al colore. Osserva il cornicione.", "Finestra di cottura. Controlla base e superficie.", "Oltre 120 s. Se è ancora pallida, manca calore."]}, "lower": "inferiore", "upper": "superiore", "diagCur": "Attuale: {lbl} {cur} °C. Suggerimento per la prossima pizza: {nv}. Piccoli passi; cambia solo questa variabile.", "apply": "Applica {v} °C", "applied": "Applicato", "steps": [{"day": "Giorno 1", "when": "sera", "items": [{"id": "s1", "t": "Preparare il prefermento", "time": "10 min + 1 h a temperatura ambiente", "src": ["d", "a"], "il": "pref", "li": ["Mescola a secco {pfFlour} g di farina con {yeast} g di lievito.", "Aggiungi {pfWater} g d'acqua e mescola fino a una pastella grossolana, senza farina secca.", "Copri. Lascia 1 h a temperatura ambiente.", "Metti in frigo ({fridge} °C) per circa {pfh} h."], "tip": "La ricetta originale prevede 12–16 h a 12 °C. In un frigo più freddo, il tempo più lungo compensa. È pronto quando ha bolle, struttura interna e nessun segno di cedimento."}]}, {"day": "Giorno 2", "when": "impasto e staglio", "items": [{"id": "s2", "t": "Impasto iniziale", "time": "~10 min + riposo", "src": ["a"], "il": "mix", "li": ["Usa il prefermento appena tolto dal frigo, senza lasciarlo a lungo a temperatura ambiente.", "Sciogli {salt} g di sale in {initWater} g d'acqua.", "Aggiungi al prefermento {finFlour} g di farina e l'acqua salata.", "Mescola finché tutta la farina è idratata. Non serve che sia liscio.", "Copri e lascia riposare. Il tempo sviluppa il glutine al posto tuo."], "tip": "Il sale entra insieme alla seconda parte della farina, sempre prima dell'olio."}, {"id": "s4", "t": "Bassinage", "time": "~10 min", "src": ["d", "a"], "il": "bass", "li": ["Aggiungi i restanti {bassWater} g d'acqua in piccole porzioni.", "Aggiungine altra solo quando l'impasto ha assorbito la precedente.", "Se l'impasto diventa appiccicoso, non aggiungere farina."]}, {"id": "s5", "t": "Sviluppare il glutine", "time": "cicli di riposo + pieghe", "src": ["a", "l"], "il": "fold", "li": ["Alterna riposi e serie di pieghe, senza impastare con forza.", "Fermati quando l'impasto è liscio, tondo, elastico e con la superficie in tensione."], "tip": "Alla 1ª infornata, tempo e riposo hanno fatto quasi tutto il lavoro. Non inseguire un impasto perfettamente liscio impastando senza sosta."}, {"id": "s6", "t": "L'olio per ultimo", "time": "~10 min", "src": ["d"], "il": "oil", "li": ["Con l'impasto già strutturato, aggiungi {oil} g d'olio poco alla volta.", "Incorporalo con pizzicotti e pieghe fino a completo assorbimento."], "tip": "L'impasto diventa scivoloso, lucido e sembra più debole. È normale. Non aggiungere farina."}, {"id": "s7", "t": "Riposo e laminazione", "time": "~1 h 30", "src": ["d", "a"], "il": "lam", "li": ["Riposo di 3–5 min.", "Laminazione: stendi delicatamente l'impasto a rettangolo sul banco e ripiegalo su sé stesso. Senza mattarello e senza strapparlo.", "Forma una palla. Riposo di 15 min.", "Fai pieghe leggere e lascia riposare circa 1 h."]}, {"id": "s8", "t": "Staglio e pirlatura", "time": "~15 min", "src": ["d"], "il": "balls", "li": ["Dividi in {n} panetti da {per} g (impasto totale {total} g).", "Pirla dando tensione alla superficie e chiudi bene la base.", "Contenitore coperto, in frigo per circa {panh} h."], "tip": "Ricetta base: 24–36 h a 5 °C. A {fridge} °C la fermentazione è più rapida; valuta dall'aspetto."}]}, {"day": "Giorno 3", "when": "forno", "items": [{"id": "s9", "t": "Acclimatare i panetti", "time": "~{outh} h fuori", "src": ["d", "l"], "il": "proof", "li": ["Tirali fuori dal frigo circa {outh} h prima di infornare (riferimento: ~26 °C).", "Punto giusto: è cresciuto, tante bollicine piccole e qualcuna più grande, lati alveolati, mantiene la forma, nessun cedimento, rilassato.", "In un contenitore da 1 L, il riferimento è che l'impasto arrivi a metà."], "tip": "warn|Non ripirlare. Si perde il gas della fermentazione."}, {"id": "s10", "t": "Preparare pomodoro e mozzarella", "time": "~15 min", "src": ["l"], "il": "sauce", "li": ["Schiaccia a mano {cans} latta/e di pelati (niente frullatore, niente cottura).", "Sala con 4–5 g di sale per latta. Niente zucchero.", "Taglia {cheeseTotal} g di mozzarella a pezzetti e lasciala sgocciolare."]}, {"id": "s11", "t": "Preriscaldare il BIG HORN", "time": "30–40 min", "src": ["l"], "il": "oven", "li": ["Superiore a {top} °C, inferiore a {bottom} °C.", "Se hai un termometro a infrarossi, misura il centro della pietra e annotalo."], "tip": "warn|Alla 1ª infornata (inferiore ~390–410 °C) la base si è bruciata prima della superficie. Per questo la resistenza inferiore è stata abbassata."}, {"id": "s12", "t": "Stendere l'impasto", "time": "~1 min per pizza", "src": ["l"], "il": "open", "li": ["Un panetto alla volta. Passalo leggermente nella farina.", "Premi dal centro verso l'esterno con i polpastrelli, spingendo l'aria verso il bordo.", "Lascia 1–1,5 cm di bordo senza premere. Alla 1ª infornata, 2 cm hanno reso il cornicione troppo spesso.", "Completa a mano fino a ~30–32 cm. Senza mattarello."], "tip": "warn|Scuoti la farina in eccesso dalla base. La farina libera sulla pietra brucia e diventa amara."}, {"id": "s13", "t": "Condire e infornare", "time": "30–60 s sulla pala", "src": ["l"], "il": "build", "li": ["{sauce} g di pomodoro, {cheese} g di mozzarella distribuita, basilico e un filo d'olio.", "Lascia zone di pomodoro scoperte.", "Prima di infornare, fai un piccolo movimento laterale: la pizza deve scivolare tutta intera.", "Prosciutto crudo e rucola vanno messi dopo la cottura."]}, {"id": "s14", "t": "Cuocere e girare", "time": "70–120 s", "src": ["l"], "il": "bake", "li": ["A 25–30 s, controlla se ha abbastanza struttura per girarla di 180°.", "Poi piccole rotazioni fino a un colore uniforme.", "La prima pizza calibra il forno. Usa la diagnosi qui sotto.", "Aspetta che la pietra si riprenda prima della pizza successiva."], "tip": "Cerca puntini scuri piccoli e distribuiti sul cornicione, non zone nere."}]}], "src": {"d": "Ricetta base", "a": "Adattato", "l": "Lezione 1ª infornata"}, "warn": {"hyd": "Idratazione diversa dal 64%. La versione 1.0 consiglia di non cambiarla ancora.", "per": "Panetti da {per} g sono fuori dall'intervallo 260–280 g. Vedi l'alternativa o regola la farina.", "bottom": "Una resistenza inferiore sopra i 390 °C ha bruciato la base alla 1ª infornata."}, "diag": [["La base brucia prima della superficie", "Abbassa la resistenza inferiore.", "bottom", -10], ["Base troppo chiara", "Alza la resistenza inferiore.", "bottom", 10], ["Base giusta, cornicione pallido", "Alza la resistenza superiore.", "top", 10], ["La superficie brucia prima della base", "Abbassa la resistenza superiore.", "top", -10], ["Tutto pallido", "Più calore o più tempo. Verifica che la pietra si sia ripresa e che il preriscaldamento sia arrivato a 30–40 min."], ["Bel colore a ~80–100 s", "Mantieni le impostazioni e annota i valori."], ["Puntini neri dal sapore amaro", "Probabile farina libera sulla base. Scuoti l'eccesso prima di infornare e pulisci la pietra."]], "ld": {"name": "Pizza napoletana fatta in casa con prefermento (protocollo di 3 giorni)", "description": "Ricetta della pizza napoletana con farina Caputo Pizzeria 00, prefermento, idratazione al 64% e lunga lievitazione in frigo, con programma di 3 giorni e guida al forno.", "yield": "{n} pizze da 30–32 cm", "category": "Pizza", "cuisine": "Italiana (napoletana)", "keywords": "pizza napoletana, ricetta pizza napoletana, impasto pizza napoletana, prefermento, poolish, pizza fatta in casa, Caputo Pizzeria", "toppings": ["{sauce} g di pelati schiacciati con sale", "{cheese} g di mozzarella", "Foglie di basilico", "Olio extravergine d'oliva q.b."], "url": "https://napoliprotocol.com/it/", "inLanguage": "it", "images": ["https://napoliprotocol.com/img/recipe-it-1x1.png", "https://napoliprotocol.com/img/recipe-it-4x3.png", "https://napoliprotocol.com/img/recipe-it-16x9.png"]}, "cfg": {"def": {"mode": "flour", "flour": 800, "pizzas": 5, "w": 270, "hyd": 64, "salt": 2.88, "oil": 1.5, "yeast": 0.1, "sugar": 0, "pf": 50, "fridge": 7, "top": 450, "bottom": 380, "sauce": 65, "cheese": 70, "pfh": 20, "panh": 24, "outh": 4, "bake": ""}, "ls": "napolitana-v1", "features": {"preferment": true, "sugar": false, "waterSplit": true}, "warn": {"hyd": 64, "perMin": 255, "perMax": 285, "bottomMax": 390, "panhMax": 36}, "sched": [{"off": ["outh", "panh", 2.5, "pfh", 1], "cls": "work"}, {"off": ["outh", "panh", 2.5, "pfh"], "cls": "cold"}, {"off": ["outh", "panh", 2.5], "cls": "work"}, {"off": ["outh", "panh"], "cls": "cold"}, {"off": ["outh"], "cls": "work"}, {"off": [0.6667], "cls": "hot"}, {"off": [], "cls": "hot"}], "timer": {"max": 150, "turn": [25, 30], "ok": [70, 120], "marks": [25, 30, 70, 120], "ticks": [0, 30, 60, 90, 120, 150]}, "ld": {"prepTime": "PT3H", "cookTime": "PT2M", "totalTime": "PT52H", "datePublished": "2026-10-01"}}};
+  const T = {"locale": "it-IT", "test": "prova", "panelSum": "{flour} g di farina · {hyd}% acqua · {top}/{bottom} °C", "open": "Regola", "close": "Chiudi", "stepLabel": "PASSAGGIO", "done": "Fatto", "svg": {"noPin": "niente mattarello · non strappare", "before": "prima", "ready": "pronto", "rim": "bordo libero 1–1,5 cm", "top": "CIELO", "stone": "PIETRA"}, "rel": {"d": "{d} g {h} h", "h": "{h} h {m}", "m": "{m} min"}, "sched": {"empty": "Indica data e ora per infornare.", "next": "Prossimo", "in": "tra {rel}", "ev": [["Preparare il prefermento", "Passaggio 01. Impasto e 1 h a temperatura ambiente."], ["Prefermento in frigo", "{pfh} h a {fridge} °C."], ["Impasto finale", "Passaggi 02–06. Circa 2 h 30 di lavoro alternato a riposi."], ["Staglio, pirlatura e frigo", "Passaggio 07. {panh} h in frigo."], ["Tirare fuori i panetti", "Passaggio 08. Valuta la lievitazione; intanto prepara pomodoro e mozzarella."], ["Accendere il forno", "Passaggio 10. {top} °C / {bottom} °C."], ["Infornare", "Passaggi 11–13. La prima pizza calibra."]], "past": "<b>Inizio nel passato.<\/b> Per infornare a quell'ora il prefermento doveva già essere avviato. Sposta la cottura o riduci i tempi in frigo.", "over36": "<b>Panetti oltre 36 h.<\/b> Supera il massimo della ricetta base."}, "timer": {"idle": "Inforna la pizza e avvia.", "start": "Avvia", "pause": "Pausa", "resume": "Riprendi", "msg": ["Lascia fissare la base.", "Verifica: si può già girare di 180°?", "Gira in base al colore. Osserva il cornicione.", "Finestra di cottura. Controlla base e superficie.", "Oltre 120 s. Se è ancora pallida, manca calore."]}, "lower": "inferiore", "upper": "superiore", "diagCur": "Attuale: {lbl} {cur} °C. Suggerimento per la prossima pizza: {nv}. Piccoli passi; cambia solo questa variabile.", "apply": "Applica {v} °C", "applied": "Applicato", "player": {"step": "Passaggio", "play": "Riproduci", "pause": "Pausa", "lbl": {"flour": "farina", "water": "acqua", "yeast": "lievito", "salt": "sale", "oil": "olio", "sauce": "pomodoro", "cheese": "formaggio", "cans": "latta/e · sale", "cheeseN": "mozzarella", "cheeseNY": "mozzarella grattugiata", "foldN": "stira · piega · riposa", "foldNY": "8–10 min di impasto", "lam": "niente mattarello · non strappare", "rimN": "bordo libero 1–1,5 cm", "rimNY": "sulle nocche", "top": "superiore", "bottom": "inferiore", "window": "prova del velo", "foldSlice": "piegalo a metà"}}, "steps": [{"day": "Giorno 1", "when": "sera", "items": [{"id": "s1", "t": "Preparare il prefermento", "time": "10 min + 1 h a temperatura ambiente", "src": ["d", "a"], "il": "pref", "li": ["Mescola a secco {pfFlour} g di farina con {yeast} g di lievito.", "Aggiungi {pfWater} g d'acqua e mescola fino a una pastella grossolana, senza farina secca.", "Copri. Lascia 1 h a temperatura ambiente.", "Metti in frigo ({fridge} °C) per circa {pfh} h."], "tip": "La ricetta originale prevede 12–16 h a 12 °C. In un frigo più freddo, il tempo più lungo compensa. È pronto quando ha bolle, struttura interna e nessun segno di cedimento."}]}, {"day": "Giorno 2", "when": "impasto e staglio", "items": [{"id": "s2", "t": "Impasto iniziale", "time": "~10 min + riposo", "src": ["a"], "il": "mix", "li": ["Usa il prefermento appena tolto dal frigo, senza lasciarlo a lungo a temperatura ambiente.", "Sciogli {salt} g di sale in {initWater} g d'acqua.", "Aggiungi al prefermento {finFlour} g di farina e l'acqua salata.", "Mescola finché tutta la farina è idratata. Non serve che sia liscio.", "Copri e lascia riposare. Il tempo sviluppa il glutine al posto tuo."], "tip": "Il sale entra insieme alla seconda parte della farina, sempre prima dell'olio."}, {"id": "s4", "t": "Bassinage", "time": "~10 min", "src": ["d", "a"], "il": "bass", "li": ["Aggiungi i restanti {bassWater} g d'acqua in piccole porzioni.", "Aggiungine altra solo quando l'impasto ha assorbito la precedente.", "Se l'impasto diventa appiccicoso, non aggiungere farina."]}, {"id": "s5", "t": "Sviluppare il glutine", "time": "cicli di riposo + pieghe", "src": ["a", "l"], "il": "fold", "li": ["Alterna riposi e serie di pieghe, senza impastare con forza.", "Fermati quando l'impasto è liscio, tondo, elastico e con la superficie in tensione."], "tip": "Alla 1ª infornata, tempo e riposo hanno fatto quasi tutto il lavoro. Non inseguire un impasto perfettamente liscio impastando senza sosta."}, {"id": "s6", "t": "L'olio per ultimo", "time": "~10 min", "src": ["d"], "il": "oil", "li": ["Con l'impasto già strutturato, aggiungi {oil} g d'olio poco alla volta.", "Incorporalo con pizzicotti e pieghe fino a completo assorbimento."], "tip": "L'impasto diventa scivoloso, lucido e sembra più debole. È normale. Non aggiungere farina."}, {"id": "s7", "t": "Riposo e laminazione", "time": "~1 h 30", "src": ["d", "a"], "il": "lam", "li": ["Riposo di 3–5 min.", "Laminazione: stendi delicatamente l'impasto a rettangolo sul banco e ripiegalo su sé stesso. Senza mattarello e senza strapparlo.", "Forma una palla. Riposo di 15 min.", "Fai pieghe leggere e lascia riposare circa 1 h."]}, {"id": "s8", "t": "Staglio e pirlatura", "time": "~15 min", "src": ["d"], "il": "balls", "li": ["Dividi in {n} panetti da {per} g (impasto totale {total} g).", "Pirla dando tensione alla superficie e chiudi bene la base.", "Contenitore coperto, in frigo per circa {panh} h."], "tip": "Ricetta base: 24–36 h a 5 °C. A {fridge} °C la fermentazione è più rapida; valuta dall'aspetto."}]}, {"day": "Giorno 3", "when": "forno", "items": [{"id": "s9", "t": "Acclimatare i panetti", "time": "~{outh} h fuori", "src": ["d", "l"], "il": "proof", "li": ["Tirali fuori dal frigo circa {outh} h prima di infornare (riferimento: ~26 °C).", "Punto giusto: è cresciuto, tante bollicine piccole e qualcuna più grande, lati alveolati, mantiene la forma, nessun cedimento, rilassato.", "In un contenitore da 1 L, il riferimento è che l'impasto arrivi a metà."], "tip": "warn|Non ripirlare. Si perde il gas della fermentazione."}, {"id": "s10", "t": "Preparare pomodoro e mozzarella", "time": "~15 min", "src": ["l"], "il": "sauce", "li": ["Schiaccia a mano {cans} latta/e di pelati (niente frullatore, niente cottura).", "Sala con 4–5 g di sale per latta. Niente zucchero.", "Taglia {cheeseTotal} g di mozzarella a pezzetti e lasciala sgocciolare."]}, {"id": "s11", "t": "Preriscaldare il BIG HORN", "time": "30–40 min", "src": ["l"], "il": "oven", "li": ["Superiore a {top} °C, inferiore a {bottom} °C.", "Se hai un termometro a infrarossi, misura il centro della pietra e annotalo."], "tip": "warn|Alla 1ª infornata (inferiore ~390–410 °C) la base si è bruciata prima della superficie. Per questo la resistenza inferiore è stata abbassata."}, {"id": "s12", "t": "Stendere l'impasto", "time": "~1 min per pizza", "src": ["l"], "il": "open", "li": ["Un panetto alla volta. Passalo leggermente nella farina.", "Premi dal centro verso l'esterno con i polpastrelli, spingendo l'aria verso il bordo.", "Lascia 1–1,5 cm di bordo senza premere. Alla 1ª infornata, 2 cm hanno reso il cornicione troppo spesso.", "Completa a mano fino a ~30–32 cm. Senza mattarello."], "tip": "warn|Scuoti la farina in eccesso dalla base. La farina libera sulla pietra brucia e diventa amara."}, {"id": "s13", "t": "Condire e infornare", "time": "30–60 s sulla pala", "src": ["l"], "il": "build", "li": ["{sauce} g di pomodoro, {cheese} g di mozzarella distribuita, basilico e un filo d'olio.", "Lascia zone di pomodoro scoperte.", "Prima di infornare, fai un piccolo movimento laterale: la pizza deve scivolare tutta intera.", "Prosciutto crudo e rucola vanno messi dopo la cottura."]}, {"id": "s14", "t": "Cuocere e girare", "time": "70–120 s", "src": ["l"], "il": "bake", "li": ["A 25–30 s, controlla se ha abbastanza struttura per girarla di 180°.", "Poi piccole rotazioni fino a un colore uniforme.", "La prima pizza calibra il forno. Usa la diagnosi qui sotto.", "Aspetta che la pietra si riprenda prima della pizza successiva."], "tip": "Cerca puntini scuri piccoli e distribuiti sul cornicione, non zone nere."}]}], "src": {"d": "Ricetta base", "a": "Adattato", "l": "Lezione 1ª infornata"}, "warn": {"hyd": "Idratazione diversa dal 64%. La versione 1.0 consiglia di non cambiarla ancora.", "per": "Panetti da {per} g sono fuori dall'intervallo 260–280 g. Vedi l'alternativa o regola la farina.", "bottom": "Una resistenza inferiore sopra i 390 °C ha bruciato la base alla 1ª infornata."}, "diag": [["La base brucia prima della superficie", "Abbassa la resistenza inferiore.", "bottom", -10], ["Base troppo chiara", "Alza la resistenza inferiore.", "bottom", 10], ["Base giusta, cornicione pallido", "Alza la resistenza superiore.", "top", 10], ["La superficie brucia prima della base", "Abbassa la resistenza superiore.", "top", -10], ["Tutto pallido", "Più calore o più tempo. Verifica che la pietra si sia ripresa e che il preriscaldamento sia arrivato a 30–40 min."], ["Bel colore a ~80–100 s", "Mantieni le impostazioni e annota i valori."], ["Puntini neri dal sapore amaro", "Probabile farina libera sulla base. Scuoti l'eccesso prima di infornare e pulisci la pietra."]], "ld": {"name": "Pizza napoletana fatta in casa con prefermento (protocollo di 3 giorni)", "description": "Ricetta della pizza napoletana con farina Caputo Pizzeria 00, prefermento, idratazione al 64% e lunga lievitazione in frigo, con programma di 3 giorni e guida al forno.", "yield": "{n} pizze da 30–32 cm", "category": "Pizza", "cuisine": "Italiana (napoletana)", "keywords": "pizza napoletana, ricetta pizza napoletana, impasto pizza napoletana, prefermento, poolish, pizza fatta in casa, Caputo Pizzeria", "toppings": ["{sauce} g di pelati schiacciati con sale", "{cheese} g di mozzarella", "Foglie di basilico", "Olio extravergine d'oliva q.b."], "url": "https://napoliprotocol.com/it/", "inLanguage": "it", "images": ["https://napoliprotocol.com/img/recipe-it-1x1.png", "https://napoliprotocol.com/img/recipe-it-4x3.png", "https://napoliprotocol.com/img/recipe-it-16x9.png"]}, "cfg": {"id": "napolitana", "targetSize": "30–32 cm", "scenes": {"s1": "pref", "s2": "mix", "s4": "bass", "s5": "fold", "s6": "oil", "s7": "lam", "s8": "balls", "s9": "temper", "s10": "sauce", "s11": "oven", "s12": "open", "s13": "build", "s14": "bake"}, "def": {"mode": "flour", "flour": 800, "pizzas": 5, "w": 270, "hyd": 64, "salt": 2.88, "oil": 1.5, "yeast": 0.1, "sugar": 0, "pf": 50, "fridge": 7, "top": 450, "bottom": 380, "sauce": 65, "cheese": 70, "pfh": 20, "panh": 24, "outh": 4, "bake": ""}, "ls": "napolitana-v1", "features": {"preferment": true, "sugar": false, "waterSplit": true}, "warn": {"hyd": 64, "perMin": 255, "perMax": 285, "bottomMax": 390, "panhMax": 36}, "sched": [{"off": ["outh", "panh", 2.5, "pfh", 1], "cls": "work"}, {"off": ["outh", "panh", 2.5, "pfh"], "cls": "cold"}, {"off": ["outh", "panh", 2.5], "cls": "work"}, {"off": ["outh", "panh"], "cls": "cold"}, {"off": ["outh"], "cls": "work"}, {"off": [0.6667], "cls": "hot"}, {"off": [], "cls": "hot"}], "timer": {"max": 150, "turn": [25, 30], "ok": [70, 120], "marks": [25, 30, 70, 120], "ticks": [0, 30, 60, 90, 120, 150]}, "ld": {"prepTime": "PT3H", "cookTime": "PT2M", "totalTime": "PT52H", "datePublished": "2026-10-01"}}};
   const C = T.cfg, DEF = C.def, LS = C.ls;
   const store = {get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
   let P = Object.assign({}, DEF, store.get(LS+':p')||{});
@@ -680,6 +769,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
     const wb=document.getElementById('warnBox'); wb.innerHTML = w.map(x=>'<span>'+x+'</span>').join('<br>'); wb.hidden=!w.length;
     document.getElementById('panelSum').textContent = fill(T.panelSum,{flour:nf0.format(Math.round(R.flour)), hyd:R.hydPct, top:nf0.format(P.top), bottom:nf0.format(P.bottom)});
     renderSchedule(); updateProgress();
+    if(window.NP) NP.onRender.forEach(f=>f());
   }
 
   // ---------- Inputs ----------
@@ -766,6 +856,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
   syncTheme();
   document.addEventListener('click',e=>{const a=e.target.closest('[data-setlang]'); if(a) try{localStorage.setItem('np-lang',a.dataset.setlang)}catch(_){}});
   setInterval(renderSchedule, 60e3);
+  window.NP={T,C,calc,fmt,onRender:[]};   // ponte para o player animado (src/player.js)
   renderSteps(); syncInputs(); applyChecks(); render();
 
   // ---------- Dados estruturados (gerados no build; não roda se já existir) ----------
@@ -782,6 +873,354 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
     document.head.appendChild(s);
   }
 })();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+/* Player animado do passo a passo.
+   Cenas em SVG + GSAP desenhadas pelo Codex (GPT) no protótipo "Player da Receita";
+   integradas ao site usando o mesmo cálculo de quantidades (window.NP) e os textos da receita. */
+(function(){
+const NP=window.NP, box=document.getElementById('assistir');
+if(!NP||!window.gsap||!box){ if(box) box.hidden=true; return; }
+const T=NP.T, C=NP.C, PL=T.player, L=PL.lbl;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const NS='http://www.w3.org/2000/svg';
+const nf0=new Intl.NumberFormat(T.locale,{maximumFractionDigits:0}), nf1=new Intl.NumberFormat(T.locale,{minimumFractionDigits:1,maximumFractionDigits:1});
+const gfmt=v=>v<10?nf1.format(v):nf0.format(Math.round(v));
+const rk=C.id==='napolitana'?'napo':'ny';
+let Q={}, R={};
+function refreshQ(){R=NP.calc();Q=Object.assign({},R,{bass:R.bassWater,sauce:R.sauceTotal,cheese:R.cheeseTotal,size:C.targetSize})}
+const fq=k=>{const v=Q[k];return typeof v!=='number'?v:Number.isInteger(v)?nf0.format(v):gfmt(v)};
+refreshQ();
+
+/* ---------- motor de cenas (Codex) ---------- */
+const scn=document.getElementById('scn');
+const E=(tag,a={},p=scn)=>{const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
+const G=(a={},p=scn)=>E('g',a,p);
+const V=n=>`var(--${n})`;
+// Deterministic procedural detail makes replay and final frames consistent.
+let seed=17;
+function rand(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}
+function tag(x,y,txt,col='ink'){
+  const w=Math.min(740,txt.length*10.2+32);x=Math.max(w/2+18,Math.min(782-w/2,x));
+  const g=G({class:'quantity',transform:`translate(${x},${y})`});
+  E('rect',{x:-w/2,y:-19,width:w,height:38,rx:12,fill:V('card'),stroke:V('line'),'stroke-width':1,filter:'url(#sh)'},g);
+  E('rect',{x:-w/2+9,y:-7,width:3,height:14,rx:2,fill:V('gold')},g);
+  E('text',{x:4,y:6,'text-anchor':'middle','font-family':'JetBrains Mono, monospace','font-size':17,fill:V(col)},g).textContent=txt;return g;
+}
+function bowl(x,y,s=1){const g=G({transform:`translate(${x},${y}) scale(${s})`});
+  E('ellipse',{cy:31,rx:120,ry:19,fill:'url(#contact)'},g);
+  E('path',{d:'M-120,-60 C-117,16 -70,40 0,40 C70,40 117,16 120,-60Z',fill:'url(#ceramic)',filter:'url(#sh)'},g);
+  E('path',{d:'M-104,-44 C-94,-1 -74,18 -40,25',fill:'none',stroke:'#dcf3df','stroke-width':5,opacity:.28,'stroke-linecap':'round'},g);
+  E('ellipse',{cy:-60,rx:121,ry:30,fill:'url(#inside)',stroke:'#a2b8ad','stroke-width':5},g);
+  const inner=G({},g);return {g,inner};
+}
+function blob(x,y,rx,ry,p=scn){const g=G({transform:`translate(${x},${y})`},p);
+  const b=E('ellipse',{rx,ry,fill:'url(#doughLit)',filter:'url(#sh)'},g);
+  const gl=E('ellipse',{cx:-rx*.3,cy:-ry*.35,rx:rx*.34,ry:ry*.2,fill:'#fff7df',opacity:.32},g);
+  return {g,b,gl};
+}
+function grains(n,x,y,col,r=3,spread=40){const g=G();const arr=[];for(let i=0;i<n;i++)arr.push(E('circle',{cx:x+(rand()-.5)*spread,cy:y-rand()*70,r:r*(.35+rand()*.7),fill:col,opacity:.8},g));return {g,arr};}
+function stream(x1,y1,x2,y2,col,w=8){const l=E('path',{d:`M${x1},${y1} Q${x2-24},${y1+25} ${x2},${y2}`,fill:'none',stroke:col,'stroke-width':w,'stroke-linecap':'round',opacity:.85});const len=l.getTotalLength();l.style.strokeDasharray=len;l.style.strokeDashoffset=len;return {l,len};}
+function clock(x,y,label){const g=G({transform:`translate(${x},${y})`,opacity:0});
+  E('circle',{r:34,fill:V('card'),stroke:V('ink'),'stroke-width':3,filter:'url(#sh)'},g);
+  const h=E('line',{x1:0,y1:0,x2:0,y2:-22,stroke:V('tomato'),'stroke-width':4,'stroke-linecap':'round'},g);
+  E('circle',{r:4,fill:V('ink')},g); const t=E('text',{y:62,'text-anchor':'middle','font-family':'JetBrains Mono, monospace','font-size':16,fill:V('ink')},g); t.textContent=label; return {g,h};}
+function fridge(x,y){const g=G({transform:`translate(${x},${y})`});
+  E('rect',{x:-70,y:-230,width:140,height:240,rx:16,fill:V('card'),stroke:V('cold'),'stroke-width':3,filter:'url(#sh)'},g);
+  E('line',{x1:-70,y1:-150,x2:70,y2:-150,stroke:V('cold'),'stroke-width':3},g);
+  E('rect',{x:46,y:-210,width:8,height:40,rx:4,fill:V('cold')},g);E('rect',{x:46,y:-130,width:8,height:60,rx:4,fill:V('cold')},g);
+  for(let i=0;i<3;i++)E('text',{x:-50+i*30,y:-170,'font-size':18,fill:V('cold'),'font-family':'JetBrains Mono'},g).textContent='❄';
+  return g;}
+function oven(x,y){const g=G({transform:`translate(${x},${y})`});
+  E('ellipse',{cy:24,rx:216,ry:26,fill:'url(#contact)'},g);
+  E('path',{d:'M-190,-180 L-164,-211 H171 L193,-181 V20 H-190Z',fill:'url(#metal)',filter:'url(#sh)'},g);
+  E('rect',{x:-179,y:-187,width:358,height:198,rx:24,fill:'#263338',stroke:'#adb5ad','stroke-width':2},g);
+  E('rect',{x:-160,y:-170,width:320,height:160,rx:40,fill:'#191512',stroke:'#111b20','stroke-width':8},g);
+  E('path',{d:'M-149,-56L149,-56L159,-17H-159Z',fill:'#bfa88c'},g);
+  for(let i=0;i<9;i++)E('line',{x1:-132+i*33,y1:-52,x2:-147+i*37,y2:-21,stroke:'#5f4d3a','stroke-width':1,opacity:.35},g);
+  const top=E('rect',{x:-130,y:-152,width:260,height:8,rx:4,fill:'#5a2a1a'},g);
+  const bot=E('rect',{x:-140,y:-29,width:280,height:8,rx:4,fill:'#6b4a2e'},g);
+  const glow=E('ellipse',{cy:-90,rx:154,ry:78,fill:'url(#glow)',opacity:0},g);
+  E('path',{d:'M-155,-181H100',stroke:'#eef3e6','stroke-width':2,opacity:.5},g);
+  for(const x of [-152,152])E('circle',{cx:x,cy:1,r:7,fill:'url(#metal)',stroke:'#121d21','stroke-width':2},g);
+  return {g,top,bot,glow};
+}
+function pizza(x,y,r,p=scn,ny=false){const g=G({transform:`translate(${x},${y})`},p);
+  const base=E('circle',{r,fill:ny?'url(#crustLit)':'url(#doughLit)',stroke:V('dough2'),'stroke-width':ny?4:8,filter:'url(#sh)'},g);
+  const sauce=E('circle',{r:r*(ny?.9:.8),fill:'url(#tomatoLit)',opacity:0},g);
+  return {g,base,sauce};
+}
+function num(el,from,to,suffix,dur,tl,at){const o={v:from};tl.to(o,{v:to,duration:dur,ease:'power1.out',onUpdate:()=>el.textContent=Math.round(o.v)+suffix},at);}
+
+const SCENES={
+ pref(tl){ // pote, farinha, fermento, água, mexer, bolhas, geladeira
+  const jar=G({transform:'translate(330,320)'});
+  E('rect',{x:-70,y:-170,width:140,height:170,rx:22,fill:'url(#glass)',stroke:V('steel'),'stroke-width':3,opacity:.95,filter:'url(#sh)'},jar);
+  const fillR=E('rect',{x:-64,y:-6,width:128,height:0,rx:16,fill:'url(#doughLit)'},jar);
+  const fl=grains(40,330,40,V('salt'),4,50), ye=grains(10,330,40,V('gold'),3,30);
+  const t1=tag(500,150,`${fq('pfFlour')} g ${L.flour}`), t2=tag(500,200,`${fq('yeast')} g ${L.yeast}`), t3=tag(500,250,`${fq('pfWater')} g ${L.water}`);
+  [t1,t2,t3].forEach(t=>t.setAttribute('opacity',0));
+  const w=stream(420,60,345,260,V('water'),10);
+  tl.to(t1,{opacity:1,duration:.3}).to(fl.arr,{attr:{cy:300},duration:.7,stagger:.012,ease:'power2.in'},'<')
+    .to(fl.arr,{opacity:0,duration:.2},'>-.1').to(fillR,{attr:{y:-50,height:44},duration:.4},'<')
+    .to(t2,{opacity:1,duration:.3}).to(ye.arr,{attr:{cy:280},duration:.5,stagger:.03,ease:'power2.in'},'<').to(ye.arr,{opacity:0,duration:.2})
+    .to(t3,{opacity:1,duration:.3}).to(w.l.style,{strokeDashoffset:0,duration:.5}).to(fillR,{attr:{y:-100,height:94},duration:.7},'<')
+    .to(w.l,{opacity:0,duration:.2});
+  const spoon=E('line',{x1:330,y1:120,x2:330,y2:260,stroke:V('steel'),'stroke-width':8,'stroke-linecap':'round',opacity:0});
+  tl.to(spoon,{opacity:1,duration:.2}).to(spoon,{attr:{x1:300,x2:360},duration:.18,repeat:5,yoyo:true}).to(spoon,{opacity:0,duration:.2});
+  const bub=[];for(let i=0;i<12;i++)bub.push(E('circle',{cx:280+rand()*100,cy:230+rand()*50,r:2+rand()*5,fill:'#fff',opacity:0},jar.parentNode));
+  tl.to(bub,{opacity:.85,duration:.25,stagger:.05});
+  const fr=fridge(650,320); fr.setAttribute('opacity',0); scn.appendChild(jar); bub.forEach(b=>scn.appendChild(b)); const ck=clock(150,160,`${fq('pfh')} h`);
+  tl.to(fr,{opacity:1,duration:.3}).to([jar,...bub],{x:'+=320',scale:.55,transformOrigin:'50% 100%',duration:.8,ease:'power2.inOut'})
+    .to(ck.g,{opacity:1,duration:.3},'<').to(ck.h,{rotation:720,transformOrigin:'0 0',svgOrigin:'0 0',duration:1.2,ease:'none'});
+ },
+ mix(tl){
+  const b=bowl(330,330); const pf=blob(330,282,rk==='napo'?60:4,rk==='napo'?16:2,b.g.parentNode);
+  const glass=G({transform:'translate(600,320)'});E('path',{d:'M-38,-120 L38,-120 L30,0 L-30,0Z',fill:'url(#glass)',stroke:V('steel'),'stroke-width':3,filter:'url(#sh)'},glass);
+  const wl=E('path',{d:'M-34,-80 L34,-80 L30,-4 L-30,-4Z',fill:V('water'),opacity:.7},glass);
+  const cr=grains(14,600,90,V('salt'),4,40); cr.arr.forEach(c=>c.setAttribute('stroke',V('steel')));
+  const ts=tag(600,140,`${fq('salt')} g ${L.salt}`), tw=tag(600,380+0,`${fq(rk==='napo'?'initWater':'water')} g ${L.water}`);
+  const tf=tag(150,120,`${fq(rk==='napo'?'finFlour':'flour')} g ${L.flour}`); [ts,tw,tf].forEach(t=>t.setAttribute('opacity',0));
+  tl.to(ts,{opacity:1,duration:.3}).to(cr.arr,{attr:{cy:260},duration:.5,stagger:.02,ease:'power2.in'},'<').to(cr.arr,{opacity:0,duration:.6,stagger:.02})
+    .to(tw,{opacity:1,duration:.3},'<');
+  const fl=grains(46,330,30,V('salt'),4,70);
+  tl.to(tf,{opacity:1,duration:.3}).to(fl.arr,{attr:{cy:270},duration:.7,stagger:.01,ease:'power2.in'},'<').to(fl.arr,{opacity:0,duration:.2});
+  if(rk==='ny'){const sg=grains(8,330,30,V('oil'),3,30);tl.to(sg.arr,{attr:{cy:270},duration:.4,stagger:.02}).to(sg.arr,{opacity:0,duration:.2});}
+  tl.to(glass,{rotation:-70,x:'-=180',y:'-=90',svgOrigin:'600 320',duration:.6,ease:'power2.inOut'}).to(wl,{opacity:0,duration:.5});
+  tl.to(pf.b,{attr:{rx:92,ry:30},duration:.6},'<').to(pf.g,{y:'-=12',duration:.6},'<');
+  const sp=E('line',{x1:330,y1:170,x2:330,y2:290,stroke:V('steel'),'stroke-width':9,'stroke-linecap':'round',opacity:0});
+  tl.to(glass,{opacity:0,duration:.3}).to(sp,{opacity:1,duration:.2}).to(sp,{attr:{x1:290,x2:370},duration:.16,repeat:7,yoyo:true})
+    .to(pf.b,{attr:{rx:96,ry:34},duration:.8},'<').to(sp,{opacity:0,duration:.2});
+  if(rk==='ny'){const ck=clock(690,250,'20 min');tl.to(ck.g,{opacity:1,duration:.3}).to(ck.h,{rotation:360,svgOrigin:'0 0',duration:.9,ease:'none'});}
+ },
+ bass(tl){
+  bowl(330,330); const d=blob(330,272,96,34);
+  const per=Q.bass/3; for(let i=0;i<3;i++){const drop=E('path',{d:'M0,-14 C8,-2 10,4 0,12 C-10,4 -8,-2 0,-14Z',fill:V('water'),transform:'translate(330,60)',opacity:0});
+    const t=tag(520,120+i*48,`+ ${gfmt(per)} g ${L.water}`);t.setAttribute('opacity',0);
+    tl.to(t,{opacity:1,duration:.25}).to(drop,{opacity:1,duration:.1},'<').to(drop,{y:200,duration:.45,ease:'power2.in'},'<')
+      .to(drop,{opacity:0,scale:2,transformOrigin:'50% 50%',duration:.2}).to(d.b,{attr:{rx:96+i*3,ry:30},duration:.15,yoyo:true,repeat:1})
+      .to(d.gl,{opacity:.25,duration:.2},'<').to({},{duration:.25});}
+ },
+ fold(tl){
+  bowl(330,330);const d=blob(330,274,94,34);
+  const flap=E('path',{d:'M250 273 C260 244 280 240 300 239 C315 237 345 237 360 239 C380 240 400 244 410 273 C392 307 268 307 250 273Z',fill:'url(#doughLit)',filter:'url(#sh)'});
+  const seam=E('path',{d:'M270 274 Q330 293 391 274',fill:'none',stroke:V('dough2'),'stroke-width':2,opacity:0});
+  const label=tag(520,105,rk==='napo'?L.foldN:L.foldNY);
+  tIntro(tl,label);
+  for(let i=0;i<3;i++){
+    tl.to(flap,{attr:{d:'M250 273 C275 251 294 172 308 151 C321 129 348 131 359 155 C376 194 390 251 410 273 C392 307 268 307 250 273Z'},duration:.55,ease:'power2.inOut'})
+      .to(flap,{attr:{d:'M250 273 C265 242 285 252 305 264 C320 273 345 286 360 277 C380 267 398 253 410 273 C392 307 268 307 250 273Z'},duration:.5,ease:'power3.inOut'})
+      .to(seam,{opacity:.7,duration:.15},'<.3')
+      .to(flap,{attr:{d:'M250 273 C260 244 280 240 300 239 C315 237 345 237 360 239 C380 240 400 244 410 273 C392 307 268 307 250 273Z'},duration:.35,ease:'sine.out'})
+      .to(seam,{opacity:0,duration:.2},'<');
+  }
+  const win=G({transform:'translate(600,260)',opacity:0});
+  E('path',{d:'M-53 -37Q0 -17 53 -37Q31 0 53 37Q0 20 -53 37Q-30 0 -53 -37Z',fill:'url(#glass)',stroke:V('dough2'),'stroke-width':3},win);
+  for(let i=0;i<5;i++)E('path',{d:`M${-30+i*15} -28Q${-20+i*10} 0 ${-30+i*15} 28`,stroke:V('dough2'),'stroke-width':.7,opacity:.45,fill:'none'},win);
+  E('text',{y:75,'text-anchor':'middle','font-family':'JetBrains Mono','font-size':16,fill:V('ink')},win).textContent=L.window;
+  tl.to(win,{opacity:1,duration:.6});
+ },
+ oil(tl){
+  bowl(330,330); const d=blob(330,268,90,40);
+  const bottle=G({transform:'translate(560,170)'});E('rect',{x:-22,y:-70,width:44,height:110,rx:12,fill:'url(#oilLit)',opacity:.9},bottle);E('rect',{x:-8,y:-96,width:16,height:30,rx:4,fill:'url(#leafLit)'},bottle);
+  const t=tag(560,330,`${fq('oil')} g ${L.oil}`);t.setAttribute('opacity',0);
+  const st=stream(470,140,350,240,V('oil'),6);
+  tl.to(t,{opacity:1,duration:.3}).to(bottle,{rotation:-110,x:'-=60',y:'-=20',svgOrigin:'560 170',duration:.6}).to(st.l.style,{strokeDashoffset:0,duration:.5})
+    .to(d.gl,{opacity:.7,duration:.8}).to(st.l,{opacity:0,duration:.3}).to(bottle,{rotation:0,x:'+=60',y:'+=20',svgOrigin:'560 170',duration:.5},'<')
+    .to(d.b,{attr:{fill:'url(#oilLit)'},duration:.4,yoyo:true,repeat:1},'<').to(d.b,{attr:{rx:94,ry:36},duration:.3,yoyo:true,repeat:3});
+ },
+ lam(tl){
+  const d=G();const r=E('rect',{x:330,y:260,width:120,height:70,rx:35,fill:'url(#doughLit)',stroke:V('dough2'),'stroke-width':2},d);
+  tl.to(r,{attr:{x:190,y:250,width:420,height:80,rx:16},duration:.8,ease:'power2.out'})
+    .to(r,{attr:{x:330,width:140},duration:.5,ease:'power2.inOut'}).to(r,{attr:{height:120,y:220},duration:.4},'<')
+    .to(r,{attr:{x:340,width:120,height:90,y:240,rx:45},duration:.5});
+  const t=tag(560,140,L.lam);t.setAttribute('opacity',0);const ck=clock(140,160,'1 h');
+  tl.to(t,{opacity:1,duration:.3},0).to(ck.g,{opacity:1,duration:.3}).to(ck.h,{rotation:360,svgOrigin:'0 0',duration:.9,ease:'none'});
+ },
+ balls(tl){
+  const big=blob(400,280,130,48); const n=Q.n, sp=Math.min(90,620/n), x0=400-sp*(n-1)/2;
+  const balls=[];for(let i=0;i<n;i++){const b=blob(400,280,10,8);b.g.setAttribute('opacity',0);balls.push(b)}
+  const scale=G({transform:'translate(400,395)'});E('rect',{x:-70,y:-14,width:140,height:28,rx:8,fill:'url(#metal)'},scale);
+  const disp=E('text',{y:6,'text-anchor':'middle','font-family':'JetBrains Mono','font-size':16,fill:'#fff'},scale);disp.textContent='0 g';
+  tl.to(big.b,{attr:{rx:150,ry:40},duration:.3}).to(big.g,{opacity:0,duration:.3});
+  balls.forEach((b,i)=>{tl.to(b.g,{opacity:1,x:x0+i*sp,duration:.35,ease:'back.out(2)'},'>-.22').to(b.b,{attr:{rx:Math.min(38,sp*.42),ry:Math.min(30,sp*.34)},duration:.35},'<')});
+  num(disp,0,Q.per,' g',.6,tl,'>');tl.add(()=>disp.textContent=gfmt(Q.per)+' g');
+  const t=tag(400,150,`${Q.n} × ${gfmt(Q.per)} g`);t.setAttribute('opacity',0);tl.to(t,{opacity:1,duration:.3});
+  balls.forEach(b=>tl.to(b.gl,{opacity:.3,duration:.2},'<'));
+  const ck=clock(700,120,`${fq('panh')} h`);tl.to(ck.g,{opacity:1,duration:.3}).to(ck.h,{rotation:720,svgOrigin:'0 0',duration:1,ease:'none'});
+ },
+ temper(tl){
+  const box=G({transform:'translate(400,320)'});E('rect',{x:-200,y:-110,width:400,height:110,rx:18,fill:V('card'),stroke:V('steel'),'stroke-width':3,opacity:.9,filter:'url(#sh)'},box);
+  const n=Q.n, bs=[];for(let i=0;i<n;i++){const b=blob(400-160+i*(320/(n-1||1)),270,Math.min(30,145/n),Math.min(22,110/n));bs.push(b)}
+  if(n===1)bs[0].g.setAttribute('transform','translate(400,270)');
+  const th=G({transform:'translate(680,300)'});E('rect',{x:-8,y:-120,width:16,height:120,rx:8,fill:V('card'),stroke:V('steel'),'stroke-width':2},th);
+  const merc=E('rect',{x:-4,y:-10,width:8,height:10,rx:4,fill:V('tomato')},th);
+  const tt=E('text',{x:0,y:24,'text-anchor':'middle','font-family':'JetBrains Mono','font-size':15,fill:V('ink')},th);tt.textContent='7 °C';
+  tl.to(merc,{attr:{y:-90,height:90},duration:1});num(tt,7,26,' °C',1,tl,'<');
+  tl.to(bs.map(b=>b.b),{attr:{rx:Math.min(40,170/n),ry:Math.min(30,130/n)},duration:1.1,ease:'sine.inOut'},'<');
+  bs.forEach(b=>{for(let k=0;k<4;k++){const c=E('circle',{cx:(rand()-.5)*40,cy:(rand()-.5)*20,r:2+rand()*3,fill:'#fff',opacity:0},b.g);tl.to(c,{opacity:.85,duration:.2},'>-.15')}});
+  const ck=clock(130,150,`${fq('outh')} h`);tl.to(ck.g,{opacity:1,duration:.3},0).to(ck.h,{rotation:360,svgOrigin:'0 0',duration:1.2,ease:'none'},.3);
+ },
+ sauce(tl){
+  const can=G({transform:'translate(240,320)'});E('rect',{x:-60,y:-150,width:120,height:150,rx:10,fill:'url(#metal)',filter:'url(#sh)'},can);
+  E('rect',{x:-60,y:-110,width:120,height:60,fill:'url(#tomatoLit)'},can);
+  const toms=[];for(let i=0;i<6;i++)toms.push(E('circle',{cx:200+rand()*80,cy:180,r:16,fill:'url(#tomatoLit)',opacity:0}));
+  const bw=bowl(470,330,.8);
+  tl.to(can,{rotation:-100,x:'+=120',y:'-=80',svgOrigin:'240 320',duration:.6}).to(toms,{opacity:1,duration:.1})
+    .to(toms,{attr:{cx:470,cy:270},duration:.5,stagger:.05,ease:'power2.in'}).to(toms,{attr:{r:30},opacity:.9,duration:.3})
+    .to(toms,{attr:{r:12},duration:.15,yoyo:true,repeat:3}).to(can,{opacity:0,duration:.3},'<');
+  const t=tag(470,110,`${fq('cans')} ${L.cans}`);t.setAttribute('opacity',0);tl.to(t,{opacity:1,duration:.3},0);
+  const ch=[];for(let i=0;i<8;i++)ch.push(E('rect',{x:640+(i%4)*22,y:250+Math.floor(i/4)*24,width:18,height:16,rx:4,fill:'url(#cheeseLit)',stroke:V('dough2'),opacity:0}));
+  const t2=tag(690,200,`${fq('cheese')} g ${rk==='napo'?L.cheeseN:L.cheeseNY}`);t2.setAttribute('opacity',0);
+  tl.to(t2,{opacity:1,duration:.3}).to(ch,{opacity:1,duration:.3,stagger:.05},'<');
+  const drips=[];for(let i=0;i<4;i++)drips.push(E('circle',{cx:650+i*22,cy:300,r:3,fill:V('water'),opacity:0}));
+  tl.to(drips,{opacity:.8,attr:{cy:330},duration:.5,stagger:.1,repeat:1});
+ },
+ oven(tl){
+  const o=oven(400,320);
+  const tTop=tag(400,90,`${L.top} 0 °C`), tBot=tag(400,370,`${L.bottom} 0 °C`);
+  const a=tTop.querySelector('text'), b=tBot.querySelector('text');
+  const oa={v:20},ob={v:20};tl.to(oa,{v:Q.top,duration:1.6,onUpdate:()=>a.textContent=`${L.top} ${Math.round(oa.v)} °C`},0).to(ob,{v:Q.bottom,duration:1.6,onUpdate:()=>b.textContent=`${L.bottom} ${Math.round(ob.v)} °C`},0);
+  tl.to(o.top,{attr:{fill:'#FF7A2C'},duration:1.4},0).to(o.bot,{attr:{fill:'#E9622A'},duration:1.4},0).to(o.glow,{opacity:1,duration:1.4},0);
+  const ck=clock(690,120,'30–40 min');tl.to(ck.g,{opacity:1,duration:.3},0).to(ck.h,{rotation:540,svgOrigin:'0 0',duration:1.6,ease:'none'},0);
+ },
+ open(tl){
+  const p=pizza(400,280,30);const t=tag(620,120,rk==='napo'?L.rimN:L.rimNY);t.setAttribute('opacity',0);
+  tl.to(p.base,{attr:{r:70},duration:.5});
+  const dots=[];for(let i=0;i<14;i++){const a=i/14*Math.PI*2;dots.push(E('circle',{cx:400+Math.cos(a)*30,cy:280+Math.sin(a)*30,r:6,fill:V('dough2'),opacity:0}))}
+  tl.to(dots,{opacity:1,duration:.15,stagger:.03}).to(dots,{attr:{cx:(i)=>400+Math.cos(i/14*Math.PI*2)*95,cy:(i)=>280+Math.sin(i/14*Math.PI*2)*95},duration:.7},'<.2')
+    .to(p.base,{attr:{r:120},duration:.7},'<').to(dots,{opacity:0,duration:.2}).to(t,{opacity:1,duration:.3},'<');
+  const rim=E('circle',{cx:400,cy:280,r:120,fill:'none',stroke:V('dough2'),'stroke-width':rk==='napo'?16:8,opacity:0});
+  const dim=G({opacity:0});E('line',{x1:280,y1:420,x2:520,y2:420,stroke:V('ink'),'stroke-width':2},dim);E('text',{x:400,y:414,'text-anchor':'middle','font-family':'JetBrains Mono','font-size':15,fill:V('ink')},dim).textContent=Q.size;
+  tl.to(rim,{opacity:1,duration:.4}).to(dim,{opacity:1,duration:.4},'<');
+ },
+ build(tl){
+  const ny=rk==='ny'; const p=pizza(400,270,130,scn,ny);
+  const sp=E('path',{d:spiral(400,270,ny?112:100),fill:'none',stroke:V('sauce'),'stroke-width':22,'stroke-linecap':'round'});const L=sp.getTotalLength();sp.style.strokeDasharray=L;sp.style.strokeDashoffset=L;
+  tl.to(sp.style,{strokeDashoffset:0,duration:1,ease:'none'}).to(p.sauce,{opacity:1,duration:.2});
+  const pcs=[];const k=ny?26:7;for(let i=0;i<k;i++){const a=rand()*Math.PI*2,r=Math.sqrt(rand())*(ny?100:80);
+    pcs.push(ny?E('rect',{x:400+Math.cos(a)*r-5,y:270+Math.sin(a)*r-14,width:10,height:28,rx:4,fill:'url(#cheeseLit)',opacity:0,transform:`rotate(${rand()*180} ${400+Math.cos(a)*r} ${270+Math.sin(a)*r})`})
+      :E('circle',{cx:400+Math.cos(a)*r,cy:270+Math.sin(a)*r,r:14,fill:'url(#cheeseLit)',opacity:0}))}
+  tl.to(pcs,{opacity:1,duration:.12,stagger:ny?.02:.07});
+  const t=tag(640,110,`${gfmt(Q.sauce/Q.n)} g ${L.sauce} · ${gfmt(Q.cheese/Q.n)} g ${L.cheese}`);t.setAttribute('opacity',0);tl.to(t,{opacity:1,duration:.3},0);
+  const lv=[];if(!ny){for(let i=0;i<3;i++)lv.push(E('ellipse',{cx:370+i*30,cy:250+(i%2)*30,rx:12,ry:6,fill:'url(#leafLit)',opacity:0}));tl.to(lv,{opacity:1,duration:.2,stagger:.1});}
+  const peel=E('rect',{x:220,y:400,width:360,height:24,rx:12,fill:V('bench'),stroke:V('dough2'),'stroke-width':2,opacity:0});
+  const all=G();[sp,...pcs,...lv].forEach(e=>all.appendChild(e));tl.to(peel,{opacity:1,duration:.3}).to([p.g,all],{x:'-=14',duration:.12,yoyo:true,repeat:3});
+ },
+ bake(tl){
+  const o=oven(400,330);o.top.setAttribute('fill','#FF7A2C');o.bot.setAttribute('fill','#E9622A');o.glow.setAttribute('opacity',1);
+  const ny=rk==='ny'; const hero=G(); const p=pizza(400,262,80,hero,ny); p.sauce.setAttribute('opacity',1); p.g.setAttribute('opacity',0);
+  const timer=tag(400,60,'0 s'); const tt=timer.querySelector('text');
+  tl.fromTo(p.g,{opacity:1,x:720},{x:400,duration:.6,ease:'power2.out'});
+  const T=ny?390:95;const o2={v:0};tl.addLabel('cnt').to(o2,{v:T,duration:2.6,ease:'none',onUpdate:()=>{const s=Math.round(o2.v);tt.textContent=ny?`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')} min`:`${s} s`}},'cnt');
+  const turns=ny?[60,120,180,240,300]:[28];turns.forEach(s=>tl.to(p.g,{rotation:'+=180',svgOrigin:'400 262',duration:.25},`cnt+=${(s/T)*2.6}`));
+  const spots=[];for(let i=0;i<22;i++){const a=rand()*Math.PI*2;spots.push(E('circle',{cx:Math.cos(a)*(ny?78:76),cy:Math.sin(a)*(ny?78:76),r:2+rand()*3,fill:V('char'),opacity:0},p.g))}
+  tl.to(spots,{opacity:.85,duration:.6,stagger:.02},'cnt+=1.4').to(p.base,{attr:{fill:'url(#crustLit)'},duration:.8},'<');
+  if(ny){const brown=[];for(let i=0;i<10;i++)brown.push(E('circle',{cx:(rand()-.5)*110,cy:(rand()-.5)*110,r:6,fill:'#C98B30',opacity:0},p.g));tl.to(brown,{opacity:.7,duration:.6},'<');}
+  tl.to(o.g,{opacity:.25,duration:.7},'cnt+=2.8').to(hero,{scale:1.65,svgOrigin:'400 262',y:18,duration:1,ease:'power3.out'},'cnt+=2.8');
+ },
+ slice(tl){
+  const p=pizza(330,260,130,scn,true);p.sauce.setAttribute('opacity',1);E('circle',{cx:330,cy:260,r:118,fill:'url(#cheeseLit)',opacity:.9});
+  const cuts=[];for(let i=0;i<4;i++){const a=i*Math.PI/4;cuts.push(E('line',{x1:330-Math.cos(a)*130,y1:260-Math.sin(a)*130,x2:330+Math.cos(a)*130,y2:260+Math.sin(a)*130,stroke:V('char'),'stroke-width':3,opacity:0}))}
+  tl.to(cuts,{opacity:.7,duration:.3,stagger:.2});
+  const sl=G({transform:'translate(600,280)',opacity:0});E('path',{d:'M0,-90 L50,60 Q0,80 -50,60Z',fill:'url(#cheeseLit)',stroke:V('crust'),'stroke-width':8,'stroke-linejoin':'round'},sl);
+  tl.to(sl,{opacity:1,duration:.3}).to(sl,{scaleX:.45,transformOrigin:'50% 50%',duration:.5,ease:'power2.inOut'});
+  const t=tag(600,410,L.foldSlice);t.setAttribute('opacity',0);tl.to(t,{opacity:1,duration:.3});
+ }
+};
+function tIntro(t,e){t.from(e,{opacity:0,y:'-=8',duration:.4,ease:'power2.out'},0)}
+function finishScene(key,t){
+  // Tiny flour flecks and long contact shadows anchor the action to the bench.
+  const dust=G({'aria-hidden':'true'});scn.insertBefore(dust,scn.firstChild);
+  for(let i=0;i<52;i++)E('ellipse',{cx:190+rand()*420,cy:318+rand()*66,rx:.6+rand()*2.2,ry:.5+rand()*.7,fill:'#fff1d5',opacity:.18+rand()*.22},dust);
+  if(['pref','mix','oil'].includes(key)){
+    scn.querySelectorAll('rect').forEach(e=>{if(e.getAttribute('fill')==='url(#glass)'){
+      const p=e.parentNode;E('path',{d:'M-52,-145V-24',stroke:'#fff','stroke-width':5,opacity:.42,'stroke-linecap':'round'},p);
+      E('ellipse',{cy:-169,rx:62,ry:9,fill:'none',stroke:'#d7e5dd','stroke-width':4},p);
+    }});
+  }
+  if(key==='bass'||key==='mix'||key==='oil'){
+    const splash=G();for(let i=0;i<12;i++){
+      const a=i/12*Math.PI*2,c=E('circle',{cx:330,cy:260,r:1.5+rand()*2,fill:key==='oil'?'url(#oilLit)':V('water'),opacity:0},splash);
+      const at=key==='bass'?.8+i%3*1.3:2.5;
+      t.fromTo(c,{opacity:.8},{attr:{cx:330+Math.cos(a)*65,cy:260+Math.sin(a)*20},opacity:0,duration:.65,ease:'power2.out'},at);
+    }
+  }
+  if(key==='lam'){
+    const r=scn.querySelector('rect');r.setAttribute('filter','url(#sh)');
+    const seam=E('path',{d:'M350 270Q392 257 440 270 M350 285Q395 273 440 285',fill:'none',stroke:V('dough2'),'stroke-width':2,opacity:0});
+    t.to(seam,{opacity:.6,duration:.5},2.2);
+  }
+  if(key==='fold'){
+    const membrane=scn.querySelector('circle');if(membrane)membrane.setAttribute('fill','url(#glass)');
+  }
+  if(key==='build'||key==='bake'||key==='slice'){
+    const base=scn.querySelector('circle[filter]');
+    if(base&&key!=='bake'){
+      const parent=base.parentNode,R=+base.getAttribute('r');
+      for(let i=0;i<38;i++){
+        const a=i*2.399,r=R*(.92+rand()*.04);
+        E('ellipse',{cx:Math.cos(a)*r,cy:Math.sin(a)*r,rx:1+rand()*3,ry:1+rand()*2,fill:key==='slice'?V('char'):V('dough2'),opacity:.4},parent);
+      }
+    }
+    const surface=key==='bake'?base?.parentNode:null;
+    if(surface){
+      for(let i=0;i<11;i++){
+        const a=i*2.4,r=14+rand()*43,c=E('ellipse',{cx:Math.cos(a)*r,cy:Math.sin(a)*r,rx:rk==='ny'?16:10,ry:rk==='ny'?13:7,fill:'url(#cheeseLit)',opacity:0},surface);
+        t.to(c,{opacity:1,duration:.4},.6+i*.05).to(c,{attr:{rx:rk==='ny'?19:12,ry:rk==='ny'?15:9},duration:.35,repeat:3,yoyo:true,ease:'sine.inOut'},1.3+i*.03);
+      }
+    }
+    if(key!=='build'){
+      for(let i=0;i<5;i++){
+        const x=(key==='slice'?330:400)-65+i*32;
+        const steam=E('path',{d:`M${x},200q-20,-25 0,-45t0,-42`,stroke:'#fff8e1','stroke-width':3,fill:'none',opacity:0,'stroke-linecap':'round'});
+        t.fromTo(steam,{y:22,opacity:0},{y:-14,opacity:.35,duration:1.3,ease:'sine.out'},Math.max(2,t.duration()-.9)+i*.08);
+      }
+    }
+  }
+  // Slow anticipation and a composed finish; each chapter lasts 5–8 seconds.
+  const length=t.duration();if(length<5.6)t.to({},{duration:5.6-length});
+  t.duration(Math.max(5.6,Math.min(8,t.duration())));
+}
+
+function spiral(cx,cy,R){let d='',a=0,r=R;for(let i=0;i<=260;i++){a=i/260*Math.PI*2*4.5;r=R*(1-i/260);d+=(i?'L':'M')+(cx+Math.cos(a)*r).toFixed(1)+','+(cy+Math.sin(a)*r).toFixed(1)}return d}
+
+/* ---------- player ---------- */
+const $=id=>document.getElementById(id);
+const STEPS=[];
+T.steps.forEach((d,di)=>d.items.forEach(s=>STEPS.push({day:di,d:`${d.day} · ${d.when}`,t:s.t,li:s.li,tip:(s.tip||'').replace(/^warn\|/,''),wait:s.time,sc:C.scenes[s.id]})));
+const ph=(s,html)=>s.replace(/\{(\w+)\}/g,(m,k)=>{const v=k in R?NP.fmt(k,R[k]):m;return html?`<span class="q">${v}<\/span>`:v});
+let idx=0, tl=null, playing=false, mode='film', advance=null, stageVisible=true;
+const visible=()=>!document.hidden&&stageVisible;
+$('plChap').innerHTML=STEPS.map((s,i)=>`<button type="button" class="d${s.day}" aria-label="${PL.step} ${i+1}: ${s.t}"><i><\/i><\/button>`).join('');
+[...$('plChap').children].forEach((b,i)=>b.onclick=()=>go(i,true));
+function setPP(p){playing=p;$('plPP').setAttribute('aria-label',p?PL.pause:PL.play);$('plPPIco').innerHTML=p?'<path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/>':'<path d="M8 5l11 7-11 7z" fill="currentColor"/>'}
+function go(i,autoplay){
+  idx=Math.max(0,Math.min(STEPS.length-1,i)); const s=STEPS[idx];
+  if(advance){advance.kill();advance=null} setPP(false); if(tl){tl.kill()} scn.innerHTML='';
+  $('plBadge').textContent=`${PL.step} ${String(idx+1).padStart(2,'0')} / ${STEPS.length}`;
+  $('plDay').textContent=s.d; $('plTt').textContent=s.t; $('plLi').innerHTML=s.li.map(x=>`<li>${ph(x,true)}<\/li>`).join('');
+  $('plTip').hidden=!s.tip; if(s.tip) $('plTip').textContent=ph(s.tip,false);
+  $('plWait').textContent='⏱ '+ph(s.wait,false);
+  [...$('plChap').children].forEach((b,k)=>{b.classList.toggle('done',k<idx);b.querySelector('i').style.width=k<idx?'100%':'0'});
+  tl=gsap.timeline({paused:true,onUpdate:()=>{const b=$('plChap').children[idx];if(b)b.querySelector('i').style.width=(tl.progress()*100)+'%'},
+    onComplete:()=>{ if(mode==='film' && playing && idx<STEPS.length-1) advance=gsap.delayedCall(.9,()=>{ if(playing&&mode==='film') go(idx+1,true); else setPP(false) }); else setPP(false); }});
+  seed=17+idx*97; if(SCENES[s.sc]){SCENES[s.sc](tl); finishScene(s.sc,tl);}
+  if(reduced){tl.progress(1);setPP(false);return}
+  if(autoplay){setPP(true);if(visible())tl.play()} else {setPP(false);tl.progress(1)}   // parado: quadro final da etapa
+}
+$('plPP').onclick=()=>{ if(!tl) return; if(reduced){tl.progress(1);setPP(false);return} if(playing){tl.pause();if(advance){advance.kill();advance=null}setPP(false)} else { if(tl.progress()>=1) tl.restart(); else tl.play(); setPP(true)} };
+$('plNext').onclick=()=>go(idx+1,true); $('plPrev').onclick=()=>go(idx-1,true); $('plRep').onclick=()=>go(idx,true);
+$('plFilm').onclick=()=>{mode='film';$('plFilm').setAttribute('aria-pressed',true);$('plBench').setAttribute('aria-pressed',false)};
+$('plBench').onclick=()=>{mode='bench';$('plBench').setAttribute('aria-pressed',true);$('plFilm').setAttribute('aria-pressed',false)};
+function syncVisibility(){if(!tl)return;if(!visible()){tl.pause();if(advance)advance.pause()}else if(playing){if(advance)advance.resume();else tl.play()}}
+addEventListener('visibilitychange',syncVisibility);
+if('IntersectionObserver' in window)new IntersectionObserver(e=>{stageVisible=e[0].isIntersecting;syncVisibility()},{threshold:0}).observe($('stg'));
+NP.onRender.push(()=>{refreshQ(); if(!playing) go(idx,false)});   // parâmetros mudaram: redesenha com os novos números
+go(0,false);
+})();
+
 </script>
 
 

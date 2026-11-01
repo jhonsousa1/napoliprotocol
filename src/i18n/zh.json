@@ -87,7 +87,16 @@
     "nav.theme": "切换深色模式",
     "nav.recipes": "食谱",
     "panel.sugar": "糖",
-    "ing.sugar": "糖"
+    "ing.sugar": "糖",
+    "nav.watch": "观看",
+    "player.h2": "分步动画演示",
+    "player.sub": "每个步骤都用这一批的用量做成动画。修改参数，动画会随之更新。",
+    "player.prev": "上一步",
+    "player.next": "下一步",
+    "player.repeat": "重播动画",
+    "player.mode": "模式",
+    "player.film": "连续播放",
+    "player.bench": "台面模式"
   },
   "js": {
     "locale": "zh-CN",
@@ -125,6 +134,32 @@
     "upper": "上火",
     "diagCur": "当前：{lbl} {cur} °C。下一张建议：{nv}。小步调整，只改这一个变量。",
     "apply": "应用 {v} °C",
-    "applied": "已应用"
+    "applied": "已应用",
+    "player": {
+      "step": "步骤",
+      "play": "播放",
+      "pause": "暂停",
+      "lbl": {
+        "flour": "面粉",
+        "water": "水",
+        "yeast": "酵母",
+        "salt": "盐",
+        "oil": "橄榄油",
+        "sauce": "酱",
+        "cheese": "奶酪",
+        "cans": "罐 · 盐",
+        "cheeseN": "马苏里拉",
+        "cheeseNY": "马苏里拉丝",
+        "foldN": "拉伸 · 折叠 · 静置",
+        "foldNY": "揉面 8–10 分钟",
+        "lam": "不用擀面杖 · 不要撕破",
+        "rimN": "留边 1–1.5 cm",
+        "rimNY": "用指关节抻开",
+        "top": "上火",
+        "bottom": "下火",
+        "window": "薄膜测试",
+        "foldSlice": "对折"
+      }
+    }
   }
 }

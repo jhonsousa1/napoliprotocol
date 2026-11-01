@@ -329,6 +329,38 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
 .split.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (max-width:760px){.split.two{grid-template-columns:1fr}}
 
+/* Player animado (cenas do Codex/GPT): tokens próprios do palco, nos dois temas */
+.np-player{--card:#FFFFFF;--ink:#1C1714;--muted:#655C55;--line:#E2DED8;--tomato:#D63A1C;--gold:#B5850B;--cold:#2F6FC4;--bg:#F3F4F1;
+  --stage:#FFF7EE;--stage2:#F6E9D8;--bench:#E7D3B6;--dough:#EED7AE;--dough2:#D9B57C;--crust:#C98B45;--water:#6FA8E8;--oil:#E2B33C;--salt:#FFFFFF;--sauce:#C42D17;--cheese:#FFF6E2;--leaf:#2E7A45;--steel:#9AA2AA;--char:#3A2418}
+:root[data-theme="dark"] .np-player{--card:#1E1A18;--ink:#F3EEE9;--muted:#B0A69E;--line:#37302B;--tomato:#EB4E2C;--gold:#D3A63A;--cold:#5A93DE;--bg:#141110;
+  --stage:#231D19;--stage2:#2C2420;--bench:#5A4532;--dough:#E3C996;--dough2:#C9A266;--crust:#B97A38;--salt:#F4F4F4;--sauce:#D2391F;--cheese:#FFF3DA;--leaf:#3C9A5A;--steel:#7C858E;--char:#1A100A}
+.np-player .screen{background:var(--card);color:var(--ink);border-radius:24px;overflow:hidden;border:1px solid var(--line)}
+.np-player .stagebox{position:relative;aspect-ratio:16/9;max-width:100%;background:radial-gradient(90% 80% at 50% 30%,var(--stage),var(--stage2))}
+.np-player #stg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.np-player .badge{position:absolute;left:14px;top:12px;font-family:var(--f-mono);font-size:12px;background:var(--card);color:var(--ink);padding:6px 11px;border-radius:99px;box-shadow:0 4px 14px -6px rgb(0 0 0 / .3)}
+.np-player .waitchip{position:absolute;right:14px;top:12px;font-family:var(--f-mono);font-size:12px;background:var(--cold);color:#fff;padding:6px 11px;border-radius:99px;max-width:55%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.np-player .cap{padding:20px 24px 8px;display:grid;gap:10px;min-height:150px}
+.np-player .cap h3{font-family:var(--f-display);font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.1}
+.np-player .cap h3 small{font-family:var(--f-mono);font-size:12.5px;color:var(--tomato);display:block;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.np-player .cap ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:17px}
+.np-player .cap .q{font-family:var(--f-mono);font-weight:600;background:color-mix(in srgb,var(--gold) 22%,transparent);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.np-player .cap .tip{font-size:15px;color:var(--muted);border-left:3px solid var(--gold);padding-left:12px}
+.np-player .chapters{display:flex;gap:4px;padding:14px 24px 6px}
+.np-player .chapters button{flex:1;height:8px;border:0;border-radius:99px;background:var(--line);cursor:pointer;padding:0;position:relative;overflow:hidden}
+.np-player .chapters button.d1{background:color-mix(in srgb,var(--cold) 25%,var(--line))}
+.np-player .chapters button.d2{background:color-mix(in srgb,var(--tomato) 22%,var(--line))}
+.np-player .chapters button i{position:absolute;inset:0;width:0;background:var(--ink);border-radius:99px}
+.np-player .ctrl{display:flex;align-items:center;gap:10px;padding:10px 20px 20px;flex-wrap:wrap}
+.np-player .cbtn{width:52px;height:52px;border-radius:50%;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.np-player .cbtn svg{width:22px;height:22px}
+.np-player .cbtn.main{width:64px;height:64px;background:var(--tomato);border-color:var(--tomato);color:#fff}
+.np-player .cbtn.main svg{width:28px;height:28px}
+.np-player .ctrl .sp{flex:1}
+.np-player .mode{display:inline-flex;border:2px solid var(--line);border-radius:99px;padding:3px;gap:3px}
+.np-player .mode button{border:0;background:transparent;color:var(--muted);font:700 14px var(--f-body);padding:8px 14px;border-radius:99px;cursor:pointer;min-height:40px}
+.np-player .mode button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+@media (max-width:560px){.np-player .cap{padding:16px 16px 6px}.np-player .chapters{padding:12px 16px 4px}.np-player .ctrl{padding:10px 12px 16px}.np-player .cap ul{font-size:16px}}
+
 </style>
 <script type="application/ld+json" id="ld-recipe">{"@context":"https://schema.org","@type":"Recipe","name":"自制纽约风格披萨（冷藏 48 小时的面团）","description":"纽约风格披萨配方：高筋面粉、63% 含水率、橄榄油和糖，冷藏发酵 48 小时，生番茄酱和低水分马苏里拉。","inLanguage":"zh-Hans","url":"https://napoliprotocol.com/zh/new-york/","image":["https://napoliprotocol.com/img/recipe-new-york-zh-1x1.png","https://napoliprotocol.com/img/recipe-new-york-zh-4x3.png","https://napoliprotocol.com/img/recipe-new-york-zh-16x9.png"],"author":{"@type":"Person","name":"Jhonathan Sousa","url":"https://www.instagram.com/jhonsousa1/","sameAs":["https://www.instagram.com/jhonsousa1/"]},"datePublished":"2026-10-24","prepTime":"PT1H30M","cookTime":"PT7M","totalTime":"PT52H","recipeYield":["3","3 张约 32 cm 披萨"],"recipeCategory":"披萨","recipeCuisine":"美式（纽约）","keywords":"纽约披萨, 纽约风格披萨, 纽约披萨配方, 纽约披萨面团, 美式披萨, 自制披萨","recipeIngredient":["530 g 高筋面粉（Caputo Manitoba Oro）","334 g 过滤水","1.1 g 干酵母","8.0 g 糖","11 g 盐","13 g 特级初榨橄榄油","270 克调味生番茄酱","360 克低水分马苏里拉丝","帕玛森碎、干牛至和辣椒碎适量"],"recipeInstructions":[{"@type":"HowToStep","name":"和面","text":"将 530 克面粉、1.1 克酵母和 8.0 克糖干混。 将 11 克盐溶解在 334 克冷水（10–15 °C）中。 把水倒入面粉，搅拌到没有干粉。 盖好静置 20 分钟，面粉充分吸水，揉面时间会更短。","url":"https://napoliprotocol.com/zh/new-york/#s1"},{"@type":"HowToStep","name":"加入橄榄油","text":"分次加入 13 克橄榄油。 用掐捏和折叠的手法揉到面团完全吸收、不再打滑。","url":"https://napoliprotocol.com/zh/new-york/#s2"},{"@type":"HowToStep","name":"揉面","text":"在台面上揉 8–10 分钟，不加额外面粉：用掌根推开、折回、转四分之一圈。 静置 10 分钟，再揉 2–3 分钟，直到面团光滑有弹性。 薄膜测试：把一小块面团抻成薄膜。如果马上破，就再揉一会儿。","url":"https://napoliprotocol.com/zh/new-york/#s3"},{"@type":"HowToStep","name":"第一次静置","text":"整成圆球，放入抹了薄油的碗中，盖好。 室温静置 1 小时，只会稍微长大。","url":"https://napoliprotocol.com/zh/new-york/#s4"},{"@type":"HowToStep","name":"分割、滚圆、冷藏","text":"分成 3 个面团球，每个 299 克（面团总重 897 克）。 滚圆时让表面有张力，底部收紧。 分别放入抹了薄油的加盖容器，冷藏约 48 小时。","url":"https://napoliprotocol.com/zh/new-york/#s5"},{"@type":"HowToStep","name":"面团球回温","text":"烤制前约 2 小时从冰箱取出，保持加盖。 状态：松弛、略微膨胀，侧面有气泡，摸起来柔软。","url":"https://napoliprotocol.com/zh/new-york/#s6"},{"@type":"HowToStep","name":"准备酱和奶酪","text":"把 1 罐去皮番茄快速打一下或过筛：细滑浓稠的生酱，不要煮。 每罐加 4–5 克盐和 1 茶匙干牛至。可选：一小撮糖和 1 瓣蒜蓉。 把 360 克低水分马苏里拉（硬块状）擦成粗丝。 准备好帕玛森碎、牛至和辣椒碎，用于最后装饰。","url":"https://napoliprotocol.com/zh/new-york/#s7"},{"@type":"HowToStep","name":"预热 BIG HORN 烤炉","text":"上火 350 °C，下火 300 °C。 如果有红外测温枪，测一下石板中心：目标约 290–320 °C。","url":"https://napoliprotocol.com/zh/new-york/#s8"},{"@type":"HowToStep","name":"开饼","text":"面团球两面都撒足面粉。 用指尖按压中心，留出约 1 cm 的边。 提起面团放在指关节上，边转边抻，抻到约 30–32 cm。 饼皮薄而均匀，中心几乎透光。","url":"https://napoliprotocol.com/zh/new-york/#s9"},{"@type":"HowToStep","name":"铺料并入炉","text":"在披萨铲上撒粗粒小麦粉，放上饼皮。 薄薄抹上 90 克酱，留出约 1 cm 的边。 铺上 120 克马苏里拉丝，几乎铺到边缘。 轻轻左右晃动：整张披萨必须能滑动。","url":"https://napoliprotocol.com/zh/new-york/#s10"},{"@type":"HowToStep","name":"烤制与旋转","text":"每约 1 分钟转 90–180°，让受热均匀。 状态：奶酪融化并出现金黄斑点，饼边金黄。 用铲子掀起边缘：饼底应结实、带斑点，而不是发白。","url":"https://napoliprotocol.com/zh/new-york/#s11"},{"@type":"HowToStep","name":"装饰与切块","text":"放在烤架上 1–2 分钟，避免饼底变软。 撒上帕玛森、牛至和辣椒碎。 切成 6 到 8 块。吃的时候把披萨块对折。","url":"https://napoliprotocol.com/zh/new-york/#s12"}]}</script></head>
 <body>
@@ -336,7 +368,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
   <div class="wrap">
     <a class="brand" href="/zh/" style="text-decoration:none"><span class="flag" aria-hidden="true"><i></i><i></i><i></i></span>NapoliProtocol <span class="ver">v1.0</span></a>
     <nav class="nav" aria-label="章节">
-      <a href="#receita">配方</a><a href="#cronograma">时间表</a><a href="#passos">分步做法</a><a href="#forno">烤炉</a><a href="#regras">规则</a><a href="#sobre">关于</a>
+      <a href="#receita">配方</a><a href="#cronograma">时间表</a><a href="#assistir">观看</a><a href="#passos">分步做法</a><a href="#forno">烤炉</a><a href="#regras">规则</a><a href="#sobre">关于</a>
     </nav>
     <div class="prog" title="已完成步骤"><span id="progTxt">0/12</span><div class="prog-bar"><i id="progBar" style="width: 0%;"></i></div></div>
     <button type="button" class="theme-btn" id="themeBtn" aria-label="切换深色模式" title="切换深色模式" aria-pressed="false"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>
@@ -446,6 +478,63 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
         <div class="alert" id="schedWarn" hidden=""></div>
       </section>
 
+      <section id="assistir" class="np-player">
+        <div class="sec-head"><h2>分步动画演示</h2><p>每个步骤都用这一批的用量做成动画。修改参数，动画会随之更新。</p></div>
+        <div class="screen">
+          <div class="stagebox">
+            <svg id="stg" viewBox="0 0 800 450" role="img" aria-labelledby="plT">
+          <defs>
+            <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-opacity=".18"></feDropShadow></filter>
+            <radialGradient id="glow"><stop offset="0" stop-color="#FFB25C" stop-opacity=".9"></stop><stop offset="1" stop-color="#FF5A1F" stop-opacity="0"></stop></radialGradient>
+
+            <radialGradient id="doughLit" cx="30%" cy="20%" r="80%"><stop stop-color="#fff6dd"></stop><stop offset=".42" stop-color="var(--dough)"></stop><stop offset=".82" stop-color="var(--dough2)"></stop><stop offset="1" stop-color="#997044"></stop></radialGradient>
+            <radialGradient id="crustLit" cx="32%" cy="22%" r="80%"><stop stop-color="#ffe5a3"></stop><stop offset=".5" stop-color="#dea04d"></stop><stop offset=".85" stop-color="#a55523"></stop><stop offset="1" stop-color="#6f331c"></stop></radialGradient>
+            <linearGradient id="ceramic" x1="0" y1="0" x2="1" y2=".6"><stop stop-color="#234c4e"></stop><stop offset=".23" stop-color="#78a4a0"></stop><stop offset=".44" stop-color="#497b79"></stop><stop offset="1" stop-color="#173d40"></stop></linearGradient>
+            <radialGradient id="inside" cx="45%" cy="80%"><stop stop-color="#a2b7ab"></stop><stop offset="1" stop-color="#173d40"></stop></radialGradient>
+            <linearGradient id="metal"><stop stop-color="#424b50"></stop><stop offset=".18" stop-color="#b7c0c0"></stop><stop offset=".35" stop-color="#e4e6df"></stop><stop offset=".5" stop-color="#969e9e"></stop><stop offset=".8" stop-color="#515c60"></stop><stop offset="1" stop-color="#293338"></stop></linearGradient>
+            <linearGradient id="glass"><stop stop-color="#b9dfe0" stop-opacity=".5"></stop><stop offset=".2" stop-color="#fff" stop-opacity=".7"></stop><stop offset=".34" stop-color="#e5f3e9" stop-opacity=".1"></stop><stop offset=".8" stop-color="#b3d8d5" stop-opacity=".25"></stop><stop offset="1" stop-color="#fff" stop-opacity=".65"></stop></linearGradient>
+            <radialGradient id="tomatoLit" cx="32%" cy="25%"><stop stop-color="#f56b39"></stop><stop offset=".6" stop-color="var(--sauce)"></stop><stop offset="1" stop-color="#802417"></stop></radialGradient>
+            <radialGradient id="cheeseLit" cx="25%" cy="20%"><stop stop-color="#fffdf0"></stop><stop offset=".7" stop-color="var(--cheese)"></stop><stop offset="1" stop-color="#dcb66c"></stop></radialGradient>
+            <linearGradient id="oilLit"><stop stop-color="#fff0a3"></stop><stop offset=".3" stop-color="var(--oil)"></stop><stop offset="1" stop-color="#9d6c10"></stop></linearGradient>
+            <radialGradient id="leafLit" cx="25%" cy="20%"><stop stop-color="#8cb85a"></stop><stop offset=".6" stop-color="var(--leaf)"></stop><stop offset="1" stop-color="#174c32"></stop></radialGradient>
+            <linearGradient id="woodLit" x2="0" y2="1"><stop stop-color="var(--bench)"></stop><stop offset="1" stop-color="var(--dough2)"></stop></linearGradient>
+            <radialGradient id="studioLight" cx="23%" cy="0" r="90%"><stop stop-color="#fff4d9" stop-opacity=".5"></stop><stop offset="1" stop-color="#39271d" stop-opacity=".15"></stop></radialGradient>
+            <radialGradient id="contact"><stop stop-color="#241b15" stop-opacity=".38"></stop><stop offset="1" stop-color="#241b15" stop-opacity="0"></stop></radialGradient>
+            <pattern id="grainWood" width="190" height="35" patternUnits="userSpaceOnUse"><path d="M-20 7 Q40 -2 100 9 T220 7 M-20 12 Q55 3 115 14 T220 12 M0 30 Q80 17 190 30" fill="none" stroke="#7c4c2b" stroke-opacity=".13" stroke-width="1"></path></pattern>
+          </defs>
+          <rect width="800" height="450" fill="url(#studioLight)"></rect>
+          <path d="M0 310 Q400 293 800 310 V450 H0Z" fill="url(#woodLit)"></path>
+          <path d="M0 310 Q400 293 800 310 V450 H0Z" fill="url(#grainWood)"></path>
+          <path d="M0 352H800 M0 409H800" stroke="#754c31" stroke-opacity=".13"></path>
+          <ellipse cx="400" cy="349" rx="295" ry="65" fill="url(#contact)"></ellipse>
+          <path d="M30 333 L132 321 L167 450 H22Z" fill="var(--card)" opacity=".35"></path>
+          <path d="M47 335L72 450 M57 333L82 450" stroke="var(--tomato)" stroke-opacity=".25" stroke-width="3"></path>
+          <g id="scn"><g aria-hidden="true"><ellipse cx="602.6996141299605" cy="362.68486332474276" rx="2.5235367885790767" ry="0.8793869951507076" fill="#fff1d5" opacity="0.36962454112246634"></ellipse><ellipse cx="536.0166702745482" cy="374.1372885843739" rx="2.595379705308005" ry="0.5392405197024346" fill="#fff1d5" opacity="0.39726737240795046"></ellipse><ellipse cx="237.71256846375763" cy="352.91253617824987" rx="0.695419585518539" ry="1.1379337956430389" fill="#fff1d5" opacity="0.2794526690337807"></ellipse><ellipse cx="353.9115058677271" cy="377.47118996456265" rx="0.935208328673616" ry="0.9335656789597124" fill="#fff1d5" opacity="0.3927770845359191"></ellipse><ellipse cx="397.2740182839334" cy="334.4108391604386" rx="2.4544671771116557" ry="0.7218781468225643" fill="#fff1d5" opacity="0.3332417573779821"></ellipse><ellipse cx="549.1659395163879" cy="347.01203864905983" rx="0.7070937508251518" ry="0.927936019655317" fill="#fff1d5" opacity="0.23291450925637036"></ellipse><ellipse cx="448.59574473463" cy="330.75260777631775" rx="2.734645383432508" ry="1.0492478519910946" fill="#fff1d5" opacity="0.35162610388360915"></ellipse><ellipse cx="290.2307445788756" cy="330.4565102364868" rx="1.4093958128709345" ry="1.163335442217067" fill="#fff1d5" opacity="0.3661212396202609"></ellipse><ellipse cx="511.32647678256035" cy="370.315220549237" rx="0.7355068298988044" ry="0.5080776333576068" fill="#fff1d5" opacity="0.3962009618990123"></ellipse><ellipse cx="453.53073253761977" cy="338.6997575936839" rx="2.119637096626684" ry="0.5819674773141742" fill="#fff1d5" opacity="0.20527610069606453"></ellipse><ellipse cx="521.1243170592934" cy="327.90026225941256" rx="1.9205944964662196" ry="0.5234118099557236" fill="#fff1d5" opacity="0.18258158427663146"></ellipse><ellipse cx="425.7784813316539" cy="373.90940453857183" rx="2.0390017496887594" ry="0.6612387071829289" fill="#fff1d5" opacity="0.3133581058075652"></ellipse><ellipse cx="482.0991017855704" cy="330.02899895003065" rx="1.7019261994399133" ry="0.5720593559322878" fill="#fff1d5" opacity="0.32604252848774196"></ellipse><ellipse cx="326.81693331804127" cy="378.51253390777856" rx="2.6361110439058395" ry="0.835588561464101" fill="#fff1d5" opacity="0.37344870720524337"></ellipse><ellipse cx="421.5646361839026" cy="365.9588307165541" rx="1.8759652793407442" ry="0.8264367884257808" fill="#fff1d5" opacity="0.38758634406141934"></ellipse><ellipse cx="287.905413643457" cy="353.7961094621569" rx="2.422766096936539" ry="0.6453622648958117" fill="#fff1d5" opacity="0.2080416028900072"></ellipse><ellipse cx="459.1540280357003" cy="338.061591419857" rx="0.8012874557636678" ry="1.0477991780033333" fill="#fff1d5" opacity="0.39748998219147325"></ellipse><ellipse cx="351.3987760571763" cy="355.2216617083177" rx="1.4011841240804643" ry="1.1756541829556226" fill="#fff1d5" opacity="0.2881557050580159"></ellipse><ellipse cx="508.6208732891828" cy="322.44089258881286" rx="2.543895997665823" ry="0.7560931683750822" fill="#fff1d5" opacity="0.25742023610509934"></ellipse><ellipse cx="400.835789446719" cy="324.53358333930373" rx="2.1462780250702056" ry="0.9928730302955955" fill="#fff1d5" opacity="0.28874296938534827"></ellipse><ellipse cx="195.8248288743198" cy="379.6676619029604" rx="1.3503170450218023" ry="1.0723182358546182" fill="#fff1d5" opacity="0.32984623953700065"></ellipse><ellipse cx="311.80053462740034" cy="357.9220206225291" rx="1.9652400480117649" ry="1.1714483755640686" fill="#fff1d5" opacity="0.2970976281212643"></ellipse><ellipse cx="421.7321391310543" cy="355.40560477087274" rx="1.528724105283618" ry="0.5034035127842799" fill="#fff1d5" opacity="0.27345751940272744"></ellipse><ellipse cx="589.799487167038" cy="349.5111126881093" rx="2.5475887101609263" ry="0.696359594957903" fill="#fff1d5" opacity="0.24915696370881052"></ellipse><ellipse cx="355.99996350705624" cy="369.60652064485475" rx="1.9118954355828466" ry="0.71294734289404" fill="#fff1d5" opacity="0.2243703175149858"></ellipse><ellipse cx="218.05711827706546" cy="379.9062212957069" rx="2.4194240927230566" ry="0.947773895598948" fill="#fff1d5" opacity="0.3084861034015194"></ellipse><ellipse cx="196.10788443125784" cy="366.00423383759335" rx="2.0303002091124656" ry="0.9374753303127363" fill="#fff1d5" opacity="0.3338228649366647"></ellipse><ellipse cx="411.8242520513013" cy="323.0748092830181" rx="1.2834100643638522" ry="1.0907792485784737" fill="#fff1d5" opacity="0.39811040909495204"></ellipse><ellipse cx="420.3007555194199" cy="368.95035173138604" rx="2.726539051625878" ry="0.8608999877003953" fill="#fff1d5" opacity="0.34257201131433246"></ellipse><ellipse cx="512.7660735836253" cy="327.0797665240243" rx="1.9984629256185147" ry="0.824741040263325" fill="#fff1d5" opacity="0.31994888034183533"></ellipse><ellipse cx="461.0640815179795" cy="327.3401413955726" rx="1.2812317214906215" ry="0.9933611827204003" fill="#fff1d5" opacity="0.2390590802859515"></ellipse><ellipse cx="433.5005887458101" cy="367.75624785013497" rx="1.8677744038868695" ry="0.6619479692075402" fill="#fff1d5" opacity="0.2141605822695419"></ellipse><ellipse cx="600.7164026424289" cy="377.5975187527947" rx="0.9827493942342699" ry="0.7083414258202538" fill="#fff1d5" opacity="0.3613620408065617"></ellipse><ellipse cx="424.6434926567599" cy="364.94847801234573" rx="1.4981328662019222" ry="0.9226931847631932" fill="#fff1d5" opacity="0.2549934538686648"></ellipse><ellipse cx="363.2226872164756" cy="354.5494725597091" rx="2.1464312000200154" ry="0.9176336360396817" fill="#fff1d5" opacity="0.24074405298568308"></ellipse><ellipse cx="241.03181012440473" cy="331.02649438753724" rx="1.5050300544593482" ry="0.5225108822342008" fill="#fff1d5" opacity="0.3344709458714351"></ellipse><ellipse cx="577.758517768234" cy="334.6471985927783" rx="2.460604349989444" ry="1.0011413653148338" fill="#fff1d5" opacity="0.3359951657801866"></ellipse><ellipse cx="276.3963275915012" cy="334.7094387570396" rx="1.804251585295424" ry="1.0057065381668506" fill="#fff1d5" opacity="0.22421678118873387"></ellipse><ellipse cx="361.1368869896978" cy="331.5087975547649" rx="0.894344374909997" ry="1.1013625554973259" fill="#fff1d5" opacity="0.3914944126363844"></ellipse><ellipse cx="512.8817423665896" cy="354.3567751105875" rx="2.489047894300893" ry="0.6163306881207973" fill="#fff1d5" opacity="0.2126517246244475"></ellipse><ellipse cx="579.197701215744" cy="381.2915933425538" rx="0.6329666870646179" ry="1.134497746056877" fill="#fff1d5" opacity="0.3767437699250877"></ellipse><ellipse cx="219.72361117135733" cy="351.47670105379075" rx="0.980068241758272" ry="1.0121016180142761" fill="#fff1d5" opacity="0.18344859233591704"></ellipse><ellipse cx="342.9046203289181" cy="378.0759564419277" rx="1.4992328638210894" ry="1.1051822441862895" fill="#fff1d5" opacity="0.34979341176338496"></ellipse><ellipse cx="210.33258628565818" cy="345.8670360222459" rx="2.7905138345900924" ry="1.187231558887288" fill="#fff1d5" opacity="0.23525282525923102"></ellipse><ellipse cx="344.4446442462504" cy="335.3819703399204" rx="2.458684738818556" ry="0.7336191127775237" fill="#fff1d5" opacity="0.28023941356688736"></ellipse><ellipse cx="575.2590838214383" cy="358.1730101304129" rx="1.9089270567055792" ry="0.7954039436765015" fill="#fff1d5" opacity="0.21601579446811228"></ellipse><ellipse cx="423.33288739435375" cy="356.27035697037354" rx="1.7838865742087364" ry="0.8561359254876151" fill="#fff1d5" opacity="0.24808052542619408"></ellipse><ellipse cx="206.26543490681797" cy="362.3436431083828" rx="1.2041822374332698" ry="1.1230360033456237" fill="#fff1d5" opacity="0.2015966001851484"></ellipse><ellipse cx="443.63826382905245" cy="379.32478033332154" rx="2.4521602748893203" ry="1.1366530818631873" fill="#fff1d5" opacity="0.19141985515132545"></ellipse><ellipse cx="240.26772681158036" cy="319.1187934046611" rx="1.2390793252270669" ry="0.5741914484649897" fill="#fff1d5" opacity="0.30131546991411595"></ellipse><ellipse cx="542.2153369057924" cy="326.2989755538292" rx="0.6621407931670547" ry="0.5709850692423061" fill="#fff1d5" opacity="0.20754026957787572"></ellipse><ellipse cx="417.47594729531556" cy="358.9074731580913" rx="2.3779652713332324" ry="1.060832201084122" fill="#fff1d5" opacity="0.20663795491214842"></ellipse></g><g transform="translate(330,330) scale(1)"><ellipse cy="31" rx="120" ry="19" fill="url(#contact)"></ellipse><path d="M-120,-60 C-117,16 -70,40 0,40 C70,40 117,16 120,-60Z" fill="url(#ceramic)" filter="url(#sh)"></path><path d="M-104,-44 C-94,-1 -74,18 -40,25" fill="none" stroke="#dcf3df" stroke-width="5" opacity="0.28" stroke-linecap="round"></path><ellipse cy="-60" rx="121" ry="30" fill="url(#inside)" stroke="#a2b8ad" stroke-width="5"></ellipse><g></g></g><g transform="matrix(1,0,0,1,330,270)" data-svg-origin="-4 -2" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"><ellipse rx="96" ry="34" fill="url(#doughLit)" filter="url(#sh)"></ellipse><ellipse cx="-1.2" cy="-0.7" rx="1.36" ry="0.4" fill="#fff7df" opacity="0.32"></ellipse></g><g transform="matrix(0.34202,-0.93969,0.93969,0.34202,420,230)" data-svg-origin="0 0" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px; opacity: 0;"><path d="M-38,-120 L38,-120 L30,0 L-30,0Z" fill="url(#glass)" stroke="var(--steel)" stroke-width="3" filter="url(#sh)"></path><path d="M-34,-80 L34,-80 L30,-4 L-30,-4Z" fill="var(--water)" opacity="0.7" style="opacity: 0;"></path></g><g><circle cx="589.7062545642257" cy="260" r="2.686808291263878" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="591.8858047295362" cy="260" r="2.332098237518221" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="606.8542191572487" cy="260" r="1.8366190370172262" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="602.3368774633855" cy="260" r="2.462242955993861" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="588.8188000768423" cy="260" r="3.8872478133067485" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="597.5347820017487" cy="260" r="2.9962253657169637" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="598.3980050496757" cy="260" r="2.1653345227241516" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="584.3918248917907" cy="260" r="2.705447837617248" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="580.327145345509" cy="260" r="1.881933263875544" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="606.1006109137088" cy="260" r="3.1581197456456715" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="593.2944455184042" cy="260" r="3.492019319906831" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="607.4208320211619" cy="260" r="2.2736893820576367" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="586.8522830307484" cy="260" r="2.1005476607009768" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle><circle cx="582.2274088207632" cy="260" r="1.985326409805566" fill="var(--salt)" opacity="0.8" stroke="var(--steel)" style="opacity: 0;"></circle></g><g class="quantity" transform="translate(600,140)" opacity="0" style="opacity: 1;"><rect x="-46.599999999999994" y="-19" width="93.19999999999999" height="38" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="1" filter="url(#sh)"></rect><rect x="-37.599999999999994" y="-7" width="3" height="14" rx="2" fill="var(--gold)"></rect><text x="4" y="6" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="17" fill="var(--ink)">11 g 盐</text></g><g class="quantity" transform="translate(600,380)" opacity="0" style="opacity: 1;"><rect x="-51.699999999999996" y="-19" width="103.39999999999999" height="38" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="1" filter="url(#sh)"></rect><rect x="-42.699999999999996" y="-7" width="3" height="14" rx="2" fill="var(--gold)"></rect><text x="4" y="6" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="17" fill="var(--ink)">334 g 水</text></g><g class="quantity" transform="translate(150,120)" opacity="0" style="opacity: 1;"><rect x="-56.8" y="-19" width="113.6" height="38" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="1" filter="url(#sh)"></rect><rect x="-47.8" y="-7" width="3" height="14" rx="2" fill="var(--gold)"></rect><text x="4" y="6" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="17" fill="var(--ink)">530 g 面粉</text></g><g><circle cx="302.58179834578186" cy="270" r="2.3774164743721484" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="305.44986561173573" cy="270" r="1.526128680165857" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="320.0585849303752" cy="270" r="2.5417361186817287" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="349.34847571654245" cy="270" r="3.46371161872521" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="331.0787226213142" cy="270" r="3.714475758001208" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="300.5519321304746" cy="270" r="2.6699477578513324" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="306.3156953267753" cy="270" r="1.7928568264469504" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="301.7507983534597" cy="270" r="2.702858368773013" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="339.6818056004122" cy="270" r="2.4447843328118326" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="332.5640984834172" cy="270" r="3.17101852139458" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="316.63286595605314" cy="270" r="4.13215389791876" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="333.1980887311511" cy="270" r="3.7223212749697265" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="297.03023271169513" cy="270" r="3.7230442900210616" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="353.9459408004768" cy="270" r="1.7235560777597128" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="341.0330827534199" cy="270" r="1.7196020988747476" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="303.6154953367077" cy="270" r="1.6499908288009464" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="301.13250548485667" cy="270" r="3.0858470641076563" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="306.13435302162543" cy="270" r="1.8600064299069343" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="346.5932791028172" cy="270" r="4.182673448510467" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="299.5718052680604" cy="270" r="2.9638170310296115" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="335.1141222147271" cy="270" r="2.8809947218745946" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="360.01046584220603" cy="270" r="1.782418547105044" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="352.32775868847966" cy="270" r="1.803275696001947" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="353.47194911679253" cy="270" r="4.108142399508505" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="319.713305500336" cy="270" r="1.9136181265115737" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="326.82555003324524" cy="270" r="1.6965508102439344" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="347.4602902214974" cy="270" r="4.012112672068179" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="312.6616152259521" cy="270" r="3.5158943519927557" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="347.6810266589746" cy="270" r="2.3653419766575094" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="307.86715413676575" cy="270" r="1.8299618321470916" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="296.9911240413785" cy="270" r="1.596716515533626" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="360.4752233228646" cy="270" r="2.3678869639523326" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="302.7415770152584" cy="270" r="3.1427467204630375" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="328.64672653609887" cy="270" r="1.415335652884096" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="355.96518059261143" cy="270" r="4.12940177489072" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="328.7585075269453" cy="270" r="3.32048210138455" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="323.26993606518954" cy="270" r="2.7113773446530103" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="360.889971901197" cy="270" r="4.02029131008312" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="311.3476607762277" cy="270" r="2.421391384862363" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="298.89695873251185" cy="270" r="3.132859928626567" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="298.3421865152195" cy="270" r="1.5715490385890005" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="333.1111920089461" cy="270" r="1.7049267842434346" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="297.9133281763643" cy="270" r="3.3093645179644224" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="315.88137636659667" cy="270" r="3.825148791167885" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="311.3152261963114" cy="270" r="3.6321997333317992" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle><circle cx="308.05286093847826" cy="270" r="3.5883473190478976" fill="var(--salt)" opacity="0.8" style="opacity: 0;"></circle></g><g><circle cx="318.02387706935406" cy="270" r="1.4855072333011776" fill="var(--oil)" opacity="0.8" style="opacity: 0;"></circle><circle cx="337.4750483664684" cy="270" r="2.4739983550971374" fill="var(--oil)" opacity="0.8" style="opacity: 0;"></circle><circle cx="327.253725794144" cy="270" r="1.8292796367779371" fill="var(--oil)" opacity="0.8" style="opacity: 0;"></circle><circle cx="326.9021505606361" cy="270" r="1.1290710875065997" fill="var(--oil)" opacity="0.8" style="opacity: 0;"></circle><circle cx="327.823923798278" cy="270" r="3.107624600222334" fill="var(--oil)" opacity="0.8" style="opacity: 0;"></circle><circle cx="320.47754034167156" cy="270" r="1.987131623807363" fill="var(--oil)" opacity="0.8" style="opacity: 0;"></circle><circle cx="338.02658134605736" cy="270" r="2.48493518801406" fill="var(--oil)" opacity="0.8" style="opacity: 0;"></circle><circle cx="323.4224549517967" cy="270" r="3.101296056085266" fill="var(--oil)" opacity="0.8" style="opacity: 0;"></circle></g><line x1="330" y1="170" x2="330" y2="290" stroke="var(--steel)" stroke-width="9" stroke-linecap="round" opacity="0" style="opacity: 0;"></line><g transform="translate(690,250)" opacity="0" style="opacity: 1;"><circle r="34" fill="var(--card)" stroke="var(--ink)" stroke-width="3" filter="url(#sh)"></circle><line x1="0" y1="0" x2="0" y2="-22" stroke="var(--tomato)" stroke-width="4" stroke-linecap="round" data-svg-origin="0 0" transform="matrix(1,0,0,1,0,0)" style="translate: none; rotate: none; scale: none; transform-origin: 0px 0px;"></line><circle r="4" fill="var(--ink)"></circle><text y="62" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" fill="var(--ink)">20 min</text></g><g><circle cx="395" cy="260" r="2.716682707890868" fill="var(--water)" opacity="0" style="opacity: 0;"></circle><circle cx="386.291651" cy="270" r="2.756487993057817" fill="var(--water)" opacity="0" style="opacity: 0;"></circle><circle cx="362.5" cy="277.320508" r="1.6487805088981986" fill="var(--water)" opacity="0" style="opacity: 0;"></circle><circle cx="330" cy="280" r="2.848709719721228" fill="var(--water)" opacity="0" style="opacity: 0;"></circle><circle cx="297.5" cy="277.320508" r="3.0183549225330353" fill="var(--water)" opacity="0" style="opacity: 0;"></circle><circle cx="273.708349" cy="270" r="1.6995652462355793" fill="var(--water)" opacity="0" style="opacity: 0;"></circle><circle cx="265" cy="260" r="3.313626223243773" fill="var(--water)" opacity="0" style="opacity: 0;"></circle><circle cx="273.708349" cy="250" r="2.1613807869143784" fill="var(--water)" opacity="0" style="opacity: 0;"></circle><circle cx="297.5" cy="242.679492" r="2.8264746014028788" fill="var(--water)" opacity="0" style="opacity: 0;"></circle><circle cx="330" cy="240" r="2.108036072459072" fill="var(--water)" opacity="0" style="opacity: 0;"></circle><circle cx="362.5" cy="242.679492" r="3.2156458823010325" fill="var(--water)" opacity="0" style="opacity: 0;"></circle><circle cx="386.291651" cy="250" r="3.4343730718828738" fill="var(--water)" opacity="0" style="opacity: 0;"></circle></g></g>
+        </svg>
+
+            <span class="badge" id="plBadge">步骤 01 / 12</span>
+            <span class="waitchip" id="plWait">⏱ 约 10 分钟 + 静置 20 分钟</span>
+          </div>
+          <div class="chapters" id="plChap" aria-label="分步做法"><button type="button" class="d0" aria-label="步骤 1: 和面"><i style="width: 100%;"></i></button><button type="button" class="d0" aria-label="步骤 2: 加入橄榄油"><i style="width: 0px;"></i></button><button type="button" class="d0" aria-label="步骤 3: 揉面"><i style="width: 0px;"></i></button><button type="button" class="d0" aria-label="步骤 4: 第一次静置"><i style="width: 0px;"></i></button><button type="button" class="d0" aria-label="步骤 5: 分割、滚圆、冷藏"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="步骤 6: 面团球回温"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="步骤 7: 准备酱和奶酪"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="步骤 8: 预热 BIG HORN 烤炉"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="步骤 9: 开饼"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="步骤 10: 铺料并入炉"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="步骤 11: 烤制与旋转"><i style="width: 0px;"></i></button><button type="button" class="d1" aria-label="步骤 12: 装饰与切块"><i style="width: 0px;"></i></button></div>
+          <div class="cap" aria-live="polite">
+            <h3 id="plT"><small id="plDay">第 1 天 · 和面与揉面</small><span id="plTt">和面</span></h3>
+            <ul id="plLi"><li>将 <span class="q">530</span> 克面粉、<span class="q">1.1</span> 克酵母和 <span class="q">8.0</span> 克糖干混。</li><li>将 <span class="q">11</span> 克盐溶解在 <span class="q">334</span> 克冷水（10–15 °C）中。</li><li>把水倒入面粉，搅拌到没有干粉。</li><li>盖好静置 20 分钟，面粉充分吸水，揉面时间会更短。</li></ul>
+            <p class="tip" id="plTip" data-tpl="">冷水能减缓发酵：面团还要在冰箱里待 2 天。</p>
+          </div>
+          <div class="ctrl">
+            <button type="button" class="cbtn" id="plPrev" aria-label="上一步"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+            <button type="button" class="cbtn main" id="plPP" aria-label="播放"><svg viewBox="0 0 24 24" id="plPPIco" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"></path></svg></button>
+            <button type="button" class="cbtn" id="plNext" aria-label="下一步"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+            <button type="button" class="cbtn" id="plRep" aria-label="重播动画"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+            <span class="sp"></span>
+            <div class="mode" role="group" aria-label="模式">
+              <button type="button" id="plFilm" aria-pressed="true">连续播放</button>
+              <button type="button" id="plBench" aria-pressed="false">台面模式</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="passos">
         <div class="sec-head"><h2>分步做法</h2><p>完成一步就勾选一步。标签表示来源：纽约经典做法，或为手工制作和 BIG HORN 所做的调整。</p></div>
         <div id="stepsRoot"><div class="day"><h3>第 1 天</h3><span class="pill">和面与揉面</span></div><div class="steps"><article class="step" id="s1"><div class="illo"><svg viewBox="0 0 240 160" role="img" aria-hidden="true"><ellipse cx="120" cy="64" rx="84" ry="16" class="p-s" opacity=".5"></ellipse><path d="M36 64h168c0 46-38 76-84 76S36 110 36 64z" class="p-sf"></path><path d="M62 70c10-16 34-20 58-18s44 4 56 18c-6 18-30 30-58 30s-50-12-56-30z" class="p-d"></path><path d="M80 68c8-6 18-6 26-2M126 62c10-2 20 2 26 8" class="l-i" opacity=".35"></path><circle cx="96" cy="56" r="2" class="p-m"></circle><circle cx="150" cy="52" r="1.6" class="p-m"></circle><circle cx="118" cy="48" r="1.4" class="p-m"></circle><path d="M36 64h168c0 46-38 76-84 76S36 110 36 64z" class="l-i"></path><path d="M168 18c-4 16-8 28-18 38" class="l-i"></path><path d="M164 14l14-4" class="l-i"></path></svg></div><div class="body">
@@ -549,7 +638,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
 
 <script>
 (function(){
-  const T = {"locale": "zh-CN", "test": "试样", "panelSum": "面粉 {flour} 克 · 含水 {hyd}% · {top}/{bottom} °C", "open": "调整", "close": "收起", "stepLabel": "步骤", "done": "完成", "svg": {"noPin": "不用擀面杖 · 不要撕破", "before": "之前", "ready": "完成", "rim": "留边 1–1.5 cm", "top": "上火", "stone": "石板"}, "rel": {"d": "{d} 天 {h} 小时", "h": "{h} 小时 {m} 分", "m": "{m} 分钟"}, "sched": {"empty": "请输入烤制的日期和时间。", "next": "下一步", "in": "还有 {rel}", "ev": [["和面与揉面", "步骤 01–04。约 2 小时，其中室温静置 1 小时。"], ["滚圆并冷藏", "步骤 05。{fridge} °C 冷藏 {panh} 小时。"], ["取出面团球", "步骤 06。同时准备酱和奶酪。"], ["打开烤炉", "步骤 08。{top} °C / {bottom} °C。"], ["烤制", "步骤 09–12。每张 5–7 分钟。"]], "past": "<b>开始时间已过。<\/b>要在这个时间烤制，面团应该已经做好了。请推迟烤制，或缩短冷藏时间。", "over36": "<b>冷藏超过 72 小时。<\/b>面团容易变酸、变弱。"}, "timer": {"idle": "把披萨送入炉中，然后开始计时。", "start": "开始", "pause": "暂停", "resume": "继续", "msg": ["让饼底定型。", "第一次旋转：转 90–180°。", "每约 1 分钟转一次，观察饼边和奶酪。", "出炉窗口，检查饼底和金黄的奶酪。", "已超过 7 分钟。如果仍然发白，说明火力不足。"]}, "lower": "下火", "upper": "上火", "diagCur": "当前：{lbl} {cur} °C。下一张建议：{nv}。小步调整，只改这一个变量。", "apply": "应用 {v} °C", "applied": "已应用", "src": {"d": "纽约经典", "a": "已调整", "l": "经验"}, "warn": {"hyd": "含水率不是 63%。0.1 版建议先用默认值。", "per": "{per} 克的面团球超出了适合 BIG HORN 石板的 280–320 克范围。请参考备选方案或调整面粉用量。", "bottom": "下火超过 330 °C 时，饼底容易在奶酪上色前烤焦。"}, "diag": [["奶酪上色前饼底就焦了", "调低下加热管。", "bottom", -10], ["饼底发白、发软", "调高下加热管。", "bottom", 10], ["奶酪发白，没有金黄斑点", "调高上加热管。", "top", 10], ["奶酪烤焦或出很多油", "调低上加热管。", "top", -10], ["饼边又硬又干", "用稍高的火力烤得更快，或把橄榄油提高到 3%。"], ["对折时披萨块断裂", "烤过头或抻得太薄。早点出炉，或少抻一点。"], ["中心湿软", "少放酱，用低水分马苏里拉，入炉前让石板充分加热。"]], "steps": [{"day": "第 1 天", "when": "和面与揉面", "items": [{"id": "s1", "t": "和面", "time": "约 10 分钟 + 静置 20 分钟", "src": ["d", "a"], "il": "mix", "li": ["将 {flour} 克面粉、{yeast} 克酵母和 {sugar} 克糖干混。", "将 {salt} 克盐溶解在 {water} 克冷水（10–15 °C）中。", "把水倒入面粉，搅拌到没有干粉。", "盖好静置 20 分钟，面粉充分吸水，揉面时间会更短。"], "tip": "冷水能减缓发酵：面团还要在冰箱里待 2 天。"}, {"id": "s2", "t": "加入橄榄油", "time": "约 5 分钟", "src": ["a"], "il": "oil", "li": ["分次加入 {oil} 克橄榄油。", "用掐捏和折叠的手法揉到面团完全吸收、不再打滑。"]}, {"id": "s3", "t": "揉面", "time": "约 15 分钟", "src": ["d"], "il": "fold", "li": ["在台面上揉 8–10 分钟，不加额外面粉：用掌根推开、折回、转四分之一圈。", "静置 10 分钟，再揉 2–3 分钟，直到面团光滑有弹性。", "薄膜测试：把一小块面团抻成薄膜。如果马上破，就再揉一会儿。"], "tip": "纽约披萨需要比那不勒斯披萨更多的面筋，这才让披萨块能对折、有嚼劲。"}, {"id": "s4", "t": "第一次静置", "time": "约 1 小时", "src": ["d"], "il": "proof", "li": ["整成圆球，放入抹了薄油的碗中，盖好。", "室温静置 1 小时，只会稍微长大。"]}, {"id": "s5", "t": "分割、滚圆、冷藏", "time": "约 15 分钟", "src": ["d", "a"], "il": "balls", "li": ["分成 {n} 个面团球，每个 {per} 克（面团总重 {total} 克）。", "滚圆时让表面有张力，底部收紧。", "分别放入抹了薄油的加盖容器，冷藏约 {panh} 小时。"], "tip": "在 {fridge} °C 下发酵比美国食谱的 3–4 °C 更快，所以酵母用量很少。如果你的冰箱更冷，可提高到 0.3%。"}]}, {"day": "第 3 天", "when": "烤制", "items": [{"id": "s6", "t": "面团球回温", "time": "室温约 {outh} 小时", "src": ["d"], "il": "proof", "li": ["烤制前约 {outh} 小时从冰箱取出，保持加盖。", "状态：松弛、略微膨胀，侧面有气泡，摸起来柔软。"], "tip": "warn|冰冷的面团抻不开，会回缩、撕裂。一定要给足回温时间。"}, {"id": "s7", "t": "准备酱和奶酪", "time": "约 15 分钟", "src": ["d"], "il": "sauce", "li": ["把 {cans} 罐去皮番茄快速打一下或过筛：细滑浓稠的生酱，不要煮。", "每罐加 4–5 克盐和 1 茶匙干牛至。可选：一小撮糖和 1 瓣蒜蓉。", "把 {cheeseTotal} 克低水分马苏里拉（硬块状）擦成粗丝。", "准备好帕玛森碎、牛至和辣椒碎，用于最后装饰。"], "tip": "新鲜马苏里拉出水太多，不适合纽约披萨较长的烤制时间。"}, {"id": "s8", "t": "预热 BIG HORN 烤炉", "time": "30–40 分钟", "src": ["a"], "il": "oven", "li": ["上火 {top} °C，下火 {bottom} °C。", "如果有红外测温枪，测一下石板中心：目标约 290–320 °C。"], "tip": "warn|这是初始值，尚未在这台烤炉中实测。请用下面的诊断来校准。"}, {"id": "s9", "t": "开饼", "time": "每张约 2 分钟", "src": ["d"], "il": "open", "li": ["面团球两面都撒足面粉。", "用指尖按压中心，留出约 1 cm 的边。", "提起面团放在指关节上，边转边抻，抻到约 30–32 cm。", "饼皮薄而均匀，中心几乎透光。"], "tip": "不用擀面杖。如果面团回缩，静置 5–10 分钟再继续。"}, {"id": "s10", "t": "铺料并入炉", "time": "在铲上约 1 分钟", "src": ["d"], "il": "build", "li": ["在披萨铲上撒粗粒小麦粉，放上饼皮。", "薄薄抹上 {sauce} 克酱，留出约 1 cm 的边。", "铺上 {cheese} 克马苏里拉丝，几乎铺到边缘。", "轻轻左右晃动：整张披萨必须能滑动。"]}, {"id": "s11", "t": "烤制与旋转", "time": "5–7 分钟", "src": ["a"], "il": "bake", "li": ["每约 1 分钟转 90–180°，让受热均匀。", "状态：奶酪融化并出现金黄斑点，饼边金黄。", "用铲子掀起边缘：饼底应结实、带斑点，而不是发白。"], "tip": "纽约披萨比那不勒斯披萨烤得更慢、温度更低：底部酥脆，上层柔软。"}, {"id": "s12", "t": "装饰与切块", "time": "约 2 分钟", "src": ["d"], "il": "balls", "li": ["放在烤架上 1–2 分钟，避免饼底变软。", "撒上帕玛森、牛至和辣椒碎。", "切成 6 到 8 块。吃的时候把披萨块对折。"]}]}], "ld": {"name": "自制纽约风格披萨（冷藏 48 小时的面团）", "description": "纽约风格披萨配方：高筋面粉、63% 含水率、橄榄油和糖，冷藏发酵 48 小时，生番茄酱和低水分马苏里拉。", "yield": "{n} 张约 32 cm 披萨", "category": "披萨", "cuisine": "美式（纽约）", "keywords": "纽约披萨, 纽约风格披萨, 纽约披萨配方, 纽约披萨面团, 美式披萨, 自制披萨", "toppings": ["{sauce} 克调味生番茄酱", "{cheese} 克低水分马苏里拉丝", "帕玛森碎、干牛至和辣椒碎适量"], "url": "https://napoliprotocol.com/zh/new-york/", "inLanguage": "zh-Hans", "images": ["https://napoliprotocol.com/img/recipe-new-york-zh-1x1.png", "https://napoliprotocol.com/img/recipe-new-york-zh-4x3.png", "https://napoliprotocol.com/img/recipe-new-york-zh-16x9.png"]}, "cfg": {"def": {"mode": "flour", "flour": 530, "pizzas": 3, "w": 300, "hyd": 63, "salt": 2, "oil": 2.5, "yeast": 0.2, "sugar": 1.5, "pf": 0, "fridge": 7, "top": 350, "bottom": 300, "sauce": 90, "cheese": 120, "pfh": 0, "panh": 48, "outh": 2, "bake": ""}, "ls": "newyork-v1", "features": {"preferment": false, "sugar": true, "waterSplit": false}, "warn": {"hyd": 63, "perMin": 280, "perMax": 320, "bottomMax": 330, "panhMax": 72}, "sched": [{"off": ["outh", "panh", 2], "cls": "work"}, {"off": ["outh", "panh"], "cls": "cold"}, {"off": ["outh"], "cls": "work"}, {"off": [0.75], "cls": "hot"}, {"off": [], "cls": "hot"}], "timer": {"max": 480, "turn": [60, 90], "ok": [300, 420], "marks": [60, 90, 300, 420], "ticks": [0, 120, 240, 360, 480]}, "ld": {"prepTime": "PT1H30M", "cookTime": "PT7M", "totalTime": "PT52H", "datePublished": "2026-10-24"}}};
+  const T = {"locale": "zh-CN", "test": "试样", "panelSum": "面粉 {flour} 克 · 含水 {hyd}% · {top}/{bottom} °C", "open": "调整", "close": "收起", "stepLabel": "步骤", "done": "完成", "svg": {"noPin": "不用擀面杖 · 不要撕破", "before": "之前", "ready": "完成", "rim": "留边 1–1.5 cm", "top": "上火", "stone": "石板"}, "rel": {"d": "{d} 天 {h} 小时", "h": "{h} 小时 {m} 分", "m": "{m} 分钟"}, "sched": {"empty": "请输入烤制的日期和时间。", "next": "下一步", "in": "还有 {rel}", "ev": [["和面与揉面", "步骤 01–04。约 2 小时，其中室温静置 1 小时。"], ["滚圆并冷藏", "步骤 05。{fridge} °C 冷藏 {panh} 小时。"], ["取出面团球", "步骤 06。同时准备酱和奶酪。"], ["打开烤炉", "步骤 08。{top} °C / {bottom} °C。"], ["烤制", "步骤 09–12。每张 5–7 分钟。"]], "past": "<b>开始时间已过。<\/b>要在这个时间烤制，面团应该已经做好了。请推迟烤制，或缩短冷藏时间。", "over36": "<b>冷藏超过 72 小时。<\/b>面团容易变酸、变弱。"}, "timer": {"idle": "把披萨送入炉中，然后开始计时。", "start": "开始", "pause": "暂停", "resume": "继续", "msg": ["让饼底定型。", "第一次旋转：转 90–180°。", "每约 1 分钟转一次，观察饼边和奶酪。", "出炉窗口，检查饼底和金黄的奶酪。", "已超过 7 分钟。如果仍然发白，说明火力不足。"]}, "lower": "下火", "upper": "上火", "diagCur": "当前：{lbl} {cur} °C。下一张建议：{nv}。小步调整，只改这一个变量。", "apply": "应用 {v} °C", "applied": "已应用", "player": {"step": "步骤", "play": "播放", "pause": "暂停", "lbl": {"flour": "面粉", "water": "水", "yeast": "酵母", "salt": "盐", "oil": "橄榄油", "sauce": "酱", "cheese": "奶酪", "cans": "罐 · 盐", "cheeseN": "马苏里拉", "cheeseNY": "马苏里拉丝", "foldN": "拉伸 · 折叠 · 静置", "foldNY": "揉面 8–10 分钟", "lam": "不用擀面杖 · 不要撕破", "rimN": "留边 1–1.5 cm", "rimNY": "用指关节抻开", "top": "上火", "bottom": "下火", "window": "薄膜测试", "foldSlice": "对折"}}, "src": {"d": "纽约经典", "a": "已调整", "l": "经验"}, "warn": {"hyd": "含水率不是 63%。0.1 版建议先用默认值。", "per": "{per} 克的面团球超出了适合 BIG HORN 石板的 280–320 克范围。请参考备选方案或调整面粉用量。", "bottom": "下火超过 330 °C 时，饼底容易在奶酪上色前烤焦。"}, "diag": [["奶酪上色前饼底就焦了", "调低下加热管。", "bottom", -10], ["饼底发白、发软", "调高下加热管。", "bottom", 10], ["奶酪发白，没有金黄斑点", "调高上加热管。", "top", 10], ["奶酪烤焦或出很多油", "调低上加热管。", "top", -10], ["饼边又硬又干", "用稍高的火力烤得更快，或把橄榄油提高到 3%。"], ["对折时披萨块断裂", "烤过头或抻得太薄。早点出炉，或少抻一点。"], ["中心湿软", "少放酱，用低水分马苏里拉，入炉前让石板充分加热。"]], "steps": [{"day": "第 1 天", "when": "和面与揉面", "items": [{"id": "s1", "t": "和面", "time": "约 10 分钟 + 静置 20 分钟", "src": ["d", "a"], "il": "mix", "li": ["将 {flour} 克面粉、{yeast} 克酵母和 {sugar} 克糖干混。", "将 {salt} 克盐溶解在 {water} 克冷水（10–15 °C）中。", "把水倒入面粉，搅拌到没有干粉。", "盖好静置 20 分钟，面粉充分吸水，揉面时间会更短。"], "tip": "冷水能减缓发酵：面团还要在冰箱里待 2 天。"}, {"id": "s2", "t": "加入橄榄油", "time": "约 5 分钟", "src": ["a"], "il": "oil", "li": ["分次加入 {oil} 克橄榄油。", "用掐捏和折叠的手法揉到面团完全吸收、不再打滑。"]}, {"id": "s3", "t": "揉面", "time": "约 15 分钟", "src": ["d"], "il": "fold", "li": ["在台面上揉 8–10 分钟，不加额外面粉：用掌根推开、折回、转四分之一圈。", "静置 10 分钟，再揉 2–3 分钟，直到面团光滑有弹性。", "薄膜测试：把一小块面团抻成薄膜。如果马上破，就再揉一会儿。"], "tip": "纽约披萨需要比那不勒斯披萨更多的面筋，这才让披萨块能对折、有嚼劲。"}, {"id": "s4", "t": "第一次静置", "time": "约 1 小时", "src": ["d"], "il": "proof", "li": ["整成圆球，放入抹了薄油的碗中，盖好。", "室温静置 1 小时，只会稍微长大。"]}, {"id": "s5", "t": "分割、滚圆、冷藏", "time": "约 15 分钟", "src": ["d", "a"], "il": "balls", "li": ["分成 {n} 个面团球，每个 {per} 克（面团总重 {total} 克）。", "滚圆时让表面有张力，底部收紧。", "分别放入抹了薄油的加盖容器，冷藏约 {panh} 小时。"], "tip": "在 {fridge} °C 下发酵比美国食谱的 3–4 °C 更快，所以酵母用量很少。如果你的冰箱更冷，可提高到 0.3%。"}]}, {"day": "第 3 天", "when": "烤制", "items": [{"id": "s6", "t": "面团球回温", "time": "室温约 {outh} 小时", "src": ["d"], "il": "proof", "li": ["烤制前约 {outh} 小时从冰箱取出，保持加盖。", "状态：松弛、略微膨胀，侧面有气泡，摸起来柔软。"], "tip": "warn|冰冷的面团抻不开，会回缩、撕裂。一定要给足回温时间。"}, {"id": "s7", "t": "准备酱和奶酪", "time": "约 15 分钟", "src": ["d"], "il": "sauce", "li": ["把 {cans} 罐去皮番茄快速打一下或过筛：细滑浓稠的生酱，不要煮。", "每罐加 4–5 克盐和 1 茶匙干牛至。可选：一小撮糖和 1 瓣蒜蓉。", "把 {cheeseTotal} 克低水分马苏里拉（硬块状）擦成粗丝。", "准备好帕玛森碎、牛至和辣椒碎，用于最后装饰。"], "tip": "新鲜马苏里拉出水太多，不适合纽约披萨较长的烤制时间。"}, {"id": "s8", "t": "预热 BIG HORN 烤炉", "time": "30–40 分钟", "src": ["a"], "il": "oven", "li": ["上火 {top} °C，下火 {bottom} °C。", "如果有红外测温枪，测一下石板中心：目标约 290–320 °C。"], "tip": "warn|这是初始值，尚未在这台烤炉中实测。请用下面的诊断来校准。"}, {"id": "s9", "t": "开饼", "time": "每张约 2 分钟", "src": ["d"], "il": "open", "li": ["面团球两面都撒足面粉。", "用指尖按压中心，留出约 1 cm 的边。", "提起面团放在指关节上，边转边抻，抻到约 30–32 cm。", "饼皮薄而均匀，中心几乎透光。"], "tip": "不用擀面杖。如果面团回缩，静置 5–10 分钟再继续。"}, {"id": "s10", "t": "铺料并入炉", "time": "在铲上约 1 分钟", "src": ["d"], "il": "build", "li": ["在披萨铲上撒粗粒小麦粉，放上饼皮。", "薄薄抹上 {sauce} 克酱，留出约 1 cm 的边。", "铺上 {cheese} 克马苏里拉丝，几乎铺到边缘。", "轻轻左右晃动：整张披萨必须能滑动。"]}, {"id": "s11", "t": "烤制与旋转", "time": "5–7 分钟", "src": ["a"], "il": "bake", "li": ["每约 1 分钟转 90–180°，让受热均匀。", "状态：奶酪融化并出现金黄斑点，饼边金黄。", "用铲子掀起边缘：饼底应结实、带斑点，而不是发白。"], "tip": "纽约披萨比那不勒斯披萨烤得更慢、温度更低：底部酥脆，上层柔软。"}, {"id": "s12", "t": "装饰与切块", "time": "约 2 分钟", "src": ["d"], "il": "balls", "li": ["放在烤架上 1–2 分钟，避免饼底变软。", "撒上帕玛森、牛至和辣椒碎。", "切成 6 到 8 块。吃的时候把披萨块对折。"]}]}], "ld": {"name": "自制纽约风格披萨（冷藏 48 小时的面团）", "description": "纽约风格披萨配方：高筋面粉、63% 含水率、橄榄油和糖，冷藏发酵 48 小时，生番茄酱和低水分马苏里拉。", "yield": "{n} 张约 32 cm 披萨", "category": "披萨", "cuisine": "美式（纽约）", "keywords": "纽约披萨, 纽约风格披萨, 纽约披萨配方, 纽约披萨面团, 美式披萨, 自制披萨", "toppings": ["{sauce} 克调味生番茄酱", "{cheese} 克低水分马苏里拉丝", "帕玛森碎、干牛至和辣椒碎适量"], "url": "https://napoliprotocol.com/zh/new-york/", "inLanguage": "zh-Hans", "images": ["https://napoliprotocol.com/img/recipe-new-york-zh-1x1.png", "https://napoliprotocol.com/img/recipe-new-york-zh-4x3.png", "https://napoliprotocol.com/img/recipe-new-york-zh-16x9.png"]}, "cfg": {"id": "new-york", "targetSize": "~32 cm", "scenes": {"s1": "mix", "s2": "oil", "s3": "fold", "s4": "temper", "s5": "balls", "s6": "temper", "s7": "sauce", "s8": "oven", "s9": "open", "s10": "build", "s11": "bake", "s12": "slice"}, "def": {"mode": "flour", "flour": 530, "pizzas": 3, "w": 300, "hyd": 63, "salt": 2, "oil": 2.5, "yeast": 0.2, "sugar": 1.5, "pf": 0, "fridge": 7, "top": 350, "bottom": 300, "sauce": 90, "cheese": 120, "pfh": 0, "panh": 48, "outh": 2, "bake": ""}, "ls": "newyork-v1", "features": {"preferment": false, "sugar": true, "waterSplit": false}, "warn": {"hyd": 63, "perMin": 280, "perMax": 320, "bottomMax": 330, "panhMax": 72}, "sched": [{"off": ["outh", "panh", 2], "cls": "work"}, {"off": ["outh", "panh"], "cls": "cold"}, {"off": ["outh"], "cls": "work"}, {"off": [0.75], "cls": "hot"}, {"off": [], "cls": "hot"}], "timer": {"max": 480, "turn": [60, 90], "ok": [300, 420], "marks": [60, 90, 300, 420], "ticks": [0, 120, 240, 360, 480]}, "ld": {"prepTime": "PT1H30M", "cookTime": "PT7M", "totalTime": "PT52H", "datePublished": "2026-10-24"}}};
   const C = T.cfg, DEF = C.def, LS = C.ls;
   const store = {get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
   let P = Object.assign({}, DEF, store.get(LS+':p')||{});
@@ -675,6 +764,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
     const wb=document.getElementById('warnBox'); wb.innerHTML = w.map(x=>'<span>'+x+'</span>').join('<br>'); wb.hidden=!w.length;
     document.getElementById('panelSum').textContent = fill(T.panelSum,{flour:nf0.format(Math.round(R.flour)), hyd:R.hydPct, top:nf0.format(P.top), bottom:nf0.format(P.bottom)});
     renderSchedule(); updateProgress();
+    if(window.NP) NP.onRender.forEach(f=>f());
   }
 
   // ---------- Inputs ----------
@@ -761,6 +851,7 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
   syncTheme();
   document.addEventListener('click',e=>{const a=e.target.closest('[data-setlang]'); if(a) try{localStorage.setItem('np-lang',a.dataset.setlang)}catch(_){}});
   setInterval(renderSchedule, 60e3);
+  window.NP={T,C,calc,fmt,onRender:[]};   // ponte para o player animado (src/player.js)
   renderSteps(); syncInputs(); applyChecks(); render();
 
   // ---------- Dados estruturados (gerados no build; não roda se já existir) ----------
@@ -777,6 +868,354 @@ table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
     document.head.appendChild(s);
   }
 })();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+/* Player animado do passo a passo.
+   Cenas em SVG + GSAP desenhadas pelo Codex (GPT) no protótipo "Player da Receita";
+   integradas ao site usando o mesmo cálculo de quantidades (window.NP) e os textos da receita. */
+(function(){
+const NP=window.NP, box=document.getElementById('assistir');
+if(!NP||!window.gsap||!box){ if(box) box.hidden=true; return; }
+const T=NP.T, C=NP.C, PL=T.player, L=PL.lbl;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const NS='http://www.w3.org/2000/svg';
+const nf0=new Intl.NumberFormat(T.locale,{maximumFractionDigits:0}), nf1=new Intl.NumberFormat(T.locale,{minimumFractionDigits:1,maximumFractionDigits:1});
+const gfmt=v=>v<10?nf1.format(v):nf0.format(Math.round(v));
+const rk=C.id==='napolitana'?'napo':'ny';
+let Q={}, R={};
+function refreshQ(){R=NP.calc();Q=Object.assign({},R,{bass:R.bassWater,sauce:R.sauceTotal,cheese:R.cheeseTotal,size:C.targetSize})}
+const fq=k=>{const v=Q[k];return typeof v!=='number'?v:Number.isInteger(v)?nf0.format(v):gfmt(v)};
+refreshQ();
+
+/* ---------- motor de cenas (Codex) ---------- */
+const scn=document.getElementById('scn');
+const E=(tag,a={},p=scn)=>{const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
+const G=(a={},p=scn)=>E('g',a,p);
+const V=n=>`var(--${n})`;
+// Deterministic procedural detail makes replay and final frames consistent.
+let seed=17;
+function rand(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}
+function tag(x,y,txt,col='ink'){
+  const w=Math.min(740,txt.length*10.2+32);x=Math.max(w/2+18,Math.min(782-w/2,x));
+  const g=G({class:'quantity',transform:`translate(${x},${y})`});
+  E('rect',{x:-w/2,y:-19,width:w,height:38,rx:12,fill:V('card'),stroke:V('line'),'stroke-width':1,filter:'url(#sh)'},g);
+  E('rect',{x:-w/2+9,y:-7,width:3,height:14,rx:2,fill:V('gold')},g);
+  E('text',{x:4,y:6,'text-anchor':'middle','font-family':'JetBrains Mono, monospace','font-size':17,fill:V(col)},g).textContent=txt;return g;
+}
+function bowl(x,y,s=1){const g=G({transform:`translate(${x},${y}) scale(${s})`});
+  E('ellipse',{cy:31,rx:120,ry:19,fill:'url(#contact)'},g);
+  E('path',{d:'M-120,-60 C-117,16 -70,40 0,40 C70,40 117,16 120,-60Z',fill:'url(#ceramic)',filter:'url(#sh)'},g);
+  E('path',{d:'M-104,-44 C-94,-1 -74,18 -40,25',fill:'none',stroke:'#dcf3df','stroke-width':5,opacity:.28,'stroke-linecap':'round'},g);
+  E('ellipse',{cy:-60,rx:121,ry:30,fill:'url(#inside)',stroke:'#a2b8ad','stroke-width':5},g);
+  const inner=G({},g);return {g,inner};
+}
+function blob(x,y,rx,ry,p=scn){const g=G({transform:`translate(${x},${y})`},p);
+  const b=E('ellipse',{rx,ry,fill:'url(#doughLit)',filter:'url(#sh)'},g);
+  const gl=E('ellipse',{cx:-rx*.3,cy:-ry*.35,rx:rx*.34,ry:ry*.2,fill:'#fff7df',opacity:.32},g);
+  return {g,b,gl};
+}
+function grains(n,x,y,col,r=3,spread=40){const g=G();const arr=[];for(let i=0;i<n;i++)arr.push(E('circle',{cx:x+(rand()-.5)*spread,cy:y-rand()*70,r:r*(.35+rand()*.7),fill:col,opacity:.8},g));return {g,arr};}
+function stream(x1,y1,x2,y2,col,w=8){const l=E('path',{d:`M${x1},${y1} Q${x2-24},${y1+25} ${x2},${y2}`,fill:'none',stroke:col,'stroke-width':w,'stroke-linecap':'round',opacity:.85});const len=l.getTotalLength();l.style.strokeDasharray=len;l.style.strokeDashoffset=len;return {l,len};}
+function clock(x,y,label){const g=G({transform:`translate(${x},${y})`,opacity:0});
+  E('circle',{r:34,fill:V('card'),stroke:V('ink'),'stroke-width':3,filter:'url(#sh)'},g);
+  const h=E('line',{x1:0,y1:0,x2:0,y2:-22,stroke:V('tomato'),'stroke-width':4,'stroke-linecap':'round'},g);
+  E('circle',{r:4,fill:V('ink')},g); const t=E('text',{y:62,'text-anchor':'middle','font-family':'JetBrains Mono, monospace','font-size':16,fill:V('ink')},g); t.textContent=label; return {g,h};}
+function fridge(x,y){const g=G({transform:`translate(${x},${y})`});
+  E('rect',{x:-70,y:-230,width:140,height:240,rx:16,fill:V('card'),stroke:V('cold'),'stroke-width':3,filter:'url(#sh)'},g);
+  E('line',{x1:-70,y1:-150,x2:70,y2:-150,stroke:V('cold'),'stroke-width':3},g);
+  E('rect',{x:46,y:-210,width:8,height:40,rx:4,fill:V('cold')},g);E('rect',{x:46,y:-130,width:8,height:60,rx:4,fill:V('cold')},g);
+  for(let i=0;i<3;i++)E('text',{x:-50+i*30,y:-170,'font-size':18,fill:V('cold'),'font-family':'JetBrains Mono'},g).textContent='❄';
+  return g;}
+function oven(x,y){const g=G({transform:`translate(${x},${y})`});
+  E('ellipse',{cy:24,rx:216,ry:26,fill:'url(#contact)'},g);
+  E('path',{d:'M-190,-180 L-164,-211 H171 L193,-181 V20 H-190Z',fill:'url(#metal)',filter:'url(#sh)'},g);
+  E('rect',{x:-179,y:-187,width:358,height:198,rx:24,fill:'#263338',stroke:'#adb5ad','stroke-width':2},g);
+  E('rect',{x:-160,y:-170,width:320,height:160,rx:40,fill:'#191512',stroke:'#111b20','stroke-width':8},g);
+  E('path',{d:'M-149,-56L149,-56L159,-17H-159Z',fill:'#bfa88c'},g);
+  for(let i=0;i<9;i++)E('line',{x1:-132+i*33,y1:-52,x2:-147+i*37,y2:-21,stroke:'#5f4d3a','stroke-width':1,opacity:.35},g);
+  const top=E('rect',{x:-130,y:-152,width:260,height:8,rx:4,fill:'#5a2a1a'},g);
+  const bot=E('rect',{x:-140,y:-29,width:280,height:8,rx:4,fill:'#6b4a2e'},g);
+  const glow=E('ellipse',{cy:-90,rx:154,ry:78,fill:'url(#glow)',opacity:0},g);
+  E('path',{d:'M-155,-181H100',stroke:'#eef3e6','stroke-width':2,opacity:.5},g);
+  for(const x of [-152,152])E('circle',{cx:x,cy:1,r:7,fill:'url(#metal)',stroke:'#121d21','stroke-width':2},g);
+  return {g,top,bot,glow};
+}
+function pizza(x,y,r,p=scn,ny=false){const g=G({transform:`translate(${x},${y})`},p);
+  const base=E('circle',{r,fill:ny?'url(#crustLit)':'url(#doughLit)',stroke:V('dough2'),'stroke-width':ny?4:8,filter:'url(#sh)'},g);
+  const sauce=E('circle',{r:r*(ny?.9:.8),fill:'url(#tomatoLit)',opacity:0},g);
+  return {g,base,sauce};
+}
+function num(el,from,to,suffix,dur,tl,at){const o={v:from};tl.to(o,{v:to,duration:dur,ease:'power1.out',onUpdate:()=>el.textContent=Math.round(o.v)+suffix},at);}
+
+const SCENES={
+ pref(tl){ // pote, farinha, fermento, água, mexer, bolhas, geladeira
+  const jar=G({transform:'translate(330,320)'});
+  E('rect',{x:-70,y:-170,width:140,height:170,rx:22,fill:'url(#glass)',stroke:V('steel'),'stroke-width':3,opacity:.95,filter:'url(#sh)'},jar);
+  const fillR=E('rect',{x:-64,y:-6,width:128,height:0,rx:16,fill:'url(#doughLit)'},jar);
+  const fl=grains(40,330,40,V('salt'),4,50), ye=grains(10,330,40,V('gold'),3,30);
+  const t1=tag(500,150,`${fq('pfFlour')} g ${L.flour}`), t2=tag(500,200,`${fq('yeast')} g ${L.yeast}`), t3=tag(500,250,`${fq('pfWater')} g ${L.water}`);
+  [t1,t2,t3].forEach(t=>t.setAttribute('opacity',0));
+  const w=stream(420,60,345,260,V('water'),10);
+  tl.to(t1,{opacity:1,duration:.3}).to(fl.arr,{attr:{cy:300},duration:.7,stagger:.012,ease:'power2.in'},'<')
+    .to(fl.arr,{opacity:0,duration:.2},'>-.1').to(fillR,{attr:{y:-50,height:44},duration:.4},'<')
+    .to(t2,{opacity:1,duration:.3}).to(ye.arr,{attr:{cy:280},duration:.5,stagger:.03,ease:'power2.in'},'<').to(ye.arr,{opacity:0,duration:.2})
+    .to(t3,{opacity:1,duration:.3}).to(w.l.style,{strokeDashoffset:0,duration:.5}).to(fillR,{attr:{y:-100,height:94},duration:.7},'<')
+    .to(w.l,{opacity:0,duration:.2});
+  const spoon=E('line',{x1:330,y1:120,x2:330,y2:260,stroke:V('steel'),'stroke-width':8,'stroke-linecap':'round',opacity:0});
+  tl.to(spoon,{opacity:1,duration:.2}).to(spoon,{attr:{x1:300,x2:360},duration:.18,repeat:5,yoyo:true}).to(spoon,{opacity:0,duration:.2});
+  const bub=[];for(let i=0;i<12;i++)bub.push(E('circle',{cx:280+rand()*100,cy:230+rand()*50,r:2+rand()*5,fill:'#fff',opacity:0},jar.parentNode));
+  tl.to(bub,{opacity:.85,duration:.25,stagger:.05});
+  const fr=fridge(650,320); fr.setAttribute('opacity',0); scn.appendChild(jar); bub.forEach(b=>scn.appendChild(b)); const ck=clock(150,160,`${fq('pfh')} h`);
+  tl.to(fr,{opacity:1,duration:.3}).to([jar,...bub],{x:'+=320',scale:.55,transformOrigin:'50% 100%',duration:.8,ease:'power2.inOut'})
+    .to(ck.g,{opacity:1,duration:.3},'<').to(ck.h,{rotation:720,transformOrigin:'0 0',svgOrigin:'0 0',duration:1.2,ease:'none'});
+ },
+ mix(tl){
+  const b=bowl(330,330); const pf=blob(330,282,rk==='napo'?60:4,rk==='napo'?16:2,b.g.parentNode);
+  const glass=G({transform:'translate(600,320)'});E('path',{d:'M-38,-120 L38,-120 L30,0 L-30,0Z',fill:'url(#glass)',stroke:V('steel'),'stroke-width':3,filter:'url(#sh)'},glass);
+  const wl=E('path',{d:'M-34,-80 L34,-80 L30,-4 L-30,-4Z',fill:V('water'),opacity:.7},glass);
+  const cr=grains(14,600,90,V('salt'),4,40); cr.arr.forEach(c=>c.setAttribute('stroke',V('steel')));
+  const ts=tag(600,140,`${fq('salt')} g ${L.salt}`), tw=tag(600,380+0,`${fq(rk==='napo'?'initWater':'water')} g ${L.water}`);
+  const tf=tag(150,120,`${fq(rk==='napo'?'finFlour':'flour')} g ${L.flour}`); [ts,tw,tf].forEach(t=>t.setAttribute('opacity',0));
+  tl.to(ts,{opacity:1,duration:.3}).to(cr.arr,{attr:{cy:260},duration:.5,stagger:.02,ease:'power2.in'},'<').to(cr.arr,{opacity:0,duration:.6,stagger:.02})
+    .to(tw,{opacity:1,duration:.3},'<');
+  const fl=grains(46,330,30,V('salt'),4,70);
+  tl.to(tf,{opacity:1,duration:.3}).to(fl.arr,{attr:{cy:270},duration:.7,stagger:.01,ease:'power2.in'},'<').to(fl.arr,{opacity:0,duration:.2});
+  if(rk==='ny'){const sg=grains(8,330,30,V('oil'),3,30);tl.to(sg.arr,{attr:{cy:270},duration:.4,stagger:.02}).to(sg.arr,{opacity:0,duration:.2});}
+  tl.to(glass,{rotation:-70,x:'-=180',y:'-=90',svgOrigin:'600 320',duration:.6,ease:'power2.inOut'}).to(wl,{opacity:0,duration:.5});
+  tl.to(pf.b,{attr:{rx:92,ry:30},duration:.6},'<').to(pf.g,{y:'-=12',duration:.6},'<');
+  const sp=E('line',{x1:330,y1:170,x2:330,y2:290,stroke:V('steel'),'stroke-width':9,'stroke-linecap':'round',opacity:0});
+  tl.to(glass,{opacity:0,duration:.3}).to(sp,{opacity:1,duration:.2}).to(sp,{attr:{x1:290,x2:370},duration:.16,repeat:7,yoyo:true})
+    .to(pf.b,{attr:{rx:96,ry:34},duration:.8},'<').to(sp,{opacity:0,duration:.2});
+  if(rk==='ny'){const ck=clock(690,250,'20 min');tl.to(ck.g,{opacity:1,duration:.3}).to(ck.h,{rotation:360,svgOrigin:'0 0',duration:.9,ease:'none'});}
+ },
+ bass(tl){
+  bowl(330,330); const d=blob(330,272,96,34);
+  const per=Q.bass/3; for(let i=0;i<3;i++){const drop=E('path',{d:'M0,-14 C8,-2 10,4 0,12 C-10,4 -8,-2 0,-14Z',fill:V('water'),transform:'translate(330,60)',opacity:0});
+    const t=tag(520,120+i*48,`+ ${gfmt(per)} g ${L.water}`);t.setAttribute('opacity',0);
+    tl.to(t,{opacity:1,duration:.25}).to(drop,{opacity:1,duration:.1},'<').to(drop,{y:200,duration:.45,ease:'power2.in'},'<')
+      .to(drop,{opacity:0,scale:2,transformOrigin:'50% 50%',duration:.2}).to(d.b,{attr:{rx:96+i*3,ry:30},duration:.15,yoyo:true,repeat:1})
+      .to(d.gl,{opacity:.25,duration:.2},'<').to({},{duration:.25});}
+ },
+ fold(tl){
+  bowl(330,330);const d=blob(330,274,94,34);
+  const flap=E('path',{d:'M250 273 C260 244 280 240 300 239 C315 237 345 237 360 239 C380 240 400 244 410 273 C392 307 268 307 250 273Z',fill:'url(#doughLit)',filter:'url(#sh)'});
+  const seam=E('path',{d:'M270 274 Q330 293 391 274',fill:'none',stroke:V('dough2'),'stroke-width':2,opacity:0});
+  const label=tag(520,105,rk==='napo'?L.foldN:L.foldNY);
+  tIntro(tl,label);
+  for(let i=0;i<3;i++){
+    tl.to(flap,{attr:{d:'M250 273 C275 251 294 172 308 151 C321 129 348 131 359 155 C376 194 390 251 410 273 C392 307 268 307 250 273Z'},duration:.55,ease:'power2.inOut'})
+      .to(flap,{attr:{d:'M250 273 C265 242 285 252 305 264 C320 273 345 286 360 277 C380 267 398 253 410 273 C392 307 268 307 250 273Z'},duration:.5,ease:'power3.inOut'})
+      .to(seam,{opacity:.7,duration:.15},'<.3')
+      .to(flap,{attr:{d:'M250 273 C260 244 280 240 300 239 C315 237 345 237 360 239 C380 240 400 244 410 273 C392 307 268 307 250 273Z'},duration:.35,ease:'sine.out'})
+      .to(seam,{opacity:0,duration:.2},'<');
+  }
+  const win=G({transform:'translate(600,260)',opacity:0});
+  E('path',{d:'M-53 -37Q0 -17 53 -37Q31 0 53 37Q0 20 -53 37Q-30 0 -53 -37Z',fill:'url(#glass)',stroke:V('dough2'),'stroke-width':3},win);
+  for(let i=0;i<5;i++)E('path',{d:`M${-30+i*15} -28Q${-20+i*10} 0 ${-30+i*15} 28`,stroke:V('dough2'),'stroke-width':.7,opacity:.45,fill:'none'},win);
+  E('text',{y:75,'text-anchor':'middle','font-family':'JetBrains Mono','font-size':16,fill:V('ink')},win).textContent=L.window;
+  tl.to(win,{opacity:1,duration:.6});
+ },
+ oil(tl){
+  bowl(330,330); const d=blob(330,268,90,40);
+  const bottle=G({transform:'translate(560,170)'});E('rect',{x:-22,y:-70,width:44,height:110,rx:12,fill:'url(#oilLit)',opacity:.9},bottle);E('rect',{x:-8,y:-96,width:16,height:30,rx:4,fill:'url(#leafLit)'},bottle);
+  const t=tag(560,330,`${fq('oil')} g ${L.oil}`);t.setAttribute('opacity',0);
+  const st=stream(470,140,350,240,V('oil'),6);
+  tl.to(t,{opacity:1,duration:.3}).to(bottle,{rotation:-110,x:'-=60',y:'-=20',svgOrigin:'560 170',duration:.6}).to(st.l.style,{strokeDashoffset:0,duration:.5})
+    .to(d.gl,{opacity:.7,duration:.8}).to(st.l,{opacity:0,duration:.3}).to(bottle,{rotation:0,x:'+=60',y:'+=20',svgOrigin:'560 170',duration:.5},'<')
+    .to(d.b,{attr:{fill:'url(#oilLit)'},duration:.4,yoyo:true,repeat:1},'<').to(d.b,{attr:{rx:94,ry:36},duration:.3,yoyo:true,repeat:3});
+ },
+ lam(tl){
+  const d=G();const r=E('rect',{x:330,y:260,width:120,height:70,rx:35,fill:'url(#doughLit)',stroke:V('dough2'),'stroke-width':2},d);
+  tl.to(r,{attr:{x:190,y:250,width:420,height:80,rx:16},duration:.8,ease:'power2.out'})
+    .to(r,{attr:{x:330,width:140},duration:.5,ease:'power2.inOut'}).to(r,{attr:{height:120,y:220},duration:.4},'<')
+    .to(r,{attr:{x:340,width:120,height:90,y:240,rx:45},duration:.5});
+  const t=tag(560,140,L.lam);t.setAttribute('opacity',0);const ck=clock(140,160,'1 h');
+  tl.to(t,{opacity:1,duration:.3},0).to(ck.g,{opacity:1,duration:.3}).to(ck.h,{rotation:360,svgOrigin:'0 0',duration:.9,ease:'none'});
+ },
+ balls(tl){
+  const big=blob(400,280,130,48); const n=Q.n, sp=Math.min(90,620/n), x0=400-sp*(n-1)/2;
+  const balls=[];for(let i=0;i<n;i++){const b=blob(400,280,10,8);b.g.setAttribute('opacity',0);balls.push(b)}
+  const scale=G({transform:'translate(400,395)'});E('rect',{x:-70,y:-14,width:140,height:28,rx:8,fill:'url(#metal)'},scale);
+  const disp=E('text',{y:6,'text-anchor':'middle','font-family':'JetBrains Mono','font-size':16,fill:'#fff'},scale);disp.textContent='0 g';
+  tl.to(big.b,{attr:{rx:150,ry:40},duration:.3}).to(big.g,{opacity:0,duration:.3});
+  balls.forEach((b,i)=>{tl.to(b.g,{opacity:1,x:x0+i*sp,duration:.35,ease:'back.out(2)'},'>-.22').to(b.b,{attr:{rx:Math.min(38,sp*.42),ry:Math.min(30,sp*.34)},duration:.35},'<')});
+  num(disp,0,Q.per,' g',.6,tl,'>');tl.add(()=>disp.textContent=gfmt(Q.per)+' g');
+  const t=tag(400,150,`${Q.n} × ${gfmt(Q.per)} g`);t.setAttribute('opacity',0);tl.to(t,{opacity:1,duration:.3});
+  balls.forEach(b=>tl.to(b.gl,{opacity:.3,duration:.2},'<'));
+  const ck=clock(700,120,`${fq('panh')} h`);tl.to(ck.g,{opacity:1,duration:.3}).to(ck.h,{rotation:720,svgOrigin:'0 0',duration:1,ease:'none'});
+ },
+ temper(tl){
+  const box=G({transform:'translate(400,320)'});E('rect',{x:-200,y:-110,width:400,height:110,rx:18,fill:V('card'),stroke:V('steel'),'stroke-width':3,opacity:.9,filter:'url(#sh)'},box);
+  const n=Q.n, bs=[];for(let i=0;i<n;i++){const b=blob(400-160+i*(320/(n-1||1)),270,Math.min(30,145/n),Math.min(22,110/n));bs.push(b)}
+  if(n===1)bs[0].g.setAttribute('transform','translate(400,270)');
+  const th=G({transform:'translate(680,300)'});E('rect',{x:-8,y:-120,width:16,height:120,rx:8,fill:V('card'),stroke:V('steel'),'stroke-width':2},th);
+  const merc=E('rect',{x:-4,y:-10,width:8,height:10,rx:4,fill:V('tomato')},th);
+  const tt=E('text',{x:0,y:24,'text-anchor':'middle','font-family':'JetBrains Mono','font-size':15,fill:V('ink')},th);tt.textContent='7 °C';
+  tl.to(merc,{attr:{y:-90,height:90},duration:1});num(tt,7,26,' °C',1,tl,'<');
+  tl.to(bs.map(b=>b.b),{attr:{rx:Math.min(40,170/n),ry:Math.min(30,130/n)},duration:1.1,ease:'sine.inOut'},'<');
+  bs.forEach(b=>{for(let k=0;k<4;k++){const c=E('circle',{cx:(rand()-.5)*40,cy:(rand()-.5)*20,r:2+rand()*3,fill:'#fff',opacity:0},b.g);tl.to(c,{opacity:.85,duration:.2},'>-.15')}});
+  const ck=clock(130,150,`${fq('outh')} h`);tl.to(ck.g,{opacity:1,duration:.3},0).to(ck.h,{rotation:360,svgOrigin:'0 0',duration:1.2,ease:'none'},.3);
+ },
+ sauce(tl){
+  const can=G({transform:'translate(240,320)'});E('rect',{x:-60,y:-150,width:120,height:150,rx:10,fill:'url(#metal)',filter:'url(#sh)'},can);
+  E('rect',{x:-60,y:-110,width:120,height:60,fill:'url(#tomatoLit)'},can);
+  const toms=[];for(let i=0;i<6;i++)toms.push(E('circle',{cx:200+rand()*80,cy:180,r:16,fill:'url(#tomatoLit)',opacity:0}));
+  const bw=bowl(470,330,.8);
+  tl.to(can,{rotation:-100,x:'+=120',y:'-=80',svgOrigin:'240 320',duration:.6}).to(toms,{opacity:1,duration:.1})
+    .to(toms,{attr:{cx:470,cy:270},duration:.5,stagger:.05,ease:'power2.in'}).to(toms,{attr:{r:30},opacity:.9,duration:.3})
+    .to(toms,{attr:{r:12},duration:.15,yoyo:true,repeat:3}).to(can,{opacity:0,duration:.3},'<');
+  const t=tag(470,110,`${fq('cans')} ${L.cans}`);t.setAttribute('opacity',0);tl.to(t,{opacity:1,duration:.3},0);
+  const ch=[];for(let i=0;i<8;i++)ch.push(E('rect',{x:640+(i%4)*22,y:250+Math.floor(i/4)*24,width:18,height:16,rx:4,fill:'url(#cheeseLit)',stroke:V('dough2'),opacity:0}));
+  const t2=tag(690,200,`${fq('cheese')} g ${rk==='napo'?L.cheeseN:L.cheeseNY}`);t2.setAttribute('opacity',0);
+  tl.to(t2,{opacity:1,duration:.3}).to(ch,{opacity:1,duration:.3,stagger:.05},'<');
+  const drips=[];for(let i=0;i<4;i++)drips.push(E('circle',{cx:650+i*22,cy:300,r:3,fill:V('water'),opacity:0}));
+  tl.to(drips,{opacity:.8,attr:{cy:330},duration:.5,stagger:.1,repeat:1});
+ },
+ oven(tl){
+  const o=oven(400,320);
+  const tTop=tag(400,90,`${L.top} 0 °C`), tBot=tag(400,370,`${L.bottom} 0 °C`);
+  const a=tTop.querySelector('text'), b=tBot.querySelector('text');
+  const oa={v:20},ob={v:20};tl.to(oa,{v:Q.top,duration:1.6,onUpdate:()=>a.textContent=`${L.top} ${Math.round(oa.v)} °C`},0).to(ob,{v:Q.bottom,duration:1.6,onUpdate:()=>b.textContent=`${L.bottom} ${Math.round(ob.v)} °C`},0);
+  tl.to(o.top,{attr:{fill:'#FF7A2C'},duration:1.4},0).to(o.bot,{attr:{fill:'#E9622A'},duration:1.4},0).to(o.glow,{opacity:1,duration:1.4},0);
+  const ck=clock(690,120,'30–40 min');tl.to(ck.g,{opacity:1,duration:.3},0).to(ck.h,{rotation:540,svgOrigin:'0 0',duration:1.6,ease:'none'},0);
+ },
+ open(tl){
+  const p=pizza(400,280,30);const t=tag(620,120,rk==='napo'?L.rimN:L.rimNY);t.setAttribute('opacity',0);
+  tl.to(p.base,{attr:{r:70},duration:.5});
+  const dots=[];for(let i=0;i<14;i++){const a=i/14*Math.PI*2;dots.push(E('circle',{cx:400+Math.cos(a)*30,cy:280+Math.sin(a)*30,r:6,fill:V('dough2'),opacity:0}))}
+  tl.to(dots,{opacity:1,duration:.15,stagger:.03}).to(dots,{attr:{cx:(i)=>400+Math.cos(i/14*Math.PI*2)*95,cy:(i)=>280+Math.sin(i/14*Math.PI*2)*95},duration:.7},'<.2')
+    .to(p.base,{attr:{r:120},duration:.7},'<').to(dots,{opacity:0,duration:.2}).to(t,{opacity:1,duration:.3},'<');
+  const rim=E('circle',{cx:400,cy:280,r:120,fill:'none',stroke:V('dough2'),'stroke-width':rk==='napo'?16:8,opacity:0});
+  const dim=G({opacity:0});E('line',{x1:280,y1:420,x2:520,y2:420,stroke:V('ink'),'stroke-width':2},dim);E('text',{x:400,y:414,'text-anchor':'middle','font-family':'JetBrains Mono','font-size':15,fill:V('ink')},dim).textContent=Q.size;
+  tl.to(rim,{opacity:1,duration:.4}).to(dim,{opacity:1,duration:.4},'<');
+ },
+ build(tl){
+  const ny=rk==='ny'; const p=pizza(400,270,130,scn,ny);
+  const sp=E('path',{d:spiral(400,270,ny?112:100),fill:'none',stroke:V('sauce'),'stroke-width':22,'stroke-linecap':'round'});const L=sp.getTotalLength();sp.style.strokeDasharray=L;sp.style.strokeDashoffset=L;
+  tl.to(sp.style,{strokeDashoffset:0,duration:1,ease:'none'}).to(p.sauce,{opacity:1,duration:.2});
+  const pcs=[];const k=ny?26:7;for(let i=0;i<k;i++){const a=rand()*Math.PI*2,r=Math.sqrt(rand())*(ny?100:80);
+    pcs.push(ny?E('rect',{x:400+Math.cos(a)*r-5,y:270+Math.sin(a)*r-14,width:10,height:28,rx:4,fill:'url(#cheeseLit)',opacity:0,transform:`rotate(${rand()*180} ${400+Math.cos(a)*r} ${270+Math.sin(a)*r})`})
+      :E('circle',{cx:400+Math.cos(a)*r,cy:270+Math.sin(a)*r,r:14,fill:'url(#cheeseLit)',opacity:0}))}
+  tl.to(pcs,{opacity:1,duration:.12,stagger:ny?.02:.07});
+  const t=tag(640,110,`${gfmt(Q.sauce/Q.n)} g ${L.sauce} · ${gfmt(Q.cheese/Q.n)} g ${L.cheese}`);t.setAttribute('opacity',0);tl.to(t,{opacity:1,duration:.3},0);
+  const lv=[];if(!ny){for(let i=0;i<3;i++)lv.push(E('ellipse',{cx:370+i*30,cy:250+(i%2)*30,rx:12,ry:6,fill:'url(#leafLit)',opacity:0}));tl.to(lv,{opacity:1,duration:.2,stagger:.1});}
+  const peel=E('rect',{x:220,y:400,width:360,height:24,rx:12,fill:V('bench'),stroke:V('dough2'),'stroke-width':2,opacity:0});
+  const all=G();[sp,...pcs,...lv].forEach(e=>all.appendChild(e));tl.to(peel,{opacity:1,duration:.3}).to([p.g,all],{x:'-=14',duration:.12,yoyo:true,repeat:3});
+ },
+ bake(tl){
+  const o=oven(400,330);o.top.setAttribute('fill','#FF7A2C');o.bot.setAttribute('fill','#E9622A');o.glow.setAttribute('opacity',1);
+  const ny=rk==='ny'; const hero=G(); const p=pizza(400,262,80,hero,ny); p.sauce.setAttribute('opacity',1); p.g.setAttribute('opacity',0);
+  const timer=tag(400,60,'0 s'); const tt=timer.querySelector('text');
+  tl.fromTo(p.g,{opacity:1,x:720},{x:400,duration:.6,ease:'power2.out'});
+  const T=ny?390:95;const o2={v:0};tl.addLabel('cnt').to(o2,{v:T,duration:2.6,ease:'none',onUpdate:()=>{const s=Math.round(o2.v);tt.textContent=ny?`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')} min`:`${s} s`}},'cnt');
+  const turns=ny?[60,120,180,240,300]:[28];turns.forEach(s=>tl.to(p.g,{rotation:'+=180',svgOrigin:'400 262',duration:.25},`cnt+=${(s/T)*2.6}`));
+  const spots=[];for(let i=0;i<22;i++){const a=rand()*Math.PI*2;spots.push(E('circle',{cx:Math.cos(a)*(ny?78:76),cy:Math.sin(a)*(ny?78:76),r:2+rand()*3,fill:V('char'),opacity:0},p.g))}
+  tl.to(spots,{opacity:.85,duration:.6,stagger:.02},'cnt+=1.4').to(p.base,{attr:{fill:'url(#crustLit)'},duration:.8},'<');
+  if(ny){const brown=[];for(let i=0;i<10;i++)brown.push(E('circle',{cx:(rand()-.5)*110,cy:(rand()-.5)*110,r:6,fill:'#C98B30',opacity:0},p.g));tl.to(brown,{opacity:.7,duration:.6},'<');}
+  tl.to(o.g,{opacity:.25,duration:.7},'cnt+=2.8').to(hero,{scale:1.65,svgOrigin:'400 262',y:18,duration:1,ease:'power3.out'},'cnt+=2.8');
+ },
+ slice(tl){
+  const p=pizza(330,260,130,scn,true);p.sauce.setAttribute('opacity',1);E('circle',{cx:330,cy:260,r:118,fill:'url(#cheeseLit)',opacity:.9});
+  const cuts=[];for(let i=0;i<4;i++){const a=i*Math.PI/4;cuts.push(E('line',{x1:330-Math.cos(a)*130,y1:260-Math.sin(a)*130,x2:330+Math.cos(a)*130,y2:260+Math.sin(a)*130,stroke:V('char'),'stroke-width':3,opacity:0}))}
+  tl.to(cuts,{opacity:.7,duration:.3,stagger:.2});
+  const sl=G({transform:'translate(600,280)',opacity:0});E('path',{d:'M0,-90 L50,60 Q0,80 -50,60Z',fill:'url(#cheeseLit)',stroke:V('crust'),'stroke-width':8,'stroke-linejoin':'round'},sl);
+  tl.to(sl,{opacity:1,duration:.3}).to(sl,{scaleX:.45,transformOrigin:'50% 50%',duration:.5,ease:'power2.inOut'});
+  const t=tag(600,410,L.foldSlice);t.setAttribute('opacity',0);tl.to(t,{opacity:1,duration:.3});
+ }
+};
+function tIntro(t,e){t.from(e,{opacity:0,y:'-=8',duration:.4,ease:'power2.out'},0)}
+function finishScene(key,t){
+  // Tiny flour flecks and long contact shadows anchor the action to the bench.
+  const dust=G({'aria-hidden':'true'});scn.insertBefore(dust,scn.firstChild);
+  for(let i=0;i<52;i++)E('ellipse',{cx:190+rand()*420,cy:318+rand()*66,rx:.6+rand()*2.2,ry:.5+rand()*.7,fill:'#fff1d5',opacity:.18+rand()*.22},dust);
+  if(['pref','mix','oil'].includes(key)){
+    scn.querySelectorAll('rect').forEach(e=>{if(e.getAttribute('fill')==='url(#glass)'){
+      const p=e.parentNode;E('path',{d:'M-52,-145V-24',stroke:'#fff','stroke-width':5,opacity:.42,'stroke-linecap':'round'},p);
+      E('ellipse',{cy:-169,rx:62,ry:9,fill:'none',stroke:'#d7e5dd','stroke-width':4},p);
+    }});
+  }
+  if(key==='bass'||key==='mix'||key==='oil'){
+    const splash=G();for(let i=0;i<12;i++){
+      const a=i/12*Math.PI*2,c=E('circle',{cx:330,cy:260,r:1.5+rand()*2,fill:key==='oil'?'url(#oilLit)':V('water'),opacity:0},splash);
+      const at=key==='bass'?.8+i%3*1.3:2.5;
+      t.fromTo(c,{opacity:.8},{attr:{cx:330+Math.cos(a)*65,cy:260+Math.sin(a)*20},opacity:0,duration:.65,ease:'power2.out'},at);
+    }
+  }
+  if(key==='lam'){
+    const r=scn.querySelector('rect');r.setAttribute('filter','url(#sh)');
+    const seam=E('path',{d:'M350 270Q392 257 440 270 M350 285Q395 273 440 285',fill:'none',stroke:V('dough2'),'stroke-width':2,opacity:0});
+    t.to(seam,{opacity:.6,duration:.5},2.2);
+  }
+  if(key==='fold'){
+    const membrane=scn.querySelector('circle');if(membrane)membrane.setAttribute('fill','url(#glass)');
+  }
+  if(key==='build'||key==='bake'||key==='slice'){
+    const base=scn.querySelector('circle[filter]');
+    if(base&&key!=='bake'){
+      const parent=base.parentNode,R=+base.getAttribute('r');
+      for(let i=0;i<38;i++){
+        const a=i*2.399,r=R*(.92+rand()*.04);
+        E('ellipse',{cx:Math.cos(a)*r,cy:Math.sin(a)*r,rx:1+rand()*3,ry:1+rand()*2,fill:key==='slice'?V('char'):V('dough2'),opacity:.4},parent);
+      }
+    }
+    const surface=key==='bake'?base?.parentNode:null;
+    if(surface){
+      for(let i=0;i<11;i++){
+        const a=i*2.4,r=14+rand()*43,c=E('ellipse',{cx:Math.cos(a)*r,cy:Math.sin(a)*r,rx:rk==='ny'?16:10,ry:rk==='ny'?13:7,fill:'url(#cheeseLit)',opacity:0},surface);
+        t.to(c,{opacity:1,duration:.4},.6+i*.05).to(c,{attr:{rx:rk==='ny'?19:12,ry:rk==='ny'?15:9},duration:.35,repeat:3,yoyo:true,ease:'sine.inOut'},1.3+i*.03);
+      }
+    }
+    if(key!=='build'){
+      for(let i=0;i<5;i++){
+        const x=(key==='slice'?330:400)-65+i*32;
+        const steam=E('path',{d:`M${x},200q-20,-25 0,-45t0,-42`,stroke:'#fff8e1','stroke-width':3,fill:'none',opacity:0,'stroke-linecap':'round'});
+        t.fromTo(steam,{y:22,opacity:0},{y:-14,opacity:.35,duration:1.3,ease:'sine.out'},Math.max(2,t.duration()-.9)+i*.08);
+      }
+    }
+  }
+  // Slow anticipation and a composed finish; each chapter lasts 5–8 seconds.
+  const length=t.duration();if(length<5.6)t.to({},{duration:5.6-length});
+  t.duration(Math.max(5.6,Math.min(8,t.duration())));
+}
+
+function spiral(cx,cy,R){let d='',a=0,r=R;for(let i=0;i<=260;i++){a=i/260*Math.PI*2*4.5;r=R*(1-i/260);d+=(i?'L':'M')+(cx+Math.cos(a)*r).toFixed(1)+','+(cy+Math.sin(a)*r).toFixed(1)}return d}
+
+/* ---------- player ---------- */
+const $=id=>document.getElementById(id);
+const STEPS=[];
+T.steps.forEach((d,di)=>d.items.forEach(s=>STEPS.push({day:di,d:`${d.day} · ${d.when}`,t:s.t,li:s.li,tip:(s.tip||'').replace(/^warn\|/,''),wait:s.time,sc:C.scenes[s.id]})));
+const ph=(s,html)=>s.replace(/\{(\w+)\}/g,(m,k)=>{const v=k in R?NP.fmt(k,R[k]):m;return html?`<span class="q">${v}<\/span>`:v});
+let idx=0, tl=null, playing=false, mode='film', advance=null, stageVisible=true;
+const visible=()=>!document.hidden&&stageVisible;
+$('plChap').innerHTML=STEPS.map((s,i)=>`<button type="button" class="d${s.day}" aria-label="${PL.step} ${i+1}: ${s.t}"><i><\/i><\/button>`).join('');
+[...$('plChap').children].forEach((b,i)=>b.onclick=()=>go(i,true));
+function setPP(p){playing=p;$('plPP').setAttribute('aria-label',p?PL.pause:PL.play);$('plPPIco').innerHTML=p?'<path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/>':'<path d="M8 5l11 7-11 7z" fill="currentColor"/>'}
+function go(i,autoplay){
+  idx=Math.max(0,Math.min(STEPS.length-1,i)); const s=STEPS[idx];
+  if(advance){advance.kill();advance=null} setPP(false); if(tl){tl.kill()} scn.innerHTML='';
+  $('plBadge').textContent=`${PL.step} ${String(idx+1).padStart(2,'0')} / ${STEPS.length}`;
+  $('plDay').textContent=s.d; $('plTt').textContent=s.t; $('plLi').innerHTML=s.li.map(x=>`<li>${ph(x,true)}<\/li>`).join('');
+  $('plTip').hidden=!s.tip; if(s.tip) $('plTip').textContent=ph(s.tip,false);
+  $('plWait').textContent='⏱ '+ph(s.wait,false);
+  [...$('plChap').children].forEach((b,k)=>{b.classList.toggle('done',k<idx);b.querySelector('i').style.width=k<idx?'100%':'0'});
+  tl=gsap.timeline({paused:true,onUpdate:()=>{const b=$('plChap').children[idx];if(b)b.querySelector('i').style.width=(tl.progress()*100)+'%'},
+    onComplete:()=>{ if(mode==='film' && playing && idx<STEPS.length-1) advance=gsap.delayedCall(.9,()=>{ if(playing&&mode==='film') go(idx+1,true); else setPP(false) }); else setPP(false); }});
+  seed=17+idx*97; if(SCENES[s.sc]){SCENES[s.sc](tl); finishScene(s.sc,tl);}
+  if(reduced){tl.progress(1);setPP(false);return}
+  if(autoplay){setPP(true);if(visible())tl.play()} else {setPP(false);tl.progress(1)}   // parado: quadro final da etapa
+}
+$('plPP').onclick=()=>{ if(!tl) return; if(reduced){tl.progress(1);setPP(false);return} if(playing){tl.pause();if(advance){advance.kill();advance=null}setPP(false)} else { if(tl.progress()>=1) tl.restart(); else tl.play(); setPP(true)} };
+$('plNext').onclick=()=>go(idx+1,true); $('plPrev').onclick=()=>go(idx-1,true); $('plRep').onclick=()=>go(idx,true);
+$('plFilm').onclick=()=>{mode='film';$('plFilm').setAttribute('aria-pressed',true);$('plBench').setAttribute('aria-pressed',false)};
+$('plBench').onclick=()=>{mode='bench';$('plBench').setAttribute('aria-pressed',true);$('plFilm').setAttribute('aria-pressed',false)};
+function syncVisibility(){if(!tl)return;if(!visible()){tl.pause();if(advance)advance.pause()}else if(playing){if(advance)advance.resume();else tl.play()}}
+addEventListener('visibilitychange',syncVisibility);
+if('IntersectionObserver' in window)new IntersectionObserver(e=>{stageVisible=e[0].isIntersecting;syncVisibility()},{threshold:0}).observe($('stg'));
+NP.onRender.push(()=>{refreshQ(); if(!playing) go(idx,false)});   // parâmetros mudaram: redesenha com os novos números
+go(0,false);
+})();
+
 </script>
 
 

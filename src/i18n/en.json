@@ -87,7 +87,16 @@
     "nav.theme": "Toggle dark mode",
     "nav.recipes": "Recipes",
     "panel.sugar": "Sugar",
-    "ing.sugar": "Sugar"
+    "ing.sugar": "Sugar",
+    "nav.watch": "Watch",
+    "player.h2": "Watch it step by step",
+    "player.sub": "Every step animated with this batch’s quantities. Change the parameters and the animation follows.",
+    "player.prev": "Previous step",
+    "player.next": "Next step",
+    "player.repeat": "Replay the animation",
+    "player.mode": "Mode",
+    "player.film": "Watch all",
+    "player.bench": "At the bench"
   },
   "js": {
     "locale": "en-US",
@@ -125,6 +134,32 @@
     "upper": "top",
     "diagCur": "Current: {lbl} {cur} °C. Suggestion for the next pizza: {nv}. Small steps; change only this variable.",
     "apply": "Apply {v} °C",
-    "applied": "Applied"
+    "applied": "Applied",
+    "player": {
+      "step": "Step",
+      "play": "Play",
+      "pause": "Pause",
+      "lbl": {
+        "flour": "flour",
+        "water": "water",
+        "yeast": "yeast",
+        "salt": "salt",
+        "oil": "olive oil",
+        "sauce": "sauce",
+        "cheese": "cheese",
+        "cans": "can(s) · salt",
+        "cheeseN": "mozzarella",
+        "cheeseNY": "shredded mozzarella",
+        "foldN": "stretch · fold · rest",
+        "foldNY": "8–10 min kneading",
+        "lam": "no rolling pin · no tearing",
+        "rimN": "1–1.5 cm free rim",
+        "rimNY": "over your knuckles",
+        "top": "top",
+        "bottom": "bottom",
+        "window": "windowpane test",
+        "foldSlice": "fold in half"
+      }
+    }
   }
 }

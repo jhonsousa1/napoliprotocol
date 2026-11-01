@@ -87,7 +87,16 @@
     "nav.theme": "Cambiar modo oscuro",
     "nav.recipes": "Recetas",
     "panel.sugar": "Azúcar",
-    "ing.sugar": "Azúcar"
+    "ing.sugar": "Azúcar",
+    "nav.watch": "Míralo",
+    "player.h2": "Míralo paso a paso",
+    "player.sub": "Cada paso animado con las cantidades de esta tanda. Cambia los parámetros y la animación te sigue.",
+    "player.prev": "Paso anterior",
+    "player.next": "Paso siguiente",
+    "player.repeat": "Repetir la animación",
+    "player.mode": "Modo",
+    "player.film": "Ver todo",
+    "player.bench": "En la mesa"
   },
   "js": {
     "locale": "es-ES",
@@ -125,6 +134,32 @@
     "upper": "superior",
     "diagCur": "Actual: {lbl} {cur} °C. Sugerencia para la próxima pizza: {nv}. Pasos pequeños; cambia solo esta variable.",
     "apply": "Aplicar {v} °C",
-    "applied": "Aplicado"
+    "applied": "Aplicado",
+    "player": {
+      "step": "Paso",
+      "play": "Reproducir",
+      "pause": "Pausar",
+      "lbl": {
+        "flour": "harina",
+        "water": "agua",
+        "yeast": "levadura",
+        "salt": "sal",
+        "oil": "aceite",
+        "sauce": "salsa",
+        "cheese": "queso",
+        "cans": "lata(s) · sal",
+        "cheeseN": "mozzarella",
+        "cheeseNY": "mozzarella rallada",
+        "foldN": "estira · pliega · reposa",
+        "foldNY": "8–10 min de amasado",
+        "lam": "sin rodillo · sin romper",
+        "rimN": "borde libre 1–1,5 cm",
+        "rimNY": "sobre los nudillos",
+        "top": "superior",
+        "bottom": "inferior",
+        "window": "prueba de la ventana",
+        "foldSlice": "dóblala por la mitad"
+      }
+    }
   }
 }

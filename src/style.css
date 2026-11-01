@@ -278,3 +278,35 @@ html{scroll-behavior:smooth}
 table.no-pf th:nth-child(n+4),table.no-pf td:nth-child(n+4){display:none}
 .split.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (max-width:760px){.split.two{grid-template-columns:1fr}}
+
+/* Player animado (cenas do Codex/GPT): tokens próprios do palco, nos dois temas */
+.np-player{--card:#FFFFFF;--ink:#1C1714;--muted:#655C55;--line:#E2DED8;--tomato:#D63A1C;--gold:#B5850B;--cold:#2F6FC4;--bg:#F3F4F1;
+  --stage:#FFF7EE;--stage2:#F6E9D8;--bench:#E7D3B6;--dough:#EED7AE;--dough2:#D9B57C;--crust:#C98B45;--water:#6FA8E8;--oil:#E2B33C;--salt:#FFFFFF;--sauce:#C42D17;--cheese:#FFF6E2;--leaf:#2E7A45;--steel:#9AA2AA;--char:#3A2418}
+:root[data-theme="dark"] .np-player{--card:#1E1A18;--ink:#F3EEE9;--muted:#B0A69E;--line:#37302B;--tomato:#EB4E2C;--gold:#D3A63A;--cold:#5A93DE;--bg:#141110;
+  --stage:#231D19;--stage2:#2C2420;--bench:#5A4532;--dough:#E3C996;--dough2:#C9A266;--crust:#B97A38;--salt:#F4F4F4;--sauce:#D2391F;--cheese:#FFF3DA;--leaf:#3C9A5A;--steel:#7C858E;--char:#1A100A}
+.np-player .screen{background:var(--card);color:var(--ink);border-radius:24px;overflow:hidden;border:1px solid var(--line)}
+.np-player .stagebox{position:relative;aspect-ratio:16/9;max-width:100%;background:radial-gradient(90% 80% at 50% 30%,var(--stage),var(--stage2))}
+.np-player #stg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.np-player .badge{position:absolute;left:14px;top:12px;font-family:var(--f-mono);font-size:12px;background:var(--card);color:var(--ink);padding:6px 11px;border-radius:99px;box-shadow:0 4px 14px -6px rgb(0 0 0 / .3)}
+.np-player .waitchip{position:absolute;right:14px;top:12px;font-family:var(--f-mono);font-size:12px;background:var(--cold);color:#fff;padding:6px 11px;border-radius:99px;max-width:55%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.np-player .cap{padding:20px 24px 8px;display:grid;gap:10px;min-height:150px}
+.np-player .cap h3{font-family:var(--f-display);font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.1}
+.np-player .cap h3 small{font-family:var(--f-mono);font-size:12.5px;color:var(--tomato);display:block;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.np-player .cap ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:17px}
+.np-player .cap .q{font-family:var(--f-mono);font-weight:600;background:color-mix(in srgb,var(--gold) 22%,transparent);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.np-player .cap .tip{font-size:15px;color:var(--muted);border-left:3px solid var(--gold);padding-left:12px}
+.np-player .chapters{display:flex;gap:4px;padding:14px 24px 6px}
+.np-player .chapters button{flex:1;height:8px;border:0;border-radius:99px;background:var(--line);cursor:pointer;padding:0;position:relative;overflow:hidden}
+.np-player .chapters button.d1{background:color-mix(in srgb,var(--cold) 25%,var(--line))}
+.np-player .chapters button.d2{background:color-mix(in srgb,var(--tomato) 22%,var(--line))}
+.np-player .chapters button i{position:absolute;inset:0;width:0;background:var(--ink);border-radius:99px}
+.np-player .ctrl{display:flex;align-items:center;gap:10px;padding:10px 20px 20px;flex-wrap:wrap}
+.np-player .cbtn{width:52px;height:52px;border-radius:50%;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.np-player .cbtn svg{width:22px;height:22px}
+.np-player .cbtn.main{width:64px;height:64px;background:var(--tomato);border-color:var(--tomato);color:#fff}
+.np-player .cbtn.main svg{width:28px;height:28px}
+.np-player .ctrl .sp{flex:1}
+.np-player .mode{display:inline-flex;border:2px solid var(--line);border-radius:99px;padding:3px;gap:3px}
+.np-player .mode button{border:0;background:transparent;color:var(--muted);font:700 14px var(--f-body);padding:8px 14px;border-radius:99px;cursor:pointer;min-height:40px}
+.np-player .mode button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+@media (max-width:560px){.np-player .cap{padding:16px 16px 6px}.np-player .chapters{padding:12px 16px 4px}.np-player .ctrl{padding:10px 12px 16px}.np-player .cap ul{font-size:16px}}
