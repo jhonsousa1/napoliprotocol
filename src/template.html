@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{HTML_LANG}}">
+<html lang="{{HTML_LANG}}" {{HTML_STYLE}}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -14,16 +14,18 @@
 {{HEAD}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,72,560;1,72,400&family=Atkinson+Hyperlegible+Next:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
 {{CSS}}
 </style>
+{{SCENE_CSS}}
 </head>
 <body>
+<a class="skip" href="#receita">{{nav.skip}}</a>
+{{SCENE}}
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="/{{LANG}}/" style="text-decoration:none"><span class="flag" aria-hidden="true"><i></i><i></i><i></i></span>NapoliProtocol <span class="ver">v1.0</span></a>
+    <a class="brand" href="/{{LANG}}/"><span class="flag" aria-hidden="true"><i></i><i></i><i></i></span>NapoliProtocol</a>
     <nav class="nav" aria-label="{{nav.label}}">
       <a href="#receita">{{nav.recipe}}</a><a href="#cronograma">{{nav.schedule}}</a><a href="#assistir">{{nav.watch}}</a><a href="#passos">{{nav.steps}}</a><a href="#forno">{{nav.oven}}</a><a href="#regras">{{nav.rules}}</a><a href="#sobre">{{nav.about}}</a>
     </nav>
@@ -33,117 +35,126 @@
   </div>
 </header>
 
-<div class="wrap">
-  <div class="hero">
-    <div>
+<main id="main">
+  <section class="hero" data-take="hero" aria-labelledby="h1">
+    <div class="wrap"><div class="hero-copy">
       <nav class="recipes" aria-label="{{nav.recipes}}">{{RECIPE_TABS}}</nav>
-      <div class="eyebrow">{{hero.eyebrow}}</div>
-      <h1>{{hero.h1}}</h1>
-      <div class="byline"><span class="mono-js" aria-hidden="true">JS</span><span><span>{{hero.by}} <a href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author">Jhonathan Sousa</a></span><small>{{hero.version}}</small></span></div>
+      <p class="pill">{{hero.eyebrow}}</p>
+      <h1 id="h1">{{H1}}</h1>
       <p class="lead">{{hero.lead}}</p>
+      <div class="byline"><span>{{hero.by}} <a href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author">Jhonathan Sousa</a></span><small>{{hero.version}}</small></div>
       <a class="next" id="nextEv" href="#cronograma" hidden></a>
       <div class="qcard" role="group" aria-label="{{panel.pizzas}}">
         <span class="qlbl">{{panel.pizzas}}</span>
-        <button type="button" id="qMinus" aria-label="−">−</button><output id="qN">5</output><button type="button" id="qPlus" aria-label="+">+</button>
+        <button type="button" id="qMinus" aria-label="{{panel.fewer}}">−</button><output id="qN">5</output><button type="button" id="qPlus" aria-label="{{panel.more}}">+</button>
         <span class="qsum" id="qSum"></span>
       </div>
-    </div>
-    <div class="hero3d" id="hero3d" aria-hidden="true"></div>
-    <div class="kpis" aria-live="polite">
-      <div class="kpi"><div class="k">{{kpi.total}}</div><div class="val"><span data-k="total"></span> g</div><div class="sub">{{kpi.hyd}} <span data-k="hydPct"></span>%</div></div>
-      <div class="kpi"><div class="k">{{kpi.balls}}</div><div class="val"><span data-k="n"></span> × <span data-k="per"></span> g</div><div class="sub">{{kpi.pizzas}}</div></div>
-      <div class="kpi"><div class="k">{{kpi.top}}</div><div class="val"><span data-k="top"></span> °C</div><div class="sub">{{kpi.preheat}}</div></div>
-      <div class="kpi"><div class="k">{{kpi.bottom}}</div><div class="val"><span data-k="bottom"></span> °C</div><div class="sub">{{kpi.bottomSub}}</div></div>
-    </div>
-  </div>
+    </div></div>
+    {{HERO_CREDIT}}
+  </section>
 
-  <div class="layout">
-    <aside class="panel" aria-label="{{panel.title}}">
-      <div class="panel-head"><h2>{{panel.title}}</h2><button type="button" class="btn small panel-toggle" id="panelToggle" aria-expanded="false" aria-controls="panelBody">{{panel.open}}</button></div>
-      <p class="panel-sum" id="panelSum"></p>
-      <div class="panel-body" id="panelBody">
-      <div class="fieldset">
-        <div class="eyebrow">{{panel.batch}}</div>
-        <div class="seg" role="group" aria-label="{{panel.calcBy}}">
-          <button type="button" id="modeFlour" aria-pressed="true">{{panel.byFlour}}</button>
-          <button type="button" id="modePizza" aria-pressed="false">{{panel.byPizza}}</button>
-        </div>
-        <div class="field" id="rowFlour"><label for="p-flour">{{panel.flour}}</label><div class="inp"><input id="p-flour" type="number" min="200" step="50" inputmode="decimal"><span>g</span></div></div>
-        <div class="field" id="rowPizzas" hidden><label for="p-pizzas">{{panel.pizzas}}</label><div class="inp"><input id="p-pizzas" type="number" min="1" max="20" step="1" inputmode="numeric"><span>{{panel.unit}}</span></div></div>
-        <div class="field"><label for="p-w">{{panel.ballW}}<small>{{panel.ref}}: {{REF_W}}</small></label><div class="inp"><input id="p-w" type="number" min="180" max="320" step="5"><span>g</span></div></div>
+  <section class="sheet sheet-first" id="receita" aria-labelledby="h-receita">
+    <div class="wrap">
+      <div class="kpis" aria-live="polite">
+        <div class="kpi"><div class="k">{{kpi.total}}</div><div class="val"><span data-k="total"></span> g</div><div class="sub">{{kpi.hyd}} <span data-k="hydPct"></span>%</div></div>
+        <div class="kpi"><div class="k">{{kpi.balls}}</div><div class="val"><span data-k="n"></span> × <span data-k="per"></span> g</div><div class="sub">{{kpi.pizzas}}</div></div>
+        <div class="kpi"><div class="k">{{kpi.top}}</div><div class="val"><span data-k="top"></span> °C</div><div class="sub">{{kpi.preheat}}</div></div>
+        <div class="kpi"><div class="k">{{kpi.bottom}}</div><div class="val"><span data-k="bottom"></span> °C</div><div class="sub">{{kpi.bottomSub}}</div></div>
       </div>
-      <div class="fieldset">
-        <div class="eyebrow">{{panel.formula}}</div>
-        <div class="field"><label for="p-hyd">{{panel.hyd}}</label><div class="inp"><input id="p-hyd" type="number" min="55" max="75" step="0.5"><span>%</span></div></div>
-        <div class="field"><label for="p-salt">{{ing.salt}}<small>{{panel.ref}}: {{REF_SALT}}</small></label><div class="inp"><input id="p-salt" type="number" min="2" max="3.2" step="0.01"><span>%</span></div></div>
-        <div class="field"><label for="p-oil">{{panel.oil}}</label><div class="inp"><input id="p-oil" type="number" min="0" max="4" step="0.1"><span>%</span></div></div>
-        <div class="field"><label for="p-yeast">{{panel.yeast}}</label><div class="inp"><input id="p-yeast" type="number" min="0.02" max="1" step="0.01"><span>%</span></div></div>
-        {{#sugar}}<div class="field" id="rowSugar"><label for="p-sugar">{{panel.sugar}}</label><div class="inp"><input id="p-sugar" type="number" min="0" max="5" step="0.1"><span>%</span></div></div>{{/sugar}}
-        {{#pf}}<div class="field" id="rowPf"><label for="p-pf">{{panel.pf}}</label><div class="inp"><input id="p-pf" type="number" min="20" max="60" step="5"><span>%</span></div></div>{{/pf}}
-      </div>
-      <div class="fieldset">
-        <div class="eyebrow">{{panel.env}}</div>
-        <div class="field"><label for="p-fridge">{{panel.fridge}}</label><div class="inp"><input id="p-fridge" type="number" min="2" max="12" step="0.5"><span>°C</span></div></div>
-        <div class="field"><label for="p-top">{{panel.top}}</label><div class="inp"><input id="p-top" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
-        <div class="field"><label for="p-bottom">{{panel.bottom}}</label><div class="inp"><input id="p-bottom" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
-      </div>
-      <div class="fieldset">
-        <div class="eyebrow">{{panel.toppings}}</div>
-        <div class="field"><label for="p-sauce">{{panel.sauce}}</label><div class="inp"><input id="p-sauce" type="number" min="40" max="100" step="5"><span>g</span></div></div>
-        <div class="field"><label for="p-cheese">Mozzarella</label><div class="inp"><input id="p-cheese" type="number" min="40" max="120" step="5"><span>g</span></div></div>
-      </div>
-      <div class="panel-foot">
-        <button class="btn small" type="button" id="resetParams">{{panel.reset}}</button>
-        <button class="btn small" type="button" id="resetChecks">{{panel.clear}}</button>
-      </div>
-      <p class="note">{{panel.note}}</p>
-      </div>
-    </aside>
-
-    <main class="content">
-      <section id="receita">
-        <div class="sec-head"><h2>{{recipe.h2}}</h2><p>{{recipe.sub}}</p></div>
-        <div class="card tbl-wrap">
-          <table>
-            <thead><tr><th>{{recipe.ing}}</th><th class="n">%</th><th class="n">{{recipe.total}}</th>{{#pf}}<th class="n"><span class="full">{{recipe.pf}}</span><span class="short">{{recipe.pfShort}}</span></th><th class="n"><span class="full">{{recipe.final}}</span><span class="short">{{recipe.finalShort}}</span></th>{{/pf}}</tr></thead>
-            <tbody>
-              <tr><td>{{ing.flour}}</td><td class="n">100</td><td class="n"><span data-k="flour"></span> g</td>{{#pf}}<td class="n"><span data-k="pfFlour"></span> g</td><td class="n"><span data-k="finFlour"></span> g</td>{{/pf}}</tr>
-              <tr><td>{{ing.water}}</td><td class="n" data-k="hydPct"></td><td class="n"><span data-k="water"></span> g</td>{{#pf}}<td class="n"><span data-k="pfWater"></span> g</td><td class="n"><span data-k="finWater"></span> g</td>{{/pf}}</tr>
-              <tr><td>{{ing.yeast}}</td><td class="n" data-k="yeastPct"></td><td class="n"><span data-k="yeast"></span> g</td>{{#pf}}<td class="n"><span data-k="yeast"></span> g</td><td class="n">—</td>{{/pf}}</tr>
-              {{#sugar}}<tr><td>{{ing.sugar}}</td><td class="n" data-k="sugarPct"></td><td class="n"><span data-k="sugar"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="sugar"></span> g</td>{{/pf}}</tr>{{/sugar}}
-              <tr><td>{{ing.salt}}</td><td class="n" data-k="saltPct"></td><td class="n"><span data-k="salt"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="salt"></span> g</td>{{/pf}}</tr>
-              <tr><td>{{ing.oil}}</td><td class="n" data-k="oilPct"></td><td class="n"><span data-k="oil"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="oil"></span> g</td>{{/pf}}</tr>
-              <tr class="total"><td>{{recipe.dough}}</td><td class="n"></td><td class="n"><span data-k="total"></span> g</td>{{#pf}}<td class="n"><span data-k="pfTotal"></span> g</td><td class="n">—</td>{{/pf}}</tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="split{{SPLIT_CLASS}}">
-          {{#wsplit}}<div class="card mini"><div class="eyebrow">{{recipe.waterEb}}</div><h3>{{recipe.waterH}}</h3>
-            <ul><li><span>{{recipe.wInit}}</span><b class="num"><span data-k="initWater"></span> g</b></li><li><span>Bassinage</span><b class="num"><span data-k="bassWater"></span> g</b></li></ul></div>{{/wsplit}}
-          <div class="card mini"><div class="eyebrow">{{recipe.divEb}}</div><h3>{{recipe.balls}}</h3>
-            <ul><li><span>{{recipe.main}}</span><b class="num"><span data-k="n"></span> × <span data-k="per"></span> g</b></li><li id="altRow"><span>{{recipe.alt}}</span><b class="num" data-k="alt"></b></li><li><span>{{recipe.target}}</span><b class="num">{{TARGET}}</b></li></ul></div>
-          <div class="card mini"><div class="eyebrow">{{recipe.topEb}}</div><h3>{{recipe.forPre}} <span data-k="n"></span> {{recipe.forPost}}</h3>
-            <ul><li><span>Mutti Pelati 400 g</span><b class="num"><span data-k="cans"></span> {{recipe.cans}}</b></li><li><span>{{recipe.sauceTotal}}</span><b class="num"><span data-k="sauceTotal"></span> g</b></li><li><span>{{recipe.cheese}}</span><b class="num"><span data-k="cheeseTotal"></span> g</b></li></ul></div>
-        </div>
-        <div class="alert" id="warnBox" hidden></div>
-      </section>
-
-      <section id="cronograma">
-        <div class="sec-head"><h2>{{sched.h2}}</h2><p>{{sched.sub}}</p></div>
-        <div class="card">
-          <div class="sched-ctl">
-            <div class="field"><label for="p-bake">{{sched.bake}}</label><input id="p-bake" type="datetime-local"></div>
-            {{#pf}}<div class="field"><label for="p-pfh">{{sched.pfh}}</label><div class="inp"><input id="p-pfh" type="number" min="8" max="30" step="1"><span>h</span></div></div>{{/pf}}
-            <div class="field"><label for="p-panh">{{sched.panh}}</label><div class="inp"><input id="p-panh" type="number" min="12" max="72" step="1"><span>h</span></div></div>
-            <div class="field"><label for="p-outh">{{sched.outh}}</label><div class="inp"><input id="p-outh" type="number" min="1" max="8" step="0.5"><span>h</span></div></div>
+      <div class="chap"><div><p class="chap-no">{{chap.1}}</p><h2 id="h-receita">{{recipe.h2}}</h2></div><p>{{recipe.sub}}</p></div>
+      <div class="grid-tool">
+        <aside class="card panel" aria-label="{{panel.title}}">
+          <div class="panel-head"><p class="panel-h">{{panel.title}}</p><button type="button" class="btn small panel-toggle" id="panelToggle" aria-expanded="false" aria-controls="panelBody">{{panel.open}}</button></div>
+          <p class="panel-sum" id="panelSum"></p>
+          <div class="panel-body" id="panelBody">
+          <div class="fieldset">
+            <div class="eyebrow">{{panel.batch}}</div>
+            <div class="seg" role="group" aria-label="{{panel.calcBy}}">
+              <button type="button" id="modeFlour" aria-pressed="true">{{panel.byFlour}}</button>
+              <button type="button" id="modePizza" aria-pressed="false">{{panel.byPizza}}</button>
+            </div>
+            <div class="field" id="rowFlour"><label for="p-flour">{{panel.flour}}</label><div class="inp"><input id="p-flour" type="number" min="200" step="50" inputmode="decimal"><span>g</span></div></div>
+            <div class="field" id="rowPizzas" hidden><label for="p-pizzas">{{panel.pizzas}}</label><div class="inp"><input id="p-pizzas" type="number" min="1" max="20" step="1" inputmode="numeric"><span>{{panel.unit}}</span></div></div>
+            <div class="field"><label for="p-w">{{panel.ballW}}<small>{{panel.ref}}: {{REF_W}}</small></label><div class="inp"><input id="p-w" type="number" min="180" max="320" step="5"><span>g</span></div></div>
           </div>
-          <ol class="tl" id="timeline"></ol>
+          <div class="fieldset">
+            <div class="eyebrow">{{panel.formula}}</div>
+            <div class="field"><label for="p-hyd">{{panel.hyd}}</label><div class="inp"><input id="p-hyd" type="number" min="55" max="75" step="0.5"><span>%</span></div></div>
+            <div class="field"><label for="p-salt">{{ing.salt}}<small>{{panel.ref}}: {{REF_SALT}}</small></label><div class="inp"><input id="p-salt" type="number" min="2" max="3.2" step="0.01"><span>%</span></div></div>
+            <div class="field"><label for="p-oil">{{panel.oil}}</label><div class="inp"><input id="p-oil" type="number" min="0" max="4" step="0.1"><span>%</span></div></div>
+            <div class="field"><label for="p-yeast">{{panel.yeast}}</label><div class="inp"><input id="p-yeast" type="number" min="0.02" max="1" step="0.01"><span>%</span></div></div>
+            {{#sugar}}<div class="field" id="rowSugar"><label for="p-sugar">{{panel.sugar}}</label><div class="inp"><input id="p-sugar" type="number" min="0" max="5" step="0.1"><span>%</span></div></div>{{/sugar}}
+            {{#pf}}<div class="field" id="rowPf"><label for="p-pf">{{panel.pf}}</label><div class="inp"><input id="p-pf" type="number" min="20" max="60" step="5"><span>%</span></div></div>{{/pf}}
+          </div>
+          <div class="fieldset">
+            <div class="eyebrow">{{panel.env}}</div>
+            <div class="field"><label for="p-fridge">{{panel.fridge}}</label><div class="inp"><input id="p-fridge" type="number" min="2" max="12" step="0.5"><span>°C</span></div></div>
+            <div class="field"><label for="p-top">{{panel.top}}</label><div class="inp"><input id="p-top" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
+            <div class="field"><label for="p-bottom">{{panel.bottom}}</label><div class="inp"><input id="p-bottom" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
+          </div>
+          <div class="fieldset">
+            <div class="eyebrow">{{panel.toppings}}</div>
+            <div class="field"><label for="p-sauce">{{panel.sauce}}</label><div class="inp"><input id="p-sauce" type="number" min="40" max="100" step="5"><span>g</span></div></div>
+            <div class="field"><label for="p-cheese">Mozzarella</label><div class="inp"><input id="p-cheese" type="number" min="40" max="120" step="5"><span>g</span></div></div>
+          </div>
+          <div class="panel-foot">
+            <button class="btn small" type="button" id="resetParams">{{panel.reset}}</button>
+            <button class="btn small" type="button" id="resetChecks">{{panel.clear}}</button>
+          </div>
+          <p class="note">{{panel.note}}</p>
+          </div>
+        </aside>
+        <div class="tool-main">
+          <div class="card tbl-wrap">
+            <table>
+              <thead><tr><th>{{recipe.ing}}</th><th class="n">%</th><th class="n">{{recipe.total}}</th>{{#pf}}<th class="n"><span class="full">{{recipe.pf}}</span><span class="short">{{recipe.pfShort}}</span></th><th class="n"><span class="full">{{recipe.final}}</span><span class="short">{{recipe.finalShort}}</span></th>{{/pf}}</tr></thead>
+              <tbody>
+                <tr><td>{{ing.flour}}</td><td class="n">100</td><td class="n"><span data-k="flour"></span> g</td>{{#pf}}<td class="n"><span data-k="pfFlour"></span> g</td><td class="n"><span data-k="finFlour"></span> g</td>{{/pf}}</tr>
+                <tr><td>{{ing.water}}</td><td class="n" data-k="hydPct"></td><td class="n"><span data-k="water"></span> g</td>{{#pf}}<td class="n"><span data-k="pfWater"></span> g</td><td class="n"><span data-k="finWater"></span> g</td>{{/pf}}</tr>
+                <tr><td>{{ing.yeast}}</td><td class="n" data-k="yeastPct"></td><td class="n"><span data-k="yeast"></span> g</td>{{#pf}}<td class="n"><span data-k="yeast"></span> g</td><td class="n">—</td>{{/pf}}</tr>
+                {{#sugar}}<tr><td>{{ing.sugar}}</td><td class="n" data-k="sugarPct"></td><td class="n"><span data-k="sugar"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="sugar"></span> g</td>{{/pf}}</tr>{{/sugar}}
+                <tr><td>{{ing.salt}}</td><td class="n" data-k="saltPct"></td><td class="n"><span data-k="salt"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="salt"></span> g</td>{{/pf}}</tr>
+                <tr><td>{{ing.oil}}</td><td class="n" data-k="oilPct"></td><td class="n"><span data-k="oil"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="oil"></span> g</td>{{/pf}}</tr>
+                <tr class="total"><td>{{recipe.dough}}</td><td class="n"></td><td class="n"><span data-k="total"></span> g</td>{{#pf}}<td class="n"><span data-k="pfTotal"></span> g</td><td class="n">—</td>{{/pf}}</tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="split{{SPLIT_CLASS}}">
+            {{#wsplit}}<div class="card mini"><div class="eyebrow">{{recipe.waterEb}}</div><h3>{{recipe.waterH}}</h3>
+              <ul><li><span>{{recipe.wInit}}</span><b class="num"><span data-k="initWater"></span> g</b></li><li><span>Bassinage</span><b class="num"><span data-k="bassWater"></span> g</b></li></ul></div>{{/wsplit}}
+            <div class="card mini"><div class="eyebrow">{{recipe.divEb}}</div><h3>{{recipe.balls}}</h3>
+              <ul><li><span>{{recipe.main}}</span><b class="num"><span data-k="n"></span> × <span data-k="per"></span> g</b></li><li id="altRow"><span>{{recipe.alt}}</span><b class="num" data-k="alt"></b></li><li><span>{{recipe.target}}</span><b class="num">{{TARGET}}</b></li></ul></div>
+            <div class="card mini"><div class="eyebrow">{{recipe.topEb}}</div><h3>{{recipe.forPre}} <span data-k="n"></span> {{recipe.forPost}}</h3>
+              <ul><li><span>Mutti Pelati 400 g</span><b class="num"><span data-k="cans"></span> {{recipe.cans}}</b></li><li><span>{{recipe.sauceTotal}}</span><b class="num"><span data-k="sauceTotal"></span> g</b></li><li><span>{{recipe.cheese}}</span><b class="num"><span data-k="cheeseTotal"></span> g</b></li></ul></div>
+          </div>
+          <div class="alert" id="warnBox" hidden></div>
         </div>
-        <div class="alert" id="schedWarn" hidden></div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <section id="assistir" class="np-player">
-        <div class="sec-head"><h2>{{player.h2}}</h2><p>{{player.sub}}</p></div>
+  {{WIN_TEMPO}}
+
+  <section class="sheet" id="cronograma" aria-labelledby="h-cron"><div class="wrap">
+    <div class="chap"><div><p class="chap-no">{{chap.2}}</p><h2 id="h-cron">{{sched.h2}}</h2></div><p>{{sched.sub}}</p></div>
+    <div class="card">
+      <div class="sched-ctl">
+        <div class="field"><label for="p-bake">{{sched.bake}}</label><input id="p-bake" type="datetime-local"></div>
+        {{#pf}}<div class="field"><label for="p-pfh">{{sched.pfh}}</label><div class="inp"><input id="p-pfh" type="number" min="8" max="30" step="1"><span>h</span></div></div>{{/pf}}
+        <div class="field"><label for="p-panh">{{sched.panh}}</label><div class="inp"><input id="p-panh" type="number" min="12" max="72" step="1"><span>h</span></div></div>
+        <div class="field"><label for="p-outh">{{sched.outh}}</label><div class="inp"><input id="p-outh" type="number" min="1" max="8" step="0.5"><span>h</span></div></div>
+      </div>
+      <ol class="tl" id="timeline"></ol>
+    </div>
+    <div class="alert" id="schedWarn" hidden></div>
+  </div></section>
+
+  {{WIN_GESTO}}
+
+  <section class="sheet" id="passos" aria-labelledby="h-passos"><div class="wrap">
+    <div class="chap"><div><p class="chap-no">{{chap.3}}</p><h2 id="h-passos">{{steps.h2}}</h2></div><p>{{steps.sub}}</p></div>
+    <div class="gesto">
+      <div id="assistir" class="card np-player" role="region" aria-label="{{player.h2}}">
         <div class="screen">
           <div class="stagebox">
             {{PLAYER_STAGE}}
@@ -163,74 +174,74 @@
             <button type="button" class="cbtn" id="plRep" aria-label="{{player.repeat}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             <span class="sp"></span>
             <div class="mode" role="group" aria-label="{{player.mode}}">
-              <button type="button" id="plFilm" aria-pressed="true">{{player.film}}</button>
-              <button type="button" id="plBench" aria-pressed="false">{{player.bench}}</button>
+              <button type="button" id="plFilm" aria-pressed="false">{{player.film}}</button>
+              <button type="button" id="plBench" aria-pressed="true">{{player.bench}}</button>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+      <div id="stepsRoot"></div>
+    </div>
+  </div></section>
 
-      <section id="passos">
-        <div class="sec-head"><h2>{{steps.h2}}</h2><p>{{steps.sub}}</p></div>
-        <div class="steps3d">
-          <div class="stage3d-wrap"><div class="stage3d" id="stage3d">
-            <div class="st3-ctrl"><span class="st3-lbl" id="st3Label"></span><span class="sp"></span>
-              <button type="button" class="st3-btn" id="st3Replay" aria-label="{{player.repeat}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-              <button type="button" class="st3-btn wide" id="st3Play" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>{{player.film}}</button>
-            </div>
-          </div></div>
-          <div id="stepsRoot"></div>
+  {{WIN_FOGO}}
+
+  <section class="sheet" id="forno" aria-labelledby="h-forno"><div class="wrap">
+    <div class="chap"><div><p class="chap-no">{{chap.4}}</p><h2 id="h-forno">{{oven.h2}}</h2></div><p>{{oven.sub}}</p></div>
+    <div class="oven-grid">
+      <div class="card timer">
+        <div class="eyebrow">{{oven.timer}}</div>
+        <div class="clock" id="clock">{{CLOCK0}}</div>
+        <div>
+          <div class="track" aria-hidden="true">{{TIMER_ZONES}}<div class="head" id="head"></div></div>
+          <div class="scale">{{TIMER_SCALE}}</div>
         </div>
-      </section>
+        <div class="status" id="tStatus" aria-live="polite"></div>
+        <div class="timer-btns"><button class="btn primary" type="button" id="tStart"></button><button class="btn" type="button" id="tReset">{{oven.reset}}</button></div>
+        <p class="note">{{oven.note}}</p>
+      </div>
+      <div class="card diag">
+        <div class="eyebrow">{{oven.diag}}</div>
+        <div class="chips" id="chips"></div>
+        <div class="diag-out" id="diagOut"><span class="note">{{oven.diagHint}}</span></div>
+      </div>
+    </div>
 
-      <section id="forno">
-        <div class="sec-head"><h2>{{oven.h2}}</h2><p>{{oven.sub}}</p></div>
-        <div class="oven-grid">
-          <div class="card timer">
-            <div class="eyebrow">{{oven.timer}}</div>
-            <div class="clock" id="clock">{{CLOCK0}}</div>
-            <div>
-              <div class="track" aria-hidden="true">{{TIMER_ZONES}}<div class="head" id="head"></div></div>
-              <div class="scale">{{TIMER_SCALE}}</div>
-            </div>
-            <div class="status" id="tStatus" aria-live="polite"></div>
-            <div class="timer-btns"><button class="btn primary" type="button" id="tStart"></button><button class="btn" type="button" id="tReset">{{oven.reset}}</button></div>
-            <p class="note">{{oven.note}}</p>
-          </div>
-          <div class="card diag">
-            <div class="eyebrow">{{oven.diag}}</div>
-            <div class="chips" id="chips"></div>
-            <div class="diag-out" id="diagOut"><span class="note">{{oven.diagHint}}</span></div>
-          </div>
+  </div></section>
+
+  <div class="gap" aria-hidden="true"></div>
+
+  <div class="sheet sheet-last">
+    <section id="regras" aria-labelledby="h-regras"><div class="wrap">
+      <div class="chap"><div><p class="chap-no">{{chap.5}}</p><h2 id="h-regras">{{rules.h2}}</h2></div><p>{{rules.sub}}</p></div>
+      <ol class="rules">{{RULES}}</ol>
+      <dl class="glossary">{{GLOSSARY}}</dl>
+    </div></section>
+    <section id="sobre" aria-labelledby="h-sobre"><div class="wrap">
+      <div class="chap"><div><p class="chap-no">{{chap.6}}</p><h2 id="h-sobre">{{about.h2}}</h2></div><p>{{about.sub}}</p></div>
+      <div class="about">
+        {{ABOUT_MAIN}}
+        <div class="about-text">
+          <article class="prose"><p class="eyebrow">{{about.pizzaEb}}</p><h3>{{about.pizzaH}}</h3>{{ABOUT_PIZZA}}</article>
+          <article class="prose"><p class="eyebrow">{{about.siteEb}}</p><h3>{{about.siteH}}</h3>{{ABOUT_SITE}}</article>
         </div>
-      </section>
-
-      <section id="regras">
-        <div class="sec-head"><h2>{{rules.h2}}</h2><p>{{rules.sub}}</p></div>
-        <ol class="rules">{{RULES}}</ol>
-        <dl class="glossary">{{GLOSSARY}}</dl>
-      </section>
-
-      <section id="sobre">
-        <div class="sec-head"><h2>{{about.h2}}</h2><p>{{about.sub}}</p></div>
-        <div class="aphotos">{{ABOUT_PHOTOS}}</div>
-        <div class="facts">{{ABOUT_FACTS}}</div>
-        <div class="about-grid">
-          <article class="card about-card"><div class="eyebrow">{{about.siteEb}}</div><h3>{{about.siteH}}</h3>{{ABOUT_SITE}}</article>
-          <article class="card about-card"><div class="eyebrow">{{about.pizzaEb}}</div><h3>{{about.pizzaH}}</h3>{{ABOUT_PIZZA}}</article>
-        </div>
-      </section>
-    </main>
+      </div>
+      <div class="aphotos">{{ABOUT_PHOTOS}}</div>
+      <div class="facts">{{ABOUT_FACTS}}</div>
+    </div></section>
   </div>
-</div>
-<footer><div class="wrap foot">
-  <span class="mono-js" aria-hidden="true">JS</span>
-  <p class="sig">{{foot.sig}} <b>Jhonathan Sousa</b></p>
-  <a class="ig" href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg>@jhonsousa1</a>
-  <nav class="foot-langs" aria-label="{{nav.recipes}}">{{FOOT_RECIPES}}</nav>
-  <nav class="foot-langs" aria-label="{{foot.langs}}">{{FOOT_LANGS}}</nav>
-  <p class="copy">{{foot.photos}}</p>
-  <p class="copy">© 2026 Jhonathan Sousa · {{foot.rights}}</p>
+</main>
+
+<footer class="fin" data-take="fim" {{FIN_PHOTO_ATTR}}><div class="wrap">
+  <p class="fin-h">{{FIN_H}}</p>
+  <div class="foot">
+    <p class="sig">{{foot.sig}} <b>Jhonathan Sousa</b></p>
+    <a class="ig" href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg>@jhonsousa1</a>
+    <nav class="foot-langs" aria-label="{{foot.recipes}}">{{FOOT_RECIPES}}</nav>
+    <nav class="foot-langs" aria-label="{{foot.langs}}">{{FOOT_LANGS}}</nav>
+    {{FIN_CREDIT}}
+    <p class="copy">© 2026 Jhonathan Sousa · {{foot.rights}}</p>
+  </div>
 </div></footer>
 
 <script>
@@ -291,7 +302,7 @@
   function renderSteps(){
     let i=0, h='';
     T.steps.forEach(d=>{
-      h += `<div class="day"><h3>${d.day}</h3><span class="pill">${d.when}</span></div><div class="steps">`;
+      h += `<div class="day"><h3>${d.day}</h3><span class="dwhen">${d.when}</span></div><div class="steps">`;
       d.items.forEach(s=>{
         i++;
         const tags = s.src.map(x=>`<span class="tag ${SRC[x]}">${T.src[x]}</span>`).join('');
@@ -299,7 +310,7 @@
         if(s.tip){const w=s.tip.startsWith('warn|'), tx=(w?s.tip.slice(5):s.tip).replace(/\{(\w+)\}/g,'${$1}');tip=`<div class="tip ${w?'warn':''}">${tx}</div>`}
         h += `<article class="step" id="${s.id}"><div class="illo">${IL[s.il]}</div><div class="body">
           <div class="step-top"><div><div class="step-num">${T.stepLabel} ${String(i).padStart(2,'0')}</div><h4>${s.t}</h4></div>
-          <button type="button" class="check" data-step="${s.id}" aria-pressed="false"><span class="box"></span>${T.done}</button></div>
+          <div class="step-act">${C.scenes[s.id]?`<button type="button" class="see" data-see="${s.id}">${T.player.see}</button>`:''}<button type="button" class="check" data-step="${s.id}" aria-pressed="false"><span class="box"></span>${T.done}</button></div></div>
           <div class="meta"><span class="tag time">${s.time.replace(/\{(\w+)\}/g,'${$1}')}</span>${tags}</div>
           <ul>${s.li.map(x=>`<li>${x.replace(/\{(\w+)\}/g,(m,k)=>q(k))}</li>`).join('')}</ul>${tip}${(T.photos||{})[s.id]||''}</div></article>`;
       });
@@ -320,6 +331,7 @@
     const ev = C.sched.map((e,i)=>[new Date(B - e.off.reduce((a,x)=>a+(typeof x==='number'?x:P[x]),0)*H), e.cls, T.sched.ev[i][0], fill(T.sched.ev[i][1],v)]);
     box.innerHTML = ev.map(([d,c,t,p])=>`<li><div class="when"><b>${tfmt.format(d)}</b>${dfmt.format(d)}</div><span class="dot ${c}"></span><div class="what"><b>${t}</b><p>${p}</p></div></li>`).join('');
     const now = new Date(), up = ev.find(([d])=>d > now);
+    if(up) box.children[ev.indexOf(up)].classList.add('next-ev');
     if(up){const m=Math.round((up[0]-now)/60e3), dd=Math.floor(m/1440), hh=Math.floor(m%1440/60), mm=m%60;
       const rel = fill(dd ? T.rel.d : hh ? T.rel.h : T.rel.m, {d:dd, h:hh, m: hh ? String(mm).padStart(2,'0') : mm});
       nx.innerHTML = `${T.sched.next}: <b>${up[2]}</b><span class="em">${dfmt.format(up[0])}, ${tfmt.format(up[0])} · ${fill(T.sched.in,{rel})}</span>`; nx.hidden = false;}
@@ -419,7 +431,7 @@
   // ---------- Tema ----------
   const themeBtn=document.getElementById('themeBtn');
   const syncTheme=()=>{const dk=document.documentElement.getAttribute('data-theme')==='dark'; themeBtn.setAttribute('aria-pressed',dk);
-    const m=document.querySelector('meta[name="theme-color"]'); if(m) m.content=dk?'#1A1614':'#C8341F'};
+    const m=document.querySelector('meta[name="theme-color"]'); if(m) m.content='#120E0C'};
   themeBtn.onclick=()=>{const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
     document.documentElement.setAttribute('data-theme',t);
     const n=new Date(), u=new Date(n); u.setMinutes(0,0,0); const h=n.getHours();
@@ -451,13 +463,10 @@
   }
 })();
 </script>
+<script>{{SCENE_JS}}</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script>
 {{PLAYER_JS}}
-</script>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
-<script type="module">
-{{WORLD_JS}}
 </script>
 </body>
 </html>

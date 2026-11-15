@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NapoliProtocol · mockup "Luce di Forno"</title>
+<!-- MOCKUP ESTÁTICO de direção de arte. Não é o site: números fixos, player representado por um quadro parado. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Atkinson+Hyperlegible+Next:wght@400..700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  /* cena: sempre escura, igual nos dois temas */
+  --scene:#120E0C; --scene-rgb:18 14 12; --scene-ink:#FFF7EA; --scene-muted:#D9CBB8; --oro:#E9B872;
+  --f-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",Verdana,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --r-s:8px; --r-m:14px; --r-l:22px; --r-sheet:28px;
+  --ease-cam:cubic-bezier(.22,.61,.36,1); --ease-ui:cubic-bezier(.2,.8,.2,1);
+  --gut:clamp(16px,4vw,56px);
+}
+:root,[data-theme="light"]{
+  --bg:#F4EEE4; --surface:#FFFCF6; --surface-2:#EBE3D5; --ink:#1B1512; --muted:#5F554C; --line:#DDD3C3; --line-strong:#8F8375;
+  --accent:#C2321A; --accent-ink:#9E2613; --accent-soft:#F7DDD3; --on-accent:#FFFFFF;
+  --basil:#2B6E44; --basil-soft:#DCEBDD; --ember:#8A4E0C; --ember-soft:#F5E6CC; --cold:#2B6490;
+  --bd-dim:0; --bd-filter:none; --scrim-k:1;
+  --sh-sheet:0 -24px 60px -20px rgb(18 14 12 / .55); --sh-card:0 1px 0 rgb(18 14 12 / .04),0 14px 30px -22px rgb(18 14 12 / .35);
+  color-scheme:light;
+}
+[data-theme="dark"]{
+  --bg:#120E0C; --surface:#1D1815; --surface-2:#29221E; --ink:#F4EDE3; --muted:#B5A99C; --line:#3A312B; --line-strong:#7A6C60;
+  --accent:#F26A47; --accent-ink:#F26A47; --accent-soft:#3A1E16; --on-accent:#1A0B06;
+  --basil:#74C08D; --basil-soft:#1C2D22; --ember:#EBAA5E; --ember-soft:#35281A; --cold:#86B6DC;
+  --bd-dim:.26; --bd-filter:none; --scrim-k:1.12;
+  --sh-sheet:0 -24px 60px -20px rgb(0 0 0 / .8); --sh-card:0 0 0 1px var(--line);
+  color-scheme:dark;
+}
+*{box-sizing:border-box} html{scroll-padding-top:72px}
+body{margin:0;background:var(--scene);color:var(--ink);font:400 17px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p{margin:0} a{color:inherit}
+:focus-visible{outline:3px solid var(--oro);outline-offset:3px;border-radius:6px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:var(--gut)}
+
+/* ---------- cenário fixo (backdrop) ---------- */
+.bd{position:fixed;inset:0;height:100lvh;z-index:0;overflow:hidden;background:var(--scene);pointer-events:none}
+.bd img{position:absolute;left:0;top:0;transform-origin:0 0;opacity:0;filter:var(--bd-filter);will-change:transform,opacity;
+  transition:transform 1.4s var(--ease-cam),opacity .7s linear}
+.bd img.on{opacity:1}
+.bd img.bleed-l{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 26%);mask-image:linear-gradient(90deg,transparent 0,#000 26%)}
+.bd img.bleed-t{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%);mask-image:linear-gradient(180deg,transparent 0,#000 30%)}
+.bd::after{content:"";position:absolute;inset:0;background:var(--scene);opacity:var(--bd-dim)}
+main,header,footer{position:relative;z-index:1}
+
+/* ---------- topbar ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:20;color:var(--scene-ink);transition:background .25s,color .25s,box-shadow .25s}
+.top .wrap{display:flex;align-items:center;gap:18px;height:60px}
+.top.solid{background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.brand{font:600 19px/1 var(--f-display);letter-spacing:-.01em;text-decoration:none;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.flag{display:inline-flex;width:18px;height:12px;border-radius:2px;overflow:hidden}.flag i{flex:1}.flag i:nth-child(1){background:#2F8A45}.flag i:nth-child(2){background:#fff}.flag i:nth-child(3){background:#C2321A}
+.nav{display:flex;gap:2px;margin-left:auto;font-size:14.5px;font-weight:500}
+.nav a{text-decoration:none;padding:8px 11px;border-radius:99px;opacity:.86}.nav a:hover{opacity:1;background:rgb(127 127 127 / .16)}
+.prog{display:flex;align-items:center;gap:8px;font:600 12.5px var(--f-mono)}
+.prog i{display:block;width:56px;height:4px;border-radius:9px;background:rgb(127 127 127 / .35);position:relative;overflow:hidden}.prog i::after{content:"";position:absolute;inset:0 62% 0 0;background:var(--oro)}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid rgb(127 127 127 / .4);background:transparent;color:inherit;cursor:pointer;font:600 13px var(--f-body)}
+@media (max-width:900px){.nav{display:none}.prog{margin-left:auto}}
+
+/* ---------- herói ---------- */
+.hero{min-height:100svh;display:grid;align-items:end;color:var(--scene-ink);position:relative;padding:96px 0 136px}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  --c:calc(var(--gut) + min(600px,100% - 2*var(--gut)));
+  background:linear-gradient(90deg,rgb(var(--scene-rgb)/.96) 0,rgb(var(--scene-rgb)/calc(.86*var(--scrim-k))) var(--c),rgb(var(--scene-rgb)/calc(.66*var(--scrim-k))) calc(var(--c) + 80px),rgb(var(--scene-rgb)/0) calc(var(--c) + 46vw)),
+             linear-gradient(0deg,rgb(var(--scene-rgb)/.9) 0,rgb(var(--scene-rgb)/0) 34%)}
+.hero-copy{max-width:600px}
+.tabs{display:inline-flex;gap:4px;padding:4px;border-radius:99px;background:rgb(var(--scene-rgb)/.82);border:1px solid rgb(255 247 234 / .18);margin-bottom:28px}
+.tabs a{font-size:14px;font-weight:600;text-decoration:none;padding:8px 16px;border-radius:99px;color:var(--scene-muted)}
+.tabs a[aria-current]{background:var(--scene-ink);color:var(--scene)}
+.pill{display:inline-block;font:600 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--oro);background:var(--scene);border:1px solid rgb(233 184 114 / .4);padding:8px 12px;border-radius:99px}
+.hero h1{font:560 clamp(44px,7vw,108px)/.94 var(--f-display);letter-spacing:-.025em;margin:20px 0 22px;text-wrap:balance}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--oro)}
+.lead{font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:44ch;color:var(--scene-ink)}
+.by{display:flex;align-items:center;gap:10px;margin-top:20px;font-size:14.5px;color:var(--scene-ink)}
+.by b{font-weight:600}.by .mono{font-size:12.5px;opacity:.85}
+.q{display:inline-flex;align-items:center;gap:12px;margin-top:28px;padding:10px 14px 10px 18px;border-radius:var(--r-l);background:var(--scene);border:1px solid rgb(255 247 234 / .2)}
+.q span{font-weight:600;font-size:15px}.q output{font:600 38px/1 var(--f-display);min-width:1.3ch;text-align:center}
+.q button{width:48px;height:48px;border-radius:50%;border:1px solid rgb(255 247 234 / .35);background:transparent;color:inherit;font:400 24px var(--f-body);cursor:pointer}
+.q small{font:400 12.5px var(--f-mono);color:var(--scene-muted)}
+.credit{position:absolute;right:var(--gut);bottom:148px;font-size:12px;color:var(--scene-ink);background:rgb(var(--scene-rgb)/.78);padding:5px 10px;border-radius:99px}
+.cue{position:absolute;left:50%;bottom:150px;translate:-50% 0;width:1px;height:44px;background:linear-gradient(var(--scene-ink),transparent);opacity:.6}
+
+/* ---------- folhas (superfícies de trabalho, sólidas) ---------- */
+.sheet{background:var(--bg);color:var(--ink);border-radius:var(--r-sheet) var(--r-sheet) 0 0;box-shadow:var(--sh-sheet);padding:0 0 88px;position:relative}
+.sheet + .sheet{border-radius:0;box-shadow:none}
+.sheet.end{border-radius:0 0 var(--r-sheet) var(--r-sheet)}
+.sheet.both{border-radius:var(--r-sheet)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-radius:var(--r-l);box-shadow:var(--sh-card);translate:0 -64px;margin-bottom:-24px;overflow:hidden}
+.kpi{padding:20px 24px;border-left:1px solid var(--line)}.kpi:first-child{border-left:0}
+.k{font:600 11.5px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kpi .v{font:600 26px/1.2 var(--f-mono);margin-top:10px}.kpi small{font-size:13.5px;color:var(--muted)}
+.chap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px;align-items:end;padding:56px 0 28px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.chap .no{font:600 12.5px var(--f-mono);letter-spacing:.14em;color:var(--accent-ink);text-transform:uppercase}
+.chap h2{font:520 clamp(34px,4.6vw,64px)/1 var(--f-display);letter-spacing:-.02em;margin-top:10px}
+.chap p{color:var(--muted);max-width:52ch;font-size:17px}
+.card{background:var(--surface);border-radius:var(--r-l);box-shadow:var(--sh-card)}
+.grid-tool{display:grid;grid-template-columns:320px minmax(0,1fr);gap:28px;align-items:start}
+.panel{position:sticky;top:84px;padding:22px}
+.panel h3{font:560 22px/1.1 var(--f-display);margin-bottom:14px}
+.seg{display:grid;grid-template-columns:1fr 1fr;padding:3px;border-radius:99px;background:var(--surface-2);margin-bottom:14px}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 14px var(--f-body);min-height:40px;border-radius:99px;cursor:pointer}
+.seg [aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.field{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
+.inp{display:flex;align-items:center;gap:6px;border:1.5px solid var(--line-strong);border-radius:var(--r-s);padding:0 10px;height:44px;width:118px;background:var(--bg)}
+.inp input{border:0;background:transparent;color:var(--ink);font:600 16px var(--f-mono);width:100%;text-align:right;outline:0}.inp span{font:400 13px var(--f-mono);color:var(--muted)}
+.inp:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+table{width:100%;border-collapse:collapse;font-size:16px}
+th{font:600 11.5px var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:16px 20px;border-bottom:1px solid var(--line)}
+td{padding:15px 20px;border-bottom:1px solid var(--line)} tr:last-child td{border-bottom:0}
+.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{font-weight:700;background:var(--surface-2)}
+.minis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.mini{padding:18px 20px}.mini h4{font:560 19px/1.15 var(--f-display);margin:6px 0 10px}.mini li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-top:1px solid var(--line);font-size:14.5px}.mini ul{list-style:none;margin:0;padding:0}
+
+/* ---------- janelas (interlúdios): o cenário reaparece ---------- */
+.win{min-height:68svh;display:grid;align-items:end;color:var(--scene-ink);position:relative;padding:120px 0 64px}
+.win::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(140% 130% at 0% 100%,rgb(var(--scene-rgb)/.94) 0,rgb(var(--scene-rgb)/calc(.7*var(--scrim-k))) 70%,rgb(var(--scene-rgb)/.1) 100%)}
+.win .wrap>*{max-width:min(100%,640px)}
+.win h2{font:500 clamp(40px,7vw,104px)/.95 var(--f-display);letter-spacing:-.025em;margin:16px 0 12px}
+.win h2 em{font-style:italic;font-weight:400;color:var(--oro)}
+.win p{max-width:46ch;font-size:18px}
+.win .credit{bottom:20px}
+
+/* cronograma */
+.tl{list-style:none;margin:0;padding:8px 28px}
+.tl li{display:grid;grid-template-columns:120px 20px minmax(0,1fr);gap:16px;padding:16px 0;position:relative}
+.tl li::before{content:"";position:absolute;left:145px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl .when{text-align:right;font:400 13px var(--f-mono);color:var(--muted)}.tl .when b{display:block;font-size:17px;color:var(--ink)}
+.dot{width:14px;height:14px;border-radius:50%;margin:5px 3px;background:var(--accent);box-shadow:0 0 0 4px var(--surface);position:relative}
+.dot.cold{background:var(--cold)}.dot.hot{background:var(--ember)}
+.tl p{color:var(--muted);font-size:15px}
+.tl li.next .what b{color:var(--accent-ink)}.tl li.next .dot{box-shadow:0 0 0 4px var(--surface),0 0 0 7px color-mix(in srgb,var(--accent) 35%,transparent)}
+
+/* gesto: player fixo + etapas */
+.gesto{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:32px;align-items:start}
+.player{position:sticky;top:84px;overflow:hidden}
+.stage{aspect-ratio:16/10;background:radial-gradient(90% 80% at 50% 30%,#3A2E27,#17120F);display:grid;place-items:center;position:relative;color:var(--scene-ink)}
+.stage svg{width:62%}
+.stage .badge{position:absolute;left:14px;top:12px;font:600 12px var(--f-mono);background:var(--scene);padding:6px 11px;border-radius:99px}
+.chs{display:flex;gap:4px;padding:14px 20px 4px}.chs i{flex:1;height:6px;border-radius:9px;background:var(--line)}.chs i.d{background:var(--ink)}.chs i.c{background:var(--accent)}
+.cap{padding:10px 20px 6px}.cap small{font:600 12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink)}.cap h3{font:560 26px/1.1 var(--f-display);margin:4px 0 8px}.cap li{font-size:16px}.cap ul{margin:0;padding-left:20px}
+.cap mark{font:600 .92em var(--f-mono);background:color-mix(in srgb,var(--oro) 30%,transparent);color:inherit;padding:1px 6px;border-radius:6px}
+.ctrl{display:flex;align-items:center;gap:10px;padding:12px 20px 20px}
+.cb{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line-strong);background:transparent;color:var(--ink);cursor:pointer;font-size:16px}.cb.main{width:60px;height:60px;background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.day{display:flex;align-items:baseline;gap:12px;margin:8px 0 12px}.day h3{font:560 28px/1 var(--f-display)}.day span{font:400 13px var(--f-mono);color:var(--muted)}
+.step{padding:20px 22px;margin-bottom:12px;border-left:3px solid transparent;transition:border-color .25s,opacity .25s}
+.step.cur{border-left-color:var(--accent)}
+.step.done{opacity:.62}
+.step-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.num{font:600 12px var(--f-mono);letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.step h4{font:560 22px/1.15 var(--f-display);margin-top:4px}
+.check{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px 0 10px;border-radius:99px;border:1.5px solid var(--line-strong);background:transparent;color:var(--ink);font:600 14px var(--f-body);cursor:pointer;white-space:nowrap}
+.check i{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line-strong);display:grid;place-items:center;font-style:normal;font-size:13px}
+.check[aria-pressed=true]{background:var(--basil-soft);border-color:var(--basil);color:var(--basil)}.check[aria-pressed=true] i{background:var(--basil);border-color:var(--basil);color:var(--surface)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.tag{font:600 12px var(--f-mono);padding:4px 9px;border-radius:99px;background:var(--surface-2);color:var(--muted)}.tag.t{background:var(--ember-soft);color:var(--ember)}
+.step ul{margin:0;padding-left:20px}.step li{margin:4px 0}.step .v{font:600 .95em var(--f-mono);color:var(--accent-ink)}
+.tip{margin-top:12px;padding:10px 14px;border-radius:var(--r-s);background:var(--ember-soft);color:var(--ember);font-size:15px}
+
+/* forno */
+.oven{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:24px}
+.timer{padding:28px;background:var(--scene);color:var(--scene-ink);box-shadow:none;border:1px solid rgb(255 247 234 / .14)}
+.timer .k{color:var(--scene-muted)}
+.clock{font:600 clamp(72px,11vw,148px)/1 var(--f-mono);letter-spacing:-.04em;margin:8px 0 18px}.clock small{font-size:.22em;letter-spacing:0;color:var(--scene-muted)}
+.track{height:18px;border-radius:9px;background:rgb(255 247 234 / .14);position:relative}
+.track b{position:absolute;top:0;bottom:0;border-radius:9px}.track .z1{left:16.6%;width:3.4%;background:var(--oro)}.track .z2{left:46.6%;width:33.4%;background:#74C08D}
+.track u{position:absolute;left:32%;top:-6px;bottom:-6px;width:4px;border-radius:2px;background:var(--scene-ink)}
+.scale{display:flex;justify-content:space-between;font:400 12px var(--f-mono);color:var(--scene-muted);margin-top:8px}
+.btns{display:flex;gap:10px;margin-top:22px}
+.btn{min-height:52px;padding:0 24px;border-radius:99px;border:1.5px solid var(--line-strong);background:transparent;color:inherit;font:600 16px var(--f-body);cursor:pointer}
+.btn.pri{background:#F26A47;border-color:#F26A47;color:#1A0B06}
+.timer .btn{border-color:rgb(255 247 234 / .4)}
+.diag{padding:24px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+.chip{min-height:44px;padding:0 16px;border-radius:99px;border:1.5px solid var(--line-strong);background:transparent;color:var(--ink);font:500 15px var(--f-body);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.out{padding:14px 16px;border-radius:var(--r-m);background:var(--surface-2);font-size:15.5px}
+
+.rules{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 40px;counter-reset:r}
+.rules li{counter-increment:r;display:grid;grid-template-columns:56px 1fr;gap:8px;padding:18px 0;border-top:1px solid var(--line)}
+.rules li::before{content:counter(r,decimal-leading-zero);font:400 italic 34px/1 var(--f-display);color:var(--accent-ink)}
+.about{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:start}
+figure{margin:0}.about img{display:block;width:100%;border-radius:var(--r-l);aspect-ratio:3/2;object-fit:cover}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:8px}
+.prose p{margin-bottom:14px;max-width:60ch}.prose p:first-child::first-letter{font:560 3.4em/.8 var(--f-display);float:left;padding:6px 8px 0 0;color:var(--accent-ink)}
+
+.fin{min-height:72svh;display:grid;align-items:end;color:var(--scene-ink);position:relative;padding:120px 0 40px}
+.fin::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgb(var(--scene-rgb)/.96) 0,rgb(var(--scene-rgb)/.72) 55%,rgb(var(--scene-rgb)/.3) 100%)}
+.fin h2{font:400 italic clamp(36px,6vw,88px)/1 var(--f-display);letter-spacing:-.02em;max-width:14ch}
+.foot{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:40px;padding-top:20px;border-top:1px solid rgb(255 247 234 / .22);font-size:14px}
+
+/* ---------- mobile: enquadramento próprio ---------- */
+@media (max-width:820px){
+  body{font-size:16.5px}
+  .hero{display:flex;align-items:stretch;padding:84px 0 56px}
+  .top .wrap{gap:10px;height:56px}.prog i{width:36px}.icon-btn{flex:none}
+  .hero>.wrap{display:flex;width:100%}.hero-copy{display:flex;flex-direction:column;align-items:flex-start;width:100%}.hero-copy br{display:none}
+  .hero::before{background:linear-gradient(180deg,rgb(var(--scene-rgb)/.98) 0,rgb(var(--scene-rgb)/calc(.86*var(--scrim-k))) 50%,rgb(var(--scene-rgb)/0) 70%),linear-gradient(0deg,rgb(var(--scene-rgb)/.92) 0,rgb(var(--scene-rgb)/0) 18%)}
+  .tabs{margin-bottom:18px}.hero h1{margin:14px 0 14px}.by{margin-top:12px}
+  .q{align-self:stretch;justify-content:space-between;margin-top:auto}
+  .by{margin-bottom:28px}
+  .q small{display:none}
+  .credit{bottom:20px;left:var(--gut);right:auto}.cue{display:none}
+  .kpis{grid-template-columns:1fr 1fr;translate:0 0;margin:0 0 8px}.kpi{padding:16px}.kpi:nth-child(3){border-left:0}.kpi:nth-child(n+3){border-top:1px solid var(--line)}.kpi .v{font-size:20px}
+  .sheet{padding:20px 0 56px}
+  .chap{grid-template-columns:1fr;gap:12px;padding:36px 0 20px;margin-bottom:24px}
+  .grid-tool,.gesto,.oven,.about,.rules{grid-template-columns:minmax(0,1fr)}
+  .panel,.player{position:static}
+  .minis{grid-template-columns:1fr}
+  th,td{padding:12px 14px}table{font-size:15px}
+  .tl{padding:4px 16px}.tl li{grid-template-columns:86px 20px minmax(0,1fr);gap:10px}.tl li::before{left:105px}
+  .win{min-height:72svh;padding:96px 0 48px}
+  .win::before{background:linear-gradient(0deg,rgb(var(--scene-rgb)/.94) 0,rgb(var(--scene-rgb)/calc(.7*var(--scrim-k))) 58%,rgb(var(--scene-rgb)/0) 88%)}
+  .step-top{flex-direction:column}.check{align-self:stretch;justify-content:center}
+  .timer{padding:20px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="bd" aria-hidden="true">
+  <img id="im-oro" src="../../src/photos/oro-1400.jpg" alt="">
+  <img id="im-leopard" src="../../src/photos/leopard-1400.jpg" alt="">
+</div>
+
+<header class="top" id="top"><div class="wrap">
+  <a class="brand" href="#"><span class="flag"><i></i><i></i><i></i></span>NapoliProtocol</a>
+  <nav class="nav"><a href="#receita">Receita</a><a href="#cronograma">Cronograma</a><a href="#passos">Passo a passo</a><a href="#forno">Forno</a><a href="#regras">Regras</a><a href="#sobre">Sobre</a></nav>
+  <div class="prog" title="Etapas concluídas"><span>5/13</span><i></i></div>
+  <button class="icon-btn" id="theme" aria-label="Alternar tema">◐</button>
+  <button class="icon-btn" aria-label="Idioma">PT</button>
+</div></header>
+
+<main>
+<section class="hero" data-take="hero">
+  <div class="wrap"><div class="hero-copy">
+    <nav class="tabs" aria-label="Receitas"><a href="#" aria-current="page">Napolitana</a><a href="#">New York</a></nav><br>
+    <span class="pill">Caputo 00 · Pré-fermento · 3 dias</span>
+    <h1>Protocolo da Pizza <em>Napolitana</em></h1>
+    <p class="lead">Feita à mão em três dias, calibrada fornada a fornada. Ajuste os parâmetros; quantidades, cronograma e instruções se recalculam.</p>
+    <div class="by"><span>por <b>Jhonathan Sousa</b></span><span class="mono">· v1.0 · out 2026</span></div>
+    <div class="q" role="group" aria-label="Nº de pizzas"><span>Pizzas</span><button aria-label="menos">−</button><output>5</output><button aria-label="mais">+</button><small>800 g · 270 g</small></div>
+  </div></div>
+  <span class="cue" aria-hidden="true"></span>
+  <span class="credit">Foto: <a href="#">Sarah Stierch</a>, <a href="#">CC0</a></span>
+</section>
+
+<div class="sheet" id="receita">
+  <div class="wrap">
+    <div class="kpis">
+      <div class="kpi"><div class="k">Massa total</div><div class="v">1.348 g</div><small>hidratação 64%</small></div>
+      <div class="kpi"><div class="k">Panetti</div><div class="v">5 × 270 g</div><small>pizzas de ~30–32 cm</small></div>
+      <div class="kpi"><div class="k">Forno superior</div><div class="v">450 °C</div><small>pré-aquecer 30–40 min</small></div>
+      <div class="kpi"><div class="k">Forno inferior</div><div class="v">380 °C</div><small>principal ajuste desta fase</small></div>
+    </div>
+    <div class="chap"><div><div class="no">I · A massa</div><h2>Receita</h2></div><p>Percentuais de padeiro sobre a farinha. Mude um parâmetro e toda a página acompanha.</p></div>
+    <div class="grid-tool">
+      <aside class="card panel"><h3>Parâmetros</h3>
+        <div class="seg"><button aria-pressed="true">Por farinha</button><button aria-pressed="false">Por pizzas</button></div>
+        <div class="field"><label>Farinha</label><div class="inp"><input value="800" aria-label="Farinha"><span>g</span></div></div>
+        <div class="field"><label>Peso do panetto</label><div class="inp"><input value="270" aria-label="Peso"><span>g</span></div></div>
+        <div class="field"><label>Hidratação</label><div class="inp"><input value="64" aria-label="Hidratação"><span>%</span></div></div>
+        <div class="field"><label>Sal</label><div class="inp"><input value="2,88" aria-label="Sal"><span>%</span></div></div>
+        <div class="field"><label>Pedra (inferior)</label><div class="inp"><input value="380" aria-label="Inferior"><span>°C</span></div></div>
+      </aside>
+      <div>
+        <div class="card" style="overflow:hidden"><table>
+          <thead><tr><th>Ingrediente</th><th class="n">%</th><th class="n">Total</th><th class="n">Pré-ferm.</th><th class="n">Final</th></tr></thead>
+          <tbody>
+            <tr><td>Farinha Caputo Pizzeria 00</td><td class="n">100</td><td class="n">800 g</td><td class="n">400 g</td><td class="n">400 g</td></tr>
+            <tr><td>Água</td><td class="n">64</td><td class="n">512 g</td><td class="n">400 g</td><td class="n">112 g</td></tr>
+            <tr><td>Fermento seco</td><td class="n">0,1</td><td class="n">0,8 g</td><td class="n">0,8 g</td><td class="n">—</td></tr>
+            <tr><td>Sal</td><td class="n">2,88</td><td class="n">23 g</td><td class="n">—</td><td class="n">23 g</td></tr>
+            <tr><td>Azeite</td><td class="n">1,5</td><td class="n">12 g</td><td class="n">—</td><td class="n">12 g</td></tr>
+            <tr class="total"><td>Massa</td><td class="n"></td><td class="n">1.348 g</td><td class="n">801 g</td><td class="n">—</td></tr>
+          </tbody></table></div>
+        <div class="minis">
+          <div class="card mini"><div class="k">Água</div><h4>Em duas partes</h4><ul><li><span>Inicial</span><b class="mono">94 g</b></li><li><span>Bassinage</span><b class="mono">18 g</b></li></ul></div>
+          <div class="card mini"><div class="k">Divisão</div><h4>Panetti</h4><ul><li><span>Principal</span><b class="mono">5 × 270 g</b></li><li><span>Alvo</span><b class="mono">30–32 cm</b></li></ul></div>
+          <div class="card mini"><div class="k">Coberturas</div><h4>Para 5 pizzas</h4><ul><li><span>Molho</span><b class="mono">325 g</b></li><li><span>Mozzarella</span><b class="mono">350 g</b></li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="win" data-take="tempo"><div class="wrap">
+  <span class="pill">II · O tempo</span><h2>Três dias, <em>uma noite.</em></h2><p>O sabor vem do frio e da espera. O cronograma conta para trás a partir da hora de assar.</p>
+</div></section>
+
+<div class="sheet both" id="cronograma"><div class="wrap">
+  <div class="chap"><div><div class="no">II · O tempo</div><h2>Cronograma</h2></div><p>Informe quando quer assar; cada evento é calculado de trás para a frente.</p></div>
+  <div class="card"><ol class="tl">
+    <li><div class="when"><b>19:00</b>qui., 19/11</div><span class="dot"></span><div class="what"><b>Montar o pré-fermento</b><p>400 g de farinha + 400 g de água + fermento.</p></div></li>
+    <li><div class="when"><b>20:00</b>qui., 19/11</div><span class="dot cold"></span><div class="what"><b>Geladeira</b><p>20 h a 7 °C.</p></div></li>
+    <li class="next"><div class="when"><b>16:00</b>sex., 20/11</div><span class="dot"></span><div class="what"><b>Mistura e divisão · próximo, em 5 h 10</b><p>Mistura, bassinage, dobras, azeite e panetti.</p></div></li>
+    <li><div class="when"><b>19:30</b>sáb., 21/11</div><span class="dot hot"></span><div class="what"><b>Assar</b><p>450 °C em cima, 380 °C na pedra.</p></div></li>
+  </ol></div>
+</div></div>
+
+<section class="win" data-take="gesto"><div class="wrap">
+  <span class="pill">III · O gesto</span><h2>Assista antes, <em>faça depois.</em></h2><p>Treze etapas animadas com as suas quantidades. O filme acompanha a etapa em que você está.</p>
+</div></section>
+
+<div class="sheet both" id="passos"><div class="wrap">
+  <div class="chap"><div><div class="no">III · O gesto</div><h2>Passo a passo</h2></div><p>Marque cada etapa ao concluir. À esquerda, a demonstração animada da etapa em foco.</p></div>
+  <div class="gesto">
+    <div class="card player" id="assistir">
+      <div class="stage"><span class="badge">Dia 2 · 04/13</span>
+        <svg viewBox="0 0 240 150" aria-hidden="true"><ellipse cx="120" cy="128" rx="96" ry="12" fill="#000" opacity=".35"/><path d="M24 50c4 60 40 78 96 78s92-18 96-78z" fill="#E9E3D6"/><ellipse cx="120" cy="50" rx="97" ry="22" fill="#CFC7B6"/><ellipse cx="120" cy="54" rx="80" ry="15" fill="#EAD5AC"/><path d="M150 8c-6 14 8 18 2 34" stroke="#86B6DC" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+      </div>
+      <div class="chs"><i class="d"></i><i class="d"></i><i class="d"></i><i class="c"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="cap"><small>Dia 2 · mistura</small><h3>Bassinage</h3><ul><li>Junte os <mark>18 g</mark> de água restantes em 3 adições.</li></ul></div>
+      <div class="ctrl"><button class="cb" aria-label="Anterior">‹</button><button class="cb main" aria-label="Play">▶</button><button class="cb" aria-label="Próxima">›</button><span style="flex:1"></span><span class="tag">Filme · Bancada</span></div>
+    </div>
+    <div>
+      <div class="day"><h3>Dia 2</h3><span>mistura e divisão</span></div>
+      <article class="card step done"><div class="step-top"><div><div class="num">Etapa 02</div><h4>Mistura inicial</h4></div><button class="check" aria-pressed="true"><i>✓</i>Concluído</button></div></article>
+      <article class="card step cur"><div class="step-top"><div><div class="num">Etapa 04</div><h4>Bassinage</h4></div><button class="check" aria-pressed="false"><i></i>Concluído</button></div>
+        <div class="tags"><span class="tag t">8–10 min</span><span class="tag">receita base</span><span class="tag">adaptação caseira</span></div>
+        <ul><li>Adicione <span class="v">18 g</span> de água em três partes, esperando a massa absorver.</li><li>Trabalhe com a mão em pinça até a superfície voltar a ficar lisa.</li></ul>
+        <div class="tip">Se a massa "nadar", pare e descanse 5 min antes da próxima adição.</div></article>
+      <article class="card step"><div class="step-top"><div><div class="num">Etapa 05</div><h4>Desenvolver o glúten</h4></div><button class="check" aria-pressed="false"><i></i>Concluído</button></div>
+        <div class="tags"><span class="tag t">3 × a cada 20 min</span><span class="tag">receita base</span></div>
+        <ul><li>Dobras em envelope com a mão molhada.</li></ul></article>
+    </div>
+  </div>
+</div></div>
+
+<section class="win" data-take="fogo"><div class="wrap">
+  <span class="pill">IV · O fogo</span><h2>Noventa segundos <em>decidem tudo.</em></h2><p>A primeira pizza calibra o forno. Cronometre, leia a borda, ajuste a pedra.</p>
+  </div><span class="credit">Foto: <a href="#">CDibisceglia</a>, <a href="#">CC BY-SA 4.0</a></span>
+</section>
+
+<div class="sheet both" id="forno"><div class="wrap">
+  <div class="chap"><div><div class="no">IV · O fogo</div><h2>Forno</h2></div><p>Cronômetro de bancada e diagnóstico pelo resultado.</p></div>
+  <div class="oven">
+    <div class="card timer"><div class="k">Cronômetro</div><div class="clock">48<small> s</small></div>
+      <div class="track"><b class="z1"></b><b class="z2"></b><u></u></div><div class="scale"><span>0</span><span>30</span><span>60</span><span>90</span><span>120</span><span>150</span></div>
+      <div class="btns"><button class="btn pri">Pausar</button><button class="btn">Zerar</button></div></div>
+    <div class="card diag"><div class="k">Diagnóstico</div>
+      <div class="chips"><button class="chip" aria-pressed="true">Fundo queimado</button><button class="chip">Fundo pálido</button><button class="chip">Borda crua</button><button class="chip">Queijo queimou</button></div>
+      <div class="out"><b>Baixe a pedra em 10 °C.</b><br>Inferior hoje: 380 °C → <span class="mono">370 °C</span><br><br><button class="btn pri" style="min-height:44px;background:var(--accent);border-color:var(--accent);color:var(--on-accent)">Aplicar 370 °C</button></div></div>
+  </div>
+</div></div>
+
+<div style="height:20px"></div>
+<div class="sheet both" id="regras"><div class="wrap">
+  <div class="chap"><div><div class="no">V · O ofício</div><h2>Regras da versão 1.0</h2></div><p>O gargalo atual não é a massa. É a calibração térmica e a técnica de abertura.</p></div>
+  <ol class="rules"><li><div><b>Uma variável por fornada.</b> Mude só a pedra ou só a hidratação.</div></li><li><div><b>A primeira pizza é teste.</b> Sirva a segunda.</div></li><li><div><b>Pouco molho, queijo seco.</b> Umidade é inimiga do fundo.</div></li><li><div><b>Anote tudo.</b> O protocolo evolui com dados.</div></li></ol>
+  <div class="chap" id="sobre"><div><div class="no">VI · A origem</div><h2>Sobre</h2></div><p>De onde vem a pizza e por que este protocolo existe.</p></div>
+  <div class="about">
+    <figure><img src="../../src/photos/napoli-1400.jpg" alt="Pizzaiolo e forno a lenha em Nápoles" loading="lazy"><figcaption>Pizzaiolo e forno a lenha em Nápoles. Foto: Glen MacLarty, CC BY 2.0</figcaption></figure>
+    <div class="prose"><p>A pizza napolitana nasceu como comida de rua: massa, tomate, fogo forte e pressa. O que parece simples depende de fermentação longa e de um forno acima de 400 °C.</p><p>Este site é o caderno de bancada de uma cozinha doméstica, publicado para quem quer repetir o resultado.</p></div>
+  </div>
+</div></div>
+
+<footer class="fin" data-take="fim"><div class="wrap">
+  <h2>Farinha, água, sal, tempo.</h2>
+  <div class="foot"><b>NapoliProtocol</b><span>Feito à mão por Jhonathan Sousa</span><a href="#">@jhonsousa1</a><span style="flex:1"></span><span>Napolitana · New York</span><span>PT · EN</span><span>Foto de fundo: Sarah Stierch, CC0</span></div>
+</div></footer>
+</main>
+
+<script>
+/* Câmera 2D: cada tomada = foco (fx,fy em fração da imagem), âncora (ax,ay em fração do viewport), escala s (1 = cover). */
+const TAKES={
+  hero:  {img:'oro',     d:{fx:.45,fy:.48,ax:.64,ay:.52,s:1.00,bleed:'l'}, m:{fx:.31,fy:1,ax:.5,ay:1,s:.66,bleed:'t'}},
+  tempo: {img:'oro',     d:{fx:.56,fy:.80,ax:.68,ay:.38,s:1.30},           m:{fx:.48,fy:.82,ax:.5,ay:.40,s:1.00}},
+  gesto: {img:'oro',     d:{fx:.20,fy:.56,ax:.70,ay:.40,s:1.30},           m:{fx:.18,fy:.60,ax:.5,ay:.40,s:1.00}},
+  fogo:  {img:'leopard', d:{fx:.42,fy:.74,ax:.68,ay:.40,s:1.12},           m:{fx:.40,fy:.74,ax:.5,ay:.40,s:1.00}},
+  fim:   {img:'oro',     d:{fx:.45,fy:.48,ax:.50,ay:.42,s:1.00},           m:{fx:.45,fy:.50,ax:.5,ay:.42,s:1.00}}
+};
+const bd=document.querySelector('.bd'), imgs={oro:document.getElementById('im-oro'),leopard:document.getElementById('im-leopard')};
+let cur='hero';
+function place(name){
+  const mob=matchMedia('(max-width:820px)').matches, T=TAKES[name], t=mob?T.m:T.d, img=imgs[T.img];
+  const A=(img.naturalWidth||4)/(img.naturalHeight||3), w=bd.clientWidth, h=bd.clientHeight;
+  const W0=Math.max(w,h*A), H0=W0/A, W=W0*t.s, H=H0*t.s;
+  let tx=t.ax*w-t.fx*W, ty=t.ay*h-t.fy*H;
+  if(t.bleed!=='l') tx=Math.min(0,Math.max(w-W,tx));
+  if(t.bleed!=='t') ty=Math.min(0,Math.max(h-H,ty));
+  img.style.width=W0+'px'; img.style.height=H0+'px';
+  img.style.transform=`translate3d(${tx.toFixed(1)}px,${ty.toFixed(1)}px,0) scale(${t.s})`;
+  img.classList.toggle('bleed-l',t.bleed==='l'); img.classList.toggle('bleed-t',t.bleed==='t');
+  for(const k in imgs) imgs[k].classList.toggle('on',imgs[k]===img);
+}
+const marks=[...document.querySelectorAll('[data-take]')], bar=document.getElementById('top');
+let tick=false;
+function onScroll(){ if(tick) return; tick=true; requestAnimationFrame(()=>{ tick=false;
+  let n='hero'; for(const m of marks){ if(m.getBoundingClientRect().top < innerHeight*.9) n=m.dataset.take; }
+  if(n!==cur){cur=n; place(cur)}
+  bar.classList.toggle('solid', scrollY > innerHeight-70 );
+});}
+addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',()=>place(cur));
+Promise.all(Object.values(imgs).map(i=>i.decode?i.decode().catch(()=>{}):0)).then(()=>{place(cur);onScroll()});
+document.getElementById('theme').onclick=()=>{const r=document.documentElement; r.dataset.theme=r.dataset.theme==='dark'?'light':'dark'};
+document.addEventListener('click',e=>{const b=e.target.closest('.check'); if(!b) return; const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); b.querySelector('i').textContent=on?'✓':''; b.closest('.step').classList.toggle('done',on)});
+</script>
+</body>
+</html>

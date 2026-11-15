@@ -22,7 +22,7 @@
     "panel.reset": "Restaurar v1.0",
     "steps.sub": "Marque cada etapa ao concluir. As etiquetas indicam a origem: receita base, adaptação para o processo caseiro ou lição da 1ª fornada.",
     "oven.sub": "Cronômetro de bancada e diagnóstico pelo resultado. A primeira pizza de cada sessão calibra o forno.",
-    "oven.note": "Faixa laranja: 25–30 s, avalie se já dá para girar 180°. Faixa verde: 70–120 s, ponto esperado neste forno.",
+    "oven.note": "Faixa dourada: 25–30 s, avalie se já dá para girar 180°. Faixa verde: 70–120 s, ponto esperado neste forno.",
     "rules.h2": "Regras da versão 1.0",
     "rules.sub": "O gargalo atual não é a massa. É a calibração térmica e a técnica de abertura e montagem.",
     "ing.flour": "Farinha Caputo Pizzeria 00",
@@ -440,6 +440,23 @@
         "Janela de ponto. Confira fundo e topo.",
         "Passou de 120 s. Se ainda pálida, falta energia."
       ]
+    }
+  },
+  "scene": {
+    "tempo": {
+      "h": "Três dias, *uma noite.*",
+      "p": "O sabor vem do frio e da espera. O cronograma conta para trás a partir da hora de assar."
+    },
+    "gesto": {
+      "h": "Assista antes, *faça depois.*",
+      "p": "Cada etapa animada com as suas quantidades."
+    },
+    "fogo": {
+      "h": "Noventa segundos *decidem tudo.*",
+      "p": "A primeira pizza calibra o forno. Cronometre, leia a borda, ajuste a pedra."
+    },
+    "fim": {
+      "h": "Farinha, água, sal, *tempo.*"
     }
   }
 }

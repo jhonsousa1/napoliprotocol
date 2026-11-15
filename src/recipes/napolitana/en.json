@@ -22,7 +22,7 @@
     "panel.reset": "Restore v1.0",
     "steps.sub": "Tick each step when done. Tags show the source: base recipe, adaptation for home baking, or a lesson from the first bake.",
     "oven.sub": "Bench timer and diagnosis by result. The first pizza of each session calibrates the oven.",
-    "oven.note": "Orange band: 25–30 s, check whether it can be turned 180°. Green band: 70–120 s, the expected window for this oven.",
+    "oven.note": "Gold band: 25–30 s, check whether it can be turned 180°. Green band: 70–120 s, the expected window for this oven.",
     "rules.h2": "Version 1.0 rules",
     "rules.sub": "The bottleneck right now isn't the dough. It's heat calibration and the technique for stretching and topping.",
     "ing.flour": "Caputo Pizzeria 00 flour",
@@ -440,6 +440,23 @@
         "Done window. Check base and top.",
         "Past 120 s. If it's still pale, it needs more heat."
       ]
+    }
+  },
+  "scene": {
+    "tempo": {
+      "h": "Three days, *one night.*",
+      "p": "Flavour comes from cold and waiting. The schedule counts back from bake time."
+    },
+    "gesto": {
+      "h": "Watch first, *then do.*",
+      "p": "Every step animated with your quantities."
+    },
+    "fogo": {
+      "h": "Ninety seconds *decide everything.*",
+      "p": "The first pizza calibrates the oven. Time it, read the rim, adjust the stone."
+    },
+    "fim": {
+      "h": "Flour, water, salt, *time.*"
     }
   }
 }

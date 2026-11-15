@@ -90,7 +90,6 @@
     "ing.sugar": "Sugar",
     "nav.watch": "Watch",
     "player.h2": "Watch it step by step",
-    "player.sub": "Every step animated with this batch’s quantities. Change the parameters and the animation follows.",
     "player.prev": "Previous step",
     "player.next": "Next step",
     "player.repeat": "Replay the animation",
@@ -98,7 +97,17 @@
     "player.film": "Watch all",
     "player.bench": "At the bench",
     "photo": "Photo",
-    "foot.photos": "Real photos: Wikimedia Commons, with author and licence in each caption."
+    "chap.1": "I · The dough",
+    "chap.2": "II · Time",
+    "chap.3": "III · The craft",
+    "chap.4": "IV · Fire",
+    "chap.5": "V · The rules",
+    "chap.6": "VI · Origins",
+    "nav.skip": "Skip to the recipe",
+    "foot.bgphoto": "Background photo",
+    "panel.fewer": "One pizza fewer",
+    "panel.more": "One pizza more",
+    "foot.recipes": "More recipes"
   },
   "js": {
     "locale": "en-US",
@@ -161,7 +170,8 @@
         "bottom": "bottom",
         "window": "windowpane test",
         "foldSlice": "fold in half"
-      }
+      },
+      "see": "Watch this step"
     }
   }
 }

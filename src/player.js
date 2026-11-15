@@ -3,7 +3,7 @@
    integradas ao site usando o mesmo cálculo de quantidades (window.NP) e os textos da receita. */
 (function(){
 const NP=window.NP, box=document.getElementById('assistir');
-if(!NP||!window.gsap||!box){ if(box) box.hidden=true; return; }
+if(!NP||!window.gsap||!box){ if(box) box.hidden=true; document.querySelectorAll('.see').forEach(b=>b.remove()); return; }
 const T=NP.T, C=NP.C, PL=T.player, L=PL.lbl;
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const NS='http://www.w3.org/2000/svg';
@@ -311,14 +311,16 @@ function spiral(cx,cy,R){let d='',a=0,r=R;for(let i=0;i<=260;i++){a=i/260*Math.P
 /* ---------- player ---------- */
 const $=id=>document.getElementById(id);
 const STEPS=[];
-T.steps.forEach((d,di)=>d.items.forEach(s=>STEPS.push({day:di,d:`${d.day} · ${d.when}`,t:s.t,li:s.li,tip:(s.tip||'').replace(/^warn\|/,''),wait:s.time,sc:C.scenes[s.id]})));
+T.steps.forEach((d,di)=>d.items.forEach(s=>STEPS.push({id:s.id,day:di,d:`${d.day} · ${d.when}`,t:s.t,li:s.li,tip:(s.tip||'').replace(/^warn\|/,''),wait:s.time,sc:C.scenes[s.id]})));
 const ph=(s,html)=>s.replace(/\{(\w+)\}/g,(m,k)=>{const v=k in R?NP.fmt(k,R[k]):m;return html?`<span class="q">${v}</span>`:v});
-let idx=0, tl=null, playing=false, mode='film', advance=null, stageVisible=true;
+let idx=0, tl=null, playing=false, mode='bench', advance=null, stageVisible=true;
 const visible=()=>!document.hidden&&stageVisible;
 $('plChap').innerHTML=STEPS.map((s,i)=>`<button type="button" class="d${s.day}" aria-label="${PL.step} ${i+1}: ${s.t}"><i></i></button>`).join('');
-[...$('plChap').children].forEach((b,i)=>b.onclick=()=>go(i,true));
+[...$('plChap').children].forEach((b,i)=>b.onclick=()=>{setMode('film');go(i,true)});
+function setMode(m){mode=m;$('plFilm').setAttribute('aria-pressed',m==='film');$('plBench').setAttribute('aria-pressed',m==='bench')}
 function setPP(p){playing=p;$('plPP').setAttribute('aria-label',p?PL.pause:PL.play);$('plPPIco').innerHTML=p?'<path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/>':'<path d="M8 5l11 7-11 7z" fill="currentColor"/>'}
 function go(i,autoplay){
+  if(autoplay) setMode('film');
   idx=Math.max(0,Math.min(STEPS.length-1,i)); const s=STEPS[idx];
   if(advance){advance.kill();advance=null} setPP(false); if(tl){tl.kill()} scn.innerHTML='';
   $('plBadge').textContent=`${PL.step} ${String(idx+1).padStart(2,'0')} / ${STEPS.length}`;
@@ -327,18 +329,36 @@ function go(i,autoplay){
   $('plWait').textContent='⏱ '+ph(s.wait,false);
   [...$('plChap').children].forEach((b,k)=>{b.classList.toggle('done',k<idx);b.querySelector('i').style.width=k<idx?'100%':'0'});
   tl=gsap.timeline({paused:true,onUpdate:()=>{const b=$('plChap').children[idx];if(b)b.querySelector('i').style.width=(tl.progress()*100)+'%'},
-    onComplete:()=>{ if(mode==='film' && playing && idx<STEPS.length-1) advance=gsap.delayedCall(.9,()=>{ if(playing&&mode==='film') go(idx+1,true); else setPP(false) }); else setPP(false); }});
+    onComplete:()=>{ if(mode==='film' && playing && idx<STEPS.length-1) advance=gsap.delayedCall(.9,()=>{ if(playing&&mode==='film') go(idx+1,true); else {setPP(false);setMode('bench')} }); else {setPP(false);setMode('bench')} }});
   seed=17+idx*97; if(SCENES[s.sc]){SCENES[s.sc](tl); finishScene(s.sc,tl);}
   if(reduced){tl.progress(1);setPP(false);return}
   if(autoplay){setPP(true);if(visible())tl.play()} else {setPP(false);tl.progress(1)}   // parado: quadro final da etapa
 }
-$('plPP').onclick=()=>{ if(!tl) return; if(reduced){tl.progress(1);setPP(false);return} if(playing){tl.pause();if(advance){advance.kill();advance=null}setPP(false)} else { if(tl.progress()>=1) tl.restart(); else tl.play(); setPP(true)} };
+$('plPP').onclick=()=>{ if(!tl) return; if(reduced){tl.progress(1);setPP(false);return} if(playing){tl.pause();if(advance){advance.kill();advance=null}setPP(false);setMode('bench');resync()} else { setMode('film'); if(tl.progress()>=1) tl.restart(); else tl.play(); setPP(true)} };
 $('plNext').onclick=()=>go(idx+1,true); $('plPrev').onclick=()=>go(idx-1,true); $('plRep').onclick=()=>go(idx,true);
-$('plFilm').onclick=()=>{mode='film';$('plFilm').setAttribute('aria-pressed',true);$('plBench').setAttribute('aria-pressed',false)};
-$('plBench').onclick=()=>{mode='bench';$('plBench').setAttribute('aria-pressed',true);$('plFilm').setAttribute('aria-pressed',false)};
+$('plFilm').onclick=()=>{setMode('film'); if(!playing) go(idx,true)}; $('plBench').onclick=()=>setMode('bench');
 function syncVisibility(){if(!tl)return;if(!visible()){tl.pause();if(advance)advance.pause()}else if(playing){if(advance)advance.resume();else tl.play()}}
 addEventListener('visibilitychange',syncVisibility);
 if('IntersectionObserver' in window)new IntersectionObserver(e=>{stageVisible=e[0].isIntersecting;syncVisibility()},{threshold:0}).observe($('stg'));
 NP.onRender.push(()=>{refreshQ(); if(!playing) go(idx,false)});   // parâmetros mudaram: redesenha com os novos números
+
+/* ---------- sincronia com a etapa em foco (só quando o player fica fixo ao lado das etapas) ---------- */
+const mq=matchMedia('(min-width:1100px) and (min-height:760px)'); let sio=null, syncT=0;
+function resync(){const c=document.querySelector('#stepsRoot .step.cur'); if(c&&C.scenes[c.id]) go(STEPS.findIndex(s=>s.id===c.id),false)}
+function bindSync(){
+  if(sio){sio.disconnect();sio=null} document.querySelectorAll('#stepsRoot .step.cur').forEach(e=>e.classList.remove('cur'));
+  if(!mq.matches||!('IntersectionObserver' in window)) return;
+  sio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return; const id=e.target.id;
+    document.querySelectorAll('#stepsRoot .step.cur').forEach(x=>x.classList.remove('cur')); e.target.classList.add('cur');
+    if(!playing&&C.scenes[id]){clearTimeout(syncT);syncT=setTimeout(()=>{if(!playing)go(STEPS.findIndex(s=>s.id===id),false)},150)}
+  }),{rootMargin:'-40% 0px -59% 0px'});
+  document.querySelectorAll('#stepsRoot .step').forEach(e=>sio.observe(e));
+}
+mq.addEventListener('change',bindSync); bindSync();
+/* "Ver o gesto" (abaixo de 1100 px): rola até o player e toca a cena da etapa */
+document.addEventListener('click',e=>{const b=e.target.closest('.see'); if(!b) return;
+  $('assistir').scrollIntoView({block:'start'}); go(STEPS.findIndex(s=>s.id===b.dataset.see),true)});
+NP.player={go,indexOf:id=>STEPS.findIndex(s=>s.id===id),get mode(){return mode},get playing(){return playing}};
 go(0,false);
 })();

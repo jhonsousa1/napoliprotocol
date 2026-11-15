@@ -28,7 +28,7 @@
     "ing.flour": "Farinha forte (Caputo Manitoba Oro)",
     "steps.sub": "Marque cada etapa ao concluir. As etiquetas indicam a origem: técnica clássica de New York ou adaptação para o processo à mão e o BIG HORN.",
     "oven.sub": "Cronômetro de bancada e diagnóstico pelo resultado. A New York assa mais devagar: 5 a 7 minutos, girando a cada minuto.",
-    "oven.note": "Faixa laranja: 1–1,5 min, hora da primeira volta. Faixa verde: 5–7 min, ponto esperado.",
+    "oven.note": "Faixa dourada: 1–1,5 min, hora da primeira volta. Faixa verde: 5–7 min, ponto esperado.",
     "rules.h2": "Regras da versão 0.1",
     "rules.sub": "Ponto de partida, ainda sem fornada. Depois do primeiro teste, estas regras viram lições.",
     "sched.panh": "Bolas na geladeira"
@@ -401,6 +401,23 @@
         "{cheese} g de muçarela de baixa umidade ralada",
         "Parmesão ralado, orégano seco e pimenta calabresa a gosto"
       ]
+    }
+  },
+  "scene": {
+    "tempo": {
+      "h": "Quarenta e oito horas *de frio.*",
+      "p": "A massa amadurece devagar na geladeira. O cronograma conta para trás a partir da hora de assar."
+    },
+    "gesto": {
+      "h": "Assista antes, *faça depois.*",
+      "p": "Cada etapa animada com as suas quantidades."
+    },
+    "fogo": {
+      "h": "Sete minutos *de forno.*",
+      "p": "Forno mais brando, assamento mais longo. Cronometre e leia o fundo."
+    },
+    "fim": {
+      "h": "Dobre ao meio. *Coma em pé.*"
     }
   }
 }

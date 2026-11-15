@@ -90,7 +90,6 @@
     "ing.sugar": "Açúcar",
     "nav.watch": "Assista",
     "player.h2": "Assista ao passo a passo",
-    "player.sub": "Cada etapa animada com as quantidades desta fornada. Mude os parâmetros e a animação acompanha.",
     "player.prev": "Etapa anterior",
     "player.next": "Próxima etapa",
     "player.repeat": "Repetir a animação",
@@ -98,7 +97,17 @@
     "player.film": "Assistir tudo",
     "player.bench": "Na bancada",
     "photo": "Foto",
-    "foot.photos": "Fotos reais: Wikimedia Commons, com autor e licença em cada legenda."
+    "chap.1": "I · A massa",
+    "chap.2": "II · O tempo",
+    "chap.3": "III · O gesto",
+    "chap.4": "IV · O fogo",
+    "chap.5": "V · O ofício",
+    "chap.6": "VI · A origem",
+    "nav.skip": "Pular para a receita",
+    "foot.bgphoto": "Foto de fundo",
+    "panel.fewer": "Uma pizza a menos",
+    "panel.more": "Uma pizza a mais",
+    "foot.recipes": "Mais receitas"
   },
   "js": {
     "locale": "pt-BR",
@@ -161,7 +170,8 @@
         "bottom": "inferior",
         "window": "teste da janela",
         "foldSlice": "dobre ao meio"
-      }
+      },
+      "see": "Ver o gesto"
     }
   }
 }

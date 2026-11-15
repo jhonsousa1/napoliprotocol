@@ -28,7 +28,7 @@
     "ing.flour": "Strong flour (Caputo Manitoba Oro)",
     "steps.sub": "Tick each step when done. Tags show the source: classic New York technique, or an adaptation for hand mixing and the BIG HORN.",
     "oven.sub": "Bench timer and diagnosis by result. New York pizza bakes slower: 5 to 7 minutes, turning every minute.",
-    "oven.note": "Orange band: 1–1.5 min, time for the first turn. Green band: 5–7 min, the expected window.",
+    "oven.note": "Gold band: 1–1.5 min, time for the first turn. Green band: 5–7 min, the expected window.",
     "rules.h2": "Version 0.1 rules",
     "rules.sub": "A starting point with no bakes yet. After the first test, these rules become lessons.",
     "sched.panh": "Dough balls in fridge"
@@ -401,6 +401,23 @@
         "{cheese} g shredded low-moisture mozzarella",
         "Grated Parmesan, dried oregano and chili flakes to taste"
       ]
+    }
+  },
+  "scene": {
+    "tempo": {
+      "h": "Forty-eight hours *in the cold.*",
+      "p": "The dough matures slowly in the fridge. The schedule counts back from bake time."
+    },
+    "gesto": {
+      "h": "Watch first, *then do.*",
+      "p": "Every step animated with your quantities."
+    },
+    "fogo": {
+      "h": "Seven minutes *in the oven.*",
+      "p": "A gentler oven and a longer bake. Time it and read the bottom."
+    },
+    "fim": {
+      "h": "Fold it in half. *Eat it standing.*"
     }
   }
 }

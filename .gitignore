@@ -1,3 +1,6 @@
 .DS_Store
 __pycache__/
 .claude/
+src/photos/originals/
+# derivadas do cenário: docs/img/scene/ (gerado por build.py --scene) é a única cópia versionada; os originais ficam só aqui
+design/qa/
