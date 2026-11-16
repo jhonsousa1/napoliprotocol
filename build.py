@@ -93,7 +93,7 @@ def recipe_links(l, cur, cls):
         name = esc(RTEXT[c['id']][l]['html']['name'])
         badge = f' <em>v{c["version"]}</em>' if c['version'].startswith('0.') else ''
         cur_attr = ' aria-current="page"' if c['id'] == cur['id'] else ''
-        out.append(f'<a href="{path(l, c)}"{cur_attr}>{name}{badge if cls == "tabs" else ""}</a>')
+        out.append(f'<a href="{path(l, c)}" data-recipe="{c["id"]}" data-ls="{c["ls"]}"{cur_attr}>{name}{badge if cls == "tabs" else ""}</a>')
     return ''.join(out)
 
 
@@ -200,6 +200,40 @@ def ring_svg(c):
             + base + f'class="ring-fill" stroke="#FFF6E4" stroke-width="7" stroke-linecap="round" stroke-dasharray="0 {mx}"/>')
 
 
+def default_n(c):
+    """Número de panetti do padrão da receita (mesma conta do calc() do app.js), para desenhar a bandeja já no HTML estático."""
+    P = c['def']; rnd = lambda x: int(x + .5)
+    ratio = 1 + (P['hyd'] + P['salt'] + P['oil'] + P['yeast'] + P['sugar']) / 100
+    flour = P['pizzas'] * P['w'] / ratio if P['mode'] == 'pizza' else P['flour']
+    total = flour + flour * P['hyd'] / 100 + rnd(flour * P['salt'] / 100) + rnd(flour * P['oil'] / 100) + flour * P['yeast'] / 100 + flour * P['sugar'] / 100
+    return max(1, rnd(total / P['w']))
+
+
+def balls_svg(n, big=1.0):
+    """Mesmo desenho de drawBalls() em journey.js; o JS redesenha conforme o cálculo."""
+    f = lambda v: f'{v:.1f}'.rstrip('0').rstrip('.')
+    show = min(n, 12); rows = 2 if show > 6 else 1; per_row = -(-show // rows)
+    sp = min(96 * big, 400 / per_row); r = min(44 * big, sp * .47); out = []
+    for i in range(show):
+        row = 0 if rows == 2 and i < show - per_row else 1
+        idx = i if row == 0 else i - (show - per_row if rows == 2 else 0); cnt = show - per_row if row == 0 else per_row
+        s = .86 if rows == 2 and row == 0 else 1
+        cx = 930 + (idx - (cnt - 1) / 2) * sp; cy = (582 if row == 0 and rows == 2 else 600) - r * s * .72
+        out.append(f'<g class="ball" style="--i:{i}"><ellipse cx="{f(cx)}" cy="{f(cy + r * s * .7)}" rx="{f(r * s)}" ry="{f(r * s * .22)}" fill="url(#gCon)"/>'
+                   f'<ellipse cx="{f(cx)}" cy="{f(cy)}" rx="{f(r * s)}" ry="{f(r * s * .76)}" fill="url(#gDough)"/>'
+                   f'<path d="M{f(cx + r * s * .2)} {f(cy - r * s * .5)}q{f(r * s * .38)} {f(r * s * .08)} {f(r * s * .48)} {f(r * s * .4)}" stroke="#fff" stroke-opacity=".7" stroke-width="{f(r * .1)}" stroke-linecap="round" fill="none"/></g>')
+    return ''.join(out)
+
+
+def pots_svg(n):
+    n = min(n, 8); cols = 4 if n > 4 else n; rows = -(-n // cols); sp = min(130, 520 / cols); out = []
+    for i in range(n):
+        rw = i // cols; cn = n - rw * cols if rw == rows - 1 else cols; ix = i - rw * cols
+        cx = 930 + (ix - (cn - 1) / 2) * sp; y = 520 if rw == 0 and rows > 1 else 592; s = .84 if rw == 0 and rows > 1 else 1
+        out.append(f'<g class="ball" style="--i:{i}"><use href="#pot" transform="translate({cx:g} {y}) scale({s})"/></g>')
+    return ''.join(out)
+
+
 def scene_layers(comp, state, tokens, c):
     """Fragmento da composição já filtrado: dict {far, sub, fx, near} só com os blocos ativos."""
     raw = scene_file(comp); validate_fragment(comp, raw)
@@ -215,6 +249,8 @@ def scene_layers(comp, state, tokens, c):
     for k, v in layers.items():
         v = re.sub(r'<!--.*?-->', '', v, flags=re.S)
         v = v.replace('<g data-draw="ring"></g>', f'<g data-draw="ring">{ring_svg(c)}</g>')
+        v = re.sub(r'(<g[^>]*data-draw="balls">)</g>', lambda m: m.group(1) + balls_svg(default_n(c)) + '</g>', v)
+        v = re.sub(r'(<g[^>]*data-draw="pots">)</g>', lambda m: m.group(1) + pots_svg(default_n(c)) + '</g>', v)
         layers[k] = re.sub(r'>\s+<', '><', re.sub(r'\s*\n\s*', ' ', v)).strip()
     assert layers['sub'].count('filter="url(#paint)"') <= 1, f'{comp}/{state}: mais de um #paint no assunto'
     return layers
@@ -261,6 +297,9 @@ def validate_journey(c, l, d):
         if 'ev' in cfg: assert cfg['ev'] in range(n_ev), f'{tid}: ev {cfg["ev"]} fora do cronograma'
         for t in cfg.get('tags', []):
             assert t['t'] in d['tag'], f'{c["id"]}/{l}/{tid}: etiqueta {t["t"]} ausente'
+            if t.get('m', 0) is not None:   # visível no mobile: dentro da caixa segura (regra 3 de 1.2)
+                for pos in (t['at'], t.get('m') or t['at']):
+                    assert 190 <= pos[1] <= 630 and 640 <= pos[0] <= 1210, f'{c["id"]}/{tid}: âncora {t["t"]} {pos} fora da caixa segura (x 640-1210, y 190-630)'
     for k in j['cold']:
         assert k['after'] in ids and f'cold.{k["id"]}.h' in d['html'] and f'cold.{k["id"]}.p' in d['html'], f'{c["id"]}/{l}: interlúdio {k["id"]} incompleto'
         assert k['big'] in CALC_KEYS
@@ -283,15 +322,14 @@ def build_journey(c, l, d, h):
             k = cold_after[s['id']]
             seq.append(dict(id=k['id'], kind='cold', title=h(f'cold.{k["id"]}.h'), day=f'{day["day"]} · {day["when"]}', cfg=k))
     NS = n
-    prev_light, out, first_of_day = j['open']['light'], [], set()
-    figs = {}
+    prev_light = j['open']['light']
     for e in seq:
         e['fig'] = figure_html(e['id'], e['cfg'], prev_light, d, c, l, timer=bool(e['cfg'].get('timer')))
         prev_light = e['cfg']['light']
     # ordem de leitura para os links "Próxima"
     nxt = {e['id']: (seq[i + 1]['id'] if i + 1 < len(seq) else None) for i, e in enumerate(seq)}
     zones, scale, clock0 = timer_markup(c['timer'])
-    html_steps, cur_li = [], None
+    html_steps = []
     seen_day = None
     li = []
     for i, e in enumerate(seq):
@@ -300,11 +338,9 @@ def build_journey(c, l, d, h):
             if li: html_steps.append('<li>' + ''.join(li) + '</li>'); li = []
             if seen_day != day['day']:
                 li.append(f'<h2 class="day-h sr">{esc(day["day"])} · {esc(day["when"])}</h2>'); seen_day = day['day']
-            last = (i == len(seq) - 1)
             nid = nxt[e['id']]
             nxt_link = (f'<a class="next" href="#{nid}">{esc(h("step.next"))} ↓</a>' if nid else
                         f'<a class="next" href="#epilogo">{esc(h("step.how"))} ↓</a>')
-            if nid is None: nxt_link = f'<a class="next" href="#epilogo">{esc(h("step.how"))} ↓</a>'
             chips = f'<span class="chip t">{kspan(s["time"], c)}</span>' + ''.join(f'<span class="chip">{esc(d["js"]["src"][x])}</span>' for x in s['src'])
             tip = ''
             if s.get('tip'):
@@ -329,13 +365,13 @@ def build_journey(c, l, d, h):
                 f'{e["fig"]}<div class="card"><p class="eyebrow">{esc(h("cold.eb"))} <span class="when" data-when="{k["ev"]}"></span><span class="now" hidden>{esc(d["js"]["now"])}</span></p>'
                 f'<h3 id="h-{k["id"]}">{esc(e["title"])}</h3><p class="big">≈ <span class="v" data-k="{k["big"]}"></span> {esc(h("cold.unit"))} <small>· <span class="v" data-k="fridge"></span> °C</small></p>'
                 f'<p>{esc(h(f"cold.{k["id"]}.p"))}</p><p class="left" data-left="{k["ev"]}"></p>'
-                f'<div class="foot"><a class="next" href="#adj-agenda" data-open-adj="agenda">{esc(h("cold.bake"))} ↗</a><a class="next" href="#{nid}">{esc(h("cold.next"))} ↓</a></div></div></aside>')
+                f'<div class="foot"><a class="next" href="#adj-agenda">{esc(h("cold.bake"))} ↗</a><a class="next" href="#{nid}">{esc(h("cold.next"))} ↓</a></div></div></aside>')
     if li: html_steps.append('<li>' + ''.join(li) + '</li>')
     rail = ''.join(f'<a href="#{e["id"]}" data-for="{e["id"]}" aria-label="{e["n"]:02d} · {esc(e["title"])}"><span aria-hidden="true">{e["n"]:02d} · {esc(e["title"])}</span></a>' for e in seq if e['kind'] == 'step')
     idx = ''.join(f'<li><a href="#{e["id"]}" data-for="{e["id"]}">'
                   + (f'<b>{e["n"]:02d}</b>' if e['kind'] == 'step' else '<b>·</b>') + f'<span>{esc(e["title"])}</span></a></li>' for e in seq if e['kind'] != 'open')
     meta = [dict(id=e['id'], kind=e['kind'], n=e.get('n', 0), title=e['title'], ev=e['cfg'].get('ev', -1), day=e.get('day', '')) for e in seq]
-    return dict(open=seq[0]['fig'], mise=seq[1]['fig'], journey=''.join(html_steps), rail=rail, idx=idx, meta=meta, N=NS)
+    return dict(first=next(e['id'] for e in seq if e['kind'] == 'step'), open=seq[0]['fig'], mise=seq[1]['fig'], journey=''.join(html_steps), rail=rail, idx=idx, meta=meta, N=NS)
 
 
 def gallery_html(c, l):
@@ -381,7 +417,7 @@ def page(l, c):
         'DEFS': re.sub(r'>\s+<', '><', re.sub(r'<!--.*?-->', '', (SCENES / 'defs.svg').read_text('utf-8'), flags=re.S)).strip(),
         'APP_JS': (SRC / 'app.js').read_text('utf-8').replace('</', '<\\/'), 'JOURNEY_JS': (SRC / 'journey.js').read_text('utf-8').replace('</', '<\\/'),
         'OPEN_FIGURE': jr['open'], 'MISE_FIGURE': jr['mise'], 'JOURNEY': jr['journey'], 'RAIL': jr['rail'], 'IDX': jr['idx'],
-        'ASK_H1': h1, 'EPI_H': emph(h('epi.h')), 'GALLERY': gallery_html(c, l),
+        'ASK_H1': h1, 'DLBL': f'{esc(d["js"]["start0"])}<small>{esc(d["js"]["start"])}</small>', 'FIRST': jr['first'], 'EPI_H': emph(h('epi.h')), 'GALLERY': gallery_html(c, l),
         'RULES': ''.join(f'<li>{esc(r)}</li>' for r in d['rules']),
         'GLOSSARY': ''.join(f'<div class="card"><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in d['glossary']),
         'T_JSON': json.dumps(js, ensure_ascii=False).replace('</', '<\\/'),
@@ -407,7 +443,7 @@ def page(l, c):
     assert not missing, f'{c["id"]}/{l}: chaves ausentes {missing}'
     USED['html'][l].update(('ask.fine', 'ask.sub', 'name', 'photo', 'nav.lang'))
     ask_fine = d['html']['ask.fine'].replace('{v}', c['version'])
-    out = out.replace('@@ASKFINE@@', esc(ask_fine))
+    out = out.replace('@@ASKFINE@@', esc(ask_fine)).replace('@@QTY@@', str(c['def']['pizzas'] if c['def']['mode'] == 'pizza' else c['def']['flour']))
     ids = re.findall(r' id="([^"]+)"', out)
     dup = sorted({i for i in ids if ids.count(i) > 1})
     assert not dup, f'{c["id"]}/{l}: ids duplicados {dup}'
@@ -615,6 +651,30 @@ def leak_check(c, l, html_text):
     assert not found, f'{c["id"]}/{l}: textos da napolitana vazaram: {found}'
 
 
+def keyset(d, pre=''):
+    out = set()
+    for k, v in d.items():
+        out |= keyset(v, f'{pre}{k}.') if isinstance(v, dict) else {f'{pre}{k}'}
+    return out
+
+
+def check_parity():
+    """pt e en precisam ter as mesmas chaves (recursivo), em i18n e em cada receita."""
+    a, b_ = LANGS[0], LANGS[1]; bad = []
+    pairs = [('i18n', I18N[a], I18N[b_])] + [(c['id'], RTEXT[c['id']][a], RTEXT[c['id']][b_]) for c in RECIPES]
+    for name, x, y in pairs:
+        kx, ky = keyset(x), keyset(y)
+        if kx != ky: bad.append(f'{name}: só em {a}: {sorted(kx - ky)}; só em {b_}: {sorted(ky - kx)}')
+    for c in RECIPES:   # listas (passos, glossário, regras, diagnóstico): mesmo comprimento
+        for k in ('rules', 'glossary'):
+            if len(RTEXT[c['id']][a][k]) != len(RTEXT[c['id']][b_][k]): bad.append(f'{c["id"]}: {k} com tamanhos diferentes')
+        sa = [(s['id'], bool(s.get('tip')), len(s['li'])) for day in RTEXT[c['id']][a]['js']['steps'] for s in day['items']]
+        sb = [(s['id'], bool(s.get('tip')), len(s['li'])) for day in RTEXT[c['id']][b_]['js']['steps'] for s in day['items']]
+        if sa != sb: bad.append(f'{c["id"]}: etapas pt/en divergem (id, dica, itens)')
+        if len(RTEXT[c['id']][a]['js']['diag']) != len(RTEXT[c['id']][b_]['js']['diag']): bad.append(f'{c["id"]}: diag com tamanhos diferentes')
+    assert not bad, 'paridade pt/en:\n  ' + '\n  '.join(bad)
+
+
 def report_unused():
     """Toda chave de html.* e de tag.* precisa ser usada (template ou build). Até a E8 só avisa."""
     problems = []
@@ -653,6 +713,7 @@ def main():
             d = OUT / old / c['slug'] if c['slug'] else OUT / old
             d.mkdir(parents=True, exist_ok=True)
             (d / 'index.html').write_text(retired_page(path(new, c)), 'utf-8')
+    check_parity()
     report_unused()
     if '--sizes' in sys.argv:
         print(f'  {"receita":11}{"l":3}{"ladrilho":10}{"KB":>7}{"elem":>6}')

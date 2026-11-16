@@ -88,11 +88,11 @@ class Page {
     this.sid = (await this.send('Page.addScriptToEvaluateOnNewDocument', { source: src })).identifier;
     this.logs = [];
     await this.send('Page.navigate', { url: 'about:blank' });
+    if (noJs) await this.send('Emulation.setScriptExecutionDisabled', { value: true });
     const loaded = this.waitEvent('Page.loadEventFired', 30000);
     await this.send('Page.navigate', { url: `http://127.0.0.1:${HTTP}${path}${query}` });
     await loaded;
-    if (noJs) await this.send('Emulation.setScriptExecutionDisabled', { value: true });
-    else await this.eval('document.fonts.ready.then(()=>1)');
+    if (!noJs) await this.eval('document.fonts.ready.then(()=>1)');
     await sleep(250);
   }
   async scrollTo(y) {

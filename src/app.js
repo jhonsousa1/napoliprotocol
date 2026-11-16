@@ -223,10 +223,23 @@
     document.head.appendChild(s);
   }
 
+  // ---------- Abertura: quantidade e resumo (também no pré-render, para o HTML sem JS já ter valor e nome) ----------
+  function updAsk(){
+    const qty = el('qty'), sum = el('sum'); if(!qty) return;
+    const R = calc(), pz = P.mode==='pizza';
+    document.querySelectorAll('#ask .seg button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===P.mode)));
+    const v = pz ? P.pizzas : P.flour;
+    if(document.activeElement!==qty){qty.value = v; qty.setAttribute('value',v)}
+    const u = el('qUnit'), l = el('qLbl'); if(u) u.textContent = pz ? T.unitPizza : 'g'; if(l) l.textContent = pz ? T.qtyPizza : T.qtyFlour;
+    if(sum) sum.textContent = pz ? fill(T.askSumPizza,{flour:nf0.format(Math.round(R.flour)), total:g(R.total)})
+                                  : fill(T.askSumFlour,{n:R.n, per:g(R.per), total:g(R.total)});
+  }
+
   // ---------- API para journey.js ----------
   window.NP = {T, C, calc, fmt, fill, nf0, g, store, LS, onRender:[],
     P:()=>P, set(patch){Object.assign(P,patch); store.set(LS+':p',P); syncInputs(); render()},
     schedule:()=>evs, motion, done:()=>done};
+  NP.onRender.push(updAsk);
   syncInputs(); applyChecks(); render();
   buildLD();
   ready = true;

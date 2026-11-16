@@ -76,7 +76,7 @@
     const t = byId(id), m = meta[id];
     if(id==='epilogo') return [T.epilogue, T.epiSub, T.epilogue];
     if(id==='abertura') return [T.start0, T.start, ''];
-    if(m.kind==='step') return [`${m.n}/${N} · ${m.title}`, m.day, fill(T.pos,{day:m.day.split(' · ')[0], n:+m.n, N})];
+    if(m.kind==='step') return [`${m.n}/${N} · ${m.title}`, m.day, fill(T.pos,{day:m.day.split(' · ')[0], n:String(m.n).padStart(2,'0'), N})];
     if(m.kind==='cold') return [m.title, m.day, m.day];
     return [m.title, T.prologue, T.prologue];
   }
@@ -112,15 +112,6 @@
     v = Math.round(+v); if(!isFinite(v) || v<=0) return;
     NP.set(NP.P().mode==='pizza' ? {pizzas:Math.min(20,Math.max(1,v))} : {flour:Math.min(6000,Math.max(200,v))});
   }
-  function updAsk(){
-    const R = NP.calc(), P = NP.P(), pz = P.mode==='pizza';
-    segs.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===P.mode)));
-    if(qty && document.activeElement!==qty) qty.value = pz ? P.pizzas : P.flour;
-    const u = byId('qUnit'), l = byId('qLbl'); if(u) u.textContent = pz ? 'un' : 'g'; if(l) l.textContent = pz ? T.qtyPizza : T.qtyFlour;
-    if(sum) sum.textContent = pz ? fill(T.askSumPizza,{flour:NP.nf0.format(Math.round(R.flour)), total:NP.g(R.total)})
-                                  : fill(T.askSumFlour,{n:R.n, per:NP.g(R.per), total:NP.g(R.total)});
-  }
-  NP.onRender.push(updAsk);
   segs.forEach(b=>b.addEventListener('click',()=>{
     const m = b.dataset.mode, R = NP.calc(), P = NP.P(); if(m===P.mode) return;
     NP.set(m==='pizza' ? {mode:'pizza', pizzas:R.n} : {mode:'flour', flour:Math.round(R.flour/10)*10});
@@ -135,8 +126,8 @@
   const last = NP.store.get(NP.LS+':last');
   if(last && meta[last.id]){
     const a = byId('resume'), b = byId('go'), m = meta[last.id];
-    if(a && b){ a.href = '#'+last.id; a.textContent = fill(T.resume,{n:m.n, t:m.title}); a.hidden = false; a.classList.remove('ghost');
-      b.textContent = b.dataset.restart; b.classList.add('ghost'); }
+    if(a && b){ a.href = '#'+last.id; a.textContent = fill(T.resume,{n:String(m.n).padStart(2,'0'), t:m.title}); a.hidden = false; a.classList.remove('ghost');
+      a.classList.add('primary'); b.textContent = b.dataset.restart; b.classList.add('ghost'); }
   }
 
   /* ---------- trocar de receita leva o número de pizzas (nunca os gramas) ---------- */
@@ -197,6 +188,9 @@
   }
   const redraw = () => { $$('[data-draw="balls"]').forEach(drawBalls); $$('[data-draw="pots"]').forEach(drawPots); };
   NP.onRender.push(redraw);
+  /* abrir com âncora: refaz o alinhamento depois que fontes e --ctop assentam (o layout muda e a âncora nativa fica torta) */
+  const hh = decodeURIComponent(location.hash.slice(1)), ht = hh && byId(hh);
+  if(ht && tiles.includes(ht) && document.fonts) document.fonts.ready.then(()=>requestAnimationFrame(()=>window.scrollTo({top:NP.restY(hh),behavior:'instant'})));
   NP.onRender.forEach(f=>f());
   document.dispatchEvent(new Event('np:ready'));
 })();

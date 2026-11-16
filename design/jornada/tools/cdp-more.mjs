@@ -179,3 +179,48 @@ export const cmds = {
     console.log(JSON.stringify({ out, failed: bad }, null, 1)); return bad ? 1 : 0;
   },
 };
+cmds.fix = async function (pg, { sleep }) {
+  const r = {};
+  // P1-5: celular deitado, âncora com cartão visível; grão fora
+  for (const hash of ['s8', 's2', 's14']) {
+    await pg.scenario({ w: 812, h: 375, path: '/pt/' + '#' + hash }); await sleep(900);
+    r['land ' + hash] = await pg.eval(`(()=>{const t=document.getElementById('${hash}'),c=t.querySelector('.card').getBoundingClientRect();return {tile:Math.round(t.getBoundingClientRect().top),cardTop:Math.round(c.top),vh:innerHeight,pad:getComputedStyle(document.documentElement).scrollPaddingTop,grain:getComputedStyle(document.querySelector('.grain')).display}})()`);
+  }
+  await pg.scenario({ w: 812, h: 375, path: '/pt/' }); 
+  await pg.eval(`document.querySelector('#s2 .next').click()`); await sleep(1200);
+  r['land next'] = await pg.eval(`(()=>{const t=document.getElementById('s4'),c=t.querySelector('.card').getBoundingClientRect(),d=t.querySelector('.done').getBoundingClientRect();return {tile:Math.round(t.getBoundingClientRect().top),cardTop:Math.round(c.top),feitoBottom:Math.round(d.bottom),vh:innerHeight}})()`);
+  // P2-4: âncora no mobile
+  for (const hash of ['s8', 's12']) {
+    await pg.scenario({ w: 375, h: 812, path: '/pt/' + '#' + hash }); await sleep(1200);
+    r['anchor375 ' + hash] = await pg.eval(`(()=>{const t=document.getElementById('${hash}');return {tile:Math.round(t.getBoundingClientRect().top),expected:Math.round(NP.geo().top0)}})()`);
+  }
+  // P1-4 retomar primário
+  await pg.scenario({ w: 1440, h: 900, path: '/pt/', init: "localStorage.setItem('napolitana-v1:last',JSON.stringify({id:'s8',t:1}))" });
+  r.resume = await pg.eval(`(()=>{const a=document.getElementById('resume'),b=document.getElementById('go');const s=e=>getComputedStyle(e).backgroundColor;return {resumeBg:s(a),goBg:s(b),txt:a.textContent,hidden:a.hidden}})()`);
+  // P2-3 sem JS
+  await pg.scenario({ w: 375, h: 812, path: '/pt/', noJs: true });
+  r.nojs = await pg.eval(`(()=>{const q=document.getElementById('qty');const vis=id=>{const e=document.getElementById(id);return e?getComputedStyle(e).display!=='none':false};return {qtyValue:q.getAttribute('value'),qLbl:document.getElementById('qLbl').textContent,sum:document.getElementById('sum').textContent,balls:document.querySelectorAll('[data-draw=balls] .ball').length,pots:document.querySelectorAll('[data-draw=pots] .ball').length,goVisible:vis('go'),openAdj:vis('openAdj'),dlbl:document.getElementById('dlbl').textContent,tStart:vis('tStart'),link:getComputedStyle(document.querySelector('.nojs-only')).display}})()`);
+  await pg.scenario({ w: 375, h: 812, path: '/pt/new-york/', noJs: true });
+  r.nojsNY = await pg.eval(`({pots:document.querySelectorAll('[data-draw=pots] .ball').length,balls:document.querySelectorAll('[data-draw=balls] .ball').length})`);
+  // P2-8 unidade, P2-6 nomes, P2-7 rodapé/diálogo
+  await pg.scenario({ w: 1440, h: 900, path: '/en/' });
+  await pg.eval(`NP.set({mode:'pizza',pizzas:4})`);
+  r.unit = await pg.eval(`document.getElementById('qUnit').textContent`);
+  r.names = await pg.eval(`({adj:document.getElementById('openAdj').getAttribute('aria-label'),dl:document.getElementById('dlbl').getAttribute('aria-label'),adjTxt:document.getElementById('openAdj').textContent.trim()})`);
+  r.footer = await pg.eval(`[...document.querySelectorAll('.site-foot a[data-recipe]')].length`);
+  r.dialogRecipes = await pg.eval(`document.querySelectorAll('#adj .rec').length`);
+  await pg.eval(`NP.set({mode:'pizza',pizzas:6}); const a=document.querySelector('.site-foot a[data-recipe=new-york]'); a.addEventListener('click',e=>e.preventDefault(),{once:true}); a.click()`);
+  r.footerCarry = await pg.eval(`localStorage.getItem('newyork-v1:p')`);
+  // P1-6 / P2-5 / P2-18 mobile
+  await pg.scenario({ w: 375, h: 812, path: '/pt/' });
+  r.clock = await pg.eval(`(()=>{const c=document.getElementById('clock').getBoundingClientRect();return {w:c.width,h:c.height}})()`);
+  r.padBottom = await pg.eval(`getComputedStyle(document.documentElement).scrollPaddingBottom`);
+  console.log(JSON.stringify(r, null, 1));
+  return 0;
+};
+cmds.cls = async function (pg, { sleep, opt }) {
+  await pg.scenario({ w: 1440, h: 900, path: opt('path', '/pt/'), cpu: 4, net: { offline: false, latency: 150, downloadThroughput: 190000, uploadThroughput: 90000 },
+    init: `window.__s=[];new PerformanceObserver(l=>{for(const e of l.getEntries())if(!e.hadRecentInput)__s.push({v:+e.value.toFixed(4),t:Math.round(e.startTime),s:(e.sources||[]).map(s=>(s.node&&(s.node.id||s.node.className||s.node.nodeName))+' '+Math.round(s.previousRect.y)+'>'+Math.round(s.currentRect.y)+' h'+Math.round(s.previousRect.height)+'>'+Math.round(s.currentRect.height))})}).observe({type:'layout-shift',buffered:true})` });
+  await sleep(2500);
+  console.log(JSON.stringify(await pg.eval('__s'), null, 1)); return 0;
+};

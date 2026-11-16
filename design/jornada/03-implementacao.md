@@ -54,3 +54,38 @@ Branch `redesign-imersivo`. Etapas E0 a E9 do `02-arquitetura.md` executadas; a 
 - Texto da barra sobre a cena `ember` no escuro medido só por cor; falta amostragem de pixels.
 - A qualidade da ilustração usa os mesmos materiais e a mesma luz em todas as cenas, mas os estados mais "de gesto" (laminar, abrir) ficam mais esquemáticos que o forno e a bancada; vale uma rodada de refinamento do dono.
 - A New York não tem páginas/cenas exclusivas além de `slice`; `sauce/ny` e `bowl/rest` foram pintadas de forma enxuta.
+
+## Correções pós-auditoria
+Origem: `04-auditoria.md` (0 P0, 6 P1, 18 P2). Medições com `tools/audit.mjs` (roteiros `checks tags`, `seam`, `contrast`, `func2`, `kb2`, `misc`) e `tools/cdp.mjs` (`tags`, `mobile`, `seam`, `func`, `checks`, `cls`, `fix`, este último novo). Capturas em `design/jornada/qa/fix/`. Nada commitado.
+
+| Item | Mudança | Evidência |
+|---|---|---|
+| P1-1 etiquetas sobrepostas no prólogo | `at` de flour, water, salt, oil e yeast reposicionados em 3 fileiras, cada etiqueta sobre o seu objeto (`recipe.json › journey.mise`, 2 receitas) | `audit checks tags`: 0 colisões tag×tag e tag×cartão em 1440, 1920 e 375, nas 4 páginas, incluindo 1280×720 e 1024×768 |
+| P1-2 etiquetas cortadas em 768×1024 | âncoras de `s1`/`s2` de y 176–288 para 200–312; `validate_journey` agora reprova âncora visível no mobile fora de x 640–1210, y 190–630 | tags em 768×1024: 0 cortadas; `s1-768x1024-light.png` |
+| P1-3 contraste `--ember` | `--ember` claro de `#A85A0C` para `#9A5209` | `audit contrast`: 8.040 medições, 0 falhas |
+| P1-4 retomar | `#resume` ganha `.primary` (preenchido, tomate) e "Começar do início" fica fantasma | `fix`: fundo de `#resume` rgb(184,50,26); `#go` transparente |
+| P1-5 celular deitado 812×375 | no bloco de paisagem baixa: `--dock/--stage/--in-*` a 0, `scroll-padding` 0 e `.grain` oculto | `fix`: `#s8`, `#s2`, `#s14` com topo do ladrilho em 0 e topo do cartão em 238 de 375 px; `scroll-padding-top` 0; grão `none`; "Próxima" em `s2` leva a `s4` em 0 |
+| P1-6 última passagem NY no tablet | ladrilhos do mobile ganham `min-height` = área útil (o `.last`, +1 px) | `audit seam`: 768×1024 em pt e NY, sobreposição 0,91–1,13 px e 1 px no motor JS |
+| P2-1 CLS da abertura | abertura alinhada ao topo (`flex-start`), `h1` menor com `min-height` de 2 linhas (o salto vinha da troca de fonte, de 3 para 2 linhas) e `#nextEv` com espaço reservado | `cdp cls` (CPU 4×, rede lenta): 0,0013 (era 0,031–0,052) |
+| P2-2 janela de leitura vazia | `padding-bottom` de 30vh como no plano, mais `min-height` = área útil (que é o que a geometria exige) | `seam`/`mobile`: 0 falhas; o desvio do plano (padding = área útil) deixou de existir |
+| P2-3 sem JS | `#qty` com `value`, `#qLbl` com texto, `#sum` e `#dlbl` preenchidos pelo pré-render (a lógica da abertura foi para `app.js`); bandeja e potes desenhados no build (`default_n`, `balls_svg`, `pots_svg`); controles inertes escondidos com `html:not(.js)`; "Começar" vira link para a 1ª etapa | `cdp fix` com JS desligado antes de navegar: valor 800, rótulo e resumo presentes, 15 panetti, 6 potes na NY, `#go`/`#openAdj` ocultos |
+| P2-4 âncora ao abrir no celular | após `fonts.ready`, `scrollTo(restY)` instantâneo quando o hash é um ladrilho | `fix` em 375×812: `#s8` e `#s12` com topo em 377 = 377 esperado |
+| P2-5 foco sob a doca | `scroll-padding-bottom: var(--dock)` | `audit kb2`: 0 casos nos 4 modos |
+| P2-6 rótulo = texto visível | `aria-label` removido de `#openAdj` e `#dlbl` (nome vem do texto; descrição em `title`) | `fix`: ambos sem `aria-label` |
+| P2-7 troca de receita | seção "Receita" no diálogo Ajustes; links de receita do rodapé com `data-recipe`/`data-ls` | `fix`: 2 cartões no diálogo; rodapé grava `newyork-v1:p = {mode:pizza, pizzas:6}` |
+| P2-8 "un" fixo | `js.unitPizza` no i18n (`un`/`pcs`) | `fix`: `/en/` mostra `pcs` |
+| P2-9 paridade pt/en | `check_parity()` no build (chaves recursivas de i18n e de cada receita; tamanho de regras, glossário, diag; id, dica e nº de itens de cada etapa) | provado: uma chave só no pt derruba o build com "paridade pt/en" |
+| P2-10 etiquetas longe do objeto | `at` aproximados dos objetos em `s4`–`s13` e NY equivalentes, e um alfinete vermelho em CSS (`.tag::before`) | `qa/fix/mise-…`, `s8-…` |
+| P2-14 manutenção | removidas variáveis mortas e `nxt_link` duplicado; `data-open-adj` removido | build ok |
+| P2-15 alvos de 43 px no menu de idioma | `.lang li a{min-height:44px}` | CSS |
+| P2-17 zero à esquerda | "Continuar na etapa 07" e "etapa 07 de 13" | `fix`: texto de `#resume` "…etapa 07 · Dividir e bolear" |
+| P2-18 timer no celular | relógio grande oculto visualmente no mobile (continua para leitor de tela); o tempo fica no anel e no mini-timer | `fix`: `#clock` 1×1 px em 375 |
+
+Regressão: `build.py` ok; JSON-LD 4/4 idêntico; `cdp checks` (6 viewports, 48 casos) 0 falhas; `tags`, `mobile`, `seam`, `func` 0 falhas.
+
+### Pendências (não corrigidas, registradas)
+- **P2-11** caixa segura passa 17–36 px por baixo dos cartões largos da abertura e do prólogo em 1024×768 e 1280×720 (só afeta a margem do assunto; nenhuma etiqueta fica sob o cartão).
+- **P2-12** cenas de gesto (`s5`, `s7`, `s12`) mais esquemáticas: rodada de refinamento artístico.
+- **P2-13** ponta de prateleira cortada à direita do cartão (`s1`, `s7`, 1440): cosmético.
+- **P2-14 (parte)** `buildLD()` ainda roda depois de timer, diagnóstico e tema no `app.js`; sem efeito porque o JSON-LD vem do pré-render.
+- **P2-16** LCP frio isolado por Google Fonts sem cache (fontes auto-hospedadas seriam a saída; precisa de aparelho real).

@@ -151,7 +151,8 @@
     "prologue": "Prólogo",
     "epilogue": "Epílogo",
     "start0": "Início",
-    "cold": "Geladeira"
+    "cold": "Geladeira",
+    "unitPizza": "un"
   },
   "tag": {
     "flour": "{flour} g farinha",

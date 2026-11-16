@@ -151,7 +151,8 @@
     "prologue": "Prologue",
     "epilogue": "Epilogue",
     "start0": "Start",
-    "cold": "Fridge"
+    "cold": "Fridge",
+    "unitPizza": "pcs"
   },
   "tag": {
     "flour": "{flour} g flour",
