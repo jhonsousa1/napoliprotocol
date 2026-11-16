@@ -5,7 +5,7 @@
 <g fill="#FFF3D2" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M700 200l150-26 50 270-150 34z"/><path d="M868 171l150-26 50 270-150 34z"/></g>
 <!--@sub-->
 <use href="#crock" x="340" y="622"/>
-<use href="#basil" x="1388" y="622"/>
+<use href="#basil" x="1330" y="622"/>
 <use href="#scraper" x="590" y="700"/>
 <ellipse cx="930" cy="624" rx="330" ry="30" fill="#fff" opacity=".42"/>
 <ellipse cx="930" cy="628" rx="250" ry="14" fill="url(#gCon)"/>

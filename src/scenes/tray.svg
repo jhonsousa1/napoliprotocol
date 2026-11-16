@@ -5,7 +5,7 @@
 <g fill="#FFD996" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M700 220l150-26 60 290-150 34z"/><path d="M868 191l150-26 60 290-150 34z"/></g>
 <!--@sub-->
 <use href="#canister" x="440" y="622"/>
-<use href="#jug" x="1360" y="622"/>
+<use href="#jug" x="1330" y="622"/>
 <!--if:balls temper-->
 <use href="#tray" x="930" y="632"/>
 <g filter="url(#paint)" data-draw="balls"></g>

@@ -5,7 +5,7 @@
 <g fill="#FFF3D2" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M740 190l150-26 46 270-150 34z"/><path d="M908 161l150-26 46 270-150 34z"/></g>
 <!--@sub-->
 <use href="#scale" x="440" y="622"/>
-<use href="#canister" x="1350" y="622"/>
+<use href="#canister" x="1330" y="622"/>
 <ellipse cx="930" cy="626" rx="260" ry="22" fill="url(#gCon)"/>
 <use href="#bowlB" x="930" y="473"/>
 <g filter="url(#paint)">

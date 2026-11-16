@@ -4,7 +4,7 @@
 <use href="#win" x="1200" y="110" width="280" height="320"/>
 <!--@sub-->
 <use href="#canister" x="440" y="622"/>
-<use href="#basil" x="1388" y="622"/>
+<use href="#basil" x="1330" y="622"/>
 <ellipse cx="900" cy="632" rx="360" ry="26" fill="url(#gCon)"/>
 <g filter="url(#paint)">
 <rect x="590" y="604" width="620" height="14" rx="4" fill="#8A8F92"/><path d="M590 604h620M620 604v14M700 604v14M780 604v14M860 604v14M940 604v14M1020 604v14M1100 604v14M1180 604v14" stroke="#C9CFD0" stroke-width="2"/>

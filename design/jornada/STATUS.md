@@ -13,8 +13,8 @@ Atualizado em 16/nov/2026. Branch `redesign-imersivo` (nada enviado ao GitHub; o
 | Arquitetura | Opus | concluído | `02-arquitetura.md` |
 | Implementação E0–E9 | Sonnet | concluído | `03-implementacao.md` |
 | Auditoria E10 | Opus | concluída: 0 P0 · 6 P1 · 18 P2 | `04-auditoria.md` |
-| Correções pós-auditoria | Sonnet | em andamento | `03-implementacao.md` § Correções |
-| Validação final + relatório | Opus (sessão principal) | pendente | — |
+| Correções pós-auditoria | Sonnet | concluídas (6 P1, P2 principais, objetos cortados na emenda) | `03-implementacao.md` § Correções |
+| Validação final + relatório | Opus (sessão principal) | concluída | `05-relatorio-final.md` |
 
 ## Como retomar
 1. Ver se `04-auditoria.md` está completo (contagem P0/P1/P2 e lista do que foi testado no final). Se não, pedir a um agente Opus para concluir a auditoria a partir do que já existe (capturas em `design/jornada/qa/audit/`, ignoradas pelo git).
@@ -30,3 +30,6 @@ Atualizado em 16/nov/2026. Branch `redesign-imersivo` (nada enviado ao GitHub; o
 - Servidor: `.claude/launch.json` → `napoliprotocol` (porta 8766, `docs/`) e `jornada-prototipo` (8768, raiz).
 - Originais de fotos em `src/photos/originals/` (gitignored). Capturas de QA em `design/qa/`, `design/jornada/qa/` (gitignored).
 - Limites de uso: os agentes Fable/Opus pararam várias vezes por limite de 5 h; retomar com SendMessage ou novo agente a partir dos arquivos.
+
+## Próximo passo
+Tudo validado localmente. Falta só a decisão do dono: enviar a branch `redesign-imersivo` ao GitHub, abrir PR para `main` e/ou publicar (GitHub Pages publica `docs/` da `main`).

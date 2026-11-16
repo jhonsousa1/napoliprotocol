@@ -89,3 +89,9 @@ Regressão: `build.py` ok; JSON-LD 4/4 idêntico; `cdp checks` (6 viewports, 48 
 - **P2-13** ponta de prateleira cortada à direita do cartão (`s1`, `s7`, 1440): cosmético.
 - **P2-14 (parte)** `buildLD()` ainda roda depois de timer, diagnóstico e tema no `app.js`; sem efeito porque o JSON-LD vem do pré-render.
 - **P2-16** LCP frio isolado por Google Fonts sem cache (fontes auto-hospedadas seriam a saída; precisa de aparelho real).
+
+### Objetos cortados na emenda das passagens (validação final)
+- **Causa:** cada figura é recortada pelo próprio palco; um objeto que atravessa a borda do palco (planta, pano desfocado, porta da geladeira) é cortado por uma linha dura em x ≈ 720 durante a passagem. Além disso a frente do balcão usava só `--br`, o que dava um degrau de cor na emenda quando a luz mudava.
+- **Mudança:** (1) as camadas da arte ficam num `.stage-in` com máscara de esmaecimento horizontal (`--fade: clamp(40px, 6vw, 120px)`), desligada no modo estático e na paisagem baixa; o fundo (parede, bancada) não esmaece, então a emenda continua contínua e os objetos somem em vez de serem cortados; (2) os adereços de contexto da direita (manjericão, jarra, lata) foram recuados para x = 1330, inteiros em 1440 e 1920; (3) a frente do balcão passou a ser gradiente `--bl` → `--br`.
+- **Checagem nova:** `cdp.mjs edge` captura o meio de cada passagem (1440×900 e 1920×1080, claro e escuro) e reprova se alguma linha de pixels (fora de ±5 px da quina da bancada) tiver salto de cor > 36 entre as colunas seam−3 e seam+3.
+- **Evidência:** `edge` com 64 medições em `/pt/` e 56 em `/pt/new-york/`, 0 falhas (antes da correção, 13 falhas só na quina, que a checagem agora ignora de propósito; a primeira versão da checagem também pegou o degrau da frente do balcão em `s1→frio1`); capturas `qa/fix2/pass-*` olhadas; `cdp checks`, `tags`, `seam`, `audit checks tags` (só as pendências P2-11), `build.py` ok e JSON-LD 4/4 idêntico.

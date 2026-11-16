@@ -275,7 +275,7 @@ def tags_html(tags, d, c, rt=False):
 def figure_html(tid, cfg, prev_light, d, c, l, timer=False):
     assert cfg['light'] in MOMENTS, f'{tid}: luz "{cfg["light"]}" desconhecida'
     layers = scene_layers(cfg['scene'], cfg['state'], scene_tokens(c, cfg['state']), c)
-    body = ''.join(f'<svg class="art {k}" viewBox="0 0 1600 900" focusable="false">{layers[k]}</svg>' for k in LAYERS if layers[k])
+    body = '<div class="stage-in">' + ''.join(f'<svg class="art {k}" viewBox="0 0 1600 900" focusable="false">{layers[k]}</svg>' for k in LAYERS if layers[k]) + '</div>'
     svg_bytes = sum(len(layers[k].encode()) for k in LAYERS)
     els = sum(len(re.findall(r'<[a-zA-Z]', layers[k])) for k in LAYERS)
     STATS.append((c['id'], l, tid, svg_bytes, els))

@@ -224,3 +224,21 @@ cmds.cls = async function (pg, { sleep, opt }) {
   await sleep(2500);
   console.log(JSON.stringify(await pg.eval('__s'), null, 1)); return 0;
 };
+/* edge: nenhuma coluna de pixels ao redor da emenda no meio da passagem pode ter salto duro (objeto cortado pela borda do ladrilho). */
+cmds.edge = async function (pg, { opt }) {
+  const bad = []; let n = 0;
+  const diffJS = `(async (b64,seam,y0,y1,hz)=>{const img=new Image();img.src='data:image/png;base64,'+b64;await img.decode();const c=document.createElement('canvas');c.width=img.width;c.height=img.height;const x=c.getContext('2d');x.drawImage(img,0,0);const k=img.width/innerWidth;let worst=0,wy=0;const a=Math.round((seam-3)*k),b=Math.round((seam+3)*k);for(let y=Math.round(y0*k);y<Math.round(y1*k);y++){if(Math.abs(y/k-hz)<=5)continue;const p=x.getImageData(a,y,1,1).data,q=x.getImageData(b,y,1,1).data;const d=Math.abs(p[0]-q[0])+Math.abs(p[1]-q[1])+Math.abs(p[2]-q[2]);if(d>worst){worst=d;wy=y/k}}return {worst,wy:Math.round(wy)}})`;
+  for (const path of String(opt('paths', '/pt/,/pt/new-york/')).split(',')) for (const vp of [{ w: 1440, h: 900 }, { w: 1920, h: 1080 }]) for (const theme of ['light', 'dark']) {
+    await pg.scenario({ ...vp, theme, path });
+    const geo = await pg.eval(`(()=>{const g=NP.geo();return {g,t:[...document.querySelectorAll('main > .tile, .journey .tile')].map(t=>{const r=t.getBoundingClientRect();return {id:t.id,bottom:r.bottom+scrollY}})}})()`);
+    for (let i = 0; i + 1 < geo.t.length; i++) for (const f of [0.5]) {
+      await pg.scrollTo(geo.t[i].bottom - geo.g.top0 - f * geo.g.A);
+      const seam = await pg.eval(`document.getElementById('${geo.t[i + 1].id}').querySelector(':scope > .scene').getBoundingClientRect().left`);
+      const shot = await pg.send('Page.captureScreenshot', { format: 'png' });
+      const hz = await pg.eval(`(()=>{const a=document.getElementById('${geo.t[i + 1].id}').querySelector('.art');const r=a.getBoundingClientRect();return r.top+r.height*600/900})()`);
+      const r = await pg.eval(`${diffJS}('${shot.data}',${seam},${geo.g.top0 + 6},${vp.h * 0.8},${hz})`);
+      n++; if (r.worst > 36) bad.push({ path, vp: `${vp.w}`, theme, pair: `${geo.t[i].id}>${geo.t[i + 1].id}`, f, seam: Math.round(seam), ...r });
+    }
+  }
+  console.log(JSON.stringify({ medidas: n, failed: bad.length, bad: bad.slice(0, 15) }, null, 1)); return bad.length ? 1 : 0;
+};

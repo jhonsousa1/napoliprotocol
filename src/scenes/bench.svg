@@ -8,7 +8,7 @@
 <use href="#crock" x="330" y="622"/>
 <use href="#canister" x="480" y="622"/>
 <!-- contexto à direita: manjericão -->
-<use href="#basil" x="1388" y="622"/>
+<use href="#basil" x="1330" y="622"/>
 <use href="#scraper" x="600" y="700"/>
 <!--if:open-->
 <ellipse cx="900" cy="630" rx="150" ry="10" fill="#fff" opacity=".22"/>
