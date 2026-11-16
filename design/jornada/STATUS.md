@@ -31,5 +31,5 @@ Atualizado em 16/nov/2026. Branch `redesign-imersivo` (nada enviado ao GitHub; o
 - Originais de fotos em `src/photos/originals/` (gitignored). Capturas de QA em `design/qa/`, `design/jornada/qa/` (gitignored).
 - Limites de uso: os agentes Fable/Opus pararam várias vezes por limite de 5 h; retomar com SendMessage ou novo agente a partir dos arquivos.
 
-## Próximo passo
-Tudo validado localmente. Falta só a decisão do dono: enviar a branch `redesign-imersivo` ao GitHub, abrir PR para `main` e/ou publicar (GitHub Pages publica `docs/` da `main`).
+## Publicado
+16/nov/2026: `main` avançada até fe362d7 e enviada; GitHub Pages implantou (pages-build-deployment ok). napoliprotocol.com serve a jornada; branch `redesign-imersivo` também no GitHub.
