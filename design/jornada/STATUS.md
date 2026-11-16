@@ -12,8 +12,8 @@ Atualizado em 16/nov/2026. Branch `redesign-imersivo` (nada enviado ao GitHub; o
 | Estratégia + protótipo | Fable 5.2 | concluído, aprovado pelo dono | `01-estrategia.md`, `prototipo/index.html` |
 | Arquitetura | Opus | concluído | `02-arquitetura.md` |
 | Implementação E0–E9 | Sonnet | concluído | `03-implementacao.md` |
-| Auditoria E10 | Opus | **em andamento / possivelmente incompleta** quando salvo | `04-auditoria.md` |
-| Correções pós-auditoria | Sonnet | pendente | — |
+| Auditoria E10 | Opus | concluída: 0 P0 · 6 P1 · 18 P2 | `04-auditoria.md` |
+| Correções pós-auditoria | Sonnet | em andamento | `03-implementacao.md` § Correções |
 | Validação final + relatório | Opus (sessão principal) | pendente | — |
 
 ## Como retomar
