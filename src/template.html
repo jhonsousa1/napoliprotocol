@@ -1,472 +1,214 @@
 <!doctype html>
-<html lang="{{HTML_LANG}}" {{HTML_STYLE}}>
+<html lang="{{HTML_LANG}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <script>
-/* Tema: escuro das 19h às 7h; a escolha manual vale até a próxima virada (7h ou 19h). */
+/* Tema: escuro das 19h às 7h; a escolha manual vale até a próxima virada (7h ou 19h).
+   Modo: js, mo (movimento ligado), sda (CSS scroll-driven) ou jsd (motor em JS). Sob ?prerender só o tema. */
 (function(){
-  var d=document.documentElement, now=new Date(), h=now.getHours(), t=(h>=19||h<7)?'dark':'light';
+  var d=document.documentElement, now=new Date(), h=now.getHours(), t=(h>=19||h<7)?'dark':'light', q=location.search;
   try{var o=JSON.parse(localStorage.getItem('np-theme')); if(o&&o.until>now.getTime()) t=o.theme;}catch(e){}
   d.setAttribute('data-theme',t);
+  if(/prerender/.test(q)) return;
+  var ui=null; try{ui=JSON.parse(localStorage.getItem('np-ui'))}catch(e){}
+  d.classList.add('js');
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches||/np-motion=off/.test(q)||(ui&&ui.motion===false);
+  if(!rm){d.classList.add('mo');d.classList.add(window.CSS&&CSS.supports&&CSS.supports('animation-timeline: view()')&&!/np-driver=js/.test(q)?'sda':'jsd');}
 })();
 </script>
 {{HEAD}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,72,560;1,72,400&family=Atkinson+Hyperlegible+Next:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,72,560;1,72,400&family=Atkinson+Hyperlegible+Next:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
 <style>
 {{CSS}}
 </style>
-{{SCENE_CSS}}
 </head>
 <body>
-<a class="skip" href="#receita">{{nav.skip}}</a>
-{{SCENE}}
-<header class="topbar">
-  <div class="wrap">
-    <a class="brand" href="/{{LANG}}/"><span class="flag" aria-hidden="true"><i></i><i></i><i></i></span>NapoliProtocol</a>
-    <nav class="nav" aria-label="{{nav.label}}">
-      <a href="#receita">{{nav.recipe}}</a><a href="#cronograma">{{nav.schedule}}</a><a href="#assistir">{{nav.watch}}</a><a href="#passos">{{nav.steps}}</a><a href="#forno">{{nav.oven}}</a><a href="#regras">{{nav.rules}}</a><a href="#sobre">{{nav.about}}</a>
-    </nav>
-    <div class="prog" title="{{nav.progress}}"><span id="progTxt">0/{{NSTEPS}}</span><div class="prog-bar"><i id="progBar"></i></div></div>
-    <button type="button" class="theme-btn" id="themeBtn" aria-label="{{nav.theme}}" title="{{nav.theme}}"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    {{LANG_MENU}}
-  </div>
+<a class="skip" href="#jornada">{{nav.skip}}</a>
+<header class="bar">
+  <a class="brand" href="/{{LANG}}/"><span class="flag" aria-hidden="true"><i></i><i></i><i></i></span><span class="bw">Napoli<em>Protocol</em></span></a>
+  <span class="pos" id="pos"></span>
+  <span class="mini" id="mini" hidden></span>
+  <button type="button" class="pill" id="openAdj" aria-haspopup="dialog" aria-label="{{bar.adjustAria}}"><span id="barSum"></span><small>{{bar.adjust}}</small></button>
+  <button type="button" class="icon theme-btn" id="themeBtn" aria-label="{{nav.theme}}" title="{{nav.theme}}"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  {{LANG_MENU}}
 </header>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">{{DEFS}}</svg>
+<div class="grain" aria-hidden="true"></div>
 
 <main id="main">
-  <section class="hero" data-take="hero" aria-labelledby="h1">
-    <div class="wrap"><div class="hero-copy">
-      <nav class="recipes" aria-label="{{nav.recipes}}">{{RECIPE_TABS}}</nav>
-      <p class="pill">{{hero.eyebrow}}</p>
-      <h1 id="h1">{{H1}}</h1>
-      <p class="lead">{{hero.lead}}</p>
-      <div class="byline"><span>{{hero.by}} <a href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author">Jhonathan Sousa</a></span><small>{{hero.version}}</small></div>
-      <a class="next" id="nextEv" href="#cronograma" hidden></a>
-      <div class="qcard" role="group" aria-label="{{panel.pizzas}}">
-        <span class="qlbl">{{panel.pizzas}}</span>
-        <button type="button" id="qMinus" aria-label="{{panel.fewer}}">−</button><output id="qN">5</output><button type="button" id="qPlus" aria-label="{{panel.more}}">+</button>
-        <span class="qsum" id="qSum"></span>
-      </div>
-    </div></div>
-    {{HERO_CREDIT}}
+  <section class="tile first open" id="abertura" aria-labelledby="h1" data-title="{{ask.go}}">
+    {{OPEN_FIGURE}}
+    <form class="card ask" id="ask" novalidate>
+      <h1 id="h1">{{ASK_H1}}</h1>
+      <p class="lead">{{ask.lead}}</p>
+      <fieldset><legend>{{ask.recipe}}</legend><div class="recs">{{RECIPE_CARDS}}</div></fieldset>
+      <fieldset><legend>{{ask.qty}}</legend>
+        <div class="seg" role="group" aria-label="{{panel.calcBy}}"><button type="button" data-mode="flour" aria-pressed="true">{{ask.byFlour}}</button><button type="button" data-mode="pizza" aria-pressed="false">{{ask.byPizza}}</button></div>
+        <div class="stepper">
+          <button type="button" id="less" aria-label="{{ask.less}}">−</button>
+          <label class="val"><span class="sr" id="qLbl"></span><input id="qty" type="number" inputmode="numeric" min="1" aria-labelledby="qLbl"><span id="qUnit">g</span></label>
+          <button type="button" id="more" aria-label="{{ask.more}}">+</button>
+        </div>
+        <p class="sum" id="sum" aria-live="polite"></p>
+      </fieldset>
+      <div class="acts"><a class="btn ghost" id="resume" href="#s1" hidden></a><button class="btn" type="submit" id="go" data-restart="{{ask.restart}}">{{ask.go}}</button></div>
+      <a class="next" id="nextEv" href="#adj-agenda" hidden></a>
+      <p class="fine">@@ASKFINE@@</p>
+    </form>
   </section>
 
-  <section class="sheet sheet-first" id="receita" aria-labelledby="h-receita">
-    <div class="wrap">
-      <div class="kpis" aria-live="polite">
-        <div class="kpi"><div class="k">{{kpi.total}}</div><div class="val"><span data-k="total"></span> g</div><div class="sub">{{kpi.hyd}} <span data-k="hydPct"></span>%</div></div>
-        <div class="kpi"><div class="k">{{kpi.balls}}</div><div class="val"><span data-k="n"></span> × <span data-k="per"></span> g</div><div class="sub">{{kpi.pizzas}}</div></div>
-        <div class="kpi"><div class="k">{{kpi.top}}</div><div class="val"><span data-k="top"></span> °C</div><div class="sub">{{kpi.preheat}}</div></div>
-        <div class="kpi"><div class="k">{{kpi.bottom}}</div><div class="val"><span data-k="bottom"></span> °C</div><div class="sub">{{kpi.bottomSub}}</div></div>
+  <section class="tile mise" id="mise" aria-labelledby="h-mise" data-title="{{mise.h}}" data-day="{{mise.eb}}">
+    {{MISE_FIGURE}}
+    <div class="card mise-card">
+      <p class="eyebrow">{{mise.eb}}</p>
+      <h2 id="h-mise">{{mise.h}}</h2>
+      <p>{{mise.p}}</p>
+      <div class="tbl-wrap">
+        <table>
+          <caption class="sr">{{recipe.h2}}</caption>
+          <thead><tr><th>{{recipe.ing}}</th><th class="n">%</th><th class="n">{{recipe.total}}</th>{{#pf}}<th class="n"><span class="full">{{recipe.pf}}</span><span class="short">{{recipe.pfShort}}</span></th><th class="n"><span class="full">{{recipe.final}}</span><span class="short">{{recipe.finalShort}}</span></th>{{/pf}}</tr></thead>
+          <tbody>
+            <tr><td>{{ing.flour}}</td><td class="n">100</td><td class="n"><span data-k="flour"></span> g</td>{{#pf}}<td class="n"><span data-k="pfFlour"></span> g</td><td class="n"><span data-k="finFlour"></span> g</td>{{/pf}}</tr>
+            <tr><td>{{ing.water}}</td><td class="n" data-k="hydPct"></td><td class="n"><span data-k="water"></span> g</td>{{#pf}}<td class="n"><span data-k="pfWater"></span> g</td><td class="n"><span data-k="finWater"></span> g</td>{{/pf}}</tr>
+            <tr><td>{{ing.yeast}}</td><td class="n" data-k="yeastPct"></td><td class="n"><span data-k="yeast"></span> g</td>{{#pf}}<td class="n"><span data-k="yeast"></span> g</td><td class="n">—</td>{{/pf}}</tr>
+            {{#sugar}}<tr><td>{{ing.sugar}}</td><td class="n" data-k="sugarPct"></td><td class="n"><span data-k="sugar"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="sugar"></span> g</td>{{/pf}}</tr>{{/sugar}}
+            <tr><td>{{ing.salt}}</td><td class="n" data-k="saltPct"></td><td class="n"><span data-k="salt"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="salt"></span> g</td>{{/pf}}</tr>
+            <tr><td>{{ing.oil}}</td><td class="n" data-k="oilPct"></td><td class="n"><span data-k="oil"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="oil"></span> g</td>{{/pf}}</tr>
+            <tr class="total"><td>{{recipe.dough}}</td><td class="n"></td><td class="n"><span data-k="total"></span> g</td>{{#pf}}<td class="n"><span data-k="pfTotal"></span> g</td><td class="n">—</td>{{/pf}}</tr>
+          </tbody>
+        </table>
       </div>
-      <div class="chap"><div><p class="chap-no">{{chap.1}}</p><h2 id="h-receita">{{recipe.h2}}</h2></div><p>{{recipe.sub}}</p></div>
-      <div class="grid-tool">
-        <aside class="card panel" aria-label="{{panel.title}}">
-          <div class="panel-head"><p class="panel-h">{{panel.title}}</p><button type="button" class="btn small panel-toggle" id="panelToggle" aria-expanded="false" aria-controls="panelBody">{{panel.open}}</button></div>
-          <p class="panel-sum" id="panelSum"></p>
-          <div class="panel-body" id="panelBody">
-          <div class="fieldset">
-            <div class="eyebrow">{{panel.batch}}</div>
-            <div class="seg" role="group" aria-label="{{panel.calcBy}}">
-              <button type="button" id="modeFlour" aria-pressed="true">{{panel.byFlour}}</button>
-              <button type="button" id="modePizza" aria-pressed="false">{{panel.byPizza}}</button>
-            </div>
-            <div class="field" id="rowFlour"><label for="p-flour">{{panel.flour}}</label><div class="inp"><input id="p-flour" type="number" min="200" step="50" inputmode="decimal"><span>g</span></div></div>
-            <div class="field" id="rowPizzas" hidden><label for="p-pizzas">{{panel.pizzas}}</label><div class="inp"><input id="p-pizzas" type="number" min="1" max="20" step="1" inputmode="numeric"><span>{{panel.unit}}</span></div></div>
-            <div class="field"><label for="p-w">{{panel.ballW}}<small>{{panel.ref}}: {{REF_W}}</small></label><div class="inp"><input id="p-w" type="number" min="180" max="320" step="5"><span>g</span></div></div>
-          </div>
-          <div class="fieldset">
-            <div class="eyebrow">{{panel.formula}}</div>
-            <div class="field"><label for="p-hyd">{{panel.hyd}}</label><div class="inp"><input id="p-hyd" type="number" min="55" max="75" step="0.5"><span>%</span></div></div>
-            <div class="field"><label for="p-salt">{{ing.salt}}<small>{{panel.ref}}: {{REF_SALT}}</small></label><div class="inp"><input id="p-salt" type="number" min="2" max="3.2" step="0.01"><span>%</span></div></div>
-            <div class="field"><label for="p-oil">{{panel.oil}}</label><div class="inp"><input id="p-oil" type="number" min="0" max="4" step="0.1"><span>%</span></div></div>
-            <div class="field"><label for="p-yeast">{{panel.yeast}}</label><div class="inp"><input id="p-yeast" type="number" min="0.02" max="1" step="0.01"><span>%</span></div></div>
-            {{#sugar}}<div class="field" id="rowSugar"><label for="p-sugar">{{panel.sugar}}</label><div class="inp"><input id="p-sugar" type="number" min="0" max="5" step="0.1"><span>%</span></div></div>{{/sugar}}
-            {{#pf}}<div class="field" id="rowPf"><label for="p-pf">{{panel.pf}}</label><div class="inp"><input id="p-pf" type="number" min="20" max="60" step="5"><span>%</span></div></div>{{/pf}}
-          </div>
-          <div class="fieldset">
-            <div class="eyebrow">{{panel.env}}</div>
-            <div class="field"><label for="p-fridge">{{panel.fridge}}</label><div class="inp"><input id="p-fridge" type="number" min="2" max="12" step="0.5"><span>°C</span></div></div>
-            <div class="field"><label for="p-top">{{panel.top}}</label><div class="inp"><input id="p-top" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
-            <div class="field"><label for="p-bottom">{{panel.bottom}}</label><div class="inp"><input id="p-bottom" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
-          </div>
-          <div class="fieldset">
-            <div class="eyebrow">{{panel.toppings}}</div>
-            <div class="field"><label for="p-sauce">{{panel.sauce}}</label><div class="inp"><input id="p-sauce" type="number" min="40" max="100" step="5"><span>g</span></div></div>
-            <div class="field"><label for="p-cheese">Mozzarella</label><div class="inp"><input id="p-cheese" type="number" min="40" max="120" step="5"><span>g</span></div></div>
-          </div>
-          <div class="panel-foot">
-            <button class="btn small" type="button" id="resetParams">{{panel.reset}}</button>
-            <button class="btn small" type="button" id="resetChecks">{{panel.clear}}</button>
-          </div>
-          <p class="note">{{panel.note}}</p>
-          </div>
-        </aside>
-        <div class="tool-main">
-          <div class="card tbl-wrap">
-            <table>
-              <thead><tr><th>{{recipe.ing}}</th><th class="n">%</th><th class="n">{{recipe.total}}</th>{{#pf}}<th class="n"><span class="full">{{recipe.pf}}</span><span class="short">{{recipe.pfShort}}</span></th><th class="n"><span class="full">{{recipe.final}}</span><span class="short">{{recipe.finalShort}}</span></th>{{/pf}}</tr></thead>
-              <tbody>
-                <tr><td>{{ing.flour}}</td><td class="n">100</td><td class="n"><span data-k="flour"></span> g</td>{{#pf}}<td class="n"><span data-k="pfFlour"></span> g</td><td class="n"><span data-k="finFlour"></span> g</td>{{/pf}}</tr>
-                <tr><td>{{ing.water}}</td><td class="n" data-k="hydPct"></td><td class="n"><span data-k="water"></span> g</td>{{#pf}}<td class="n"><span data-k="pfWater"></span> g</td><td class="n"><span data-k="finWater"></span> g</td>{{/pf}}</tr>
-                <tr><td>{{ing.yeast}}</td><td class="n" data-k="yeastPct"></td><td class="n"><span data-k="yeast"></span> g</td>{{#pf}}<td class="n"><span data-k="yeast"></span> g</td><td class="n">—</td>{{/pf}}</tr>
-                {{#sugar}}<tr><td>{{ing.sugar}}</td><td class="n" data-k="sugarPct"></td><td class="n"><span data-k="sugar"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="sugar"></span> g</td>{{/pf}}</tr>{{/sugar}}
-                <tr><td>{{ing.salt}}</td><td class="n" data-k="saltPct"></td><td class="n"><span data-k="salt"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="salt"></span> g</td>{{/pf}}</tr>
-                <tr><td>{{ing.oil}}</td><td class="n" data-k="oilPct"></td><td class="n"><span data-k="oil"></span> g</td>{{#pf}}<td class="n">—</td><td class="n"><span data-k="oil"></span> g</td>{{/pf}}</tr>
-                <tr class="total"><td>{{recipe.dough}}</td><td class="n"></td><td class="n"><span data-k="total"></span> g</td>{{#pf}}<td class="n"><span data-k="pfTotal"></span> g</td><td class="n">—</td>{{/pf}}</tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="split{{SPLIT_CLASS}}">
-            {{#wsplit}}<div class="card mini"><div class="eyebrow">{{recipe.waterEb}}</div><h3>{{recipe.waterH}}</h3>
-              <ul><li><span>{{recipe.wInit}}</span><b class="num"><span data-k="initWater"></span> g</b></li><li><span>Bassinage</span><b class="num"><span data-k="bassWater"></span> g</b></li></ul></div>{{/wsplit}}
-            <div class="card mini"><div class="eyebrow">{{recipe.divEb}}</div><h3>{{recipe.balls}}</h3>
-              <ul><li><span>{{recipe.main}}</span><b class="num"><span data-k="n"></span> × <span data-k="per"></span> g</b></li><li id="altRow"><span>{{recipe.alt}}</span><b class="num" data-k="alt"></b></li><li><span>{{recipe.target}}</span><b class="num">{{TARGET}}</b></li></ul></div>
-            <div class="card mini"><div class="eyebrow">{{recipe.topEb}}</div><h3>{{recipe.forPre}} <span data-k="n"></span> {{recipe.forPost}}</h3>
-              <ul><li><span>Mutti Pelati 400 g</span><b class="num"><span data-k="cans"></span> {{recipe.cans}}</b></li><li><span>{{recipe.sauceTotal}}</span><b class="num"><span data-k="sauceTotal"></span> g</b></li><li><span>{{recipe.cheese}}</span><b class="num"><span data-k="cheeseTotal"></span> g</b></li></ul></div>
-          </div>
-          <div class="alert" id="warnBox" hidden></div>
-        </div>
+      <p class="fine">{{recipe.sub}}</p>
+      <div class="split{{SPLIT_CLASS}}">
+        {{#wsplit}}<div class="mini-card"><p class="eyebrow">{{recipe.waterEb}}</p><h3>{{recipe.waterH}}</h3>
+          <ul><li><span>{{recipe.wInit}}</span><b class="num"><span data-k="initWater"></span> g</b></li><li><span>Bassinage</span><b class="num"><span data-k="bassWater"></span> g</b></li></ul></div>{{/wsplit}}
+        <div class="mini-card"><p class="eyebrow">{{recipe.divEb}}</p><h3>{{recipe.balls}}</h3>
+          <ul><li><span>{{recipe.main}}</span><b class="num"><span data-k="n"></span> × <span data-k="per"></span> g</b></li><li id="altRow"><span>{{recipe.alt}}</span><b class="num" data-k="alt"></b></li><li><span>{{recipe.target}}</span><b class="num">{{TARGET}}</b></li></ul></div>
+        <div class="mini-card"><p class="eyebrow">{{recipe.topEb}}</p><h3>{{recipe.forPre}} <span data-k="n"></span> {{recipe.forPost}}</h3>
+          <ul><li><span>Mutti Pelati 400 g</span><b class="num"><span data-k="cans"></span> {{recipe.cans}}</b></li><li><span>{{recipe.sauceTotal}}</span><b class="num"><span data-k="sauceTotal"></span> g</b></li><li><span>{{recipe.cheese}}</span><b class="num"><span data-k="cheeseTotal"></span> g</b></li></ul></div>
       </div>
+      <div class="alert" id="warnBox" hidden></div>
     </div>
   </section>
 
-  {{WIN_TEMPO}}
+  <h2 class="sr" id="jornada">{{nav.steps}}</h2>
+  <ol class="journey">{{JOURNEY}}</ol>
 
-  <section class="sheet" id="cronograma" aria-labelledby="h-cron"><div class="wrap">
-    <div class="chap"><div><p class="chap-no">{{chap.2}}</p><h2 id="h-cron">{{sched.h2}}</h2></div><p>{{sched.sub}}</p></div>
-    <div class="card">
-      <div class="sched-ctl">
-        <div class="field"><label for="p-bake">{{sched.bake}}</label><input id="p-bake" type="datetime-local"></div>
-        {{#pf}}<div class="field"><label for="p-pfh">{{sched.pfh}}</label><div class="inp"><input id="p-pfh" type="number" min="8" max="30" step="1"><span>h</span></div></div>{{/pf}}
-        <div class="field"><label for="p-panh">{{sched.panh}}</label><div class="inp"><input id="p-panh" type="number" min="12" max="72" step="1"><span>h</span></div></div>
-        <div class="field"><label for="p-outh">{{sched.outh}}</label><div class="inp"><input id="p-outh" type="number" min="1" max="8" step="0.5"><span>h</span></div></div>
-      </div>
-      <ol class="tl" id="timeline"></ol>
-    </div>
-    <div class="alert" id="schedWarn" hidden></div>
-  </div></section>
-
-  {{WIN_GESTO}}
-
-  <section class="sheet" id="passos" aria-labelledby="h-passos"><div class="wrap">
-    <div class="chap"><div><p class="chap-no">{{chap.3}}</p><h2 id="h-passos">{{steps.h2}}</h2></div><p>{{steps.sub}}</p></div>
-    <div class="gesto">
-      <div id="assistir" class="card np-player" role="region" aria-label="{{player.h2}}">
-        <div class="screen">
-          <div class="stagebox">
-            {{PLAYER_STAGE}}
-            <span class="badge" id="plBadge"></span>
-            <span class="waitchip" id="plWait"></span>
-          </div>
-          <div class="chapters" id="plChap" aria-label="{{nav.steps}}"></div>
-          <div class="cap" aria-live="polite">
-            <h3 id="plT"><small id="plDay"></small><span id="plTt"></span></h3>
-            <ul id="plLi"></ul>
-            <p class="tip" id="plTip" hidden></p>
-          </div>
-          <div class="ctrl">
-            <button type="button" class="cbtn" id="plPrev" aria-label="{{player.prev}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="cbtn main" id="plPP" aria-label="Play"><svg viewBox="0 0 24 24" id="plPPIco" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button>
-            <button type="button" class="cbtn" id="plNext" aria-label="{{player.next}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button type="button" class="cbtn" id="plRep" aria-label="{{player.repeat}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <span class="sp"></span>
-            <div class="mode" role="group" aria-label="{{player.mode}}">
-              <button type="button" id="plFilm" aria-pressed="false">{{player.film}}</button>
-              <button type="button" id="plBench" aria-pressed="true">{{player.bench}}</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="stepsRoot"></div>
-    </div>
-  </div></section>
-
-  {{WIN_FOGO}}
-
-  <section class="sheet" id="forno" aria-labelledby="h-forno"><div class="wrap">
-    <div class="chap"><div><p class="chap-no">{{chap.4}}</p><h2 id="h-forno">{{oven.h2}}</h2></div><p>{{oven.sub}}</p></div>
-    <div class="oven-grid">
-      <div class="card timer">
-        <div class="eyebrow">{{oven.timer}}</div>
-        <div class="clock" id="clock">{{CLOCK0}}</div>
-        <div>
-          <div class="track" aria-hidden="true">{{TIMER_ZONES}}<div class="head" id="head"></div></div>
-          <div class="scale">{{TIMER_SCALE}}</div>
-        </div>
-        <div class="status" id="tStatus" aria-live="polite"></div>
-        <div class="timer-btns"><button class="btn primary" type="button" id="tStart"></button><button class="btn" type="button" id="tReset">{{oven.reset}}</button></div>
-        <p class="note">{{oven.note}}</p>
-      </div>
-      <div class="card diag">
-        <div class="eyebrow">{{oven.diag}}</div>
+  <section class="epi" id="epilogo" aria-labelledby="h-epi">
+    <div class="in">
+      <p class="eyebrow">{{epi.eb}}</p>
+      <h2 id="h-epi">{{EPI_H}}</h2>
+      <p class="lead">{{epi.p}}</p>
+      <div class="diag">
+        <p class="eyebrow">{{oven.diag}}</p>
         <div class="chips" id="chips"></div>
         <div class="diag-out" id="diagOut"><span class="note">{{oven.diagHint}}</span></div>
       </div>
-    </div>
-
-  </div></section>
-
-  <div class="gap" aria-hidden="true"></div>
-
-  <div class="sheet sheet-last">
-    <section id="regras" aria-labelledby="h-regras"><div class="wrap">
-      <div class="chap"><div><p class="chap-no">{{chap.5}}</p><h2 id="h-regras">{{rules.h2}}</h2></div><p>{{rules.sub}}</p></div>
-      <ol class="rules">{{RULES}}</ol>
-      <dl class="glossary">{{GLOSSARY}}</dl>
-    </div></section>
-    <section id="sobre" aria-labelledby="h-sobre"><div class="wrap">
-      <div class="chap"><div><p class="chap-no">{{chap.6}}</p><h2 id="h-sobre">{{about.h2}}</h2></div><p>{{about.sub}}</p></div>
-      <div class="about">
-        {{ABOUT_MAIN}}
-        <div class="about-text">
-          <article class="prose"><p class="eyebrow">{{about.pizzaEb}}</p><h3>{{about.pizzaH}}</h3>{{ABOUT_PIZZA}}</article>
-          <article class="prose"><p class="eyebrow">{{about.siteEb}}</p><h3>{{about.siteH}}</h3>{{ABOUT_SITE}}</article>
+      <section id="regras" aria-labelledby="h-regras">
+        <h2 id="h-regras">{{rules.h2}}</h2><p class="lead">{{rules.sub}}</p>
+        <ol class="rules">{{RULES}}</ol>
+        <dl class="glossary">{{GLOSSARY}}</dl>
+      </section>
+      <section id="sobre" aria-labelledby="h-sobre">
+        <h2 id="h-sobre">{{about.h2}}</h2><p class="lead">{{about.sub}}</p>
+        <div class="about">
+          {{ABOUT_MAIN}}
+          <div class="about-text">
+            <article class="prose"><p class="eyebrow">{{about.pizzaEb}}</p><h3>{{about.pizzaH}}</h3>{{ABOUT_PIZZA}}</article>
+            <article class="prose"><p class="eyebrow">{{about.siteEb}}</p><h3>{{about.siteH}}</h3>{{ABOUT_SITE}}</article>
+          </div>
         </div>
-      </div>
-      <div class="aphotos">{{ABOUT_PHOTOS}}</div>
-      <div class="facts">{{ABOUT_FACTS}}</div>
-    </div></section>
-  </div>
+        <div class="aphotos">{{ABOUT_PHOTOS}}</div>
+        <div class="facts">{{ABOUT_FACTS}}</div>
+        <h3 class="gal-h">{{epi.gallery}}</h3>
+        <div class="aphotos gallery">{{GALLERY}}</div>
+      </section>
+      <p class="back"><a class="next" href="#abertura">↑ {{epi.back}}</a></p>
+    </div>
+  </section>
 </main>
 
-<footer class="fin" data-take="fim" {{FIN_PHOTO_ATTR}}><div class="wrap">
-  <p class="fin-h">{{FIN_H}}</p>
-  <div class="foot">
-    <p class="sig">{{foot.sig}} <b>Jhonathan Sousa</b></p>
-    <a class="ig" href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg>@jhonsousa1</a>
-    <nav class="foot-langs" aria-label="{{foot.recipes}}">{{FOOT_RECIPES}}</nav>
-    <nav class="foot-langs" aria-label="{{foot.langs}}">{{FOOT_LANGS}}</nav>
-    {{FIN_CREDIT}}
-    <p class="copy">© 2026 Jhonathan Sousa · {{foot.rights}}</p>
-  </div>
+<footer class="site-foot"><div class="in">
+  <p class="sig">{{foot.sig}} <b>Jhonathan Sousa</b></p>
+  <a class="ig" href="https://www.instagram.com/jhonsousa1/" target="_blank" rel="noopener author"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg>@jhonsousa1</a>
+  <nav class="foot-langs" aria-label="{{foot.recipes}}">{{FOOT_RECIPES}}</nav>
+  <nav class="foot-langs" aria-label="{{foot.langs}}">{{FOOT_LANGS}}</nav>
+  <p class="copy">© 2026 Jhonathan Sousa · {{foot.rights}}</p>
 </div></footer>
 
+<nav class="rail" id="rail" aria-label="{{rail.label}}">{{RAIL}}<div class="cnt" id="cnt">0/{{NSTEPS}}</div></nav>
+<nav class="dock" aria-label="{{rail.label}}">
+  <i class="prog" id="prog"></i>
+  <a id="prev" href="#abertura" aria-label="{{dock.prev}}">‹</a>
+  <button type="button" class="lbl" id="dlbl" aria-haspopup="dialog" aria-label="{{dock.index}}"></button>
+  <a id="nextd" href="#mise" aria-label="{{dock.next}}">›</a>
+</nav>
+
+<dialog id="adj" aria-labelledby="adjH">
+  <form class="dlg" method="dialog">
+    <header><h2 id="adjH">{{adj.h}}</h2><button class="icon" value="x" aria-label="{{adj.close}}">✕</button></header>
+    <details open id="adj-dough"><summary>{{adj.dough}}</summary>
+      <div class="seg" role="group" aria-label="{{panel.calcBy}}">
+        <button type="button" id="modeFlour" aria-pressed="true">{{panel.byFlour}}</button>
+        <button type="button" id="modePizza" aria-pressed="false">{{panel.byPizza}}</button>
+      </div>
+      <div class="field" id="rowFlour"><label for="p-flour">{{panel.flour}}</label><div class="inp"><input id="p-flour" type="number" min="200" step="50" inputmode="decimal"><span>g</span></div></div>
+      <div class="field" id="rowPizzas" hidden><label for="p-pizzas">{{panel.pizzas}}</label><div class="inp"><input id="p-pizzas" type="number" min="1" max="20" step="1" inputmode="numeric"><span>{{panel.unit}}</span></div></div>
+      <div class="field"><label for="p-w">{{panel.ballW}}<small>{{panel.ref}}: {{REF_W}}</small></label><div class="inp"><input id="p-w" type="number" min="180" max="320" step="5"><span>g</span></div></div>
+    </details>
+    <details id="adj-formula"><summary>{{adj.formula}}</summary>
+      <div class="field"><label for="p-hyd">{{panel.hyd}}</label><div class="inp"><input id="p-hyd" type="number" min="55" max="75" step="0.5"><span>%</span></div></div>
+      <div class="field"><label for="p-salt">{{ing.salt}}<small>{{panel.ref}}: {{REF_SALT}}</small></label><div class="inp"><input id="p-salt" type="number" min="2" max="3.2" step="0.01"><span>%</span></div></div>
+      <div class="field"><label for="p-oil">{{panel.oil}}</label><div class="inp"><input id="p-oil" type="number" min="0" max="4" step="0.1"><span>%</span></div></div>
+      <div class="field"><label for="p-yeast">{{panel.yeast}}</label><div class="inp"><input id="p-yeast" type="number" min="0.02" max="1" step="0.01"><span>%</span></div></div>
+      {{#sugar}}<div class="field" id="rowSugar"><label for="p-sugar">{{panel.sugar}}</label><div class="inp"><input id="p-sugar" type="number" min="0" max="5" step="0.1"><span>%</span></div></div>{{/sugar}}
+      {{#pf}}<div class="field" id="rowPf"><label for="p-pf">{{panel.pf}}</label><div class="inp"><input id="p-pf" type="number" min="20" max="60" step="5"><span>%</span></div></div>{{/pf}}
+    </details>
+    <details id="adj-env"><summary>{{adj.env}}</summary>
+      <div class="field"><label for="p-fridge">{{panel.fridge}}</label><div class="inp"><input id="p-fridge" type="number" min="2" max="12" step="0.5"><span>°C</span></div></div>
+      <div class="field"><label for="p-top">{{panel.top}}</label><div class="inp"><input id="p-top" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
+      <div class="field"><label for="p-bottom">{{panel.bottom}}</label><div class="inp"><input id="p-bottom" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
+    </details>
+    <details id="adj-top"><summary>{{adj.toppings}}</summary>
+      <div class="field"><label for="p-sauce">{{panel.sauce}}</label><div class="inp"><input id="p-sauce" type="number" min="40" max="100" step="5"><span>g</span></div></div>
+      <div class="field"><label for="p-cheese">Mozzarella</label><div class="inp"><input id="p-cheese" type="number" min="40" max="120" step="5"><span>g</span></div></div>
+    </details>
+    <details id="adj-agenda"><summary>{{adj.agenda}}</summary>
+      <p class="fine">{{sched.sub}}</p>
+      <div class="field"><label for="p-bake">{{sched.bake}}</label><input id="p-bake" type="datetime-local"></div>
+      {{#pf}}<div class="field"><label for="p-pfh">{{sched.pfh}}</label><div class="inp"><input id="p-pfh" type="number" min="8" max="30" step="1"><span>h</span></div></div>{{/pf}}
+      <div class="field"><label for="p-panh">{{sched.panh}}</label><div class="inp"><input id="p-panh" type="number" min="12" max="72" step="1"><span>h</span></div></div>
+      <div class="field"><label for="p-outh">{{sched.outh}}</label><div class="inp"><input id="p-outh" type="number" min="1" max="8" step="0.5"><span>h</span></div></div>
+      <ol class="tl" id="timeline"></ol>
+      <div class="alert" id="schedWarn" hidden></div>
+    </details>
+    <details id="adj-recipe"><summary>{{adj.recipe}}</summary>
+      <p><a class="next" href="#mise" data-close-adj>{{adj.recipeGo}} ↓</a></p>
+    </details>
+    <details id="adj-prefs"><summary>{{adj.prefs}}</summary>
+      <div class="field"><label for="aMo">{{adj.motion}}<small id="aMoNote" hidden>{{adj.motionSys}}</small></label><input id="aMo" type="checkbox"></div>
+      <div class="panel-foot"><button class="btn small" type="button" id="resetParams">{{panel.reset}}</button><button class="btn small" type="button" id="resetChecks">{{panel.clear}}</button></div>
+      <p class="fine">{{panel.note}}</p>
+    </details>
+  </form>
+</dialog>
+
+<dialog id="idx" aria-labelledby="idxH">
+  <form class="dlg" method="dialog">
+    <header><h2 id="idxH">{{dock.index}}</h2><button class="icon" value="x" aria-label="{{adj.close}}">✕</button></header>
+    <ol class="idx-list">{{IDX}}</ol>
+  </form>
+</dialog>
+
+<script>window.__T={{T_JSON}};</script>
 <script>
-(function(){
-  const T = {{T_JSON}};
-  const C = T.cfg, DEF = C.def, LS = C.ls;
-  const store = {get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-  let P = Object.assign({}, DEF, store.get(LS+':p')||{});
-  let done = store.get(LS+':done') || {};
-  const fill = (s,o) => s.replace(/\{(\w+)\}/g,(m,k)=> k in o ? o[k] : m);
-
-  const nf0 = new Intl.NumberFormat(T.locale,{maximumFractionDigits:0});
-  const nf1 = new Intl.NumberFormat(T.locale,{minimumFractionDigits:1,maximumFractionDigits:1});
-  const nf2 = new Intl.NumberFormat(T.locale,{maximumFractionDigits:2});
-  const g = v => v < 10 ? nf1.format(v) : nf0.format(Math.round(v));
-  const pct = v => nf2.format(v);
-
-  function nextDefaultBake(){
-    const d = new Date(); const t = new Date(d);
-    t.setHours(19,30,0,0); t.setDate(t.getDate()+1);
-    while(t.getDay()!==6 || (t-d) < 60*3600e3) t.setDate(t.getDate()+1);
-    return toLocalInput(t);
-  }
-  function toLocalInput(t){const z=n=>String(n).padStart(2,'0');return `${t.getFullYear()}-${z(t.getMonth()+1)}-${z(t.getDate())}T${z(t.getHours())}:${z(t.getMinutes())}`}
-  if(!P.bake) P.bake = nextDefaultBake();
-
-  function calc(){
-    const ratio = 1 + P.hyd/100 + P.salt/100 + P.oil/100 + P.yeast/100 + P.sugar/100;
-    const flour = P.mode==='pizza' ? (P.pizzas*P.w)/ratio : P.flour;
-    const water = flour*P.hyd/100, salt = Math.round(flour*P.salt/100), oil = Math.round(flour*P.oil/100), yeast = flour*P.yeast/100, sugar = flour*P.sugar/100;
-    const total = flour+water+salt+oil+yeast+sugar;
-    const pfFlour = C.features.preferment ? flour*P.pf/100 : 0, pfWater = pfFlour;
-    const finFlour = flour-pfFlour, finWater = Math.max(0, water-pfWater);
-    const saltWater = Math.min(Math.round(salt*1.1), finWater);
-    const bassWater = Math.max(0, Math.round(finWater) - Math.round(finWater*0.62) - saltWater);
-    const initWater = Math.round(finWater) - bassWater;   // inclui a água em que o sal é dissolvido
-    const n = Math.max(1, Math.round(total/P.w)), per = total/n;
-    const nF = Math.floor(total/P.w), rem = total - nF*P.w;
-    const alt = (nF>=1 && nF!==n && rem>30 && rem<P.w*0.6) ?   // bolinha de teste só quando sobra pouca massa
-       `${nF} × ${P.w} g + ${T.test} ${g(rem)} g` : (n>1 && Math.abs(per-P.w)>8 ? `${n+ (per>P.w?1:-1)} × ${g(total/(n+(per>P.w?1:-1)))} g` : '—');
-    const sauceTotal = n*P.sauce, cheeseTotal = n*P.cheese, cans = Math.max(1, Math.ceil(sauceTotal/400));
-    return {flour, water, salt, oil, yeast, sugar, total, pfFlour, pfWater, pfTotal:pfFlour+pfWater+yeast, finFlour, finWater, saltWater, initWater, bassWater, n, per, alt, sauceTotal, cheeseTotal, cans,
-      canSalt: cans*4+'–'+cans*5, top:P.top, bottom:P.bottom, fridge:P.fridge, pfh:P.pfh, panh:P.panh, outh:P.outh, sauce:P.sauce, cheese:P.cheese,
-      hydPct:pct(P.hyd), saltPct:pct(P.salt), oilPct:pct(P.oil), yeastPct:pct(P.yeast), sugarPct:pct(P.sugar), w:P.w, pizzaFlour:P.mode==='pizza'};
-  }
-
-  const fmt = (k,v) => {
-    if(typeof v === 'string') return v;
-    if(['top','bottom','n','cans','pfh','panh','sauce','cheese','w'].includes(k)) return nf0.format(v);
-    if(['fridge','outh'].includes(k)) return nf2.format(v);
-    return g(v);
-  };
-
-{{IL}}
-  const q = k => `<span class="v" data-k="${k}"></span>`;
-  const SRC = {d:'src-d', a:'src-a', l:'src-l'};
-
-  function renderSteps(){
-    let i=0, h='';
-    T.steps.forEach(d=>{
-      h += `<div class="day"><h3>${d.day}</h3><span class="dwhen">${d.when}</span></div><div class="steps">`;
-      d.items.forEach(s=>{
-        i++;
-        const tags = s.src.map(x=>`<span class="tag ${SRC[x]}">${T.src[x]}</span>`).join('');
-        let tip='';
-        if(s.tip){const w=s.tip.startsWith('warn|'), tx=(w?s.tip.slice(5):s.tip).replace(/\{(\w+)\}/g,'${$1}');tip=`<div class="tip ${w?'warn':''}">${tx}</div>`}
-        h += `<article class="step" id="${s.id}"><div class="illo">${IL[s.il]}</div><div class="body">
-          <div class="step-top"><div><div class="step-num">${T.stepLabel} ${String(i).padStart(2,'0')}</div><h4>${s.t}</h4></div>
-          <div class="step-act">${C.scenes[s.id]?`<button type="button" class="see" data-see="${s.id}">${T.player.see}</button>`:''}<button type="button" class="check" data-step="${s.id}" aria-pressed="false"><span class="box"></span>${T.done}</button></div></div>
-          <div class="meta"><span class="tag time">${s.time.replace(/\{(\w+)\}/g,'${$1}')}</span>${tags}</div>
-          <ul>${s.li.map(x=>`<li>${x.replace(/\{(\w+)\}/g,(m,k)=>q(k))}</li>`).join('')}</ul>${tip}${(T.photos||{})[s.id]||''}</div></article>`;
-      });
-      h += `</div>`;
-    });
-    document.getElementById('stepsRoot').innerHTML = h;
-  }
-
-  // ---------- Schedule ----------
-  const dfmt = new Intl.DateTimeFormat(T.locale,{weekday:'short',day:'2-digit',month:'2-digit'});
-  const tfmt = new Intl.DateTimeFormat(T.locale,{hour:'2-digit',minute:'2-digit'});
-  function renderSchedule(){
-    const B = new Date(P.bake); const box = document.getElementById('timeline'); const warn = document.getElementById('schedWarn');
-    const nx = document.getElementById('nextEv'); nx.hidden = true;
-    if(isNaN(B)){box.innerHTML=`<li><span></span><span></span><div class="what">${T.sched.empty}</div></li>`;return}
-    const H = 3600e3;
-    const v = {pfh:nf2.format(P.pfh), fridge:nf2.format(P.fridge), panh:nf0.format(P.panh), top:nf0.format(P.top), bottom:nf0.format(P.bottom), outh:nf2.format(P.outh)};
-    const ev = C.sched.map((e,i)=>[new Date(B - e.off.reduce((a,x)=>a+(typeof x==='number'?x:P[x]),0)*H), e.cls, T.sched.ev[i][0], fill(T.sched.ev[i][1],v)]);
-    box.innerHTML = ev.map(([d,c,t,p])=>`<li><div class="when"><b>${tfmt.format(d)}</b>${dfmt.format(d)}</div><span class="dot ${c}"></span><div class="what"><b>${t}</b><p>${p}</p></div></li>`).join('');
-    const now = new Date(), up = ev.find(([d])=>d > now);
-    if(up) box.children[ev.indexOf(up)].classList.add('next-ev');
-    if(up){const m=Math.round((up[0]-now)/60e3), dd=Math.floor(m/1440), hh=Math.floor(m%1440/60), mm=m%60;
-      const rel = fill(dd ? T.rel.d : hh ? T.rel.h : T.rel.m, {d:dd, h:hh, m: hh ? String(mm).padStart(2,'0') : mm});
-      nx.innerHTML = `${T.sched.next}: <b>${up[2]}</b><span class="em">${dfmt.format(up[0])}, ${tfmt.format(up[0])} · ${fill(T.sched.in,{rel})}</span>`; nx.hidden = false;}
-    const msgs=[];
-    if(ev[0][0] < new Date()) msgs.push(T.sched.past);
-    if(P.panh>C.warn.panhMax) msgs.push(T.sched.over36);
-    warn.innerHTML = msgs.join('<br>'); warn.hidden = !msgs.length;
-  }
-
-  // ---------- Render ----------
-  function render(){
-    const R = calc();
-    document.querySelectorAll('[data-k]').forEach(el=>{const k=el.dataset.k; if(k in R) el.textContent = fmt(k,R[k])});
-    document.querySelectorAll('.tip,.tag.time').forEach(el=>{ if(el.dataset.tpl===undefined) el.dataset.tpl = el.innerHTML; el.innerHTML = el.dataset.tpl.replace(/\$\{(\w+)\}/g,(_,k)=>fmt(k,R[k])); });
-    document.getElementById('altRow').hidden = R.alt==='—';
-    const w=[];
-    if(P.hyd!==C.warn.hyd) w.push(T.warn.hyd);
-    if(R.per<C.warn.perMin||R.per>C.warn.perMax) w.push(fill(T.warn.per,{per:g(R.per)}));
-    if(P.bottom>C.warn.bottomMax) w.push(T.warn.bottom);
-    const wb=document.getElementById('warnBox'); wb.innerHTML = w.map(x=>'<span>'+x+'</span>').join('<br>'); wb.hidden=!w.length;
-    document.getElementById('panelSum').textContent = fill(T.panelSum,{flour:nf0.format(Math.round(R.flour)), hyd:R.hydPct, top:nf0.format(P.top), bottom:nf0.format(P.bottom)});
-    renderSchedule(); updateProgress();
-    if(window.NP) NP.onRender.forEach(f=>f());
-  }
-
-  // ---------- Inputs ----------
-  const map = {flour:'p-flour',pizzas:'p-pizzas',w:'p-w',hyd:'p-hyd',salt:'p-salt',oil:'p-oil',yeast:'p-yeast',sugar:'p-sugar',pf:'p-pf',fridge:'p-fridge',top:'p-top',bottom:'p-bottom',sauce:'p-sauce',cheese:'p-cheese',pfh:'p-pfh',panh:'p-panh',outh:'p-outh',bake:'p-bake'};
-  for(const k in map) if(!document.getElementById(map[k])) delete map[k];   // campos que a receita não usa
-  function syncInputs(){ for(const k in map){document.getElementById(map[k]).value = P[k]} setMode(P.mode,false) }
-  for(const k in map){
-    document.getElementById(map[k]).addEventListener('input', e=>{
-      if(k==='bake'){P.bake=e.target.value}else{const v=parseFloat(e.target.value); if(isNaN(v)||v<=0) return; P[k]=v}
-      store.set(LS+':p',P); render();
-    });
-  }
-  function setMode(m, save=true){
-    P.mode=m;
-    document.getElementById('modeFlour').setAttribute('aria-pressed', m==='flour');
-    document.getElementById('modePizza').setAttribute('aria-pressed', m==='pizza');
-    document.getElementById('rowFlour').hidden = m!=='flour';
-    document.getElementById('rowPizzas').hidden = m!=='pizza';
-    if(save){store.set(LS+':p',P); render()}
-  }
-  document.getElementById('modeFlour').onclick=()=>{ if(P.mode==='pizza'){P.flour=Math.round(calc().flour/10)*10; document.getElementById('p-flour').value=P.flour} setMode('flour') };
-  document.getElementById('modePizza').onclick=()=>{ if(P.mode==='flour'){P.pizzas=calc().n; document.getElementById('p-pizzas').value=P.pizzas} setMode('pizza') };
-  document.getElementById('resetParams').onclick=()=>{const b=P.bake; P=Object.assign({},DEF,{bake:b}); store.set(LS+':p',P); syncInputs(); render()};
-  document.getElementById('resetChecks').onclick=()=>{done={}; store.set(LS+':done',done); applyChecks()};
-
-  // ---------- Checks ----------
-  function applyChecks(){
-    document.querySelectorAll('.check').forEach(b=>{const on=!!done[b.dataset.step]; b.setAttribute('aria-pressed',on); b.closest('.step').classList.toggle('done',on)});
-    updateProgress();
-  }
-  function updateProgress(){
-    const tot=document.querySelectorAll('.check').length, n=Object.values(done).filter(Boolean).length;
-    document.getElementById('progTxt').textContent=`${n}/${tot}`; document.getElementById('progBar').style.width=(tot?n/tot*100:0)+'%';
-  }
-  document.addEventListener('click',e=>{const b=e.target.closest('.check'); if(!b) return; done[b.dataset.step]=!done[b.dataset.step]; store.set(LS+':done',done); applyChecks()});
-
-  // ---------- Timer ----------
-  let t0=0, run=false, raf=0, lock=null;
-  const clock=document.getElementById('clock'), head=document.getElementById('head'), st=document.getElementById('tStatus'), bS=document.getElementById('tStart');
-  st.textContent=T.timer.idle; bS.textContent=T.timer.start;
-  const TM=C.timer, mmss=TM.max>=300;
-  const clockTxt=s=>mmss?`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}<small> min</small>`:`${Math.floor(s)}<small> s</small>`;
-  function tick(){
-    const s=(performance.now()-t0)/1000, k=TM.marks;
-    clock.innerHTML=clockTxt(s);
-    head.style.left=Math.min(100,s/TM.max*100)+'%';
-    const M=T.timer.msg;
-    st.textContent = s<k[0]?M[0] : s<=k[1]?M[1] : s<k[2]?M[2] : s<=k[3]?M[3] : M[4];
-    if(run) raf=requestAnimationFrame(tick);
-  }
-  bS.onclick=async()=>{
-    if(!run){t0=performance.now()-(t0&&!run&&bS.dataset.paused?parseFloat(bS.dataset.paused)*1000:0); run=true; bS.textContent=T.timer.pause; delete bS.dataset.paused; tick();
-      try{lock=await navigator.wakeLock?.request('screen')}catch(e){}}
-    else{run=false; cancelAnimationFrame(raf); bS.dataset.paused=(performance.now()-t0)/1000; bS.textContent=T.timer.resume}
-  };
-  document.getElementById('tReset').onclick=()=>{run=false;cancelAnimationFrame(raf);t0=0;delete bS.dataset.paused;bS.textContent=T.timer.start;clock.innerHTML=clockTxt(0);head.style.left='0';st.textContent=T.timer.idle;try{lock&&lock.release()}catch(e){}};
-
-  // ---------- Diagnosis ----------
-  const DIAG = T.diag.map(([s,fix,key,d])=>({s,fix,key,d}));
-  const chips=document.getElementById('chips'), out=document.getElementById('diagOut');
-  chips.innerHTML=DIAG.map((d,i)=>`<button type="button" class="chip" data-i="${i}" aria-pressed="false">${d.s}</button>`).join('');
-  chips.addEventListener('click',e=>{
-    const c=e.target.closest('.chip'); if(!c) return; const d=DIAG[c.dataset.i];
-    chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
-    let h=`<b>${d.fix}</b>`;
-    if(d.key){const cur=P[d.key], nv=cur+d.d, lbl=d.key==='bottom'?T.lower:T.upper;
-      h+=`<span>${fill(T.diagCur,{lbl, cur:nf0.format(cur), nv:`<span class="mono">${nf0.format(nv)} °C</span>`})}</span><div><button type="button" class="btn small primary" id="applyDiag">${fill(T.apply,{v:nf0.format(nv)})}</button></div>`;}
-    out.innerHTML=h;
-    const a=document.getElementById('applyDiag'); if(a) a.onclick=()=>{P[d.key]+=d.d; store.set(LS+':p',P); syncInputs(); render(); a.textContent=T.applied; a.disabled=true};
-  });
-
-  const pnl=document.querySelector('.panel'), ptg=document.getElementById('panelToggle');
-  ptg.onclick=()=>{const o=pnl.classList.toggle('open'); ptg.setAttribute('aria-expanded',o); ptg.textContent=o?T.close:T.open};
-  // ---------- Tema ----------
-  const themeBtn=document.getElementById('themeBtn');
-  const syncTheme=()=>{const dk=document.documentElement.getAttribute('data-theme')==='dark'; themeBtn.setAttribute('aria-pressed',dk);
-    const m=document.querySelector('meta[name="theme-color"]'); if(m) m.content='#120E0C'};
-  themeBtn.onclick=()=>{const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
-    document.documentElement.setAttribute('data-theme',t);
-    const n=new Date(), u=new Date(n); u.setMinutes(0,0,0); const h=n.getHours();
-    if(h<7) u.setHours(7); else if(h<19) u.setHours(19); else {u.setDate(u.getDate()+1); u.setHours(7);}
-    try{localStorage.setItem('np-theme',JSON.stringify({theme:t,until:u.getTime()}))}catch(_){}
-    syncTheme()};
-  syncTheme();
-  document.addEventListener('click',e=>{const a=e.target.closest('[data-setlang]'); if(a) try{localStorage.setItem('np-lang',a.dataset.setlang)}catch(_){}});
-  setInterval(renderSchedule, 60e3);
-  window.NP={T,C,calc,fmt,onRender:[]};
-  const qN=document.getElementById('qN'), qSum=document.getElementById('qSum');
-  const setPz=n=>{const c=calc(); P.mode='pizza'; P.pizzas=Math.max(1,Math.min(20,n)); store.set(LS+':p',P); syncInputs(); render()};
-  document.getElementById('qMinus').onclick=()=>setPz(calc().n-1); document.getElementById('qPlus').onclick=()=>setPz(calc().n+1);
-  NP.onRender.push(()=>{const c=calc(); qN.textContent=c.n; qSum.textContent=`${fmt('flour',c.flour)} g · ${fmt('per',c.per)} g`;});   // ponte para o player animado (src/player.js)
-  renderSteps(); syncInputs(); applyChecks(); render();
-
-  // ---------- Dados estruturados (gerados no build; não roda se já existir) ----------
-  if(!document.getElementById('ld-recipe')){
-    const R = calc(), L = T.ld, txt = el => el.textContent.replace(/\s+/g,' ').trim();
-    const ing = [...document.querySelectorAll('#receita tbody tr:not(.total):not([hidden])')].map(tr=>`${txt(tr.cells[2])} ${txt(tr.cells[0])}`)
-      .concat(L.toppings.map(x=>fill(x,{sauce:nf0.format(R.sauceTotal), cheese:nf0.format(R.cheeseTotal)})));
-    const steps = [...document.querySelectorAll('.step')].map(a=>({'@type':'HowToStep', name:txt(a.querySelector('h4')), text:[...a.querySelectorAll('li')].map(txt).join(' '), url:L.url+'#'+a.id}));
-    const data = {'@context':'https://schema.org','@type':'Recipe', name:L.name, description:L.description, inLanguage:L.inLanguage, url:L.url,
-      image:L.images, author:{'@type':'Person', name:'Jhonathan Sousa', url:'https://www.instagram.com/jhonsousa1/', sameAs:['https://www.instagram.com/jhonsousa1/']},
-      datePublished:C.ld.datePublished, prepTime:C.ld.prepTime, cookTime:C.ld.cookTime, totalTime:C.ld.totalTime, recipeYield:[String(R.n), fill(L.yield,{n:R.n})],
-      recipeCategory:L.category, recipeCuisine:L.cuisine, keywords:L.keywords, recipeIngredient:ing, recipeInstructions:steps};
-    const s = document.createElement('script'); s.type='application/ld+json'; s.id='ld-recipe'; s.textContent = JSON.stringify(data);
-    document.head.appendChild(s);
-  }
-})();
+{{APP_JS}}
 </script>
-<script>{{SCENE_JS}}</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script>
-{{PLAYER_JS}}
+{{JOURNEY_JS}}
 </script>
 </body>
 </html>

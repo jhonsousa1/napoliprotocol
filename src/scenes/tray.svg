@@ -1,0 +1,26 @@
+<!-- tray: bandeja de madeira com os panetti (desenhados por JS) ou potes individuais. Estados: balls, temper, pots, pots-temper. -->
+<!--@far-->
+<use href="#win" x="1200" y="110" width="280" height="320"/>
+<use href="#shelf" x="180" y="150" width="400" height="150"/>
+<g fill="#FFD996" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M700 220l150-26 60 290-150 34z"/><path d="M868 191l150-26 60 290-150 34z"/></g>
+<!--@sub-->
+<use href="#canister" x="440" y="622"/>
+<use href="#jug" x="1360" y="622"/>
+<!--if:balls temper-->
+<use href="#tray" x="930" y="632"/>
+<g filter="url(#paint)" data-draw="balls"></g>
+<!--/if-->
+<!--if:pots pots-temper-->
+<use href="#tray" x="930" y="632"/>
+<g data-draw="pots"></g>
+<!--/if-->
+<!--if:balls-->
+<g transform="translate(1250 622)"><ellipse cy="2" rx="80" ry="10" fill="url(#gCon)"/><rect x="-80" y="-8" width="160" height="10" rx="3" fill="#C5CCCE"/><rect x="-80" y="-30" width="160" height="24" rx="9" fill="url(#gWood)"/></g>
+<!--/if-->
+<!--if:temper pots-temper-->
+<g transform="translate(1230 622)"><ellipse cy="2" rx="34" ry="6" fill="url(#gCon)"/><rect x="-5" y="-170" width="10" height="168" rx="5" fill="#E8EEF0" opacity=".8"/><rect x="-2" y="-90" width="4" height="88" fill="#D4481A"/><circle cy="-2" r="10" fill="#D4481A"/></g>
+<!--/if-->
+<!--@fx-->
+<ellipse cx="960" cy="650" rx="420" ry="50" fill="url(#gLamp)" opacity=".12"/>
+<!--@near-->
+<g filter="url(#soft)"><path d="M60 790q160-60 380 0l60 140H0z" fill="#E9DFCB"/><path d="M150 810l-50 130M220 796l-40 144" stroke="#2C6A3E" stroke-width="14" opacity=".7"/></g>

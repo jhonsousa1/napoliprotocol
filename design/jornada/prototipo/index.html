@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Piano Sequenza · protótipo da jornada | NapoliProtocol</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script>
+/* antes da primeira pintura: tema, modo de movimento, motor de rolagem */
+(function(){
+  var q=new URLSearchParams(location.search), d=document.documentElement, h=new Date().getHours(), st=null;
+  try{st=JSON.parse(localStorage.getItem('np-jornada-proto:ui'))}catch(e){}
+  d.dataset.theme=q.get('theme')||(st&&st.theme)||((h>=19||h<7)?'dark':'light');
+  var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches||q.get('motion')==='off'||(st&&st.motion===false);
+  d.classList.add('js'); if(!reduced) d.classList.add('mo');
+  var css=window.CSS&&CSS.supports&&CSS.supports('animation-timeline: view()')&&q.get('driver')!=='js';
+  d.classList.add(css?'sda':'jsd');
+})();
+</script>
+<style>
+:root{
+  --paper:#F7EFE1;--paper-2:#EFE3CF;--ink:#2A1D14;--ink-2:#5F4A3A;--line:#D8C6AA;
+  --tomato:#B8321A;--on-tomato:#FFF7EC;--basil:#2C6A3E;--ember:#A85A0C;--cold:#3F6F86;--focus:#1F5FBF;
+  /* parede e bancada por momento do dia */
+  --c0:#E2C39B;--c1:#B88865;--c2:#4A3A3C;--c3:#EADFC8;--c4:#E8D3AE;--c5:#DDB07A;--c6:#34201A;
+  --b0:#B98556;--b1:#9A6A45;--b2:#5C3E2C;--b3:#C99A66;--b4:#C4915C;--b5:#B67F49;--b6:#4A2C1E;
+  --f-d:'Fraunces',Georgia,serif;--f-t:'Atkinson Hyperlegible Next','Atkinson Hyperlegible',system-ui,sans-serif;--f-m:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --bar:56px;--dock:0px;
+  color-scheme:light;
+}
+html[data-theme=dark]{
+  --paper:#231912;--paper-2:#2E2118;--ink:#F4E8D4;--ink-2:#CDBBA2;--line:#4A382B;
+  --tomato:#FF9272;--on-tomato:#2A0F06;--basil:#8FD19A;--ember:#F2A64A;--cold:#9CC9DD;--focus:#9CC2FF;
+  --c0:#4B3828;--c1:#35271F;--c2:#17121A;--c3:#4F463C;--c4:#52463A;--c5:#4D3824;--c6:#150C09;
+  --b0:#4E3423;--b1:#3C281C;--b2:#231712;--b3:#57402C;--b4:#553D29;--b5:#4F3521;--b6:#1F130D;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html.mo{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.5 var(--f-t);overflow-x:hidden}
+h1,h2,h3,p,ul,ol,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:fixed;left:12px;top:-60px;z-index:50;background:var(--paper);padding:10px 14px;border-radius:8px}
+.skip:focus{top:8px}
+
+/* ---------- barra ---------- */
+.bar{position:fixed;inset:0 0 auto 0;height:var(--bar);z-index:20;display:flex;align-items:center;gap:12px;padding:0 20px;
+  background:color-mix(in srgb,var(--paper) 90%,transparent);border-bottom:1px solid var(--line)}
+.brand{font:600 20px/1 var(--f-d);letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.brand i{color:var(--tomato);font-style:italic;font-weight:500}
+.pos{margin:0 auto;font-size:15px;color:var(--ink-2)}
+.pill{min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--paper);cursor:pointer;display:inline-flex;align-items:center;gap:8px;font:700 15px/1 var(--f-m)}
+.pill small{font:400 13px var(--f-t);color:var(--ink-2)}
+.icon{width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:var(--paper);cursor:pointer;font-size:18px}
+.mini{display:none;font:700 15px var(--f-m);color:var(--ember)}
+.mini.on{display:inline}
+
+/* ---------- cena (ladrilho) ---------- */
+.step{position:relative;scroll-margin-top:var(--bar)}
+.scene{position:relative;overflow:hidden;height:var(--fh);pointer-events:none;
+  --fh:58vh;--sy:185px;--fx:.5;
+  --W:max(100vw,calc(var(--fh)*1.7778));--H:calc(var(--W)*.5625);
+  --top:calc(var(--fh) - var(--H) + var(--sy));--hz:calc(var(--top) + var(--H)*.6222);
+  --dim:var(--dimL,1);--sky:var(--skyL,#CFE3EE);--sunA:.2;
+  background:linear-gradient(180deg,rgb(255 255 255/.10),transparent 38%),linear-gradient(90deg,var(--wl),var(--wr))}
+html[data-theme=dark] .scene{--dim:var(--dimD,.62);--sky:var(--skyD,#5E7C92);--sunA:.1}
+.scene::before{content:"";position:absolute;left:0;right:0;top:calc(var(--hz) - 260px);height:260px;background:linear-gradient(180deg,rgb(30 14 4/0),rgb(30 14 4/.05) 45%,rgb(30 14 4/.2))}
+.scene::after{content:"";position:absolute;left:0;right:0;top:var(--hz);bottom:-40vh;
+  border-top:2px solid rgb(255 240 215/.28);
+  background:
+   linear-gradient(180deg,rgb(255 235 205/.16),transparent 9%,transparent 40%,rgb(20 8 0/.34)),
+   repeating-linear-gradient(180deg,transparent 0 17px,rgb(40 18 4/.07) 17px 18px,transparent 18px 41px,rgb(255 230 190/.06) 41px 43px,transparent 43px 71px,rgb(40 18 4/.09) 71px 73px),
+   linear-gradient(90deg,var(--bl),var(--br))}
+.art{position:absolute;width:var(--W);height:var(--H);left:calc((100vw - var(--W))*var(--fx));top:var(--top);overflow:visible;z-index:1}
+.art.sub,.art.near{filter:brightness(var(--dim)) saturate(calc(.55 + var(--dim)*.45))}
+.art.near{z-index:2}
+.grain{display:none}
+@media (max-aspect-ratio:4/5){
+  .scene{--fh:50vh;--sy:0px;--fx:.61}
+  .ctx,.art.near{display:none}
+}
+/* ---------- modo com movimento: palco fixo + travelling ---------- */
+html.mo .scene{position:fixed;inset:0;height:auto;overflow:visible;--fh:100vh;--sy:0px;z-index:0;display:none;will-change:transform}
+html.mo .step.live>.scene{display:block}
+html.mo .grain{display:block;position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.13;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .12 0 0 0 0 .05 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (max-aspect-ratio:4/5){
+  html.mo .scene{--sy:-12vh;--fx:.61}
+}
+html.mo.sda .step{view-timeline:--step block}
+html.mo.sda .scene{animation:travel linear both;animation-timeline:--step}
+html.mo.sda .step.last>.scene{animation-name:travel-last}
+html.mo.sda .art.far{animation:far linear both;animation-timeline:--step}
+html.mo.sda .art.near{animation:near linear both;animation-timeline:--step}
+@keyframes travel{entry 0%{transform:translate3d(100%,0,0)}entry 100%{transform:translate3d(0,0,0)}exit 0%{transform:translate3d(0,0,0)}exit 100%{transform:translate3d(-100%,0,0)}}
+@keyframes travel-last{entry 0%{transform:translate3d(100%,0,0)}entry 100%{transform:translate3d(0,0,0)}}
+@keyframes far{from{transform:translate3d(4%,0,0)}to{transform:translate3d(-4%,0,0)}}
+@keyframes near{from{transform:translate3d(-9%,0,0)}to{transform:translate3d(9%,0,0)}}
+
+/* vida da cena: só em ladrilho vivo e com movimento */
+.bub,.wisp,.pour,.drop,.pulse,.moon{animation-play-state:paused}
+html.mo .live .bub{animation:bub 4.2s ease-in infinite}
+html.mo .live .wisp{animation:wisp 6s ease-in-out infinite}
+html.mo .live .pour{animation:pour 1.1s linear infinite}
+html.mo .live .drop{animation:drop 1.6s ease-in infinite}
+html.mo .live .pulse{animation:pulse 1.8s ease-in-out infinite alternate}
+@keyframes bub{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-70px);opacity:0}}
+@keyframes wisp{0%,100%{transform:translate(0,0);opacity:.0}40%{opacity:.5}80%{transform:translate(14px,-60px);opacity:0}}
+@keyframes pour{to{stroke-dashoffset:-44}}
+@keyframes drop{0%{transform:translateY(-14px);opacity:0}20%{opacity:1}100%{transform:translateY(60px);opacity:0}}
+@keyframes pulse{from{opacity:.72}to{opacity:1}}
+.tn{font:700 30px var(--f-m);fill:#2A1D14}
+.tl{font:400 24px var(--f-t);fill:#4A382B}
+
+/* ---------- cartões ---------- */
+.card{position:relative;z-index:3;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px;
+  box-shadow:0 18px 40px -18px rgb(30 15 5/.45);max-width:720px;margin:-28px auto 40px}
+.eyebrow{font:700 13px/1.2 var(--f-t);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.eyebrow .when{color:var(--ember);letter-spacing:0;text-transform:none;font:700 14px var(--f-m)}
+.now{background:var(--ember);color:var(--paper);border-radius:999px;padding:2px 8px;letter-spacing:.04em}
+.card h3{font:560 34px/1.1 var(--f-d);letter-spacing:-.015em;margin:8px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chip{font-size:14px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2)}
+.chip.t{border-color:transparent;background:var(--paper-2);color:var(--ink);font-family:var(--f-m);font-weight:500}
+.card li{position:relative;padding:6px 0 6px 22px}
+.card li::before{content:"";position:absolute;left:4px;top:17px;width:7px;height:7px;border-radius:50%;background:var(--tomato)}
+.v{font:700 18px var(--f-m);font-variant-numeric:tabular-nums;background:var(--paper-2);padding:0 6px;border-radius:6px;white-space:nowrap}
+.tip{margin-top:12px;padding:10px 14px;border-left:4px solid var(--ember);background:var(--paper-2);border-radius:0 8px 8px 0;font-size:16px;color:var(--ink-2)}
+.tip.warn{border-color:var(--tomato);color:var(--ink)}
+.proto{font-size:14px;font-style:italic;color:var(--ink-2);margin-bottom:8px}
+.foot{display:flex;gap:12px;align-items:center;margin-top:18px}
+.done{flex:1;display:flex;align-items:center;gap:12px;min-height:56px;padding:0 16px;border:2px solid var(--line);border-radius:12px;cursor:pointer;font-weight:700;user-select:none;transition:background .22s cubic-bezier(.2,.8,.2,1),border-color .22s}
+.done input{appearance:none;width:28px;height:28px;border:2px solid var(--ink-2);border-radius:8px;margin:0;display:grid;place-content:center;flex:none;transition:background .22s}
+.done input::after{content:"";width:14px;height:8px;border:3px solid var(--paper);border-top:0;border-right:0;transform:rotate(-45deg) translateY(-2px) scale(0);transition:transform .22s cubic-bezier(.2,.8,.2,1)}
+.done input:checked{background:var(--basil);border-color:var(--basil)}
+.done input:checked::after{transform:rotate(-45deg) translateY(-2px) scale(1)}
+.done:has(input:checked){border-color:var(--basil);background:color-mix(in srgb,var(--basil) 12%,var(--paper))}
+.next{min-height:56px;display:inline-flex;align-items:center;padding:0 14px;color:var(--tomato);font-weight:700;text-decoration:none;white-space:nowrap}
+.btn{min-height:56px;padding:0 22px;border-radius:12px;border:0;background:var(--tomato);color:var(--on-tomato);font:700 18px var(--f-t);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn.sm{min-height:48px;font-size:16px;padding:0 16px}
+
+/* abertura */
+.ask h1{font:560 clamp(38px,4.6vw,64px)/1.02 var(--f-d);letter-spacing:-.025em;margin-bottom:6px}
+.ask h1 em{font-weight:400;color:var(--tomato)}
+.ask .lead{color:var(--ink-2);margin-bottom:18px}
+fieldset{border:0;padding:0;margin:0 0 18px;min-width:0}
+legend{font:700 13px var(--f-t);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);padding:0;margin-bottom:8px}
+.recs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rec{position:relative;display:block;border:2px solid var(--line);border-radius:12px;padding:12px 14px;min-height:72px;cursor:pointer}
+.rec input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.rec b{display:block;font:560 22px/1.15 var(--f-d)}
+.rec span{font-size:14px;color:var(--ink-2)}
+.rec:has(input:checked){border-color:var(--tomato);background:color-mix(in srgb,var(--tomato) 9%,var(--paper))}
+.rec:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:3px}
+.seg{display:inline-grid;grid-template-columns:1fr 1fr;border:2px solid var(--line);border-radius:12px;padding:3px;margin-bottom:10px;width:100%}
+.seg button{min-height:44px;border:0;background:none;border-radius:8px;cursor:pointer;font-weight:700;color:var(--ink-2)}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.stepper{display:grid;grid-template-columns:56px 1fr 56px;gap:8px;align-items:center}
+.stepper button{height:56px;border-radius:12px;border:2px solid var(--line);background:var(--paper);font:700 26px/1 var(--f-m);cursor:pointer}
+.stepper .val{display:flex;align-items:baseline;justify-content:center;gap:8px;height:56px;border-radius:12px;background:var(--paper-2)}
+.stepper input{width:5ch;border:0;background:none;text-align:right;font:700 36px/56px var(--f-m);font-variant-numeric:tabular-nums;-moz-appearance:textfield;padding:0}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{appearance:none}
+.sum{margin:10px 0 16px;color:var(--ink-2);min-height:1.5em}
+.sum b{color:var(--ink);font-family:var(--f-m)}
+.ask .acts{display:flex;flex-wrap:wrap;gap:10px}
+.ask .acts .btn{flex:1 1 200px}
+.fine{font-size:14px;color:var(--ink-2);margin-top:12px}
+.note{color:var(--tomato);font-size:15px;margin-top:8px}
+
+/* timer */
+.timer{margin:4px 0 12px;padding:16px;border-radius:12px;background:var(--paper-2)}
+.clock{font:700 clamp(56px,6vw,72px)/1 var(--f-m);font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.clock small{font-size:.4em;color:var(--ink-2);letter-spacing:0}
+.band{position:relative;height:14px;border-radius:7px;background:var(--line);margin:12px 0 6px;overflow:hidden}
+.band i{position:absolute;top:0;bottom:0}
+.band .g{background:color-mix(in srgb,var(--ember) 55%,transparent)}
+.band .k{background:color-mix(in srgb,var(--basil) 55%,transparent)}
+.band .fill{left:0;width:0;background:var(--ink);opacity:.55}
+.tmsg{min-height:1.5em;font-weight:700}
+.timer .acts{display:flex;gap:10px;margin-top:10px}
+.timer .acts .btn{flex:1}
+
+/* layout com movimento */
+html.mo .step{min-height:190vh;padding:62vh 0 30vh;scroll-margin-top:-34vh}
+html.mo .card{margin:0 0 0 64px;width:440px;max-width:none;position:sticky;top:var(--ctop,calc(var(--bar) + 32px))}
+html.mo .open{min-height:100vh;padding:calc(var(--bar) + 24px) 0 24px;display:flex;align-items:center;scroll-margin-top:0}
+html.mo .open .card{position:relative;top:auto;width:500px}
+@media (max-width:820px),(max-aspect-ratio:4/5){
+  :root{--bar:52px;--dock:56px}
+  .bar{padding:0 12px;background:var(--paper)}
+  .pos{display:none}.brand{margin-right:auto}
+  .card{padding:20px 18px;margin:-20px 12px 28px}
+  .card h3{font-size:28px}
+  html.mo .step{min-height:150vh;padding:58vh 0 34vh;scroll-margin-top:-30vh}
+  html.mo .card{position:relative;top:auto;width:auto;margin:0 12px}
+  html.mo .open{align-items:flex-start;padding:45vh 0 calc(var(--dock) + 20px)}
+  html.mo .open .card{width:auto;flex:1}
+  .ask{padding:16px 16px 18px}
+  .ask h1{font-size:30px;white-space:nowrap}
+  .ask .lead{display:none}
+  .ask fieldset{margin-bottom:10px}
+  .ask fieldset:first-of-type legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .ask h1{margin-bottom:10px}
+  .rec{min-height:56px;padding:8px 12px}.rec b{font-size:20px}.rec span{font-size:13px}
+  .seg{margin-bottom:8px}.seg button{min-height:44px}
+  .sum{margin:6px 0 8px;font-size:16px;min-height:0}
+  .pill{font-size:13px;padding:0 12px;white-space:nowrap}.pill small{display:none}
+  .timer .clock{display:none}
+}
+@media (min-width:821px) and (min-aspect-ratio:4/5){.dock{display:none}}
+
+/* trilho e doca */
+.rail{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:15;display:flex;flex-direction:column;gap:2px;padding:8px 6px;border-radius:999px;background:color-mix(in srgb,var(--paper) 86%,transparent);border:1px solid var(--line)}
+.rail a{position:relative;width:32px;height:32px;display:grid;place-items:center;text-decoration:none}
+.rail a::before{content:"";width:12px;height:12px;border-radius:50%;border:2px solid var(--ink-2)}
+.rail a.done::before{background:var(--basil);border-color:var(--basil)}
+.rail a[aria-current]::before{box-shadow:0 0 0 4px color-mix(in srgb,var(--tomato) 35%,transparent);border-color:var(--tomato)}
+.rail a span{position:absolute;right:40px;white-space:nowrap;background:var(--ink);color:var(--paper);font-size:14px;padding:4px 10px;border-radius:8px;opacity:0;pointer-events:none}
+.rail a:hover span,.rail a:focus-visible span{opacity:1}
+.rail .cnt{font:700 12px var(--f-m);text-align:center;color:var(--ink-2);padding:4px 0}
+@media (max-width:820px),(max-aspect-ratio:4/5){.rail{display:none}}
+.dock{position:fixed;inset:auto 0 0 0;height:var(--dock);z-index:20;background:var(--paper);border-top:1px solid var(--line);align-items:center;display:grid;grid-template-columns:56px 1fr 56px}
+.dock a{height:56px;display:grid;place-items:center;font-size:24px;color:var(--ink);text-decoration:none}
+.dock .lbl{text-align:center;font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dock .lbl small{display:block;font:500 12px var(--f-m);color:var(--ink-2)}
+.dock .prog{position:absolute;left:0;top:-3px;height:3px;background:var(--basil);width:0}
+
+/* epílogo */
+.epi{position:relative;z-index:4;background:var(--paper);padding:72px 24px calc(96px + var(--dock));border-top:1px solid var(--line)}
+.epi .in{max-width:760px;margin:0 auto}
+.epi h2{font:560 clamp(32px,4vw,48px)/1.05 var(--f-d);letter-spacing:-.02em;margin:6px 0 10px}
+.epi h2 em{font-weight:400;color:var(--tomato)}
+.diag{margin:20px 0;border-top:1px solid var(--line)}
+.diag li{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
+.diag p{font-size:16px;color:var(--ink-2)}
+.later{margin-top:28px;padding:16px 18px;border:1px dashed var(--line);border-radius:12px;color:var(--ink-2);font-size:16px}
+.later li{padding:3px 0}
+
+/* ajustes */
+dialog{border:0;padding:0;background:var(--paper);color:var(--ink);width:min(420px,100vw);max-width:none;height:100dvh;max-height:none;margin:0 0 0 auto;box-shadow:-20px 0 60px -20px rgb(0 0 0/.5)}
+dialog::backdrop{background:rgb(20 10 4/.45)}
+html.mo dialog[open]{animation:drawer .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes drawer{from{transform:translateX(40px);opacity:0}}
+.dlg{padding:20px;display:flex;flex-direction:column;gap:6px;min-height:100%}
+.dlg header{display:flex;align-items:center;justify-content:space-between}
+.dlg h2{font:560 28px var(--f-d)}
+.dlg details{border-top:1px solid var(--line);padding:6px 0}
+.dlg summary{min-height:48px;display:flex;align-items:center;font-weight:700;cursor:pointer}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px}
+.row input[type=number],.row input[type=datetime-local]{width:132px;height:44px;border:1px solid var(--line);border-radius:8px;background:var(--paper-2);text-align:right;padding:0 10px;font:700 16px var(--f-m)}
+.row input[type=datetime-local]{width:210px;font-size:14px}
+.row input[type=checkbox]{width:26px;height:26px;accent-color:var(--basil)}
+.tline li{display:grid;grid-template-columns:104px 1fr;gap:10px;padding:6px 0;font-size:15px}
+.tline b{font:700 14px var(--f-m);color:var(--ember)}
+.tline li.nx{background:color-mix(in srgb,var(--ember) 14%,transparent);border-radius:8px;padding:6px 8px;margin:0 -8px}
+@media (max-width:820px),(max-aspect-ratio:4/5){
+  dialog{width:100vw;height:auto;max-height:88dvh;margin:auto 0 0 0;border-radius:18px 18px 0 0}
+  @keyframes drawer{from{transform:translateY(40px);opacity:0}}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#jornada">Pular para a jornada</a>
+
+<!-- definições compartilhadas -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="paint" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency=".032" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="3" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 .16  0 0 0 0 .08  0 0 0 0 .02  0 0 0 -.9 .52" result="ga"/>
+      <feComposite in="ga" in2="d" operator="in" result="gs"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="gs"/></feMerge>
+    </filter>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="7"/></filter>
+    <radialGradient id="gDough" cx=".66" cy=".22" r=".85"><stop stop-color="#FFF8E6"/><stop offset=".42" stop-color="#F1DFBA"/><stop offset=".82" stop-color="#D7B985"/><stop offset="1" stop-color="#AE8857"/></radialGradient>
+    <linearGradient id="gPaste" x1="1" x2="0" y2="1"><stop stop-color="#F8EDD3"/><stop offset="1" stop-color="#D9C194"/></linearGradient>
+    <linearGradient id="gCer" x1="1" x2="0" y1="0" y2=".7"><stop stop-color="#FBF7EE"/><stop offset=".3" stop-color="#EDE6D8"/><stop offset=".7" stop-color="#C9C0AF"/><stop offset="1" stop-color="#9C9382"/></linearGradient>
+    <linearGradient id="gCerIn" x2="0" y2="1"><stop stop-color="#B9B0A0"/><stop offset="1" stop-color="#E9E2D4"/></linearGradient>
+    <linearGradient id="gGlass" x1="0" x2="1"><stop stop-color="#CFE3E6" stop-opacity=".42"/><stop offset=".18" stop-color="#fff" stop-opacity=".16"/><stop offset=".7" stop-color="#DCEDEE" stop-opacity=".14"/><stop offset=".88" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#BFD8DC" stop-opacity=".4"/></linearGradient>
+    <linearGradient id="gWater" x2="0" y2="1"><stop stop-color="#CBE6EA" stop-opacity=".85"/><stop offset="1" stop-color="#7FB1C2" stop-opacity=".8"/></linearGradient>
+    <linearGradient id="gKraft" x2="1" y2="1"><stop stop-color="#F0DDB6"/><stop offset="1" stop-color="#D6B986"/></linearGradient>
+    <linearGradient id="gWood" x2="0" y2="1"><stop stop-color="#D2A06A"/><stop offset="1" stop-color="#8C5C35"/></linearGradient>
+    <linearGradient id="gSack" x1="1" x2="0"><stop stop-color="#F6EEDC"/><stop offset=".55" stop-color="#E4D6B8"/><stop offset="1" stop-color="#BCA57D"/></linearGradient>
+    <linearGradient id="gSteel" x1="1" x2="0" y2="1"><stop stop-color="#70767A"/><stop offset=".35" stop-color="#474B4F"/><stop offset="1" stop-color="#1D1F21"/></linearGradient>
+    <linearGradient id="gFridge" x1="0" x2="1"><stop stop-color="#E4EAEA"/><stop offset="1" stop-color="#A9B5B8"/></linearGradient>
+    <radialGradient id="gCon"><stop stop-color="#1E0E04" stop-opacity=".5"/><stop offset="1" stop-color="#1E0E04" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gLamp"><stop stop-color="#FFE7AE" stop-opacity=".95"/><stop offset=".5" stop-color="#FFC56B" stop-opacity=".35"/><stop offset="1" stop-color="#FFB14A" stop-opacity="0"/></radialGradient>
+    <linearGradient id="gCone" x2="0" y2="1"><stop stop-color="#FFE1A0" stop-opacity=".55"/><stop offset="1" stop-color="#FFD083" stop-opacity="0"/></linearGradient>
+    <radialGradient id="gCold"><stop stop-color="#E6F6FF" stop-opacity=".9"/><stop offset="1" stop-color="#9FD0EA" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gEmber" cx=".5" cy=".12" r=".95"><stop stop-color="#FFEFB8"/><stop offset=".3" stop-color="#FFA640"/><stop offset=".7" stop-color="#D4481A"/><stop offset="1" stop-color="#5A1608"/></radialGradient>
+    <radialGradient id="gHalo"><stop stop-color="#FFB24D" stop-opacity=".7"/><stop offset=".5" stop-color="#F0641E" stop-opacity=".25"/><stop offset="1" stop-color="#E0501A" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gCrust" cx=".6" cy=".2" r=".9"><stop stop-color="#FBE0A0"/><stop offset=".5" stop-color="#E0A552"/><stop offset="1" stop-color="#9A5220"/></radialGradient>
+    <radialGradient id="gTom" cx=".6" cy=".3"><stop stop-color="#EE6A45"/><stop offset=".7" stop-color="#BE3A1E"/><stop offset="1" stop-color="#84220F"/></radialGradient>
+    <linearGradient id="gSkyV" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".0"/><stop offset="1" stop-color="#fff" stop-opacity=".38"/></linearGradient>
+    <symbol id="win" viewBox="0 0 280 320" overflow="visible">
+      <rect x="-12" y="-12" width="304" height="344" rx="5" fill="#F4EBDB" opacity=".9"/>
+      <rect x="6" y="6" width="268" height="308" fill="var(--sky)"/><rect x="6" y="6" width="268" height="308" fill="url(#gSkyV)"/>
+      <path d="M140 6v308M6 150h268" stroke="#F4EBDB" stroke-width="10"/>
+      <path d="M-26 332h332l-8 18h-316z" fill="#E6D9C2"/>
+    </symbol>
+    <symbol id="shelf" viewBox="0 0 400 150" overflow="visible">
+      <g fill="#2A1608" opacity=".2"><rect y="120" width="400" height="14" rx="3"/><rect x="26" y="46" width="62" height="74" rx="8"/><rect x="38" y="30" width="38" height="18" rx="4"/>
+      <rect x="108" y="20" width="50" height="100" rx="10"/><rect x="180" y="66" width="84" height="54" rx="10"/><path d="M290 120l10-70h44l10 70z"/><rect x="306" y="22" width="12" height="30" rx="4"/></g>
+    </symbol>
+    <symbol id="bowlB" overflow="visible"><ellipse rx="190" ry="34" fill="url(#gCerIn)"/></symbol>
+    <symbol id="bowlF" overflow="visible">
+      <path d="M-190 0a190 34 0 0 0 380 0q-8 96-98 138h-184q-90-42-98-138z" fill="url(#gCer)"/>
+      <rect x="-88" y="134" width="176" height="15" rx="7" fill="#A49A88"/>
+      <path d="M-186 15a190 34 0 0 0 372 0" stroke="#B8321A" stroke-width="5" fill="none" opacity=".75"/>
+      <path d="M150 30q-10 60-60 96" stroke="#fff" stroke-opacity=".55" stroke-width="9" stroke-linecap="round" fill="none"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="bar">
+  <a class="brand" href="#abertura">Napoli<i>Protocol</i></a>
+  <span class="pos" id="pos" aria-live="off">Protótipo · Piano Sequenza</span>
+  <span class="mini" id="mini" aria-hidden="true"></span>
+  <button class="pill" id="openAdj" type="button" aria-haspopup="dialog" aria-label="Ajustar a massa e os parâmetros"><span id="barSum">800 g · 5 pizzas</span><small>ajustar</small></button>
+  <button class="icon" id="theme" type="button" aria-label="Alternar tema claro/escuro">◐</button>
+</header>
+<div class="grain" aria-hidden="true"></div>
+
+<main>
+<!-- ============ ABERTURA ============ -->
+<section class="step open" id="abertura" data-title="Início">
+  <figure class="scene" aria-hidden="true" style="--wl:var(--c0);--wr:var(--c1);--bl:var(--b0);--br:var(--b1);--dimL:.98;--dimD:.6;--skyL:#F6CF95;--skyD:#A7714A">
+    <svg class="art far" viewBox="0 0 1600 900"><use class="ctx" href="#win" x="1200" y="110" width="280" height="320"/><use class="ctx" href="#shelf" x="190" y="150" width="400" height="150"/>
+      <g fill="#FFE3B0" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M770 150l150-26 40 250-150 34z"/><path d="M938 121l150-26 40 250-150 34z"/></g></svg>
+    <svg class="art sub" viewBox="0 0 1600 900">
+      <g class="ctx"><ellipse cx="730" cy="590" rx="120" ry="14" fill="url(#gCon)"/><rect x="640" y="556" width="180" height="32" rx="8" fill="url(#gSteel)"/><rect x="630" y="540" width="200" height="18" rx="6" fill="#C9CFD0"/><rect x="700" y="566" width="60" height="16" rx="3" fill="#1b2a22"/><text x="730" y="579" text-anchor="middle" style="font:700 13px var(--f-m);fill:#9FE0B0">0 g</text></g>
+      <ellipse cx="940" cy="588" rx="170" ry="20" fill="url(#gCon)"/>
+      <g filter="url(#paint)">
+        <path d="M848 372q-8-22 14-30q70-16 140 0q20 8 12 30l14 196q2 18-18 18h-158q-20 0-18-18z" fill="url(#gSack)"/>
+        <path d="M850 374q82 24 164 0" stroke="#A8906A" stroke-width="5" fill="none"/>
+        <path d="M862 344q70-14 140 0l-6-22q-64-12-128 0z" fill="#E9DCC0"/>
+        <circle cx="931" cy="470" r="46" fill="#B8321A"/>
+        <path d="M880 540h102M896 556h70" stroke="#8D7A5A" stroke-width="5" stroke-linecap="round"/>
+      </g>
+      <text x="931" y="486" text-anchor="middle" style="font:600 46px var(--f-d);fill:#FFF3DD">00</text>
+      <path d="M1052 418h78l-6 152q-2 14-16 14h-34q-14 0-16-14z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>
+      <path d="M1055 470h72l-5 98q-2 12-14 12h-34q-12 0-14-12z" fill="url(#gWater)"/>
+      <path d="M1130 446q42 6 36 52q-6 34-42 36" stroke="#DCEDEE" stroke-opacity=".7" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M1066 430v120" stroke="#fff" stroke-opacity=".6" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+    <svg class="art near" viewBox="0 0 1600 900"><g filter="url(#soft)"><path d="M1180 760q150-50 330 10l90 240h-520z" fill="#E9DFCB"/><path d="M1230 800l-60 210M1290 780l-50 230" stroke="#B8321A" stroke-width="14" opacity=".8"/></g></svg>
+  </figure>
+
+  <form class="card ask" id="ask" novalidate>
+    <h1>Qual pizza, <em>e quanta?</em></h1>
+    <p class="lead">Duas respostas e a bancada se arma para você.</p>
+    <fieldset><legend>Receita</legend>
+      <div class="recs">
+        <label class="rec"><input type="radio" name="rec" value="napolitana" checked><b>Napolitana</b><span>3 dias · pré-fermento</span></label>
+        <label class="rec"><input type="radio" name="rec" value="new-york"><b>New York</b><span>48 h de geladeira</span></label>
+      </div>
+    </fieldset>
+    <fieldset><legend>Quantidade</legend>
+      <div class="seg" role="group" aria-label="Calcular por">
+        <button type="button" data-mode="flour" aria-pressed="true">Farinha (g)</button>
+        <button type="button" data-mode="pizza" aria-pressed="false">Nº de pizzas</button>
+      </div>
+      <div class="stepper">
+        <button type="button" id="less" aria-label="Diminuir">−</button>
+        <label class="val"><span class="sr" id="qLbl">Farinha em gramas</span><input id="qty" type="number" inputmode="numeric" value="800" aria-labelledby="qLbl"><span id="qUnit">g</span></label>
+        <button type="button" id="more" aria-label="Aumentar">+</button>
+      </div>
+      <p class="sum" id="sum" aria-live="polite">≈ <b>5</b> pizzas de <b>270 g</b> · massa total <b>1.348 g</b></p>
+    </fieldset>
+    <div class="acts">
+      <a class="btn ghost" id="resume" href="#s1" hidden style="display:none;align-items:center;justify-content:center;text-decoration:none"></a>
+      <button class="btn" type="submit" id="go">Começar</button>
+    </div>
+    <p class="note" id="nyNote" hidden>Protótipo: só a jornada da napolitana está montada. O cálculo acima já usa os padrões da New York.</p>
+    <p class="fine">O resto usa o padrão da versão 1.0 e pode ser ajustado a qualquer momento em “ajustar”.</p>
+  </form>
+</section>
+
+<!-- ============ JORNADA ============ -->
+<h2 class="sr" id="jornada">Passo a passo</h2>
+<ol class="journey">
+
+<!-- 01 -->
+<li class="step" id="s1" data-n="01" data-title="Montar o pré-fermento" data-day="Dia 1 · noite" data-ev="0">
+  <figure class="scene" aria-hidden="true" style="--wl:var(--c1);--wr:var(--c2);--bl:var(--b1);--br:var(--b2);--dimL:.8;--dimD:.56;--skyL:#273352;--skyD:#161C30">
+    <svg class="art far" viewBox="0 0 1600 900"><use class="ctx" href="#shelf" x="170" y="150" width="400" height="150"/>
+      <path d="M1060 -40v104" stroke="#1d130c" stroke-width="5"/><path d="M1004 128q4-66 56-66t56 66z" fill="#2F4A40"/><path d="M1004 128h112" stroke="#FFE7AE" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="1060" cy="136" r="80" fill="url(#gLamp)" class="pulse"/></svg>
+    <svg class="art sub" viewBox="0 0 1600 900">
+      <g class="ctx"><rect x="1392" y="30" width="330" height="530" fill="url(#gFridge)"/><rect x="1392" y="30" width="20" height="530" fill="#F4FBFF"/><path d="M1414 30v530" stroke="#7E8A8D" stroke-width="3"/><rect x="1440" y="230" width="14" height="150" rx="7" fill="#7E8A8D"/></g>
+      <ellipse cx="940" cy="586" rx="190" ry="20" fill="url(#gCon)"/>
+      <g filter="url(#paint)">
+        <path d="M962 520L1052 318" stroke="url(#gWood)" stroke-width="15" stroke-linecap="round"/>
+        <path d="M838 470q92-18 184 0v90q0 18-18 18h-148q-18 0-18-18z" fill="url(#gPaste)"/>
+        <ellipse cx="930" cy="470" rx="92" ry="13" fill="#FBF2DC"/>
+        <g transform="translate(772 548) rotate(-8)"><rect x="-34" y="-42" width="68" height="84" rx="4" fill="#C9433A"/><rect x="-34" y="-14" width="68" height="28" fill="#F3E6C2"/><rect x="-22" y="-6" width="44" height="5" fill="#8D7A5A"/></g>
+      </g>
+      <g fill="none" stroke="#B79E6E" stroke-width="2.5"><circle cx="880" cy="520" r="9"/><circle cx="950" cy="545" r="6"/><circle cx="985" cy="505" r="11"/><circle cx="910" cy="558" r="5"/><circle cx="860" cy="490" r="5"/></g>
+      <path d="M830 372q0-14 14-14h172q14 0 14 14v186q0 24-24 24h-152q-24 0-24-24z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>
+      <rect x="822" y="346" width="216" height="18" rx="9" fill="#E8EEF0" opacity=".85"/>
+      <path d="M1008 384v150" stroke="#fff" stroke-opacity=".6" stroke-width="8" stroke-linecap="round"/>
+      <g transform="translate(806 176) rotate(-2)"><rect width="250" height="48" rx="3" fill="url(#gKraft)"/><rect x="-10" y="-8" width="44" height="16" fill="#fff" opacity=".5" transform="rotate(-12)"/><text x="16" y="35"><tspan class="tn" data-k="pfFlour">400</tspan><tspan class="tl" dx="8">g farinha</tspan></text></g>
+      <g transform="translate(800 232) rotate(1.5)"><rect width="250" height="48" rx="3" fill="url(#gKraft)"/><text x="16" y="35"><tspan class="tn" data-k="pfWater">400</tspan><tspan class="tl" dx="8">g água</tspan></text></g>
+      <g transform="translate(808 288) rotate(-1)"><rect width="250" height="48" rx="3" fill="url(#gKraft)"/><text x="16" y="35"><tspan class="tn" data-k="yeast">0,8</tspan><tspan class="tl" dx="8">g fermento</tspan></text></g>
+    </svg>
+    <svg class="art fx" viewBox="0 0 1600 900">
+      <path d="M1010 130h100l200 470H650z" fill="url(#gCone)" opacity=".32"/>
+      <ellipse cx="960" cy="578" rx="330" ry="64" fill="url(#gLamp)" opacity=".5"/>
+      <ellipse class="ctx pulse" cx="1392" cy="320" rx="150" ry="330" fill="url(#gCold)" opacity=".7"/>
+      <g fill="#FFF6E0"><circle class="bub" cx="884" cy="520" r="5"/><circle class="bub" cx="952" cy="540" r="4" style="animation-delay:-1.4s"/><circle class="bub" cx="990" cy="512" r="6" style="animation-delay:-2.8s"/></g>
+    </svg>
+    <svg class="art near" viewBox="0 0 1600 900"><g filter="url(#soft)"><path d="M60 930q10-150 250-150t250 150z" fill="url(#gCer)"/></g></svg>
+  </figure>
+  <article class="card" aria-labelledby="h-s1">
+    <p class="eyebrow">Dia 1 · Etapa 01 <span class="when" data-when="0"></span></p>
+    <h3 id="h-s1">Montar o pré-fermento</h3>
+    <div class="chips"><span class="chip t">10 min + 1 h ambiente</span><span class="chip">Receita base</span><span class="chip">Adaptado</span></div>
+    <ul>
+      <li>Misture a seco <span class="v" data-k="pfFlour">400</span> g de farinha com <span class="v" data-k="yeast">0,8</span> g de fermento.</li>
+      <li>Adicione <span class="v" data-k="pfWater">400</span> g de água e mexa até formar uma pasta grosseira, sem farinha seca.</li>
+      <li>Tampe. Deixe 1 h em temperatura ambiente.</li>
+      <li>Leve à geladeira (<span class="v" data-k="fridge">7</span> °C) por cerca de <span class="v" data-k="pfh">20</span> h.</li>
+    </ul>
+    <p class="tip">Pronto quando tiver bolhas, estrutura interna e nenhum sinal de colapso.</p>
+    <div class="foot"><label class="done"><input type="checkbox" data-step="s1">Feito</label><a class="next" href="#s2">Próxima ↓</a></div>
+  </article>
+</li>
+
+<!-- 02 -->
+<li class="step" id="s2" data-n="02" data-title="Mistura inicial" data-day="Dia 2 · manhã" data-ev="2">
+  <figure class="scene" aria-hidden="true" style="--wl:var(--c2);--wr:var(--c3);--bl:var(--b2);--br:var(--b3);--dimL:.96;--dimD:.62;--skyL:#CFE4EF;--skyD:#6B8CA3">
+    <svg class="art far" viewBox="0 0 1600 900"><use class="ctx" href="#win" x="1200" y="110" width="280" height="320"/>
+      <g fill="#FFF3D2" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M760 150l150-26 40 250-150 34z"/><path d="M928 121l150-26 40 250-150 34z"/></g></svg>
+    <svg class="art sub" viewBox="0 0 1600 900">
+      <g class="ctx"><ellipse cx="640" cy="590" rx="70" ry="10" fill="url(#gCon)"/><path d="M600 470h80l-6 106q-1 10-12 10h-44q-11 0-12-10z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".5" stroke-width="3"/><path d="M603 510h74l-5 64q-1 8-10 8h-44q-9 0-10-8z" fill="url(#gWater)"/>
+        <ellipse cx="1290" cy="590" rx="120" ry="14" fill="url(#gCon)"/><g transform="translate(1290 520) rotate(78)"><path d="M-64 -100q0-12 12-12h104q12 0 12 12v170q0 20-20 20h-88q-20 0-20-20z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".5" stroke-width="3"/><path d="M-58 40q58-10 116 0v28q0 16-16 16h-84q-16 0-16-16z" fill="url(#gPaste)" opacity=".8"/></g></g>
+      <ellipse cx="930" cy="592" rx="250" ry="22" fill="url(#gCon)"/>
+      <use href="#bowlB" x="930" y="440"/>
+      <g filter="url(#paint)">
+        <path d="M772 446q-6-40 36-52q10-34 52-30q26-30 70-14q40-20 68 12q44-4 52 34q40 12 30 52q-150 46-308-2z" fill="url(#gDough)"/>
+        <g fill="#C9A974" opacity=".55"><ellipse cx="850" cy="420" rx="16" ry="8"/><ellipse cx="930" cy="392" rx="20" ry="8"/><ellipse cx="1010" cy="424" rx="14" ry="7"/><ellipse cx="900" cy="440" rx="10" ry="5"/></g>
+        <use href="#bowlF" x="930" y="440"/>
+      </g>
+      <g fill="#FFFDF4"><circle cx="812" cy="600" r="3"/><circle cx="1100" cy="606" r="4"/><circle cx="1068" cy="614" r="2.5"/><circle cx="780" cy="612" r="2.5"/></g>
+      <g transform="translate(806 176) rotate(1.5)"><rect width="250" height="48" rx="3" fill="url(#gKraft)"/><rect x="-10" y="-8" width="44" height="16" fill="#fff" opacity=".5" transform="rotate(-12)"/><text x="16" y="35"><tspan class="tn" data-k="salt">23</tspan><tspan class="tl" dx="8">g sal</tspan></text></g>
+      <g transform="translate(800 232) rotate(-2)"><rect width="250" height="48" rx="3" fill="url(#gKraft)"/><text x="16" y="35"><tspan class="tn" data-k="initWater">94</tspan><tspan class="tl" dx="8">g água</tspan></text></g>
+      <g transform="translate(808 288) rotate(1)"><rect width="250" height="48" rx="3" fill="url(#gKraft)"/><text x="16" y="35"><tspan class="tn" data-k="finFlour">400</tspan><tspan class="tl" dx="8">g farinha</tspan></text></g>
+    </svg>
+    <svg class="art fx" viewBox="0 0 1600 900">
+      <g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".5"><path class="wisp" d="M900 372q-16-22 0-42"/><path class="wisp" d="M960 366q16-22 0-44" style="animation-delay:-3s"/></g>
+    </svg>
+    <svg class="art near" viewBox="0 0 1600 900"><g filter="url(#soft)"><path d="M1240 900l30-170q110-30 230 0l40 170z" fill="url(#gSack)"/><circle cx="1385" cy="840" r="44" fill="#B8321A"/></g></svg>
+  </figure>
+  <article class="card" aria-labelledby="h-s2">
+    <p class="eyebrow">Dia 2 · Etapa 02 <span class="when" data-when="2"></span></p>
+    <h3 id="h-s2">Mistura inicial</h3>
+    <div class="chips"><span class="chip t">~10 min + descanso</span><span class="chip">Adaptado</span></div>
+    <ul>
+      <li>Use o pré-fermento direto da geladeira, sem longo aquecimento.</li>
+      <li>Dissolva <span class="v" data-k="salt">23</span> g de sal em <span class="v" data-k="initWater">94</span> g de água.</li>
+      <li>Junte ao pré-fermento <span class="v" data-k="finFlour">400</span> g de farinha e a água com sal.</li>
+      <li>Misture até hidratar toda a farinha. Não precisa ficar lisa.</li>
+      <li>Tampe e descanse. O tempo desenvolve o glúten por você.</li>
+    </ul>
+    <p class="tip">O sal entra junto com a segunda parte da farinha, sempre antes do azeite.</p>
+    <div class="foot"><label class="done"><input type="checkbox" data-step="s2">Feito</label><a class="next" href="#s4">Próxima ↓</a></div>
+  </article>
+</li>
+
+<!-- 03 -->
+<li class="step" id="s4" data-n="03" data-title="Bassinage" data-day="Dia 2 · manhã" data-ev="2">
+  <figure class="scene" aria-hidden="true" style="--wl:var(--c3);--wr:var(--c4);--bl:var(--b3);--br:var(--b4);--dimL:1;--dimD:.64;--skyL:#BFDDF0;--skyD:#7393A9">
+    <svg class="art far" viewBox="0 0 1600 900"><use class="ctx" href="#win" x="1200" y="110" width="280" height="320"/><use class="ctx" href="#shelf" x="180" y="150" width="400" height="150"/>
+      <g fill="#FFF3D2" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M720 170l150-26 46 270-150 34z"/><path d="M888 141l150-26 46 270-150 34z"/></g></svg>
+    <svg class="art sub" viewBox="0 0 1600 900">
+      <ellipse cx="930" cy="592" rx="250" ry="22" fill="url(#gCon)"/>
+      <use href="#bowlB" x="930" y="440"/>
+      <g filter="url(#paint)">
+        <path d="M776 446q-4-66 154-70q158 4 154 70q-150 46-308 0z" fill="url(#gDough)"/>
+        <path d="M980 396q50 6 72 34" stroke="#fff" stroke-opacity=".7" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <use href="#bowlF" x="930" y="440"/>
+      </g>
+      <ellipse cx="950" cy="398" rx="46" ry="9" fill="#9CC7D4" opacity=".7"/>
+      <g transform="translate(1076 312) rotate(-38)">
+        <path d="M-46 -70h92l-8 142q-2 14-16 14h-44q-14 0-16-14z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".55" stroke-width="3"/>
+        <path d="M-42 -10h84l-5 80q-2 12-14 12h-46q-12 0-14-12z" fill="url(#gWater)"/>
+        <path d="M46 -44q44 4 40 52q-4 36-44 40" stroke="#DCEDEE" stroke-opacity=".75" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M-30 -56v110" stroke="#fff" stroke-opacity=".6" stroke-width="6" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(770 190) rotate(-2)"><rect width="230" height="48" rx="3" fill="url(#gKraft)"/><rect x="-10" y="-8" width="44" height="16" fill="#fff" opacity=".5" transform="rotate(-12)"/><text x="16" y="35"><tspan class="tn" data-k="bassWater">18</tspan><tspan class="tl" dx="8">g água</tspan></text></g>
+      <g transform="translate(776 246) rotate(1.5)"><rect width="200" height="44" rx="3" fill="url(#gKraft)"/><text x="16" y="31" class="tl">aos poucos</text></g>
+    </svg>
+    <svg class="art fx" viewBox="0 0 1600 900">
+      <path class="pour" d="M992 292Q974 336 962 396" stroke="#A9D3DE" stroke-width="7" stroke-linecap="round" stroke-dasharray="30 14" fill="none"/>
+      <g fill="#BFE2EA"><circle class="drop" cx="982" cy="320" r="4"/><circle class="drop" cx="1000" cy="312" r="3" style="animation-delay:-.8s"/></g>
+    </svg>
+    <svg class="art near" viewBox="0 0 1600 900"><g filter="url(#soft)"><path d="M60 780q160-60 380 0l60 230H0z" fill="#E9DFCB"/><path d="M150 800l-50 210M220 786l-40 224" stroke="#2C6A3E" stroke-width="14" opacity=".7"/></g></svg>
+  </figure>
+  <article class="card" aria-labelledby="h-s4">
+    <p class="eyebrow">Dia 2 · Etapa 03 <span class="when" data-when="2"></span></p>
+    <h3 id="h-s4">Bassinage</h3>
+    <div class="chips"><span class="chip t">~10 min</span><span class="chip">Receita base</span><span class="chip">Adaptado</span></div>
+    <ul>
+      <li>Adicione os <span class="v" data-k="bassWater">18</span> g de água restantes em pequenas porções.</li>
+      <li>Só coloque mais quando a massa tiver absorvido a anterior.</li>
+      <li>Se a massa ficar pegajosa, não acrescente farinha.</li>
+    </ul>
+    <div class="foot"><label class="done"><input type="checkbox" data-step="s4">Feito</label><a class="next" href="#s8">Próxima ↓</a></div>
+  </article>
+</li>
+
+<!-- 07 -->
+<li class="step" id="s8" data-n="07" data-title="Dividir e bolear" data-day="Dia 2 · tarde" data-ev="3">
+  <figure class="scene" aria-hidden="true" style="--wl:var(--c4);--wr:var(--c5);--bl:var(--b4);--br:var(--b5);--dimL:.98;--dimD:.62;--skyL:#F7D595;--skyD:#B4844E">
+    <svg class="art far" viewBox="0 0 1600 900"><use class="ctx" href="#win" x="1200" y="110" width="280" height="320"/>
+      <g fill="#FFD996" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M660 210l150-26 60 290-150 34z"/><path d="M828 181l150-26 60 290-150 34z"/></g></svg>
+    <svg class="art sub" viewBox="0 0 1600 900">
+      <g class="ctx"><ellipse cx="1290" cy="592" rx="120" ry="12" fill="url(#gCon)"/><g transform="translate(1290 560) rotate(-6)"><rect x="-80" y="-8" width="160" height="34" rx="3" fill="#C5CCCE"/><rect x="-80" y="-30" width="160" height="26" rx="10" fill="url(#gWood)"/></g></g>
+      <ellipse cx="930" cy="606" rx="290" ry="24" fill="url(#gCon)"/>
+      <g filter="url(#paint)"><path d="M712 548h436l26 50H686z" fill="url(#gWood)"/><rect x="686" y="596" width="488" height="16" rx="4" fill="#6E4526"/></g>
+      <g id="balls"></g>
+      <g transform="translate(790 196) rotate(-2)"><rect width="280" height="54" rx="3" fill="url(#gKraft)"/><rect x="-10" y="-8" width="44" height="16" fill="#fff" opacity=".5" transform="rotate(-12)"/><text x="16" y="38"><tspan class="tn" data-k="n">5</tspan><tspan class="tn" dx="8">×</tspan><tspan class="tn" dx="8" data-k="per">270</tspan><tspan class="tl" dx="8">g</tspan></text></g>
+      <g transform="translate(796 258) rotate(1.5)"><rect width="280" height="46" rx="3" fill="url(#gKraft)"/><text x="16" y="33"><tspan class="tl">total</tspan><tspan class="tn" dx="10" data-k="total">1.348</tspan><tspan class="tl" dx="8">g</tspan></text></g>
+    </svg>
+    <svg class="art fx" viewBox="0 0 1600 900"></svg>
+    <svg class="art near" viewBox="0 0 1600 900"><g filter="url(#soft)"><ellipse cx="1330" cy="930" rx="250" ry="70" fill="#8C8474"/><path d="M1080 930q10-130 250-130t250 130z" fill="url(#gCer)"/></g></svg>
+  </figure>
+  <article class="card" aria-labelledby="h-s8">
+    <p class="proto">No protótipo, as etapas 04 a 06 (dobras, azeite, laminação) foram puladas.</p>
+    <p class="eyebrow">Dia 2 · Etapa 07 <span class="when" data-when="3"></span></p>
+    <h3 id="h-s8">Dividir e bolear</h3>
+    <div class="chips"><span class="chip t">~15 min</span><span class="chip">Receita base</span></div>
+    <ul>
+      <li>Divida em <span class="v" data-k="n">5</span> panetti de <span class="v" data-k="per">270</span> g (massa total <span class="v" data-k="total">1.348</span> g).</li>
+      <li>Boleie com tensão na superfície e feche bem a base.</li>
+      <li>Recipiente tampado, geladeira por cerca de <span class="v" data-k="panh">24</span> h.</li>
+    </ul>
+    <p class="tip">Receita base: 24–36 h a 5 °C. A <span data-k="fridge">7</span> °C a fermentação anda mais rápido; avalie pela aparência.</p>
+    <div class="foot"><label class="done"><input type="checkbox" data-step="s8">Feito</label><a class="next" href="#s14">Próxima ↓</a></div>
+  </article>
+</li>
+
+<!-- 13 -->
+<li class="step last" id="s14" data-n="13" data-title="Assar e girar" data-day="Dia 3 · forno" data-ev="6">
+  <figure class="scene" aria-hidden="true" style="--wl:var(--c5);--wr:var(--c6);--bl:var(--b5);--br:var(--b6);--dimL:.82;--dimD:.6;--skyL:#3A2F52;--skyD:#1B1730">
+    <svg class="art far" viewBox="0 0 1600 900"><use class="ctx" href="#shelf" x="170" y="160" width="400" height="150"/></svg>
+    <svg class="art sub" viewBox="0 0 1600 900">
+      <ellipse cx="930" cy="600" rx="300" ry="24" fill="url(#gCon)"/>
+      <g filter="url(#paint)">
+        <rect x="760" y="584" width="26" height="22" fill="#151617"/><rect x="1074" y="584" width="26" height="22" fill="#151617"/>
+        <path d="M722 304q0-44 44-44h328q44 0 44 44v270q0 16-16 16H738q-16 0-16-16z" fill="url(#gSteel)"/>
+        <path d="M744 282q10-12 30-12h312" stroke="#fff" stroke-opacity=".25" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <rect x="880" y="236" width="100" height="26" rx="6" fill="#2a2c2e"/>
+      </g>
+      <path d="M772 524v-74q0-62 62-62h192q62 0 62 62v74z" fill="#1a0b06"/>
+      <text x="800" y="570" style="font:700 26px var(--f-m);fill:#FFB45C">↑<tspan data-k="top">450</tspan>°</text>
+      <text x="1060" y="570" text-anchor="end" style="font:700 26px var(--f-m);fill:#FFB45C">↓<tspan data-k="bottom">380</tspan>°</text>
+      <circle cx="930" cy="560" r="12" fill="#0f1011" stroke="#6b7074" stroke-width="3"/>
+    </svg>
+    <svg class="art fx" viewBox="0 0 1600 900">
+      <ellipse class="pulse" cx="930" cy="470" rx="330" ry="210" fill="url(#gHalo)"/>
+      <ellipse cx="930" cy="640" rx="360" ry="70" fill="url(#gHalo)" opacity=".7"/>
+      <path class="pulse" d="M776 520v-70q0-58 58-58h192q58 0 58 58v70z" fill="url(#gEmber)"/>
+      <g class="pulse" stroke-linecap="round"><path d="M806 408h248" stroke="#FFDf9A" stroke-opacity=".45" stroke-width="16"/><path d="M806 408h248" stroke="#FFF2C4" stroke-width="5"/></g>
+      <rect x="778" y="500" width="304" height="22" fill="#4a2a1c"/><path d="M778 520h304" stroke="#FF9A3C" stroke-width="3" opacity=".8"/>
+      <g id="pie" style="transform-origin:930px 500px">
+        <ellipse cx="930" cy="494" rx="122" ry="20" fill="url(#gCrust)"/>
+        <ellipse cx="930" cy="491" rx="96" ry="12.5" fill="url(#gTom)"/>
+        <g fill="#FFF6DF"><ellipse cx="884" cy="490" rx="15" ry="4.5"/><ellipse cx="940" cy="486" rx="17" ry="4.5"/><ellipse cx="984" cy="493" rx="13" ry="4"/><ellipse cx="916" cy="497" rx="11" ry="3.5"/></g>
+        <g fill="#2C6A3E"><ellipse cx="960" cy="495" rx="8" ry="3"/><ellipse cx="902" cy="485" rx="7" ry="2.6"/></g>
+        <g id="spots" fill="#3b1a0a" opacity="0"><circle cx="826" cy="492" r="3"/><circle cx="1030" cy="498" r="3.4"/><circle cx="1000" cy="482" r="2.4"/><circle cx="860" cy="505" r="2.6"/><circle cx="930" cy="511" r="2.4"/></g>
+      </g>
+      <!-- anel do timer -->
+      <path d="M731 253A260 260 0 0 1 1129 253" pathLength="150" fill="none" stroke="#1a0b06" stroke-opacity=".45" stroke-width="18" stroke-linecap="round"/>
+      <path d="M731 253A260 260 0 0 1 1129 253" pathLength="150" fill="none" stroke="#F2B544" stroke-width="18" stroke-dasharray="5 150" stroke-dashoffset="-25"/>
+      <path d="M731 253A260 260 0 0 1 1129 253" pathLength="150" fill="none" stroke="#7CC489" stroke-width="18" stroke-dasharray="50 150" stroke-dashoffset="-70"/>
+      <path id="ring" d="M731 253A260 260 0 0 1 1129 253" pathLength="150" fill="none" stroke="#FFF6E4" stroke-width="7" stroke-linecap="round" stroke-dasharray="0 150"/>
+      <g transform="translate(860 190)"><rect width="140" height="50" rx="8" fill="url(#gKraft)"/><text id="ringT" x="70" y="36" text-anchor="middle" class="tn">0:00</text></g>
+    </svg>
+    <svg class="art near" viewBox="0 0 1600 900"><g filter="url(#soft)"><path d="M1560 700l-420 250 30 50 420-240z" fill="url(#gWood)"/><path d="M1180 900q-110 40-160 120h300z" fill="#b98a55"/></g></svg>
+  </figure>
+  <article class="card" aria-labelledby="h-s14">
+    <p class="eyebrow">Dia 3 · Etapa 13 <span class="when" data-when="6"></span></p>
+    <h3 id="h-s14">Assar e girar</h3>
+    <div class="chips"><span class="chip t">70–120 s</span><span class="chip">Lição 1ª fornada</span></div>
+    <div class="timer" id="timer">
+      <div class="clock" id="clock" role="timer" aria-label="Cronômetro do forno">0:00<small>,0</small></div>
+      <div class="band" aria-hidden="true"><i class="g" style="left:16.67%;width:3.33%"></i><i class="k" style="left:46.67%;width:33.33%"></i><i class="fill" id="fill"></i></div>
+      <p class="tmsg" id="tmsg" aria-live="polite">Lance a pizza e inicie.</p>
+      <div class="acts"><button class="btn" type="button" id="tgo">Iniciar</button><button class="btn ghost" type="button" id="tzero">Zerar</button></div>
+    </div>
+    <ul>
+      <li>Aos 25–30 s, veja se já tem estrutura para girar 180°.</li>
+      <li>Depois, pequenos ajustes de rotação até a cor uniforme.</li>
+      <li>A primeira pizza calibra o forno. Use o diagnóstico abaixo.</li>
+    </ul>
+    <div class="foot"><label class="done"><input type="checkbox" data-step="s14">Feito</label><a class="next" href="#epilogo">Como saiu? ↓</a></div>
+    <p class="proto" style="margin:10px 0 0">No protótipo, as etapas 08 a 12 foram puladas.</p>
+  </article>
+</li>
+</ol>
+
+<!-- ============ EPÍLOGO ============ -->
+<section class="epi" id="epilogo" data-title="Epílogo">
+  <div class="in">
+    <p class="eyebrow">Epílogo</p>
+    <h2>A primeira pizza <em>calibra a sessão.</em></h2>
+    <p>Diga como saiu e o forno se ajusta. Resistências agora: superior <span class="v" data-k="top">450</span> °C, inferior <span class="v" data-k="bottom">380</span> °C.</p>
+    <ul class="diag" id="diag"></ul>
+    <div class="later"><b>No site final, o caderno continua aqui:</b>
+      <ul><li>Regras da versão 1.0 (20 itens)</li><li>Glossário (bassinage, panetto, cornicione…)</li><li>Sobre o NapoliProtocol, com as fotos reais e seus créditos</li><li>Outras receitas e idiomas</li></ul></div>
+    <p style="margin-top:24px"><a class="next" href="#abertura" style="padding:0">↑ Voltar à pergunta inicial</a></p>
+  </div>
+</section>
+</main>
+
+<nav class="rail" id="rail" aria-label="Etapas"></nav>
+<nav class="dock" id="dock" aria-label="Navegar entre etapas">
+  <i class="prog" id="prog"></i>
+  <a id="prev" href="#abertura" aria-label="Etapa anterior">‹</a>
+  <div class="lbl" id="dlbl">Início<small>role para começar</small></div>
+  <a id="nextd" href="#s1" aria-label="Próxima etapa">›</a>
+</nav>
+
+<dialog id="adj" aria-labelledby="adjH">
+  <form class="dlg" method="dialog">
+    <header><h2 id="adjH">Ajustes</h2><button class="icon" value="x" aria-label="Fechar">✕</button></header>
+    <details open><summary>Massa</summary>
+      <div class="row"><label for="aFlour">Farinha (g)</label><input id="aFlour" type="number" data-p="flour" step="10" min="100"></div>
+      <div class="row"><label for="aPizzas">Nº de pizzas</label><input id="aPizzas" type="number" data-p="pizzas" step="1" min="1"></div>
+      <div class="row"><label for="aW">Peso do panetto (g)</label><input id="aW" type="number" data-p="w" step="5" min="150"></div>
+    </details>
+    <details><summary>Fórmula</summary>
+      <div class="row"><label for="aHyd">Hidratação (%)</label><input id="aHyd" type="number" data-p="hyd" step="1"></div>
+      <div class="row"><label for="aSalt">Sal (%)</label><input id="aSalt" type="number" data-p="salt" step="0.1"></div>
+    </details>
+    <details><summary>Forno</summary>
+      <div class="row"><label for="aTop">Resistência superior (°C)</label><input id="aTop" type="number" data-p="top" step="10"></div>
+      <div class="row"><label for="aBot">Resistência inferior (°C)</label><input id="aBot" type="number" data-p="bottom" step="10"></div>
+    </details>
+    <details open><summary>Agenda</summary>
+      <div class="row"><label for="aBake">Assar em</label><input id="aBake" type="datetime-local" data-p="bake"></div>
+      <ol class="tline" id="tline"></ol>
+    </details>
+    <details><summary>Preferências</summary>
+      <div class="row"><label for="aMo">Movimento da câmera</label><input id="aMo" type="checkbox"></div>
+      <div class="row"><button class="btn ghost sm" type="button" id="reset">Restaurar padrão</button><button class="btn ghost sm" type="button" id="clear">Limpar etapas</button></div>
+    </details>
+    <p class="fine">Protótipo: os demais parâmetros (azeite, fermento, geladeira, coberturas) seguem o padrão.</p>
+  </form>
+</dialog>
+
+<script>
+(function(){
+'use strict';
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const root=document.documentElement;
+/* ---------- dados (de src/recipes/<id>/recipe.json) ---------- */
+const REC={
+  napolitana:{pref:true,def:{mode:'flour',flour:800,pizzas:5,w:270,hyd:64,salt:2.88,oil:1.5,yeast:.1,sugar:0,pf:50,fridge:7,top:450,bottom:380,sauce:65,cheese:70,pfh:20,panh:24,outh:4},
+    sched:[['outh','panh',2.5,'pfh',1],['outh','panh',2.5,'pfh'],['outh','panh',2.5],['outh','panh'],['outh'],[.6667],[]],
+    ev:['Montar o pré-fermento','Pré-fermento na geladeira','Mistura final','Dividir, bolear e refrigerar','Retirar os panetti','Ligar o forno','Assar']},
+  'new-york':{pref:false,def:{mode:'flour',flour:530,pizzas:3,w:300,hyd:63,salt:2,oil:2.5,yeast:.2,sugar:1.5,pf:0,fridge:7,top:350,bottom:300,sauce:90,cheese:120,pfh:0,panh:48,outh:2}}
+};
+const TIMER={max:150,marks:[25,30,70,120],msg:['Deixe a base firmar.','Avalie: já dá para girar 180°?','Gire conforme a cor. Observe o cornicione.','Janela de ponto. Confira fundo e topo.','Passou de 120 s. Se ainda pálida, falta energia.']};
+const DIAG=[['Fundo queima antes do topo','Reduza a resistência inferior.','bottom',-10],['Fundo muito claro','Aumente a resistência inferior.','bottom',10],['Fundo bom, cornicione pálido','Aumente a resistência superior.','top',10],['Topo queima antes do fundo','Reduza a resistência superior.','top',-10]];
+const LS='np-jornada-proto';
+const store={get(k){try{return JSON.parse(localStorage.getItem(LS+':'+k))}catch(e){return null}},set(k,v){try{localStorage.setItem(LS+':'+k,JSON.stringify(v))}catch(e){}}};
+let rec=store.get('rec')||'napolitana';
+let P=Object.assign({},REC[rec].def,store.get('p:'+rec)||{});
+let done=store.get('done')||{}, ui=store.get('ui')||{};
+const nf0=new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0}),nf1=new Intl.NumberFormat('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1}),nf2=new Intl.NumberFormat('pt-BR',{maximumFractionDigits:2});
+const g=v=>v<10?nf1.format(v):nf0.format(Math.round(v));
+const z=n=>String(n).padStart(2,'0');
+const toLocal=t=>`${t.getFullYear()}-${z(t.getMonth()+1)}-${z(t.getDate())}T${z(t.getHours())}:${z(t.getMinutes())}`;
+function nextBake(){const d=new Date(),t=new Date(d);t.setHours(19,30,0,0);t.setDate(t.getDate()+1);while(t.getDay()!==6||(t-d)<60*3600e3)t.setDate(t.getDate()+1);return toLocal(t)}
+if(!P.bake)P.bake=nextBake();
+
+/* ---------- cálculo: cópia fiel de calc() em src/template.html ---------- */
+function calc(){
+  const C=REC[rec];
+  const ratio=1+P.hyd/100+P.salt/100+P.oil/100+P.yeast/100+P.sugar/100;
+  const flour=P.mode==='pizza'?(P.pizzas*P.w)/ratio:P.flour;
+  const water=flour*P.hyd/100,salt=Math.round(flour*P.salt/100),oil=Math.round(flour*P.oil/100),yeast=flour*P.yeast/100,sugar=flour*P.sugar/100;
+  const total=flour+water+salt+oil+yeast+sugar;
+  const pfFlour=C.pref?flour*P.pf/100:0,pfWater=pfFlour;
+  const finFlour=flour-pfFlour,finWater=Math.max(0,water-pfWater);
+  const saltWater=Math.min(Math.round(salt*1.1),finWater);
+  const bassWater=Math.max(0,Math.round(finWater)-Math.round(finWater*.62)-saltWater);
+  const initWater=Math.round(finWater)-bassWater;
+  const n=Math.max(1,Math.round(total/P.w)),per=total/n;
+  return {flour,water,salt,oil,yeast,sugar,total,pfFlour,pfWater,finFlour,finWater,saltWater,initWater,bassWater,n,per,top:P.top,bottom:P.bottom,fridge:P.fridge,pfh:P.pfh,panh:P.panh,outh:P.outh};
+}
+const fmt=(k,v)=>['top','bottom','n','pfh','panh'].includes(k)?nf0.format(v):['fridge','outh'].includes(k)?nf2.format(v):g(v);
+
+/* ---------- render ---------- */
+const NS='http://www.w3.org/2000/svg';
+function drawBalls(n){
+  const box=$('#balls'); if(!box)return; box.textContent='';
+  const show=Math.min(n,12), rows=show>6?2:1, perRow=Math.ceil(show/rows);
+  const sp=Math.min(96,400/perRow), r=Math.min(44,sp*.47);
+  for(let i=0;i<show;i++){
+    const row=rows===2&&i<show-perRow?0:1, idx=row===0?i:i-(rows===2?show-perRow:0), cnt=row===0?show-perRow:perRow;
+    const s=rows===2&&row===0?.86:1, cx=930+(idx-(cnt-1)/2)*sp, cy=(row===0&&rows===2?556:574)-r*s*.72;
+    const G=document.createElementNS(NS,'g');
+    G.innerHTML=`<ellipse cx="${cx}" cy="${cy+r*s*.7}" rx="${r*s}" ry="${r*s*.22}" fill="url(#gCon)"/><ellipse cx="${cx}" cy="${cy}" rx="${r*s}" ry="${r*s*.76}" fill="url(#gDough)"/><path d="M${cx+r*s*.2} ${cy-r*s*.5}q${r*s*.38} ${r*s*.08} ${r*s*.48} ${r*s*.4}" stroke="#fff" stroke-opacity=".7" stroke-width="${r*.1}" stroke-linecap="round" fill="none"/>`;
+    box.appendChild(G);
+  }
+  if(n>12){const t=document.createElementNS(NS,'text');t.setAttribute('x',1150);t.setAttribute('y',540);t.setAttribute('class','tn');t.textContent='+'+(n-12);box.appendChild(t)}
+}
+const dfmt=new Intl.DateTimeFormat('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit'}),tfmt=new Intl.DateTimeFormat('pt-BR',{hour:'2-digit',minute:'2-digit'}),wfmt=new Intl.DateTimeFormat('pt-BR',{weekday:'short'});
+function schedule(){
+  const S=REC.napolitana.sched,B=new Date(P.bake); if(isNaN(B)||rec!=='napolitana')return null;
+  return S.map(off=>new Date(B-off.reduce((a,x)=>a+(typeof x==='number'?x:P[x]),0)*3600e3));
+}
+function render(){
+  const R=calc();
+  $$('[data-k]').forEach(el=>{const k=el.dataset.k;if(k in R){const t=fmt(k,R[k]);if(el.textContent!==t)el.textContent=t}});
+  $('#barSum').textContent=`${nf0.format(Math.round(R.flour))} g · ${R.n} pizza${R.n>1?'s':''}`;
+  $('#sum').innerHTML=P.mode==='pizza'
+    ?`≈ <b>${nf0.format(Math.round(R.flour))} g</b> de farinha · total <b>${g(R.total)} g</b>`
+    :`≈ <b>${R.n}</b> pizza${R.n>1?'s':''} de <b>${g(R.per)} g</b> · massa total <b>${g(R.total)} g</b>`;
+  drawBalls(R.n);
+  // abertura
+  $$('.seg button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===P.mode)));
+  const q=$('#qty'); if(document.activeElement!==q)q.value=P.mode==='pizza'?P.pizzas:P.flour;
+  $('#qUnit').textContent=P.mode==='pizza'?'un':'g'; $('#qLbl').textContent=P.mode==='pizza'?'Número de pizzas':'Farinha em gramas';
+  $$('input[name=rec]').forEach(r=>r.checked=r.value===rec);
+  $('#nyNote').hidden=rec==='napolitana';
+  // ajustes
+  $$('[data-p]').forEach(i=>{if(document.activeElement!==i)i.value=i.dataset.p==='flour'?Math.round(R.flour):i.dataset.p==='pizzas'?R.n:P[i.dataset.p]});
+  // agenda
+  const ev=schedule(),now=new Date(); let cur=-1;
+  if(ev){ev.forEach((d,i)=>{if(d<=now)cur=i}); if(now-ev[6]>3600e3)cur=-1;
+    $$('[data-when]').forEach(el=>{const i=+el.dataset.when;el.innerHTML=`${wfmt.format(ev[i]).replace('.','')} ${tfmt.format(ev[i])}`+(i===cur?' <span class="now">agora</span>':'')});
+    const nx=ev.findIndex(d=>d>now);
+    $('#tline').innerHTML=ev.map((d,i)=>`<li class="${i===nx?'nx':''}"><b>${dfmt.format(d).replace('.','')} ${tfmt.format(d)}</b><span>${REC.napolitana.ev[i]}${i===nx?' · próximo':''}</span></li>`).join('');
+  }
+  store.set('p:'+rec,P);store.set('rec',rec);
+}
+
+/* ---------- abertura ---------- */
+function setQty(v){v=Math.round(+v);if(!isFinite(v)||v<=0)return;if(P.mode==='pizza')P.pizzas=Math.min(40,Math.max(1,v));else P.flour=Math.min(5000,Math.max(100,v));render()}
+$$('.seg button').forEach(b=>b.onclick=()=>{const R=calc();if(b.dataset.mode==='pizza'){P.pizzas=R.n}else{P.flour=Math.round(R.flour/10)*10}P.mode=b.dataset.mode;render()});
+$('#less').onclick=()=>setQty(P.mode==='pizza'?P.pizzas-1:P.flour-50);
+$('#more').onclick=()=>setQty(P.mode==='pizza'?P.pizzas+1:P.flour+50);
+$('#qty').oninput=e=>setQty(e.target.value);
+$$('input[name=rec]').forEach(r=>r.onchange=()=>{store.set('p:'+rec,P);rec=r.value;P=Object.assign({},REC[rec].def,store.get('p:'+rec)||{});if(!P.bake)P.bake=nextBake();render()});
+$('#ask').onsubmit=e=>{e.preventDefault();if(rec!=='napolitana'){$('#nyNote').hidden=false;return}go('s1')};
+function go(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:root.classList.contains('mo')?'smooth':'auto',block:'start'})}
+
+/* ---------- ajustes ---------- */
+const dlg=$('#adj');
+$('#openAdj').onclick=()=>{$('#aMo').checked=root.classList.contains('mo');dlg.showModal()};
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+$$('[data-p]').forEach(i=>i.oninput=()=>{const k=i.dataset.p;if(k==='bake'){P.bake=i.value}else{const v=parseFloat(i.value);if(!isFinite(v)||v<=0)return;if(k==='flour'){P.mode='flour';P.flour=v}else if(k==='pizzas'){P.mode='pizza';P.pizzas=Math.round(v)}else P[k]=v}render()});
+$('#reset').onclick=()=>{P=Object.assign({},REC[rec].def,{bake:nextBake()});render()};
+$('#clear').onclick=()=>{done={};store.set('done',done);syncDone()};
+$('#aMo').onchange=e=>{ui.motion=e.target.checked;store.set('ui',ui);location.reload()};
+$('#theme').onclick=()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';ui.theme=root.dataset.theme;store.set('ui',ui)};
+
+/* ---------- etapas: feito, trilho, doca, retomar ---------- */
+const steps=$$('.step'), items=steps.filter(s=>s.dataset.n), all=[...steps,$('#epilogo')];
+const rail=$('#rail');
+rail.innerHTML=all.map(s=>`<a href="#${s.id}" data-for="${s.id}"><span>${s.dataset.n?s.dataset.n+' · ':''}${s.dataset.title}</span><b class="sr">${s.dataset.title}</b></a>`).join('')+'<div class="cnt" id="cnt"></div>';
+function syncDone(){
+  $$('input[data-step]').forEach(c=>c.checked=!!done[c.dataset.step]);
+  const k=items.filter(s=>done[s.id]).length;
+  $$('a',rail).forEach(a=>a.classList.toggle('done',!!done[a.dataset.for]));
+  $('#cnt').textContent=k+'/13'; $('#prog').style.width=(k/13*100)+'%';
+}
+$$('input[data-step]').forEach(c=>c.onchange=()=>{done[c.dataset.step]=c.checked;store.set('done',done);syncDone()});
+let curId='abertura';
+function setCur(id){
+  if(id===curId)return; curId=id; const i=all.findIndex(s=>s.id===id), s=all[i];
+  $$('a',rail).forEach(a=>a.dataset.for===id?a.setAttribute('aria-current','step'):a.removeAttribute('aria-current'));
+  $('#pos').textContent=s.dataset.n?`${s.dataset.day} · etapa ${s.dataset.n} de 13`:s.dataset.title==='Início'?'Protótipo · Piano Sequenza':'Epílogo';
+  $('#dlbl').innerHTML=(s.dataset.n?`${s.dataset.n}/13 · ${s.dataset.title}<small>${s.dataset.day}</small>`:`${s.dataset.title}<small>${id==='abertura'?'role para começar':'diagnóstico e caderno'}</small>`);
+  $('#prev').href='#'+all[Math.max(0,i-1)].id; $('#nextd').href='#'+all[Math.min(all.length-1,i+1)].id;
+  if(s.dataset.n){store.set('last',id);history.replaceState(null,'','#'+id)}
+}
+/* etapa em foco: a que cruza a linha a 45% da altura */
+const focusIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)setCur(e.target.id)}),{rootMargin:'-45% 0px -54% 0px'});
+all.forEach(s=>focusIO.observe(s));
+const last=store.get('last');
+if(last&&document.getElementById(last)){const s=document.getElementById(last),a=$('#resume');a.href='#'+last;a.textContent=`Continuar na etapa ${s.dataset.n} · ${s.dataset.title}`;a.hidden=false;a.style.display='inline-flex';$('#go').textContent='Começar do início';$('#go').classList.add('ghost');a.classList.remove('ghost')}
+
+/* ---------- travelling ---------- */
+const mo=root.classList.contains('mo');
+if(mo){
+  const live=new Set();
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{e.target.classList.toggle('live',e.isIntersecting);e.isIntersecting?live.add(e.target):live.delete(e.target)});drive()},{rootMargin:'60% 0px 60% 0px'});
+  steps.forEach(s=>io.observe(s));
+  const clamp=v=>Math.min(1,Math.max(0,v));
+  let raf=0;
+  function drive(){
+    if(!root.classList.contains('jsd'))return;           // com suporte, o CSS (view-timeline) faz tudo
+    raf=0; const vh=innerHeight;
+    live.forEach(li=>{
+      const r=li.getBoundingClientRect(),m=Math.min(vh,r.height),sc=li.firstElementChild;
+      const e=clamp((vh-r.top)/m),q=li.classList.contains('last')?0:clamp((m-r.bottom)/m),c=clamp((vh-r.top)/(vh+r.height));
+      sc.style.transform=`translate3d(${e<1?(1-e)*100:-q*100}%,0,0)`;
+      const f=sc.querySelector('.far'),n=sc.querySelector('.near');
+      if(f)f.style.transform=`translate3d(${4-8*c}%,0,0)`; if(n)n.style.transform=`translate3d(${-9+18*c}%,0,0)`;
+    });
+  }
+  if(root.classList.contains('jsd')){addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(drive)},{passive:true});addEventListener('resize',drive)}
+  /* cartão mais alto que a tela: gruda mais acima para o pé (Feito) ficar alcançável */
+  const fit=()=>items.forEach(s=>{const c=s.querySelector('.card');c.style.setProperty('--ctop',Math.min(88,innerHeight-c.offsetHeight-16)+'px')});
+  fit();addEventListener('resize',fit);document.fonts&&document.fonts.ready.then(fit);
+}else{steps.forEach(s=>s.classList.add('live'))}
+
+/* ---------- timer (baseado em relógio) ---------- */
+let t0=0,acc=0,run=false,tick=0,wl=null,lastMsg=-1;
+const elapsed=()=>acc+(run?(performance.now()-t0)/1000:0);
+function paint(){
+  const t=elapsed(),s=Math.floor(t),m=TIMER.marks;
+  $('#clock').innerHTML=`${Math.floor(s/60)}:${z(s%60)}<small>,${Math.floor(t*10)%10}</small>`;
+  const txt=`${Math.floor(s/60)}:${z(s%60)}`; $('#ringT').textContent=txt; $('#mini').textContent='⏱ '+txt;
+  const p=Math.min(t,TIMER.max); $('#fill').style.width=(p/TIMER.max*100)+'%'; $('#ring').setAttribute('stroke-dasharray',`${p} 150`);
+  const i=t<m[0]?0:t<m[1]?1:t<m[2]?2:t<=m[3]?3:4;
+  if((run||t>0)&&i!==lastMsg){lastMsg=i;$('#tmsg').textContent=TIMER.msg[i];$('#tmsg').style.color=i===1?'var(--ember)':i===3?'var(--basil)':i===4?'var(--tomato)':''}
+  const k=Math.min(1,t/m[2]); $('#pie').style.transform=`scaleY(${1+.35*k})`; $('#spots').setAttribute('opacity',Math.max(0,Math.min(1,(t-55)/40)));
+  if(run)tick=requestAnimationFrame(paint);
+}
+$('#tgo').onclick=async()=>{
+  if(run){acc=elapsed();run=false;cancelAnimationFrame(tick);$('#tgo').textContent='Continuar';$('#mini').classList.remove('on');if(wl){wl.release().catch(()=>{});wl=null}}
+  else{t0=performance.now();run=true;$('#tgo').textContent='Pausar';$('#mini').classList.add('on');try{wl=await navigator.wakeLock.request('screen')}catch(e){}}
+  paint();
+};
+$('#tzero').onclick=()=>{run=false;acc=0;lastMsg=-1;cancelAnimationFrame(tick);$('#tgo').textContent='Iniciar';$('#mini').classList.remove('on');$('#tmsg').textContent='Lance a pizza e inicie.';$('#tmsg').style.color='';paint()};
+
+/* ---------- diagnóstico ---------- */
+$('#diag').innerHTML=DIAG.map((d,i)=>`<li><div><b>${d[0]}</b><p>${d[1]}</p></div><button class="btn ghost sm" type="button" data-d="${i}">${d[3]>0?'+':'−'}10 °C</button></li>`).join('');
+$('#diag').onclick=e=>{const b=e.target.closest('[data-d]');if(!b)return;const d=DIAG[b.dataset.d];P[d[2]]+=d[3];render()};
+
+render();syncDone();
+/* gancho de QA: ?t=85 pinta o timer em 85 s (parado) */
+const qt=new URLSearchParams(location.search).get('t'); if(qt){acc=+qt;paint()}
+})();
+</script>
+</body>
+</html>

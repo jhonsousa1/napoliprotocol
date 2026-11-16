@@ -2,5 +2,6 @@
 __pycache__/
 .claude/
 src/photos/originals/
-# derivadas do cenário: docs/img/scene/ (gerado por build.py --scene) é a única cópia versionada; os originais ficam só aqui
+# originais das fotos reais (alta resolução) ficam só na máquina do autor
 design/qa/
+design/jornada/qa/

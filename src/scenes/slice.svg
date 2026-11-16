@@ -1,0 +1,22 @@
+<!-- slice: a pizza pronta na grade, cortador e uma fatia dobrada. Estado: ny. -->
+<!--@far-->
+<use href="#shelf" x="190" y="160" width="400" height="150"/>
+<use href="#win" x="1200" y="110" width="280" height="320"/>
+<!--@sub-->
+<use href="#canister" x="440" y="622"/>
+<use href="#basil" x="1388" y="622"/>
+<ellipse cx="900" cy="632" rx="360" ry="26" fill="url(#gCon)"/>
+<g filter="url(#paint)">
+<rect x="590" y="604" width="620" height="14" rx="4" fill="#8A8F92"/><path d="M590 604h620M620 604v14M700 604v14M780 604v14M860 604v14M940 604v14M1020 604v14M1100 604v14M1180 604v14" stroke="#C9CFD0" stroke-width="2"/>
+<ellipse cx="880" cy="586" rx="250" ry="38" fill="#D9A55E"/><ellipse cx="880" cy="582" rx="232" ry="31" fill="#F3D27A"/>
+<g fill="#E9B84E" opacity=".9"><ellipse cx="780" cy="578" rx="30" ry="8"/><ellipse cx="900" cy="570" rx="34" ry="8"/><ellipse cx="1000" cy="586" rx="26" ry="7"/></g>
+<g fill="#C8341F" opacity=".75"><circle cx="840" cy="590" r="7"/><circle cx="950" cy="580" r="6"/></g>
+<path d="M880 582l-224-20M880 582l224-18M880 582l-170 40M880 582l170 36M880 582l8-36" stroke="#8C5C35" stroke-width="2.5" opacity=".6"/>
+<g transform="translate(1160 560) rotate(-20)"><path d="M0 0q50-70 120-34q-40 20-60 64z" fill="#D9A55E"/><path d="M6-4q46-56 104-28q-34 14-52 52z" fill="#F3D27A"/></g>
+<circle cx="1100" cy="590" r="26" fill="#C9CFD0"/><circle cx="1100" cy="590" r="26" fill="none" stroke="#6b7074" stroke-width="4"/><rect x="1118" y="592" width="90" height="12" rx="6" fill="url(#gWood)"/>
+</g>
+<!--@fx-->
+<g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".35"><path class="wisp" d="M860 540q-14-22 0-42"/><path class="wisp" d="M940 536q14-22 0-44" style="animation-delay:-3s"/></g>
+<ellipse cx="900" cy="640" rx="420" ry="50" fill="url(#gHalo)" opacity=".18"/>
+<!--@near-->
+<g filter="url(#soft)"><use href="#cloth" x="1100" y="772"/></g>

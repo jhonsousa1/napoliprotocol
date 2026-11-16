@@ -1,0 +1,74 @@
+<!-- bowl: a mesma tigela de cerâmica em quatro momentos. Estados: mix, bass, oil, rest. -->
+<!--@far-->
+<use href="#win" x="1200" y="110" width="280" height="320"/>
+<use href="#shelf" x="180" y="150" width="400" height="150"/>
+<g fill="#FFF3D2" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M740 190l150-26 46 270-150 34z"/><path d="M908 161l150-26 46 270-150 34z"/></g>
+<!--@sub-->
+<use href="#scale" x="440" y="622"/>
+<use href="#canister" x="1350" y="622"/>
+<ellipse cx="930" cy="626" rx="260" ry="22" fill="url(#gCon)"/>
+<use href="#bowlB" x="930" y="473"/>
+<g filter="url(#paint)">
+<!--if:mix-->
+<path d="M772 479q-6-40 36-52q10-34 52-30q26-30 70-14q40-20 68 12q44-4 52 34q40 12 30 52q-150 46-308-2z" fill="url(#gDough)"/>
+<g fill="#C9A974" opacity=".55"><ellipse cx="850" cy="453" rx="16" ry="8"/><ellipse cx="930" cy="425" rx="20" ry="8"/><ellipse cx="1010" cy="457" rx="14" ry="7"/><ellipse cx="900" cy="473" rx="10" ry="5"/></g>
+<!--/if-->
+<!--if:bass-->
+<path d="M776 479q-4-66 154-70q158 4 154 70q-150 46-308 0z" fill="url(#gDough)"/>
+<path d="M980 429q50 6 72 34" stroke="#fff" stroke-opacity=".7" stroke-width="10" stroke-linecap="round" fill="none"/>
+<!--/if-->
+<!--if:oil-->
+<path d="M776 479q-4-66 154-70q158 4 154 70q-150 46-308 0z" fill="url(#gDough)"/>
+<ellipse cx="950" cy="440" rx="86" ry="20" fill="#F6D777" opacity=".55"/><path d="M1000 429q40 8 60 30" stroke="#fff" stroke-opacity=".8" stroke-width="10" stroke-linecap="round" fill="none"/>
+<!--/if-->
+<!--if:rest-->
+<path d="M772 479q-8-104 158-108q166 4 158 108q-158 44-316 0z" fill="url(#gDough)"/>
+<path d="M980 405q50 10 70 46" stroke="#fff" stroke-opacity=".7" stroke-width="10" stroke-linecap="round" fill="none"/>
+<!--/if-->
+<use href="#bowlF" x="930" y="473"/>
+</g>
+<!--if:mix-->
+<g transform="translate(640 622) scale(.72)"><use href="#jug"/></g>
+<!--/if-->
+<!--if:mix+pf-->
+<g transform="translate(1196 594) rotate(78)"><path d="M-64-100q0-12 12-12h104q12 0 12 12v170q0 20-20 20h-88q-20 0-20-20z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".5" stroke-width="3"/><path d="M-58 40q58-10 116 0v28q0 16-16 16h-84q-16 0-16-16z" fill="url(#gPaste)" opacity=".85"/></g>
+<!--/if-->
+<!--if:bass-->
+<g transform="translate(1086 326) rotate(-38)">
+<path d="M-46-70h92l-8 142q-2 14-16 14h-44q-14 0-16-14z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".55" stroke-width="3"/>
+<path d="M-42-10h84l-5 80q-2 12-14 12h-46q-12 0-14-12z" fill="url(#gWater)"/>
+<path d="M46-44q44 4 40 52q-4 36-44 40" stroke="#DCEDEE" stroke-opacity=".75" stroke-width="10" fill="none" stroke-linecap="round"/>
+<path d="M-30-56v110" stroke="#fff" stroke-opacity=".6" stroke-width="6" stroke-linecap="round"/>
+</g>
+<ellipse cx="952" cy="431" rx="46" ry="9" fill="#9CC7D4" opacity=".7"/>
+<!--/if-->
+<!--if:oil-->
+<g transform="translate(1112 252) rotate(-135)"><use href="#oil"/></g>
+<!--/if-->
+<!--if:rest-->
+<path d="M968 392q40-26 100 6l24 66q-60 30-146 12z" fill="url(#gLinen)"/><path d="M990 404q30 12 28 56M1030 408q20 16 12 52" stroke="#BFAE8A" stroke-width="4" fill="none"/>
+<g transform="translate(1200 622)"><ellipse cy="2" rx="46" ry="7" fill="url(#gCon)"/><path d="M-30-70h60l-14 34 14 34h-60l14-34z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".5" stroke-width="3"/><path d="M-22-6h44l-22-22z" fill="#E8D7A8"/><rect x="-34" y="-78" width="68" height="10" rx="4" fill="#8C5C35"/><rect x="-34" y="0" width="68" height="10" rx="4" fill="#8C5C35"/></g>
+<!--/if-->
+<g fill="#FFFDF4"><circle cx="812" cy="634" r="3"/><circle cx="1100" cy="640" r="4"/><circle cx="1068" cy="648" r="2.5"/><circle cx="780" cy="646" r="2.5"/></g>
+<!--@fx-->
+<!--if:mix-->
+<g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".5"><path class="wisp" d="M900 410q-16-22 0-42"/><path class="wisp" d="M960 404q16-22 0-44" style="animation-delay:-3s"/></g>
+<!--/if-->
+<!--if:bass-->
+<path class="pour" d="M1004 322Q984 372 960 428" stroke="#A9D3DE" stroke-width="7" stroke-linecap="round" stroke-dasharray="30 14" fill="none"/>
+<g fill="#BFE2EA"><circle class="drop" cx="990" cy="352" r="4"/><circle class="drop" cx="1006" cy="344" r="3" style="animation-delay:-.8s"/></g>
+<!--/if-->
+<!--if:oil-->
+<path class="pour" d="M1006 372Q980 410 950 436" stroke="#F0C74A" stroke-width="6" stroke-linecap="round" stroke-dasharray="26 12" fill="none"/>
+<g fill="#F6D777"><circle class="drop" cx="976" cy="400" r="3.5"/></g>
+<!--/if-->
+<!--if:rest-->
+<g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".4"><path class="wisp" d="M900 372q-14-20 0-38"/></g>
+<!--/if-->
+<!--@near-->
+<!--if:mix oil-->
+<g filter="url(#soft)"><use href="#cloth" x="1100" y="772"/></g>
+<!--/if-->
+<!--if:bass rest-->
+<g filter="url(#soft)"><path d="M60 790q160-60 380 0l60 140H0z" fill="#E9DFCB"/><path d="M150 810l-50 130M220 796l-40 144" stroke="#2C6A3E" stroke-width="14" opacity=".7"/></g>
+<!--/if-->

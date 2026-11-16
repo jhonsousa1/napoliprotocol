@@ -13,25 +13,20 @@
   },
   "html": {
     "name": "New York",
-    "hero.eyebrow": "Strong flour · 48 h cold ferment · BIG HORN",
-    "hero.h1": "New York-Style Pizza Protocol",
-    "hero.version": "version 0.1 · in testing · October 2026",
-    "hero.lead": "A hand-made New York-style pizza recipe for home: a firm dough with olive oil and a touch of sugar, 48 hours in the fridge and a gentler oven. Consolidated from classic recipes and not yet tested in the BIG HORN; the numbers will be revised after the first test bake.",
-    "kpi.balls": "Dough balls",
-    "kpi.pizzas": "~32 cm (12–13\") pizzas",
-    "kpi.preheat": "preheat 30–40 min",
-    "kpi.bottomSub": "stone at ~290–320 °C",
     "panel.note": "Defaults = version 0.1, consolidated from classic recipes and not yet tested. Your values are saved in this browser.",
     "panel.reset": "Restore v0.1",
     "recipe.sub": "Total dough quantities. Straight dough: every ingredient goes into the same mix.",
     "recipe.balls": "Dough balls",
     "ing.flour": "Strong flour (Caputo Manitoba Oro)",
-    "steps.sub": "Tick each step when done. Tags show the source: classic New York technique, or an adaptation for hand mixing and the BIG HORN.",
-    "oven.sub": "Bench timer and diagnosis by result. New York pizza bakes slower: 5 to 7 minutes, turning every minute.",
     "oven.note": "Gold band: 1–1.5 min, time for the first turn. Green band: 5–7 min, the expected window.",
     "rules.h2": "Version 0.1 rules",
     "rules.sub": "A starting point with no bakes yet. After the first test, these rules become lessons.",
-    "sched.panh": "Dough balls in fridge"
+    "sched.panh": "Dough balls in fridge",
+    "ask.h1": "*New York* pizza: how much?",
+    "ask.lead": "Two answers and the bench sets itself up for you.",
+    "ask.sub": "48 h in the fridge · 63% hydration",
+    "cold.frio.h": "Fridge · two days",
+    "cold.frio.p": "The dough balls rest covered while the dough matures in the cold."
   },
   "rules": [
     "Use strong flour, 13% protein or more.",
@@ -210,7 +205,6 @@
               "d",
               "a"
             ],
-            "il": "mix",
             "li": [
               "Dry-mix {flour} g of flour, {yeast} g of yeast and {sugar} g of sugar.",
               "Dissolve {salt} g of salt in {water} g of cold water (10–15 °C).",
@@ -226,7 +220,6 @@
             "src": [
               "a"
             ],
-            "il": "oil",
             "li": [
               "Add {oil} g of olive oil a little at a time.",
               "Work it in with pincers and folds until the dough absorbs it all and stops slipping."
@@ -239,7 +232,6 @@
             "src": [
               "d"
             ],
-            "il": "fold",
             "li": [
               "Knead 8–10 min on the bench with no extra flour: push with the heel of your hand, fold and give a quarter turn.",
               "Rest 10 min and knead 2–3 min more, until the dough is smooth and elastic.",
@@ -254,7 +246,6 @@
             "src": [
               "d"
             ],
-            "il": "proof",
             "li": [
               "Shape into a ball, place it in a lightly oiled bowl and cover.",
               "Leave 1 h at room temperature. It should rise only a little."
@@ -268,7 +259,6 @@
               "d",
               "a"
             ],
-            "il": "balls",
             "li": [
               "Divide into {n} dough balls of {per} g (total dough {total} g).",
               "Ball with surface tension and seal the base well.",
@@ -289,7 +279,6 @@
             "src": [
               "d"
             ],
-            "il": "proof",
             "li": [
               "Take them out of the fridge about {outh} h before baking, still in the covered tub.",
               "Ready when: relaxed, slightly puffy, bubbles on the sides and soft to the touch."
@@ -303,7 +292,6 @@
             "src": [
               "d"
             ],
-            "il": "sauce",
             "li": [
               "Briefly blend or pass through a food mill {cans} can(s) of peeled tomatoes: a smooth, thick, uncooked sauce.",
               "Season with 4–5 g of salt per can and 1 teaspoon of dried oregano. Optional: a pinch of sugar and 1 grated garlic clove.",
@@ -319,7 +307,6 @@
             "src": [
               "a"
             ],
-            "il": "oven",
             "li": [
               "Top element at {top} °C, bottom element at {bottom} °C.",
               "If you have an infrared thermometer, measure the centre of the stone: the target is ~290–320 °C."
@@ -333,7 +320,6 @@
             "src": [
               "d"
             ],
-            "il": "open",
             "li": [
               "Flour the dough ball well on both sides.",
               "Press the centre with your fingertips, leaving about a 1 cm rim.",
@@ -349,7 +335,6 @@
             "src": [
               "d"
             ],
-            "il": "build",
             "li": [
               "Dust the peel with semolina and lay the disc on it.",
               "Spread {sauce} g of sauce in a thin layer, up to ~1 cm from the edge.",
@@ -364,7 +349,6 @@
             "src": [
               "a"
             ],
-            "il": "bake",
             "li": [
               "Turn 90–180° every ~1 min for an even bake.",
               "Done when: cheese melted with browned spots and a golden rim.",
@@ -379,7 +363,6 @@
             "src": [
               "d"
             ],
-            "il": "balls",
             "li": [
               "Rest 1–2 min on a wire rack so the base doesn't go soft.",
               "Finish with Parmesan, oregano and chili flakes.",
@@ -403,21 +386,8 @@
       ]
     }
   },
-  "scene": {
-    "tempo": {
-      "h": "Forty-eight hours *in the cold.*",
-      "p": "The dough matures slowly in the fridge. The schedule counts back from bake time."
-    },
-    "gesto": {
-      "h": "Watch first, *then do.*",
-      "p": "Every step animated with your quantities."
-    },
-    "fogo": {
-      "h": "Seven minutes *in the oven.*",
-      "p": "A gentler oven and a longer bake. Time it and read the bottom."
-    },
-    "fim": {
-      "h": "Fold it in half. *Eat it standing.*"
-    }
+  "tag": {
+    "knead": "push · fold · turn",
+    "rim": "~1 cm rim"
   }
 }

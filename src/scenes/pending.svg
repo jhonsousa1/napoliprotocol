@@ -1,0 +1,7 @@
+<!-- Composição provisória: só prateleira e janela. Usada por qualquer etapa ainda não pintada. -->
+<!--@far-->
+<use href="#win" x="1200" y="110" width="280" height="320"/>
+<use href="#shelf" x="190" y="150" width="400" height="150"/>
+<!--@sub-->
+<!--@fx-->
+<!--@near-->

@@ -1,0 +1,46 @@
+<!-- bench: a bancada de abertura (saco de farinha, jarra, balança) e o prólogo (ingredientes pesados). Estados: open, mise (blocos opcionais: pf, sugar). -->
+<!--@far-->
+<use href="#win" x="1200" y="110" width="280" height="320"/>
+<use href="#shelf" x="190" y="150" width="400" height="150"/>
+<g fill="#FFE3B0" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M770 160l150-26 40 250-150 34z"/><path d="M938 131l150-26 40 250-150 34z"/></g>
+<!--@sub-->
+<!-- contexto à esquerda: pote de colheres e lata -->
+<use href="#crock" x="330" y="622"/>
+<use href="#canister" x="480" y="622"/>
+<!-- contexto à direita: manjericão -->
+<use href="#basil" x="1388" y="622"/>
+<use href="#scraper" x="600" y="700"/>
+<!--if:open-->
+<ellipse cx="900" cy="630" rx="150" ry="10" fill="#fff" opacity=".22"/>
+<g filter="url(#paint)">
+<use href="#scale" x="730" y="622"/>
+<use href="#sack" x="940" y="622"/>
+
+<use href="#jug" x="1100" y="622"/>
+</g>
+<path d="M850 632q40-8 84 0M960 636q30-5 66 0" stroke="#fff" stroke-opacity=".5" stroke-width="5" stroke-linecap="round" fill="none"/>
+<!--/if-->
+<!--if:open+napolitana--><circle cx="940" cy="508" r="46" fill="#B8321A"/><text x="940" y="524" text-anchor="middle" style="font:600 46px var(--f-d);fill:#FFF3DD">00</text><!--/if-->
+<!--if:open+new-york--><rect x="894" y="466" width="92" height="84" rx="8" fill="#2F4A78"/><rect x="900" y="472" width="80" height="72" rx="5" fill="none" stroke="#F3E6C2" stroke-width="3"/><text x="940" y="524" text-anchor="middle" style="font:600 46px var(--f-d);fill:#FFF3DD">M</text><!--/if-->
+<!--if:mise-->
+<g transform="translate(950 614) scale(1.08) translate(-950 -614)"><path d="M656 598h590l22 28h-634z" fill="url(#gWood)"/><path d="M656 598h590" stroke="#fff" stroke-opacity=".3" stroke-width="3"/><rect x="634" y="626" width="634" height="12" rx="4" fill="#6E4526"/>
+<ellipse cx="950" cy="640" rx="330" ry="12" fill="url(#gCon)"/></g>
+<g filter="url(#paint)" transform="translate(950 614) scale(1.08) translate(-950 -614)">
+<g transform="translate(720 556) scale(.46)"><use href="#bowlB"/><path d="M-160 4q30-100 160-104q130 4 160 104q-160 34-320 0z" fill="url(#gFlour)"/><use href="#bowlF"/></g>
+<g transform="translate(842 612) scale(.78)"><use href="#jug"/></g>
+<use href="#salt" x="948" y="614"/>
+<use href="#oil" x="1040" y="614"/>
+<use href="#yeast" x="1124" y="614"/>
+</g>
+<!--/if-->
+<!--if:mise+pf-->
+<g transform="translate(950 614) scale(1.08) translate(-950 -614)"><g transform="translate(1203 614) scale(.52)"><use href="#jar"/></g></g>
+<!--/if-->
+<!--if:mise+sugar-->
+<g transform="translate(950 614) scale(1.08) translate(-950 -614)"><g transform="translate(1203 614) scale(.52)"><ellipse cy="3" rx="128" ry="16" fill="url(#gCon)"/><path d="M-92-112q92-18 184 0v90q0 18-18 18h-148q-18 0-18-18z" fill="url(#gFlour)"/><ellipse cy="-112" rx="92" ry="13" fill="#fff"/><path d="M-100-210q0-14 14-14h172q14 0 14 14v186q0 24-24 24h-152q-24 0-24-24z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".5" stroke-width="3"/><rect x="-108" y="-236" width="216" height="18" rx="9" fill="#E8EEF0" opacity=".85"/><path d="M78-198v150" stroke="#fff" stroke-opacity=".6" stroke-width="8" stroke-linecap="round"/></g>
+<!--/if-->
+<!--@fx-->
+<ellipse cx="960" cy="640" rx="420" ry="54" fill="url(#gLamp)" opacity=".16"/>
+<g fill="#FFF3D2"><circle class="bub" cx="800" cy="360" r="3"/><circle class="bub" cx="1010" cy="330" r="2.4" style="animation-delay:-1.8s"/><circle class="bub" cx="900" cy="400" r="2.6" style="animation-delay:-3s"/><circle class="bub" cx="1090" cy="380" r="2" style="animation-delay:-4s"/></g>
+<!--@near-->
+<g filter="url(#soft)"><use href="#cloth" x="1120" y="772"/></g>

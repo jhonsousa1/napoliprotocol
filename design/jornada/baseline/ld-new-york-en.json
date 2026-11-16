@@ -1,0 +1,117 @@
+{
+ "@context": "https://schema.org",
+ "@type": "Recipe",
+ "name": "Homemade New York-style pizza (48-hour cold-fermented dough)",
+ "description": "New York-style pizza recipe with strong flour, 63% hydration, olive oil and sugar, a 48-hour cold ferment, uncooked sauce and low-moisture mozzarella.",
+ "inLanguage": "en",
+ "url": "https://napoliprotocol.com/en/new-york/",
+ "image": [
+  "https://napoliprotocol.com/img/recipe-new-york-en-1x1.png",
+  "https://napoliprotocol.com/img/recipe-new-york-en-4x3.png",
+  "https://napoliprotocol.com/img/recipe-new-york-en-16x9.png"
+ ],
+ "author": {
+  "@type": "Person",
+  "name": "Jhonathan Sousa",
+  "url": "https://www.instagram.com/jhonsousa1/",
+  "sameAs": [
+   "https://www.instagram.com/jhonsousa1/"
+  ]
+ },
+ "datePublished": "2026-10-24",
+ "prepTime": "PT1H30M",
+ "cookTime": "PT7M",
+ "totalTime": "PT52H",
+ "recipeYield": [
+  "3",
+  "3 pizzas, ~32 cm"
+ ],
+ "recipeCategory": "Pizza",
+ "recipeCuisine": "American (New York)",
+ "keywords": "new york style pizza, new york pizza recipe, ny style pizza dough, new york pizza dough, homemade pizza, cold ferment pizza dough",
+ "recipeIngredient": [
+  "530 g Strong flour (Caputo Manitoba Oro)",
+  "334 g Filtered water",
+  "1.1 g Active dry yeast",
+  "8.0 g Sugar",
+  "11 g Salt",
+  "13 g Extra virgin olive oil",
+  "270 g seasoned uncooked tomato sauce",
+  "360 g shredded low-moisture mozzarella",
+  "Grated Parmesan, dried oregano and chili flakes to taste"
+ ],
+ "recipeInstructions": [
+  {
+   "@type": "HowToStep",
+   "name": "Mix the dough",
+   "text": "Dry-mix 530 g of flour, 1.1 g of yeast and 8.0 g of sugar. Dissolve 11 g of salt in 334 g of cold water (10–15 °C). Pour the water into the flour and mix until no dry flour is left. Cover and rest 20 min. The flour hydrates and the kneading gets shorter.",
+   "url": "https://napoliprotocol.com/en/new-york/#s1"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Work in the oil",
+   "text": "Add 13 g of olive oil a little at a time. Work it in with pincers and folds until the dough absorbs it all and stops slipping.",
+   "url": "https://napoliprotocol.com/en/new-york/#s2"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Knead",
+   "text": "Knead 8–10 min on the bench with no extra flour: push with the heel of your hand, fold and give a quarter turn. Rest 10 min and knead 2–3 min more, until the dough is smooth and elastic. Windowpane test: stretch a piece into a thin membrane. If it tears right away, knead a little more.",
+   "url": "https://napoliprotocol.com/en/new-york/#s3"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "First rest",
+   "text": "Shape into a ball, place it in a lightly oiled bowl and cover. Leave 1 h at room temperature. It should rise only a little.",
+   "url": "https://napoliprotocol.com/en/new-york/#s4"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Divide, ball and refrigerate",
+   "text": "Divide into 3 dough balls of 299 g (total dough 897 g). Ball with surface tension and seal the base well. Individual lightly oiled tubs, covered, in the fridge for about 48 h.",
+   "url": "https://napoliprotocol.com/en/new-york/#s5"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Temper the dough balls",
+   "text": "Take them out of the fridge about 2 h before baking, still in the covered tub. Ready when: relaxed, slightly puffy, bubbles on the sides and soft to the touch.",
+   "url": "https://napoliprotocol.com/en/new-york/#s6"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Prepare sauce and cheese",
+   "text": "Briefly blend or pass through a food mill 1 can(s) of peeled tomatoes: a smooth, thick, uncooked sauce. Season with 4–5 g of salt per can and 1 teaspoon of dried oregano. Optional: a pinch of sugar and 1 grated garlic clove. Coarsely shred 360 g of low-moisture mozzarella (the firm block kind). Set aside grated Parmesan, oregano and chili flakes for finishing.",
+   "url": "https://napoliprotocol.com/en/new-york/#s7"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Preheat the BIG HORN",
+   "text": "Top element at 350 °C, bottom element at 300 °C. If you have an infrared thermometer, measure the centre of the stone: the target is ~290–320 °C.",
+   "url": "https://napoliprotocol.com/en/new-york/#s8"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Stretch the dough",
+   "text": "Flour the dough ball well on both sides. Press the centre with your fingertips, leaving about a 1 cm rim. Lift the dough and stretch it over your knuckles, rotating, to ~30–32 cm. The disc ends up thin and even, with an almost translucent centre.",
+   "url": "https://napoliprotocol.com/en/new-york/#s9"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Top and launch",
+   "text": "Dust the peel with semolina and lay the disc on it. Spread 90 g of sauce in a thin layer, up to ~1 cm from the edge. Cover with 120 g of shredded mozzarella, almost to the edge. Give it a short sideways shake: the whole pizza must slide.",
+   "url": "https://napoliprotocol.com/en/new-york/#s10"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Bake and turn",
+   "text": "Turn 90–180° every ~1 min for an even bake. Done when: cheese melted with browned spots and a golden rim. Lift the edge with the peel: the base should be firm and spotted, not pale.",
+   "url": "https://napoliprotocol.com/en/new-york/#s11"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Finish and slice",
+   "text": "Rest 1–2 min on a wire rack so the base doesn't go soft. Finish with Parmesan, oregano and chili flakes. Cut into 6 to 8 slices. To eat, fold the slice in half.",
+   "url": "https://napoliprotocol.com/en/new-york/#s12"
+  }
+ ]
+}

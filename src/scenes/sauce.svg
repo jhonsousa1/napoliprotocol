@@ -1,0 +1,30 @@
+<!-- sauce: molho de tomate e queijo. Estados: napo (pelati esmagado, mozzarella), ny (molho liso, muçarela ralada, orégano, parmesão). -->
+<!--@far-->
+<use href="#win" x="1200" y="110" width="280" height="320"/>
+<use href="#shelf" x="190" y="150" width="400" height="150"/>
+<g fill="#FFD996" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M720 210l150-26 50 270-150 34z"/></g>
+<!--@sub-->
+<use href="#crock" x="340" y="622"/>
+<use href="#basil" x="1388" y="622"/>
+<ellipse cx="930" cy="628" rx="330" ry="22" fill="url(#gCon)"/>
+<g filter="url(#paint)">
+<use href="#can" x="720" y="622"/>
+<g transform="translate(930 520) scale(.5)"><use href="#bowlB"/><!--if:napo--><path d="M-170 6q20-70 170-76q150 6 170 76q-170 40-340 0z" fill="url(#gTom)"/><g fill="#9A2A12" opacity=".6"><ellipse cx="-60" cy="-26" rx="26" ry="10"/><ellipse cx="50" cy="-40" rx="30" ry="10"/><ellipse cx="100" cy="-14" rx="22" ry="8"/></g><!--/if--><!--if:ny--><path d="M-170 6q20-50 170-54q150 4 170 54q-170 40-340 0z" fill="#C9361A"/><path d="M-90-20q90-20 180 0" stroke="#fff" stroke-opacity=".4" stroke-width="12" fill="none" stroke-linecap="round"/><!--/if--><use href="#bowlF"/></g>
+<path d="M1030 612q-6-50 60-58h120q66 8 60 58z" fill="url(#gWood)"/>
+<!--if:napo-->
+<g fill="#FFFDF5"><ellipse cx="1076" cy="546" rx="30" ry="18"/><ellipse cx="1140" cy="540" rx="32" ry="20"/><ellipse cx="1196" cy="548" rx="26" ry="16"/><ellipse cx="1108" cy="566" rx="26" ry="14" opacity=".9"/></g>
+<g fill="url(#gLeaf)"><ellipse cx="1150" cy="522" rx="20" ry="11" transform="rotate(-20 1150 522)"/><ellipse cx="1100" cy="526" rx="16" ry="9" transform="rotate(30 1100 526)"/></g>
+<!--/if-->
+<!--if:ny-->
+<path d="M1050 560q40-40 120-40q50 6 70 40z" fill="#F3D27A"/><g fill="#E9B84E"><circle cx="1090" cy="548" r="8"/><circle cx="1150" cy="540" r="9"/><circle cx="1200" cy="552" r="7"/></g>
+<g fill="#5C7A3A"><circle cx="1120" cy="536" r="2"/><circle cx="1170" cy="544" r="2"/><circle cx="1090" cy="560" r="2"/><circle cx="1210" cy="540" r="2"/></g>
+<path d="M590 612l50-60 60 20-20 50z" fill="#F0D8A0"/>
+<!--/if-->
+</g>
+<!--@fx-->
+<ellipse cx="960" cy="640" rx="400" ry="50" fill="url(#gLamp)" opacity=".14"/>
+<!--if:napo-->
+<g fill="#E8A090"><circle class="drop" cx="1130" cy="570" r="3"/></g>
+<!--/if-->
+<!--@near-->
+<g filter="url(#soft)"><use href="#cloth" x="1100" y="772"/></g>

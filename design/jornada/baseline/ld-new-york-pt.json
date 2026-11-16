@@ -1,0 +1,117 @@
+{
+ "@context": "https://schema.org",
+ "@type": "Recipe",
+ "name": "Pizza estilo New York caseira (massa com 48 h de geladeira)",
+ "description": "Receita de pizza estilo New York com farinha forte, 63% de hidratação, azeite e açúcar, fermentação de 48 horas na geladeira, molho cru e muçarela de baixa umidade.",
+ "inLanguage": "pt",
+ "url": "https://napoliprotocol.com/pt/new-york/",
+ "image": [
+  "https://napoliprotocol.com/img/recipe-new-york-pt-1x1.png",
+  "https://napoliprotocol.com/img/recipe-new-york-pt-4x3.png",
+  "https://napoliprotocol.com/img/recipe-new-york-pt-16x9.png"
+ ],
+ "author": {
+  "@type": "Person",
+  "name": "Jhonathan Sousa",
+  "url": "https://www.instagram.com/jhonsousa1/",
+  "sameAs": [
+   "https://www.instagram.com/jhonsousa1/"
+  ]
+ },
+ "datePublished": "2026-10-24",
+ "prepTime": "PT1H30M",
+ "cookTime": "PT7M",
+ "totalTime": "PT52H",
+ "recipeYield": [
+  "3",
+  "3 pizzas de ~32 cm"
+ ],
+ "recipeCategory": "Pizza",
+ "recipeCuisine": "Americana (Nova York)",
+ "keywords": "pizza new york, pizza estilo new york, receita pizza new york, massa de pizza new york, pizza nova-iorquina, pizza caseira",
+ "recipeIngredient": [
+  "530 g Farinha forte (Caputo Manitoba Oro)",
+  "334 g Água filtrada",
+  "1,1 g Fermento biológico seco",
+  "8,0 g Açúcar",
+  "11 g Sal",
+  "13 g Azeite extravirgem",
+  "270 g de molho de tomate cru temperado",
+  "360 g de muçarela de baixa umidade ralada",
+  "Parmesão ralado, orégano seco e pimenta calabresa a gosto"
+ ],
+ "recipeInstructions": [
+  {
+   "@type": "HowToStep",
+   "name": "Misturar a massa",
+   "text": "Misture a seco 530 g de farinha, 1,1 g de fermento e 8,0 g de açúcar. Dissolva 11 g de sal em 334 g de água fria (10–15 °C). Junte a água à farinha e misture até não sobrar farinha seca. Tampe e descanse 20 min. A farinha hidrata e a sova fica mais curta.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s1"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Incorporar o azeite",
+   "text": "Adicione 13 g de azeite aos poucos. Incorpore com pinça e dobras até a massa absorver tudo e parar de escorregar.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s2"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Sovar",
+   "text": "Sove 8–10 min na bancada, sem farinha extra: empurre com a base da mão, dobre e gire um quarto de volta. Descanse 10 min e sove mais 2–3 min, até a massa ficar lisa e elástica. Teste da janela: estique um pedaço até formar uma membrana fina. Se rasgar logo, sove mais um pouco.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s3"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Primeiro descanso",
+   "text": "Forme uma bola, coloque numa tigela levemente untada e tampe. Deixe 1 h em temperatura ambiente. Ela deve crescer pouco.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s4"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Dividir, bolear e refrigerar",
+   "text": "Divida em 3 bolas de 299 g (massa total 897 g). Boleie com tensão na superfície e feche bem a base. Potes individuais levemente untados, tampados, na geladeira por cerca de 48 h.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s5"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Temperar as bolas",
+   "text": "Retire da geladeira cerca de 2 h antes de assar, ainda no pote tampado. Ponto: relaxada, um pouco inchada, com bolhas na lateral e macia ao toque.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s6"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Preparar molho e queijo",
+   "text": "Bata rapidamente ou passe na peneira 1 lata(s) de tomate pelado: molho liso e espesso, sem cozinhar. Tempere com 4–5 g de sal por lata e 1 colher de chá de orégano seco. Opcional: uma pitada de açúcar e 1 dente de alho ralado. Rale grosso 360 g de muçarela de baixa umidade (a firme, de bloco). Separe parmesão ralado, orégano e pimenta calabresa para finalizar.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s7"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Pré-aquecer o BIG HORN",
+   "text": "Superior em 350 °C, inferior em 300 °C. Se tiver termômetro infravermelho, meça o centro da pedra: o alvo é ~290–320 °C.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s8"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Abrir a massa",
+   "text": "Enfarinhe bem a bola dos dois lados. Pressione o centro com as pontas dos dedos, deixando cerca de 1 cm de borda. Levante a massa e estique sobre os nós dos dedos, girando, até ~30–32 cm. O disco fica fino e uniforme, com o centro quase translúcido.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s9"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Montar e lançar",
+   "text": "Polvilhe a pá com sêmola e coloque o disco. Espalhe 90 g de molho em camada fina, até ~1 cm da borda. Cubra com 120 g de muçarela ralada, quase até a borda. Faça um movimento curto para os lados: a pizza tem que deslizar inteira.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s10"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Assar e girar",
+   "text": "Gire 90–180° a cada ~1 min para assar por igual. Ponto: queijo derretido com manchas douradas e borda dourada. Levante a borda com a pá: o fundo deve estar firme e pintado, não pálido.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s11"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Finalizar e fatiar",
+   "text": "Deixe 1–2 min numa grade para o fundo não amolecer. Finalize com parmesão, orégano e pimenta calabresa. Corte em 6 a 8 fatias. Para comer, dobre a fatia ao meio.",
+   "url": "https://napoliprotocol.com/pt/new-york/#s12"
+  }
+ ]
+}

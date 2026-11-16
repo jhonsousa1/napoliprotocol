@@ -12,24 +12,21 @@
     }
   },
   "html": {
-    "hero.h1": "Protocolo da Pizza Napolitana",
-    "hero.version": "versão 1.0 · outubro 2026",
-    "hero.lead": "Receita de pizza napolitana feita à mão em três dias, calibrada pela primeira fornada. Ajuste os parâmetros; quantidades, cronograma e instruções se recalculam. A massa manda mais que o relógio.",
-    "kpi.pizzas": "pizzas de ~30–32 cm",
-    "kpi.preheat": "pré-aquecer 30–40 min",
-    "kpi.bottomSub": "principal ajuste desta fase",
     "panel.note": "Valores padrão = versão 1.0 consolidada após a primeira fornada. Ficam salvos neste navegador.",
     "panel.reset": "Restaurar v1.0",
-    "steps.sub": "Marque cada etapa ao concluir. As etiquetas indicam a origem: receita base, adaptação para o processo caseiro ou lição da 1ª fornada.",
-    "oven.sub": "Cronômetro de bancada e diagnóstico pelo resultado. A primeira pizza de cada sessão calibra o forno.",
     "oven.note": "Faixa dourada: 25–30 s, avalie se já dá para girar 180°. Faixa verde: 70–120 s, ponto esperado neste forno.",
     "rules.h2": "Regras da versão 1.0",
     "rules.sub": "O gargalo atual não é a massa. É a calibração térmica e a técnica de abertura e montagem.",
     "ing.flour": "Farinha Caputo Pizzeria 00",
-    "hero.eyebrow": "Caputo Pizzeria 00 · Pré-fermento · BIG HORN",
-    "kpi.balls": "Panetti",
     "recipe.balls": "Panetti",
-    "name": "Napolitana"
+    "name": "Napolitana",
+    "ask.h1": "Pizza *napolitana*: quanta vai sair?",
+    "ask.lead": "Duas respostas e a bancada se arma para você.",
+    "ask.sub": "3 dias · 64% de hidratação",
+    "cold.frio1.h": "Geladeira · noite",
+    "cold.frio1.p": "O pré-fermento trabalha no frio. O cronograma conta a partir da hora de assar.",
+    "cold.frio2.h": "Geladeira · um dia inteiro",
+    "cold.frio2.p": "Os panetti descansam tampados. Quanto mais frio, mais lenta a fermentação."
   },
   "rules": [
     "Não aumente a hidratação ainda.",
@@ -129,7 +126,6 @@
               "d",
               "a"
             ],
-            "il": "pref",
             "li": [
               "Misture a seco {pfFlour} g de farinha com {yeast} g de fermento.",
               "Adicione {pfWater} g de água e mexa até formar uma pasta grosseira, sem farinha seca.",
@@ -151,7 +147,6 @@
             "src": [
               "a"
             ],
-            "il": "mix",
             "li": [
               "Use o pré-fermento direto da geladeira, sem longo aquecimento.",
               "Dissolva {salt} g de sal em {initWater} g de água.",
@@ -169,7 +164,6 @@
               "d",
               "a"
             ],
-            "il": "bass",
             "li": [
               "Adicione os {bassWater} g de água restantes em pequenas porções.",
               "Só coloque mais quando a massa tiver absorvido a anterior.",
@@ -184,7 +178,6 @@
               "a",
               "l"
             ],
-            "il": "fold",
             "li": [
               "Alterne descanso e séries de dobras, sem sova agressiva.",
               "Pare quando a massa estiver lisa, arredondada, elástica e com tensão na superfície."
@@ -198,7 +191,6 @@
             "src": [
               "d"
             ],
-            "il": "oil",
             "li": [
               "Com a massa já estruturada, adicione {oil} g de azeite aos poucos.",
               "Incorpore com pinça e dobras até absorver por completo."
@@ -213,7 +205,6 @@
               "d",
               "a"
             ],
-            "il": "lam",
             "li": [
               "Descanse 3–5 min.",
               "Laminação: estenda a massa delicadamente em retângulo na bancada e dobre sobre si. Sem rolo e sem rasgar.",
@@ -228,7 +219,6 @@
             "src": [
               "d"
             ],
-            "il": "balls",
             "li": [
               "Divida em {n} panetti de {per} g (massa total {total} g).",
               "Boleie com tensão na superfície e feche bem a base.",
@@ -250,7 +240,6 @@
               "d",
               "l"
             ],
-            "il": "proof",
             "li": [
               "Retire da geladeira cerca de {outh} h antes de assar (referência: ~26 °C).",
               "Ponto: cresceu, muitas bolhas pequenas e algumas maiores, lateral aerada, mantém o formato, sem colapso, relaxado.",
@@ -265,7 +254,6 @@
             "src": [
               "l"
             ],
-            "il": "sauce",
             "li": [
               "Esmague com as mãos {cans} lata(s) de pelati (sem liquidificador, sem cozinhar).",
               "Tempere com 4–5 g de sal por lata. Sem açúcar.",
@@ -279,7 +267,6 @@
             "src": [
               "l"
             ],
-            "il": "oven",
             "li": [
               "Superior em {top} °C, inferior em {bottom} °C.",
               "Se tiver termômetro infravermelho, meça o centro da pedra e anote."
@@ -293,7 +280,6 @@
             "src": [
               "l"
             ],
-            "il": "open",
             "li": [
               "Um panetto por vez. Passe levemente na farinha.",
               "Pressione do centro para fora com as pontas dos dedos, empurrando o gás para a borda.",
@@ -309,7 +295,6 @@
             "src": [
               "l"
             ],
-            "il": "build",
             "li": [
               "{sauce} g de molho, {cheese} g de mozzarella espaçada, manjericão e um fio de azeite.",
               "Deixe áreas de tomate visíveis.",
@@ -324,7 +309,6 @@
             "src": [
               "l"
             ],
-            "il": "bake",
             "li": [
               "Aos 25–30 s, veja se já tem estrutura para girar 180°.",
               "Depois, pequenos ajustes de rotação até a cor uniforme.",
@@ -442,21 +426,9 @@
       ]
     }
   },
-  "scene": {
-    "tempo": {
-      "h": "Três dias, *uma noite.*",
-      "p": "O sabor vem do frio e da espera. O cronograma conta para trás a partir da hora de assar."
-    },
-    "gesto": {
-      "h": "Assista antes, *faça depois.*",
-      "p": "Cada etapa animada com as suas quantidades."
-    },
-    "fogo": {
-      "h": "Noventa segundos *decidem tudo.*",
-      "p": "A primeira pizza calibra o forno. Cronometre, leia a borda, ajuste a pedra."
-    },
-    "fim": {
-      "h": "Farinha, água, sal, *tempo.*"
-    }
+  "tag": {
+    "fold": "estique · dobre · descanse",
+    "lam": "sem rolo · sem rasgar",
+    "rim": "borda 1–1,5 cm"
   }
 }

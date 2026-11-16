@@ -1,0 +1,26 @@
+<!-- fridge: o interior da geladeira (a bancada vira a prateleira de baixo). Estados: jar, tray, pots. -->
+<!--@far-->
+<rect x="0" y="60" width="1600" height="12" fill="#fff" opacity=".35"/><rect x="0" y="72" width="1600" height="60" fill="url(#gCold)" opacity=".45"/>
+<g fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="4"><path d="M0 300h1600M0 470h1600"/></g><g fill="#fff" opacity=".18"><rect y="304" width="1600" height="14"/><rect y="474" width="1600" height="14"/></g>
+<circle cx="930" cy="190" r="62" fill="#F4FBFF"/><circle cx="930" cy="190" r="62" fill="none" stroke="#7E8A8D" stroke-width="6"/><path d="M930 190v-38M930 190l28 14" stroke="#2A3A44" stroke-width="5" stroke-linecap="round"/>
+<!--@sub-->
+<g opacity=".95"><rect x="330" y="372" width="64" height="96" rx="6" fill="#F4FBFF"/><path d="M330 396h64" stroke="#3F6F86" stroke-width="8"/><rect x="420" y="392" width="34" height="76" rx="8" fill="#9CC9DD"/><rect x="470" y="410" width="60" height="58" rx="10" fill="#E8D7A8"/></g>
+<g opacity=".95"><rect x="1300" y="396" width="90" height="72" rx="10" fill="#D4481A" opacity=".8"/><ellipse cx="1430" cy="440" rx="34" ry="28" fill="#78B05A"/></g>
+<ellipse cx="930" cy="626" rx="250" ry="20" fill="url(#gCon)"/>
+<!--if:jar-->
+<g filter="url(#paint)"><use href="#jar" x="930" y="622"/></g>
+<!--/if-->
+<!--if:tray-->
+<g filter="url(#paint)"><use href="#tray" x="930" y="632"/></g><g data-draw="balls"></g>
+<path d="M702 540q228-60 456 0l-10 78q-218 30-436 0z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+<!--/if-->
+<!--if:pots-->
+<g filter="url(#paint)"><use href="#pot" transform="translate(800 622) scale(1.1)"/><use href="#pot" transform="translate(930 622) scale(1.1)"/><use href="#pot" transform="translate(1060 622) scale(1.1)"/></g>
+<!--/if-->
+<!--@fx-->
+<ellipse class="pulse" cx="930" cy="110" rx="560" ry="120" fill="url(#gCold)" opacity=".55"/>
+<!--if:jar-->
+<g fill="#E6F6FF"><circle class="bub" cx="884" cy="560" r="5"/><circle class="bub" cx="952" cy="580" r="4" style="animation-delay:-1.4s"/><circle class="bub" cx="990" cy="552" r="6" style="animation-delay:-2.8s"/></g>
+<!--/if-->
+<!--@near-->
+<g filter="url(#soft)"><path d="M0 760q120-70 300-30l40 200H0z" fill="#CFE3EA"/><path d="M1400 800q80-50 200-20v140h-240z" fill="#E4EEF1"/></g>

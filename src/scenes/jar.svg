@@ -1,0 +1,23 @@
+<!-- jar: o pote do pré-fermento sob a luminária, com a quina da geladeira à direita. Estado: pref. -->
+<!--@far-->
+<use href="#shelf" x="170" y="150" width="400" height="150"/>
+<path d="M1060-40v104" stroke="#1d130c" stroke-width="5"/><path d="M1004 128q4-66 56-66t56 66z" fill="#2F4A40"/><path d="M1004 128h112" stroke="#FFE7AE" stroke-width="6" stroke-linecap="round"/>
+<circle class="pulse" cx="1060" cy="136" r="84" fill="url(#gLamp)"/>
+<!--@sub-->
+<use href="#canister" x="420" y="622"/>
+<use href="#crock" x="300" y="622"/>
+<rect x="1342" y="30" width="330" height="590" fill="url(#gFridge)"/><rect x="1342" y="30" width="22" height="590" fill="#F4FBFF"/><path d="M1366 30v590" stroke="#7E8A8D" stroke-width="3"/><rect x="1396" y="250" width="14" height="170" rx="7" fill="#7E8A8D"/>
+<ellipse cx="930" cy="624" rx="200" ry="20" fill="url(#gCon)"/>
+<g filter="url(#paint)">
+<use href="#jar" x="930" y="622"/>
+<g transform="translate(756 616) rotate(-8)"><rect x="-34" y="-84" width="68" height="84" rx="4" fill="#C9433A"/><rect x="-34" y="-56" width="68" height="28" fill="#F3E6C2"/><rect x="-22" y="-48" width="44" height="5" fill="#8D7A5A"/></g>
+</g>
+<path d="M962 540L1052 338" stroke="url(#gWood)" stroke-width="15" stroke-linecap="round"/><ellipse cx="1056" cy="330" rx="12" ry="18" fill="#B98556" transform="rotate(24 1056 330)"/>
+<path d="M1010 396v150" stroke="#CFE9FF" stroke-opacity=".5" stroke-width="5" stroke-linecap="round" fill="none"/>
+<!--@fx-->
+<path d="M1010 130h100l200 480H650z" fill="url(#gCone)" opacity=".3"/>
+<ellipse cx="960" cy="618" rx="340" ry="60" fill="url(#gLamp)" opacity=".5"/>
+<ellipse class="pulse" cx="1342" cy="330" rx="150" ry="320" fill="url(#gCold)" opacity=".7"/>
+<g fill="#FFF6E0"><circle class="bub" cx="884" cy="540" r="5"/><circle class="bub" cx="952" cy="560" r="4" style="animation-delay:-1.4s"/><circle class="bub" cx="990" cy="532" r="6" style="animation-delay:-2.8s"/></g>
+<!--@near-->
+<g filter="url(#soft)"><path d="M60 930q10-150 250-150t250 150z" fill="url(#gCer)"/><path d="M100 900q60-80 200-86" stroke="#fff" stroke-opacity=".4" stroke-width="12" fill="none" stroke-linecap="round"/></g>

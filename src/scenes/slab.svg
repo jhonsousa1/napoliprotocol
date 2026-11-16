@@ -1,0 +1,51 @@
+<!-- slab: a massa sobre a bancada enfarinhada, com notação de giz. Estados: fold, lam, knead, open. -->
+<!--@far-->
+<use href="#win" x="1200" y="110" width="280" height="320"/>
+<use href="#shelf" x="190" y="150" width="400" height="150"/>
+<g fill="#FFF3D2" style="opacity:var(--sunA)" filter="url(#soft)"><path d="M700 200l150-26 50 270-150 34z"/><path d="M868 171l150-26 50 270-150 34z"/></g>
+<!--@sub-->
+<use href="#crock" x="340" y="622"/>
+<use href="#basil" x="1388" y="622"/>
+<use href="#scraper" x="590" y="700"/>
+<ellipse cx="930" cy="624" rx="330" ry="30" fill="#fff" opacity=".42"/>
+<ellipse cx="930" cy="628" rx="250" ry="14" fill="url(#gCon)"/>
+<g filter="url(#paint)">
+<!--if:fold-->
+<path d="M780 618q-20-60 40-92q70-40 150-30q80 6 110 56q20 40-10 68q-140 22-290-2z" fill="url(#gDough)"/>
+<path d="M830 560q80-30 190 0" stroke="#C9A974" stroke-width="4" fill="none" opacity=".6"/>
+<!--/if-->
+<!--if:lam-->
+<path d="M740 614l30-56q150-34 320 0l50 56q-200 28-400 0z" fill="url(#gDough)"/>
+<path d="M930 568q60 6 120 40l-20 10q-60-30-120-34z" fill="#D7B985"/><path d="M780 580q150-26 290 4" stroke="#fff" stroke-opacity=".5" stroke-width="6" fill="none" stroke-linecap="round"/>
+<!--/if-->
+<!--if:knead-->
+<path d="M820 618q-30-70 50-96q60-24 120-6q80 24 70 96q-120 20-240 6z" fill="url(#gDough)"/>
+<path d="M880 560q60-20 110 4" stroke="#fff" stroke-opacity=".6" stroke-width="8" fill="none" stroke-linecap="round"/>
+<!--/if-->
+<!--if:open-->
+<ellipse cx="930" cy="596" rx="250" ry="44" fill="url(#gDough)"/><ellipse cx="930" cy="590" rx="212" ry="32" fill="#F3E3C0"/><ellipse cx="930" cy="590" rx="212" ry="32" fill="none" stroke="#D7B985" stroke-width="6" opacity=".7"/>
+<path d="M760 580q80-20 200-18" stroke="#fff" stroke-opacity=".5" stroke-width="7" fill="none" stroke-linecap="round"/>
+<!--/if-->
+</g>
+<g stroke="#FFFDF4" stroke-width="6" stroke-linecap="round" fill="none" opacity=".9">
+<!--if:fold-->
+<path d="M800 470q130-50 260 0"/><path d="M1040 462l24 10-14 20M1040 462l-4 22"/><path d="M1060 520q-20 30-70 40"/>
+<!--/if-->
+<!--if:lam-->
+<path d="M760 540q170-60 340 0" stroke-dasharray="1 14"/><path d="M1080 520l24 18-26 10"/>
+<!--/if-->
+<!--if:knead-->
+<path d="M810 520q100-60 220-10"/><path d="M1020 500l22 14-24 10"/><path d="M1030 580q40 10 40 30" stroke-dasharray="1 12"/>
+<!--/if-->
+<!--if:open-->
+<path d="M930 590l-170 -20M930 590l150 -30M930 590l-150 34M930 590l170 16" stroke-dasharray="1 14"/><path d="M700 560l-4-14M1160 600l6 12"/>
+<!--/if-->
+</g>
+<!--if:lam-->
+<g transform="translate(1208 622)"><ellipse cy="2" rx="46" ry="7" fill="url(#gCon)"/><path d="M-30-70h60l-14 34 14 34h-60l14-34z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".5" stroke-width="3"/><path d="M-22-6h44l-22-22z" fill="#E8D7A8"/><rect x="-34" y="-78" width="68" height="10" rx="4" fill="#8C5C35"/><rect x="-34" y="0" width="68" height="10" rx="4" fill="#8C5C35"/></g>
+<!--/if-->
+<!--@fx-->
+<ellipse cx="960" cy="640" rx="400" ry="50" fill="url(#gLamp)" opacity=".14"/>
+<g fill="#fff" opacity=".8"><circle class="bub" cx="850" cy="540" r="2.6"/><circle class="bub" cx="1010" cy="550" r="2.2" style="animation-delay:-2s"/></g>
+<!--@near-->
+<g filter="url(#soft)"><use href="#cloth" x="1100" y="772"/></g>

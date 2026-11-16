@@ -9,15 +9,7 @@
     "cap": {
       "pt": "Pizza napolitana saída do forno a lenha",
       "en": "Neapolitan pizza fresh from a wood-fired oven"
-    },
-    "ow": 5712,
-    "oh": 4284,
-    "crop_m": [
-      0,
-      0,
-      70,
-      100
-    ]
+    }
   },
   "brandi": {
     "w": 1400,
@@ -53,15 +45,7 @@
     "cap": {
       "pt": "O ponto: cornicione alto e aerado, com pequenas manchas escuras (leopard spotting)",
       "en": "The target: a tall, airy cornicione with small dark spots (leopard spotting)"
-    },
-    "ow": 4000,
-    "oh": 3000,
-    "crop_m": [
-      10,
-      0,
-      60,
-      100
-    ]
+    }
   },
   "peel": {
     "w": 1400,
@@ -109,15 +93,7 @@
     "cap": {
       "pt": "Fatias grandes no estilo New York",
       "en": "Big New York-style slices"
-    },
-    "ow": 4032,
-    "oh": 3024,
-    "crop_m": [
-      0,
-      37,
-      70,
-      63
-    ]
+    }
   },
   "nyfold": {
     "w": 1050,
@@ -129,21 +105,7 @@
     "cap": {
       "pt": "A fatia dobrada ao meio, do jeito nova-iorquino",
       "en": "The slice folded in half, the New York way"
-    },
-    "ow": 3024,
-    "oh": 4032,
-    "crop_d": [
-      0,
-      28,
-      100,
-      56
-    ],
-    "crop_m": [
-      0,
-      0,
-      100,
-      100
-    ]
+    }
   },
   "lombardi": {
     "w": 1400,

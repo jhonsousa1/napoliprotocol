@@ -13,25 +13,20 @@
   },
   "html": {
     "name": "New York",
-    "hero.eyebrow": "Farinha forte · 48 h de geladeira · BIG HORN",
-    "hero.h1": "Protocolo da Pizza New York",
-    "hero.version": "versão 0.1 · em teste · outubro 2026",
-    "hero.lead": "Receita de pizza estilo New York feita à mão em casa: massa firme com azeite e um toque de açúcar, 48 horas na geladeira e forno mais brando. Consolidada a partir de receitas clássicas e ainda não testada no BIG HORN; os valores serão revistos após a primeira fornada.",
-    "kpi.balls": "Bolas",
-    "kpi.pizzas": "pizzas de ~32 cm",
-    "kpi.preheat": "pré-aquecer 30–40 min",
-    "kpi.bottomSub": "pedra a ~290–320 °C",
     "panel.note": "Valores padrão = versão 0.1, consolidada de receitas clássicas e ainda não testada. Ficam salvos neste navegador.",
     "panel.reset": "Restaurar v0.1",
     "recipe.sub": "Quantidades totais da massa. Massa direta: todos os ingredientes entram na mesma mistura.",
     "recipe.balls": "Bolas",
     "ing.flour": "Farinha forte (Caputo Manitoba Oro)",
-    "steps.sub": "Marque cada etapa ao concluir. As etiquetas indicam a origem: técnica clássica de New York ou adaptação para o processo à mão e o BIG HORN.",
-    "oven.sub": "Cronômetro de bancada e diagnóstico pelo resultado. A New York assa mais devagar: 5 a 7 minutos, girando a cada minuto.",
     "oven.note": "Faixa dourada: 1–1,5 min, hora da primeira volta. Faixa verde: 5–7 min, ponto esperado.",
     "rules.h2": "Regras da versão 0.1",
     "rules.sub": "Ponto de partida, ainda sem fornada. Depois do primeiro teste, estas regras viram lições.",
-    "sched.panh": "Bolas na geladeira"
+    "sched.panh": "Bolas na geladeira",
+    "ask.h1": "Pizza *New York*: quanta vai sair?",
+    "ask.lead": "Duas respostas e a bancada se arma para você.",
+    "ask.sub": "48 h de geladeira · 63% de hidratação",
+    "cold.frio.h": "Geladeira · dois dias",
+    "cold.frio.p": "As bolas descansam tampadas e a massa amadurece no frio."
   },
   "rules": [
     "Use farinha forte, com 13% de proteína ou mais.",
@@ -210,7 +205,6 @@
               "d",
               "a"
             ],
-            "il": "mix",
             "li": [
               "Misture a seco {flour} g de farinha, {yeast} g de fermento e {sugar} g de açúcar.",
               "Dissolva {salt} g de sal em {water} g de água fria (10–15 °C).",
@@ -226,7 +220,6 @@
             "src": [
               "a"
             ],
-            "il": "oil",
             "li": [
               "Adicione {oil} g de azeite aos poucos.",
               "Incorpore com pinça e dobras até a massa absorver tudo e parar de escorregar."
@@ -239,7 +232,6 @@
             "src": [
               "d"
             ],
-            "il": "fold",
             "li": [
               "Sove 8–10 min na bancada, sem farinha extra: empurre com a base da mão, dobre e gire um quarto de volta.",
               "Descanse 10 min e sove mais 2–3 min, até a massa ficar lisa e elástica.",
@@ -254,7 +246,6 @@
             "src": [
               "d"
             ],
-            "il": "proof",
             "li": [
               "Forme uma bola, coloque numa tigela levemente untada e tampe.",
               "Deixe 1 h em temperatura ambiente. Ela deve crescer pouco."
@@ -268,7 +259,6 @@
               "d",
               "a"
             ],
-            "il": "balls",
             "li": [
               "Divida em {n} bolas de {per} g (massa total {total} g).",
               "Boleie com tensão na superfície e feche bem a base.",
@@ -289,7 +279,6 @@
             "src": [
               "d"
             ],
-            "il": "proof",
             "li": [
               "Retire da geladeira cerca de {outh} h antes de assar, ainda no pote tampado.",
               "Ponto: relaxada, um pouco inchada, com bolhas na lateral e macia ao toque."
@@ -303,7 +292,6 @@
             "src": [
               "d"
             ],
-            "il": "sauce",
             "li": [
               "Bata rapidamente ou passe na peneira {cans} lata(s) de tomate pelado: molho liso e espesso, sem cozinhar.",
               "Tempere com 4–5 g de sal por lata e 1 colher de chá de orégano seco. Opcional: uma pitada de açúcar e 1 dente de alho ralado.",
@@ -319,7 +307,6 @@
             "src": [
               "a"
             ],
-            "il": "oven",
             "li": [
               "Superior em {top} °C, inferior em {bottom} °C.",
               "Se tiver termômetro infravermelho, meça o centro da pedra: o alvo é ~290–320 °C."
@@ -333,7 +320,6 @@
             "src": [
               "d"
             ],
-            "il": "open",
             "li": [
               "Enfarinhe bem a bola dos dois lados.",
               "Pressione o centro com as pontas dos dedos, deixando cerca de 1 cm de borda.",
@@ -349,7 +335,6 @@
             "src": [
               "d"
             ],
-            "il": "build",
             "li": [
               "Polvilhe a pá com sêmola e coloque o disco.",
               "Espalhe {sauce} g de molho em camada fina, até ~1 cm da borda.",
@@ -364,7 +349,6 @@
             "src": [
               "a"
             ],
-            "il": "bake",
             "li": [
               "Gire 90–180° a cada ~1 min para assar por igual.",
               "Ponto: queijo derretido com manchas douradas e borda dourada.",
@@ -379,7 +363,6 @@
             "src": [
               "d"
             ],
-            "il": "balls",
             "li": [
               "Deixe 1–2 min numa grade para o fundo não amolecer.",
               "Finalize com parmesão, orégano e pimenta calabresa.",
@@ -403,21 +386,8 @@
       ]
     }
   },
-  "scene": {
-    "tempo": {
-      "h": "Quarenta e oito horas *de frio.*",
-      "p": "A massa amadurece devagar na geladeira. O cronograma conta para trás a partir da hora de assar."
-    },
-    "gesto": {
-      "h": "Assista antes, *faça depois.*",
-      "p": "Cada etapa animada com as suas quantidades."
-    },
-    "fogo": {
-      "h": "Sete minutos *de forno.*",
-      "p": "Forno mais brando, assamento mais longo. Cronometre e leia o fundo."
-    },
-    "fim": {
-      "h": "Dobre ao meio. *Coma em pé.*"
-    }
+  "tag": {
+    "knead": "empurre · dobre · gire",
+    "rim": "borda ~1 cm"
   }
 }

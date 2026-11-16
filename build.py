@@ -3,10 +3,11 @@
 
     python3 build.py            # páginas + sitemap + robots + raiz
     python3 build.py --images   # também regenera as imagens (og, receita, ícones)
-    python3 build.py --scene    # regenera as derivadas do cenário (AVIF/WebP/JPG) a partir de src/photos/originals/
+    python3 build.py --sizes    # também imprime o peso do SVG de cada ladrilho
 
 Fontes:
-  src/template.html, src/style.css, src/illustrations.js   layout e lógica
+  src/template.html, src/style.css, src/app.js, src/journey.js   layout e lógica
+  src/scenes/defs.svg, src/scenes/<composição>.svg          ilustração da jornada (ver README)
   src/i18n/<lang>.json                                     textos comuns do site
   src/recipes/<id>/recipe.json                             configuração da receita (padrões, cronograma, timer…)
   src/recipes/<id>/<lang>.json                             textos da receita
@@ -16,7 +17,6 @@ JSON-LD da receita já estejam no HTML que o Google lê.
 URLs: /<lang>/ para a receita principal (slug vazio) e /<lang>/<slug>/ para as demais.
 """
 import html, json, re, shutil, subprocess, sys, tempfile
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -127,135 +127,11 @@ def head(l, c, d):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(m["ogTitle"])}">
 <meta name="twitter:description" content="{esc(m["description"])}">
-<meta name="twitter:image" content="{og}">
-{scene_preload(c)}'''
+<meta name="twitter:image" content="{og}">'''
 
-
-
-# ---------- cenário: contrato, CSS da câmera e markup ----------
-TAKES = ('hero', 'tempo', 'gesto', 'fogo', 'fim')
-MOBILE_MQ = '(max-width: 820px)'
-EASE_CAM = 'var(--ease-cam)'
-
-
-def scene_photos(c):
-    """Fotos do cenário na ordem do primeiro uso (a do herói primeiro)."""
-    out = []
-    for t in TAKES:
-        k = c['scene']['takes'][t]['photo']
-        if k not in out: out.append(k)
-    return out
-
-
-def take_vars(c, take, key, v):
-    """Variáveis CSS (foco convertido para a variante servida) da tomada `take` da foto `key`."""
-    t = c['scene']['takes'][take][v]; p = PHOTOS[key]
-    crop = p.get('crop_d', CROP_FULL) if v == 'd' else p['crop_m']
-    fx, fy = (t['f'][0] - crop[0]) / crop[2], (t['f'][1] - crop[1]) / crop[3]
-    f = lambda x: f'{x:.4f}'.rstrip('0').rstrip('.') or '0'
-    css = f'--fx:{f(fx)};--fy:{f(fy)};--ax:{f(t["a"][0] / 100)};--ay:{f(t["a"][1] / 100)};--s:{f(t["s"])};'
-    if t.get('bleed') == 'l': css += '--txmin:-99999px;--txmax:99999px;--bl:1;'
-    if t.get('bleed') == 't': css += '--tymin:-99999px;--tymax:99999px;--bt:1;'
-    return css, (fx, fy)
-
-
-def scene_validate(c):
-    sc, name, man = c.get('scene'), c['id'], load_manifest()
-    assert sc and set(sc['takes']) == set(TAKES), f'{name}: scene.takes deve ter exatamente {TAKES}'
-    for t in TAKES:
-        tk = sc['takes'][t]; key = tk['photo']
-        assert key in PHOTOS, f'{name}/{t}: foto {key} não está em photos.json'
-        p = PHOTOS[key]
-        for fld in ('author', 'license', 'source', 'ow', 'oh', 'crop_m'):
-            assert p.get(fld), f'{name}/{t}: {key} sem "{fld}" em photos.json'
-        assert tk['d']['s'] <= 1.30, f'{name}/{t}: desktop com s={tk["d"]["s"]} > 1,30 (nitidez: arquivo máximo 3200 px)'
-        for v in ('d', 'm'):
-            _, (fx, fy) = take_vars(c, t, key, v)
-            assert 0 <= fx <= 1 and 0 <= fy <= 1, f'{name}/{t}/{v}: foco fora do recorte ({fx:.2f}, {fy:.2f})'
-            assert key in man and v in man[key] and man[key][v]['files'], f'{name}/{t}: {key} sem derivadas no manifesto (rode python3 build.py --scene)'
-            for fmt, W in (('avif', None), ('jpg', JPG_W[v])):
-                fs = [f for f in man[key][v]['files'] if f['fmt'] == fmt and (W is None or f['w'] == W)]
-                assert fs, f'{name}/{t}: {key}-{v} sem {fmt}'
-                for f in fs: assert (SCENE_OUT / f'{key}-{v}-{f["w"]}.{fmt}').exists(), f'arquivo ausente: {key}-{v}-{f["w"]}.{fmt}'
-    for o in RECIPES:
-        if o['id'] != c['id']: assert o['scene']['takes']['hero']['photo'] != sc['takes']['hero']['photo'], f'{name}: foto do herói igual à de {o["id"]}'
-
-
-def scene_css(c):
-    man, takes = load_manifest(), c['scene']['takes']
-    photos = scene_photos(c)
-    sel = lambda t, k: (f'.scene:not([data-take]) .ph-{k},.scene[data-take={t}] .ph-{k}' if t == 'hero' else f'.scene[data-take={t}] .ph-{k}')
-    on = f'opacity:1;transition:translate 1.4s {EASE_CAM},scale 1.4s {EASE_CAM},opacity .7s linear'
-    out = []
-    for v in ('d', 'm'):
-        shrink = {}
-        rules = [f'.ph-{k}{{--A:{man[k][v]["A"]}}}' for k in photos]
-        for t in TAKES:
-            for k in photos:
-                if takes[t]['photo'] == k: use, extra = t, on
-                else:   # foto inativa: já no enquadramento da próxima tomada em que aparece (ou da última anterior)
-                    nxt = [x for x in TAKES[TAKES.index(t) + 1:] if takes[x]['photo'] == k] or [x for x in TAKES[:TAKES.index(t)] if takes[x]['photo'] == k][-1:]
-                    use, extra = nxt[0], ''
-                rules.append(f'{sel(t, k)}{{{take_vars(c, use, k, v)[0]}{extra}}}')
-                if v == 'm' and takes[use]['m']['s'] < 1: shrink.setdefault(int(man[k]['m']['A'] * takes[use]['m']['s'] * 100) + 1, []).append(sel(t, k))
-        for thr, sels in sorted(shrink.items()):   # s < 1 só cobre a largura em telas estreitas: acima desta proporção a imagem volta a "cover"
-            rules.append(f'@media (min-aspect-ratio:{thr}/100){{\n' + '\n'.join(f'{x}{{--s:1}}' for x in sels) + '\n}')
-        out.append('\n'.join(rules) if v == 'd' else f'@media {MOBILE_MQ}{{\n' + '\n'.join(rules) + '\n}')
-    return '<style id="scene-css">\n' + '\n'.join(out) + '\n</style>'
-
-
-def scene_sizes(man, key, v):
-    return 'max(100vw, calc(100vh * %s))' % man[key]['m']['A'] if v == 'm' else '100vw'
-
-
-def scene_sources(key, v):
-    """Lista de (type, srcset, sizes, media) da variante; usada pelo <picture> e pelo preload (mesma função: não podem divergir)."""
-    man = load_manifest(); files = man[key][v]['files']; out = []
-    for fmt in ('avif', 'jpg'):
-        fs = [f for f in files if f['fmt'] == fmt]
-        if not fs: continue
-        out.append((None if fmt == 'jpg' else f'image/{fmt}', ', '.join(f'/img/scene/{key}-{v}-{f["w"]}.{fmt} {f["w"]}w' for f in fs),
-                    scene_sizes(man, key, v), MOBILE_MQ if v == 'm' else None))
-    return out
-
-
-def scene_picture(key, lazy):
-    man = load_manifest(); ss = 'data-srcset' if lazy else 'srcset'
-    h = ['<picture>']
-    for v in ('m', 'd'):
-        for typ, srcset, sizes, media in scene_sources(key, v):
-            h.append('<source' + (f' media="{media}"' if media else '') + (f' type="{typ}"' if typ else '') + f' {ss}="{srcset}" sizes="{sizes}">')
-    j = next(f for f in man[key]['d']['files'] if f['fmt'] == 'jpg')
-    jp = f'/img/scene/{key}-d-{j["w"]}.jpg'
-    h.append(f'<img {"data-src" if lazy else "src"}="{jp}" width="{j["w"]}" height="{j["h"]}" alt="" decoding="async"' + ('' if lazy else ' fetchpriority="high"') + '>')
-    h.append('</picture>')
-    return ''.join(h)
-
-
-def scene_markup(c):
-    photos = scene_photos(c)
-    return '<div class="scene" aria-hidden="true">' + ''.join(f'<div class="ph ph-{k}">{scene_picture(k, lazy=i > 0)}</div>' for i, k in enumerate(photos)) + '</div>'
-
-
-def scene_preload(c):
-    key, man = c['scene']['takes']['hero']['photo'], load_manifest()
-    out = []
-    for v, media in (('m', '(max-width: 820px)'), ('d', '(min-width: 821px)')):
-        typ, srcset, sizes, _ = scene_sources(key, v)[0]
-        assert typ == 'image/avif'
-        out.append(f'<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="{media}" imagesrcset="{srcset}" imagesizes="{sizes}">')
-    return '\n'.join(out)
 
 
 emph = lambda s: re.sub(r'\*(.+?)\*', r'<em>\1</em>', esc(s))
-
-
-def win_html(c, l, d, take, chap):
-    sc = d['scene'][take]; key = c['scene']['takes'][take]['photo']; hero = c['scene']['takes']['hero']['photo']
-    other = key != hero
-    return (f'<section class="win" data-take="{take}"' + (f' data-photo="{key}"' if other else '') + f' aria-label="{esc(d["html"][chap])}">'
-            f'<div class="wrap"><p class="pill">{esc(d["html"][chap])}</p><p class="win-h">{emph(sc["h"])}</p><p class="win-p">{esc(sc["p"])}</p></div>'
-            + (credit_html(key, l, 'credit') if other else '') + '</section>')
 
 
 def timer_markup(t):
@@ -269,35 +145,243 @@ def timer_markup(t):
     return zone('turn', *t['turn']) + zone('ok', *t['ok']), ''.join(ticks), clock0
 
 
+# ---------- jornada: ladrilhos, cenas e etiquetas ----------
+SCENES = SRC / 'scenes'
+MOMENTS = ('dusk', 'eve', 'night', 'morning', 'noon', 'golden', 'ember', 'cold')
+LAYERS = ('far', 'sub', 'fx', 'near')
+CALC_KEYS = {'flour', 'water', 'salt', 'oil', 'yeast', 'sugar', 'total', 'pfFlour', 'pfWater', 'pfTotal', 'finFlour', 'finWater',
+             'saltWater', 'initWater', 'bassWater', 'n', 'per', 'alt', 'sauceTotal', 'cheeseTotal', 'cans', 'canSalt', 'top', 'bottom',
+             'fridge', 'pfh', 'panh', 'outh', 'sauce', 'cheese', 'hydPct', 'saltPct', 'oilPct', 'yeastPct', 'sugarPct', 'w'}
+TILE_KB, TILE_EL, PAGE_KB = 14, 260, 240        # orçamento de SVG: por ladrilho (já filtrado), elementos e página inteira
+STRICT_UNUSED = True                             # E8: chave de texto sem uso vira erro
+USED = {'html': {l: set() for l in LANGS}, 'tag': set()}
+STATS = []                                       # (receita, idioma, ladrilho, bytes, elementos), para --sizes
+IF_RE = re.compile(r'<!--if:(!?[\w\-+ !]+?)-->(.*?)<!--/if-->', re.S)
+
+
+def kspan(text, c):
+    """Escapa o texto e troca {k} por <span class="v" data-k="k"> (o JS preenche); {size} vira o literal da receita."""
+    s = esc(text).replace('{size}', esc(c['targetSize']))
+    def r(m):
+        assert m.group(1) in CALC_KEYS, f'chave de cálculo desconhecida: {{{m.group(1)}}} em "{text}"'
+        return f'<span class="v" data-k="{m.group(1)}"></span>'
+    return re.sub(r'\{(\w+)\}', r, s)
+
+
+def scene_tokens(c, state):
+    """Tokens ativos de um ladrilho: o estado, o id da receita, as flags (pf, sugar, wsplit) e as combinações estado+flag."""
+    f = c['features']
+    flags = {k for k, v in (('pf', f['preferment']), ('sugar', f['sugar']), ('wsplit', f['waterSplit'])) if v}
+    return {state, c['id']} | flags | {f'{state}+{x}' for x in flags | {c['id']}}
+
+
+def scene_file(comp):
+    f = SCENES / f'{comp}.svg'
+    assert f.exists(), f'cena ausente: {f}'
+    return f.read_text('utf-8')
+
+
+def validate_fragment(comp, raw):
+    assert ' id="' not in raw and " id='" not in raw, f'{comp}.svg: fragmentos não podem ter id='
+    for m in LAYERS: assert f'<!--@{m}-->' in raw, f'{comp}.svg: falta a marca <!--@{m}-->'
+    depth = 0
+    for m in re.finditer(r'<!--(/?)if(?::[^>]*)?-->', raw):
+        depth += -1 if m.group(1) else 1
+        assert 0 <= depth <= 1, f'{comp}.svg: blocos <!--if--> aninhados ou sem abertura'
+    assert depth == 0, f'{comp}.svg: bloco <!--if--> sem fechamento'
+
+
+def ring_svg(c):
+    t = c['timer']; mx = t['max']; per = 60 if mx >= 300 else 30
+    base = f'<path d="M731 289A260 260 0 0 1 1129 289" pathLength="{mx}" fill="none" '
+    zone = lambda rng, col: base + f'stroke="{col}" stroke-width="18" stroke-dasharray="{rng[1] - rng[0]} {mx}" stroke-dashoffset="-{rng[0]}"/>'
+    return (base + 'stroke="#1a0b06" stroke-opacity=".5" stroke-width="18" stroke-linecap="round"/>' + zone(t['turn'], '#F2B544') + zone(t['ok'], '#7CC489')
+            + base + f'stroke="#1a0b06" stroke-opacity=".55" stroke-width="22" stroke-dasharray="1.4 {per - 1.4}" stroke-dashoffset=".7"/>'
+            + base + f'class="ring-fill" stroke="#FFF6E4" stroke-width="7" stroke-linecap="round" stroke-dasharray="0 {mx}"/>')
+
+
+def scene_layers(comp, state, tokens, c):
+    """Fragmento da composição já filtrado: dict {far, sub, fx, near} só com os blocos ativos."""
+    raw = scene_file(comp); validate_fragment(comp, raw)
+    if state is not None and '<!--if:' in raw:
+        assert any(state in re.split(r'\s+', m.group(1).lstrip('!')) for m in IF_RE.finditer(raw)), f'{comp}.svg: estado "{state}" não aparece em nenhum <!--if:-->'
+    def pick(m):
+        ok = any((t[1:] not in tokens) if t.startswith('!') else (t in tokens) for t in m.group(1).split())
+        return m.group(2) if ok else ''
+    txt = IF_RE.sub(pick, raw)
+    parts = re.split(r'<!--@(far|sub|fx|near)-->', txt)
+    layers = {k: '' for k in LAYERS}
+    for k, v in zip(parts[1::2], parts[2::2]): layers[k] += v
+    for k, v in layers.items():
+        v = re.sub(r'<!--.*?-->', '', v, flags=re.S)
+        v = v.replace('<g data-draw="ring"></g>', f'<g data-draw="ring">{ring_svg(c)}</g>')
+        layers[k] = re.sub(r'>\s+<', '><', re.sub(r'\s*\n\s*', ' ', v)).strip()
+    assert layers['sub'].count('filter="url(#paint)"') <= 1, f'{comp}/{state}: mais de um #paint no assunto'
+    return layers
+
+
+def tags_html(tags, d, c, rt=False):
+    out, vis_m = [], 0
+    for t in tags:
+        assert t['t'] in d['tag'], f'{c["id"]}/{d["meta"]["htmlLang"]}: etiqueta "{t["t"]}" ausente do dicionário tag'
+        USED['tag'].add(t['t'])
+        x, y = t['at']; style = f'--xd:{x};--yd:{y}'; attrs = ''
+        if 'm' in t and t['m'] is None: attrs = ' data-m="0"'
+        else:
+            vis_m += 1
+            if t.get('m'): style += f';--xm:{t["m"][0]};--ym:{t["m"][1]}'
+        out.append(f'<span class="tag" style="{style}"{attrs}>{kspan(d["tag"][t["t"]], c)}</span>')
+    assert vis_m <= 3, f'{c["id"]}: mais de 3 etiquetas visíveis no mobile'
+    if rt: out.append('<span class="tag rt" style="--xd:860;--yd:226"><b class="tt">0:00</b></span>')
+    return f'<div class="tags" aria-hidden="true">{"".join(out)}</div>' if out else ''
+
+
+def figure_html(tid, cfg, prev_light, d, c, l, timer=False):
+    assert cfg['light'] in MOMENTS, f'{tid}: luz "{cfg["light"]}" desconhecida'
+    layers = scene_layers(cfg['scene'], cfg['state'], scene_tokens(c, cfg['state']), c)
+    body = ''.join(f'<svg class="art {k}" viewBox="0 0 1600 900" focusable="false">{layers[k]}</svg>' for k in LAYERS if layers[k])
+    svg_bytes = sum(len(layers[k].encode()) for k in LAYERS)
+    els = sum(len(re.findall(r'<[a-zA-Z]', layers[k])) for k in LAYERS)
+    STATS.append((c['id'], l, tid, svg_bytes, els))
+    assert svg_bytes <= TILE_KB * 1024 and els <= TILE_EL, f'{c["id"]}/{l}/{tid}: orçamento de SVG estourado ({svg_bytes / 1024:.1f} KB, {els} elementos; máx. {TILE_KB} KB e {TILE_EL})'
+    tags = tags_html(cfg.get('tags', []), d, c, rt=timer)
+    return (f'<figure class="scene l-{cfg["light"]}" aria-hidden="true" data-scene="{cfg["scene"]}/{cfg["state"]}" '
+            f'style="--wl:var(--w-{prev_light});--bl:var(--b-{prev_light})">{body}{tags}</figure>')
+
+
+def validate_journey(c, l, d):
+    j, steps = c['journey'], [s for day in d['js']['steps'] for s in day['items']]
+    ids = [s['id'] for s in steps]
+    assert set(ids) == set(j['steps']), f'{c["id"]}/{l}: etapas de js.steps e journey.steps diferem: {set(ids) ^ set(j["steps"])}'
+    n_ev = len(c['sched'])
+    cfgs = [('abertura', j['open']), ('mise', j['mise'])] + [(i, j['steps'][i]) for i in ids] + [(k['id'], k) for k in j['cold']]
+    for tid, cfg in cfgs:
+        assert cfg['light'] in MOMENTS, f'{tid}: luz inválida'
+        assert (SCENES / f'{cfg["scene"]}.svg').exists(), f'{tid}: cena {cfg["scene"]} não existe'
+        if 'ev' in cfg: assert cfg['ev'] in range(n_ev), f'{tid}: ev {cfg["ev"]} fora do cronograma'
+        for t in cfg.get('tags', []):
+            assert t['t'] in d['tag'], f'{c["id"]}/{l}/{tid}: etiqueta {t["t"]} ausente'
+    for k in j['cold']:
+        assert k['after'] in ids and f'cold.{k["id"]}.h' in d['html'] and f'cold.{k["id"]}.p' in d['html'], f'{c["id"]}/{l}: interlúdio {k["id"]} incompleto'
+        assert k['big'] in CALC_KEYS
+    assert sum(1 for s in j['steps'].values() if s.get('timer')) == 1, f'{c["id"]}: exatamente uma etapa com timer'
+
+
+def build_journey(c, l, d, h):
+    """Gera os ladrilhos (abertura, prólogo, etapas, interlúdios), trilho, doca e índice. h(k) lê html.* e registra o uso."""
+    j, days = c['journey'], d['js']['steps']
+    steps = [(day, s) for day in days for s in day['items']]
+    cold_after = {k['after']: k for k in j['cold']}
+    seq = []                                    # ordem de leitura de todos os ladrilhos
+    seq.append(dict(id='abertura', kind='open', title=h('ask.go'), cfg=j['open']))
+    seq.append(dict(id='mise', kind='mise', title=h('mise.h'), cfg=j['mise']))
+    n = 0
+    for day, s in steps:
+        n += 1
+        seq.append(dict(id=s['id'], kind='step', n=n, title=s['t'], day=f'{day["day"]} · {day["when"]}', dayhead=day, s=s, cfg=j['steps'][s['id']]))
+        if s['id'] in cold_after:
+            k = cold_after[s['id']]
+            seq.append(dict(id=k['id'], kind='cold', title=h(f'cold.{k["id"]}.h'), day=f'{day["day"]} · {day["when"]}', cfg=k))
+    NS = n
+    prev_light, out, first_of_day = j['open']['light'], [], set()
+    figs = {}
+    for e in seq:
+        e['fig'] = figure_html(e['id'], e['cfg'], prev_light, d, c, l, timer=bool(e['cfg'].get('timer')))
+        prev_light = e['cfg']['light']
+    # ordem de leitura para os links "Próxima"
+    nxt = {e['id']: (seq[i + 1]['id'] if i + 1 < len(seq) else None) for i, e in enumerate(seq)}
+    zones, scale, clock0 = timer_markup(c['timer'])
+    html_steps, cur_li = [], None
+    seen_day = None
+    li = []
+    for i, e in enumerate(seq):
+        if e['kind'] == 'step':
+            s, day = e['s'], e['dayhead']
+            if li: html_steps.append('<li>' + ''.join(li) + '</li>'); li = []
+            if seen_day != day['day']:
+                li.append(f'<h2 class="day-h sr">{esc(day["day"])} · {esc(day["when"])}</h2>'); seen_day = day['day']
+            last = (i == len(seq) - 1)
+            nid = nxt[e['id']]
+            nxt_link = (f'<a class="next" href="#{nid}">{esc(h("step.next"))} ↓</a>' if nid else
+                        f'<a class="next" href="#epilogo">{esc(h("step.how"))} ↓</a>')
+            if nid is None: nxt_link = f'<a class="next" href="#epilogo">{esc(h("step.how"))} ↓</a>'
+            chips = f'<span class="chip t">{kspan(s["time"], c)}</span>' + ''.join(f'<span class="chip">{esc(d["js"]["src"][x])}</span>' for x in s['src'])
+            tip = ''
+            if s.get('tip'):
+                w = s['tip'].startswith('warn|'); tip = f'<p class="tip{" warn" if w else ""}">{kspan(s["tip"][5:] if w else s["tip"], c)}</p>'
+            timer = ''
+            if e['cfg'].get('timer'):
+                timer = (f'<div class="timer"><p class="eyebrow">{esc(h("oven.timer"))}</p><div class="clock" id="clock" role="timer">{clock0}</div>'
+                         f'<div><div class="track" aria-hidden="true">{zones}<div class="head" id="head"></div></div><div class="scale" aria-hidden="true">{scale}</div></div>'
+                         f'<p class="status" id="tStatus" aria-live="polite"></p><div class="timer-btns"><button class="btn primary" type="button" id="tStart"></button>'
+                         f'<button class="btn" type="button" id="tReset">{esc(h("oven.reset"))}</button></div><p class="fine">{esc(h("oven.note"))}</p></div>')
+            cls = 'tile step' + (' last' if i == len(seq) - 1 else '')
+            li.append(
+                f'<article class="{cls}" id="{e["id"]}" aria-labelledby="h-{e["id"]}" data-ev="{e["cfg"]["ev"]}" data-n="{e["n"]:02d}" data-title="{esc(e["title"])}" data-day="{esc(e["day"])}">'
+                f'{e["fig"]}<div class="card"><p class="eyebrow">{esc(day["day"])} · {esc(h("step.label"))} {e["n"]:02d} <span class="when" data-when="{e["cfg"]["ev"]}"></span><span class="now" hidden>{esc(d["js"]["now"])}</span></p>'
+                f'<h3 id="h-{e["id"]}">{esc(s["t"])}</h3><div class="chips">{chips}</div>{timer}'
+                f'<ul class="ins">{"".join(f"<li>{kspan(x, c)}</li>" for x in s["li"])}</ul>{tip}'
+                f'<div class="foot"><label class="done"><input type="checkbox" data-step="{e["id"]}"><span>{esc(h("step.done"))}</span></label>{nxt_link}</div></div></article>')
+        elif e['kind'] == 'cold':
+            k = e['cfg']; nid = nxt[e['id']]
+            li.append(
+                f'<aside class="tile cold" id="{k["id"]}" aria-labelledby="h-{k["id"]}" data-ev="{k["ev"]}" data-title="{esc(e["title"])}" data-day="{esc(e["day"])}">'
+                f'{e["fig"]}<div class="card"><p class="eyebrow">{esc(h("cold.eb"))} <span class="when" data-when="{k["ev"]}"></span><span class="now" hidden>{esc(d["js"]["now"])}</span></p>'
+                f'<h3 id="h-{k["id"]}">{esc(e["title"])}</h3><p class="big">≈ <span class="v" data-k="{k["big"]}"></span> {esc(h("cold.unit"))} <small>· <span class="v" data-k="fridge"></span> °C</small></p>'
+                f'<p>{esc(h(f"cold.{k["id"]}.p"))}</p><p class="left" data-left="{k["ev"]}"></p>'
+                f'<div class="foot"><a class="next" href="#adj-agenda" data-open-adj="agenda">{esc(h("cold.bake"))} ↗</a><a class="next" href="#{nid}">{esc(h("cold.next"))} ↓</a></div></div></aside>')
+    if li: html_steps.append('<li>' + ''.join(li) + '</li>')
+    rail = ''.join(f'<a href="#{e["id"]}" data-for="{e["id"]}" aria-label="{e["n"]:02d} · {esc(e["title"])}"><span aria-hidden="true">{e["n"]:02d} · {esc(e["title"])}</span></a>' for e in seq if e['kind'] == 'step')
+    idx = ''.join(f'<li><a href="#{e["id"]}" data-for="{e["id"]}">'
+                  + (f'<b>{e["n"]:02d}</b>' if e['kind'] == 'step' else '<b>·</b>') + f'<span>{esc(e["title"])}</span></a></li>' for e in seq if e['kind'] != 'open')
+    meta = [dict(id=e['id'], kind=e['kind'], n=e.get('n', 0), title=e['title'], ev=e['cfg'].get('ev', -1), day=e.get('day', '')) for e in seq]
+    return dict(open=seq[0]['fig'], mise=seq[1]['fig'], journey=''.join(html_steps), rail=rail, idx=idx, meta=meta, N=NS)
+
+
+def gallery_html(c, l):
+    ph = c.get('photos', {}).get('gallery', [])
+    return ''.join(figure(k, l, 'ref') for k in ph)
+
+
 def page(l, c):
     d = merge(I18N[l], RTEXT[c['id']][l])
     tpl = (SRC / 'template.html').read_text('utf-8')
-    js = dict(d['js'])
-    js['photos'] = {sid: figure(k, l, 'ref') for sid, k in c.get('photos', {}).get('steps', {}).items()}
-    js['cfg'] = {k: c[k] for k in ('id', 'targetSize', 'scenes', 'def', 'ls', 'features', 'warn', 'sched', 'timer', 'ld')}
-    js['ld'] = dict(js['ld'], url=url(l, c), inLanguage=HREFLANG[l],
-                    images=[img(f'recipe-{prefix(c)}{l}-{r}.png') for r in ('1x1', '4x3', '16x9')])
+    for k in re.findall(r'\{\{([\w.]+)\}\}', tpl): USED['html'][l].add(k)      # chaves do template contam como usadas, mesmo em blocos {{#pf}} que esta receita não usa
+    def h(k):
+        assert k in d['html'], f'{c["id"]}/{l}: chave html.{k} ausente'
+        USED['html'][l].add(k); return d['html'][k]
+    validate_journey(c, l, d)
+    jr = build_journey(c, l, d, h)
+    js = {k: v for k, v in d['js'].items() if k not in ('steps', 'src')}
+    js['cfg'] = {k: c[k] for k in ('id', 'targetSize', 'def', 'ls', 'features', 'warn', 'sched', 'timer', 'ld')}
+    js['cfg']['journey'] = jr['meta']
+    js['cfg']['recipes'] = [dict(id=o['id'], path=path(l, o), ls=o['ls'], name=RTEXT[o['id']][l]['html']['name'], w=o['def']['w']) for o in RECIPES]
+    js['sched'] = d['js']['sched']
+    js['ld'] = dict(js['ld'], url=url(l, c), inLanguage=HREFLANG[l], images=[img(f'recipe-{prefix(c)}{l}-{r}.png') for r in ('1x1', '4x3', '16x9')])
     assert len(js['sched']['ev']) == len(c['sched']), f'{c["id"]}/{l}: cronograma'
     globe = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" fill="none" stroke="currentColor" stroke-width="2"/></svg>'
     menu = (f'<details class="lang"><summary aria-label="{esc(d["html"]["nav.lang"])}">{globe}{d["meta"]["short"]}</summary>'
             f'<ul>{"".join(lang_links(l, c, "menu"))}</ul></details>')
-    f = c['features']
-    scene_validate(c)
-    tk = c['scene']['takes']; fin_key = tk['fim']['photo']; name = d['html']['name']
-    h1 = esc(d['html']['hero.h1']).replace(esc(name), f'<em>{esc(name)}</em>', 1)
-    assert '<em>' in h1, f'{c["id"]}/{l}: nome "{name}" não aparece no h1'
+    f = c['features']; name = d['html']['name']
+    h1 = emph(h('ask.h1'))
+    assert re.search(re.escape(esc(name)), h1, re.I), f'{c["id"]}/{l}: nome "{name}" não aparece no h1'
     about = c.get('photos', {}).get('about', [])
     zones, scale, clock0 = timer_markup(c['timer'])
+    recs = ''.join(
+        f'<a class="rec" href="{path(l, o)}" data-recipe="{o["id"]}" data-ls="{o["ls"]}"{" aria-current=\"page\"" if o["id"] == c["id"] else ""}>'
+        f'<b>{esc(RTEXT[o["id"]][l]["html"]["name"])}</b><span>{esc(RTEXT[o["id"]][l]["html"]["ask.sub"])}</span></a>' for o in RECIPES)
     rep = {
         'HTML_LANG': d['meta']['htmlLang'], 'LANG': l, 'HEAD': head(l, c, d), 'LANG_MENU': menu,
         'FOOT_LANGS': ''.join(lang_links(l, c, 'foot')),
-        'RECIPE_TABS': recipe_links(l, c, 'tabs'), 'FOOT_RECIPES': recipe_links(l, c, 'foot'),
-        'NSTEPS': str(sum(len(day['items']) for day in js['steps'])),
+        'FOOT_RECIPES': recipe_links(l, c, 'foot'), 'RECIPE_CARDS': recs,
+        'NSTEPS': str(jr['N']), 'VERSION': esc(c['version']),
         'REF_W': esc(c['ref']['w']), 'REF_SALT': esc(c['ref']['salt']), 'TARGET': esc(c['targetSize']),
         'SPLIT_CLASS': '' if f['waterSplit'] else ' two',
-        'TIMER_ZONES': zones, 'TIMER_SCALE': scale, 'CLOCK0': clock0,
-        'CSS': re.sub(r'\n\s*', '\n', re.sub(r'/\*.*?\*/', '', (SRC / 'style.css').read_text('utf-8'), flags=re.S)).strip(), 'IL': (SRC / 'illustrations.js').read_text('utf-8'),
-        'PLAYER_JS': (SRC / 'player.js').read_text('utf-8').replace('</', '<\\/'), 'PLAYER_STAGE': (SRC / 'player-stage.svg').read_text('utf-8'),
+        'CSS': re.sub(r'\n\s*', '\n', re.sub(r'/\*.*?\*/', '', (SRC / 'style.css').read_text('utf-8'), flags=re.S)).strip(),
+        'DEFS': re.sub(r'>\s+<', '><', re.sub(r'<!--.*?-->', '', (SCENES / 'defs.svg').read_text('utf-8'), flags=re.S)).strip(),
+        'APP_JS': (SRC / 'app.js').read_text('utf-8').replace('</', '<\\/'), 'JOURNEY_JS': (SRC / 'journey.js').read_text('utf-8').replace('</', '<\\/'),
+        'OPEN_FIGURE': jr['open'], 'MISE_FIGURE': jr['mise'], 'JOURNEY': jr['journey'], 'RAIL': jr['rail'], 'IDX': jr['idx'],
+        'ASK_H1': h1, 'EPI_H': emph(h('epi.h')), 'GALLERY': gallery_html(c, l),
         'RULES': ''.join(f'<li>{esc(r)}</li>' for r in d['rules']),
         'GLOSSARY': ''.join(f'<div class="card"><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in d['glossary']),
         'T_JSON': json.dumps(js, ensure_ascii=False).replace('</', '<\\/'),
@@ -305,15 +389,9 @@ def page(l, c):
         'ABOUT_PIZZA': ''.join(f'<p>{esc(x)}</p>' for x in d['about']['pizza']),
         'ABOUT_MAIN': figure(about[0], l, 'aph', eager=False) if about else '',
         'ABOUT_PHOTOS': ''.join(figure(k, l, 'aph') for k in about[1:]),
-        'SCENE': scene_markup(c), 'SCENE_CSS': scene_css(c), 'HTML_STYLE': f'style="--scrim-base:{c["scene"]["scrim"]}"',
-        'SCENE_JS': (SRC / 'scene.js').read_text('utf-8').replace('</', '<\\/'),
-        'H1': h1, 'HERO_CREDIT': credit_html(tk['hero']['photo'], l, 'credit'),
-        'WIN_TEMPO': win_html(c, l, d, 'tempo', 'chap.2'), 'WIN_GESTO': win_html(c, l, d, 'gesto', 'chap.3'), 'WIN_FOGO': win_html(c, l, d, 'fogo', 'chap.4'),
-        'FIN_H': emph(d['scene']['fim']['h']), 'FIN_PHOTO_ATTR': f'data-photo="{fin_key}"' if fin_key != tk['hero']['photo'] else '',
-        'FIN_CREDIT': credit_html(fin_key, l, 'credit-foot', d['html']['foot.bgphoto']),
         'ABOUT_FACTS': ''.join(f'<div class="fact"><b>{esc(v)}</b><span>{esc(t)}</span></div>' for v, t in d['about']['facts']),
+        'TIMER_ZONES': zones, 'TIMER_SCALE': scale, 'CLOCK0': clock0,
     }
-    # blocos condicionais {{#pf}}…{{/pf}}: só entram no HTML se a receita usa o recurso
     on = {'pf': f['preferment'], 'sugar': f['sugar'], 'wsplit': f['waterSplit']}
     block = re.compile(r'\{\{#(\w+)\}\}((?:(?!\{\{#).)*?)\{\{/\1\}\}', re.S)
     while block.search(tpl):
@@ -327,25 +405,42 @@ def page(l, c):
         missing.append(k); return m.group(0)
     out = re.sub(r'\{\{([\w.]+)\}\}', sub, tpl)
     assert not missing, f'{c["id"]}/{l}: chaves ausentes {missing}'
+    USED['html'][l].update(('ask.fine', 'ask.sub', 'name', 'photo', 'nav.lang'))
+    ask_fine = d['html']['ask.fine'].replace('{v}', c['version'])
+    out = out.replace('@@ASKFINE@@', esc(ask_fine))
+    ids = re.findall(r' id="([^"]+)"', out)
+    dup = sorted({i for i in ids if ids.count(i) > 1})
+    assert not dup, f'{c["id"]}/{l}: ids duplicados {dup}'
+    jbody = re.search(r'<ol class="journey">.*?</ol>', out, re.S).group(0)
+    assert '<img' not in jbody, f'{c["id"]}/{l}: <img> dentro de .journey'
+    page_svg = sum(len(m.encode()) for m in re.findall(r'<svg class="art.*?</svg>', out, re.S)) + len(rep['DEFS'].encode())
+    assert page_svg <= PAGE_KB * 1024, f'{c["id"]}/{l}: {page_svg / 1024:.0f} KB de SVG inline (máx. {PAGE_KB} KB)'
     return out
 
 
 def prerender(p):
     r = chrome(['--dump-dom', p.as_uri() + '?prerender=1'])
     dom = r.stdout
-    assert 'id="ld-recipe"' in dom and 'class="step"' in dom, f'pré-render falhou: {p}\n{r.stderr[-500:]}'
+    assert 'id="ld-recipe"' in dom and 'class="tile step' in dom, f'pré-render falhou: {p}\n{r.stderr[-500:]}'
     # estado que depende do relógio do build: deixa o JS do visitante preencher
     dom = re.sub(r'(<html[^>]*?) data-theme="\w+"', r'\1', dom, count=1)
-    def swap(name, pat, rep, flags=re.S):
+    dom = re.sub(r'(<html[^>]*?) class="[^"]*"', r'\1', dom, count=1)
+    def swap(name, pat, rep, flags=re.S, n=1):
         nonlocal dom
-        dom, n = re.subn(pat, rep, dom, count=1, flags=flags)
-        assert n == 1, f'pré-render: trecho dinâmico não encontrado ({name}) em {p}'
+        dom, k = re.subn(pat, rep, dom, count=0 if n == 0 else n, flags=flags)
+        assert k >= 1 and (n == 0 or k == n), f'pré-render: trecho dinâmico não encontrado ({name}) em {p}'
     swap('timeline', r'<ol class="tl" id="timeline"[^>]*>.*?</ol>', '<ol class="tl" id="timeline"></ol>')
-    swap('scn', r'<g id="scn">.*?</svg>', '<g id="scn"></g></svg>')   # cena animada: o JS do visitante desenha
-    swap('nextEv', r'<a class="next" id="nextEv" href="#cronograma"[^>]*>.*?</a>', '<a class="next" id="nextEv" href="#cronograma" hidden=""></a>')
+    swap('nextEv', r'<a class="next" id="nextEv" href="#adj-agenda"[^>]*>.*?</a>', '<a class="next" id="nextEv" href="#adj-agenda" hidden=""></a>')
     swap('schedWarn', r'<div class="alert" id="schedWarn"[^>]*>.*?</div>', '<div class="alert" id="schedWarn" hidden=""></div>')
-    assert 'class="step done"' not in dom, f'pré-render: etapa marcada como concluída em {p}'
-    assert not re.search(r'id="assistir"[^>]*\shidden', dom), f'pré-render: #assistir ficou oculto (GSAP não carregou?) em {p}'
+    swap('when', r'(<span class="when" data-when="\d+">)[^<]*(</span>)', r'\1\2', n=0)
+    swap('left', r'(<p class="left" data-left="\d+">)[^<]*(</p>)', r'\1\2', n=0, flags=0)
+    swap('mini', r'<span class="mini" id="mini"[^>]*>.*?</span>', '<span class="mini" id="mini" hidden=""></span>')
+    assert 'class="tile step done' not in dom, f'pré-render: etapa marcada como concluída em {p}'
+    assert not re.search(r'<html[^>]*class=', dom), f'pré-render: <html> com class em {p}'
+    assert not re.search(r'class="[^"]*\blive\b', dom), f'pré-render: ladrilho .live em {p}'
+    assert not re.search(r'<figure class="scene[^>]*style="[^"]*transform', dom), f'pré-render: transform em .scene em {p}'
+    assert not re.search(r'data-when="\d+">[^<]', dom), f'pré-render: data-when preenchido em {p}'
+    assert not re.search(r'class="now"(?![^>]*hidden)', dom), f'pré-render: selo "agora" visível em {p}'
     return dom if dom.lstrip().lower().startswith('<!doctype') else '<!doctype html>\n' + dom
 
 
@@ -520,87 +615,27 @@ def leak_check(c, l, html_text):
     assert not found, f'{c["id"]}/{l}: textos da napolitana vazaram: {found}'
 
 
-# ---------- cenário: derivadas das fotos de fundo ----------
-SCENE_DIR = SRC / 'photos' / 'scene'            # só o manifest.json fica versionado aqui
-SCENE_OUT = OUT / 'img' / 'scene'               # única cópia versionada das derivadas (gerada por --scene)
-SRGB = '/System/Library/ColorSync/Profiles/sRGB Profile.icc'
-WIDTHS = {'d': (1280, 1920, 2560, 3200), 'm': (800, 1200, 1600)}
-JPG_W = {'d': 1280, 'm': 800}                   # um único JPG de fallback por foto/recorte
-CAPS = {('d', 1920): 190, ('d', 3200): 320, ('m', 1200): 120, ('m', 1600): 180}   # tetos de AVIF, em KB
-CROP_FULL = [0, 0, 100, 100]
-
-
-def run(cmd):
-    r = subprocess.run(cmd, capture_output=True, text=True)
-    assert r.returncode == 0, f'{cmd[0]} falhou: {r.stderr[-300:]}'
-
-
-def scene_images():
-    """Gera docs/img/scene/<chave>-<d|m>-<largura>.{avif,jpg} e src/photos/scene/manifest.json (ver README)."""
-    SCENE_DIR.mkdir(parents=True, exist_ok=True); SCENE_OUT.mkdir(parents=True, exist_ok=True)
-    mpath = SCENE_DIR / 'manifest.json'
-    manifest = json.loads(mpath.read_text('utf-8')) if mpath.exists() else {}
-    warns = []
-    for k, p in PHOTOS.items():
-        if 'crop_m' not in p: continue
-        orig = SRC / 'photos' / 'originals' / f'{k}-orig.jpg'
-        if not orig.exists():
-            print(f'  skip {k}: original ausente'); continue
-        q = p.get('q', {}); qa, qj = q.get('avif', 48), q.get('jpg', 58)
-        ow, oh = p['ow'], p['oh']
-        manifest[k] = {}
-        with tempfile.TemporaryDirectory() as tmp:
-            tmp = Path(tmp)
-            run(['sips', '-m', SRGB, '-s', 'format', 'png', str(orig), '--out', str(tmp / 'srgb.png')])   # três originais são Display P3
-            jobs = []
-            for v in ('d', 'm'):
-                crop = p.get('crop_d', CROP_FULL) if v == 'd' else p['crop_m']
-                x, y, w, h = round(crop[0] / 100 * ow), round(crop[1] / 100 * oh), round(crop[2] / 100 * ow), round(crop[3] / 100 * oh)
-                manifest[k][v] = {'crop': crop, 'A': round(w / h, 4), 'files': []}
-                for W in WIDTHS[v]:
-                    if W > w: continue          # não amplia
-                    jobs.append((v, W, (x, y, w, h)))
-            def work(job):
-                v, W, (x, y, w, h) = job; base = tmp / f'{v}-{W}'; out = SCENE_OUT / f'{k}-{v}-{W}'
-                run(['cwebp', '-quiet', '-lossless', '-z', '0', '-exact', '-crop', str(x), str(y), str(w), str(h), '-resize', str(W), '0',
-                     str(tmp / 'srgb.png'), '-o', str(base) + '.webp'])
-                run(['dwebp', '-quiet', str(base) + '.webp', '-o', str(base) + '.png'])
-                H = round(W * h / w); files = []
-                run(['avifenc', '-q', str(qa), '-s', '4', '-y', '420', '-j', '4', str(base) + '.png', str(out) + '.avif']); files.append((W, H, 'avif'))
-                if W == JPG_W[v]:
-                    run(['sips', '-s', 'format', 'jpeg', '-s', 'formatOptions', str(qj), str(base) + '.png', '--out', str(out) + '.jpg']); files.append((W, H, 'jpg'))
-                return v, files
-            with ThreadPoolExecutor(3) as ex:
-                for v, files in ex.map(work, jobs):
-                    for W, H, fmt in files:
-                        b = (SCENE_OUT / f'{k}-{v}-{W}.{fmt}').stat().st_size
-                        manifest[k][v]['files'].append({'w': W, 'h': H, 'fmt': fmt, 'bytes': b})
-        for v in ('d', 'm'):
-            manifest[k][v]['files'].sort(key=lambda f: (f['fmt'], f['w']))
-    mpath.write_text(json.dumps(manifest, indent=1) + '\n', 'utf-8')
-    print(f'  {"foto":9}{"var":4}{"w":6}' + ''.join(f'{f:>9}' for f in ('avif', 'jpg')))
-    total = 0
-    for k, vs in manifest.items():
-        for v, e in vs.items():
-            for W in sorted({f['w'] for f in e['files']}):
-                row = {f['fmt']: f['bytes'] for f in e['files'] if f['w'] == W}; total += sum(row.values())
-                print(f'  {k:9}{v:4}{W:<6}' + ''.join(f'{row[f] // 1024:>8}K' if f in row else f'{"":>9}' for f in ('avif', 'jpg')))
-                cap = CAPS.get((v, W))
-                if cap and row['avif'] > cap * 1024: warns.append(f'{k} {v}-{W}: AVIF {row["avif"] // 1024} KB > {cap} KB (baixe "q":{{"avif":...}} em photos.json)')
-    print(f'  total: {total / 1048576:.1f} MB')
-    for w in warns: print('  AVISO', w)
-
-
-def load_manifest():
-    mpath = SCENE_DIR / 'manifest.json'
-    return json.loads(mpath.read_text('utf-8')) if mpath.exists() else {}
-
+def report_unused():
+    """Toda chave de html.* e de tag.* precisa ser usada (template ou build). Até a E8 só avisa."""
+    problems = []
+    for l in LANGS:
+        have = set(I18N[l]['html'])
+        for c in RECIPES: have |= set(RTEXT[c['id']][l]['html'])
+        un = sorted(k for k in have if k not in USED['html'][l] and not k.startswith('about.'))
+        if un: problems.append(f'{l}: html sem uso: {un}')
+        tags = set(I18N[l].get('tag', {}))
+        for c in RECIPES: tags |= set(RTEXT[c['id']][l].get('tag', {}))
+        un = sorted(tags - USED['tag'])
+        if un: problems.append(f'{l}: tag sem uso: {un}')
+    if problems:
+        msg = 'chaves de texto sem uso:\n  ' + '\n  '.join(problems)
+        assert not STRICT_UNUSED, msg
+        print('  AVISO', msg[:1500])
 
 
 def main():
     OUT.mkdir(exist_ok=True)
     if '--images' in sys.argv: images()
-    if '--scene' in sys.argv: scene_images()
     (OUT / 'img' / 'photos').mkdir(parents=True, exist_ok=True)
     for f in (SRC / 'photos').glob('*.jpg'): shutil.copy2(f, OUT / 'img' / 'photos' / f.name)
     for c in RECIPES:
@@ -618,6 +653,10 @@ def main():
             d = OUT / old / c['slug'] if c['slug'] else OUT / old
             d.mkdir(parents=True, exist_ok=True)
             (d / 'index.html').write_text(retired_page(path(new, c)), 'utf-8')
+    report_unused()
+    if '--sizes' in sys.argv:
+        print(f'  {"receita":11}{"l":3}{"ladrilho":10}{"KB":>7}{"elem":>6}')
+        for rid, lg, tid, b, e in STATS: print(f'  {rid:11}{lg:3}{tid:10}{b / 1024:7.1f}{e:6}')
     (OUT / 'index.html').write_text(root_page(), 'utf-8')
     (OUT / '404.html').write_text(not_found(), 'utf-8')
     (OUT / 'sitemap.xml').write_text(sitemap(), 'utf-8')

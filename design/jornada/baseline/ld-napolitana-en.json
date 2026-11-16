@@ -1,0 +1,123 @@
+{
+ "@context": "https://schema.org",
+ "@type": "Recipe",
+ "name": "Homemade Neapolitan pizza with preferment (3-day protocol)",
+ "description": "Neapolitan pizza recipe with Caputo Pizzeria 00 flour, a preferment, 64% hydration and long cold fermentation, with a 3-day schedule and oven guide.",
+ "inLanguage": "en",
+ "url": "https://napoliprotocol.com/en/",
+ "image": [
+  "https://napoliprotocol.com/img/recipe-en-1x1.png",
+  "https://napoliprotocol.com/img/recipe-en-4x3.png",
+  "https://napoliprotocol.com/img/recipe-en-16x9.png"
+ ],
+ "author": {
+  "@type": "Person",
+  "name": "Jhonathan Sousa",
+  "url": "https://www.instagram.com/jhonsousa1/",
+  "sameAs": [
+   "https://www.instagram.com/jhonsousa1/"
+  ]
+ },
+ "datePublished": "2026-10-01",
+ "prepTime": "PT3H",
+ "cookTime": "PT2M",
+ "totalTime": "PT52H",
+ "recipeYield": [
+  "5",
+  "5 pizzas, 30–32 cm"
+ ],
+ "recipeCategory": "Pizza",
+ "recipeCuisine": "Italian (Neapolitan)",
+ "keywords": "neapolitan pizza, neapolitan pizza recipe, neapolitan pizza dough, pizza napoletana, preferment, poolish, homemade pizza, Caputo Pizzeria",
+ "recipeIngredient": [
+  "800 g Caputo Pizzeria 00 flour",
+  "512 g Filtered water",
+  "0.8 g Active dry yeast",
+  "23 g Salt",
+  "12 g Extra virgin olive oil",
+  "325 g crushed peeled tomatoes with salt",
+  "350 g mozzarella",
+  "Fresh basil leaves",
+  "Extra virgin olive oil to taste"
+ ],
+ "recipeInstructions": [
+  {
+   "@type": "HowToStep",
+   "name": "Make the preferment",
+   "text": "Dry-mix 400 g of flour with 0.8 g of yeast. Add 400 g of water and stir into a rough paste with no dry flour left. Cover. Leave 1 h at room temperature. Refrigerate (7 °C) for about 20 h.",
+   "url": "https://napoliprotocol.com/en/#s1"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Initial mix",
+   "text": "Use the preferment straight from the fridge, without a long warm-up. Dissolve 23 g of salt in 94 g of water. Add 400 g of flour and the salted water to the preferment. Mix until all the flour is hydrated. It doesn't need to be smooth. Cover and rest. Time develops the gluten for you.",
+   "url": "https://napoliprotocol.com/en/#s2"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Bassinage",
+   "text": "Add the remaining 18 g of water in small portions. Only add more once the dough has absorbed the previous one. If the dough gets sticky, don't add flour.",
+   "url": "https://napoliprotocol.com/en/#s4"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Develop the gluten",
+   "text": "Alternate rests and sets of folds, without aggressive kneading. Stop when the dough is smooth, rounded, elastic and has surface tension.",
+   "url": "https://napoliprotocol.com/en/#s5"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Oil last",
+   "text": "With the dough already structured, add 12 g of olive oil a little at a time. Work it in with pincers and folds until fully absorbed.",
+   "url": "https://napoliprotocol.com/en/#s6"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Post-oil rest and lamination",
+   "text": "Rest 3–5 min. Lamination: gently stretch the dough into a rectangle on the bench and fold it over itself. No rolling pin, no tearing. Shape into a ball. Rest 15 min. Do gentle folds and rest for about 1 h.",
+   "url": "https://napoliprotocol.com/en/#s7"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Divide and ball",
+   "text": "Divide into 5 dough balls of 270 g (total dough 1,348 g). Ball with surface tension and seal the base well. Covered container, in the fridge for about 24 h.",
+   "url": "https://napoliprotocol.com/en/#s8"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Temper the dough balls",
+   "text": "Take them out of the fridge about 4 h before baking (reference: ~26 °C). Ready when: risen, lots of small bubbles and a few bigger ones, airy sides, holds its shape, no collapse, relaxed. In a 1 L tub, the reference is the dough reaching halfway.",
+   "url": "https://napoliprotocol.com/en/#s9"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Prepare sauce and cheese",
+   "text": "Crush 1 can(s) of peeled tomatoes by hand (no blender, no cooking). Season with 4–5 g of salt per can. No sugar. Cut 350 g of mozzarella into small pieces and let it drain.",
+   "url": "https://napoliprotocol.com/en/#s10"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Preheat the BIG HORN",
+   "text": "Top element at 450 °C, bottom element at 380 °C. If you have an infrared thermometer, measure the centre of the stone and note it down.",
+   "url": "https://napoliprotocol.com/en/#s11"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Stretch the dough",
+   "text": "One dough ball at a time. Dip it lightly in flour. Press from the centre outwards with your fingertips, pushing the gas towards the rim. Leave a 1–1.5 cm rim unpressed. On the first bake, 2 cm made the cornicione too thick. Finish by hand to ~30–32 cm. No rolling pin.",
+   "url": "https://napoliprotocol.com/en/#s12"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Top and launch",
+   "text": "65 g of sauce, 70 g of mozzarella spaced out, basil and a drizzle of olive oil. Leave patches of tomato showing. Before launching, give it a small sideways shake: the whole pizza must slide. Prosciutto and rocket go on after the oven.",
+   "url": "https://napoliprotocol.com/en/#s13"
+  },
+  {
+   "@type": "HowToStep",
+   "name": "Bake and turn",
+   "text": "At 25–30 s, check whether it has enough structure to turn 180°. Then make small turns until the colour is even. The first pizza calibrates the oven. Use the diagnosis below. Let the stone recover before the next pizza.",
+   "url": "https://napoliprotocol.com/en/#s14"
+  }
+ ]
+}

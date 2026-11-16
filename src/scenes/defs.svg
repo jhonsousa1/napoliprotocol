@@ -1,0 +1,181 @@
+<!-- Definições compartilhadas da jornada: materiais, filtros e adereços reutilizados. Os ids existem só aqui. -->
+<defs>
+<filter id="paint" x="-6%" y="-6%" width="112%" height="112%">
+<feTurbulence type="fractalNoise" baseFrequency=".032" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G" result="d"/>
+<feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="3" result="g"/>
+<feColorMatrix in="g" type="matrix" values="0 0 0 0 .16  0 0 0 0 .08  0 0 0 0 .02  0 0 0 -.9 .52" result="ga"/>
+<feComposite in="ga" in2="d" operator="in" result="gs"/>
+<feMerge><feMergeNode in="d"/><feMergeNode in="gs"/></feMerge>
+</filter>
+<filter id="soft" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="7"/></filter>
+<radialGradient id="gDough" cx=".66" cy=".22" r=".85"><stop stop-color="#FFF8E6"/><stop offset=".42" stop-color="#F1DFBA"/><stop offset=".82" stop-color="#D7B985"/><stop offset="1" stop-color="#AE8857"/></radialGradient>
+<linearGradient id="gPaste" x1="1" x2="0" y2="1"><stop stop-color="#F8EDD3"/><stop offset="1" stop-color="#D9C194"/></linearGradient>
+<linearGradient id="gCer" x1="1" x2="0" y1="0" y2=".7"><stop stop-color="#FBF7EE"/><stop offset=".3" stop-color="#EDE6D8"/><stop offset=".7" stop-color="#C9C0AF"/><stop offset="1" stop-color="#9C9382"/></linearGradient>
+<linearGradient id="gCerIn" x2="0" y2="1"><stop stop-color="#B9B0A0"/><stop offset="1" stop-color="#E9E2D4"/></linearGradient>
+<linearGradient id="gGlass" x1="0" x2="1"><stop stop-color="#CFE3E6" stop-opacity=".42"/><stop offset=".18" stop-color="#fff" stop-opacity=".16"/><stop offset=".7" stop-color="#DCEDEE" stop-opacity=".14"/><stop offset=".88" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#BFD8DC" stop-opacity=".4"/></linearGradient>
+<linearGradient id="gWater" x2="0" y2="1"><stop stop-color="#CBE6EA" stop-opacity=".85"/><stop offset="1" stop-color="#7FB1C2" stop-opacity=".8"/></linearGradient>
+<linearGradient id="gKraft" x2="1" y2="1"><stop stop-color="#F0DDB6"/><stop offset="1" stop-color="#D6B986"/></linearGradient>
+<linearGradient id="gWood" x2="0" y2="1"><stop stop-color="#D2A06A"/><stop offset="1" stop-color="#8C5C35"/></linearGradient>
+<linearGradient id="gSack" x1="1" x2="0"><stop stop-color="#F6EEDC"/><stop offset=".55" stop-color="#E4D6B8"/><stop offset="1" stop-color="#BCA57D"/></linearGradient>
+<linearGradient id="gSteel" x1="1" x2="0" y2="1"><stop stop-color="#70767A"/><stop offset=".35" stop-color="#474B4F"/><stop offset="1" stop-color="#1D1F21"/></linearGradient>
+<linearGradient id="gFridge" x1="0" x2="1"><stop stop-color="#E4EAEA"/><stop offset="1" stop-color="#A9B5B8"/></linearGradient>
+<radialGradient id="gCon"><stop stop-color="#1E0E04" stop-opacity=".5"/><stop offset="1" stop-color="#1E0E04" stop-opacity="0"/></radialGradient>
+<radialGradient id="gLamp"><stop stop-color="#FFE7AE" stop-opacity=".95"/><stop offset=".5" stop-color="#FFC56B" stop-opacity=".35"/><stop offset="1" stop-color="#FFB14A" stop-opacity="0"/></radialGradient>
+<linearGradient id="gCone" x2="0" y2="1"><stop stop-color="#FFE1A0" stop-opacity=".55"/><stop offset="1" stop-color="#FFD083" stop-opacity="0"/></linearGradient>
+<radialGradient id="gCold"><stop stop-color="#E6F6FF" stop-opacity=".9"/><stop offset="1" stop-color="#9FD0EA" stop-opacity="0"/></radialGradient>
+<radialGradient id="gEmber" cx=".5" cy=".12" r=".95"><stop stop-color="#FFEFB8"/><stop offset=".3" stop-color="#FFA640"/><stop offset=".7" stop-color="#D4481A"/><stop offset="1" stop-color="#5A1608"/></radialGradient>
+<radialGradient id="gHalo"><stop stop-color="#FFB24D" stop-opacity=".7"/><stop offset=".5" stop-color="#F0641E" stop-opacity=".25"/><stop offset="1" stop-color="#E0501A" stop-opacity="0"/></radialGradient>
+<radialGradient id="gCrust" cx=".6" cy=".2" r=".9"><stop stop-color="#FBE0A0"/><stop offset=".5" stop-color="#E0A552"/><stop offset="1" stop-color="#9A5220"/></radialGradient>
+<radialGradient id="gTom" cx=".6" cy=".3"><stop stop-color="#EE6A45"/><stop offset=".7" stop-color="#BE3A1E"/><stop offset="1" stop-color="#84220F"/></radialGradient>
+<linearGradient id="gSkyV" x2="0" y2="1"><stop stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".38"/></linearGradient>
+<radialGradient id="gFlour" cx=".62" cy=".2" r=".95"><stop stop-color="#FFFEF8"/><stop offset=".5" stop-color="#F3EEE0"/><stop offset="1" stop-color="#CFC6B0"/></radialGradient>
+<linearGradient id="gTerra" x1="1" x2="0"><stop stop-color="#D88A5C"/><stop offset=".5" stop-color="#B8683F"/><stop offset="1" stop-color="#8A4727"/></linearGradient>
+<linearGradient id="gOilG" x1="1" x2="0"><stop stop-color="#5E8A4E"/><stop offset=".5" stop-color="#2F5A33"/><stop offset="1" stop-color="#15301C"/></linearGradient>
+<linearGradient id="gOil" x2="0" y2="1"><stop stop-color="#F0C74A"/><stop offset="1" stop-color="#C9962A"/></linearGradient>
+<linearGradient id="gLinen" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#F4ECDA"/><stop offset=".6" stop-color="#E3D6BA"/><stop offset="1" stop-color="#BFAE8A"/></linearGradient>
+<radialGradient id="gLeaf" cx=".6" cy=".3"><stop stop-color="#78B05A"/><stop offset="1" stop-color="#2F6A33"/></radialGradient>
+<linearGradient id="gTub" x1="0" x2="1"><stop stop-color="#E6F0F2" stop-opacity=".55"/><stop offset=".25" stop-color="#fff" stop-opacity=".18"/><stop offset=".75" stop-color="#DDEBEF" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></linearGradient>
+<symbol id="sack" overflow="visible">
+<ellipse cy="2" rx="128" ry="17" fill="url(#gCon)"/>
+<path d="M-83-214q-8-22 14-30q70-16 140 0q20 8 12 30l14 196q2 18-18 18h-158q-20 0-18-18z" fill="url(#gSack)"/>
+<path d="M-83-214l14 196q2 18 18 18h24l-24-20-16-190z" fill="#8D7A5A" opacity=".16"/>
+<path d="M-81-212q82 24 164 0" stroke="#A8906A" stroke-width="5" fill="none"/>
+<path d="M-69-242q70-14 140 0l-6-22q-64-12-128 0z" fill="#E9DCC0"/>
+<path d="M-51-46h102M-35-30h70" stroke="#8D7A5A" stroke-width="5" stroke-linecap="round"/>
+<path d="M58-196q10 80 6 168" stroke="#fff" stroke-opacity=".55" stroke-width="10" stroke-linecap="round" fill="none"/>
+</symbol>
+<symbol id="jug" overflow="visible">
+<ellipse cy="2" rx="62" ry="9" fill="url(#gCon)"/>
+<path d="M-42-170h84l-8 156q-2 14-16 14h-36q-14 0-16-14z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>
+<path d="M-39-102h78l-5 88q-2 12-14 12h-40q-12 0-14-12z" fill="url(#gWater)"/>
+<ellipse cy="-102" rx="39" ry="6" fill="#DDF0F4" opacity=".75"/>
+<path d="M42-146q44 4 40 52q-4 36-44 40" stroke="#DCEDEE" stroke-opacity=".75" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M-30-156v112" stroke="#fff" stroke-opacity=".65" stroke-width="6" stroke-linecap="round"/>
+<path d="M26-90v60" stroke="#fff" stroke-opacity=".35" stroke-width="5" stroke-linecap="round"/>
+</symbol>
+<symbol id="scale" overflow="visible">
+<ellipse cy="2" rx="118" ry="12" fill="url(#gCon)"/>
+<rect x="-90" y="-50" width="180" height="48" rx="10" fill="url(#gSteel)"/>
+<rect x="-100" y="-68" width="200" height="20" rx="7" fill="#C9CFD0"/><rect x="-100" y="-68" width="200" height="6" rx="3" fill="#fff" opacity=".45"/>
+<rect x="-32" y="-38" width="64" height="20" rx="4" fill="#15241c"/>
+<text y="-23" text-anchor="middle" style="font:700 15px var(--f-m);fill:#9FE0B0">0 g</text>
+</symbol>
+<symbol id="jar" overflow="visible">
+<ellipse cy="3" rx="128" ry="16" fill="url(#gCon)"/>
+<path d="M-92-112q92-18 184 0v90q0 18-18 18h-148q-18 0-18-18z" fill="url(#gPaste)"/>
+<ellipse cy="-112" rx="92" ry="13" fill="#FBF2DC"/>
+<g fill="none" stroke="#B79E6E" stroke-width="2.5"><circle cx="-50" cy="-62" r="9"/><circle cx="20" cy="-37" r="6"/><circle cx="55" cy="-77" r="11"/><circle cx="-20" cy="-24" r="5"/><circle cx="-70" cy="-92" r="5"/></g>
+<path d="M-100-210q0-14 14-14h172q14 0 14 14v186q0 24-24 24h-152q-24 0-24-24z" fill="url(#gGlass)" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>
+<rect x="-108" y="-236" width="216" height="18" rx="9" fill="#E8EEF0" opacity=".85"/>
+<path d="M78-198v150" stroke="#fff" stroke-opacity=".6" stroke-width="8" stroke-linecap="round"/>
+<path d="M-84-190v60" stroke="#fff" stroke-opacity=".35" stroke-width="5" stroke-linecap="round"/>
+</symbol>
+<symbol id="cloth" overflow="visible">
+<path d="M0 0q150-50 330 10l90 240h-520z" fill="url(#gLinen)"/>
+<path d="M60 40l-60 200M130 24l-50 216M200 22l-34 218" stroke="#B8321A" stroke-width="13" opacity=".78"/>
+<path d="M330 10l90 240" stroke="#fff" stroke-opacity=".5" stroke-width="5" fill="none"/>
+</symbol>
+<symbol id="crock" overflow="visible">
+<ellipse cy="2" rx="64" ry="9" fill="url(#gCon)"/>
+<g stroke="#7A4A26" stroke-linecap="round" fill="none"><path d="M-18-72L-40-176" stroke-width="9"/><path d="M4-72L8-190" stroke-width="9"/><path d="M22-72L52-168" stroke-width="9"/></g>
+<g fill="#A8733F"><ellipse cx="-42" cy="-184" rx="11" ry="17" transform="rotate(14 -42 -184)"/><ellipse cx="8" cy="-198" rx="10" ry="16"/><ellipse cx="55" cy="-176" rx="11" ry="16" transform="rotate(-18 55 -176)"/></g>
+<path d="M-40-82h80l-6 80q-1 8-9 8h-50q-8 0-9-8z" fill="url(#gTerra)"/>
+<ellipse cy="-82" rx="40" ry="7" fill="#7A3E1E"/><path d="M-38-60h76" stroke="#E9C9A0" stroke-width="5" opacity=".7"/>
+<path d="M26-72q-2 40-6 62" stroke="#fff" stroke-opacity=".35" stroke-width="6" stroke-linecap="round" fill="none"/>
+</symbol>
+<symbol id="basil" overflow="visible">
+<ellipse cy="2" rx="74" ry="10" fill="url(#gCon)"/>
+<g fill="url(#gLeaf)"><ellipse cx="-34" cy="-118" rx="26" ry="15" transform="rotate(-30 -34 -118)"/><ellipse cx="20" cy="-132" rx="28" ry="16" transform="rotate(20 20 -132)"/><ellipse cx="-6" cy="-92" rx="30" ry="16" transform="rotate(-8 -6 -92)"/><ellipse cx="42" cy="-98" rx="24" ry="14" transform="rotate(28 42 -98)"/><ellipse cx="-42" cy="-84" rx="22" ry="13" transform="rotate(-38 -42 -84)"/><ellipse cx="2" cy="-156" rx="20" ry="12" transform="rotate(-70 2 -156)"/></g>
+<path d="M0-70v-80M-4-96l-24-26M6-98l32-18" stroke="#2F6A33" stroke-width="4" fill="none"/>
+<path d="M-46-72h92l-10 70q-1 8-9 8h-54q-8 0-9-8z" fill="url(#gTerra)"/><ellipse cy="-72" rx="46" ry="8" fill="#7A3E1E"/><path d="M-40-54h80" stroke="#E9C9A0" stroke-width="5" opacity=".7"/>
+</symbol>
+<symbol id="salt" overflow="visible">
+<ellipse cy="2" rx="56" ry="8" fill="url(#gCon)"/>
+<path d="M-42-46q0-8 8-8h68q8 0 8 8l-6 40q-1 6-7 6h-54q-6 0-7-6z" fill="url(#gCer)"/>
+<path d="M-36-50q36-38 72 0z" fill="url(#gFlour)"/>
+<g fill="#fff"><circle cx="-8" cy="-62" r="2"/><circle cx="12" cy="-56" r="1.6"/><circle cx="-18" cy="-52" r="1.4"/></g>
+<path d="M18-34l40-24" stroke="#A8733F" stroke-width="7" stroke-linecap="round"/><ellipse cx="62" cy="-60" rx="9" ry="6" fill="#A8733F" transform="rotate(-30 62 -60)"/>
+<path d="M30-38q-1 22-4 32" stroke="#fff" stroke-opacity=".4" stroke-width="5" stroke-linecap="round" fill="none"/>
+</symbol>
+<symbol id="oil" overflow="visible">
+<ellipse cy="2" rx="40" ry="7" fill="url(#gCon)"/>
+<path d="M-27-118q0-18 10-30l4-22h26l4 22q10 12 10 30v104q0 12-11 12h-32q-11 0-11-12z" fill="url(#gOilG)"/>
+<path d="M-25-84h50v70q0 10-9 10h-32q-9 0-9-10z" fill="url(#gOil)" opacity=".9"/>
+<rect x="-10" y="-186" width="20" height="18" rx="4" fill="#C79B5E"/>
+<rect x="-18" y="-66" width="36" height="34" rx="3" fill="#F0E4C8"/><path d="M-12-54h24M-12-46h16" stroke="#8D7A5A" stroke-width="3"/>
+<path d="M17-138q6 40 6 96" stroke="#fff" stroke-opacity=".5" stroke-width="6" stroke-linecap="round" fill="none"/>
+</symbol>
+<symbol id="yeast" overflow="visible">
+<ellipse cy="2" rx="64" ry="8" fill="url(#gCon)"/>
+<path d="M-46-18q46 34 92 0l-12 18q-34 8-68 0z" fill="url(#gCer)"/>
+<ellipse cy="-18" rx="46" ry="10" fill="#D9CDB8"/>
+<ellipse cy="-20" rx="34" ry="7" fill="#C79D58"/>
+<g fill="#E4BE7A"><circle cx="-14" cy="-22" r="2.4"/><circle cx="6" cy="-19" r="2.2"/><circle cx="18" cy="-23" r="2"/><circle cx="-4" cy="-24" r="1.8"/></g>
+<g transform="translate(54 -6) rotate(-14)"><rect x="-22" y="-30" width="44" height="52" rx="3" fill="#C9433A"/><rect x="-22" y="-12" width="44" height="18" fill="#F3E6C2"/><path d="M-14-4h28" stroke="#8D7A5A" stroke-width="3"/></g>
+</symbol>
+<symbol id="canister" overflow="visible">
+<ellipse cy="2" rx="68" ry="9" fill="url(#gCon)"/>
+<path d="M-48-122h96q8 0 8 8v104q0 10-10 10h-92q-10 0-10-10v-104q0-8 8-8z" fill="url(#gCer)"/><rect x="-44" y="-138" width="88" height="18" rx="6" fill="#D9CDB8"/><circle cy="-142" r="7" fill="#8A4727"/>
+<path d="M-54-76h108" stroke="#B8321A" stroke-width="6" opacity=".75"/><path d="M36-110q4 50 0 92" stroke="#fff" stroke-opacity=".45" stroke-width="7" stroke-linecap="round" fill="none"/>
+</symbol>
+<symbol id="scraper" overflow="visible">
+<ellipse cy="2" rx="100" ry="7" fill="url(#gCon)"/>
+<rect x="-96" y="-14" width="192" height="12" rx="3" fill="#C5CCCE"/><rect x="-96" y="-14" width="192" height="4" rx="2" fill="#fff" opacity=".5"/>
+<rect x="-62" y="-32" width="124" height="20" rx="8" fill="url(#gWood)"/>
+</symbol>
+<symbol id="pot" overflow="visible">
+<ellipse cy="2" rx="62" ry="8" fill="url(#gCon)"/>
+<ellipse cy="-52" rx="46" ry="30" fill="url(#gDough)"/>
+<path d="M-52-70h104l-8 68q-1 8-9 8h-70q-8 0-9-8z" fill="url(#gTub)" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>
+<rect x="-56" y="-80" width="112" height="12" rx="5" fill="#D8E6EA" opacity=".9"/>
+<path d="M34-62v50" stroke="#fff" stroke-opacity=".55" stroke-width="5" stroke-linecap="round"/>
+</symbol>
+<symbol id="tray" overflow="visible">
+<ellipse cy="6" rx="290" ry="22" fill="url(#gCon)"/>
+<path d="M-218-54h436l26 52h-488z" fill="url(#gWood)"/><path d="M-218-54h436" stroke="#fff" stroke-opacity=".35" stroke-width="3"/>
+<rect x="-244" y="-2" width="488" height="16" rx="4" fill="#6E4526"/>
+<path d="M-200-40h400M-216-24h432" stroke="#6E4526" stroke-opacity=".25" stroke-width="2"/>
+</symbol>
+<symbol id="can" overflow="visible">
+<ellipse cy="2" rx="62" ry="8" fill="url(#gCon)"/>
+<path d="M-46-112h92v104q0 12-46 12t-46-12z" fill="url(#gSteel)" opacity=".0"/>
+<path d="M-46-108h92v100q0 10-46 10t-46-10z" fill="#C9CFD0"/>
+<rect x="-46" y="-90" width="92" height="64" fill="#B8321A"/><circle cy="-58" r="20" fill="url(#gTom)"/><path d="M-6-76q10-8 18 2-10 4-18-2z" fill="#2C6A3E"/>
+<ellipse cy="-108" rx="46" ry="9" fill="#E8ECEC"/><ellipse cy="-108" rx="38" ry="6" fill="#BE3A1E"/>
+<path d="M-46-108l-18-30 30 14z" fill="#C9CFD0"/>
+<path d="M34-98v84" stroke="#fff" stroke-opacity=".5" stroke-width="6" stroke-linecap="round"/>
+</symbol>
+<symbol id="oven" overflow="visible">
+<ellipse cy="10" rx="270" ry="22" fill="url(#gCon)"/>
+<rect x="-170" y="-22" width="26" height="22" fill="#151617"/><rect x="144" y="-22" width="26" height="22" fill="#151617"/>
+<path d="M-208-286q0-44 44-44h328q44 0 44 44v270q0 16-16 16h-384q-16 0-16-16z" fill="url(#gSteel)"/>
+<path d="M-186-308q10-12 30-12h312" stroke="#fff" stroke-opacity=".25" stroke-width="6" stroke-linecap="round" fill="none"/>
+<rect x="-50" y="-354" width="100" height="26" rx="6" fill="#2a2c2e"/>
+<circle cy="-30" r="12" fill="#0f1011" stroke="#6b7074" stroke-width="3"/>
+<path d="M-158-66v-74q0-62 62-62h192q62 0 62 62v74z" fill="#1a0b06"/>
+</symbol>
+<symbol id="peel" overflow="visible">
+<path d="M-90 0h180l8 -150h-196z" fill="none"/>
+<path d="M-100-8q100-24 200 0l-4 14q-96-22-192 0z" fill="#8C5C35"/>
+<rect x="-100" y="-18" width="200" height="12" rx="5" fill="url(#gWood)"/>
+<rect x="96" y="-14" width="230" height="9" rx="4" fill="#A8733F"/>
+</symbol>
+<symbol id="win" viewBox="0 0 280 320" overflow="visible">
+<rect x="-12" y="-12" width="304" height="344" rx="5" fill="#F4EBDB" opacity=".9"/>
+<rect x="6" y="6" width="268" height="308" fill="var(--sky)"/><rect x="6" y="6" width="268" height="308" fill="url(#gSkyV)"/>
+<path d="M140 6v308M6 150h268" stroke="#F4EBDB" stroke-width="10"/>
+<path d="M-26 332h332l-8 18h-316z" fill="#E6D9C2"/>
+</symbol>
+<symbol id="shelf" viewBox="0 0 400 150" overflow="visible">
+<g fill="#2A1608" opacity=".2"><rect y="120" width="400" height="14" rx="3"/><rect x="26" y="46" width="62" height="74" rx="8"/><rect x="38" y="30" width="38" height="18" rx="4"/>
+<rect x="108" y="20" width="50" height="100" rx="10"/><rect x="180" y="66" width="84" height="54" rx="10"/><path d="M290 120l10-70h44l10 70z"/><rect x="306" y="22" width="12" height="30" rx="4"/></g>
+</symbol>
+<symbol id="bowlB" overflow="visible"><ellipse rx="190" ry="34" fill="url(#gCerIn)"/></symbol>
+<symbol id="bowlF" overflow="visible">
+<path d="M-190 0a190 34 0 0 0 380 0q-8 96-98 138h-184q-90-42-98-138z" fill="url(#gCer)"/>
+<rect x="-88" y="134" width="176" height="15" rx="7" fill="#A49A88"/>
+<path d="M-186 15a190 34 0 0 0 372 0" stroke="#B8321A" stroke-width="5" fill="none" opacity=".75"/>
+<path d="M150 30q-10 60-60 96" stroke="#fff" stroke-opacity=".55" stroke-width="9" stroke-linecap="round" fill="none"/>
+</symbol>
+</defs>

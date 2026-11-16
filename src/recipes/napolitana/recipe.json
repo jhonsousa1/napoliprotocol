@@ -126,164 +126,354 @@
     "datePublished": "2026-10-01"
   },
   "updated": "2026-10-24",
-  "scenes": {
-    "s1": "pref",
-    "s2": "mix",
-    "s4": "bass",
-    "s5": "fold",
-    "s6": "oil",
-    "s7": "lam",
-    "s8": "balls",
-    "s9": "temper",
-    "s10": "sauce",
-    "s11": "oven",
-    "s12": "open",
-    "s13": "build",
-    "s14": "bake"
-  },
   "photos": {
-    "steps": {
-      "s10": "pelati",
-      "s12": "dough",
-      "s13": "peel",
-      "s14": "leopard"
-    },
     "about": [
       "oro",
       "napoli",
       "brandi"
+    ],
+    "gallery": [
+      "pelati",
+      "dough",
+      "peel",
+      "leopard"
     ]
   },
-  "scene": {
-    "scrim": 1.0,
-    "takes": {
-      "hero": {
-        "photo": "oro",
-        "d": {
-          "f": [
-            45,
-            48
-          ],
-          "a": [
-            64,
-            52
-          ],
-          "s": 1.0,
-          "bleed": "l"
+  "journey": {
+    "open": {
+      "scene": "bench",
+      "state": "open",
+      "light": "dusk"
+    },
+    "mise": {
+      "scene": "bench",
+      "state": "mise",
+      "light": "eve",
+      "tags": [
+        {
+          "t": "flour",
+          "at": [
+            700,
+            262
+          ]
         },
-        "m": {
-          "f": [
-            31,
-            100
+        {
+          "t": "water",
+          "at": [
+            880,
+            214
+          ]
+        },
+        {
+          "t": "salt",
+          "at": [
+            1010,
+            282
+          ]
+        },
+        {
+          "t": "oil",
+          "at": [
+            950,
+            236
           ],
-          "a": [
-            50,
-            100
+          "m": null
+        },
+        {
+          "t": "yeast",
+          "at": [
+            1010,
+            330
           ],
-          "s": 0.66,
-          "bleed": "t"
+          "m": null
         }
+      ]
+    },
+    "steps": {
+      "s1": {
+        "scene": "jar",
+        "state": "pref",
+        "light": "night",
+        "ev": 0,
+        "tags": [
+          {
+            "t": "pfFlour",
+            "at": [
+              806,
+              176
+            ]
+          },
+          {
+            "t": "pfWater",
+            "at": [
+              800,
+              232
+            ]
+          },
+          {
+            "t": "yeast",
+            "at": [
+              808,
+              288
+            ]
+          }
+        ]
       },
-      "tempo": {
-        "photo": "oro",
-        "d": {
-          "f": [
-            56,
-            80
-          ],
-          "a": [
-            68,
-            38
-          ],
-          "s": 1.3
-        },
-        "m": {
-          "f": [
-            48,
-            82
-          ],
-          "a": [
-            50,
-            40
-          ],
-          "s": 1.0
-        }
+      "s2": {
+        "scene": "bowl",
+        "state": "mix",
+        "light": "morning",
+        "ev": 2,
+        "tags": [
+          {
+            "t": "salt",
+            "at": [
+              806,
+              176
+            ]
+          },
+          {
+            "t": "initWater",
+            "at": [
+              800,
+              232
+            ]
+          },
+          {
+            "t": "finFlour",
+            "at": [
+              808,
+              288
+            ]
+          }
+        ]
       },
-      "gesto": {
-        "photo": "oro",
-        "d": {
-          "f": [
-            20,
-            56
-          ],
-          "a": [
-            70,
-            40
-          ],
-          "s": 1.3
-        },
-        "m": {
-          "f": [
-            18,
-            60
-          ],
-          "a": [
-            50,
-            40
-          ],
-          "s": 1.0
-        }
+      "s4": {
+        "scene": "bowl",
+        "state": "bass",
+        "light": "morning",
+        "ev": 2,
+        "tags": [
+          {
+            "t": "bassWater",
+            "at": [
+              770,
+              190
+            ]
+          },
+          {
+            "t": "slowly",
+            "at": [
+              776,
+              246
+            ]
+          }
+        ]
       },
-      "fogo": {
-        "photo": "leopard",
-        "d": {
-          "f": [
-            42,
-            74
-          ],
-          "a": [
-            68,
-            40
-          ],
-          "s": 1.12
-        },
-        "m": {
-          "f": [
-            40,
-            74
-          ],
-          "a": [
-            50,
-            40
-          ],
-          "s": 1.0
-        }
+      "s5": {
+        "scene": "slab",
+        "state": "fold",
+        "light": "noon",
+        "ev": 2,
+        "tags": [
+          {
+            "t": "fold",
+            "at": [
+              790,
+              200
+            ]
+          }
+        ]
       },
-      "fim": {
-        "photo": "oro",
-        "d": {
-          "f": [
-            45,
-            48
-          ],
-          "a": [
-            50,
-            42
-          ],
-          "s": 1.0
-        },
-        "m": {
-          "f": [
-            45,
-            50
-          ],
-          "a": [
-            50,
-            42
-          ],
-          "s": 1.0
-        }
+      "s6": {
+        "scene": "bowl",
+        "state": "oil",
+        "light": "noon",
+        "ev": 2,
+        "tags": [
+          {
+            "t": "oil",
+            "at": [
+              800,
+              200
+            ]
+          }
+        ]
+      },
+      "s7": {
+        "scene": "slab",
+        "state": "lam",
+        "light": "golden",
+        "ev": 2,
+        "tags": [
+          {
+            "t": "lam",
+            "at": [
+              790,
+              200
+            ]
+          },
+          {
+            "t": "rest1h",
+            "at": [
+              800,
+              256
+            ]
+          }
+        ]
+      },
+      "s8": {
+        "scene": "tray",
+        "state": "balls",
+        "light": "golden",
+        "ev": 3,
+        "tags": [
+          {
+            "t": "nPer",
+            "at": [
+              790,
+              196
+            ]
+          },
+          {
+            "t": "total",
+            "at": [
+              796,
+              258
+            ]
+          }
+        ]
+      },
+      "s9": {
+        "scene": "tray",
+        "state": "temper",
+        "light": "dusk",
+        "ev": 4,
+        "tags": [
+          {
+            "t": "outh",
+            "at": [
+              800,
+              200
+            ]
+          }
+        ]
+      },
+      "s10": {
+        "scene": "sauce",
+        "state": "napo",
+        "light": "dusk",
+        "ev": 4,
+        "tags": [
+          {
+            "t": "cans",
+            "at": [
+              790,
+              200
+            ]
+          },
+          {
+            "t": "cheeseTotal",
+            "at": [
+              796,
+              258
+            ]
+          }
+        ]
+      },
+      "s11": {
+        "scene": "oven",
+        "state": "preheat",
+        "light": "eve",
+        "ev": 5,
+        "tags": [
+          {
+            "t": "top",
+            "at": [
+              790,
+              200
+            ]
+          },
+          {
+            "t": "bottom",
+            "at": [
+              800,
+              256
+            ]
+          }
+        ]
+      },
+      "s12": {
+        "scene": "slab",
+        "state": "open",
+        "light": "eve",
+        "ev": 6,
+        "tags": [
+          {
+            "t": "size",
+            "at": [
+              790,
+              200
+            ]
+          },
+          {
+            "t": "rim",
+            "at": [
+              796,
+              256
+            ]
+          }
+        ]
+      },
+      "s13": {
+        "scene": "oven",
+        "state": "build",
+        "light": "ember",
+        "ev": 6,
+        "tags": [
+          {
+            "t": "sauce",
+            "at": [
+              790,
+              200
+            ]
+          },
+          {
+            "t": "cheese",
+            "at": [
+              796,
+              256
+            ]
+          }
+        ]
+      },
+      "s14": {
+        "scene": "oven",
+        "state": "bake",
+        "light": "ember",
+        "ev": 6,
+        "timer": true
       }
-    }
+    },
+    "cold": [
+      {
+        "id": "frio1",
+        "after": "s1",
+        "scene": "fridge",
+        "state": "jar",
+        "light": "cold",
+        "ev": 1,
+        "big": "pfh"
+      },
+      {
+        "id": "frio2",
+        "after": "s8",
+        "scene": "fridge",
+        "state": "tray",
+        "light": "cold",
+        "ev": 3,
+        "big": "panh"
+      }
+    ]
   }
 }

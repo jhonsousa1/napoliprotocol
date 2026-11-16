@@ -12,24 +12,21 @@
     }
   },
   "html": {
-    "hero.h1": "Neapolitan Pizza Protocol",
-    "hero.version": "version 1.0 · October 2026",
-    "hero.lead": "A hand-made Neapolitan pizza dough recipe over three days, calibrated by the first bake. Adjust the parameters; quantities, schedule and instructions recalculate. The dough matters more than the clock.",
-    "kpi.pizzas": "~30–32 cm (12\") pizzas",
-    "kpi.preheat": "preheat 30–40 min",
-    "kpi.bottomSub": "main adjustment at this stage",
     "panel.note": "Defaults = version 1.0, consolidated after the first bake. Your values are saved in this browser.",
     "panel.reset": "Restore v1.0",
-    "steps.sub": "Tick each step when done. Tags show the source: base recipe, adaptation for home baking, or a lesson from the first bake.",
-    "oven.sub": "Bench timer and diagnosis by result. The first pizza of each session calibrates the oven.",
     "oven.note": "Gold band: 25–30 s, check whether it can be turned 180°. Green band: 70–120 s, the expected window for this oven.",
     "rules.h2": "Version 1.0 rules",
     "rules.sub": "The bottleneck right now isn't the dough. It's heat calibration and the technique for stretching and topping.",
     "ing.flour": "Caputo Pizzeria 00 flour",
-    "hero.eyebrow": "Caputo Pizzeria 00 · Preferment · BIG HORN",
-    "kpi.balls": "Panetti",
     "recipe.balls": "Panetti",
-    "name": "Neapolitan"
+    "name": "Neapolitan",
+    "ask.h1": "*Neapolitan* pizza: how much?",
+    "ask.lead": "Two answers and the bench sets itself up for you.",
+    "ask.sub": "3 days · 64% hydration",
+    "cold.frio1.h": "Fridge · overnight",
+    "cold.frio1.p": "The preferment works in the cold. The schedule counts back from bake time.",
+    "cold.frio2.h": "Fridge · a full day",
+    "cold.frio2.p": "The dough balls rest covered. The colder it is, the slower they ferment."
   },
   "rules": [
     "Don't raise the hydration yet.",
@@ -129,7 +126,6 @@
               "d",
               "a"
             ],
-            "il": "pref",
             "li": [
               "Dry-mix {pfFlour} g of flour with {yeast} g of yeast.",
               "Add {pfWater} g of water and stir into a rough paste with no dry flour left.",
@@ -151,7 +147,6 @@
             "src": [
               "a"
             ],
-            "il": "mix",
             "li": [
               "Use the preferment straight from the fridge, without a long warm-up.",
               "Dissolve {salt} g of salt in {initWater} g of water.",
@@ -169,7 +164,6 @@
               "d",
               "a"
             ],
-            "il": "bass",
             "li": [
               "Add the remaining {bassWater} g of water in small portions.",
               "Only add more once the dough has absorbed the previous one.",
@@ -184,7 +178,6 @@
               "a",
               "l"
             ],
-            "il": "fold",
             "li": [
               "Alternate rests and sets of folds, without aggressive kneading.",
               "Stop when the dough is smooth, rounded, elastic and has surface tension."
@@ -198,7 +191,6 @@
             "src": [
               "d"
             ],
-            "il": "oil",
             "li": [
               "With the dough already structured, add {oil} g of olive oil a little at a time.",
               "Work it in with pincers and folds until fully absorbed."
@@ -213,7 +205,6 @@
               "d",
               "a"
             ],
-            "il": "lam",
             "li": [
               "Rest 3–5 min.",
               "Lamination: gently stretch the dough into a rectangle on the bench and fold it over itself. No rolling pin, no tearing.",
@@ -228,7 +219,6 @@
             "src": [
               "d"
             ],
-            "il": "balls",
             "li": [
               "Divide into {n} dough balls of {per} g (total dough {total} g).",
               "Ball with surface tension and seal the base well.",
@@ -250,7 +240,6 @@
               "d",
               "l"
             ],
-            "il": "proof",
             "li": [
               "Take them out of the fridge about {outh} h before baking (reference: ~26 °C).",
               "Ready when: risen, lots of small bubbles and a few bigger ones, airy sides, holds its shape, no collapse, relaxed.",
@@ -265,7 +254,6 @@
             "src": [
               "l"
             ],
-            "il": "sauce",
             "li": [
               "Crush {cans} can(s) of peeled tomatoes by hand (no blender, no cooking).",
               "Season with 4–5 g of salt per can. No sugar.",
@@ -279,7 +267,6 @@
             "src": [
               "l"
             ],
-            "il": "oven",
             "li": [
               "Top element at {top} °C, bottom element at {bottom} °C.",
               "If you have an infrared thermometer, measure the centre of the stone and note it down."
@@ -293,7 +280,6 @@
             "src": [
               "l"
             ],
-            "il": "open",
             "li": [
               "One dough ball at a time. Dip it lightly in flour.",
               "Press from the centre outwards with your fingertips, pushing the gas towards the rim.",
@@ -309,7 +295,6 @@
             "src": [
               "l"
             ],
-            "il": "build",
             "li": [
               "{sauce} g of sauce, {cheese} g of mozzarella spaced out, basil and a drizzle of olive oil.",
               "Leave patches of tomato showing.",
@@ -324,7 +309,6 @@
             "src": [
               "l"
             ],
-            "il": "bake",
             "li": [
               "At 25–30 s, check whether it has enough structure to turn 180°.",
               "Then make small turns until the colour is even.",
@@ -442,21 +426,9 @@
       ]
     }
   },
-  "scene": {
-    "tempo": {
-      "h": "Three days, *one night.*",
-      "p": "Flavour comes from cold and waiting. The schedule counts back from bake time."
-    },
-    "gesto": {
-      "h": "Watch first, *then do.*",
-      "p": "Every step animated with your quantities."
-    },
-    "fogo": {
-      "h": "Ninety seconds *decide everything.*",
-      "p": "The first pizza calibrates the oven. Time it, read the rim, adjust the stone."
-    },
-    "fim": {
-      "h": "Flour, water, salt, *time.*"
-    }
+  "tag": {
+    "fold": "stretch · fold · rest",
+    "lam": "no rolling pin · no tearing",
+    "rim": "1–1.5 cm free rim"
   }
 }
