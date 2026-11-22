@@ -33,3 +33,12 @@ Atualizado em 16/nov/2026. Branch `redesign-imersivo` (nada enviado ao GitHub; o
 
 ## Publicado
 16/nov/2026: `main` avançada até fe362d7 e enviada; GitHub Pages implantou (pages-build-deployment ok). napoliprotocol.com serve a jornada; branch `redesign-imersivo` também no GitHub.
+
+## 22/nov/2026 — duas sessões em paralelo, um commit
+`cd3979f` (receita sem bassinage, temperatura da água, diário de fornadas) foi commitado pela sessão de orquestração a partir da árvore inteira e levou junto as correções de front-end de outra sessão, que não aparecem na mensagem:
+- **Retomar:** "Continuar" aponta para a primeira etapa não marcada como Feito e só aparece depois de algum Feito; rolar não grava mais posição (`:last` removido). `src/journey.js`.
+- **Botão Continuar:** "Continuar · etapa NN" com o nome da etapa numa segunda linha (antes quebrava "Pós-/azeite"). i18n `resume` + `#resume` em `style.css`.
+- **Tabela da mise en place:** cabeçalhos curtos e colunas mais justas quando o contêiner tem ≤ 440 px (container query); sombra de rolagem na borda. Cabe sem rolar em 375, 1024 e 1280.
+- **Etiqueta "fermento" da mise:** x 1000 → 975 nas duas receitas; não fica mais sob o trilho em 1024×768 (era P2-11).
+
+Validado com tudo junto (12 etapas): `cdp.mjs checks` nas 4 páginas × 375/1024/1440 × com/sem movimento → 96 casos, 0 falhas; retomar, tabela, trilho e diário testados no navegador. Referência de JSON-LD da napolitana atualizada para o texto commitado ("a 36 °C", sem "~").
