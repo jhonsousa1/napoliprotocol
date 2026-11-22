@@ -33,7 +33,6 @@
     "Don't swap out the Caputo Pizzeria flour.",
     "Don't over-knead. Use rest and folds.",
     "Salt before oil.",
-    "Use bassinage for the last of the water.",
     "Oil always goes in last.",
     "Sticky dough during mixing gets no extra flour.",
     "Don't re-ball the dough before stretching.",
@@ -48,13 +47,11 @@
     "Let the stone recover between pizzas.",
     "Watch the dough more than the clock.",
     "Change one relevant variable at a time.",
-    "Next session: less heat underneath, same recipe."
+    "Next session: less heat underneath, same recipe.",
+    "Stretch on semolina, not flour.",
+    "Water at the right temperature: the dough leaves the mix at 23–25 °C."
   ],
   "glossary": [
-    [
-      "Bassinage",
-      "Holding back part of the water and working it in gradually once the gluten has started to form."
-    ],
     [
       "Panetto",
       "Each individual dough ball. It becomes one pizza. Plural: panetti."
@@ -74,6 +71,10 @@
     [
       "Preferment",
       "Flour, the same weight of water and all the yeast. 100% hydration, close to a poolish."
+    ],
+    [
+      "Semola rimacinata",
+      "Durum wheat semolina milled twice. Used for stretching and on the peel: it doesn't stick and burns less than 00 flour."
     ]
   ],
   "about": {
@@ -127,12 +128,12 @@
               "a"
             ],
             "li": [
-              "Dry-mix {pfFlour} g of flour with {yeast} g of yeast.",
+              "Dry-mix {pfFlour} g of flour with {yeast} g of instant dry yeast (or {yeastFresh} g of fresh yeast).",
               "Add {pfWater} g of water and stir into a rough paste with no dry flour left.",
               "Cover. Leave 1 h at room temperature.",
               "Refrigerate ({fridge} °C) for about {pfh} h."
             ],
-            "tip": "The original recipe calls for 12–16 h at 12 °C. In a colder fridge, the longer time makes up for it. Ready when it's bubbly, has internal structure and shows no sign of collapse."
+            "tip": "The original recipe calls for 12–16 h at 12 °C. In a colder fridge, the longer time makes up for it. Ready when it's bubbly, has internal structure and shows no sign of collapse. If it has no bubbles yet, leave it out 1–2 h before using; if it has already collapsed, use it right away."
           }
         ]
       },
@@ -149,26 +150,13 @@
             ],
             "li": [
               "Use the preferment straight from the fridge, without a long warm-up.",
-              "Dissolve {salt} g of salt in {initWater} g of water.",
+              "Dissolve {salt} g of salt in {finWater} g of water at {waterT} °C.",
               "Add {finFlour} g of flour and the salted water to the preferment.",
               "Mix until all the flour is hydrated. It doesn't need to be smooth.",
+              "Check the dough at the end of mixing: aim for 23–25 °C. Write it in the bake log.",
               "Cover and rest. Time develops the gluten for you."
             ],
             "tip": "The salt goes in with the second part of the flour, always before the oil."
-          },
-          {
-            "id": "s4",
-            "t": "Bassinage",
-            "time": "~10 min",
-            "src": [
-              "d",
-              "a"
-            ],
-            "li": [
-              "Add the remaining {bassWater} g of water in small portions.",
-              "Only add more once the dough has absorbed the previous one.",
-              "If the dough gets sticky, don't add flour."
-            ]
           },
           {
             "id": "s5",
@@ -179,7 +167,7 @@
               "l"
             ],
             "li": [
-              "Alternate rests and sets of folds, without aggressive kneading.",
+              "Do 3 sets of folds, one every 15–20 min, keeping the dough covered in between. No aggressive kneading.",
               "Stop when the dough is smooth, rounded, elastic and has surface tension."
             ],
             "tip": "On the first bake, time and rest did most of the work. Don't chase a perfectly smooth dough with non-stop kneading."
@@ -241,7 +229,7 @@
               "l"
             ],
             "li": [
-              "Take them out of the fridge about {outh} h before baking (reference: ~26 °C).",
+              "Take them out of the fridge about {outh} h before baking (with the room at {room} °C; warmer means less time).",
               "Ready when: risen, lots of small bubbles and a few bigger ones, airy sides, holds its shape, no collapse, relaxed.",
               "In a 1 L tub, the reference is the dough reaching halfway."
             ],
@@ -269,7 +257,7 @@
             ],
             "li": [
               "Top element at {top} °C, bottom element at {bottom} °C.",
-              "If you have an infrared thermometer, measure the centre of the stone and note it down."
+              "If you have an infrared thermometer, measure the centre of the stone and note it in the bake log."
             ],
             "tip": "warn|On the first bake (bottom ~390–410 °C) the base charred before the top was done. That's why the bottom was lowered."
           },
@@ -281,12 +269,12 @@
               "l"
             ],
             "li": [
-              "One dough ball at a time. Dip it lightly in flour.",
+              "One panetto at a time. Use durum semolina (rimacinata) on the bench, not flour: it burns less on the stone.",
               "Press from the centre outwards with your fingertips, pushing the gas towards the rim.",
-              "Leave a 1–1.5 cm rim unpressed. On the first bake, 2 cm made the cornicione too thick.",
+              "Leave a 1–1.5 cm rim unpressed.",
               "Finish by hand to ~30–32 cm. No rolling pin."
             ],
-            "tip": "warn|Knock the excess flour off the base. Loose flour on the stone burns and turns bitter."
+            "tip": "warn|Knock the excess off the base: loose semolina or flour on the stone burns and turns bitter. Lesson from the first bake: a 2 cm rim made the cornicione too thick."
           },
           {
             "id": "s13",
@@ -313,7 +301,7 @@
               "At 25–30 s, check whether it has enough structure to turn 180°.",
               "Then make small turns until the colour is even.",
               "The first pizza calibrates the oven. Use the diagnosis below.",
-              "Let the stone recover before the next pizza."
+              "Between pizzas, let the stone recover: 3–5 min, or until it is back to the temperature measured at preheat."
             ],
             "tip": "Look for small dark spots spread across the cornicione, not black patches."
           }
@@ -394,23 +382,23 @@
         ],
         [
           "Final mix",
-          "Steps 02–06. About 2 h 30 of work broken up by rests."
+          "Steps 02–05. About 2 h 30 of work broken up by rests."
         ],
         [
           "Divide, ball and refrigerate",
-          "Step 07. {panh} h in the fridge."
+          "Step 06. {panh} h in the fridge."
         ],
         [
           "Take out the dough balls",
-          "Step 08. Check the proof; make the sauce and cheese meanwhile."
+          "Step 07. Check the proof; make the sauce and cheese meanwhile."
         ],
         [
           "Turn on the oven",
-          "Step 10. {top} °C / {bottom} °C."
+          "Step 09. {top} °C / {bottom} °C."
         ],
         [
           "Bake",
-          "Steps 11–13. The first pizza calibrates."
+          "Steps 10–12. The first pizza calibrates."
         ]
       ],
       "past": "<b>Start is in the past.</b> To bake at that time, the preferment should already have been started. Push the bake back or shorten the fridge times.",

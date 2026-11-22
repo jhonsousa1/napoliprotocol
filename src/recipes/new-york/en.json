@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "New York-Style Pizza Recipe & Step-by-Step Dough Protocol | NapoliProtocol",
-    "description": "Homemade New York-style pizza: hand-mixed dough with a 48-hour cold ferment, dough calculator, schedule and oven guide in 12 steps. Version 0.1, in testing. By Jhonathan Sousa.",
+    "description": "Homemade New York-style pizza: hand-mixed dough with a 36-hour cold ferment, dough calculator, schedule and oven guide in 12 steps. Version 0.1, in testing. By Jhonathan Sousa.",
     "ogTitle": "New York Pizza Protocol",
     "imgAlt": "New York Pizza Protocol, by Jhonathan Sousa",
     "og": {
@@ -24,15 +24,15 @@
     "sched.panh": "Dough balls in fridge",
     "ask.h1": "*New York* pizza: how much?",
     "ask.lead": "Two answers and the bench sets itself up for you.",
-    "ask.sub": "48 h in the fridge · 63% hydration",
-    "cold.frio.h": "Fridge · two days",
+    "ask.sub": "36 h in the fridge · 63% hydration",
+    "cold.frio.h": "Fridge · a day and a half",
     "cold.frio.p": "The dough balls rest covered while the dough matures in the cold."
   },
   "rules": [
     "Use strong flour, 13% protein or more.",
-    "Cold water: the dough will spend 2 days in the fridge.",
+    "Cold water: the dough will spend a day and a half in the fridge.",
     "Knead properly: New York dough needs strong gluten.",
-    "Oil goes in once the dough has come together.",
+    "Oil only after the first knead.",
     "Little yeast: the fridge does the work.",
     "Take the dough out 2 h before baking.",
     "Cold dough won't stretch: wait.",
@@ -206,35 +206,35 @@
               "a"
             ],
             "li": [
-              "Dry-mix {flour} g of flour, {yeast} g of yeast and {sugar} g of sugar.",
+              "Dry-mix {flour} g of flour, {yeast} g of instant dry yeast (or {yeastFresh} g of fresh, dissolved in the water) and {sugar} g of sugar.",
               "Dissolve {salt} g of salt in {water} g of cold water (10–15 °C).",
               "Pour the water into the flour and mix until no dry flour is left.",
               "Cover and rest 20 min. The flour hydrates and the kneading gets shorter."
             ],
-            "tip": "Cold water holds the fermentation back: the dough still has 2 days in the fridge ahead."
-          },
-          {
-            "id": "s2",
-            "t": "Work in the oil",
-            "time": "~5 min",
-            "src": [
-              "a"
-            ],
-            "li": [
-              "Add {oil} g of olive oil a little at a time.",
-              "Work it in with pincers and folds until the dough absorbs it all and stops slipping."
-            ]
+            "tip": "Cold water holds the fermentation back: the dough still has a day and a half in the fridge ahead."
           },
           {
             "id": "s3",
             "t": "Knead",
-            "time": "~15 min",
+            "time": "~8 min",
             "src": [
               "d"
             ],
             "li": [
-              "Knead 8–10 min on the bench with no extra flour: push with the heel of your hand, fold and give a quarter turn.",
-              "Rest 10 min and knead 2–3 min more, until the dough is smooth and elastic.",
+              "Knead 5–6 min on the bench with no extra flour: push with the heel of your hand, fold and give a quarter turn.",
+              "Stop when the dough has come together and is starting to turn smooth. The oil goes in now, not before: fat gets in the way of gluten."
+            ]
+          },
+          {
+            "id": "s2",
+            "t": "Add the oil and finish kneading",
+            "time": "~10 min",
+            "src": [
+              "a"
+            ],
+            "li": [
+              "Add {oil} g of olive oil a little at a time and work it in with pincers and folds until the dough absorbs it all and stops slipping.",
+              "Knead 3–5 min more, until the dough is smooth and elastic.",
               "Windowpane test: stretch a piece into a thin membrane. If it tears right away, knead a little more."
             ],
             "tip": "New York dough needs more gluten than Neapolitan. That's what makes the slice foldable and chewy."
@@ -373,8 +373,8 @@
       }
     ],
     "ld": {
-      "name": "Homemade New York-style pizza (48-hour cold-fermented dough)",
-      "description": "New York-style pizza recipe with strong flour, 63% hydration, olive oil and sugar, a 48-hour cold ferment, uncooked sauce and low-moisture mozzarella.",
+      "name": "Homemade New York-style pizza (36-hour cold-fermented dough)",
+      "description": "New York-style pizza recipe with strong flour, 63% hydration, olive oil and sugar, a 36-hour cold ferment, uncooked sauce and low-moisture mozzarella.",
       "yield": "{n} pizzas, ~32 cm",
       "category": "Pizza",
       "cuisine": "American (New York)",

@@ -18,7 +18,7 @@
     "panel.ref": "Reference",
     "panel.hyd": "Hydration",
     "panel.oil": "Olive oil",
-    "panel.yeast": "Dry yeast",
+    "panel.yeast": "Instant dry yeast",
     "panel.pf": "Flour in preferment",
     "panel.fridge": "Fridge",
     "panel.top": "Top element",
@@ -35,12 +35,9 @@
     "recipe.finalShort": "Final",
     "recipe.dough": "Dough",
     "ing.water": "Filtered water",
-    "ing.yeast": "Active dry yeast",
+    "ing.yeast": "Instant dry yeast",
     "ing.salt": "Salt",
     "ing.oil": "Extra virgin olive oil",
-    "recipe.waterEb": "Final dough water",
-    "recipe.waterH": "Hand-mixing split",
-    "recipe.wInit": "Initial mix, with the salt",
     "recipe.divEb": "Division",
     "recipe.main": "Main",
     "recipe.alt": "Alternative",
@@ -111,7 +108,15 @@
     "adj.prefs": "Preferences",
     "adj.motion": "Camera motion",
     "adj.motionSys": "Off: your system asks for reduced motion.",
-    "adj.recipeGo": "See the full table"
+    "adj.recipeGo": "See the full table",
+    "panel.room": "Room temperature",
+    "panel.adaptNote": "Changing the fridge or room temperature recalculates the fermentation times; you can still edit them by hand.",
+    "log.h": "Bake log",
+    "log.p": "Record each bake: the current settings are saved with it. Change one variable at a time and compare.",
+    "log.stone": "Stone measured",
+    "log.dough": "Dough after mixing",
+    "log.note": "How it came out",
+    "log.save": "Save this bake"
   },
   "js": {
     "locale": "en-US",
@@ -137,7 +142,7 @@
     "diagCur": "Current: {lbl} {cur} °C. Suggestion for the next pizza: {nv}. Small steps; change only this variable.",
     "apply": "Apply {v} °C",
     "applied": "Applied",
-    "resume": "Continue at step {n} · {t}",
+    "resume": "Continue · step {n}",
     "pos": "{day} · step {n} of {N}",
     "askSumFlour": "≈ {n} pizzas of {per} g · total dough {total} g",
     "askSumPizza": "≈ {flour} g of flour · total dough {total} g",
@@ -152,7 +157,19 @@
     "epilogue": "Epilogue",
     "start0": "Start",
     "cold": "Fridge",
-    "unitPizza": "pcs"
+    "unitPizza": "pcs",
+    "log": {
+      "empty": "No bakes recorded yet.",
+      "use": "Use these settings",
+      "del": "Delete",
+      "delAsk": "Delete this entry?",
+      "saved": "Bake saved.",
+      "used": "Settings applied.",
+      "top": "Top",
+      "bottom": "Bottom",
+      "stone": "stone",
+      "dough": "dough"
+    }
   },
   "tag": {
     "flour": "{flour} g flour",
@@ -160,8 +177,6 @@
     "finFlour": "{finFlour} g flour",
     "water": "{water} g water",
     "pfWater": "{pfWater} g water",
-    "initWater": "{initWater} g water",
-    "bassWater": "{bassWater} g water",
     "salt": "{salt} g salt",
     "oil": "{oil} g olive oil",
     "yeast": "{yeast} g yeast",
@@ -176,7 +191,7 @@
     "bottom": "↓ {bottom} °C",
     "outh": "{outh} h out",
     "rest1h": "1 h",
-    "slowly": "a little at a time",
-    "size": "Ø {size}"
+    "size": "Ø {size}",
+    "finWater": "{finWater} g water"
   }
 }

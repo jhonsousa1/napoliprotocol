@@ -1,8 +1,8 @@
 {
  "@context": "https://schema.org",
  "@type": "Recipe",
- "name": "Homemade New York-style pizza (48-hour cold-fermented dough)",
- "description": "New York-style pizza recipe with strong flour, 63% hydration, olive oil and sugar, a 48-hour cold ferment, uncooked sauce and low-moisture mozzarella.",
+ "name": "Homemade New York-style pizza (36-hour cold-fermented dough)",
+ "description": "New York-style pizza recipe with strong flour, 63% hydration, olive oil and sugar, a 36-hour cold ferment, uncooked sauce and low-moisture mozzarella.",
  "inLanguage": "en",
  "url": "https://napoliprotocol.com/en/new-york/",
  "image": [
@@ -32,7 +32,7 @@
  "recipeIngredient": [
   "530 g Strong flour (Caputo Manitoba Oro)",
   "334 g Filtered water",
-  "1.1 g Active dry yeast",
+  "1.1 g Instant dry yeast",
   "8.0 g Sugar",
   "11 g Salt",
   "13 g Extra virgin olive oil",
@@ -44,20 +44,20 @@
   {
    "@type": "HowToStep",
    "name": "Mix the dough",
-   "text": "Dry-mix 530 g of flour, 1.1 g of yeast and 8.0 g of sugar. Dissolve 11 g of salt in 334 g of cold water (10–15 °C). Pour the water into the flour and mix until no dry flour is left. Cover and rest 20 min. The flour hydrates and the kneading gets shorter.",
+   "text": "Dry-mix 530 g of flour, 1.1 g of instant dry yeast (or 3.2 g of fresh, dissolved in the water) and 8.0 g of sugar. Dissolve 11 g of salt in 334 g of cold water (10–15 °C). Pour the water into the flour and mix until no dry flour is left. Cover and rest 20 min. The flour hydrates and the kneading gets shorter.",
    "url": "https://napoliprotocol.com/en/new-york/#s1"
   },
   {
    "@type": "HowToStep",
-   "name": "Work in the oil",
-   "text": "Add 13 g of olive oil a little at a time. Work it in with pincers and folds until the dough absorbs it all and stops slipping.",
-   "url": "https://napoliprotocol.com/en/new-york/#s2"
+   "name": "Knead",
+   "text": "Knead 5–6 min on the bench with no extra flour: push with the heel of your hand, fold and give a quarter turn. Stop when the dough has come together and is starting to turn smooth. The oil goes in now, not before: fat gets in the way of gluten.",
+   "url": "https://napoliprotocol.com/en/new-york/#s3"
   },
   {
    "@type": "HowToStep",
-   "name": "Knead",
-   "text": "Knead 8–10 min on the bench with no extra flour: push with the heel of your hand, fold and give a quarter turn. Rest 10 min and knead 2–3 min more, until the dough is smooth and elastic. Windowpane test: stretch a piece into a thin membrane. If it tears right away, knead a little more.",
-   "url": "https://napoliprotocol.com/en/new-york/#s3"
+   "name": "Add the oil and finish kneading",
+   "text": "Add 13 g of olive oil a little at a time and work it in with pincers and folds until the dough absorbs it all and stops slipping. Knead 3–5 min more, until the dough is smooth and elastic. Windowpane test: stretch a piece into a thin membrane. If it tears right away, knead a little more.",
+   "url": "https://napoliprotocol.com/en/new-york/#s2"
   },
   {
    "@type": "HowToStep",
@@ -68,7 +68,7 @@
   {
    "@type": "HowToStep",
    "name": "Divide, ball and refrigerate",
-   "text": "Divide into 3 dough balls of 299 g (total dough 897 g). Ball with surface tension and seal the base well. Individual lightly oiled tubs, covered, in the fridge for about 48 h.",
+   "text": "Divide into 3 dough balls of 299 g (total dough 897 g). Ball with surface tension and seal the base well. Individual lightly oiled tubs, covered, in the fridge for about 36 h.",
    "url": "https://napoliprotocol.com/en/new-york/#s5"
   },
   {

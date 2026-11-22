@@ -32,7 +32,7 @@
  "recipeIngredient": [
   "800 g Farinha Caputo Pizzeria 00",
   "512 g Água filtrada",
-  "0,8 g Fermento biológico seco",
+  "0,8 g Fermento seco instantâneo",
   "23 g Sal",
   "12 g Azeite extravirgem",
   "325 g de tomate pelati esmagado com sal",
@@ -44,25 +44,19 @@
   {
    "@type": "HowToStep",
    "name": "Montar o pré-fermento",
-   "text": "Misture a seco 400 g de farinha com 0,8 g de fermento. Adicione 400 g de água e mexa até formar uma pasta grosseira, sem farinha seca. Tampe. Deixe 1 h em temperatura ambiente. Leve à geladeira (7 °C) por cerca de 20 h.",
+   "text": "Misture a seco 400 g de farinha com 0,8 g de fermento seco instantâneo (ou 2,4 g de fermento fresco). Adicione 400 g de água e mexa até formar uma pasta grosseira, sem farinha seca. Tampe. Deixe 1 h em temperatura ambiente. Leve à geladeira (7 °C) por cerca de 20 h.",
    "url": "https://napoliprotocol.com/pt/#s1"
   },
   {
    "@type": "HowToStep",
    "name": "Mistura inicial",
-   "text": "Use o pré-fermento direto da geladeira, sem longo aquecimento. Dissolva 23 g de sal em 94 g de água. Junte ao pré-fermento 400 g de farinha e a água com sal. Misture até hidratar toda a farinha. Não precisa ficar lisa. Tampe e descanse. O tempo desenvolve o glúten por você.",
+   "text": "Use o pré-fermento direto da geladeira, sem longo aquecimento. Dissolva 23 g de sal em 112 g de água a ~36 °C. Junte ao pré-fermento 400 g de farinha e a água com sal. Misture até hidratar toda a farinha. Não precisa ficar lisa. Meça a massa ao fim da mistura: o alvo é 23–25 °C. Anote no diário de fornadas. Tampe e descanse. O tempo desenvolve o glúten por você.",
    "url": "https://napoliprotocol.com/pt/#s2"
   },
   {
    "@type": "HowToStep",
-   "name": "Bassinage",
-   "text": "Adicione os 18 g de água restantes em pequenas porções. Só coloque mais quando a massa tiver absorvido a anterior. Se a massa ficar pegajosa, não acrescente farinha.",
-   "url": "https://napoliprotocol.com/pt/#s4"
-  },
-  {
-   "@type": "HowToStep",
    "name": "Desenvolver o glúten",
-   "text": "Alterne descanso e séries de dobras, sem sova agressiva. Pare quando a massa estiver lisa, arredondada, elástica e com tensão na superfície.",
+   "text": "Faça 3 séries de dobras, uma a cada 15–20 min, com a massa tampada entre elas. Sem sova agressiva. Pare quando a massa estiver lisa, arredondada, elástica e com tensão na superfície.",
    "url": "https://napoliprotocol.com/pt/#s5"
   },
   {
@@ -86,7 +80,7 @@
   {
    "@type": "HowToStep",
    "name": "Temperar os panetti",
-   "text": "Retire da geladeira cerca de 4 h antes de assar (referência: ~26 °C). Ponto: cresceu, muitas bolhas pequenas e algumas maiores, lateral aerada, mantém o formato, sem colapso, relaxado. Em pote de 1 L, a referência é a massa chegar à metade.",
+   "text": "Retire da geladeira cerca de 4 h antes de assar (com o ambiente a 26 °C; mais calor, menos tempo). Ponto: cresceu, muitas bolhas pequenas e algumas maiores, lateral aerada, mantém o formato, sem colapso, relaxado. Em pote de 1 L, a referência é a massa chegar à metade.",
    "url": "https://napoliprotocol.com/pt/#s9"
   },
   {
@@ -98,13 +92,13 @@
   {
    "@type": "HowToStep",
    "name": "Pré-aquecer o BIG HORN",
-   "text": "Superior em 450 °C, inferior em 380 °C. Se tiver termômetro infravermelho, meça o centro da pedra e anote.",
+   "text": "Superior em 450 °C, inferior em 380 °C. Se tiver termômetro infravermelho, meça o centro da pedra e anote no diário de fornadas.",
    "url": "https://napoliprotocol.com/pt/#s11"
   },
   {
    "@type": "HowToStep",
    "name": "Abrir a massa",
-   "text": "Um panetto por vez. Passe levemente na farinha. Pressione do centro para fora com as pontas dos dedos, empurrando o gás para a borda. Deixe 1–1,5 cm de borda sem pressionar. Na 1ª fornada, 2 cm deixou o cornicione grosso demais. Complete com as mãos até ~30–32 cm. Sem rolo.",
+   "text": "Um panetto por vez. Use sêmola de grano duro (rimacinata) na bancada, não farinha: queima menos na pedra. Pressione do centro para fora com as pontas dos dedos, empurrando o gás para a borda. Deixe 1–1,5 cm de borda sem pressionar. Complete com as mãos até ~30–32 cm. Sem rolo.",
    "url": "https://napoliprotocol.com/pt/#s12"
   },
   {
@@ -116,7 +110,7 @@
   {
    "@type": "HowToStep",
    "name": "Assar e girar",
-   "text": "Aos 25–30 s, veja se já tem estrutura para girar 180°. Depois, pequenos ajustes de rotação até a cor uniforme. A primeira pizza calibra o forno. Use o diagnóstico abaixo. Espere a pedra recuperar antes da próxima pizza.",
+   "text": "Aos 25–30 s, veja se já tem estrutura para girar 180°. Depois, pequenos ajustes de rotação até a cor uniforme. A primeira pizza calibra o forno. Use o diagnóstico abaixo. Entre pizzas, espere a pedra recuperar: 3–5 min ou até voltar à temperatura medida no pré-aquecimento.",
    "url": "https://napoliprotocol.com/pt/#s14"
   }
  ]

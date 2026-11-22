@@ -6,8 +6,7 @@
   "ls": "napolitana-v1",
   "features": {
     "preferment": true,
-    "sugar": false,
-    "waterSplit": true
+    "sugar": false
   },
   "def": {
     "mode": "flour",
@@ -28,7 +27,8 @@
     "pfh": 20,
     "panh": 24,
     "outh": 4,
-    "bake": ""
+    "bake": "",
+    "room": 26
   },
   "ref": {
     "w": "260–280 g",
@@ -182,7 +182,7 @@
         {
           "t": "yeast",
           "at": [
-            1000,
+            975,
             296
           ],
           "m": null
@@ -233,7 +233,7 @@
             ]
           },
           {
-            "t": "initWater",
+            "t": "finWater",
             "at": [
               800,
               256
@@ -244,28 +244,6 @@
             "at": [
               808,
               312
-            ]
-          }
-        ]
-      },
-      "s4": {
-        "scene": "bowl",
-        "state": "bass",
-        "light": "morning",
-        "ev": 2,
-        "tags": [
-          {
-            "t": "bassWater",
-            "at": [
-              770,
-              260
-            ]
-          },
-          {
-            "t": "slowly",
-            "at": [
-              776,
-              316
             ]
           }
         ]
@@ -474,6 +452,23 @@
         "ev": 3,
         "big": "panh"
       }
+    ]
+  },
+  "adapt": {
+    "pfh": [
+      "fridge",
+      7,
+      20
+    ],
+    "panh": [
+      "fridge",
+      7,
+      24
+    ],
+    "outh": [
+      "room",
+      26,
+      4
     ]
   }
 }

@@ -33,7 +33,6 @@
     "Não troque a Caputo Pizzeria.",
     "Não sove em excesso. Use descanso e dobras.",
     "Sal antes do azeite.",
-    "Bassinage para a água final.",
     "Azeite sempre por último.",
     "Massa pegajosa na mistura não recebe farinha.",
     "Não reboleie os panetti antes de abrir.",
@@ -48,13 +47,11 @@
     "Deixe a pedra recuperar entre pizzas.",
     "Observe a massa mais que o relógio.",
     "Mude uma variável relevante por vez.",
-    "Próxima sessão: menos calor embaixo, mesma receita."
+    "Próxima sessão: menos calor embaixo, mesma receita.",
+    "Abra na sêmola, não na farinha.",
+    "Água na temperatura certa: a massa sai da mistura a 23–25 °C."
   ],
   "glossary": [
-    [
-      "Bassinage",
-      "Reservar parte da água e incorporá-la aos poucos depois que o glúten começou a se formar."
-    ],
     [
       "Panetto",
       "Cada bola individual de massa. Vira uma pizza. Plural: panetti."
@@ -74,6 +71,10 @@
     [
       "Pré-fermento",
       "Farinha, mesma massa de água e todo o fermento. 100% de hidratação, próximo de um poolish."
+    ],
+    [
+      "Sêmola rimacinata",
+      "Sêmola de trigo duro moída duas vezes. Usada para abrir e na pá: não gruda e queima menos que a farinha 00."
     ]
   ],
   "about": {
@@ -127,12 +128,12 @@
               "a"
             ],
             "li": [
-              "Misture a seco {pfFlour} g de farinha com {yeast} g de fermento.",
+              "Misture a seco {pfFlour} g de farinha com {yeast} g de fermento seco instantâneo (ou {yeastFresh} g de fermento fresco).",
               "Adicione {pfWater} g de água e mexa até formar uma pasta grosseira, sem farinha seca.",
               "Tampe. Deixe 1 h em temperatura ambiente.",
               "Leve à geladeira ({fridge} °C) por cerca de {pfh} h."
             ],
-            "tip": "A receita original pede 12–16 h a 12 °C. Numa geladeira mais fria, o tempo maior compensa. Pronto quando tiver bolhas, estrutura interna e nenhum sinal de colapso."
+            "tip": "A receita original pede 12–16 h a 12 °C. Numa geladeira mais fria, o tempo maior compensa. Pronto quando tiver bolhas, estrutura interna e nenhum sinal de colapso. Se ainda não tiver bolhas, deixe 1–2 h fora antes de usar; se já colapsou, use imediatamente."
           }
         ]
       },
@@ -149,26 +150,13 @@
             ],
             "li": [
               "Use o pré-fermento direto da geladeira, sem longo aquecimento.",
-              "Dissolva {salt} g de sal em {initWater} g de água.",
+              "Dissolva {salt} g de sal em {finWater} g de água a {waterT} °C.",
               "Junte ao pré-fermento {finFlour} g de farinha e a água com sal.",
               "Misture até hidratar toda a farinha. Não precisa ficar lisa.",
+              "Meça a massa ao fim da mistura: o alvo é 23–25 °C. Anote no diário de fornadas.",
               "Tampe e descanse. O tempo desenvolve o glúten por você."
             ],
             "tip": "O sal entra junto com a segunda parte da farinha, sempre antes do azeite."
-          },
-          {
-            "id": "s4",
-            "t": "Bassinage",
-            "time": "~10 min",
-            "src": [
-              "d",
-              "a"
-            ],
-            "li": [
-              "Adicione os {bassWater} g de água restantes em pequenas porções.",
-              "Só coloque mais quando a massa tiver absorvido a anterior.",
-              "Se a massa ficar pegajosa, não acrescente farinha."
-            ]
           },
           {
             "id": "s5",
@@ -179,7 +167,7 @@
               "l"
             ],
             "li": [
-              "Alterne descanso e séries de dobras, sem sova agressiva.",
+              "Faça 3 séries de dobras, uma a cada 15–20 min, com a massa tampada entre elas. Sem sova agressiva.",
               "Pare quando a massa estiver lisa, arredondada, elástica e com tensão na superfície."
             ],
             "tip": "Na 1ª fornada, tempo e descanso fizeram a maior parte do trabalho. Não persiga lisura perfeita por sova contínua."
@@ -241,7 +229,7 @@
               "l"
             ],
             "li": [
-              "Retire da geladeira cerca de {outh} h antes de assar (referência: ~26 °C).",
+              "Retire da geladeira cerca de {outh} h antes de assar (com o ambiente a {room} °C; mais calor, menos tempo).",
               "Ponto: cresceu, muitas bolhas pequenas e algumas maiores, lateral aerada, mantém o formato, sem colapso, relaxado.",
               "Em pote de 1 L, a referência é a massa chegar à metade."
             ],
@@ -269,7 +257,7 @@
             ],
             "li": [
               "Superior em {top} °C, inferior em {bottom} °C.",
-              "Se tiver termômetro infravermelho, meça o centro da pedra e anote."
+              "Se tiver termômetro infravermelho, meça o centro da pedra e anote no diário de fornadas."
             ],
             "tip": "warn|Na 1ª fornada (inferior ~390–410 °C) o fundo carbonizou antes do topo. Por isso a inferior baixou."
           },
@@ -281,12 +269,12 @@
               "l"
             ],
             "li": [
-              "Um panetto por vez. Passe levemente na farinha.",
+              "Um panetto por vez. Use sêmola de grano duro (rimacinata) na bancada, não farinha: queima menos na pedra.",
               "Pressione do centro para fora com as pontas dos dedos, empurrando o gás para a borda.",
-              "Deixe 1–1,5 cm de borda sem pressionar. Na 1ª fornada, 2 cm deixou o cornicione grosso demais.",
+              "Deixe 1–1,5 cm de borda sem pressionar.",
               "Complete com as mãos até ~30–32 cm. Sem rolo."
             ],
-            "tip": "warn|Bata o excesso de farinha da base. Farinha solta na pedra queima e amarga."
+            "tip": "warn|Bata o excesso da base: sêmola ou farinha solta na pedra queima e amarga. Lição da 1ª fornada: borda de 2 cm deixou o cornicione grosso demais."
           },
           {
             "id": "s13",
@@ -313,7 +301,7 @@
               "Aos 25–30 s, veja se já tem estrutura para girar 180°.",
               "Depois, pequenos ajustes de rotação até a cor uniforme.",
               "A primeira pizza calibra o forno. Use o diagnóstico abaixo.",
-              "Espere a pedra recuperar antes da próxima pizza."
+              "Entre pizzas, espere a pedra recuperar: 3–5 min ou até voltar à temperatura medida no pré-aquecimento."
             ],
             "tip": "Busque pontos escuros pequenos e distribuídos no cornicione, não áreas pretas."
           }
@@ -394,23 +382,23 @@
         ],
         [
           "Mistura final",
-          "Etapas 02–06. Cerca de 2 h 30 de trabalho intercalado com descansos."
+          "Etapas 02–05. Cerca de 2 h 30 de trabalho intercalado com descansos."
         ],
         [
           "Dividir, bolear e refrigerar",
-          "Etapa 07. {panh} h na geladeira."
+          "Etapa 06. {panh} h na geladeira."
         ],
         [
           "Retirar os panetti",
-          "Etapa 08. Avalie o ponto; prepare molho e queijo nesse intervalo."
+          "Etapa 07. Avalie o ponto; prepare molho e queijo nesse intervalo."
         ],
         [
           "Ligar o forno",
-          "Etapa 10. {top} °C / {bottom} °C."
+          "Etapa 09. {top} °C / {bottom} °C."
         ],
         [
           "Assar",
-          "Etapas 11–13. A primeira pizza calibra."
+          "Etapas 10–12. A primeira pizza calibra."
         ]
       ],
       "past": "<b>Começo no passado.</b> Para assar nesse horário, o pré-fermento já deveria ter começado. Adie o forno ou reduza os tempos de geladeira.",

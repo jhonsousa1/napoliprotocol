@@ -18,7 +18,7 @@
     "panel.ref": "Referência",
     "panel.hyd": "Hidratação",
     "panel.oil": "Azeite",
-    "panel.yeast": "Fermento seco",
+    "panel.yeast": "Fermento seco instantâneo",
     "panel.pf": "Farinha no pré-fermento",
     "panel.fridge": "Geladeira",
     "panel.top": "Resistência superior",
@@ -35,12 +35,9 @@
     "recipe.finalShort": "Final",
     "recipe.dough": "Massa",
     "ing.water": "Água filtrada",
-    "ing.yeast": "Fermento biológico seco",
+    "ing.yeast": "Fermento seco instantâneo",
     "ing.salt": "Sal",
     "ing.oil": "Azeite extravirgem",
-    "recipe.waterEb": "Água da massa final",
-    "recipe.waterH": "Divisão manual",
-    "recipe.wInit": "Mistura inicial, com o sal",
     "recipe.divEb": "Divisão",
     "recipe.main": "Principal",
     "recipe.alt": "Alternativa",
@@ -111,7 +108,15 @@
     "adj.prefs": "Preferências",
     "adj.motion": "Movimento da câmera",
     "adj.motionSys": "Desligado pelo sistema (movimento reduzido).",
-    "adj.recipeGo": "Ver a tabela completa"
+    "adj.recipeGo": "Ver a tabela completa",
+    "panel.room": "Temperatura ambiente",
+    "panel.adaptNote": "Mudar a geladeira ou o ambiente recalcula os tempos de fermentação; você ainda pode ajustá-los à mão.",
+    "log.h": "Diário de fornadas",
+    "log.p": "Anote cada fornada: os parâmetros atuais são salvos junto. Mude uma variável por vez e compare.",
+    "log.stone": "Pedra medida",
+    "log.dough": "Massa ao fim da mistura",
+    "log.note": "Como saiu",
+    "log.save": "Salvar esta fornada"
   },
   "js": {
     "locale": "pt-BR",
@@ -137,7 +142,7 @@
     "diagCur": "Atual: {lbl} {cur} °C. Sugestão para a próxima pizza: {nv}. Passos pequenos; mude só esta variável.",
     "apply": "Aplicar {v} °C",
     "applied": "Aplicado",
-    "resume": "Continuar na etapa {n} · {t}",
+    "resume": "Continuar · etapa {n}",
     "pos": "{day} · etapa {n} de {N}",
     "askSumFlour": "≈ {n} pizzas de {per} g · massa total {total} g",
     "askSumPizza": "≈ {flour} g de farinha · massa total {total} g",
@@ -152,7 +157,19 @@
     "epilogue": "Epílogo",
     "start0": "Início",
     "cold": "Geladeira",
-    "unitPizza": "un"
+    "unitPizza": "un",
+    "log": {
+      "empty": "Nenhuma fornada anotada ainda.",
+      "use": "Usar estes parâmetros",
+      "del": "Apagar",
+      "delAsk": "Apagar esta anotação?",
+      "saved": "Fornada salva.",
+      "used": "Parâmetros aplicados.",
+      "top": "Superior",
+      "bottom": "Inferior",
+      "stone": "pedra",
+      "dough": "massa"
+    }
   },
   "tag": {
     "flour": "{flour} g farinha",
@@ -160,8 +177,6 @@
     "finFlour": "{finFlour} g farinha",
     "water": "{water} g água",
     "pfWater": "{pfWater} g água",
-    "initWater": "{initWater} g água",
-    "bassWater": "{bassWater} g água",
     "salt": "{salt} g sal",
     "oil": "{oil} g azeite",
     "yeast": "{yeast} g fermento",
@@ -176,7 +191,7 @@
     "bottom": "↓ {bottom} °C",
     "outh": "{outh} h fora",
     "rest1h": "1 h",
-    "slowly": "aos poucos",
-    "size": "Ø {size}"
+    "size": "Ø {size}",
+    "finWater": "{finWater} g água"
   }
 }

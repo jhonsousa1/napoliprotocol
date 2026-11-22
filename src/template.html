@@ -82,10 +82,8 @@
         </table>
       </div>
       <p class="fine">{{recipe.sub}}</p>
-      <div class="split{{SPLIT_CLASS}}">
-        {{#wsplit}}<div class="mini-card"><p class="eyebrow">{{recipe.waterEb}}</p><h3>{{recipe.waterH}}</h3>
-          <ul><li><span>{{recipe.wInit}}</span><b class="num"><span data-k="initWater"></span> g</b></li><li><span>Bassinage</span><b class="num"><span data-k="bassWater"></span> g</b></li></ul></div>{{/wsplit}}
-        <div class="mini-card"><p class="eyebrow">{{recipe.divEb}}</p><h3>{{recipe.balls}}</h3>
+      <div class="split two">
+                <div class="mini-card"><p class="eyebrow">{{recipe.divEb}}</p><h3>{{recipe.balls}}</h3>
           <ul><li><span>{{recipe.main}}</span><b class="num"><span data-k="n"></span> × <span data-k="per"></span> g</b></li><li id="altRow"><span>{{recipe.alt}}</span><b class="num" data-k="alt"></b></li><li><span>{{recipe.target}}</span><b class="num">{{TARGET}}</b></li></ul></div>
         <div class="mini-card"><p class="eyebrow">{{recipe.topEb}}</p><h3>{{recipe.forPre}} <span data-k="n"></span> {{recipe.forPost}}</h3>
           <ul><li><span>Mutti Pelati 400 g</span><b class="num"><span data-k="cans"></span> {{recipe.cans}}</b></li><li><span>{{recipe.sauceTotal}}</span><b class="num"><span data-k="sauceTotal"></span> g</b></li><li><span>{{recipe.cheese}}</span><b class="num"><span data-k="cheeseTotal"></span> g</b></li></ul></div>
@@ -107,6 +105,16 @@
         <div class="chips" id="chips"></div>
         <div class="diag-out" id="diagOut"><span class="note">{{oven.diagHint}}</span></div>
       </div>
+      <section id="diario" aria-labelledby="h-diario">
+        <h2 id="h-diario">{{log.h}}</h2><p class="lead">{{log.p}}</p>
+        <form class="log-form" id="logForm">
+          <div class="field"><label for="lStone">{{log.stone}}</label><div class="inp"><input id="lStone" type="number" min="100" max="600" step="5"><span>°C</span></div></div>
+          <div class="field"><label for="lDough">{{log.dough}}</label><div class="inp"><input id="lDough" type="number" min="10" max="40" step="0.5"><span>°C</span></div></div>
+          <div class="field wide"><label for="lNote">{{log.note}}</label><textarea id="lNote" rows="2"></textarea></div>
+          <button class="btn primary" type="submit">{{log.save}}</button><span class="note" id="logMsg" role="status"></span>
+        </form>
+        <ol class="log" id="logList"></ol>
+      </section>
       <section id="regras" aria-labelledby="h-regras">
         <h2 id="h-regras">{{rules.h2}}</h2><p class="lead">{{rules.sub}}</p>
         <ol class="rules">{{RULES}}</ol>
@@ -169,6 +177,7 @@
       {{#pf}}<div class="field" id="rowPf"><label for="p-pf">{{panel.pf}}</label><div class="inp"><input id="p-pf" type="number" min="20" max="60" step="5"><span>%</span></div></div>{{/pf}}
     </details>
     <details id="adj-env"><summary>{{adj.env}}</summary>
+      <div class="field"><label for="p-room">{{panel.room}}</label><div class="inp"><input id="p-room" type="number" min="15" max="35" step="0.5"><span>°C</span></div></div>
       <div class="field"><label for="p-fridge">{{panel.fridge}}</label><div class="inp"><input id="p-fridge" type="number" min="2" max="12" step="0.5"><span>°C</span></div></div>
       <div class="field"><label for="p-top">{{panel.top}}</label><div class="inp"><input id="p-top" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
       <div class="field"><label for="p-bottom">{{panel.bottom}}</label><div class="inp"><input id="p-bottom" type="number" min="300" max="500" step="5"><span>°C</span></div></div>
@@ -183,6 +192,7 @@
       {{#pf}}<div class="field"><label for="p-pfh">{{sched.pfh}}</label><div class="inp"><input id="p-pfh" type="number" min="8" max="30" step="1"><span>h</span></div></div>{{/pf}}
       <div class="field"><label for="p-panh">{{sched.panh}}</label><div class="inp"><input id="p-panh" type="number" min="12" max="72" step="1"><span>h</span></div></div>
       <div class="field"><label for="p-outh">{{sched.outh}}</label><div class="inp"><input id="p-outh" type="number" min="1" max="8" step="0.5"><span>h</span></div></div>
+      <p class="fine">{{panel.adaptNote}}</p>
       <ol class="tl" id="timeline"></ol>
       <div class="alert" id="schedWarn" hidden></div>
     </details>

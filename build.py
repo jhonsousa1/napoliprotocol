@@ -150,7 +150,7 @@ SCENES = SRC / 'scenes'
 MOMENTS = ('dusk', 'eve', 'night', 'morning', 'noon', 'golden', 'ember', 'cold')
 LAYERS = ('far', 'sub', 'fx', 'near')
 CALC_KEYS = {'flour', 'water', 'salt', 'oil', 'yeast', 'sugar', 'total', 'pfFlour', 'pfWater', 'pfTotal', 'finFlour', 'finWater',
-             'saltWater', 'initWater', 'bassWater', 'n', 'per', 'alt', 'sauceTotal', 'cheeseTotal', 'cans', 'canSalt', 'top', 'bottom',
+             'yeastFresh', 'waterT', 'room', 'n', 'per', 'alt', 'sauceTotal', 'cheeseTotal', 'cans', 'canSalt', 'top', 'bottom',
              'fridge', 'pfh', 'panh', 'outh', 'sauce', 'cheese', 'hydPct', 'saltPct', 'oilPct', 'yeastPct', 'sugarPct', 'w'}
 TILE_KB, TILE_EL, PAGE_KB = 14, 260, 240        # orçamento de SVG: por ladrilho (já filtrado), elementos e página inteira
 STRICT_UNUSED = True                             # E8: chave de texto sem uso vira erro
@@ -169,9 +169,9 @@ def kspan(text, c):
 
 
 def scene_tokens(c, state):
-    """Tokens ativos de um ladrilho: o estado, o id da receita, as flags (pf, sugar, wsplit) e as combinações estado+flag."""
+    """Tokens ativos de um ladrilho: o estado, o id da receita, as flags (pf, sugar) e as combinações estado+flag."""
     f = c['features']
-    flags = {k for k, v in (('pf', f['preferment']), ('sugar', f['sugar']), ('wsplit', f['waterSplit'])) if v}
+    flags = {k for k, v in (('pf', f['preferment']), ('sugar', f['sugar'])) if v}
     return {state, c['id']} | flags | {f'{state}+{x}' for x in flags | {c['id']}}
 
 
@@ -389,7 +389,7 @@ def page(l, c):
     validate_journey(c, l, d)
     jr = build_journey(c, l, d, h)
     js = {k: v for k, v in d['js'].items() if k not in ('steps', 'src')}
-    js['cfg'] = {k: c[k] for k in ('id', 'targetSize', 'def', 'ls', 'features', 'warn', 'sched', 'timer', 'ld')}
+    js['cfg'] = {k: c[k] for k in ('id', 'targetSize', 'def', 'ls', 'features', 'warn', 'sched', 'timer', 'ld', 'adapt')}
     js['cfg']['journey'] = jr['meta']
     js['cfg']['recipes'] = [dict(id=o['id'], path=path(l, o), ls=o['ls'], name=RTEXT[o['id']][l]['html']['name'], w=o['def']['w']) for o in RECIPES]
     js['sched'] = d['js']['sched']
@@ -412,7 +412,6 @@ def page(l, c):
         'FOOT_RECIPES': recipe_links(l, c, 'foot'), 'RECIPE_CARDS': recs,
         'NSTEPS': str(jr['N']), 'VERSION': esc(c['version']),
         'REF_W': esc(c['ref']['w']), 'REF_SALT': esc(c['ref']['salt']), 'TARGET': esc(c['targetSize']),
-        'SPLIT_CLASS': '' if f['waterSplit'] else ' two',
         'CSS': re.sub(r'\n\s*', '\n', re.sub(r'/\*.*?\*/', '', (SRC / 'style.css').read_text('utf-8'), flags=re.S)).strip(),
         'DEFS': re.sub(r'>\s+<', '><', re.sub(r'<!--.*?-->', '', (SCENES / 'defs.svg').read_text('utf-8'), flags=re.S)).strip(),
         'APP_JS': (SRC / 'app.js').read_text('utf-8').replace('</', '<\\/'), 'JOURNEY_JS': (SRC / 'journey.js').read_text('utf-8').replace('</', '<\\/'),
@@ -428,7 +427,7 @@ def page(l, c):
         'ABOUT_FACTS': ''.join(f'<div class="fact"><b>{esc(v)}</b><span>{esc(t)}</span></div>' for v, t in d['about']['facts']),
         'TIMER_ZONES': zones, 'TIMER_SCALE': scale, 'CLOCK0': clock0,
     }
-    on = {'pf': f['preferment'], 'sugar': f['sugar'], 'wsplit': f['waterSplit']}
+    on = {'pf': f['preferment'], 'sugar': f['sugar']}
     block = re.compile(r'\{\{#(\w+)\}\}((?:(?!\{\{#).)*?)\{\{/\1\}\}', re.S)
     while block.search(tpl):
         tpl = block.sub(lambda m: m.group(2) if on[m.group(1)] else '', tpl)

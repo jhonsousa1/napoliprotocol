@@ -238,19 +238,25 @@ legend{font:700 13px var(--f-t);letter-spacing:.08em;text-transform:uppercase;co
 .sum{margin:10px 0 16px;color:var(--ink-2);min-height:3em}
 .acts{display:flex;flex-wrap:wrap;gap:10px}
 .acts .btn{flex:1 1 200px}
+#resume{flex-direction:column;gap:2px;padding-block:8px;line-height:1.2}#resume small{font-weight:400;font-size:15px;opacity:.85}
 #nextEv{display:block;min-height:0;padding:12px 0 0;white-space:normal}
 #nextEv .em{display:block;font-weight:400;color:var(--ink-2)}
 #nextEv[hidden]{display:block!important;visibility:hidden;min-height:70px;padding-top:12px}
 
 /* ---------- prólogo ---------- */
 .mise-card h2{margin-top:6px}
-.tbl-wrap{overflow-x:auto;margin:14px 0 0}
+.tbl-wrap{overflow-x:auto;margin:14px 0 0;--sh:color-mix(in srgb,var(--ink) 28%,transparent);
+  /* sombra na borda que ainda tem coluna escondida; as capas (local) somem com ela nas pontas */
+  background:linear-gradient(to right,var(--paper) 40%,transparent) left/32px 100% no-repeat local,linear-gradient(to left,var(--paper) 40%,transparent) right/32px 100% no-repeat local,
+    linear-gradient(to right,var(--sh),transparent) left/14px 100% no-repeat scroll,linear-gradient(to left,var(--sh),transparent) right/14px 100% no-repeat scroll}
 table{border-collapse:collapse;width:100%;font-size:15px}
 th{font:700 12px var(--f-t);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);text-align:left;padding:6px 6px 6px 0;border-bottom:2px solid var(--line)}
 td{padding:8px 6px 8px 0;border-bottom:1px solid var(--line);vertical-align:baseline}
 th.n,td.n{text-align:right;padding-right:0;padding-left:8px;white-space:nowrap}
 tr.total td{font-weight:700;border-bottom:0}
 th .short{display:none}
+.tbl-wrap{container-type:inline-size}
+@container (max-width:440px){th .full{display:none}th .short{display:inline}th.n,td.n{padding-left:5px}}
 .split{display:grid;gap:12px;margin-top:16px}
 .mini-card{padding:12px 14px;border-radius:10px;background:var(--paper-2)}
 .mini-card h3{font:560 19px/1.15 var(--f-d)!important;margin:2px 0 6px!important}
@@ -309,6 +315,15 @@ th .short{display:none}
 .diag-out{padding:16px 18px;border-radius:12px;background:var(--paper-2);font-size:16px;display:flex;flex-direction:column;gap:10px}
 .diag-out b{font:560 19px/1.2 var(--f-d)}
 .diag-out .mono{font-family:var(--f-m);font-weight:700}
+#diario{margin-top:40px}
+.log-form{margin-top:16px;padding:22px;border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;gap:6px}
+.log-form .wide{flex-direction:column;align-items:stretch}
+.log-form textarea{min-height:64px;border:1px solid var(--line);border-radius:8px;background:var(--paper-2);color:inherit;font:16px var(--f-t);padding:10px}
+.log-form .btn{align-self:flex-start;min-height:44px;margin-top:6px}
+.log{list-style:none;padding:0;margin:16px 0 0;display:flex;flex-direction:column;gap:10px}
+.log li{padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px}
+.log li p{margin:6px 0;color:var(--ink-2)}
+.log li div{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
 .rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;counter-reset:r;margin-top:24px}
 .rules li{counter-increment:r;display:grid;grid-template-columns:56px minmax(0,1fr);gap:8px;padding:18px 0;border-top:1px solid var(--line);font-size:17px}
 .rules li::before{content:counter(r,decimal-leading-zero);font:italic 400 34px/1 var(--f-d);color:var(--tomato)}

@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Pizza New York: receita caseira e protocolo passo a passo da massa | NapoliProtocol",
-    "description": "Receita de pizza estilo New York em casa: massa à mão com 48 h de geladeira, calculadora, cronograma e guia de forno em 12 etapas. Versão 0.1, em teste. Por Jhonathan Sousa.",
+    "description": "Receita de pizza estilo New York em casa: massa à mão com 36 h de geladeira, calculadora, cronograma e guia de forno em 12 etapas. Versão 0.1, em teste. Por Jhonathan Sousa.",
     "ogTitle": "Protocolo da Pizza New York",
     "imgAlt": "Protocolo da Pizza New York, por Jhonathan Sousa",
     "og": {
@@ -24,15 +24,15 @@
     "sched.panh": "Bolas na geladeira",
     "ask.h1": "Pizza *New York*: quanta vai sair?",
     "ask.lead": "Duas respostas e a bancada se arma para você.",
-    "ask.sub": "48 h de geladeira · 63% de hidratação",
-    "cold.frio.h": "Geladeira · dois dias",
+    "ask.sub": "36 h de geladeira · 63% de hidratação",
+    "cold.frio.h": "Geladeira · um dia e meio",
     "cold.frio.p": "As bolas descansam tampadas e a massa amadurece no frio."
   },
   "rules": [
     "Use farinha forte, com 13% de proteína ou mais.",
-    "Água fria: a massa vai passar 2 dias na geladeira.",
+    "Água fria: a massa vai passar 1 dia e meio na geladeira.",
     "Sove de verdade: a New York precisa de glúten forte.",
-    "Azeite entra depois que a massa se formou.",
+    "Azeite só depois da primeira sova.",
     "Pouco fermento: a geladeira faz o trabalho.",
     "Tire a massa da geladeira 2 h antes.",
     "Massa gelada não abre: espere.",
@@ -206,35 +206,35 @@
               "a"
             ],
             "li": [
-              "Misture a seco {flour} g de farinha, {yeast} g de fermento e {sugar} g de açúcar.",
+              "Misture a seco {flour} g de farinha, {yeast} g de fermento seco instantâneo (ou {yeastFresh} g de fresco, dissolvido na água) e {sugar} g de açúcar.",
               "Dissolva {salt} g de sal em {water} g de água fria (10–15 °C).",
               "Junte a água à farinha e misture até não sobrar farinha seca.",
               "Tampe e descanse 20 min. A farinha hidrata e a sova fica mais curta."
             ],
-            "tip": "Água fria segura a fermentação: a massa ainda vai passar 2 dias na geladeira."
-          },
-          {
-            "id": "s2",
-            "t": "Incorporar o azeite",
-            "time": "~5 min",
-            "src": [
-              "a"
-            ],
-            "li": [
-              "Adicione {oil} g de azeite aos poucos.",
-              "Incorpore com pinça e dobras até a massa absorver tudo e parar de escorregar."
-            ]
+            "tip": "Água fria segura a fermentação: a massa ainda vai passar 1 dia e meio na geladeira."
           },
           {
             "id": "s3",
             "t": "Sovar",
-            "time": "~15 min",
+            "time": "~8 min",
             "src": [
               "d"
             ],
             "li": [
-              "Sove 8–10 min na bancada, sem farinha extra: empurre com a base da mão, dobre e gire um quarto de volta.",
-              "Descanse 10 min e sove mais 2–3 min, até a massa ficar lisa e elástica.",
+              "Sove 5–6 min na bancada, sem farinha extra: empurre com a base da mão, dobre e gire um quarto de volta.",
+              "Pare quando a massa estiver formada e começando a ficar lisa. O azeite entra agora, não antes: a gordura atrapalha a formação do glúten."
+            ]
+          },
+          {
+            "id": "s2",
+            "t": "Azeite e terminar a sova",
+            "time": "~10 min",
+            "src": [
+              "a"
+            ],
+            "li": [
+              "Adicione {oil} g de azeite aos poucos e incorpore com pinça e dobras até a massa absorver tudo e parar de escorregar.",
+              "Sove mais 3–5 min, até a massa ficar lisa e elástica.",
               "Teste da janela: estique um pedaço até formar uma membrana fina. Se rasgar logo, sove mais um pouco."
             ],
             "tip": "A New York precisa de mais glúten que a napolitana. É ele que deixa a fatia dobrável e com mordida."
@@ -373,8 +373,8 @@
       }
     ],
     "ld": {
-      "name": "Pizza estilo New York caseira (massa com 48 h de geladeira)",
-      "description": "Receita de pizza estilo New York com farinha forte, 63% de hidratação, azeite e açúcar, fermentação de 48 horas na geladeira, molho cru e muçarela de baixa umidade.",
+      "name": "Pizza estilo New York caseira (massa com 36 h de geladeira)",
+      "description": "Receita de pizza estilo New York com farinha forte, 63% de hidratação, azeite e açúcar, fermentação de 36 horas na geladeira, molho cru e muçarela de baixa umidade.",
       "yield": "{n} pizzas de ~32 cm",
       "category": "Pizza",
       "cuisine": "Americana (Nova York)",

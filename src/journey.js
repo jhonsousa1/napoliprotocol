@@ -88,7 +88,6 @@
     if(dlbl) dlbl.innerHTML = `${esc(a)}<small>${esc(b)}</small>`;
     if(prev) prev.href = '#'+seq[Math.max(0,i-1)].id;
     if(nextd) nextd.href = '#'+seq[Math.min(seq.length-1,i+1)].id;
-    if(meta[id] && meta[id].kind==='step') NP.store.set(NP.LS+':last',{id, t:Date.now()});
   }
   /* linha de foco: no desktop a 45 % da altura; no mobile, dentro da janela de leitura (abaixo do palco) */
   let fio = null;
@@ -123,12 +122,17 @@
   const firstStep = C.journey.find(j=>j.kind==='step');
   const ask = byId('ask');
   if(ask) ask.addEventListener('submit',e=>{e.preventDefault(); if(firstStep) go(firstStep.id)});
-  const last = NP.store.get(NP.LS+':last');
-  if(last && meta[last.id]){
-    const a = byId('resume'), b = byId('go'), m = meta[last.id];
-    if(a && b){ a.href = '#'+last.id; a.textContent = fill(T.resume,{n:String(m.n).padStart(2,'0'), t:m.title}); a.hidden = false; a.classList.remove('ghost');
-      a.classList.add('primary'); b.textContent = b.dataset.restart; b.classList.add('ghost'); }
+  /* retomar = primeira etapa não marcada como Feito; só aparece depois de algum Feito (rolar não conta) */
+  const steps = C.journey.filter(j=>j.kind==='step'), goB = byId('go'), goTxt = goB && goB.textContent;
+  function resume(){
+    const a = byId('resume'); if(!a || !goB) return;
+    const done = NP.store.get(NP.LS+':done') || {}, m = steps.some(j=>done[j.id]) && steps.find(j=>!done[j.id]);
+    a.hidden = !m; a.classList.toggle('primary', !!m); a.classList.toggle('ghost', !m);
+    goB.classList.toggle('ghost', !!m); goB.textContent = m ? goB.dataset.restart : goTxt;
+    if(m){ a.href = '#'+m.id; a.innerHTML = `${esc(fill(T.resume,{n:String(m.n).padStart(2,'0')}))}<small>${esc(m.title)}</small>`; }
   }
+  resume(); document.addEventListener('change', e=>{ if(e.target.matches('input[data-step]')) resume() });
+  const rst = byId('resetChecks'); if(rst) rst.addEventListener('click', resume);
 
   /* ---------- trocar de receita leva o número de pizzas (nunca os gramas) ---------- */
   document.addEventListener('click',e=>{

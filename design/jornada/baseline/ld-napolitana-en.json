@@ -32,7 +32,7 @@
  "recipeIngredient": [
   "800 g Caputo Pizzeria 00 flour",
   "512 g Filtered water",
-  "0.8 g Active dry yeast",
+  "0.8 g Instant dry yeast",
   "23 g Salt",
   "12 g Extra virgin olive oil",
   "325 g crushed peeled tomatoes with salt",
@@ -44,25 +44,19 @@
   {
    "@type": "HowToStep",
    "name": "Make the preferment",
-   "text": "Dry-mix 400 g of flour with 0.8 g of yeast. Add 400 g of water and stir into a rough paste with no dry flour left. Cover. Leave 1 h at room temperature. Refrigerate (7 °C) for about 20 h.",
+   "text": "Dry-mix 400 g of flour with 0.8 g of instant dry yeast (or 2.4 g of fresh yeast). Add 400 g of water and stir into a rough paste with no dry flour left. Cover. Leave 1 h at room temperature. Refrigerate (7 °C) for about 20 h.",
    "url": "https://napoliprotocol.com/en/#s1"
   },
   {
    "@type": "HowToStep",
    "name": "Initial mix",
-   "text": "Use the preferment straight from the fridge, without a long warm-up. Dissolve 23 g of salt in 94 g of water. Add 400 g of flour and the salted water to the preferment. Mix until all the flour is hydrated. It doesn't need to be smooth. Cover and rest. Time develops the gluten for you.",
+   "text": "Use the preferment straight from the fridge, without a long warm-up. Dissolve 23 g of salt in 112 g of water at ~36 °C. Add 400 g of flour and the salted water to the preferment. Mix until all the flour is hydrated. It doesn't need to be smooth. Check the dough at the end of mixing: aim for 23–25 °C. Write it in the bake log. Cover and rest. Time develops the gluten for you.",
    "url": "https://napoliprotocol.com/en/#s2"
   },
   {
    "@type": "HowToStep",
-   "name": "Bassinage",
-   "text": "Add the remaining 18 g of water in small portions. Only add more once the dough has absorbed the previous one. If the dough gets sticky, don't add flour.",
-   "url": "https://napoliprotocol.com/en/#s4"
-  },
-  {
-   "@type": "HowToStep",
    "name": "Develop the gluten",
-   "text": "Alternate rests and sets of folds, without aggressive kneading. Stop when the dough is smooth, rounded, elastic and has surface tension.",
+   "text": "Do 3 sets of folds, one every 15–20 min, keeping the dough covered in between. No aggressive kneading. Stop when the dough is smooth, rounded, elastic and has surface tension.",
    "url": "https://napoliprotocol.com/en/#s5"
   },
   {
@@ -86,7 +80,7 @@
   {
    "@type": "HowToStep",
    "name": "Temper the dough balls",
-   "text": "Take them out of the fridge about 4 h before baking (reference: ~26 °C). Ready when: risen, lots of small bubbles and a few bigger ones, airy sides, holds its shape, no collapse, relaxed. In a 1 L tub, the reference is the dough reaching halfway.",
+   "text": "Take them out of the fridge about 4 h before baking (with the room at 26 °C; warmer means less time). Ready when: risen, lots of small bubbles and a few bigger ones, airy sides, holds its shape, no collapse, relaxed. In a 1 L tub, the reference is the dough reaching halfway.",
    "url": "https://napoliprotocol.com/en/#s9"
   },
   {
@@ -98,13 +92,13 @@
   {
    "@type": "HowToStep",
    "name": "Preheat the BIG HORN",
-   "text": "Top element at 450 °C, bottom element at 380 °C. If you have an infrared thermometer, measure the centre of the stone and note it down.",
+   "text": "Top element at 450 °C, bottom element at 380 °C. If you have an infrared thermometer, measure the centre of the stone and note it in the bake log.",
    "url": "https://napoliprotocol.com/en/#s11"
   },
   {
    "@type": "HowToStep",
    "name": "Stretch the dough",
-   "text": "One dough ball at a time. Dip it lightly in flour. Press from the centre outwards with your fingertips, pushing the gas towards the rim. Leave a 1–1.5 cm rim unpressed. On the first bake, 2 cm made the cornicione too thick. Finish by hand to ~30–32 cm. No rolling pin.",
+   "text": "One panetto at a time. Use durum semolina (rimacinata) on the bench, not flour: it burns less on the stone. Press from the centre outwards with your fingertips, pushing the gas towards the rim. Leave a 1–1.5 cm rim unpressed. Finish by hand to ~30–32 cm. No rolling pin.",
    "url": "https://napoliprotocol.com/en/#s12"
   },
   {
@@ -116,7 +110,7 @@
   {
    "@type": "HowToStep",
    "name": "Bake and turn",
-   "text": "At 25–30 s, check whether it has enough structure to turn 180°. Then make small turns until the colour is even. The first pizza calibrates the oven. Use the diagnosis below. Let the stone recover before the next pizza.",
+   "text": "At 25–30 s, check whether it has enough structure to turn 180°. Then make small turns until the colour is even. The first pizza calibrates the oven. Use the diagnosis below. Between pizzas, let the stone recover: 3–5 min, or until it is back to the temperature measured at preheat.",
    "url": "https://napoliprotocol.com/en/#s14"
   }
  ]

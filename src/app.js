@@ -34,23 +34,22 @@
     const total = flour+water+salt+oil+yeast+sugar;
     const pfFlour = C.features.preferment ? flour*P.pf/100 : 0, pfWater = pfFlour;
     const finFlour = flour-pfFlour, finWater = Math.max(0, water-pfWater);
-    const saltWater = Math.min(Math.round(salt*1.1), finWater);
-    const bassWater = Math.max(0, Math.round(finWater) - Math.round(finWater*0.62) - saltWater);
-    const initWater = Math.round(finWater) - bassWater;   // inclui a água em que o sal é dissolvido
+    // água para a massa sair a ~24 °C: 3×alvo − ambiente − farinha − atrito (+ pré-fermento vindo da geladeira)
+    const pf = C.features.preferment, waterT = Math.max(4, Math.min(45, Math.round((pf?4:3)*24 - 2*P.room - 1 - (pf?P.fridge:0))));
     const n = Math.max(1, Math.round(total/P.w)), per = total/n;
     const nF = Math.floor(total/P.w), rem = total - nF*P.w;
     const alt = (nF>=1 && nF!==n && rem>30 && rem<P.w*0.6) ?   // bolinha de teste só quando sobra pouca massa
        `${nF} × ${P.w} g + ${T.test} ${g(rem)} g` : (n>1 && Math.abs(per-P.w)>8 ? `${n+ (per>P.w?1:-1)} × ${g(total/(n+(per>P.w?1:-1)))} g` : '—');
     const sauceTotal = n*P.sauce, cheeseTotal = n*P.cheese, cans = Math.max(1, Math.ceil(sauceTotal/400));
-    return {flour, water, salt, oil, yeast, sugar, total, pfFlour, pfWater, pfTotal:pfFlour+pfWater+yeast, finFlour, finWater, saltWater, initWater, bassWater, n, per, alt, sauceTotal, cheeseTotal, cans,
+    return {flour, water, salt, oil, yeast, sugar, total, pfFlour, pfWater, pfTotal:pfFlour+pfWater+yeast, finFlour, finWater, yeastFresh:yeast*3, waterT, room:P.room, n, per, alt, sauceTotal, cheeseTotal, cans,
       canSalt: cans*4+'–'+cans*5, top:P.top, bottom:P.bottom, fridge:P.fridge, pfh:P.pfh, panh:P.panh, outh:P.outh, sauce:P.sauce, cheese:P.cheese,
       hydPct:pct(P.hyd), saltPct:pct(P.salt), oilPct:pct(P.oil), yeastPct:pct(P.yeast), sugarPct:pct(P.sugar), w:P.w, pizzaFlour:P.mode==='pizza'};
   }
 
   const fmt = (k,v) => {
     if(typeof v === 'string') return v;
-    if(['top','bottom','n','cans','pfh','panh','sauce','cheese','w'].includes(k)) return nf0.format(v);
-    if(['fridge','outh'].includes(k)) return nf2.format(v);
+    if(['top','bottom','n','cans','pfh','panh','sauce','cheese','w','waterT'].includes(k)) return nf0.format(v);
+    if(['fridge','outh','room'].includes(k)) return nf2.format(v);
     return g(v);
   };
 
@@ -107,14 +106,21 @@
   }
 
   // ---------- Campos de ajuste ----------
-  const map = {flour:'p-flour',pizzas:'p-pizzas',w:'p-w',hyd:'p-hyd',salt:'p-salt',oil:'p-oil',yeast:'p-yeast',sugar:'p-sugar',pf:'p-pf',fridge:'p-fridge',top:'p-top',bottom:'p-bottom',sauce:'p-sauce',cheese:'p-cheese',pfh:'p-pfh',panh:'p-panh',outh:'p-outh',bake:'p-bake'};
+  const map = {flour:'p-flour',pizzas:'p-pizzas',w:'p-w',hyd:'p-hyd',salt:'p-salt',oil:'p-oil',yeast:'p-yeast',sugar:'p-sugar',pf:'p-pf',fridge:'p-fridge',top:'p-top',bottom:'p-bottom',sauce:'p-sauce',cheese:'p-cheese',pfh:'p-pfh',panh:'p-panh',outh:'p-outh',bake:'p-bake',room:'p-room'};
   for(const k in map) if(!el(map[k])) delete map[k];   // campos que a receita não usa
   function syncInputs(){ for(const k in map){const i=el(map[k]); if(document.activeElement!==i) i.value = P[k]} setMode(P.mode,false) }
   for(const k in map){
     on(map[k],'input', e=>{
-      if(k==='bake'){P.bake=e.target.value}else{const v=parseFloat(e.target.value); if(isNaN(v)||v<=0) return; P[k]=v}
+      if(k==='bake'){P.bake=e.target.value}else{const v=parseFloat(e.target.value); if(isNaN(v)||v<=0) return; P[k]=v; adapt(k)}
       store.set(LS+':p',P); render();
     });
+  }
+  // tempos de fermentação seguem a temperatura: dobram a cada ~8 °C a menos (ancorados nos valores calibrados da receita)
+  function adapt(src){
+    for(const t in C.adapt||{}){const [k,refT,refH]=C.adapt[t]; if(k!==src) continue;
+      const i=el(map[t]), lo=i?+i.min:1, hi=i?+i.max:99;
+      P[t]=Math.max(lo,Math.min(hi,Math.round(refH*Math.pow(2,(refT-P[k])/8)*(t==='outh'?4:1))/(t==='outh'?4:1)));
+      if(i) i.value=P[t];}
   }
   function setMode(m, save=true){
     P.mode=m;
@@ -193,6 +199,29 @@
       out.innerHTML=h;
       const a=el('applyDiag'); if(a) a.onclick=()=>{P[d.key]+=d.d; store.set(LS+':p',P); syncInputs(); render(); a.textContent=T.applied; a.disabled=true};
     });
+  }
+
+  // ---------- Diário de fornadas ----------
+  const logF=el('logForm'), logL=el('logList'), logM=el('logMsg'), LOGK=LS+':log';
+  let lastDiag=null;
+  if(chips) chips.addEventListener('click',e=>{const c=e.target.closest('.chip'); if(c) lastDiag=DIAG[c.dataset.i].s});
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function renderLog(){
+    if(!logL) return; const L=store.get(LOGK)||[], X=T.log;
+    logL.innerHTML = L.length ? L.map((e,i)=>`<li><b>${dfmt.format(new Date(e.at))}</b> · ${X.top} ${nf0.format(e.p.top)} / ${X.bottom} ${nf0.format(e.p.bottom)} °C`
+      +(e.stone?` · ${X.stone} ${nf0.format(e.stone)} °C`:'')+(e.dough?` · ${X.dough} ${nf2.format(e.dough)} °C`:'')+(e.diag?` · ${esc(e.diag)}`:'')
+      +(e.note?`<p>${esc(e.note)}</p>`:'')+`<div><button type="button" class="btn small" data-use="${i}">${X.use}</button> <button type="button" class="btn small" data-del="${i}">${X.del}</button></div></li>`).join('')
+      : `<li class="note">${X.empty}</li>`;
+  }
+  if(logF){
+    logF.addEventListener('submit',e=>{e.preventDefault();
+      const n=id=>{const v=parseFloat(el(id).value); return isNaN(v)?null:v};
+      const L=store.get(LOGK)||[]; L.unshift({at:Date.now(), p:Object.assign({},P,{bake:undefined}), stone:n('lStone'), dough:n('lDough'), diag:lastDiag, note:el('lNote').value.trim()});
+      store.set(LOGK,L.slice(0,30)); logF.reset(); logM.textContent=T.log.saved; renderLog()});
+    logL.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return; const L=store.get(LOGK)||[];
+      if(b.dataset.use){const keep=P.bake; P=Object.assign({},DEF,L[+b.dataset.use].p,{bake:keep}); store.set(LS+':p',P); syncInputs(); render(); logM.textContent=T.log.used}
+      else if(b.dataset.del && confirm(T.log.delAsk)){L.splice(+b.dataset.del,1); store.set(LOGK,L); renderLog()}});
+    renderLog();
   }
 
   // ---------- Tema e idioma ----------
